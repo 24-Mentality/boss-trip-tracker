@@ -13,4 +13,8 @@ public class BossVariant
 	 */
 	String id;
 	String label;
+	/**
+	 * Built from the wiki and other modes' logs, not yet confirmed in game. Marked "(beta)" on its chip.
+	 */
+	boolean beta;
 }

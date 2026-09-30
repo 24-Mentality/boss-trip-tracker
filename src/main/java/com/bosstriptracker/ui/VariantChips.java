@@ -64,21 +64,29 @@ class VariantChips extends JPanel
 		{
 			return;
 		}
-		addChip("All", null);
+		addChip("All", null, "Every variant, each kill at its own rate");
 		for (BossVariant variant : variants)
 		{
-			addChip(variant.getLabel(), variant.getId());
+			if (variant.isBeta())
+			{
+				addChip(variant.getLabel() + " (beta)", variant.getId(), "Only " + variant.getLabel()
+					+ ". Beta: not yet confirmed in game, so its tracking and numbers may be off");
+			}
+			else
+			{
+				addChip(variant.getLabel(), variant.getId(), "Only " + variant.getLabel());
+			}
 		}
 		revalidate();
 	}
 
-	private void addChip(String label, String id)
+	private void addChip(String label, String id, String tooltip)
 	{
 		JLabel chip = new JLabel(label, SwingConstants.CENTER);
 		chip.setFont(FontManager.getRunescapeSmallFont());
 		chip.setOpaque(true);
 		chip.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		chip.setToolTipText(id == null ? "Every variant, each kill at its own rate" : "Only " + label);
+		chip.setToolTipText(tooltip);
 		chip.addMouseListener(new MouseAdapter()
 		{
 			@Override

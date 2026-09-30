@@ -51,8 +51,9 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	public static final double HARD_PET_RATE = 1 / 500.0;
 
 	private static final List<BossVariant> VARIANTS = ImmutableList.of(
-		new BossVariant(NORMAL, "Normal"),
-		new BossVariant(HARD, "Hard"));
+		new BossVariant(NORMAL, "Normal", false),
+		// No Hard Mode raid has been logged yet
+		new BossVariant(HARD, "Hard", true));
 	private static final Map<String, String> MODE_LABELS = ImmutableMap.of(ENTRY, "Entry", NORMAL, "Normal", HARD, "Hard");
 	/**
 	 * The Maiden's first form in each mode: the raid clock starts when she spawns (19:51.60 in the log against 1,984
