@@ -1,0 +1,960 @@
+tick=763 region=15515 inLair=true EQUIPMENT snapshot [Ancestral robe bottom (21024) x1, Confliction gauntlets (31106) x1, Occult necklace (12002) x1, Magus ring (28313) x1, Avernic treads (max) (31097) x1, Ancestral hat (21018) x1, Tumeken's shadow (27275) x1, Ancestral robe top (21021) x1, Unholy blessing (20223) x1, Imbued Saradomin cape (21791) x1]
+tick=769 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=770 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of blood fury (24780) x1
+tick=771 region=15515 inLair=true EQUIPMENT +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, -Confliction gauntlets (31106) x1
+tick=772 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=778 region=15515 inLair=true EQUIPMENT -Amulet of blood fury (24780) x1, +Amulet of rancour (29801) x1
+tick=809 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=834 region=15515 inLair=true EQUIPMENT -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=840 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=866 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=867 region=15515 inLair=true EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=868 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1
+tick=907 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=912 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=954 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x158
+tick=958 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=962 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=964 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=966 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Blisterwood stake (33716) x155
+tick=967 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of rancour (29801) x1
+tick=968 region=15515 inLair=true EQUIPMENT +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, -Confliction gauntlets (31106) x1
+tick=969 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=972 region=15515 inLair=true EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=983 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1010 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=1026 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=1027 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=1027 region=15515 inLair=true EQUIPMENT +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1
+tick=1028 region=15515 inLair=true EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, +Confliction gauntlets (31106) x1
+tick=1029 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1086 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1095 region=15515 inLair=true EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1122 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x155
+tick=1126 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1128 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1131 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1135 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of rancour (29801) x1, -Blisterwood stake (33716) x152
+tick=1136 region=15515 inLair=true EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=1137 region=15515 inLair=true EQUIPMENT +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1138 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=1138 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1
+tick=1150 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=1174 region=15515 inLair=true EQUIPMENT +Amulet of blood fury (24780) x1, -Amulet of rancour (29801) x1
+tick=1201 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=1205 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=1206 region=15515 inLair=true EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1
+tick=1238 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1240 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1253 region=15515 inLair=true EQUIPMENT -Scythe of Vitur (22325) x1, +Blisterwood stake (33716) x153
+tick=1254 region=15515 inLair=true EQUIPMENT +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x153
+tick=1261 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=1273 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=1307 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=1311 region=15515 inLair=true EQUIPMENT -Scythe of Vitur (22325) x1, +Blisterwood stake (33716) x153
+tick=1312 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1315 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1317 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1320 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1327 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of blood fury (24780) x1, -Blisterwood stake (33716) x149
+tick=1328 region=15515 inLair=true EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=1329 region=15515 inLair=true EQUIPMENT +Ferocious gloves (22981) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1330 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1
+tick=1384 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=1402 region=15515 inLair=true ANIM id=1634 target=npc:377 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1408 region=15515 inLair=true ANIM id=829 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1429 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1430 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1430 region=15515 inLair=true HITSPLAT type=18 amount=13 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1430 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1431 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=1431 region=15515 inLair=true ANIM id=8973 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1433 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1434 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1435 region=15515 inLair=true HITSPLAT type=18 amount=46 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1435 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1435 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1436 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=1436 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1439 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1439 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1440 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1440 region=15515 inLair=true HITSPLAT type=18 amount=39 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1440 region=15515 inLair=true HITSPLAT type=18 amount=21 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1440 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1444 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1444 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1445 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1445 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1445 region=15515 inLair=true HITSPLAT type=18 amount=16 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1445 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1448 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1449 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1450 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1450 region=15515 inLair=true HITSPLAT type=18 amount=15 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1450 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1451 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1452 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1454 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1455 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1455 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1455 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1456 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1458 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=1458 region=15515 inLair=true ANIM id=8970 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1459 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1460 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1460 region=15515 inLair=true HITSPLAT type=18 amount=26 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1460 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1460 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1463 region=15515 inLair=true ANIM id=435 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1464 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1464 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1465 region=15515 inLair=true HITSPLAT type=18 amount=18 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1465 region=15515 inLair=true HITSPLAT type=18 amount=17 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1465 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1468 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1469 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1470 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1470 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1470 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1472 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1474 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1475 region=15515 inLair=true HITSPLAT type=18 amount=38 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1475 region=15515 inLair=true HITSPLAT type=44 amount=25 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1475 region=15515 inLair=true HITSPLAT type=44 amount=12 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1476 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1479 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1480 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1480 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1480 region=15515 inLair=true HITSPLAT type=44 amount=25 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1480 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1481 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1484 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1484 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1485 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1485 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1485 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1487 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1487 region=15515 inLair=true ANIM id=435 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1488 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=1489 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1490 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9420 weapon=22325 shield=-1 amulet=24780
+tick=1490 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9420 weapon=22325 shield=-1 amulet=24780
+tick=1490 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9420 weapon=22325 shield=-1 amulet=24780
+tick=1495 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=1496 region=15515 inLair=true EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, +Confliction gauntlets (31106) x1
+tick=1499 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1499 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1504 region=15515 inLair=true HITSPLAT type=22 amount=68 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=1505 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=1506 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1506 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1509 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=1511 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1511 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1511 region=15515 inLair=true HITSPLAT type=22 amount=48 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=1513 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=1515 region=15515 inLair=true HITSPLAT type=22 amount=75 target=npc:9436 weapon=27275 shield=-1 amulet=12002
+tick=1515 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1522 region=15515 inLair=true ANIM id=829 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1531 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1531 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1535 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1537 region=15515 inLair=true HITSPLAT type=22 amount=38 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=1539 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=1541 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1541 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1543 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=1545 region=15515 inLair=true ANIM id=829 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1546 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1546 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1546 region=15515 inLair=true HITSPLAT type=22 amount=78 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=1547 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=1550 region=15515 inLair=true HITSPLAT type=22 amount=77 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=1554 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=1556 region=15515 inLair=true ANIM id=8056 target=npc:9467 weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1557 region=15515 inLair=true GRAPHIC spotanims=[1777]
+tick=1557 region=15515 inLair=true HITSPLAT type=16 amount=20 target=npc:9467 weapon=22325 shield=-1 amulet=12002
+tick=1559 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1559 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1561 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=1561 region=15515 inLair=true ANIM id=8056 target=npc:9466 weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1562 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9420 weapon=22325 shield=-1 amulet=12002
+tick=1562 region=15515 inLair=true HITSPLAT type=16 amount=20 target=npc:9466 weapon=22325 shield=-1 amulet=12002
+tick=1565 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1565 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1566 region=15515 inLair=true EQUIPMENT -Scythe of Vitur (22325) x1, +Tumeken's shadow (27275) x1
+tick=1569 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1569 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1571 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1575 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1575 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1575 region=15515 inLair=true HITSPLAT type=22 amount=36 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=1577 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1580 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1580 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1580 region=15515 inLair=true HITSPLAT type=22 amount=30 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=1583 region=15515 inLair=true HITSPLAT type=22 amount=56 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=1585 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1585 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1589 region=15515 inLair=true HITSPLAT type=22 amount=70 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=1590 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1590 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1592 region=15515 inLair=true GRAPHIC spotanims=[2287]
+tick=1595 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1595 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1595 region=15515 inLair=true HITSPLAT type=22 amount=8 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=1598 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1598 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1600 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1600 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1600 region=15515 inLair=true HITSPLAT type=22 amount=92 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=1604 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1604 region=15515 inLair=true ANIM id=420 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1604 region=15515 inLair=true HITSPLAT type=22 amount=64 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=1605 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1605 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1609 region=15515 inLair=true HITSPLAT type=22 amount=20 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=1610 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1610 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1614 region=15515 inLair=true HITSPLAT type=22 amount=22 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=1616 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1616 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1619 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1619 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1622 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1622 region=15515 inLair=true ANIM id=420 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1624 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=1629 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x149
+tick=1630 region=15515 inLair=true ANIM id=829 target=none weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1637 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=1637 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1637 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1639 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=1639 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1639 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=1640 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=1642 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=1647 region=15515 inLair=true ANIM id=829 target=none weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1648 region=15515 inLair=true GRAPHIC spotanims=[1782]
+tick=1648 region=15515 inLair=true ANIM id=424 target=none weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1651 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of blood fury (24780) x1, -Blisterwood stake (33716) x147
+tick=1652 region=15515 inLair=true EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=1653 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1657 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1657 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1658 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1659 region=15515 inLair=true HITSPLAT type=18 amount=25 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1659 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1659 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1663 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1663 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1664 region=15515 inLair=true HITSPLAT type=18 amount=49 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1664 region=15515 inLair=true HITSPLAT type=18 amount=15 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1664 region=15515 inLair=true HITSPLAT type=44 amount=12 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1666 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=1666 region=15515 inLair=true ANIM id=8970 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1668 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1669 region=15515 inLair=true HITSPLAT type=18 amount=25 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1669 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1669 region=15515 inLair=true HITSPLAT type=18 amount=11 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1673 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1674 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1674 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1674 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1678 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1679 region=15515 inLair=true HITSPLAT type=18 amount=18 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1679 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1679 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1684 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1685 region=15515 inLair=true HITSPLAT type=18 amount=32 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1685 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1685 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1689 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1690 region=15515 inLair=true HITSPLAT type=18 amount=37 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1690 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1690 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1694 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1695 region=15515 inLair=true HITSPLAT type=18 amount=24 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1695 region=15515 inLair=true HITSPLAT type=44 amount=25 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1695 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1699 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1700 region=15515 inLair=true HITSPLAT type=18 amount=27 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1700 region=15515 inLair=true HITSPLAT type=44 amount=25 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1700 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1704 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1705 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1705 region=15515 inLair=true HITSPLAT type=18 amount=21 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1705 region=15515 inLair=true HITSPLAT type=18 amount=9 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1709 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1710 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1710 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1710 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=1714 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1715 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9419 weapon=22325 shield=-1 amulet=24780
+tick=1715 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9419 weapon=22325 shield=-1 amulet=24780
+tick=1715 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9419 weapon=22325 shield=-1 amulet=24780
+tick=1718 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=1719 region=15515 inLair=true EQUIPMENT +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=1720 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1722 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=1722 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1726 region=15515 inLair=true ANIM id=836 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=1726 region=15515 inLair=true HITSPLAT type=22 amount=124 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=1730 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, -Unholy blessing (20223) x1, -Ancestral hat (21018) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, -Imbued Saradomin cape (21791) x1, -Tumeken's shadow (27275) x1, -Magus ring (28313) x1, -Avernic treads (max) (31097) x1, -Confliction gauntlets (31106) x1
+tick=1745 region=15256 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Unholy blessing (20223) x1, +Ancestral hat (21018) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, +Imbued Saradomin cape (21791) x1, +Tumeken's shadow (27275) x1, +Magus ring (28313) x1, +Avernic treads (max) (31097) x1, +Confliction gauntlets (31106) x1
+tick=1775 region=15256 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=1776 region=15256 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Inquisitor's hauberk (24420) x1, +Amulet of blood fury (24780) x1
+tick=1777 region=15256 inLair=false EQUIPMENT -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's plateskirt (24421) x1
+tick=1778 region=15256 inLair=false EQUIPMENT +Ferocious gloves (22981) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1780 region=15256 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1
+tick=1795 region=15256 inLair=false ANIM id=4069 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1797 region=15256 inLair=false GRAPHIC spotanims=[678]
+tick=1797 region=15256 inLair=false ANIM id=4071 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1931 region=15256 inLair=false ANIM id=8584 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1934 region=15256 inLair=false ANIM id=8583 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1934 region=15515 inLair=true EQUIPMENT snapshot [Ultor ring (28307) x1, Inquisitor's great helm (24419) x1, Inquisitor's hauberk (24420) x1, Ferocious gloves (22981) x1, Inquisitor's plateskirt (24421) x1, Scythe of Vitur (22325) x1, Avernic treads (max) (31097) x1, Amulet of blood fury (24780) x1, Unholy blessing (20223) x1, Infernal cape (21295) x1]
+tick=1954 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=1954 region=15515 inLair=true ANIM id=8973 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1955 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=1955 region=15515 inLair=true ANIM id=8970 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1956 region=15515 inLair=true GRAPHIC spotanims=[560]
+tick=1959 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=1962 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1963 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1963 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1963 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1964 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1966 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1966 region=15515 inLair=true ANIM id=435 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1967 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1968 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1968 region=15515 inLair=true HITSPLAT type=18 amount=40 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1968 region=15515 inLair=true HITSPLAT type=18 amount=9 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1968 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1972 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1972 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1972 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1973 region=15515 inLair=true HITSPLAT type=18 amount=35 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1973 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1973 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1976 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1977 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1978 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1978 region=15515 inLair=true HITSPLAT type=18 amount=23 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1978 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1980 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1982 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1983 region=15515 inLair=true HITSPLAT type=18 amount=17 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1983 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1983 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1984 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1984 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1987 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1988 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1988 region=15515 inLair=true HITSPLAT type=18 amount=47 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1988 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1988 region=15515 inLair=true HITSPLAT type=18 amount=9 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1990 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=1990 region=15515 inLair=true ANIM id=435 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1992 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1992 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1993 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1993 region=15515 inLair=true HITSPLAT type=18 amount=17 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1993 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1996 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1997 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=1998 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1998 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=1998 region=15515 inLair=true HITSPLAT type=44 amount=12 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2000 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2002 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2003 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2003 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2003 region=15515 inLair=true HITSPLAT type=18 amount=11 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2004 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2007 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2008 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2008 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2008 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2008 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2012 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2012 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2013 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2013 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2013 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2016 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2017 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2018 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2018 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2018 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2020 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2022 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2023 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2023 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2023 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2024 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2027 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2028 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2028 region=15515 inLair=true HITSPLAT type=18 amount=48 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2028 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2028 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2032 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2032 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2033 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2033 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2033 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2036 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2037 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2038 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2038 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2038 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2040 region=15515 inLair=true ANIM id=435 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2040 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9418 weapon=22325 shield=-1 amulet=24780
+tick=2042 region=15515 inLair=true ANIM id=8056 target=npc:9418 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2043 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9421 weapon=22325 shield=-1 amulet=24780
+tick=2043 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9421 weapon=22325 shield=-1 amulet=24780
+tick=2043 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9421 weapon=22325 shield=-1 amulet=24780
+tick=2045 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=2046 region=15515 inLair=true EQUIPMENT +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=2047 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=2048 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2048 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2049 region=15515 inLair=true GRAPHIC spotanims=[2287]
+tick=2052 region=15515 inLair=true HITSPLAT type=22 amount=64 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2053 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2053 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2055 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2057 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=2057 region=15515 inLair=true HITSPLAT type=22 amount=130 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2059 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=2059 region=15515 inLair=true ANIM id=8970 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2062 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2062 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2065 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2065 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2067 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2067 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2068 region=15515 inLair=true HITSPLAT type=22 amount=12 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2071 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2071 region=15515 inLair=true ANIM id=420 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2071 region=15515 inLair=true HITSPLAT type=22 amount=48 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2072 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2072 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2076 region=15515 inLair=true HITSPLAT type=22 amount=66 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2077 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2077 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2081 region=15515 inLair=true HITSPLAT type=22 amount=74 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2082 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2082 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2085 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2087 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2087 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2088 region=15515 inLair=true HITSPLAT type=22 amount=38 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2091 region=15515 inLair=true ANIM id=829 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2091 region=15515 inLair=true HITSPLAT type=22 amount=34 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2092 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2092 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2096 region=15515 inLair=true HITSPLAT type=22 amount=112 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2097 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2097 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2100 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=2100 region=15515 inLair=true ANIM id=8973 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2101 region=15515 inLair=true HITSPLAT type=22 amount=16 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2102 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2102 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2105 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=2106 region=15515 inLair=true GRAPHIC spotanims=[1780]
+tick=2106 region=15515 inLair=true ANIM id=8557 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2107 region=15515 inLair=true HITSPLAT type=22 amount=50 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2109 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2109 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of blood fury (24780) x1, -Tumeken's shadow (27275) x1
+tick=2110 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2110 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2111 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2112 region=15515 inLair=true HITSPLAT type=43 amount=31 target=npc:9469 weapon=22325 shield=-1 amulet=24780
+tick=2113 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9438 weapon=22325 shield=-1 amulet=24780
+tick=2116 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2116 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9469 weapon=22325 shield=-1 amulet=24780
+tick=2117 region=15515 inLair=true HITSPLAT type=16 amount=24 target=npc:9469 weapon=22325 shield=-1 amulet=24780
+tick=2118 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=2121 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2121 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2124 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2125 region=15515 inLair=true HITSPLAT type=22 amount=120 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2127 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2127 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2128 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2131 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2131 region=15515 inLair=true ANIM id=420 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2131 region=15515 inLair=true HITSPLAT type=22 amount=74 target=npc:9439 weapon=27275 shield=-1 amulet=12002
+tick=2137 region=15515 inLair=true ANIM id=829 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2139 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x147
+tick=2141 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2141 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2141 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2143 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2146 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2146 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2146 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2148 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2151 region=15515 inLair=true EQUIPMENT +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x145
+tick=2152 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=2153 region=15515 inLair=true EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=2154 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=2155 region=15515 inLair=true GRAPHIC spotanims=[1782]
+tick=2155 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2155 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, +Amulet of blood fury (24780) x1
+tick=2161 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2162 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2162 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2162 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2163 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2164 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2164 region=15515 inLair=true ANIM id=435 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2165 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=2165 region=15515 inLair=true ANIM id=8970 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2166 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2167 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2167 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2167 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2167 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2170 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2170 region=15515 inLair=true ANIM id=435 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2171 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2171 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2172 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2172 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2172 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2175 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2176 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2176 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2177 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2177 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2177 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2179 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2181 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2182 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2182 region=15515 inLair=true HITSPLAT type=18 amount=17 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2182 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2183 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2186 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2187 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2187 region=15515 inLair=true HITSPLAT type=18 amount=33 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2187 region=15515 inLair=true HITSPLAT type=18 amount=9 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2187 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2191 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2191 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2192 region=15515 inLair=true HITSPLAT type=18 amount=7 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2192 region=15515 inLair=true HITSPLAT type=18 amount=9 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2192 region=15515 inLair=true HITSPLAT type=18 amount=11 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2195 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2196 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2197 region=15515 inLair=true HITSPLAT type=18 amount=37 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2197 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2197 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2199 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2201 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2202 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2202 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2202 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2203 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2206 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2207 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2207 region=15515 inLair=true HITSPLAT type=18 amount=41 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2207 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2207 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2211 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2211 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2212 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2212 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2212 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2215 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2216 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=2216 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2217 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2217 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2217 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2221 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2222 region=15515 inLair=true HITSPLAT type=18 amount=9 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2222 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2222 region=15515 inLair=true HITSPLAT type=44 amount=12 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2224 region=15515 inLair=true ANIM id=435 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2226 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2227 region=15515 inLair=true HITSPLAT type=18 amount=23 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2227 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2227 region=15515 inLair=true HITSPLAT type=18 amount=11 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2230 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2230 region=15515 inLair=true ANIM id=435 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2231 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2232 region=15515 inLair=true HITSPLAT type=18 amount=46 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2232 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2232 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2236 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2236 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2237 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2237 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2237 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2238 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=2238 region=15515 inLair=true ANIM id=8973 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2241 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2242 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2242 region=15515 inLair=true HITSPLAT type=18 amount=11 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2242 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2243 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=2243 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2246 region=15515 inLair=true GRAPHIC spotanims=[1777]
+tick=2246 region=15515 inLair=true ANIM id=8056 target=npc:9466 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2247 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2247 region=15515 inLair=true HITSPLAT type=18 amount=15 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2247 region=15515 inLair=true HITSPLAT type=16 amount=20 target=npc:9466 weapon=22325 shield=-1 amulet=24780
+tick=2248 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2251 region=15515 inLair=true ANIM id=8056 target=npc:9467 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2251 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2252 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2252 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9417 weapon=22325 shield=-1 amulet=24780
+tick=2252 region=15515 inLair=true HITSPLAT type=16 amount=20 target=npc:9467 weapon=22325 shield=-1 amulet=24780
+tick=2254 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2254 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2256 region=15515 inLair=true ANIM id=8056 target=npc:9417 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2257 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9420 weapon=22325 shield=-1 amulet=24780
+tick=2257 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9420 weapon=22325 shield=-1 amulet=24780
+tick=2257 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9420 weapon=22325 shield=-1 amulet=24780
+tick=2261 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=2262 region=15515 inLair=true EQUIPMENT +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=2263 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=2264 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2264 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2266 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2268 region=15515 inLair=true HITSPLAT type=22 amount=102 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2269 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2269 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2270 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=2270 region=15515 inLair=true ANIM id=8970 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2270 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2273 region=15515 inLair=true HITSPLAT type=22 amount=66 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2274 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2274 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2274 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2275 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2278 region=15515 inLair=true HITSPLAT type=22 amount=21 target=npc:9442 weapon=27275 shield=-1 amulet=12002
+tick=2279 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2279 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2283 region=15515 inLair=true ANIM id=829 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2284 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2284 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2284 region=15515 inLair=true HITSPLAT type=22 amount=114 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2287 region=15515 inLair=true ANIM id=420 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2287 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2288 region=15515 inLair=true HITSPLAT type=22 amount=82 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2293 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2293 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2298 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2298 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2298 region=15515 inLair=true HITSPLAT type=22 amount=92 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2302 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2303 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2303 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2304 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2307 region=15515 inLair=true HITSPLAT type=22 amount=78 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2308 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2308 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2308 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2311 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2311 region=15515 inLair=true ANIM id=420 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2312 region=15515 inLair=true HITSPLAT type=22 amount=16 target=npc:9439 weapon=27275 shield=-1 amulet=12002
+tick=2313 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2313 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2317 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2317 region=15515 inLair=true ANIM id=420 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2318 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2318 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2319 region=15515 inLair=true HITSPLAT type=22 amount=38 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2319 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2322 region=15515 inLair=true HITSPLAT type=22 amount=92 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2323 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2324 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2324 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2327 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2329 region=15515 inLair=true HITSPLAT type=22 amount=60 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2336 region=15515 inLair=true EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x145
+tick=2340 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2340 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2340 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2342 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2344 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2344 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2344 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2346 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2346 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2346 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2346 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2352 region=15515 inLair=true ANIM id=829 target=none weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2354 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=2355 region=15515 inLair=true GRAPHIC spotanims=[1782]
+tick=2355 region=15515 inLair=true ANIM id=435 target=none weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2355 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, +Amulet of blood fury (24780) x1, -Blisterwood stake (33716) x142
+tick=2356 region=15515 inLair=true EQUIPMENT -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=2357 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=2361 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2362 region=15515 inLair=true HITSPLAT type=18 amount=21 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2362 region=15515 inLair=true HITSPLAT type=18 amount=22 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2362 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2364 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2364 region=15515 inLair=true ANIM id=435 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2365 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=2365 region=15515 inLair=true ANIM id=8973 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2366 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2367 region=15515 inLair=true HITSPLAT type=18 amount=42 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2367 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2367 region=15515 inLair=true HITSPLAT type=18 amount=5 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2369 region=15515 inLair=true ANIM id=435 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2370 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=2370 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2371 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2372 region=15515 inLair=true HITSPLAT type=18 amount=17 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2372 region=15515 inLair=true HITSPLAT type=18 amount=18 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2372 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2373 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=2373 region=15515 inLair=true ANIM id=8970 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2374 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2376 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2376 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2377 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2377 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2377 region=15515 inLair=true HITSPLAT type=44 amount=12 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2378 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2381 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2382 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2382 region=15515 inLair=true HITSPLAT type=18 amount=12 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2382 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2382 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2386 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2386 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2387 region=15515 inLair=true HITSPLAT type=18 amount=44 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2387 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2387 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2390 region=15515 inLair=true ANIM id=435 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2390 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2391 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2392 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2392 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2392 region=15515 inLair=true HITSPLAT type=44 amount=12 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2394 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2394 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2396 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2397 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2397 region=15515 inLair=true HITSPLAT type=18 amount=12 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2397 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2398 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2399 region=15515 inLair=true ANIM id=435 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2401 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2402 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2402 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2402 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2402 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2405 region=15515 inLair=true ANIM id=435 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2406 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2406 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2407 region=15515 inLair=true HITSPLAT type=18 amount=37 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2407 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2407 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2410 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2411 region=15515 inLair=true GRAPHIC spotanims=[1780]
+tick=2411 region=15515 inLair=true ANIM id=8557 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2414 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2414 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2415 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2415 region=15515 inLair=true HITSPLAT type=43 amount=50 target=npc:9469 weapon=22325 shield=-1 amulet=24780
+tick=2418 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2419 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2420 region=15515 inLair=true HITSPLAT type=18 amount=3 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2420 region=15515 inLair=true HITSPLAT type=16 amount=5 target=npc:9469 weapon=22325 shield=-1 amulet=24780
+tick=2421 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2422 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2424 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2425 region=15515 inLair=true HITSPLAT type=18 amount=27 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2425 region=15515 inLair=true HITSPLAT type=18 amount=21 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2425 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2426 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2427 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2427 region=15515 inLair=true ANIM id=435 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2429 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2430 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2430 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2430 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2430 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2434 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2434 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2435 region=15515 inLair=true HITSPLAT type=18 amount=13 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2435 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2435 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2438 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2439 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2440 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2440 region=15515 inLair=true HITSPLAT type=44 amount=25 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2440 region=15515 inLair=true HITSPLAT type=18 amount=6 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2442 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2444 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2445 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2445 region=15515 inLair=true HITSPLAT type=18 amount=10 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2445 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2446 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2449 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2450 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2450 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2450 region=15515 inLair=true HITSPLAT type=18 amount=1 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2450 region=15515 inLair=true HITSPLAT type=18 amount=8 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2454 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2454 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2455 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2455 region=15515 inLair=true HITSPLAT type=18 amount=14 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2455 region=15515 inLair=true HITSPLAT type=18 amount=4 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2458 region=15515 inLair=true HITSPLAT type=18 amount=2 target=npc:9416 weapon=22325 shield=-1 amulet=24780
+tick=2459 region=15515 inLair=true ANIM id=8056 target=npc:9416 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2460 region=15515 inLair=true HITSPLAT type=18 amount=14 target=npc:9419 weapon=22325 shield=-1 amulet=24780
+tick=2460 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9419 weapon=22325 shield=-1 amulet=24780
+tick=2460 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9419 weapon=22325 shield=-1 amulet=24780
+tick=2468 region=15515 inLair=true EQUIPMENT +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=2469 region=15515 inLair=true EQUIPMENT +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1
+tick=2470 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2470 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2473 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2473 region=15515 inLair=true EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=2474 region=15515 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1
+tick=2475 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2475 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2475 region=15515 inLair=true HITSPLAT type=22 amount=68 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2477 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2478 region=15515 inLair=true ANIM id=420 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2479 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=2479 region=15515 inLair=true ANIM id=8970 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2479 region=15515 inLair=true HITSPLAT type=22 amount=38 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2480 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2480 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2481 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=2481 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2484 region=15515 inLair=true HITSPLAT type=22 amount=44 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2485 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2485 region=15515 inLair=true ANIM id=9493 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2487 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=2487 region=15515 inLair=true ANIM id=8973 target=npc:9441 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2489 region=15515 inLair=true HITSPLAT type=22 amount=43 target=npc:9441 weapon=27275 shield=-1 amulet=12002
+tick=2490 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2490 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2492 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=2495 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2495 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2496 region=15515 inLair=true HITSPLAT type=22 amount=66 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2496 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2498 region=15515 inLair=true ANIM id=829 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2499 region=15515 inLair=true HITSPLAT type=22 amount=106 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2500 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2500 region=15515 inLair=true ANIM id=9493 target=npc:9444 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2500 region=15515 inLair=true HITSPLAT type=22 amount=2 target=npc:9444 weapon=27275 shield=-1 amulet=12002
+tick=2501 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2504 region=15515 inLair=true HITSPLAT type=22 amount=20 target=npc:9445 weapon=27275 shield=-1 amulet=12002
+tick=2505 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2505 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2510 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2510 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2510 region=15515 inLair=true HITSPLAT type=22 amount=16 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2513 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2513 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2514 region=15515 inLair=true HITSPLAT type=22 amount=112 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2515 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2515 region=15515 inLair=true ANIM id=9493 target=npc:9438 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2518 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2520 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2520 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2520 region=15515 inLair=true HITSPLAT type=22 amount=71 target=npc:9438 weapon=27275 shield=-1 amulet=12002
+tick=2525 region=15515 inLair=true HITSPLAT type=22 amount=54 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2526 region=15515 inLair=true HITSPLAT type=22 amount=4 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2527 region=15515 inLair=true ANIM id=420 target=none weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2529 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2529 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2530 region=15515 inLair=true HITSPLAT type=22 amount=1 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2531 region=15515 inLair=true GRAPHIC spotanims=[1765]
+tick=2533 region=15515 inLair=true HITSPLAT type=22 amount=38 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2534 region=15515 inLair=true GRAPHIC spotanims=[2125]
+tick=2534 region=15515 inLair=true ANIM id=9493 target=npc:9435 weapon=27275 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2534 region=15515 inLair=true HITSPLAT type=22 amount=6 target=npc:9435 weapon=27275 shield=-1 amulet=12002
+tick=2538 region=15515 inLair=true HITSPLAT type=22 amount=97 target=npc:9436 weapon=27275 shield=-1 amulet=12002
+tick=2539 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=2544 region=15515 inLair=true EQUIPMENT -Scythe of Vitur (22325) x1, +Blisterwood stake (33716) x142
+tick=2548 region=15515 inLair=true GRAPHIC spotanims=[1780]
+tick=2548 region=15515 inLair=true GRAPHIC spotanims=[1780, 3989]
+tick=2548 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2548 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2551 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2551 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2551 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2551 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2553 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2554 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2554 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2554 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2556 region=15515 inLair=true GRAPHIC spotanims=[3989]
+tick=2556 region=15515 inLair=true ANIM id=7617 target=npc:9470 weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2556 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=33716 shield=-1 amulet=12002
+tick=2556 region=15515 inLair=true EQUIPMENT -Blisterwood stake (33716) x1
+tick=2558 region=15515 inLair=true GRAPHIC spotanims=[1772]
+tick=2558 region=15515 inLair=true ANIM id=435 target=none weapon=33716 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2558 region=15515 inLair=true EQUIPMENT +Scythe of Vitur (22325) x1, -Blisterwood stake (33716) x138
+tick=2559 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9470 weapon=22325 shield=-1 amulet=12002
+tick=2560 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2561 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9422 weapon=22325 shield=-1 amulet=12002
+tick=2561 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9422 weapon=22325 shield=-1 amulet=12002
+tick=2561 region=15515 inLair=true HITSPLAT type=43 amount=25 target=npc:9469 weapon=22325 shield=-1 amulet=12002
+tick=2564 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9422 weapon=22325 shield=-1 amulet=12002
+tick=2565 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2566 region=15515 inLair=true GRAPHIC spotanims=[1772]
+tick=2566 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9422 weapon=22325 shield=-1 amulet=12002
+tick=2566 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9422 weapon=22325 shield=-1 amulet=12002
+tick=2566 region=15515 inLair=true HITSPLAT type=43 amount=25 target=npc:9469 weapon=22325 shield=-1 amulet=12002
+tick=2568 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9422 weapon=22325 shield=-1 amulet=12002
+tick=2569 region=15515 inLair=true EQUIPMENT -Ancestral robe top (21021) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1
+tick=2570 region=15515 inLair=true ANIM id=435 target=none weapon=22325 shield=-1 amulet=12002 autocast=0 spec=1000
+tick=2570 region=15515 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=2571 region=15515 inLair=true EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of blood fury (24780) x1
+tick=2572 region=15515 inLair=true ANIM id=8056 target=npc:9469 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2573 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2573 region=15515 inLair=true HITSPLAT type=43 amount=10 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2573 region=15515 inLair=true HITSPLAT type=16 amount=5 target=npc:9469 weapon=22325 shield=-1 amulet=24780
+tick=2574 region=15515 inLair=true HITSPLAT type=16 amount=2 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2577 region=15515 inLair=true ANIM id=8056 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2578 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2578 region=15515 inLair=true HITSPLAT type=16 amount=16 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2578 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2579 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2582 region=15515 inLair=true ANIM id=8056 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2583 region=15515 inLair=true GRAPHIC spotanims=[3288]
+tick=2583 region=15515 inLair=true ANIM id=8970 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2583 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2583 region=15515 inLair=true HITSPLAT type=16 amount=6 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2583 region=15515 inLair=true HITSPLAT type=43 amount=21 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2583 region=15515 inLair=true HITSPLAT type=16 amount=1 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2587 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=2587 region=15515 inLair=true GRAPHIC spotanims=[1873]
+tick=2587 region=15515 inLair=true ANIM id=8056 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2587 region=15515 inLair=true HITSPLAT type=16 amount=3 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2588 region=15515 inLair=true GRAPHIC spotanims=[1782]
+tick=2588 region=15515 inLair=true HITSPLAT type=16 amount=17 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2588 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2588 region=15515 inLair=true HITSPLAT type=16 amount=1 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2592 region=15515 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=2592 region=15515 inLair=true ANIM id=8056 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2592 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2593 region=15515 inLair=true HITSPLAT type=16 amount=35 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2593 region=15515 inLair=true HITSPLAT type=16 amount=1 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2593 region=15515 inLair=true HITSPLAT type=16 amount=6 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2595 region=15515 inLair=true ANIM id=829 target=none weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2596 region=15515 inLair=true GRAPHIC spotanims=[1782]
+tick=2596 region=15515 inLair=true ANIM id=435 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2596 region=15515 inLair=true HITSPLAT type=16 amount=3 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2600 region=15515 inLair=true HITSPLAT type=16 amount=1 target=npc:11154 weapon=22325 shield=-1 amulet=24780
+tick=2601 region=15515 inLair=true ANIM id=8056 target=npc:11154 weapon=22325 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=2602 region=15515 inLair=true HITSPLAT type=16 amount=7 target=npc:9424 weapon=22325 shield=-1 amulet=24780
+tick=2602 region=15515 inLair=true HITSPLAT type=16 amount=10 target=npc:9424 weapon=22325 shield=-1 amulet=24780
+tick=2602 region=15515 inLair=true HITSPLAT type=12 amount=0 target=npc:9424 weapon=22325 shield=-1 amulet=24780

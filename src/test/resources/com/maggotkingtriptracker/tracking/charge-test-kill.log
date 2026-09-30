@@ -1,0 +1,182 @@
+tick=81 region=11645 inLair=true EQUIPMENT snapshot [Ancestral robe bottom (21024) x1, Confliction gauntlets (31106) x1, Ultor ring (28307) x1, Harmonised Nightmare staff (24423) x1, Avernic treads (max) (31097) x1, Tome of Fire (20714) x1, Ancestral hat (21018) x1, Elemental amulet (34428) x1, Ancestral robe top (21021) x1, Unholy blessing (20223) x1, Imbued Saradomin cape (21791) x1]
+tick=84 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=84 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=88 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=88 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=92 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=92 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=94 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=96 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=96 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=100 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=100 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=100 region=11645 inLair=true HITSPLAT type=16 amount=35 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=104 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=104 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=104 region=11645 inLair=true HITSPLAT type=16 amount=20 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=106 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=106 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=108 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=108 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=111 region=11645 inLair=true HITSPLAT type=16 amount=6 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=112 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=112 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=115 region=11645 inLair=true HITSPLAT type=16 amount=36 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=116 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=116 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=118 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=118 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=119 region=11645 inLair=true HITSPLAT type=16 amount=44 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=120 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=120 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=124 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=124 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=127 region=11645 inLair=true HITSPLAT type=16 amount=15 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=128 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=128 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=131 region=11645 inLair=true HITSPLAT type=16 amount=25 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=132 region=11645 inLair=true GRAPHIC spotanims=[2287]
+tick=134 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=134 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=137 region=11645 inLair=true HITSPLAT type=16 amount=26 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=138 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=138 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=142 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=142 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=142 region=11645 inLair=true HITSPLAT type=16 amount=12 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=143 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=144 region=11645 inLair=true ANIM id=829 target=none weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=145 region=11645 inLair=true HITSPLAT type=16 amount=12 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=146 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=146 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=148 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=150 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=150 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=150 region=11645 inLair=true HITSPLAT type=16 amount=11 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=153 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=153 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=154 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=154 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=154 region=11645 inLair=true HITSPLAT type=16 amount=30 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=158 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=158 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=158 region=11645 inLair=true HITSPLAT type=16 amount=33 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=162 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=162 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=166 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=166 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=166 region=11645 inLair=true HITSPLAT type=16 amount=49 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=170 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=170 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=170 region=11645 inLair=true HITSPLAT type=16 amount=32 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=171 region=11645 inLair=true EQUIPMENT -Tome of Fire (20714) x1, -Harmonised Nightmare staff (24423) x1, +Webweaver bow (27655) x1
+tick=172 region=11645 inLair=true GRAPHIC spotanims=[2283]
+tick=172 region=11645 inLair=true ANIM id=426 target=npc:15743 weapon=27655 shield=-1 amulet=34428 autocast=0 spec=1000
+tick=173 region=11645 inLair=true HITSPLAT type=16 amount=28 target=npc:15742 weapon=27655 shield=-1 amulet=34428
+tick=175 region=11645 inLair=true HITSPLAT type=43 amount=30 target=npc:15743 weapon=27655 shield=-1 amulet=34428
+tick=175 region=11645 inLair=true EQUIPMENT +Tome of Fire (20714) x1, +Harmonised Nightmare staff (24423) x1, -Webweaver bow (27655) x1
+tick=176 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=176 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=180 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=180 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=181 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=184 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=184 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=184 region=11645 inLair=true HITSPLAT type=16 amount=18 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=186 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=186 region=11645 inLair=true ANIM id=420 target=none weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=188 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=188 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=188 region=11645 inLair=true HITSPLAT type=16 amount=19 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=191 region=11645 inLair=true GRAPHIC spotanims=[2293]
+tick=191 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=191 region=11645 inLair=true HITSPLAT type=16 amount=37 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=192 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=192 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=195 region=11645 inLair=true HITSPLAT type=16 amount=53 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=196 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=196 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=199 region=11645 inLair=true HITSPLAT type=16 amount=14 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=200 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=200 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=202 region=11645 inLair=true ANIM id=829 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=204 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=204 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=206 region=11645 inLair=true EQUIPMENT -Tome of Fire (20714) x1, +Elder maul (21003) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, -Harmonised Nightmare staff (24423) x1
+tick=207 region=11645 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's great helm (24419) x1, +Amulet of blood fury (24780) x1, -Elemental amulet (34428) x1
+tick=208 region=11645 inLair=true ANIM id=7516 target=npc:15742 weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=208 region=11645 inLair=true EQUIPMENT +Ferocious gloves (22981) x1, -Confliction gauntlets (31106) x1
+tick=209 region=11645 inLair=true HITSPLAT type=16 amount=29 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=210 region=11645 inLair=true EQUIPMENT -Elder maul (21003) x1, +Webweaver bow (27655) x1
+tick=211 region=11645 inLair=true GRAPHIC spotanims=[2283]
+tick=211 region=11645 inLair=true ANIM id=426 target=npc:15743 weapon=27655 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=214 region=11645 inLair=true ANIM id=7516 target=none weapon=27655 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=214 region=11645 inLair=true HITSPLAT type=43 amount=30 target=npc:15743 weapon=27655 shield=-1 amulet=24780
+tick=214 region=11645 inLair=true EQUIPMENT +Elder maul (21003) x1, -Webweaver bow (27655) x1
+tick=215 region=11645 inLair=true HITSPLAT type=16 amount=30 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=217 region=11645 inLair=true HITSPLAT type=16 amount=2 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=219 region=11645 inLair=true HITSPLAT type=16 amount=21 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=222 region=11645 inLair=true ANIM id=7516 target=none weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=223 region=11645 inLair=true HITSPLAT type=16 amount=75 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=225 region=11645 inLair=true HITSPLAT type=12 amount=0 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=227 region=11645 inLair=true HITSPLAT type=16 amount=78 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=230 region=11645 inLair=true ANIM id=7516 target=none weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=231 region=11645 inLair=true HITSPLAT type=16 amount=75 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=233 region=11645 inLair=true HITSPLAT type=16 amount=37 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=235 region=11645 inLair=true EQUIPMENT -Elder maul (21003) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, +Harmonised Nightmare staff (24423) x1
+tick=236 region=11645 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's great helm (24419) x1, -Amulet of blood fury (24780) x1, +Elemental amulet (34428) x1
+tick=237 region=11645 inLair=true EQUIPMENT -Ferocious gloves (22981) x1, -Harmonised Nightmare staff (24423) x1, +Webweaver bow (27655) x1, +Confliction gauntlets (31106) x1
+tick=239 region=11645 inLair=true GRAPHIC spotanims=[2283]
+tick=239 region=11645 inLair=true ANIM id=426 target=npc:15743 weapon=27655 shield=-1 amulet=34428 autocast=0 spec=1000
+tick=242 region=11645 inLair=true HITSPLAT type=43 amount=30 target=npc:15743 weapon=27655 shield=-1 amulet=34428
+tick=243 region=11645 inLair=true ANIM id=420 target=none weapon=27655 shield=-1 amulet=34428 autocast=51 spec=1000
+tick=243 region=11645 inLair=true EQUIPMENT +Tome of Fire (20714) x1, +Harmonised Nightmare staff (24423) x1, -Webweaver bow (27655) x1
+tick=244 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=244 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=248 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=248 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=248 region=11645 inLair=true HITSPLAT type=16 amount=48 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=252 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=252 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=256 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=256 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=256 region=11645 inLair=true HITSPLAT type=16 amount=30 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=258 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=260 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=260 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=263 region=11645 inLair=true ANIM id=420 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=264 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=264 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=267 region=11645 inLair=true HITSPLAT type=16 amount=35 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=268 region=11645 inLair=true GRAPHIC spotanims=[1464]
+tick=268 region=11645 inLair=true ANIM id=9145 target=npc:15742 weapon=24423 shield=20714 amulet=34428 autocast=51 spec=1000
+tick=271 region=11645 inLair=true HITSPLAT type=16 amount=23 target=npc:15742 weapon=24423 shield=20714 amulet=34428
+tick=271 region=11645 inLair=true EQUIPMENT -Tome of Fire (20714) x1, +Elder maul (21003) x1, -Harmonised Nightmare staff (24423) x1
+tick=272 region=11645 inLair=true EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=273 region=11645 inLair=true EQUIPMENT -Ancestral hat (21018) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's great helm (24419) x1, +Amulet of blood fury (24780) x1, -Elemental amulet (34428) x1
+tick=274 region=11645 inLair=true ANIM id=7516 target=npc:15742 weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=274 region=11645 inLair=true EQUIPMENT +Ferocious gloves (22981) x1, -Confliction gauntlets (31106) x1
+tick=275 region=11645 inLair=true HITSPLAT type=12 amount=0 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=276 region=11645 inLair=true EQUIPMENT -Elder maul (21003) x1, +Webweaver bow (27655) x1
+tick=277 region=11645 inLair=true GRAPHIC spotanims=[2283]
+tick=277 region=11645 inLair=true ANIM id=426 target=npc:15743 weapon=27655 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=278 region=11645 inLair=true EQUIPMENT +Elder maul (21003) x1, -Webweaver bow (27655) x1
+tick=280 region=11645 inLair=true HITSPLAT type=43 amount=30 target=npc:15743 weapon=21003 shield=-1 amulet=24780
+tick=281 region=11645 inLair=true ANIM id=7516 target=none weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=282 region=11645 inLair=true HITSPLAT type=16 amount=51 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=284 region=11645 inLair=true HITSPLAT type=16 amount=33 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=286 region=11645 inLair=true HITSPLAT type=12 amount=0 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=289 region=11645 inLair=true ANIM id=7516 target=none weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=290 region=11645 inLair=true HITSPLAT type=16 amount=73 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=292 region=11645 inLair=true HITSPLAT type=16 amount=3 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=294 region=11645 inLair=true HITSPLAT type=16 amount=42 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=297 region=11645 inLair=true ANIM id=7516 target=none weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=298 region=11645 inLair=true HITSPLAT type=16 amount=48 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=300 region=11645 inLair=true HITSPLAT type=16 amount=36 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=305 region=11645 inLair=true ANIM id=7516 target=npc:15742 weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=306 region=11645 inLair=true HITSPLAT type=16 amount=2 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=312 region=11645 inLair=true ANIM id=7516 target=none weapon=21003 shield=-1 amulet=24780 autocast=0 spec=1000
+tick=313 region=11645 inLair=true HITSPLAT type=16 amount=52 target=npc:15742 weapon=21003 shield=-1 amulet=24780
+tick=337 region=11645 inLair=true EQUIPMENT -Elder maul (21003) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, +Harmonised Nightmare staff (24423) x1
+tick=338 region=11645 inLair=true EQUIPMENT +Ancestral hat (21018) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's great helm (24419) x1
+tick=339 region=11645 inLair=true EQUIPMENT -Ferocious gloves (22981) x1, -Amulet of blood fury (24780) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1, +Elemental amulet (34428) x1

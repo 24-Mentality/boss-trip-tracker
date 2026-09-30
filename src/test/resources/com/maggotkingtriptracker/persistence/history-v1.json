@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "accountHash": 42,
+  "lastDisplayName": "Example",
+  "trips": [
+    {
+      "id": "trip-1",
+      "startedAt": 1790000000000,
+      "endedAt": 1790003600000,
+      "endReason": "WALKED_OUT",
+      "activeMs": 3000000,
+      "lastActiveAt": 1790003600000,
+      "kills": [
+        {
+          "killCount": 2601,
+          "endedAt": 1790000600000,
+          "durationMs": 100000,
+          "choice": "STOMACH",
+          "loot": [
+            {"itemId": 33634, "quantity": 1, "priceEach": 20000000, "perDose": false, "pending": false, "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0}
+          ],
+          "pet": false
+        },
+        {
+          "killCount": 2602,
+          "endedAt": 1790001200000,
+          "durationMs": 98400,
+          "choice": "EGGS",
+          "loot": [
+            {"itemId": 33669, "quantity": 1, "priceEach": 0, "perDose": false, "pending": false, "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0}
+          ],
+          "pet": false
+        },
+        {
+          "killCount": 2603,
+          "endedAt": 1790001800000,
+          "durationMs": 105000,
+          "choice": "STOMACH",
+          "loot": [
+            {"itemId": 1662, "quantity": 1, "priceEach": 1500, "perDose": false, "pending": false, "pendingId": "polished-1", "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 33691}
+          ],
+          "pet": false
+        },
+        {
+          "killCount": 2604,
+          "endedAt": 1790002400000,
+          "choice": "STOMACH",
+          "loot": [
+            {"itemId": 33679, "quantity": 1, "priceEach": 0, "perDose": false, "pending": true, "pendingId": "pending-1", "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0}
+          ],
+          "pet": false
+        }
+      ],
+      "supplies": [
+        {"itemId": 13441, "quantity": 10, "priceEach": 1500, "perDose": false, "pending": false, "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0},
+        {"itemId": 2434, "quantity": 8, "priceEach": 2000, "perDose": true, "pending": false, "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0},
+        {"itemId": 24780, "quantity": 500, "priceEach": 700000, "perDose": false, "pending": false, "chargeItemId": 24777, "chargesPerItem": 10000, "polishedFrom": 0}
+      ],
+      "dropped": [
+        {"itemId": 13441, "quantity": 1, "priceEach": 1500, "perDose": false, "pending": false, "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0}
+      ],
+      "deaths": []
+    },
+    {
+      "id": "trip-2",
+      "startedAt": 1790010000000,
+      "endedAt": 1790011000000,
+      "endReason": "DEATH",
+      "activeMs": 900000,
+      "lastActiveAt": 1790011000000,
+      "kills": [
+        {
+          "killCount": 2605,
+          "endedAt": 1790010500000,
+          "durationMs": 110000,
+          "choice": "STOMACH",
+          "loot": [
+            {"itemId": 995, "quantity": 50000, "priceEach": 1, "perDose": false, "pending": false, "chargeItemId": 0, "chargesPerItem": 0, "polishedFrom": 0}
+          ],
+          "pet": false
+        }
+      ],
+      "supplies": [],
+      "dropped": [],
+      "deaths": [
+        {"at": 1790010900000, "reclaimFee": 0, "graveMoveCost": 50000}
+      ]
+    },
+    {
+      "id": "trip-3",
+      "startedAt": 1790020000000,
+      "activeMs": 3866,
+      "lastActiveAt": 1790020003866,
+      "dropped": [],
+      "deaths": []
+    }
+  ],
+  "eggPops": [
+    {"eggItemId": 33665, "at": 1790004000000, "pet": false},
+    {"eggItemId": 33669, "at": 1790004100000, "pet": true}
+  ],
+  "polishOutcomes": {
+    "33691": {"1662": 1},
+    "33679": {"1245": 3, "1243": 2}
+  },
+  "goal": {"target": 150, "startedAt": 1790000000000, "activeMs": 10119930}
+}
