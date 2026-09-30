@@ -167,8 +167,7 @@ For the Maggot King:
 ## Data
 
 History is saved per account to
-`~/.runelite/plugin-data/maggot-king-trip-tracker/history-<account>.json` (the folder keeps
-its original name so existing history carries over). When a file from an older version is
+`~/.runelite/plugin-data/boss-trip-tracker/history-<account>.json`. When a file from an older version is
 upgraded, the old file is kept next to it as `history-<account>.json.v1-backup-<date>`.
 
 **Diagnostic mode** (Configuration → Boss Trip Tracker → Developer) records raw boss related
