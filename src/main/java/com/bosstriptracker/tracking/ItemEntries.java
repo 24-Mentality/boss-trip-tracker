@@ -59,6 +59,26 @@ final class ItemEntries
 		}
 	}
 
+	/**
+	 * Takes loot back off a kill: unpolished tarnished drops of this item first (one entry each), then its line.
+	 */
+	static void removeLoot(List<ItemEntry> loot, int itemId, long quantity)
+	{
+		for (Iterator<ItemEntry> it = loot.iterator(); it.hasNext() && quantity > 0; )
+		{
+			ItemEntry entry = it.next();
+			if (entry.isPending() && entry.getItemId() == itemId)
+			{
+				it.remove();
+				quantity -= entry.getQuantity();
+			}
+		}
+		if (quantity > 0)
+		{
+			reduce(loot, itemId, false, quantity);
+		}
+	}
+
 	static void merge(List<ItemEntry> entries, ItemEntry added)
 	{
 		if (!added.isCharges())

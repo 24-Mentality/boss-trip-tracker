@@ -199,6 +199,13 @@ public class TripTracker
 	private boolean lootReceived;
 	private int fallbackEndTick = -1;
 	private final Map<Integer, Long> fallbackGains = new HashMap<>();
+	private final KillLootSources lootSources = new KillLootSources();
+	/**
+	 * A corpse choice clicked before its kill exists (the kill-count message was missed); the loot event's kill
+	 * takes it.
+	 */
+	private String pendingChoice;
+	private int pendingChoiceTick = -100;
 	private Long bossSpawnedAt;
 	private Long bossDiedAt;
 	/**
@@ -1052,8 +1059,21 @@ public class TripTracker
 				return;
 			}
 
-			Kill kill = lootKill != null && lootKill.getChoice() == null ? lootKill : newKill();
-			kill.setChoice(choice == null ? null : choice.getKey());
+			// Kills come from the kill-count message or a loot event, never a click: a corpse clicked again after an
+			// interruption is the same kill
+			if (choice != null)
+			{
+				Kill kill = unchosenKill();
+				if (kill != null)
+				{
+					kill.setChoice(choice.getKey());
+				}
+				else if (lootKill == null)
+				{
+					pendingChoice = choice.getKey();
+					pendingChoiceTick = tick;
+				}
+			}
 			viewDirty = true;
 			lastCorpseClickTick = tick;
 			if (!lootReceived)
@@ -1352,10 +1372,21 @@ public class TripTracker
 		}
 
 		Kill kill = lootKillOrCreate();
+		Map<Integer, Long> items = new HashMap<>();
 		for (ItemStack stack : event.getItems())
 		{
-			addLoot(kill, stack.getId(), stack.getQuantity());
-			alertForDrop(tripBoss, stack.getId(), stack.getQuantity());
+			items.merge(stack.getId(), (long) stack.getQuantity(), Long::sum);
+		}
+		// Arrived after the inventory fallback recorded this kill's loot: the event replaces it
+		Map<Integer, Long> replaced = lootSources.eventReceived(items);
+		replaced.forEach((itemId, quantity) -> ItemEntries.removeLoot(kill.getLoot(), itemId, quantity));
+		for (Map.Entry<Integer, Long> e : items.entrySet())
+		{
+			addLoot(kill, e.getKey(), e.getValue());
+			if (!replaced.containsKey(e.getKey()))
+			{
+				alertForDrop(tripBoss, e.getKey(), e.getValue());
+			}
 		}
 		lootReceived = true;
 		fallbackEndTick = -1;
@@ -1743,6 +1774,7 @@ public class TripTracker
 		lootReceived = false;
 		fallbackEndTick = -1;
 		fallbackGains.clear();
+		lootSources.clear();
 		viewDirty = true;
 		requestSave();
 	}
@@ -1756,18 +1788,40 @@ public class TripTracker
 	}
 
 	/**
-	 * A kill without a kill-count message, so loot still has somewhere to go.
+	 * A kill from a loot event whose kill-count message was missed, so the loot still has somewhere to go.
 	 */
 	private Kill newKill()
 	{
 		Kill kill = new Kill();
 		kill.setEndedAt(System.currentTimeMillis());
+		if (pendingChoice != null && client.getTickCount() - pendingChoiceTick <= CORPSE_WINDOW_TICKS)
+		{
+			kill.setChoice(pendingChoice);
+		}
+		pendingChoice = null;
 		currentTrip.getKills().add(kill);
 		lootKill = kill;
 		lootReceived = false;
 		fallbackEndTick = -1;
 		fallbackGains.clear();
+		lootSources.clear();
 		return kill;
+	}
+
+	/**
+	 * The most recent kill of this trip without a corpse choice yet, or null.
+	 */
+	private Kill unchosenKill()
+	{
+		List<Kill> kills = currentTrip.getKills();
+		for (int i = kills.size() - 1; i >= 0; i--)
+		{
+			if (kills.get(i).getChoice() == null)
+			{
+				return kills.get(i);
+			}
+		}
+		return null;
 	}
 
 	private void addLoot(Kill kill, int itemId, long quantity)
@@ -1804,6 +1858,7 @@ public class TripTracker
 				addLoot(lootKill, e.getKey(), e.getValue());
 				alertForDrop(tripBoss, e.getKey(), e.getValue());
 			}
+			lootSources.fallbackUsed(fallbackGains);
 			lootReceived = true;
 			viewDirty = true;
 			requestSave();
@@ -1818,6 +1873,8 @@ public class TripTracker
 		lootReceived = false;
 		fallbackEndTick = -1;
 		fallbackGains.clear();
+		lootSources.clear();
+		pendingChoice = null;
 		lastCorpseClickTick = -100;
 		groundItems.clear();
 		recentDespawns.clear();
@@ -1930,13 +1987,22 @@ public class TripTracker
 			used = freeSupplies.paidFor(used);
 		}
 
-		if (trackingTrip && fallbackEndTick >= 0 && !lootReceived && !recentClicks.has(OPTION_POLISH, -1, tick))
+		boolean afterCorpseClick = lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS;
+		if (trackingTrip && (afterCorpseClick || fallbackEndTick >= 0) && !recentClicks.has(OPTION_POLISH, -1, tick))
 		{
 			for (Map.Entry<Integer, Long> e : gained.entrySet())
 			{
-				if (e.getKey() != ItemID.VIAL_EMPTY && prices.doseInfo(e.getKey()) == null)
+				if (e.getKey() == ItemID.VIAL_EMPTY || prices.doseInfo(e.getKey()) != null)
+				{
+					continue;
+				}
+				if (fallbackEndTick >= 0 && !lootReceived)
 				{
 					fallbackGains.merge(e.getKey(), e.getValue(), Long::sum);
+				}
+				if (afterCorpseClick)
+				{
+					lootSources.inventoryGained(e.getKey(), e.getValue());
 				}
 			}
 		}
@@ -2011,7 +2077,9 @@ public class TripTracker
 			long taken = Math.min(available, entry.quantity);
 			if (entry.kind == GroundKind.LOOT_OVERFLOW)
 			{
-				addLoot(entry.kill, entry.itemId, taken);
+				// Not what this kill's loot event already listed
+				long added = entry.kill == lootKill ? lootSources.overflowPickedUp(entry.itemId, taken) : taken;
+				addLoot(entry.kill, entry.itemId, added);
 				viewDirty = true;
 				requestSave();
 			}

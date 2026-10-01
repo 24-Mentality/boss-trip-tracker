@@ -147,7 +147,11 @@ For the Maggot King:
   Walking in and straight back out leaves nothing.
 - A kill is counted from the game's kill-count message. Kill time comes from the game's
   "Fight duration" message.
-- Loot includes items that overflow onto the ground, once you pick them up.
+- A kill is only created from the kill-count message or the Loot Tracker's loot, never from
+  clicking the corpse, so clicking it again after an interruption doesn't add a kill.
+- Loot includes items that overflow onto the ground, once you pick them up, unless the Loot
+  Tracker already listed them. If the Loot Tracker reports a kill late, its loot replaces what
+  was read from your inventory, so nothing is counted twice.
 - Supplies are everything used up in the lair, across inventory, equipment and rune pouch.
   Potions are counted per dose. Gear switches don't count, and worn gear is never a supply:
   a charged weapon running dry, Barrows gear degrading or a blood fury turning back into an
