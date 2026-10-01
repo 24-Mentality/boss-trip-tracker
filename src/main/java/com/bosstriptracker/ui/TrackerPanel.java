@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -40,6 +41,8 @@ public class TrackerPanel extends PluginPanel
 	private final HistoryPanel historyTab;
 	private final LifetimePanel lifetimeTab;
 	private final JLabel readOnlyWarning = new JLabel();
+	private final JLabel notice = new JLabel();
+	private final Timer noticeTimer = new Timer(3000, e -> notice.setVisible(false));
 	private final BossSelector bossSelector;
 	private final VariantChips variantChips;
 	private BossDefinition boss;
@@ -118,7 +121,19 @@ public class TrackerPanel extends PluginPanel
 		north.setOpaque(false);
 		north.add(header, BorderLayout.NORTH);
 		north.add(tabs, BorderLayout.CENTER);
-		north.add(readOnlyWarning, BorderLayout.SOUTH);
+		notice.setFont(FontManager.getRunescapeSmallFont());
+		notice.setForeground(UiFormat.PROFIT);
+		notice.setBorder(BorderFactory.createEmptyBorder(0, 8, 4, 8));
+		notice.setAlignmentX(LEFT_ALIGNMENT);
+		notice.setVisible(false);
+		readOnlyWarning.setAlignmentX(LEFT_ALIGNMENT);
+		noticeTimer.setRepeats(false);
+		JPanel messages = new JPanel();
+		messages.setLayout(new BoxLayout(messages, BoxLayout.Y_AXIS));
+		messages.setOpaque(false);
+		messages.add(notice);
+		messages.add(readOnlyWarning);
+		north.add(messages, BorderLayout.SOUTH);
 
 		JScrollPane scroll = new JScrollPane(display);
 		scroll.setBorder(BorderFactory.createEmptyBorder());
@@ -178,6 +193,18 @@ public class TrackerPanel extends PluginPanel
 	public void shutDown()
 	{
 		timer.stop();
+		noticeTimer.stop();
+	}
+
+	/**
+	 * A short confirmation under the tabs that hides itself after a few seconds, e.g. "Copied to clipboard".
+	 */
+	public void showNotice(String text)
+	{
+		notice.setText(text);
+		notice.setVisible(true);
+		noticeTimer.restart();
+		revalidate();
 	}
 
 	/**

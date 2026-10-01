@@ -65,8 +65,9 @@ public class ShareCardExporter
 	 * Call on the Swing thread.
 	 *
 	 * @param onMessage shows a message in the panel when the game chat can't (not logged in, or nothing to share)
+	 * @param onCopied  called on the Swing thread once the image is on the clipboard
 	 */
-	public void share(PanelState state, boolean showName, Consumer<String> onMessage)
+	public void share(PanelState state, boolean showName, Consumer<String> onMessage, Runnable onCopied)
 	{
 		ShareCard card = state == null ? null : ShareCard.from(state, showName, System.currentTimeMillis());
 		if (card == null)
@@ -90,7 +91,7 @@ public class ShareCardExporter
 		{
 			if (done.compareAndSet(false, true))
 			{
-				export(card, icons, onMessage);
+				export(card, icons, onMessage, onCopied);
 			}
 		};
 		for (int id : ids)
@@ -110,7 +111,7 @@ public class ShareCardExporter
 		fallback.start();
 	}
 
-	private void export(ShareCard card, Map<Integer, Image> icons, Consumer<String> onMessage)
+	private void export(ShareCard card, Map<Integer, Image> icons, Consumer<String> onMessage, Runnable onCopied)
 	{
 		BufferedImage image = renderer.render(card, icons::get);
 		try
@@ -123,6 +124,7 @@ public class ShareCardExporter
 			onMessage.accept("The clipboard is busy; try the camera button again.");
 			return;
 		}
+		onCopied.run();
 
 		String fileName = card.getBossName() + " share card";
 		try

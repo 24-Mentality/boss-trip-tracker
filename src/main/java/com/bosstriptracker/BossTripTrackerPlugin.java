@@ -450,7 +450,8 @@ public class BossTripTrackerPlugin extends Plugin
 		{
 			TrackerPanel trackerPanel = panel;
 			shareCardExporter.share(trackerPanel.getState(), config.shareShowName(),
-				message -> trackerPanel.showMessage("Share card", message, false));
+				message -> trackerPanel.showMessage("Share card", message, false),
+				() -> trackerPanel.showNotice("Share card copied to clipboard"));
 		}
 
 		@Override
