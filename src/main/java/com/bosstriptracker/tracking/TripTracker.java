@@ -123,16 +123,12 @@ public class TripTracker
 	 */
 	private static final int POST_DEATH_IGNORE_TICKS = 5;
 	private static final long PRE_ENTRY_WINDOW_MS = 60_000;
-	/**
-	 * Dropped items worth less than this each (empty vials are 2 gp) are junk, not a cost.
-	 */
-	private static final long JUNK_PRICE = 100;
+	private static final long JUNK_PRICE = SupplyAccounting.JUNK_PRICE;
 	private static final long SAVE_DELAY_MS = 1_000;
 	private static final long ACTIVE_SAVE_INTERVAL_MS = 60_000;
 
-	private static final String OPTION_DROP = "Drop";
-	private static final String OPTION_POLISH = PolishTracker.OPTION_POLISH;
-	private static final String OPTION_CAST = "Cast";
+	private static final String OPTION_DROP = SupplyAccounting.OPTION_DROP;
+	private static final String OPTION_POLISH = SupplyAccounting.OPTION_POLISH;
 	private static final Set<String> CONSUME_OPTIONS = ImmutableSet.of("Eat", "Drink", "Cast");
 
 	private final Client client;
@@ -150,6 +146,7 @@ public class TripTracker
 	private final InventoryLedger ledger;
 	private final BossRegistry registry;
 	private final RecentClicks recentClicks = new RecentClicks();
+	private final SupplyAccounting accounting;
 	private final EggTracker eggTracker;
 	private final PolishTracker polishTracker;
 	/**
@@ -269,6 +266,7 @@ public class TripTracker
 		this.onLairEntered = onLairEntered;
 		this.allTimeRecords = new AllTimeRecords(configManager, gson);
 		this.ledger = new InventoryLedger(client);
+		this.accounting = new SupplyAccounting(prices);
 		this.chargeCounter = new ChargeCounter(prices::isMeleeWeapon);
 		this.registry = registry;
 		TrackerHost host = new Host();
@@ -1850,26 +1848,17 @@ public class TripTracker
 
 	private void processDelta(Map<Integer, Long> delta, int tick, long now)
 	{
-		Map<Integer, Long> removed = new HashMap<>();
-		Map<Integer, Long> gained = new HashMap<>();
-		for (Map.Entry<Integer, Long> e : delta.entrySet())
-		{
-			if (e.getValue() < 0)
-			{
-				removed.put(e.getKey(), -e.getValue());
-			}
-			else
-			{
-				gained.put(e.getKey(), e.getValue());
-			}
-		}
+		SupplyAccounting.Change change = SupplyAccounting.Change.of(delta);
+		Map<Integer, Long> removed = change.removed;
+		Map<Integer, Long> gained = change.gained;
 
 		recordGraveMovePayment(removed, tick);
 
 		boolean trackingTrip = inArea && currentTrip != null && !dead;
-		recordDrops(removed, tick, trackingTrip);
+		Map<Integer, Long> dropped = accounting.takeDrops(change, recentClicks, tick);
 		if (trackingTrip)
 		{
+			dropped.forEach((itemId, quantity) -> pendingDrops.merge(itemId, quantity, Long::sum));
 			// Thrown and usually picked back up: like a drop, only what's left behind counts
 			for (int itemId : tripBoss.getRecoverableItems())
 			{
@@ -1884,21 +1873,18 @@ public class TripTracker
 		eggTracker.itemsRemoved(removed, tick, now);
 		polishTracker.gained(gained, tick);
 
-		// Popping eggs, polishing (tarnished items, dull ancient medals) and casting a spell on an item
-		// (e.g. High Level Alchemy) convert items rather than use them up
-		removed.keySet().removeAll(convertedItems);
-		removeConvertedItems(removed, tick);
+		accounting.removeConversions(change, recentClicks, tick, convertedItems);
 
 		if (trackingTrip)
 		{
 			matchPickups(gained, tick);
 		}
 
-		List<ItemEntry> used = tick <= ignoreDeltasUntilTick ? Collections.emptyList() : consumption(removed, gained);
+		List<ItemEntry> used = tick <= ignoreDeltasUntilTick ? Collections.emptyList() : accounting.consumption(change);
 		if (trackingTrip && tripBoss.isAcquiredInsideFree())
 		{
 			// Supply chest purchases and items picked up inside cost nothing: only use beyond them is paid for
-			for (ItemEntry entry : acquisitions(removed, gained))
+			for (ItemEntry entry : accounting.acquisitions(change))
 			{
 				long refund = freeSupplies.acquired(entry);
 				if (refund > 0)
@@ -1974,38 +1960,6 @@ public class TripTracker
 		}
 	}
 
-	private void recordDrops(Map<Integer, Long> removed, int tick, boolean trackingTrip)
-	{
-		for (RecentClicks.Click click : recentClicks.all())
-		{
-			if (click.consumed || !OPTION_DROP.equals(click.option) || tick - click.tick > CLICK_MATCH_TICKS)
-			{
-				continue;
-			}
-			Long quantity = removed.remove(click.itemId);
-			if (quantity != null)
-			{
-				click.consumed = true;
-				if (trackingTrip)
-				{
-					pendingDrops.merge(click.itemId, quantity, Long::sum);
-				}
-			}
-		}
-	}
-
-	private void removeConvertedItems(Map<Integer, Long> removed, int tick)
-	{
-		for (RecentClicks.Click click : recentClicks.all())
-		{
-			if (tick - click.tick <= CLICK_MATCH_TICKS && click.itemId > 0
-				&& (OPTION_POLISH.equals(click.option) || OPTION_CAST.equals(click.option)))
-			{
-				removed.remove(click.itemId);
-			}
-		}
-	}
-
 	/**
 	 * Gains that match a ground item just picked up: loot overflow becomes loot, own drops are no longer lost.
 	 * Matched quantities are removed from {@code gained}.
@@ -2049,99 +2003,6 @@ public class TripTracker
 		}
 	}
 
-	/**
-	 * Converts removed items into supply lines. Potions are counted in doses: a Prayer potion(4) becoming
-	 * a Prayer potion(3) is one dose, priced from the highest-dose variant.
-	 */
-	private List<ItemEntry> consumption(Map<Integer, Long> removed, Map<Integer, Long> gained)
-	{
-		List<ItemEntry> used = new ArrayList<>();
-		Map<String, long[]> doseFamilies = new HashMap<>();
-
-		for (Map.Entry<Integer, Long> e : removed.entrySet())
-		{
-			int itemId = e.getKey();
-			PriceService.DoseInfo dose = prices.doseInfo(itemId);
-			if (dose != null)
-			{
-				// [net doses used, a variant id seen, its dose count]
-				long[] family = doseFamilies.computeIfAbsent(dose.getFamily(), f -> new long[]{0, itemId, dose.getDoses()});
-				family[0] += e.getValue() * dose.getDoses();
-			}
-			else
-			{
-				used.add(new ItemEntry(itemId, e.getValue(), prices.price(itemId)));
-			}
-		}
-
-		for (Map.Entry<Integer, Long> e : gained.entrySet())
-		{
-			PriceService.DoseInfo dose = prices.doseInfo(e.getKey());
-			if (dose != null && doseFamilies.containsKey(dose.getFamily()))
-			{
-				doseFamilies.get(dose.getFamily())[0] -= e.getValue() * dose.getDoses();
-			}
-		}
-
-		for (Map.Entry<String, long[]> e : doseFamilies.entrySet())
-		{
-			long[] family = e.getValue();
-			if (family[0] > 0)
-			{
-				PriceService.FullDose full = prices.fullDose(e.getKey(), (int) family[1], (int) family[2]);
-				ItemEntry entry = new ItemEntry(full.getItemId(), family[0], prices.pricePerDose(full));
-				entry.setPerDose(true);
-				used.add(entry);
-			}
-		}
-		return used;
-	}
-
-	/**
-	 * Items gained that weren't in the inventory before (not a potion going down a dose), counted the way
-	 * {@link #consumption} counts supplies: per dose for potions.
-	 */
-	private List<ItemEntry> acquisitions(Map<Integer, Long> removed, Map<Integer, Long> gained)
-	{
-		List<ItemEntry> acquired = new ArrayList<>();
-		// [net doses gained, a variant id seen, its dose count]
-		Map<String, long[]> doseFamilies = new HashMap<>();
-		for (Map.Entry<Integer, Long> e : gained.entrySet())
-		{
-			int itemId = e.getKey();
-			PriceService.DoseInfo dose = prices.doseInfo(itemId);
-			if (dose != null)
-			{
-				long[] family = doseFamilies.computeIfAbsent(dose.getFamily(), f -> new long[]{0, itemId, dose.getDoses()});
-				family[0] += e.getValue() * dose.getDoses();
-			}
-			else
-			{
-				acquired.add(new ItemEntry(itemId, e.getValue(), prices.price(itemId)));
-			}
-		}
-		for (Map.Entry<Integer, Long> e : removed.entrySet())
-		{
-			PriceService.DoseInfo dose = prices.doseInfo(e.getKey());
-			if (dose != null && doseFamilies.containsKey(dose.getFamily()))
-			{
-				doseFamilies.get(dose.getFamily())[0] -= e.getValue() * dose.getDoses();
-			}
-		}
-		for (Map.Entry<String, long[]> e : doseFamilies.entrySet())
-		{
-			long[] family = e.getValue();
-			if (family[0] > 0)
-			{
-				PriceService.FullDose full = prices.fullDose(e.getKey(), (int) family[1], (int) family[2]);
-				ItemEntry entry = new ItemEntry(full.getItemId(), family[0], prices.pricePerDose(full));
-				entry.setPerDose(true);
-				acquired.add(entry);
-			}
-		}
-		return acquired;
-	}
-
 	private void finalizeDrops()
 	{
 		if (tripBoss.isDroppedSupplyUsed())
@@ -2162,23 +2023,11 @@ public class TripTracker
 	}
 
 	/**
-	 * Dropped supplies left behind count as used (per dose for potions, less anything obtained inside); dropped
-	 * equipment and junk are never a cost.
+	 * Dropped supplies left behind count as used (per dose for potions, less anything obtained inside).
 	 */
 	private void dropsAsUsed()
 	{
-		Map<Integer, Long> removed = new HashMap<>();
-		for (Map.Entry<Integer, Long> e : pendingDrops.entrySet())
-		{
-			int itemId = e.getKey();
-			if (e.getValue() <= 0 || prices.isEquipable(itemId)
-				|| (prices.doseInfo(itemId) == null && prices.price(itemId) < JUNK_PRICE))
-			{
-				continue;
-			}
-			removed.put(itemId, e.getValue());
-		}
-		List<ItemEntry> used = consumption(removed, Collections.emptyMap());
+		List<ItemEntry> used = accounting.droppedAsUsed(pendingDrops);
 		if (tripBoss.isAcquiredInsideFree())
 		{
 			used = freeSupplies.paidFor(used);

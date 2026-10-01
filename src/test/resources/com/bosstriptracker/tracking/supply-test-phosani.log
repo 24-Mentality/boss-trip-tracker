@@ -1,0 +1,1472 @@
+tick=11 region=14642 inLair=false MENU option="Walk here" action=WALK id=42 itemId=0 itemOp=-1 param0=492 param1=142
+tick=12 region=14642 inLair=false MENU option="Deposit" action=GAME_OBJECT_FIRST_OPTION id=32665 itemId=-1 itemOp=-1 param0=55 param1=33
+tick=12 region=14642 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=547 param1=112
+tick=13 region=14642 inLair=false MENU option="Bank" action=GAME_OBJECT_SECOND_OPTION id=32666 itemId=-1 itemOp=-1 param0=52 param1=31
+tick=15 region=14642 inLair=false GROUND spawned Bucket (9660) x1 ownership=0 at=3629,3198,0
+tick=27 region=14642 inLair=false MENU option="Deposit inventory" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=786479
+tick=27 region=14642 inLair=false INVENTORY -Prayer potion(2) (141) x1, -Coins (995) x507, -Uncut ruby (1620) x22, -Prayer potion(4) (2434) x3, -Mort myre fungus (2971) x53, -Antidote++(4) (5952) x1, -Antidote++(1) (5958) x1, -Rune pouch (12791) x1, -Elder maul (21003) x1, -Infernal cape (21295) x1, -Drakan's medallion (22400) x1, -Ferocious gloves (22981) x1, -Divine super combat potion(3) (23688) x2, -Inquisitor's great helm (24419) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Saturated heart (27641) x1, -Webweaver bow (27655) x1, -Amulet of rancour (29801) x1, -Letvek (33625) x58, -Dull ancient medal (33627) x3, -Rotten stymphike tartare (33629) x1
+tick=28 region=14642 inLair=false MENU option="Deposit worn items" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=786481
+tick=28 region=14642 inLair=false EQUIPMENT -Unholy blessing (20223) x1, -Tome of Fire (20714) x1, -Ancestral hat (21018) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, -Imbued Saradomin cape (21791) x1, -Harmonised Nightmare staff (24423) x1, -Ultor ring (28307) x1, -Avernic treads (max) (31097) x1, -Confliction gauntlets (31106) x1, -Elemental amulet (34428) x1
+tick=29 region=14642 inLair=false MENU option="View tag tab" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=14 param1=786441
+tick=31 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=24419 itemOp=-1 param0=4 param1=786444
+tick=31 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=29801 itemOp=-1 param0=40 param1=786444
+tick=31 region=14642 inLair=false INVENTORY +Inquisitor's great helm (24419) x1, +Amulet of rancour (29801) x1
+tick=37 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=21295 itemOp=-1 param0=32 param1=786444
+tick=37 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=22325 itemOp=-1 param0=29 param1=786444
+tick=37 region=14642 inLair=false INVENTORY +Infernal cape (21295) x1
+tick=38 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=24420 itemOp=-1 param0=12 param1=786444
+tick=38 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=24421 itemOp=-1 param0=20 param1=786444
+tick=38 region=14642 inLair=false INVENTORY +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=39 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=31097 itemOp=-1 param0=26 param1=786444
+tick=39 region=14642 inLair=false INVENTORY +Avernic treads (max) (31097) x1
+tick=40 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=22981 itemOp=-1 param0=48 param1=786444
+tick=40 region=14642 inLair=false INVENTORY +Ferocious gloves (22981) x1
+tick=40 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=28307 itemOp=-1 param0=56 param1=786444
+tick=41 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=20223 itemOp=-1 param0=366 param1=786444
+tick=41 region=14642 inLair=false INVENTORY +Unholy blessing (20223) x1, +Ultor ring (28307) x1
+tick=42 region=14642 inLair=false MENU option="Show worn items" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=786539
+tick=44 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=24419 itemOp=-1 param0=0 param1=983044
+tick=44 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=24420 itemOp=-1 param0=4 param1=983044
+tick=44 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=29801 itemOp=-1 param0=1 param1=983044
+tick=44 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=24421 itemOp=-1 param0=5 param1=983044
+tick=44 region=14642 inLair=false INVENTORY -Inquisitor's great helm (24419) x1, -Inquisitor's hauberk (24420) x1, -Amulet of rancour (29801) x1
+tick=44 region=14642 inLair=false EQUIPMENT +Inquisitor's great helm (24419) x1, +Inquisitor's hauberk (24420) x1, +Amulet of rancour (29801) x1
+tick=45 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=21295 itemOp=-1 param0=2 param1=983044
+tick=45 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=31097 itemOp=-1 param0=6 param1=983044
+tick=45 region=14642 inLair=false MENU option="Wield" action=CC_OP id=1 itemId=22325 itemOp=-1 param0=3 param1=983044
+tick=45 region=14642 inLair=false INVENTORY -Infernal cape (21295) x1, -Inquisitor's plateskirt (24421) x1, -Avernic treads (max) (31097) x1
+tick=45 region=14642 inLair=false EQUIPMENT +Infernal cape (21295) x1, +Inquisitor's plateskirt (24421) x1, +Avernic treads (max) (31097) x1
+tick=46 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=22981 itemOp=-1 param0=7 param1=983044
+tick=46 region=14642 inLair=false MENU option="Equip" action=CC_OP id=1 itemId=20223 itemOp=-1 param0=9 param1=983044
+tick=46 region=14642 inLair=false INVENTORY -Scythe of Vitur (22325) x1, -Ferocious gloves (22981) x1
+tick=46 region=14642 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, +Ferocious gloves (22981) x1
+tick=47 region=14642 inLair=false MENU option="Wear" action=CC_OP id=1 itemId=28307 itemOp=-1 param0=8 param1=983044
+tick=47 region=14642 inLair=false INVENTORY -Unholy blessing (20223) x1, -Ultor ring (28307) x1
+tick=47 region=14642 inLair=false EQUIPMENT +Unholy blessing (20223) x1, +Ultor ring (28307) x1
+tick=48 region=14642 inLair=false MENU option="Hide worn items" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=786539
+tick=49 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=27275 itemOp=-1 param0=31 param1=786444
+tick=50 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=21021 itemOp=-1 param0=10 param1=786444
+tick=50 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=21791 itemOp=-1 param0=34 param1=786444
+tick=50 region=14642 inLair=false INVENTORY +Ancestral robe top (21021) x1, +Tumeken's shadow (27275) x1
+tick=51 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=28313 itemOp=-1 param0=58 param1=786444
+tick=51 region=14642 inLair=false INVENTORY +Imbued Saradomin cape (21791) x1, +Magus ring (28313) x1
+tick=52 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=12002 itemOp=-1 param0=42 param1=786444
+tick=52 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=21024 itemOp=-1 param0=18 param1=786444
+tick=52 region=14642 inLair=false INVENTORY +Occult necklace (12002) x1, +Ancestral robe bottom (21024) x1
+tick=53 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=31106 itemOp=-1 param0=50 param1=786444
+tick=53 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=21018 itemOp=-1 param0=2 param1=786444
+tick=53 region=14642 inLair=false INVENTORY +Ancestral hat (21018) x1, +Confliction gauntlets (31106) x1
+tick=54 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=33716 itemOp=-1 param0=806 param1=786444
+tick=54 region=14642 inLair=false INVENTORY +Blisterwood stake (33716) x220
+tick=55 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=34027 itemOp=-1 param0=99 param1=786444
+tick=55 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=33631 itemOp=-1 param0=54 param1=786444
+tick=55 region=14642 inLair=false INVENTORY +Crimson kisten (33631) x1, +Hallowfell (34027) x1
+tick=56 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=23685 itemOp=-1 param0=113 param1=786444
+tick=56 region=14642 inLair=false INVENTORY +Divine super combat potion(4) (23685) x1
+tick=57 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=10925 itemOp=-1 param0=133 param1=786444
+tick=57 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=10925 itemOp=-1 param0=133 param1=786444
+tick=57 region=14642 inLair=false INVENTORY +Sanfew serum(4) (10925) x2
+tick=58 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=2434 itemOp=-1 param0=145 param1=786444
+tick=58 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=27641 itemOp=-1 param0=66 param1=786444
+tick=58 region=14642 inLair=false INVENTORY +Prayer potion(4) (2434) x1, +Saturated heart (27641) x1
+tick=60 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=25818 itemOp=-1 param0=90 param1=786444
+tick=61 region=14642 inLair=false INVENTORY +Book of the Dead (25818) x1
+tick=64 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=12791 itemOp=-1 param0=751 param1=786444
+tick=64 region=14642 inLair=false INVENTORY +Rune pouch (12791) x1
+tick=65 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=24780 itemOp=-1 param0=43 param1=786444
+tick=65 region=14642 inLair=false MENU option="Withdraw-10" action=CC_OP id=4 itemId=8013 itemOp=-1 param0=752 param1=786444
+tick=65 region=14642 inLair=false INVENTORY +Teleport to house (8013) x10, +Amulet of blood fury (24780) x1
+tick=66 region=14642 inLair=false MENU option="Withdraw-1" action=CC_OP id=2 itemId=22400 itemOp=-1 param0=84 param1=786444
+tick=67 region=14642 inLair=false INVENTORY +Drakan's medallion (22400) x1
+tick=80 region=14642 inLair=false MENU option="Configure" action=CC_OP id=1 itemId=12791 itemOp=-1 param0=26 param1=983043
+tick=83 region=14642 inLair=false MENU option="Load" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=983067
+tick=87 region=14642 inLair=false MENU option="Dismiss" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=983062
+tick=88 region=14642 inLair=false MENU option="Withdraw-All" action=CC_OP id=1 itemId=30843 itemOp=-1 param0=790 param1=786444
+tick=88 region=14642 inLair=false INVENTORY +Aether rune (30843) x759
+tick=93 region=14642 inLair=false MENU option="Withdraw-5" action=CC_OP id=3 itemId=2434 itemOp=-1 param0=145 param1=786444
+tick=94 region=14642 inLair=false INVENTORY +Prayer potion(4) (2434) x5
+tick=97 region=14642 inLair=false MENU option="Withdraw-5" action=CC_OP id=3 itemId=13441 itemOp=-1 param0=106 param1=786444
+tick=97 region=14642 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=100 region=14642 inLair=false MENU option="Close" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=11 param1=786434
+tick=102 region=14642 inLair=false MENU option="Outside" action=CC_OP id=4 itemId=8013 itemOp=3 param0=23 param1=9764864
+tick=104 region=14642 inLair=false INVENTORY -Teleport to house (8013) x1
+tick=106 region=14642 inLair=false GROUND spawned Bronze arrow (882) x1 ownership=0 at=2957,3205,0
+tick=106 region=14642 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2958,3205,0
+tick=106 region=14642 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2959,3205,0
+tick=106 region=14642 inLair=false GROUND spawned Bronze pickaxe (1265) x1 ownership=0 at=2963,3216,0
+tick=109 region=11826 inLair=false MENU option="Friend's house" action=GAME_OBJECT_FOURTH_OPTION id=15478 itemId=-1 itemOp=-1 param0=47 param1=46
+tick=118 region=7790 inLair=false MENU option="Drink" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=118 region=7790 inLair=false MENU option="Drink" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=123 region=7790 inLair=false MENU option="Teleport Menu" action=GAME_OBJECT_SECOND_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=134 region=7791 inLair=false MENU option="Close" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=11 param1=38666241
+tick=136 region=7791 inLair=false MENU option="Teleport Menu" action=GAME_OBJECT_SECOND_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=141 region=7791 inLair=false GROUND spawned Tinderbox (590) x1 ownership=0 at=2431,3072,0
+tick=141 region=7791 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=525 param1=194
+tick=142 region=9776 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=525 param1=194
+tick=143 region=9776 inLair=false MENU option="Use" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=143 region=9776 inLair=false MENU option="Use" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=150 region=9776 inLair=false MENU option="Eat" action=CC_OP id=9 itemId=13441 itemOp=-1 param0=24 param1=983043
+tick=150 region=9776 inLair=false INVENTORY -Anglerfish (13441) x1
+tick=153 region=9776 inLair=false MENU option="Deposit-All" action=CC_OP id=2 itemId=2434 itemOp=-1 param0=25 param1=983043
+tick=153 region=9776 inLair=false INVENTORY -Prayer potion(4) (2434) x6
+tick=154 region=9776 inLair=false MENU option="Withdraw-5" action=CC_OP id=3 itemId=13441 itemOp=-1 param0=106 param1=786444
+tick=155 region=9776 inLair=false INVENTORY +Anglerfish (13441) x5
+tick=156 region=9776 inLair=false MENU option="Close" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=11 param1=786434
+tick=158 region=9776 inLair=false MENU option="Use" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=159 region=9776 inLair=false MENU option="Deposit-All" action=CC_OP id=2 itemId=13441 itemOp=-1 param0=16 param1=983043
+tick=159 region=9776 inLair=false INVENTORY -Anglerfish (13441) x5
+tick=161 region=9776 inLair=false MENU option="Withdraw-5" action=CC_OP id=3 itemId=2434 itemOp=-1 param0=145 param1=786444
+tick=161 region=9776 inLair=false INVENTORY +Prayer potion(4) (2434) x5
+tick=163 region=9776 inLair=false MENU option="Withdraw-5" action=CC_OP id=3 itemId=13441 itemOp=-1 param0=106 param1=786444
+tick=164 region=9776 inLair=false INVENTORY +Anglerfish (13441) x2
+tick=169 region=9776 inLair=false MENU option="Slepe" action=CC_OP id=196611 itemId=22400 itemOp=-1 param0=27 param1=9764864
+tick=172 region=9776 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=274 param1=158
+tick=172 region=9776 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=246 param1=162
+tick=173 region=15255 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=238 param1=167
+tick=174 region=15255 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=143 param1=65
+tick=175 region=15255 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=143 param1=65
+tick=179 region=15255 inLair=false MENU option="Inventory" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=186 region=15255 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=187 region=15255 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=187 region=15255 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=187 region=15255 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=188 region=15255 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=188 region=15255 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=200 region=15256 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=200 region=15256 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=211 region=15256 inLair=false MENU option="Drink-from" action=GAME_OBJECT_FIRST_OPTION id=29710 itemId=-1 itemOp=-1 param0=48 param1=92
+tick=222 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=528 param1=307
+tick=223 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=528 param1=307
+tick=223 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=528 param1=306
+tick=223 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=528 param1=306
+tick=224 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=528 param1=306
+tick=226 region=15515 inLair=false MENU option="Setup" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=227 region=15515 inLair=false MENU option="Toggle" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=14 param1=5046276
+tick=228 region=15515 inLair=false MENU option="Toggle" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=26 param1=5046276
+tick=230 region=15515 inLair=false MENU option="Done" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=5046277
+tick=244 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=244 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=23685 itemOp=1 param0=11 param1=9764864
+tick=244 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=244 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=245 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=245 region=15515 inLair=false INVENTORY -Divine super combat potion(4) (23685) x1, +Divine super combat potion(3) (23688) x1
+tick=247 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=248 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=251 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=252 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=253 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=254 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=254 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=254 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=261 region=15515 inLair=false MENU option="Inventory" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=272 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=317 param1=282
+tick=273 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=277 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=306 param1=338
+tick=279 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=282 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=313 param1=279
+tick=283 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=287 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=480 param1=282
+tick=289 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=292 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=451 param1=282
+tick=294 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9421
+tick=296 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=330 param1=392
+tick=297 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=282 param1=337
+tick=298 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=298 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=298 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=298 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Tumeken's shadow (27275) x1
+tick=299 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=299 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=299 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=299 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of rancour (29801) x1
+tick=299 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Amulet of rancour (29801) x1
+tick=299 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=300 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=300 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=300 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=300 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=301 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=302 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=340 param1=237
+tick=303 region=15515 inLair=false MENU option="Switch tab" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10616839
+tick=304 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=306 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=308 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=309 region=15515 inLair=false MENU option="Invigorate" action=CC_OP id=2 itemId=27641 itemOp=1 param0=15 param1=9764864
+tick=310 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=317 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=230 param1=305
+tick=317 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=230 param1=306
+tick=318 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=220 param1=308
+tick=318 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=223 param1=312
+tick=320 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=322 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=254 param1=107
+tick=322 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=256 param1=104
+tick=323 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=2434 itemOp=1 param0=16 param1=9764864
+tick=324 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=324 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=328 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=414 param1=139
+tick=328 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=378 param1=110
+tick=329 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=376 param1=109
+tick=329 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=331 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=342 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=280 param1=321
+tick=342 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=278 param1=321
+tick=344 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=345 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=347 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=262 param1=175
+tick=347 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=262 param1=175
+tick=349 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=351 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=352 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=171
+tick=354 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=356 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=362 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=395 param1=330
+tick=363 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=395 param1=329
+tick=365 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=367 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=303 param1=282
+tick=368 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=227 param1=312
+tick=368 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=223 param1=313
+tick=369 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=370 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=371 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=372 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=403 param1=202
+tick=374 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=380 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=380 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=383 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=384 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=10925 itemOp=1 param0=13 param1=9764864
+tick=384 region=15515 inLair=false INVENTORY -Sanfew serum(4) (10925) x1, +Sanfew serum(3) (10927) x1
+tick=385 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=388 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=395 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=397 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=210 param1=211
+tick=397 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=210 param1=210
+tick=401 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=402 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=404 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=404 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=404 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=405 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=48122 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=408 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=408 region=15515 inLair=false INVENTORY -Blisterwood stake (33716) x220, +Hallowfell (34027) x1
+tick=408 region=15515 inLair=false EQUIPMENT +Blisterwood stake (33716) x220, -Hallowfell (34027) x1
+tick=409 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=411 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=48300 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=411 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=413 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=64 param1=196
+tick=414 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=48299 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=414 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3881,9945,3
+tick=414 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=416 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=8 param1=9764864
+tick=416 region=15515 inLair=false INVENTORY +Blisterwood stake (33716) x218, -Hallowfell (34027) x1
+tick=416 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x218, +Hallowfell (34027) x1
+tick=417 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3865,9955,3
+tick=418 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=48122 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=420 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=528 param1=377
+tick=421 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=421 region=15515 inLair=false INVENTORY -Blisterwood stake (33716) x218, +Hallowfell (34027) x1
+tick=421 region=15515 inLair=false EQUIPMENT +Blisterwood stake (33716) x218, -Hallowfell (34027) x1
+tick=425 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=8 param1=9764864
+tick=425 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x218
+tick=425 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x218
+tick=426 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=426 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=4 param1=9764864
+tick=426 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=426 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=427 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=427 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=427 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=427 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=427 region=15515 inLair=false INVENTORY +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1
+tick=427 region=15515 inLair=false EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=428 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=428 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=428 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=428 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=429 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=430 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=435 region=15515 inLair=false MENU option="Inventory" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=438 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=450 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=452 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=21 param1=9764864
+tick=453 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=453 region=15515 inLair=false INVENTORY -Amulet of blood fury (24780) x1, +Amulet of rancour (29801) x1
+tick=453 region=15515 inLair=false EQUIPMENT +Amulet of blood fury (24780) x1, -Amulet of rancour (29801) x1
+tick=457 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=458 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=459 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=459 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=460 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=463 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=9 param1=9764864
+tick=463 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=463 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=464 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=21 param1=9764864
+tick=464 region=15515 inLair=false INVENTORY +Amulet of blood fury (24780) x1, -Amulet of rancour (29801) x1
+tick=464 region=15515 inLair=false EQUIPMENT -Amulet of blood fury (24780) x1, +Amulet of rancour (29801) x1
+tick=465 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=468 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=477 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=139 itemOp=1 param0=12 param1=9764864
+tick=478 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=478 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=480 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=319
+tick=481 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=319
+tick=483 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=495 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=504 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=141 itemOp=1 param0=12 param1=9764864
+tick=504 region=15515 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=504 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=507 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=513 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=516 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=215 param1=299
+tick=516 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=215 param1=300
+tick=517 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=518 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=518 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=518 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=518 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=518 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=519 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=519 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=519 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=519 region=15515 inLair=false INVENTORY +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=519 region=15515 inLair=false EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=520 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=520 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=520 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1
+tick=520 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1
+tick=522 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=523 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=538 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=540 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=543 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=450 param1=309
+tick=546 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=548 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=401 param1=332
+tick=549 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=400 param1=331
+tick=550 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=389 param1=244
+tick=552 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=367 param1=180
+tick=554 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=299 param1=240
+tick=555 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=357 param1=219
+tick=556 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=380 param1=212
+tick=558 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=341 param1=243
+tick=559 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=561 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=335 param1=238
+tick=563 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=568 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=397 param1=245
+tick=568 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=398 param1=216
+tick=570 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=572 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=310 param1=168
+tick=572 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=310 param1=168
+tick=574 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=576 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=581 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=581 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=581 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=582 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=52707 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=584 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=52708 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9467
+tick=585 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=589 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=9 param1=9764864
+tick=590 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=590 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=590 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=596 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=306 param1=194
+tick=596 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=306 param1=195
+tick=597 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=598 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=600 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=601 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=451 param1=168
+tick=603 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=607 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=607 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=403 param1=355
+tick=611 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=311 param1=118
+tick=612 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=613 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=613 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3881,9945,3
+tick=614 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=143 itemOp=1 param0=12 param1=9764864
+tick=614 region=15515 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1, +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x218
+tick=614 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x218
+tick=615 region=15515 inLair=false MENU option="Drop" action=CC_OP id=7 itemId=229 itemOp=5 param0=12 param1=9764864
+tick=615 region=15515 inLair=false GROUND spawned Vial (229) x1 ownership=1 at=3873,9953,3
+tick=615 region=15515 inLair=false INVENTORY -Vial (229) x1
+tick=616 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3865,9955,3
+tick=619 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=53765 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=619 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=621 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=53767 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=621 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=623 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=53766 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=623 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=625 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=282
+tick=625 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3875,9945,3
+tick=627 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=8 param1=9764864
+tick=627 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x215
+tick=627 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x215
+tick=628 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=629 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=4 param1=9764864
+tick=629 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=629 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=629 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=630 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=630 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=630 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=630 region=15515 inLair=false INVENTORY +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's plateskirt (24421) x1
+tick=630 region=15515 inLair=false EQUIPMENT -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's plateskirt (24421) x1
+tick=631 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=631 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=631 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=631 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=632 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=632 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=632 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=634 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=636 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=638 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=640 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=641 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=641 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=641 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=642 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=645 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=652 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=668 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=590 param1=180
+tick=669 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=671 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=523 param1=197
+tick=672 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=490 param1=183
+tick=675 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=677 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=307
+tick=679 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=681 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=521 param1=282
+tick=684 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=687 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=490 param1=292
+tick=689 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=692 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=371 param1=288
+tick=694 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=701 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=702 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=703 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=232 param1=271
+tick=705 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=705 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=705 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=705 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=705 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=706 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=706 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=706 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=706 region=15515 inLair=false INVENTORY -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=706 region=15515 inLair=false EQUIPMENT +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=707 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=707 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=707 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=707 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=708 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=709 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=710 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=716 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=2434 itemOp=1 param0=16 param1=9764864
+tick=716 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=717 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=720 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=722 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=724 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=231 param1=199
+tick=724 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=230 param1=198
+tick=726 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=728 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=732 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=457 param1=249
+tick=732 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=458 param1=249
+tick=734 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=735 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=303 param1=134
+tick=736 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=294 param1=140
+tick=736 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=257 param1=153
+tick=736 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=243 param1=146
+tick=738 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=741 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=741 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=277 param1=294
+tick=742 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=277 param1=294
+tick=743 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=745 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=304 param1=235
+tick=747 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=748 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=750 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=418 param1=173
+tick=752 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=753 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=756 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=765 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=767 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=10927 itemOp=1 param0=13 param1=9764864
+tick=768 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=768 region=15515 inLair=false INVENTORY -Sanfew serum(3) (10927) x1, +Sanfew serum(2) (10929) x1
+tick=771 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=772 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=305 param1=230
+tick=772 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=299 param1=234
+tick=772 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=296 param1=246
+tick=773 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=290 param1=256
+tick=774 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=775 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=245 param1=231
+tick=777 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=778 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=781 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=365 param1=167
+tick=781 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=365 param1=167
+tick=783 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=784 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=784 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58055 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=784 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=784 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=788 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=792 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=9 param1=9764864
+tick=792 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=792 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=793 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=795 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=454 param1=272
+tick=796 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=454 param1=272
+tick=797 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=800 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=435 param1=159
+tick=800 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=398 param1=135
+tick=801 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=127
+tick=801 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=128
+tick=802 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=804 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=808 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=442 param1=240
+tick=808 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=443 param1=238
+tick=810 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=314 param1=269
+tick=812 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=813 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=813 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x215
+tick=813 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x215
+tick=814 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=139 itemOp=1 param0=16 param1=9764864
+tick=814 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=817 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58938 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=817 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=818 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58935 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=819 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3866,9960,3
+tick=820 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=821 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58937 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=822 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3881,9957,3
+tick=823 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=824 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58936 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=824 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3875,9945,3
+tick=825 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3876,9944,3
+tick=825 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=827 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=389 param1=330
+tick=827 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3867,9949,3
+tick=828 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=8 param1=9764864
+tick=828 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=828 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x211
+tick=828 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x211
+tick=829 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=4 param1=9764864
+tick=829 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=829 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=829 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=829 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=830 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=830 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=830 region=15515 inLair=false INVENTORY +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=830 region=15515 inLair=false EQUIPMENT -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=830 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=831 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=831 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=831 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=831 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=832 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=23688 itemOp=1 param0=11 param1=9764864
+tick=832 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Divine super combat potion(3) (23688) x1, +Divine super combat potion(2) (23691) x1, -Crimson kisten (33631) x1
+tick=832 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=834 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=836 region=15515 inLair=false MENU option="Inventory" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=837 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=838 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455001
+tick=840 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=842 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=483 param1=356
+tick=844 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=844 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=844 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=845 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=847 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=379 param1=272
+tick=849 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=852 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=374 param1=290
+tick=854 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=857 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=369 param1=284
+tick=859 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=862 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=374 param1=287
+tick=864 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=867 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=378 param1=284
+tick=868 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=354 param1=313
+tick=870 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=875 region=15515 inLair=false GROUND spawned Big bones (532) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false GROUND spawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=875 region=15515 inLair=false LOOT name="Phosani's Nightmare" type=NPC combatLevel=1024 amount=1 items=[Big bones (532) x1, Prayer potion(3) (139) x13]
+tick=877 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=139 itemId=-1 itemOp=-1 param0=58 param1=52
+tick=878 region=15515 inLair=false GROUND despawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=878 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1
+tick=884 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=141 itemOp=1 param0=16 param1=9764864
+tick=885 region=15515 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=886 region=15515 inLair=false MENU option="Disturb" action=NPC_FIRST_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=377
+tick=887 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=21 param1=9764864
+tick=889 region=15515 inLair=false MENU option="Use" action=WIDGET_TARGET id=0 itemId=143 itemOp=-1 param0=16 param1=9764864
+tick=890 region=15515 inLair=false MENU option="Use" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=139 itemOp=-1 param0=12 param1=9764864
+tick=890 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, -Prayer potion(1) (143) x1, +Vial (229) x1, +Prayer potion(4) (2434) x1
+tick=891 region=15515 inLair=false MENU option="Drop" action=CC_OP id=7 itemId=229 itemOp=5 param0=16 param1=9764864
+tick=891 region=15515 inLair=false GROUND spawned Vial (229) x1 ownership=1 at=3874,9948,3
+tick=891 region=15515 inLair=false INVENTORY -Vial (229) x1
+tick=892 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=139 itemId=-1 itemOp=-1 param0=58 param1=52
+tick=892 region=15515 inLair=false GROUND despawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=892 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1
+tick=912 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=913 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11153
+tick=916 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=928 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=934 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=941 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=21 param1=9764864
+tick=941 region=15515 inLair=false INVENTORY -Amulet of blood fury (24780) x1, +Amulet of rancour (29801) x1
+tick=941 region=15515 inLair=false EQUIPMENT +Amulet of blood fury (24780) x1, -Amulet of rancour (29801) x1
+tick=942 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11153
+tick=946 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=947 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=485 param1=320
+tick=949 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=553 param1=135
+tick=950 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=542 param1=119
+tick=951 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11153
+tick=952 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11153
+tick=954 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=960 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=462 param1=305
+tick=961 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11153
+tick=963 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=966 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=975 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=362 param1=334
+tick=977 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=139 itemOp=1 param0=12 param1=9764864
+tick=977 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=978 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=536 param1=368
+tick=979 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=979 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=979 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=979 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, +Amulet of blood fury (24780) x1, -Tumeken's shadow (27275) x1
+tick=979 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=979 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=980 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=980 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=980 region=15515 inLair=false INVENTORY -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=980 region=15515 inLair=false EQUIPMENT +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=981 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=981 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=981 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=981 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=981 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=982 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=544 param1=295
+tick=984 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=985 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=985 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=985 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=987 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=63279 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=988 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=63280 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9467
+tick=994 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=9 param1=9764864
+tick=994 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=994 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=995 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=999 region=15515 inLair=false MENU option="Invigorate" action=CC_OP id=2 itemId=27641 itemOp=1 param0=15 param1=9764864
+tick=1000 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=290 param1=312
+tick=1000 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=290 param1=314
+tick=1002 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1008 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1018 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3866,9960,3
+tick=1021 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3881,9957,3
+tick=1022 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1024 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1024 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3876,9944,3
+tick=1026 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=381 param1=226
+tick=1026 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3867,9949,3
+tick=1027 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1031 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=475 param1=287
+tick=1032 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1034 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=490 param1=188
+tick=1036 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1039 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=470 param1=254
+tick=1041 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1043 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=293
+tick=1044 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1047 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=447 param1=282
+tick=1048 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1050 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=415 param1=217
+tick=1052 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1055 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=354 param1=265
+tick=1057 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1061 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1062 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1065 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1068 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1074 region=15515 inLair=false GROUND despawned Big bones (532) x1 ownership=1 at=3874,9948,3
+tick=1076 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=324 param1=241
+tick=1076 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=321 param1=242
+tick=1076 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=321 param1=241
+tick=1077 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=316 param1=242
+tick=1077 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=315 param1=242
+tick=1078 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1079 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1085 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1086 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1091 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1094 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=475 param1=187
+tick=1095 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=493 param1=196
+tick=1098 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=380 param1=185
+tick=1100 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=141 itemOp=1 param0=12 param1=9764864
+tick=1100 region=15515 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=1101 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1103 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=143 itemOp=1 param0=12 param1=9764864
+tick=1103 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=143 itemOp=1 param0=12 param1=9764864
+tick=1103 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=143 itemOp=1 param0=12 param1=9764864
+tick=1103 region=15515 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=1104 region=15515 inLair=false MENU option="Drop" action=CC_OP id=7 itemId=229 itemOp=5 param0=12 param1=9764864
+tick=1104 region=15515 inLair=false MENU option="Drop" action=CC_OP id=7 itemId=229 itemOp=5 param0=12 param1=9764864
+tick=1104 region=15515 inLair=false MENU option="Drop" action=CC_OP id=7 itemId=229 itemOp=5 param0=12 param1=9764864
+tick=1104 region=15515 inLair=false GROUND spawned Vial (229) x1 ownership=1 at=3870,9949,3
+tick=1104 region=15515 inLair=false INVENTORY -Vial (229) x1
+tick=1105 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=1105 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x211
+tick=1105 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x211
+tick=1110 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=33813 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1110 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1112 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=33814 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1112 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1114 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3877,9943,3
+tick=1114 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1115 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=139 itemId=-1 itemOp=-1 param0=58 param1=52
+tick=1117 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3869,9957,3
+tick=1118 region=15515 inLair=false GROUND despawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=1118 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1
+tick=1119 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=8 param1=9764864
+tick=1119 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x208
+tick=1119 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x208
+tick=1120 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=1120 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=4 param1=9764864
+tick=1120 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=1120 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=1120 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of blood fury (24780) x1, -Tumeken's shadow (27275) x1
+tick=1121 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=1121 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=1121 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=1121 region=15515 inLair=false INVENTORY +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1
+tick=1121 region=15515 inLair=false EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=1122 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=1122 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=1122 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=1122 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1123 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=1123 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1123 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1124 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1127 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1129 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1131 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1132 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=1132 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1132 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1133 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1159 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=10929 itemOp=1 param0=13 param1=9764864
+tick=1159 region=15515 inLair=false INVENTORY -Sanfew serum(2) (10929) x1, +Sanfew serum(1) (10931) x1
+tick=1160 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1161 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=348
+tick=1163 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1176 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1176 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1176 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1177 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=35861 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=1180 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=9 param1=9764864
+tick=1181 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1181 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1181 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1186 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=139 itemId=-1 itemOp=-1 param0=58 param1=52
+tick=1187 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1194 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1202 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=538 param1=227
+tick=1203 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=572 param1=168
+tick=1204 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=493 param1=116
+tick=1206 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1208 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=457 param1=273
+tick=1210 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1213 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=455 param1=279
+tick=1215 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1218 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=290
+tick=1220 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1223 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=382 param1=287
+tick=1225 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1228 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=383 param1=283
+tick=1230 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9421
+tick=1232 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=1232 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=1232 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=1232 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=1232 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, +Amulet of blood fury (24780) x1, -Tumeken's shadow (27275) x1
+tick=1232 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=1233 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=1233 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=1233 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=479 param1=437
+tick=1233 region=15515 inLair=false INVENTORY -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=1233 region=15515 inLair=false EQUIPMENT +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=1235 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1236 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=252 param1=327
+tick=1238 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=1238 region=15515 inLair=false INVENTORY +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=1238 region=15515 inLair=false EQUIPMENT -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1239 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=1239 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1239 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1
+tick=1239 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1
+tick=1240 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=1241 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1248 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=535 param1=302
+tick=1249 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1250 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1251 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1252 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=545 param1=200
+tick=1253 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=553 param1=186
+tick=1253 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=553 param1=182
+tick=1253 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=562 param1=176
+tick=1254 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=574 param1=163
+tick=1254 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=575 param1=163
+tick=1255 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1257 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=139
+tick=1257 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=463 param1=135
+tick=1259 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1262 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=139 itemOp=1 param0=12 param1=9764864
+tick=1262 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1262 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=1267 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=393 param1=84
+tick=1267 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=394 param1=85
+tick=1270 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1272 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=479 param1=183
+tick=1274 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1275 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=33716 itemId=-1 itemOp=-1 param0=61 param1=47
+tick=1275 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3877,9943,3
+tick=1275 region=15515 inLair=false INVENTORY +Blisterwood stake (33716) x1
+tick=1276 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1277 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=300 param1=149
+tick=1278 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=300 param1=126
+tick=1278 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=292 param1=85
+tick=1279 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1281 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1282 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=557 param1=226
+tick=1282 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=564 param1=231
+tick=1284 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1288 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=529 param1=330
+tick=1288 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=543 param1=286
+tick=1290 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1292 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=10931 itemOp=1 param0=13 param1=9764864
+tick=1292 region=15515 inLair=false INVENTORY +Vial (229) x1, -Sanfew serum(1) (10931) x1
+tick=1293 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=367 param1=228
+tick=1294 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=369 param1=228
+tick=1297 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=432 param1=144
+tick=1297 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=431 param1=145
+tick=1299 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=1302 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1302 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1302 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1304 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=389 param1=287
+tick=1306 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=40303 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=1313 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=9 param1=9764864
+tick=1313 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1313 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1314 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1315 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=1316 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1316 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3869,9957,3
+tick=1321 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1324 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=533 param1=138
+tick=1327 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1329 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=259 param1=240
+tick=1331 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1334 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=377 param1=233
+tick=1334 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=377 param1=234
+tick=1337 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=426 param1=228
+tick=1338 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1340 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=1340 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x209
+tick=1340 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x209
+tick=1341 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=434 param1=268
+tick=1345 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=41239 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1346 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1347 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=41241 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1348 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1349 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=41240 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1349 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3864,9946,3
+tick=1350 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1351 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3869,9957,3
+tick=1351 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=486 param1=337
+tick=1353 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=555 param1=297
+tick=1353 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3876,9952,3
+tick=1355 region=15515 inLair=false MENU option="Eat" action=CC_OP id=2 itemId=13441 itemOp=1 param0=24 param1=9764864
+tick=1355 region=15515 inLair=false INVENTORY -Anglerfish (13441) x1
+tick=1357 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=139 itemId=-1 itemOp=-1 param0=58 param1=52
+tick=1358 region=15515 inLair=false GROUND despawned Prayer potion(3) (139) x1 ownership=1 at=3874,9948,3
+tick=1358 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1
+tick=1359 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=1359 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Blisterwood stake (33716) x206
+tick=1359 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Blisterwood stake (33716) x206
+tick=1360 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=4 param1=9764864
+tick=1360 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=1360 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=1360 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Amulet of blood fury (24780) x1
+tick=1360 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of blood fury (24780) x1
+tick=1361 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=1361 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=1361 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=1361 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=1361 region=15515 inLair=false INVENTORY -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=1361 region=15515 inLair=false EQUIPMENT +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1363 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1364 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1366 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1370 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=1370 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1
+tick=1370 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1
+tick=1372 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1374 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1378 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1381 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=1381 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1381 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1382 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1383 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1385 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1387 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=1387 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1387 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1388 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1389 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=464 param1=283
+tick=1392 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1395 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=379 param1=282
+tick=1397 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1400 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=371 param1=293
+tick=1402 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1405 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=370 param1=292
+tick=1407 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1410 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=377 param1=288
+tick=1412 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1415 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=379 param1=276
+tick=1417 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1425 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=141 itemOp=1 param0=12 param1=9764864
+tick=1425 region=15515 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=1426 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1427 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1432 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1435 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1440 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1440 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1440 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1442 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=44245 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=1443 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1446 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=9 param1=9764864
+tick=1446 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1446 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1448 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1449 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1449 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1449 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1450 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1453 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=9 param1=9764864
+tick=1453 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=43193 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1453 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1453 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1456 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1458 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=201 param1=319
+tick=1459 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=161 param1=304
+tick=1459 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=156 param1=297
+tick=1460 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=1460 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=1460 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Tumeken's shadow (27275) x1
+tick=1460 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Tumeken's shadow (27275) x1
+tick=1461 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=1461 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=1461 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=1461 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of blood fury (24780) x1
+tick=1461 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Amulet of blood fury (24780) x1
+tick=1461 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=1462 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1462 region=15515 inLair=false INVENTORY +Ferocious gloves (22981) x1, -Confliction gauntlets (31106) x1
+tick=1462 region=15515 inLair=false EQUIPMENT -Ferocious gloves (22981) x1, +Confliction gauntlets (31106) x1
+tick=1463 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1464 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=421 param1=215
+tick=1465 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=1466 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1469 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=1470 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=1470 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=1470 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1471 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1473 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1477 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43190 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1480 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=159 param1=250
+tick=1481 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1482 region=15515 inLair=false MENU option="Eat" action=CC_OP id=2 itemId=13441 itemOp=1 param0=25 param1=9764864
+tick=1482 region=15515 inLair=false INVENTORY -Anglerfish (13441) x1
+tick=1483 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=163 param1=225
+tick=1484 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=150 param1=204
+tick=1484 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=150 param1=202
+tick=1484 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1486 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1487 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=323 param1=146
+tick=1488 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=308 param1=134
+tick=1488 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=301 param1=133
+tick=1488 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=279 param1=114
+tick=1489 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=281 param1=115
+tick=1490 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1492 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1493 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1494 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=281 param1=298
+tick=1494 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=300 param1=320
+tick=1495 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43189 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1498 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1499 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=210 param1=239
+tick=1499 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=213 param1=239
+tick=1501 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1502 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=149 param1=209
+tick=1506 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1507 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1509 region=15515 inLair=false MENU option="Invigorate" action=CC_OP id=2 itemId=27641 itemOp=1 param0=15 param1=9764864
+tick=1510 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=455 param1=220
+tick=1510 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=219
+tick=1510 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=219
+tick=1513 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1515 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=335 param1=266
+tick=1516 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43191 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1520 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=357 param1=324
+tick=1522 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1525 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=360 param1=303
+tick=1526 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=43192 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1531 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=436 param1=214
+tick=1532 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=436 param1=214
+tick=1532 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=436 param1=214
+tick=1532 region=15515 inLair=false DEATH local player died; recording for 200 ticks
+tick=1539 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, -Prayer potion(1) (143) x1, -Vial (229) x1, -Prayer potion(4) (2434) x4, -Teleport to house (8013) x9, -Sanfew serum(4) (10925) x1, -Rune pouch (12791) x1, -Infernal cape (21295) x1, -Drakan's medallion (22400) x1, -Ferocious gloves (22981) x1, -Divine super combat potion(2) (23691) x1, -Inquisitor's great helm (24419) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1, -Amulet of blood fury (24780) x1, -Book of the Dead (25818) x1, +Tumeken's shadow (27275) x1, -Saturated heart (27641) x1, -Ultor ring (28307) x1, -Amulet of rancour (29801) x1, -Aether rune (30843) x759, +Avernic treads (max) (31097) x1, -Crimson kisten (33631) x1, -Blisterwood stake (33716) x206, -Hallowfell (34027) x1
+tick=1539 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Unholy blessing (20223) x1, -Ancestral hat (21018) x1, -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, -Imbued Saradomin cape (21791) x1, -Tumeken's shadow (27275) x1, -Magus ring (28313) x1, -Avernic treads (max) (31097) x1, -Confliction gauntlets (31106) x1
+tick=1542 region=15256 inLair=false MENU option="Collect" action=NPC_THIRD_OPTION id=32249 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9472
+tick=1545 region=15256 inLair=false MENU option="Unlock" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=39452678
+tick=1545 region=15256 inLair=false MENU option="Unlock" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=39452678
+tick=1546 region=15256 inLair=false MENU option="Take-All" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=39452678
+tick=1546 region=15256 inLair=false INVENTORY +Prayer potion(3) (139) x1, +Prayer potion(1) (143) x1, +Vial (229) x1, +Prayer potion(4) (2434) x4, +Teleport to house (8013) x9, +Sanfew serum(4) (10925) x1, +Rune pouch (12791) x1, +Infernal cape (21295) x1, +Drakan's medallion (22400) x1, +Ferocious gloves (22981) x1, +Divine super combat potion(2) (23691) x1, +Inquisitor's great helm (24419) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1, +Amulet of blood fury (24780) x1, +Book of the Dead (25818) x1, -Tumeken's shadow (27275) x1, +Saturated heart (27641) x1, +Ultor ring (28307) x1, +Amulet of rancour (29801) x1, +Aether rune (30843) x759, -Avernic treads (max) (31097) x1, +Crimson kisten (33631) x1, +Blisterwood stake (33716) x206, +Hallowfell (34027) x1
+tick=1546 region=15256 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Unholy blessing (20223) x1, +Ancestral hat (21018) x1, +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, +Imbued Saradomin cape (21791) x1, +Tumeken's shadow (27275) x1, +Magus ring (28313) x1, +Avernic treads (max) (31097) x1, +Confliction gauntlets (31106) x1
+tick=1548 region=15256 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=520 param1=223
+tick=1549 region=15256 inLair=false MENU option="Drink-from" action=GAME_OBJECT_FIRST_OPTION id=29710 itemId=-1 itemOp=-1 param0=56 param1=52
+tick=1558 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=416 param1=298
+tick=1558 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=416 param1=295
+tick=1559 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=1559 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=4 param1=9764864
+tick=1559 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, -Amulet of blood fury (24780) x1, +Tumeken's shadow (27275) x1
+tick=1559 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of blood fury (24780) x1, -Tumeken's shadow (27275) x1
+tick=1560 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=1560 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=1560 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=1560 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=1560 region=15515 inLair=false INVENTORY +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1
+tick=1560 region=15515 inLair=false EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=1561 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=1561 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=1561 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=1561 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1562 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=21 param1=9764864
+tick=1562 region=15515 inLair=false INVENTORY +Amulet of blood fury (24780) x1, -Amulet of rancour (29801) x1
+tick=1562 region=15515 inLair=false EQUIPMENT -Amulet of blood fury (24780) x1, +Amulet of rancour (29801) x1
+tick=1563 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=1563 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1563 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1565 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=23691 itemOp=1 param0=11 param1=9764864
+tick=1565 region=15515 inLair=false INVENTORY -Divine super combat potion(2) (23691) x1, +Divine super combat potion(1) (23694) x1
+tick=1568 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1581 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1582 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1585 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1586 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=1586 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1586 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1586 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1614 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1621 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1639 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=468 param1=356
+tick=1640 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=468 param1=355
+tick=1642 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9418
+tick=1648 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1650 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1653 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=1653 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=1653 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=1653 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=1653 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=1653 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=1654 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=1654 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=1654 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=1654 region=15515 inLair=false INVENTORY -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=1654 region=15515 inLair=false EQUIPMENT +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=1655 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=1655 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=1655 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1656 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1658 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=1660 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1663 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=10925 itemOp=1 param0=14 param1=9764864
+tick=1663 region=15515 inLair=false INVENTORY -Sanfew serum(4) (10925) x1, +Sanfew serum(3) (10927) x1
+tick=1664 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1665 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1668 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=366 param1=353
+tick=1669 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1674 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=563 param1=324
+tick=1675 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1675 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1675 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1676 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=548 param1=261
+tick=1676 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=532 param1=224
+tick=1677 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=534 param1=212
+tick=1678 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1679 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=511 param1=218
+tick=1679 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=51780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=1687 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=9 param1=9764864
+tick=1687 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1687 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1688 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1689 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1692 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=474 param1=106
+tick=1693 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1694 region=15515 inLair=false MENU option="Invigorate" action=CC_OP id=2 itemId=27641 itemOp=1 param0=15 param1=9764864
+tick=1695 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1699 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=331 param1=176
+tick=1702 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1703 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1706 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1710 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=265
+tick=1711 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1713 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1715 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=455 param1=315
+tick=1715 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=442 param1=299
+tick=1715 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=442 param1=298
+tick=1718 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1719 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=448 param1=325
+tick=1720 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=457 param1=342
+tick=1723 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=358 param1=359
+tick=1725 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=361 param1=349
+tick=1727 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=366 param1=283
+tick=1729 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1730 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=405 param1=197
+tick=1732 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=143 itemOp=1 param0=12 param1=9764864
+tick=1733 region=15515 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=1735 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=1735 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x206
+tick=1735 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x206
+tick=1736 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=53426 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1736 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1737 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=158 param1=277
+tick=1738 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=53427 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1738 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3881,9957,3
+tick=1739 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1740 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=503 param1=338
+tick=1741 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=8 param1=9764864
+tick=1742 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=1742 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=4 param1=9764864
+tick=1742 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Blisterwood stake (33716) x204
+tick=1742 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Blisterwood stake (33716) x204
+tick=1743 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=1743 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1743 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Inquisitor's hauberk (24420) x1, -Amulet of rancour (29801) x1
+tick=1743 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Inquisitor's hauberk (24420) x1, +Amulet of rancour (29801) x1
+tick=1744 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=1744 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=1744 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=1744 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=1744 region=15515 inLair=false INVENTORY -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=1744 region=15515 inLair=false EQUIPMENT +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=1745 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=1745 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, +Ancestral robe bottom (21024) x1, -Inquisitor's great helm (24419) x1, -Inquisitor's plateskirt (24421) x1
+tick=1745 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, -Ancestral robe bottom (21024) x1, +Inquisitor's great helm (24419) x1, +Inquisitor's plateskirt (24421) x1
+tick=1746 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=1746 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1746 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1752 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=1752 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1752 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1753 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1754 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9422
+tick=1756 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1758 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1763 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=291
+tick=1765 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1778 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1790 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1792 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=1792 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1792 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1793 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1794 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1796 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1797 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=1798 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1798 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=1798 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=1806 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=2434 itemOp=1 param0=16 param1=9764864
+tick=1806 region=15515 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=1807 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1808 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1812 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=319 param1=296
+tick=1813 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9417
+tick=1816 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=142 param1=281
+tick=1818 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=1818 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=1818 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=1818 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1818 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=1818 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=1819 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=1819 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=1819 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=1819 region=15515 inLair=false INVENTORY +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, -Confliction gauntlets (31106) x1
+tick=1819 region=15515 inLair=false EQUIPMENT -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, +Confliction gauntlets (31106) x1
+tick=1820 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=1820 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=1820 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1821 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1822 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1823 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=1825 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1826 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=370 param1=274
+tick=1827 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1830 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1836 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=305 param1=270
+tick=1837 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=1840 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=344 param1=286
+tick=1841 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=302 param1=268
+tick=1842 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1844 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1846 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=365 param1=283
+tick=1847 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1849 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=451 param1=232
+tick=1850 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1852 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=375 param1=259
+tick=1852 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=378 param1=263
+tick=1853 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1855 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=515 param1=260
+tick=1856 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=512 param1=219
+tick=1858 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=1859 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=407 param1=206
+tick=1861 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=349 param1=194
+tick=1863 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1864 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=434 param1=215
+tick=1867 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1869 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=315 param1=245
+tick=1871 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=1874 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=139 itemOp=1 param0=16 param1=9764864
+tick=1874 region=15515 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=1875 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=324 param1=122
+tick=1876 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1877 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1878 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1879 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=330 param1=234
+tick=1880 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=325 param1=228
+tick=1881 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=1883 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1890 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1890 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1890 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1892 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58455 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=1893 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58455 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=1894 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58455 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=1894 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58455 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9466
+tick=1895 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=58456 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9467
+tick=1901 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=9 param1=9764864
+tick=1901 region=15515 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Hallowfell (34027) x1
+tick=1901 region=15515 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Hallowfell (34027) x1
+tick=1903 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=1903 region=15515 inLair=false INVENTORY -Ancestral robe bottom (21024) x1, +Inquisitor's plateskirt (24421) x1
+tick=1903 region=15515 inLair=false EQUIPMENT +Ancestral robe bottom (21024) x1, -Inquisitor's plateskirt (24421) x1
+tick=1904 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=547 param1=154
+tick=1905 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=547 param1=154
+tick=1906 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1907 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=1907 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x204
+tick=1907 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x204
+tick=1912 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=59075 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1913 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1914 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=59074 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1915 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3863,9957,3
+tick=1915 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1917 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=59073 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=1917 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3877,9959,3
+tick=1918 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=1919 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=497 param1=336
+tick=1921 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=8 param1=9764864
+tick=1921 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=1921 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Blisterwood stake (33716) x201
+tick=1921 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Blisterwood stake (33716) x201
+tick=1922 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=4 param1=9764864
+tick=1922 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=1922 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=1922 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Inquisitor's hauberk (24420) x1, -Amulet of rancour (29801) x1
+tick=1922 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Inquisitor's hauberk (24420) x1, +Amulet of rancour (29801) x1
+tick=1923 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=1923 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=1923 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=1923 region=15515 inLair=false INVENTORY +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=1923 region=15515 inLair=false EQUIPMENT -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=1924 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=1924 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=1924 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=1932 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1933 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=1935 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1937 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3881,9957,3
+tick=1941 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1946 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1958 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1959 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1961 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=10927 itemOp=1 param0=14 param1=9764864
+tick=1961 region=15515 inLair=false INVENTORY -Sanfew serum(3) (10927) x1, +Sanfew serum(2) (10929) x1
+tick=1962 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=1965 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1971 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1974 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1975 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=34027 itemOp=2 param0=9 param1=9764864
+tick=1975 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1975 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1977 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=331
+tick=1978 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=383 param1=343
+tick=1978 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=396 param1=359
+tick=1978 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=398 param1=365
+tick=1980 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=61061 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9469
+tick=1982 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=9 param1=9764864
+tick=1983 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=1983 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Hallowfell (34027) x1
+tick=1983 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Hallowfell (34027) x1
+tick=1986 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1988 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=458 param1=344
+tick=1989 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=1992 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1998 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2006 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2009 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=141 itemOp=1 param0=16 param1=9764864
+tick=2009 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9416
+tick=2009 region=15515 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=2013 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=27275 itemOp=2 param0=0 param1=9764864
+tick=2013 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=12002 itemOp=2 param0=4 param1=9764864
+tick=2013 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21021 itemOp=2 param0=1 param1=9764864
+tick=2013 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21024 itemOp=2 param0=5 param1=9764864
+tick=2013 region=15515 inLair=false INVENTORY -Occult necklace (12002) x1, -Ancestral robe top (21021) x1, +Scythe of Vitur (22325) x1, +Inquisitor's hauberk (24420) x1, -Tumeken's shadow (27275) x1, +Amulet of rancour (29801) x1
+tick=2013 region=15515 inLair=false EQUIPMENT +Occult necklace (12002) x1, +Ancestral robe top (21021) x1, -Scythe of Vitur (22325) x1, -Inquisitor's hauberk (24420) x1, +Tumeken's shadow (27275) x1, -Amulet of rancour (29801) x1
+tick=2014 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21791 itemOp=2 param0=2 param1=9764864
+tick=2014 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=31106 itemOp=2 param0=6 param1=9764864
+tick=2014 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28313 itemOp=2 param0=3 param1=9764864
+tick=2014 region=15515 inLair=false INVENTORY -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Ferocious gloves (22981) x1, +Inquisitor's plateskirt (24421) x1, -Confliction gauntlets (31106) x1
+tick=2014 region=15515 inLair=false EQUIPMENT +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Ferocious gloves (22981) x1, -Inquisitor's plateskirt (24421) x1, +Confliction gauntlets (31106) x1
+tick=2015 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21018 itemOp=2 param0=7 param1=9764864
+tick=2015 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=2015 region=15515 inLair=false INVENTORY -Ancestral hat (21018) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1
+tick=2015 region=15515 inLair=false EQUIPMENT +Ancestral hat (21018) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1
+tick=2017 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=343 param1=310
+tick=2019 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=2020 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=2023 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=398 param1=340
+tick=2024 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=2028 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=395 param1=364
+tick=2029 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=2033 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=500 param1=312
+tick=2034 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=2037 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=442 param1=221
+tick=2039 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=2042 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=301 param1=323
+tick=2044 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47569 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9444
+tick=2049 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2050 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=533 param1=303
+tick=2051 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=534 param1=305
+tick=2051 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=532 param1=306
+tick=2053 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47568 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9441
+tick=2054 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=444 param1=131
+tick=2055 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=119
+tick=2055 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=429 param1=114
+tick=2056 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=2059 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=557 param1=222
+tick=2060 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2061 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=2064 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=469 param1=153
+tick=2065 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2066 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47566 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9435
+tick=2069 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=429 param1=141
+tick=2070 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=2072 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2074 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=478 param1=185
+tick=2076 region=15515 inLair=false MENU option="Charge" action=NPC_SECOND_OPTION id=47567 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9438
+tick=2078 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2079 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=447 param1=209
+tick=2081 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=307 param1=199
+tick=2083 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2084 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=2087 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33716 itemOp=2 param0=8 param1=9764864
+tick=2088 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2088 region=15515 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Blisterwood stake (33716) x201
+tick=2088 region=15515 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Blisterwood stake (33716) x201
+tick=2090 region=15515 inLair=false MENU option="Drink" action=CC_OP id=2 itemId=143 itemOp=1 param0=16 param1=9764864
+tick=2090 region=15515 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=2093 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=64506 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=2094 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=2095 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=64508 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=2097 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3881,9945,3
+tick=2098 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=64507 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=2098 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=2100 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3878,9960,3
+tick=2100 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=2101 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=64509 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=9470
+tick=2103 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3865,9955,3
+tick=2103 region=15515 inLair=false EQUIPMENT -Blisterwood stake (33716) x1
+tick=2104 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=447 param1=314
+tick=2106 region=15515 inLair=false GROUND spawned Blisterwood stake (33716) x1 ownership=1 at=3870,9947,3
+tick=2110 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=2110 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=29801 itemOp=2 param0=4 param1=9764864
+tick=2110 region=15515 inLair=false INVENTORY +Occult necklace (12002) x1, -Scythe of Vitur (22325) x1, -Amulet of rancour (29801) x1, +Blisterwood stake (33716) x197
+tick=2110 region=15515 inLair=false EQUIPMENT -Occult necklace (12002) x1, +Scythe of Vitur (22325) x1, +Amulet of rancour (29801) x1, -Blisterwood stake (33716) x197
+tick=2111 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24420 itemOp=2 param0=1 param1=9764864
+tick=2111 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24421 itemOp=2 param0=5 param1=9764864
+tick=2111 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=21295 itemOp=2 param0=2 param1=9764864
+tick=2111 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=22981 itemOp=2 param0=6 param1=9764864
+tick=2111 region=15515 inLair=false INVENTORY +Ancestral robe top (21021) x1, +Ancestral robe bottom (21024) x1, -Infernal cape (21295) x1, +Imbued Saradomin cape (21791) x1, -Inquisitor's hauberk (24420) x1, -Inquisitor's plateskirt (24421) x1
+tick=2111 region=15515 inLair=false EQUIPMENT -Ancestral robe top (21021) x1, -Ancestral robe bottom (21024) x1, +Infernal cape (21295) x1, -Imbued Saradomin cape (21791) x1, +Inquisitor's hauberk (24420) x1, +Inquisitor's plateskirt (24421) x1
+tick=2112 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=28307 itemOp=2 param0=3 param1=9764864
+tick=2112 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24419 itemOp=2 param0=7 param1=9764864
+tick=2112 region=15515 inLair=false INVENTORY +Ancestral hat (21018) x1, -Ferocious gloves (22981) x1, -Inquisitor's great helm (24419) x1, -Ultor ring (28307) x1, +Magus ring (28313) x1, +Confliction gauntlets (31106) x1
+tick=2112 region=15515 inLair=false EQUIPMENT -Ancestral hat (21018) x1, +Ferocious gloves (22981) x1, +Inquisitor's great helm (24419) x1, +Ultor ring (28307) x1, -Magus ring (28313) x1, -Confliction gauntlets (31106) x1
+tick=2113 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=33631 itemOp=2 param0=10 param1=9764864
+tick=2113 region=15515 inLair=false INVENTORY +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=2113 region=15515 inLair=false EQUIPMENT -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=2114 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3863,9957,3
+tick=2115 region=15515 inLair=false MENU option="Use" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=2115 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2116 region=15515 inLair=false MENU option="Activate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455001
+tick=2116 region=15515 inLair=false GROUND despawned Blisterwood stake (33716) x1 ownership=1 at=3877,9959,3
+tick=2118 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=2120 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=539 param1=251
+tick=2121 region=15515 inLair=false MENU option="Wield" action=CC_OP id=3 itemId=22325 itemOp=2 param0=10 param1=9764864
+tick=2121 region=15515 inLair=false INVENTORY -Scythe of Vitur (22325) x1, +Crimson kisten (33631) x1
+tick=2121 region=15515 inLair=false EQUIPMENT +Scythe of Vitur (22325) x1, -Crimson kisten (33631) x1
+tick=2122 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=2125 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=498 param1=264
+tick=2126 region=15515 inLair=false MENU option="Wear" action=CC_OP id=3 itemId=24780 itemOp=2 param0=21 param1=9764864
+tick=2126 region=15515 inLair=false INVENTORY -Amulet of blood fury (24780) x1, +Amulet of rancour (29801) x1
+tick=2126 region=15515 inLair=false EQUIPMENT +Amulet of blood fury (24780) x1, -Amulet of rancour (29801) x1
+tick=2127 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=2129 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=524 param1=276
+tick=2130 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=467 param1=306
+tick=2132 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=2133 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=501 param1=233
+tick=2136 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=498 param1=225
+tick=2137 region=15515 inLair=false MENU option="Attack" action=NPC_SECOND_OPTION id=47570 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=11154
+tick=2139 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=282
+tick=2141 region=15515 inLair=false MENU option="Deactivate" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2147 region=15515 inLair=false GROUND spawned Big bones (532) x1 ownership=1 at=3873,9948,3
+tick=2147 region=15515 inLair=false GROUND spawned Soul rune (566) x184 ownership=1 at=3873,9948,3
+tick=2147 region=15515 inLair=false LOOT name="Phosani's Nightmare" type=NPC combatLevel=1024 amount=1 items=[Big bones (532) x1, Soul rune (566) x184]
+tick=2153 region=15515 inLair=false MENU option="Cancel" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=2155 region=15515 inLair=false MENU option="Take" action=GROUND_ITEM_THIRD_OPTION id=566 itemId=-1 itemOp=-1 param0=49 param1=52
+tick=2156 region=15515 inLair=false GROUND despawned Soul rune (566) x184 ownership=1 at=3873,9948,3
+tick=2156 region=15515 inLair=false INVENTORY +Soul rune (566) x184
+tick=2159 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=321
+tick=2163 region=15515 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=558 param1=180
+tick=2164 region=15515 inLair=false MENU option="Pass-through" action=GAME_OBJECT_FIRST_OPTION id=37730 itemId=-1 itemOp=-1 param0=46 param1=44
+tick=2171 region=15515 inLair=false MENU option="Continue" action=WIDGET_CONTINUE id=0 itemId=-1 itemOp=-1 param0=1 param1=14352385
+tick=2176 region=15256 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=387 param1=331
+tick=2176 region=15256 inLair=false MENU option="Walk here" action=WALK id=0 itemId=0 itemOp=-1 param0=388 param1=331

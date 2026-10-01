@@ -14,7 +14,7 @@ import net.runelite.http.api.item.ItemPrice;
  * GE prices and potion dose handling. Item names always come from ItemManager at runtime.
  * Must be used on the client thread.
  */
-public class PriceService
+public class PriceService implements ItemInfo
 {
 	private static final Pattern DOSE_NAME = Pattern.compile("^(.+)\\((\\d)\\)$");
 
@@ -25,17 +25,20 @@ public class PriceService
 	private final Map<Integer, Boolean> foodCache = new HashMap<>();
 	private final Map<Integer, Boolean> drinkCache = new HashMap<>();
 	private final Map<Integer, Boolean> equipableCache = new HashMap<>();
+	private final Map<Integer, Boolean> stackableCache = new HashMap<>();
 
 	public PriceService(ItemManager itemManager)
 	{
 		this.itemManager = itemManager;
 	}
 
+	@Override
 	public long price(int itemId)
 	{
 		return itemManager.getItemPrice(itemId);
 	}
 
+	@Override
 	public String name(int itemId)
 	{
 		return itemManager.getItemComposition(itemId).getName();
@@ -103,6 +106,7 @@ public class PriceService
 	/**
 	 * Gear that can be worn, such as a salve amulet dropped mid-raid (never a supply cost when dropped).
 	 */
+	@Override
 	public boolean isEquipable(int itemId)
 	{
 		return equipableCache.computeIfAbsent(itemId, id ->
@@ -115,6 +119,7 @@ public class PriceService
 	/**
 	 * @return the potion family and dose count for a dosed item such as "Prayer potion(3)", or null
 	 */
+	@Override
 	public DoseInfo doseInfo(int itemId)
 	{
 		return doseInfoCache.computeIfAbsent(itemId, id ->
@@ -133,6 +138,7 @@ public class PriceService
 	 * The highest-dose tradeable variant of a family, used for the icon and the per-dose price.
 	 * Falls back to the variant that was seen if the family can't be found in the price list.
 	 */
+	@Override
 	public FullDose fullDose(String family, int seenItemId, int seenDoses)
 	{
 		FullDose cached = fullDoseCache.get(family);
@@ -164,9 +170,13 @@ public class PriceService
 		return best;
 	}
 
-	public long pricePerDose(FullDose fullDose)
+	/**
+	 * Items that stack in one inventory slot, such as runes, ammo and coins.
+	 */
+	@Override
+	public boolean isStackable(int itemId)
 	{
-		return Math.round((double) price(fullDose.getItemId()) / fullDose.getDoses());
+		return stackableCache.computeIfAbsent(itemId, id -> itemManager.getItemComposition(id).isStackable());
 	}
 
 	@Value
