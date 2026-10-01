@@ -12,3 +12,14 @@ nbproject/
 bin/
 out/
 .tmp/
+
+# Local working notes and editor config
+CLAUDE.md
+AGENTS.md
+PROJECT_BRIEF.md
+ROADMAP.md
+SUBMISSION_CONTEXT.md
+PLUGIN_CRITIQUE.md
+PUBLISHING_PLAN.md
+BETA_TESTER_SETUP.md
+.vscode/
