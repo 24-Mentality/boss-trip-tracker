@@ -1,5 +1,6 @@
 package com.bosstriptracker;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.inject.Provides;
 import com.bosstriptracker.boss.BossRegistry;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
@@ -54,6 +56,9 @@ import net.runelite.client.util.ImageUtil;
 public class BossTripTrackerPlugin extends Plugin
 {
 	private static final DateTimeFormatter EXPORT_STAMP = DateTimeFormatter.ofPattern("yyyy-MM-dd-HHmmss");
+
+	private static final Set<String> NO_REFRESH_KEYS = ImmutableSet.of("selectedBoss", "sectionStates", "diagnosticMode",
+		"diagnosticLogEverywhere");
 
 	@Inject
 	private Client client;
@@ -342,11 +347,24 @@ public class BossTripTrackerPlugin extends Plugin
 				clientThread.invokeLater(() -> recorder.setLogEverywhere(everywhere));
 			}
 		}
-		else if ("showCurrentValue".equals(event.getKey()) || "luckCardStyle".equals(event.getKey()))
+		else if (refreshesView(event.getKey()))
 		{
 			TripTracker tracker = tripTracker;
-			clientThread.invokeLater(tracker::refreshView);
+			if (tracker != null)
+			{
+				clientThread.invokeLater(tracker::refreshView);
+			}
 		}
+	}
+
+	/**
+	 * Whether a change to this setting should redraw the panel. Any setting may change what it shows (e.g. the
+	 * typical Theatre of Blood team size changes the luck numbers), except the panel's own remembered state and the
+	 * diagnostic log switches.
+	 */
+	static boolean refreshesView(String key)
+	{
+		return key != null && !NO_REFRESH_KEYS.contains(key);
 	}
 
 	/**
