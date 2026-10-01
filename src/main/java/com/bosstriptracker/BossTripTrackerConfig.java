@@ -56,14 +56,6 @@ public interface BossTripTrackerConfig extends Config
 	)
 	String overlaySection = "overlay";
 
-	@ConfigSection(
-		name = "Developer",
-		description = "Settings used to collect data for plugin development",
-		position = 100,
-		closedByDefault = true
-	)
-	String developerSection = "developer";
-
 	@ConfigItem(
 		keyName = "logoutGraceMinutes",
 		name = "Logout grace period",
@@ -385,13 +377,16 @@ public interface BossTripTrackerConfig extends Config
 		return true;
 	}
 
+	/**
+	 * Hidden: only switched in developer mode, from the side panel's Lifetime tab. Other players' names in the log are
+	 * replaced with PLAYER1, PLAYER2 and so on.
+	 */
 	@ConfigItem(
 		keyName = "diagnosticMode",
 		name = "Diagnostic mode",
 		description = "Append boss related game events (chat, clicks, inventory changes, loot) to diagnostic.log"
 			+ " in this plugin's data folder. Leave off unless you are collecting data for development.",
-		section = developerSection,
-		position = 0
+		hidden = true
 	)
 	default boolean diagnosticMode()
 	{
@@ -403,8 +398,7 @@ public interface BossTripTrackerConfig extends Config
 		name = "Log everywhere",
 		description = "With diagnostic mode on, record everywhere instead of only around tracked bosses, to collect"
 			+ " data for bosses that aren't supported yet. The log grows quickly; turn it off after the run.",
-		section = developerSection,
-		position = 1
+		hidden = true
 	)
 	default boolean diagnosticLogEverywhere()
 	{

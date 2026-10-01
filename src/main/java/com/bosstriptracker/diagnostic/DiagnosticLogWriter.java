@@ -21,6 +21,10 @@ import net.runelite.client.util.Filepath;
 /**
  * Appends diagnostic lines to diagnostic.log in the plugin data directory. Lines are queued from the
  * client thread and written by a dedicated background thread, so no disk IO happens on the client thread.
+ * <p>
+ * Other players' names are replaced with PLAYER1, PLAYER2 and so on as lines are written. Each run of the plugin
+ * starts a new file (the previous one moves to diagnostic.log.1), and so does each rotation, so a stand-in means the
+ * same player throughout one file.
  */
 @Slf4j
 class DiagnosticLogWriter
@@ -35,7 +39,8 @@ class DiagnosticLogWriter
 	private static final DateTimeFormatter TIMESTAMP = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
 	private final Callable<Filepath> directorySupplier;
-	private final Queue<String> pending = new ConcurrentLinkedQueue<>();
+	private final Queue<String[]> pending = new ConcurrentLinkedQueue<>();
+	private final Queue<String> learnedNames = new ConcurrentLinkedQueue<>();
 	private final AtomicBoolean drainScheduled = new AtomicBoolean();
 	private final ExecutorService executor = Executors.newSingleThreadExecutor(r ->
 	{
@@ -46,15 +51,29 @@ class DiagnosticLogWriter
 
 	// Only touched on the executor thread
 	private Filepath directory;
+	private final PlayerNameScrubber scrubber = new PlayerNameScrubber();
+	private boolean newFileStarted;
 
 	DiagnosticLogWriter(Callable<Filepath> directorySupplier)
 	{
 		this.directorySupplier = directorySupplier;
 	}
 
-	void append(String line)
+	/**
+	 * Replace this player's name in every line written from now on.
+	 */
+	void learnName(String name)
 	{
-		pending.add(LocalDateTime.now().format(TIMESTAMP) + ' ' + line);
+		learnedNames.add(name);
+	}
+
+	/**
+	 * @param prefix  written as is (tick, region, category)
+	 * @param details scrubbed of other players' names
+	 */
+	void append(String prefix, String details)
+	{
+		pending.add(new String[]{LocalDateTime.now().format(TIMESTAMP) + ' ' + prefix, details});
 		if (drainScheduled.compareAndSet(false, true))
 		{
 			try
@@ -77,6 +96,11 @@ class DiagnosticLogWriter
 	private void drain()
 	{
 		drainScheduled.set(false);
+		String name;
+		while ((name = learnedNames.poll()) != null)
+		{
+			scrubber.learn(name);
+		}
 		if (pending.isEmpty())
 		{
 			return;
@@ -87,10 +111,10 @@ class DiagnosticLogWriter
 			Filepath logFile = logFile();
 			try (BufferedWriter writer = logFile.openBufferedWriter(StandardOpenOption.CREATE, StandardOpenOption.APPEND))
 			{
-				String line;
+				String[] line;
 				while ((line = pending.poll()) != null)
 				{
-					writer.write(line);
+					writer.write(line[0] + ' ' + scrubber.scrub(line[1]));
 					writer.newLine();
 				}
 			}
@@ -119,10 +143,13 @@ class DiagnosticLogWriter
 
 	private void rotateIfNeeded(Filepath logFile) throws IOException
 	{
-		if (!logFile.exists() || logFile.size() <= MAX_FILE_BYTES)
+		boolean firstWrite = !newFileStarted;
+		newFileStarted = true;
+		if (!logFile.exists() || logFile.size() == 0 || (!firstWrite && logFile.size() <= MAX_FILE_BYTES))
 		{
 			return;
 		}
+		scrubber.startNewFile();
 		for (String[] move : rotationMoves())
 		{
 			Filepath from = directory.joinSegment(move[0]);

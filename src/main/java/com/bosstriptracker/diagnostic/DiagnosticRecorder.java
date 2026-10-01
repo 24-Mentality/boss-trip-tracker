@@ -5,8 +5,11 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.BossRegistry;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,11 +21,16 @@ import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Hitsplat;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.FriendsChatManager;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.NPC;
+import net.runelite.api.Nameable;
+import net.runelite.api.NameableContainer;
 import net.runelite.api.Player;
+import net.runelite.api.clan.ClanChannel;
+import net.runelite.api.clan.ClanChannelMember;
 import net.runelite.api.TileItem;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
@@ -41,6 +49,7 @@ import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.InventoryID;
+import net.runelite.api.gameval.VarClientID;
 import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.ConfigManager;
@@ -60,6 +69,10 @@ import net.runelite.client.util.Filepath;
  * dying in a boss's area. With "log everywhere" on, it records everywhere, to find the regions, NPCs and messages of
  * bosses that aren't tracked yet. When enabled, and at each login, it also lists the saved Loot Tracker and Chat
  * Commands record keys of the bosses planned next.
+ * <p>
+ * Other players' names never reach the file: names seen nearby, in chat, on menu entries, and in the friends list,
+ * friends chat, clan channel and Theatre of Blood party are passed to the log writer, which replaces them with
+ * PLAYER1, PLAYER2 and so on. Only built in developer mode.
  */
 public class DiagnosticRecorder
 {
@@ -68,6 +81,12 @@ public class DiagnosticRecorder
 	 * After dying in the lair, keep recording while the player respawns and recovers their gravestone.
 	 */
 	private static final int DEATH_WINDOW_TICKS = 200;
+	/**
+	 * How often the friends, friends chat, clan and party lists are read for names to replace.
+	 */
+	private static final int NAME_LIST_TICKS = 10;
+	private static final int[] TOB_PARTY_NAMES = {VarClientID.TOB_CLIENT_NAME0, VarClientID.TOB_CLIENT_NAME1,
+		VarClientID.TOB_CLIENT_NAME2, VarClientID.TOB_CLIENT_NAME3, VarClientID.TOB_CLIENT_NAME4};
 
 	private static final Set<Integer> RUNE_POUCH_VARBITS = ImmutableSet.of(
 		VarbitID.RUNE_POUCH_TYPE_1, VarbitID.RUNE_POUCH_TYPE_2, VarbitID.RUNE_POUCH_TYPE_3,
@@ -145,6 +164,14 @@ public class DiagnosticRecorder
 	private int templateRegionId = -1;
 	private int clickWindowEndTick = -1;
 	private final Map<Integer, Map<Integer, Integer>> containerSnapshots = new HashMap<>();
+	/**
+	 * Names already passed to the writer, normalised.
+	 */
+	private final Set<String> learnedNames = new HashSet<>();
+	/**
+	 * Names seen before the local player's own name is known, so it isn't replaced by mistake.
+	 */
+	private final Set<String> deferredNames = new LinkedHashSet<>();
 
 	public DiagnosticRecorder(Client client, ItemManager itemManager, BossRegistry registry, ConfigManager configManager,
 		Callable<Filepath> directorySupplier)
@@ -259,7 +286,7 @@ public class DiagnosticRecorder
 				found++;
 			}
 		}
-		record("RECORDKEY", found + " record keys found for the Nightmare, Nex and Theatre of Blood (profile " + profile + ")");
+		record("RECORDKEY", found + " record keys found for the Nightmare, Nex and Theatre of Blood");
 	}
 
 	@Subscribe
@@ -269,6 +296,11 @@ public class DiagnosticRecorder
 		if (player == null)
 		{
 			return;
+		}
+
+		if (enabled)
+		{
+			learnNames(player);
 		}
 
 		LocalPoint localPoint = player.getLocalLocation();
@@ -350,6 +382,11 @@ public class DiagnosticRecorder
 		NPC npc = entry.getNpc();
 		int itemId = event.getItemId();
 
+		if (enabled && entry.getPlayer() != null)
+		{
+			learnName(entry.getPlayer().getName());
+		}
+
 		boolean trigger = (npc != null && triggerNpcs.contains(npc.getId())) || triggerItems.contains(itemId);
 		if (trigger)
 		{
@@ -363,8 +400,7 @@ public class DiagnosticRecorder
 
 		StringBuilder sb = new StringBuilder()
 			.append("option=\"").append(event.getMenuOption()).append('"')
-			// A player's name in the target (e.g. "Walk here" on a player) isn't logged
-			.append(" target=\"").append(entry.getPlayer() != null ? "<player>" : event.getMenuTarget()).append('"')
+			.append(" target=\"").append(event.getMenuTarget()).append('"')
 			.append(" action=").append(event.getMenuAction())
 			.append(" id=").append(event.getId())
 			.append(" itemId=").append(itemId)
@@ -390,6 +426,8 @@ public class DiagnosticRecorder
 			return;
 		}
 
+		learnName(event.getName());
+		learnName(event.getSender());
 		record("CHAT", "type=" + event.getType()
 			+ " name=\"" + event.getName() + '"'
 			+ " sender=\"" + event.getSender() + '"'
@@ -700,11 +738,93 @@ public class DiagnosticRecorder
 			return;
 		}
 
-		String line = "tick=" + client.getTickCount()
+		String prefix = "tick=" + client.getTickCount()
 			+ " region=" + templateRegionId
 			+ " inLair=" + inLair
-			+ ' ' + category + ' ' + details;
-		writer.append(line.replace("\r", "\\r").replace("\n", "\\n"));
+			+ ' ' + category;
+		writer.append(prefix, details.replace("\r", "\\r").replace("\n", "\\n"));
+	}
+
+	/**
+	 * Passes the names of players nearby to the writer every tick, and those in the friends list, friends chat, clan
+	 * channel and Theatre of Blood party every few ticks.
+	 */
+	private void learnNames(Player localPlayer)
+	{
+		if (localPlayer.getName() != null && !deferredNames.isEmpty())
+		{
+			List<String> deferred = new ArrayList<>(deferredNames);
+			deferredNames.clear();
+			deferred.forEach(this::learnName);
+		}
+
+		for (Player player : client.getTopLevelWorldView().players())
+		{
+			learnName(player.getName());
+		}
+
+		if (client.getTickCount() % NAME_LIST_TICKS != 0)
+		{
+			return;
+		}
+		learnNames(client.getFriendContainer());
+		FriendsChatManager friendsChat = client.getFriendsChatManager();
+		learnNames(friendsChat);
+		if (friendsChat != null)
+		{
+			learnName(friendsChat.getOwner());
+		}
+		for (ClanChannel channel : new ClanChannel[]{client.getClanChannel(), client.getGuestClanChannel()})
+		{
+			if (channel != null)
+			{
+				for (ClanChannelMember member : channel.getMembers())
+				{
+					learnName(member.getName());
+				}
+			}
+		}
+		for (int varc : TOB_PARTY_NAMES)
+		{
+			learnName(client.getVarcStrValue(varc));
+		}
+	}
+
+	private void learnNames(NameableContainer<? extends Nameable> container)
+	{
+		if (container == null)
+		{
+			return;
+		}
+		for (Nameable member : container.getMembers())
+		{
+			if (member != null)
+			{
+				learnName(member.getName());
+			}
+		}
+	}
+
+	private void learnName(String name)
+	{
+		String key = PlayerNameScrubber.normalize(name);
+		if (key.isEmpty() || learnedNames.contains(key))
+		{
+			return;
+		}
+		Player localPlayer = client.getLocalPlayer();
+		String localName = localPlayer == null ? null : localPlayer.getName();
+		if (localName == null)
+		{
+			deferredNames.add(name);
+			return;
+		}
+		if (key.equals(PlayerNameScrubber.normalize(localName)))
+		{
+			return;
+		}
+		learnedNames.add(key);
+		writer.learnName(name);
 	}
 
 	private String describeDiff(Map<Integer, Integer> previous, Map<Integer, Integer> current)

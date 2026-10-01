@@ -179,12 +179,6 @@ History is saved per account to
 `~/.runelite/plugin-data/boss-trip-tracker/history-<account>.json`. When a file from an older version is
 upgraded, the old file is kept next to it as `history-<account>.json.v1-backup-<date>`.
 
-**Diagnostic mode** (Configuration → Boss Trip Tracker → Developer) records raw boss related
-game events to `diagnostic.log` in the same folder, for development. **Log everywhere**
-records everywhere rather than only around supported bosses, for collecting data on new
-ones. The log rotates at 10 MB, keeping `diagnostic.log.1` to `.3`. Leave both off during
-normal play.
-
 ## Credits
 
 Built on the RuneLite client API. The on-screen box follows the layout of RuneLite's XP

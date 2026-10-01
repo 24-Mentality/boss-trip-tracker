@@ -23,6 +23,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -90,6 +91,10 @@ public class BossTripTrackerPlugin extends Plugin
 	@Inject
 	private OverlayManager overlayManager;
 
+	@Inject
+	@Named("developerMode")
+	private boolean developerMode;
+
 	private DiagnosticRecorder diagnosticRecorder;
 	private ScheduledExecutorService executor;
 	private HistoryStore store;
@@ -109,17 +114,21 @@ public class BossTripTrackerPlugin extends Plugin
 		migrateSettings();
 		migrateOverlaySettings();
 		BossRegistry registry = BossRegistry.standard();
-		DiagnosticRecorder recorder = new DiagnosticRecorder(client, itemManager, registry, configManager,
-			this::getPluginDirectory);
-		diagnosticRecorder = recorder;
-		eventBus.register(recorder);
-		boolean diagnosticMode = config.diagnosticMode();
-		boolean everywhere = config.diagnosticLogEverywhere();
-		clientThread.invokeLater(() ->
+		// The diagnostic log is only for collecting data during development (./gradlew run passes --developer-mode)
+		if (developerMode)
 		{
-			recorder.setLogEverywhere(everywhere);
-			recorder.setEnabled(diagnosticMode);
-		});
+			DiagnosticRecorder recorder = new DiagnosticRecorder(client, itemManager, registry, configManager,
+				this::getPluginDirectory);
+			diagnosticRecorder = recorder;
+			eventBus.register(recorder);
+			boolean diagnosticMode = config.diagnosticMode();
+			boolean everywhere = config.diagnosticLogEverywhere();
+			clientThread.invokeLater(() ->
+			{
+				recorder.setLogEverywhere(everywhere);
+				recorder.setEnabled(diagnosticMode);
+			});
+		}
 
 		executor = Executors.newSingleThreadScheduledExecutor(r ->
 		{
@@ -131,6 +140,12 @@ public class BossTripTrackerPlugin extends Plugin
 		SectionStates sectionStates = new SectionStates(config.sectionStates(), config::setSectionStates);
 		TrackerPanel trackerPanel = new TrackerPanel(itemManager, sectionStates, new Actions(), registry.first());
 		panel = trackerPanel;
+		if (developerMode)
+		{
+			trackerPanel.showDeveloperTools(config.diagnosticMode(), config.diagnosticLogEverywhere(),
+				on -> configManager.setConfiguration(BossTripTrackerConfig.GROUP, "diagnosticMode", on),
+				on -> configManager.setConfiguration(BossTripTrackerConfig.GROUP, "diagnosticLogEverywhere", on));
+		}
 
 		store = new HistoryStore(gson, this::getPluginDirectory, executor);
 		shareCardExporter = new ShareCardExporter(client, itemManager, imageCapture, chatMessageManager, executor);
@@ -270,9 +285,12 @@ public class BossTripTrackerPlugin extends Plugin
 		tripTracker.shutDown();
 		tripTracker = null;
 
-		eventBus.unregister(diagnosticRecorder);
-		diagnosticRecorder.shutDown();
-		diagnosticRecorder = null;
+		if (diagnosticRecorder != null)
+		{
+			eventBus.unregister(diagnosticRecorder);
+			diagnosticRecorder.shutDown();
+			diagnosticRecorder = null;
+		}
 
 		executor.shutdownNow();
 		executor = null;
@@ -307,17 +325,22 @@ public class BossTripTrackerPlugin extends Plugin
 			return;
 		}
 
+		DiagnosticRecorder recorder = diagnosticRecorder;
 		if ("diagnosticMode".equals(event.getKey()))
 		{
 			boolean diagnosticMode = config.diagnosticMode();
-			DiagnosticRecorder recorder = diagnosticRecorder;
-			clientThread.invokeLater(() -> recorder.setEnabled(diagnosticMode));
+			if (recorder != null)
+			{
+				clientThread.invokeLater(() -> recorder.setEnabled(diagnosticMode));
+			}
 		}
 		else if ("diagnosticLogEverywhere".equals(event.getKey()))
 		{
 			boolean everywhere = config.diagnosticLogEverywhere();
-			DiagnosticRecorder recorder = diagnosticRecorder;
-			clientThread.invokeLater(() -> recorder.setLogEverywhere(everywhere));
+			if (recorder != null)
+			{
+				clientThread.invokeLater(() -> recorder.setLogEverywhere(everywhere));
+			}
 		}
 		else if ("showCurrentValue".equals(event.getKey()) || "luckCardStyle".equals(event.getKey()))
 		{

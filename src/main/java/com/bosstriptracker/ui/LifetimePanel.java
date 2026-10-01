@@ -20,9 +20,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -144,6 +146,37 @@ class LifetimePanel extends JPanel
 			buttons.add(button);
 		}
 		add(buttons);
+	}
+
+	/**
+	 * Developer mode only: switches for the diagnostic log, which are hidden from the plugin's settings.
+	 */
+	void addDeveloperTools(boolean diagnosticMode, boolean logEverywhere, Consumer<Boolean> setDiagnosticMode,
+		Consumer<Boolean> setLogEverywhere)
+	{
+		add(title("Developer"));
+		JCheckBox diagnostic = developerSwitch("Diagnostic mode", diagnosticMode,
+			"Append boss related game events to diagnostic.log in this plugin's data folder. Other players' names are"
+				+ " replaced with PLAYER1, PLAYER2 and so on.", setDiagnosticMode);
+		JCheckBox everywhere = developerSwitch("Log everywhere", logEverywhere,
+			"With diagnostic mode on, record everywhere instead of only around tracked bosses. The log grows quickly;"
+				+ " turn it off after the run.", setLogEverywhere);
+		add(diagnostic);
+		add(everywhere);
+		revalidate();
+	}
+
+	private static JCheckBox developerSwitch(String text, boolean selected, String tooltip, Consumer<Boolean> onChange)
+	{
+		JCheckBox box = new JCheckBox(text, selected);
+		box.setFont(FontManager.getRunescapeSmallFont());
+		box.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+		box.setOpaque(false);
+		box.setFocusPainted(false);
+		box.setAlignmentX(LEFT_ALIGNMENT);
+		box.setToolTipText(UiFormat.tooltip(tooltip));
+		box.addActionListener(e -> onChange.accept(box.isSelected()));
+		return box;
 	}
 
 	private static JPanel holder()

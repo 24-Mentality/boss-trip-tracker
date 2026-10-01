@@ -180,6 +180,15 @@ public class TrackerPanel extends PluginPanel
 		timer.stop();
 	}
 
+	/**
+	 * Developer mode only: adds the diagnostic log switches to the Lifetime tab.
+	 */
+	public void showDeveloperTools(boolean diagnosticMode, boolean logEverywhere, Consumer<Boolean> setDiagnosticMode,
+		Consumer<Boolean> setLogEverywhere)
+	{
+		lifetimeTab.addDeveloperTools(diagnosticMode, logEverywhere, setDiagnosticMode, setLogEverywhere);
+	}
+
 	public void showMessage(String title, String message, boolean error)
 	{
 		JOptionPane.showMessageDialog(this, message, title,
