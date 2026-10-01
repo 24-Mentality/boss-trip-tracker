@@ -102,6 +102,10 @@ class AllTimeRecords
 		return key == null ? null : configManager.getRSProfileConfiguration(KILL_COUNT_GROUP, key, Integer.class);
 	}
 
+	/**
+	 * Adds two records together. The last save is the newer one: with the older one, every tracked kill since an old,
+	 * untouched record (e.g. a variant not played for months) would count as unsaved and be added twice.
+	 */
 	static AllTimeCounts combine(AllTimeCounts a, AllTimeCounts b)
 	{
 		if (a == null || b == null)
@@ -116,7 +120,7 @@ class AllTimeRecords
 		b.getVariantKillCounts().forEach((mode, count) -> byMode.merge(mode, count, Integer::sum));
 		return new AllTimeCounts(a.getLootKills() + b.getLootKills(), killCount,
 			Math.min(a.getFirstRecordedAt(), b.getFirstRecordedAt()),
-			Math.min(a.getLastRecordedAt(), b.getLastRecordedAt()), drops, byMode);
+			Math.max(a.getLastRecordedAt(), b.getLastRecordedAt()), drops, byMode);
 	}
 
 	static AllTimeCounts snapshot(LootTrackerRecord record, Integer killCount)

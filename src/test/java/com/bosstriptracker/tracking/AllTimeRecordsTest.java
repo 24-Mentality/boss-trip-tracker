@@ -44,8 +44,9 @@ public class AllTimeRecordsTest
 		assertEquals(150, both.getLootKills());
 		assertEquals(Integer.valueOf(110), both.getKillCount());
 		assertEquals(3, both.getFirstRecordedAt());
-		// Saved no later than the older of the two
-		assertEquals(40, both.getLastRecordedAt());
+		// The newest save: tracked kills after it are the ones not in any record yet
+		assertEquals(50, both.getLastRecordedAt());
+		assertEquals(50, AllTimeRecords.combine(b, a).getLastRecordedAt());
 		assertEquals(3, both.dropped(ItemID.ELDER_VENATOR_FANG));
 		assertEquals(a, AllTimeRecords.combine(a, null));
 		assertEquals(b, AllTimeRecords.combine(null, b));
