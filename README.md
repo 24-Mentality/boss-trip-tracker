@@ -32,19 +32,22 @@ bosses are planned.
   folder under "Boss Trip Tracker". Nothing is uploaded. Your name is on the card unless you
   turn off **Show my name on share cards** (Configuration → Display).
 - **Overlay** (off by default): a small box on the game screen built like RuneLite's XP
-  tracker box, with the boss icon and up to three rows: a kill goal stat (KPH, TTG, kills
-  done or left) with an optional progress bar, a trip time (current kill, trip time, kills,
-  average kill, PB) and the trip's net profit or net GP/hr. Right-click the goal card, the
-  trip time card or the profit card and choose **Add to canvas** (or **Remove from
-  canvas**), or use Configuration → Overlay, where each row has a Show toggle and a dropdown.
-  Hold Alt and drag the box to move it. By default it only shows during a trip.
+  tracker box, with the boss icon and up to three rows, each picked from one list: kill goal
+  stats (KPH, TTG, kills done or left), trip stats (current kill, trip time, kills, average
+  kill, PB), the trip's net profit or net GP/hr, and your luck status (the Luck card's tier);
+  rows 2 and 3 can also show nothing. With a goal set there is an optional progress bar.
+  Turn it on with **Show overlay** in Configuration → Overlay, or right-click the goal card,
+  the trip time card or the profit card and choose **Add to canvas** (or **Remove from
+  canvas**). Hold Alt and drag the box to move it. By default it only shows during a trip.
 - **Boss dropdown** (top of the panel): picks the boss shown in all three tabs. Entering a
   tracked boss's area selects it; otherwise your last choice is kept, so you can browse any
   boss's trips while a trip keeps tracking in the background. A green dot marks the boss with
   a trip in progress. Bosses with modes get a row of chips under the dropdown.
 - **Kill goal** (top of the Trip tab): set a kill target and see kills per hour (logged-in
-  time), kills done and left, time to goal, and a progress bar. **Reset** starts the count
-  again from now. The clocks only run while you're fighting in the lair: after 30 seconds
+  time), kills done and left, time to goal, and a progress bar. **Set goal** asks where to
+  count from: the trip in progress (the default on a trip, so kills before you set the goal
+  count), now, or a trip from the last 12 hours (that trip and every later one count).
+  **Reset** (or right-click the card, **Count from...**) restarts a goal's count the same way. The clocks only run while you're fighting in the lair: after 30 seconds
   without dealing damage they pause (the idle time isn't counted) and restart on your next
   hit. **Pause** stops them straight away; it resumes when you press it again or, with
   **Auto-resume when I attack** on, when you next damage the boss.

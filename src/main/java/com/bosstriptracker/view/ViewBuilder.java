@@ -90,7 +90,7 @@ public class ViewBuilder
 		}
 		Long segmentStart = TripClock.goalSegmentStart(goal, currentTrip);
 		return new GoalView(goal.getTarget(), done, goal.getActiveMs(), segmentStart != null ? segmentStart : now,
-			segmentStart != null);
+			segmentStart != null, goal.getStartedAt());
 	}
 
 	public TripView trip(BossDefinition boss, Trip trip)

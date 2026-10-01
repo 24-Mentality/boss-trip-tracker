@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
@@ -75,8 +76,10 @@ class CurrentTripPanel extends JPanel
 		add(summary);
 		add(detailsHolder);
 
-		// Right-click a card to put its numbers on the overlay
-		CanvasMenu.attach(goalCard, CanvasSection.GOAL, actions);
+		// Right-click a card to put its numbers on the overlay; the goal card also restarts its count from a chosen trip
+		JMenuItem countFrom = new JMenuItem("Count from...");
+		countFrom.addActionListener(e -> onResetGoal.run());
+		CanvasMenu.attach(goalCard, CanvasSection.GOAL, actions, countFrom);
 		summary.attachCanvasMenus(actions);
 	}
 

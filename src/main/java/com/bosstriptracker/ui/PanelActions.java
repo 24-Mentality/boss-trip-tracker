@@ -49,10 +49,15 @@ public interface PanelActions
 
 	/**
 	 * @param target kills; 0 removes the goal
+	 * @param countFrom when the count starts (now, or a trip's start); null keeps a running goal's count, and starts
+	 *                  a new one from the trip in progress, or else now
 	 */
-	void setGoal(int target);
+	void setGoal(int target, Long countFrom);
 
-	void resetGoal();
+	/**
+	 * Restarts the shown boss's goal count from {@code countFrom} (now, or a trip's start).
+	 */
+	void restartGoalFrom(long countFrom);
 
 	/**
 	 * Pause or resume the trip and goal clocks.

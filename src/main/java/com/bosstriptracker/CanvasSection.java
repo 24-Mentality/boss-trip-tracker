@@ -4,31 +4,29 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * A part of the overlay that a panel card can add to or remove from the game screen ("Add to canvas").
+ * A panel card whose right-click menu puts its numbers on the overlay ("Add to canvas") or takes them off.
  */
 @Getter
 @RequiredArgsConstructor
 public enum CanvasSection
 {
-	GOAL("overlayShowGoal"),
-	TRIP("overlayShowTrip"),
-	LOOT("overlayShowLoot");
+	GOAL,
+	TRIP,
+	LOOT;
 
 	/**
-	 * The config key of the section's Show toggle.
+	 * The stat "Add to canvas" puts on the overlay for this card.
 	 */
-	private final String configKey;
-
-	public boolean isShown(BossTripTrackerConfig config)
+	public OverlayStat defaultStat()
 	{
 		switch (this)
 		{
 			case GOAL:
-				return config.overlayShowGoal();
+				return OverlayStat.KILLS_PER_HOUR;
 			case TRIP:
-				return config.overlayShowTrip();
+				return OverlayStat.CURRENT_KILL;
 			default:
-				return config.overlayShowLoot();
+				return OverlayStat.NET_PROFIT;
 		}
 	}
 }

@@ -180,7 +180,7 @@ class GoalCard extends JPanel
 		double percent = Math.min(100, doneKills * 100.0 / Math.max(1, target));
 		progress.setCenterLabel(String.format(Locale.ROOT, "%.1f%%", percent));
 		setToolTipText("Goal: " + String.format(Locale.ROOT, "%,d", target) + " kills · " + UiFormat.duration(activeMs)
-			+ " of fighting time" + (paused ? " · clock stopped" : ""));
+			+ " of fighting time" + (paused ? " · clock stopped" : "") + " · counting since " + UiFormat.dateTime(goal.getStartedAt()));
 	}
 
 	/**

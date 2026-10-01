@@ -13,6 +13,10 @@ public class GoalView
 	 */
 	long asOf;
 	boolean running;
+	/**
+	 * When the count started: when the goal was set or reset, or a trip's start.
+	 */
+	long startedAt;
 
 	public long activeMsAt(long now)
 	{

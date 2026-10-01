@@ -349,7 +349,7 @@ public class PanelFitTest
 			.build();
 
 		// 1 kill per hour for 12,000 hours: KPH and the time to goal are at their longest
-		GoalView goal = new GoalView(99_999, 12_345, 12_345L * 3600 * 1000, System.currentTimeMillis(), !paused);
+		GoalView goal = new GoalView(99_999, 12_345, 12_345L * 3600 * 1000, System.currentTimeMillis(), !paused, 0);
 		List<BossOption> bosses = Collections.singletonList(
 			new BossOption(BOSS.getId(), BOSS.getDisplayName(), BOSS.getIconItemId(), true));
 		return PanelState.builder()
@@ -428,12 +428,12 @@ public class PanelFitTest
 		}
 
 		@Override
-		public void setGoal(int target)
+		public void setGoal(int target, Long countFrom)
 		{
 		}
 
 		@Override
-		public void resetGoal()
+		public void restartGoalFrom(long countFrom)
 		{
 		}
 

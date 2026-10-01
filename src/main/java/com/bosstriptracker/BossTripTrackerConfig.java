@@ -309,90 +309,67 @@ public interface BossTripTrackerConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "overlayShowGoal",
-		name = "Show goal",
-		description = "Put a kill goal row on the overlay, a small box on the game screen like RuneLite's XP tracker"
-			+ " box (hidden while no goal is set). Also: right-click the goal card, Add to canvas. Alt+drag the box to"
-			+ " move it.",
+		keyName = "overlayEnabled",
+		name = "Show overlay",
+		description = "A small box on the game screen like RuneLite's XP tracker box, with the boss icon and up to three"
+			+ " rows picked below. Also: right-click the goal, trip time or profit card, Add to canvas. Alt+drag the box"
+			+ " to move it.",
 		section = overlaySection,
 		position = 0
 	)
-	default boolean overlayShowGoal()
+	default boolean overlayEnabled()
 	{
 		return false;
 	}
 
 	@ConfigItem(
-		keyName = "overlayGoalRow",
-		name = "Goal stat",
-		description = "What the goal row shows",
+		keyName = "overlayRow1",
+		name = "Row 1",
+		description = "The first row. Goal stats are hidden while no goal is set, trip stats while no trip is shown."
+			+ " Current kill counts from the boss spawning, like the game's Fight duration, and shows the last kill's"
+			+ " time between kills. Luck status is the tier from the Luck card.",
 		section = overlaySection,
 		position = 1
 	)
-	default OverlayGoalStat overlayGoalRow()
+	default OverlayStat overlayRow1()
 	{
-		return OverlayGoalStat.KILLS_PER_HOUR;
+		return OverlayStat.KILLS_PER_HOUR;
+	}
+
+	@ConfigItem(
+		keyName = "overlayRow2",
+		name = "Row 2",
+		description = "The second row, or nothing",
+		section = overlaySection,
+		position = 2
+	)
+	default OverlayOptionalStat overlayRow2()
+	{
+		return OverlayOptionalStat.CURRENT_KILL;
+	}
+
+	@ConfigItem(
+		keyName = "overlayRow3",
+		name = "Row 3",
+		description = "The third row, or nothing",
+		section = overlaySection,
+		position = 3
+	)
+	default OverlayOptionalStat overlayRow3()
+	{
+		return OverlayOptionalStat.NET_PROFIT;
 	}
 
 	@ConfigItem(
 		keyName = "overlayProgressBar",
 		name = "Goal progress bar",
-		description = "With the goal shown, a progress bar at the bottom with kills done, the percentage and your goal",
+		description = "With a goal set, a progress bar at the bottom with kills done, the percentage and your goal",
 		section = overlaySection,
-		position = 2
+		position = 4
 	)
 	default boolean overlayProgressBar()
 	{
 		return true;
-	}
-
-	@ConfigItem(
-		keyName = "overlayShowTrip",
-		name = "Show trip",
-		description = "Put a trip time row on the overlay. Also: right-click the trip time card, Add to canvas.",
-		section = overlaySection,
-		position = 3
-	)
-	default boolean overlayShowTrip()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "overlayTripRow",
-		name = "Trip stat",
-		description = "What the trip row shows. Current kill counts from the boss spawning, like the game's Fight"
-			+ " duration, and shows the last kill's time between kills.",
-		section = overlaySection,
-		position = 4
-	)
-	default OverlayTripStat overlayTripRow()
-	{
-		return OverlayTripStat.CURRENT_KILL;
-	}
-
-	@ConfigItem(
-		keyName = "overlayShowLoot",
-		name = "Show profit",
-		description = "Put the trip's profit on the overlay. Also: right-click the profit card, Add to canvas.",
-		section = overlaySection,
-		position = 5
-	)
-	default boolean overlayShowLoot()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "overlayLootRow",
-		name = "Profit stat",
-		description = "What the profit row shows",
-		section = overlaySection,
-		position = 6
-	)
-	default OverlayLootStat overlayLootRow()
-	{
-		return OverlayLootStat.NET_PROFIT;
 	}
 
 	@ConfigItem(
@@ -401,7 +378,7 @@ public interface BossTripTrackerConfig extends Config
 		description = "Only show the overlay while a trip is in progress (including paused or waiting just outside)."
 			+ " Off shows it whenever you're logged in, with your last trip.",
 		section = overlaySection,
-		position = 7
+		position = 5
 	)
 	default boolean overlayOnlyOnTrip()
 	{

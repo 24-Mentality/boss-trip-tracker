@@ -16,6 +16,7 @@ import com.bosstriptracker.ui.TrackerPanel;
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -105,6 +106,7 @@ public class BossTripTrackerPlugin extends Plugin
 	protected void startUp() throws Exception
 	{
 		migrateSettings();
+		migrateOverlaySettings();
 		BossRegistry registry = BossRegistry.standard();
 		DiagnosticRecorder recorder = new DiagnosticRecorder(client, itemManager, registry, configManager,
 			this::getPluginDirectory);
@@ -186,6 +188,73 @@ public class BossTripTrackerPlugin extends Plugin
 		{
 			log.info("Copied {} settings from the {} config group", copied, legacy);
 		}
+	}
+
+	/**
+	 * Converts the overlay settings from before the three-row layout (a Show toggle and a stat per goal, trip and
+	 * profit row), once: the rows that were shown keep their stats, in the same order.
+	 */
+	private void migrateOverlaySettings()
+	{
+		String group = BossTripTrackerConfig.GROUP;
+		String[][] oldRows = {{"overlayShowGoal", "overlayGoalRow"}, {"overlayShowTrip", "overlayTripRow"}, {"overlayShowLoot", "overlayLootRow"}};
+		boolean any = false;
+		List<OverlayStat> shown = new ArrayList<>();
+		for (String[] oldRow : oldRows)
+		{
+			String show = configManager.getConfiguration(group, oldRow[0]);
+			String stat = configManager.getConfiguration(group, oldRow[1]);
+			any |= show != null || stat != null;
+			if (Boolean.parseBoolean(show))
+			{
+				try
+				{
+					shown.add(stat == null ? OverlayStat.valueOf(defaultOldStat(oldRow[1])) : OverlayStat.valueOf(stat));
+				}
+				catch (IllegalArgumentException e)
+				{
+					log.warn("Unknown overlay stat {} for {}", stat, oldRow[1]);
+				}
+			}
+		}
+		if (!any)
+		{
+			return;
+		}
+		if (!shown.isEmpty())
+		{
+			saveOverlayRows(new OverlayRows(true, shown.get(0),
+				shown.size() > 1 ? OverlayOptionalStat.of(shown.get(1)) : OverlayOptionalStat.NOTHING,
+				shown.size() > 2 ? OverlayOptionalStat.of(shown.get(2)) : OverlayOptionalStat.NOTHING));
+		}
+		for (String[] oldRow : oldRows)
+		{
+			configManager.unsetConfiguration(group, oldRow[0]);
+			configManager.unsetConfiguration(group, oldRow[1]);
+		}
+		log.info("Converted the overlay settings to rows: {}", shown);
+	}
+
+	private static String defaultOldStat(String oldKey)
+	{
+		switch (oldKey)
+		{
+			case "overlayGoalRow":
+				return "KILLS_PER_HOUR";
+			case "overlayTripRow":
+				return "CURRENT_KILL";
+			default:
+				return "NET_PROFIT";
+		}
+	}
+
+	private void saveOverlayRows(OverlayRows rows)
+	{
+		String group = BossTripTrackerConfig.GROUP;
+		configManager.setConfiguration(group, "overlayEnabled", rows.isEnabled());
+		configManager.setConfiguration(group, "overlayRow1", rows.getRow1());
+		configManager.setConfiguration(group, "overlayRow2", rows.getRow2());
+		configManager.setConfiguration(group, "overlayRow3", rows.getRow3());
 	}
 
 	@Override
@@ -297,17 +366,17 @@ public class BossTripTrackerPlugin extends Plugin
 		}
 
 		@Override
-		public void setGoal(int target)
+		public void setGoal(int target, Long countFrom)
 		{
 			TripTracker tracker = tripTracker;
-			clientThread.invokeLater(() -> tracker.setGoal(target));
+			clientThread.invokeLater(() -> tracker.setGoal(target, countFrom));
 		}
 
 		@Override
-		public void resetGoal()
+		public void restartGoalFrom(long countFrom)
 		{
 			TripTracker tracker = tripTracker;
-			clientThread.invokeLater(tracker::resetGoal);
+			clientThread.invokeLater(() -> tracker.restartGoalFrom(countFrom));
 		}
 
 		@Override
@@ -341,13 +410,14 @@ public class BossTripTrackerPlugin extends Plugin
 		@Override
 		public boolean isOnCanvas(CanvasSection section)
 		{
-			return section.isShown(config);
+			return OverlayRows.of(config).shows(section);
 		}
 
 		@Override
 		public void toggleCanvas(CanvasSection section)
 		{
-			configManager.setConfiguration(BossTripTrackerConfig.GROUP, section.getConfigKey(), !section.isShown(config));
+			OverlayRows rows = OverlayRows.of(config);
+			saveOverlayRows(rows.shows(section) ? rows.without(section) : rows.with(section));
 		}
 
 		@Override

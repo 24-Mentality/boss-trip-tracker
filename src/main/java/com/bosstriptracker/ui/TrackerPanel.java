@@ -12,10 +12,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Consumer;
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.Scrollable;
 import javax.swing.SwingConstants;
 import javax.swing.ScrollPaneConstants;
@@ -56,7 +58,7 @@ public class TrackerPanel extends PluginPanel
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 
 		currentTab = new CurrentTripPanel(itemManager, actions, () -> promptGoal(actions), actions::togglePause,
-			() -> confirmResetGoal(actions), () -> promptLastUniqueKc(actions), () -> actions.setLastUniqueKc(null));
+			() -> promptRestartGoal(actions), () -> promptLastUniqueKc(actions), () -> actions.setLastUniqueKc(null));
 		historyTab = new HistoryPanel(itemManager, trip -> confirmDelete(trip, actions::deleteTrip));
 		lifetimeTab = new LifetimePanel(itemManager, actions, () -> confirmClear(actions::clearHistory));
 
@@ -203,26 +205,78 @@ public class TrackerPanel extends PluginPanel
 
 	private void promptGoal(PanelActions actions)
 	{
-		String input = JOptionPane.showInputDialog(this,
-			"How many " + boss.getDisplayName() + " kills is your goal? (0 removes it)\n"
-				+ "A new goal set during a trip counts that trip's kills so far.", "Set kill goal",
-			JOptionPane.QUESTION_MESSAGE);
-		if (input == null)
+		boolean goalRunning = state != null && state.getGoal() != null;
+		JTextField target = new JTextField(goalRunning ? String.valueOf(state.getGoal().getTarget()) : "", 8);
+		JComboBox<GoalStart> from = goalStartBox(goalRunning);
+		JPanel form = new JPanel(new GridLayout(0, 1, 0, 4));
+		form.add(new JLabel("How many " + boss.getDisplayName() + " kills is your goal? (0 removes it)"));
+		form.add(target);
+		form.add(new JLabel("Count kills from:"));
+		form.add(from);
+		if (JOptionPane.showConfirmDialog(this, form, "Set kill goal", JOptionPane.OK_CANCEL_OPTION,
+			JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION)
 		{
 			return;
 		}
 		try
 		{
-			int target = Integer.parseInt(input.trim().replace(",", ""));
-			if (target < 0 || target > 1_000_000)
+			int kills = Integer.parseInt(target.getText().trim().replace(",", ""));
+			if (kills < 0 || kills > 1_000_000)
 			{
 				throw new NumberFormatException();
 			}
-			actions.setGoal(target);
+			actions.setGoal(kills, startedAt((GoalStart) from.getSelectedItem()));
 		}
 		catch (NumberFormatException e)
 		{
 			showMessage("Set kill goal", "Enter a whole number of kills, like 100.", true);
+		}
+	}
+
+	/**
+	 * The Reset button and the goal card's "Count from" menu: restart the goal's count from a chosen point.
+	 */
+	private void promptRestartGoal(PanelActions actions)
+	{
+		if (state == null || state.getGoal() == null)
+		{
+			return;
+		}
+		JComboBox<GoalStart> from = goalStartBox(false);
+		JPanel form = new JPanel(new GridLayout(0, 1, 0, 4));
+		form.add(new JLabel("Count the goal's kills again from:"));
+		form.add(from);
+		if (JOptionPane.showConfirmDialog(this, form, "Reset kill goal", JOptionPane.OK_CANCEL_OPTION,
+			JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION)
+		{
+			Long startedAt = startedAt((GoalStart) from.getSelectedItem());
+			actions.restartGoalFrom(startedAt != null ? startedAt : System.currentTimeMillis());
+		}
+	}
+
+	private JComboBox<GoalStart> goalStartBox(boolean goalRunning)
+	{
+		JComboBox<GoalStart> box = new JComboBox<>();
+		for (GoalStart option : GoalStart.options(state, System.currentTimeMillis(), goalRunning))
+		{
+			box.addItem(option);
+		}
+		return box;
+	}
+
+	/**
+	 * @return the chosen start, or null to keep a running goal's count (for a new goal, the tracker's default)
+	 */
+	private static Long startedAt(GoalStart choice)
+	{
+		switch (choice.getKind())
+		{
+			case NOW:
+				return System.currentTimeMillis();
+			case TRIP:
+				return choice.getStartedAt();
+			default:
+				return null;
 		}
 	}
 
@@ -248,14 +302,6 @@ public class TrackerPanel extends PluginPanel
 		catch (NumberFormatException e)
 		{
 			showMessage("Last unique", "Enter a kill count, like 1,234.", true);
-		}
-	}
-
-	private void confirmResetGoal(PanelActions actions)
-	{
-		if (confirm("Reset kill goal", "Start counting the goal again from 0 kills now?"))
-		{
-			actions.resetGoal();
 		}
 	}
 

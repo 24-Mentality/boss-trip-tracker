@@ -1,15 +1,16 @@
 package com.bosstriptracker.ui;
 
 import com.bosstriptracker.BossTripTrackerConfig;
-import com.bosstriptracker.OverlayGoalStat;
-import com.bosstriptracker.OverlayLootStat;
-import com.bosstriptracker.OverlayTripStat;
+import com.bosstriptracker.OverlayRows;
+import com.bosstriptracker.OverlayStat;
+import com.bosstriptracker.model.LuckTier;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.GoalView;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -21,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
+import lombok.Value;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
@@ -39,9 +41,10 @@ import net.runelite.client.util.ImageUtil;
 
 /**
  * An optional box on the game screen built exactly like RuneLite's XP tracker box (XpInfoBoxOverlay): the same small
- * font, borders, gaps and standard width, the boss icon scaled to the skill icon's size, the rows beside it (goal,
- * trip and profit, each shown or hidden and picked in the config) and the goal progress bar underneath. It shows
- * nothing about the boss or its mechanics, and drawing only formats a few numbers from the latest panel state.
+ * font, borders, gaps and standard width, the boss icon scaled to the skill icon's size, up to three rows beside it
+ * (each picked in the config) and the goal progress bar underneath. The box only grows wider when a row needs it
+ * (the luck status). It shows nothing about the boss or its mechanics, and drawing only formats a few numbers from
+ * the latest panel state.
  * <p>
  * The layout and spacing constants follow RuneLite's XpInfoBoxOverlay, Copyright (c) 2018 Jasper Ketelaar and
  * (c) 2020 Anthony (https://github.com/while-loop), BSD-2-Clause; see the RuneLite repository for its licence.
@@ -77,7 +80,12 @@ public class TrackerOverlay extends OverlayPanel
 	static final String PB = "PB:";
 	static final String NET_PROFIT = "Net Profit:";
 	static final String NET_GP_PER_HOUR = "GP/hr:";
+	static final String LUCK = "Luck:";
 	private static final String NOT_AVAILABLE = "N/A";
+	/**
+	 * LineComponent needs a few pixels between its two sides.
+	 */
+	private static final int SIDES_GAP = 4;
 	private static final long TEN_HOURS_MS = 10 * 3_600_000L;
 	private static final Color MUTED = ColorScheme.LIGHT_GRAY_COLOR.darker();
 
@@ -129,28 +137,22 @@ public class TrackerOverlay extends OverlayPanel
 		}
 
 		long now = System.currentTimeMillis();
-		GoalView goal = config.overlayShowGoal() ? s.getGoal() : null;
+		OverlayRows settings = OverlayRows.of(config);
+		GoalView goal = s.getGoal();
 		TripView trip = s.getCurrentTrip();
-		List<LineComponent> rows = new ArrayList<>(3);
-		if (goal != null)
+		List<Row> rows = new ArrayList<>(3);
+		for (OverlayStat stat : settings.stats())
 		{
-			addGoalRow(rows, goal, config.overlayGoalRow(), now);
+			addRow(rows, stat, s, goal, trip, now);
 		}
-		if (trip != null && config.overlayShowTrip())
-		{
-			addTripRow(rows, s, trip, config.overlayTripRow(), now);
-		}
-		if (trip != null && config.overlayShowLoot())
-		{
-			addLootRow(rows, trip, config.overlayLootRow(), now);
-		}
-		boolean bar = goal != null && config.overlayProgressBar();
+		boolean bar = settings.isEnabled() && goal != null && config.overlayProgressBar();
 		if (rows.isEmpty() && !bar)
 		{
 			return null;
 		}
 
 		graphics.setFont(FontManager.getRunescapeSmallFont());
+		panelComponent.setPreferredSize(new Dimension(boxWidth(graphics.getFontMetrics(), rows), 0));
 		iconRowsPanel.getChildren().clear();
 		LayoutableRenderableEntity lines = stack(rows);
 		if (lines != null)
@@ -205,13 +207,14 @@ public class TrackerOverlay extends OverlayPanel
 	/**
 	 * The rows one above the other, beside the icon.
 	 */
-	private static LayoutableRenderableEntity stack(List<LineComponent> rows)
+	private static LayoutableRenderableEntity stack(List<Row> rows)
 	{
 		LayoutableRenderableEntity stacked = null;
 		for (int i = rows.size() - 1; i >= 0; i--)
 		{
-			stacked = stacked == null ? rows.get(i) : SplitComponent.builder()
-				.first(rows.get(i))
+			LineComponent line = rows.get(i).component();
+			stacked = stacked == null ? line : SplitComponent.builder()
+				.first(line)
 				.second(stacked)
 				.orientation(ComponentOrientation.VERTICAL)
 				.build();
@@ -219,69 +222,106 @@ public class TrackerOverlay extends OverlayPanel
 		return stacked;
 	}
 
-	private static void addGoalRow(List<LineComponent> rows, GoalView goal, OverlayGoalStat stat, long now)
+	/**
+	 * The standard width, or wider when a row wouldn't fit beside the icon (it would wrap otherwise).
+	 */
+	static int boxWidth(FontMetrics metrics, List<Row> rows)
 	{
-		// Time-based numbers are greyed while the goal clock is stopped, as in the panel
-		Color clock = goal.isRunning() ? Color.WHITE : MUTED;
+		int width = ComponentConstants.STANDARD_WIDTH;
+		for (Row row : rows)
+		{
+			int needed = metrics.stringWidth(row.left) + SIDES_GAP + metrics.stringWidth(row.right);
+			width = Math.max(width, needed + ComponentConstants.STANDARD_WIDTH - ROW_WIDTH);
+		}
+		return width;
+	}
+
+	/**
+	 * Adds the row for a stat, or nothing when what it shows isn't there (no goal, no trip).
+	 */
+	private static void addRow(List<Row> rows, OverlayStat stat, PanelState s, GoalView goal, TripView trip, long now)
+	{
+		// Time-based numbers are greyed while the clocks are stopped, as in the panel
+		Color goalClock = goal != null && goal.isRunning() ? Color.WHITE : MUTED;
 		switch (stat)
 		{
 			case KILLS_PER_HOUR:
-				double killsPerHour = goal.killsPerHourAt(now);
-				rows.add(line(KILLS_PER_HOUR, killsPerHour > 0 ? String.format(Locale.ROOT, "%.1f", killsPerHour) : NOT_AVAILABLE, clock));
+				if (goal != null)
+				{
+					double killsPerHour = goal.killsPerHourAt(now);
+					rows.add(line(KILLS_PER_HOUR, killsPerHour > 0 ? String.format(Locale.ROOT, "%.1f", killsPerHour) : NOT_AVAILABLE, goalClock));
+				}
 				break;
 			case TIME_TO_GOAL:
-				Long toGoal = goal.msToGoalAt(now);
-				rows.add(line(TIME_TO_GOAL, goal.getRemaining() == 0 ? "Done" : toGoal != null ? GoalCard.timeToGoal(toGoal)
-					: NOT_AVAILABLE, clock));
+				if (goal != null)
+				{
+					Long toGoal = goal.msToGoalAt(now);
+					rows.add(line(TIME_TO_GOAL, goal.getRemaining() == 0 ? "Done" : toGoal != null ? GoalCard.timeToGoal(toGoal)
+						: NOT_AVAILABLE, goalClock));
+				}
 				break;
 			case KILLS_DONE:
-				rows.add(line(KC_DONE, GoalCard.count(goal.getDone()), Color.WHITE));
+				if (goal != null)
+				{
+					rows.add(line(KC_DONE, GoalCard.count(goal.getDone()), Color.WHITE));
+				}
 				break;
 			case KILLS_LEFT:
-				rows.add(line(KC_LEFT, GoalCard.count(goal.getRemaining()), Color.WHITE));
+				if (goal != null)
+				{
+					rows.add(line(KC_LEFT, GoalCard.count(goal.getRemaining()), Color.WHITE));
+				}
 				break;
-			default:
-				break;
-		}
-	}
-
-	private static void addTripRow(List<LineComponent> rows, PanelState s, TripView trip, OverlayTripStat stat, long now)
-	{
-		switch (stat)
-		{
 			case CURRENT_KILL:
-				Long start = s.getKillStartedAt();
-				// Counts from the boss spawning, like the game's Fight duration; the last kill's time between kills
-				rows.add(start != null ? line(CURRENT_KILL, UiFormat.duration(now - start), Color.WHITE)
-					: line(LAST_KILL, UiFormat.killTime(trip.getLastKillMs()), MUTED));
+				if (trip != null)
+				{
+					Long start = s.getKillStartedAt();
+					// Counts from the boss spawning, like the game's Fight duration; the last kill's time between kills
+					rows.add(start != null ? line(CURRENT_KILL, UiFormat.duration(now - start), Color.WHITE)
+						: line(LAST_KILL, UiFormat.killTime(trip.getLastKillMs()), MUTED));
+				}
 				break;
 			case TRIP_TIME:
-				rows.add(line(TRIP_TIME, tripTime(trip.activeMsAt(now)), s.getPauseText() != null ? MUTED : Color.WHITE));
+				if (trip != null)
+				{
+					rows.add(line(TRIP_TIME, tripTime(trip.activeMsAt(now)), s.getPauseText() != null ? MUTED : Color.WHITE));
+				}
 				break;
 			case KILLS:
-				rows.add(line(TRIP_KC, String.valueOf(trip.getKills()), Color.WHITE));
+				if (trip != null)
+				{
+					rows.add(line(TRIP_KC, String.valueOf(trip.getKills()), Color.WHITE));
+				}
 				break;
 			case AVERAGE_KILL:
-				rows.add(line(AVERAGE_KILL, UiFormat.killTime(trip.getAverageKillMs()), Color.WHITE));
+				if (trip != null)
+				{
+					rows.add(line(AVERAGE_KILL, UiFormat.killTime(trip.getAverageKillMs()), Color.WHITE));
+				}
 				break;
 			case PB:
-				rows.add(line(PB, UiFormat.killTime(trip.getFastestKillMs()), Color.WHITE));
+				if (trip != null)
+				{
+					rows.add(line(PB, UiFormat.killTime(trip.getFastestKillMs()), Color.WHITE));
+				}
 				break;
-			default:
-				break;
-		}
-	}
-
-	private static void addLootRow(List<LineComponent> rows, TripView trip, OverlayLootStat stat, long now)
-	{
-		switch (stat)
-		{
 			case NET_PROFIT:
-				rows.add(line(NET_PROFIT, UiFormat.gp(trip.getNetProfit()), UiFormat.profitColor(trip.getNetProfit())));
+				if (trip != null)
+				{
+					rows.add(line(NET_PROFIT, UiFormat.gp(trip.getNetProfit()), UiFormat.profitColor(trip.getNetProfit())));
+				}
 				break;
 			case NET_GP_PER_HOUR:
-				long rate = TripMath.gpPerHour(trip.getNetProfit(), trip.activeMsAt(now));
-				rows.add(line(NET_GP_PER_HOUR, UiFormat.gp(rate), UiFormat.profitColor(rate)));
+				if (trip != null)
+				{
+					long rate = TripMath.gpPerHour(trip.getNetProfit(), trip.activeMsAt(now));
+					rows.add(line(NET_GP_PER_HOUR, UiFormat.gp(rate), UiFormat.profitColor(rate)));
+				}
+				break;
+			case LUCK:
+				// The Luck card's tier, from the same numbers
+				LuckTier tier = s.getLifetime().getDryness() == null ? null : LuckSummary.of(s.getLifetime().getDryness()).getTier();
+				rows.add(tier == null ? line(LUCK, NOT_AVAILABLE, MUTED) : line(LUCK, tier.getLabel(), UiFormat.tierColor(tier)));
 				break;
 			default:
 				break;
@@ -302,12 +342,28 @@ public class TrackerOverlay extends OverlayPanel
 		return bar;
 	}
 
-	private static LineComponent line(String left, String right, Color rightColor)
+	private static Row line(String left, String right, Color rightColor)
 	{
-		return LineComponent.builder()
-			.left(left)
-			.right(right)
-			.rightColor(rightColor)
-			.build();
+		return new Row(left, right, rightColor);
+	}
+
+	/**
+	 * A label and its value, kept as text so the box can be sized to fit before the components are built.
+	 */
+	@Value
+	static class Row
+	{
+		String left;
+		String right;
+		Color rightColor;
+
+		LineComponent component()
+		{
+			return LineComponent.builder()
+				.left(left)
+				.right(right)
+				.rightColor(rightColor)
+				.build();
+		}
 	}
 }

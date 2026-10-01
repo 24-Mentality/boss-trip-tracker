@@ -589,10 +589,13 @@ public class TripTracker
 	}
 
 	/**
-	 * Sets the shown boss's kill goal target, keeping progress if a goal is already running. 0 or less removes it.
-	 * A new goal set during this boss's trip counts from the trip's start, so its kills so far aren't lost.
+	 * Sets the shown boss's kill goal target. 0 or less removes it.
+	 *
+	 * @param countFrom when the count starts: now or a trip's start (that trip and every later one count). Null
+	 *                  keeps a running goal's count; a new goal then counts from this boss's trip in progress, so
+	 *                  its kills so far aren't lost, or else from now.
 	 */
-	public void setGoal(int target)
+	public void setGoal(int target, Long countFrom)
 	{
 		BossHistory boss = writableHistory(selectedBoss);
 		if (boss == null)
@@ -603,10 +606,18 @@ public class TripTracker
 		{
 			boss.setGoal(null);
 		}
-		else if (boss.getGoal() == null)
+		else if (boss.getGoal() == null || countFrom != null)
 		{
-			boolean onTrip = currentTrip != null && tripBoss == selectedBoss;
-			long startedAt = onTrip ? currentTrip.getStartedAt() : System.currentTimeMillis();
+			long startedAt;
+			if (countFrom != null)
+			{
+				startedAt = countFrom;
+			}
+			else
+			{
+				boolean onTrip = currentTrip != null && tripBoss == selectedBoss;
+				startedAt = onTrip ? currentTrip.getStartedAt() : System.currentTimeMillis();
+			}
 			boss.setGoal(KillGoal.startingAt(target, startedAt, boss.getTrips()));
 		}
 		else
@@ -676,17 +687,16 @@ public class TripTracker
 	}
 
 	/**
-	 * Restarts the shown boss's goal kill count and clock from now.
+	 * Restarts the shown boss's goal kill count and clock from {@code countFrom}: now, or a trip's start.
 	 */
-	public void resetGoal()
+	public void restartGoalFrom(long countFrom)
 	{
 		BossHistory boss = writableHistory(selectedBoss);
 		if (boss == null || boss.getGoal() == null)
 		{
 			return;
 		}
-		boss.getGoal().setStartedAt(System.currentTimeMillis());
-		boss.getGoal().setActiveMs(0);
+		boss.setGoal(KillGoal.startingAt(boss.getGoal().getTarget(), countFrom, boss.getTrips()));
 		viewDirty = true;
 		saveNow();
 		pushState();

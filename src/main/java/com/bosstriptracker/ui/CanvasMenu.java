@@ -17,12 +17,16 @@ final class CanvasMenu
 	{
 	}
 
-	static void attach(JComponent card, CanvasSection section, PanelActions actions)
+	static void attach(JComponent card, CanvasSection section, PanelActions actions, JMenuItem... extras)
 	{
 		JMenuItem item = new JMenuItem();
 		item.addActionListener(e -> actions.toggleCanvas(section));
 		JPopupMenu menu = new JPopupMenu();
 		menu.add(item);
+		for (JMenuItem extra : extras)
+		{
+			menu.add(extra);
+		}
 		menu.addPopupMenuListener(new PopupMenuListener()
 		{
 			@Override

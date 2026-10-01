@@ -1,12 +1,12 @@
 package com.bosstriptracker.ui;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import com.bosstriptracker.BossTripTrackerConfig;
-import com.bosstriptracker.OverlayGoalStat;
-import com.bosstriptracker.OverlayLootStat;
-import com.bosstriptracker.OverlayTripStat;
+import com.bosstriptracker.OverlayOptionalStat;
+import com.bosstriptracker.OverlayStat;
 import com.bosstriptracker.boss.MaggotKingBoss;
 import com.bosstriptracker.view.GoalView;
 import com.bosstriptracker.view.LifetimeView;
@@ -26,33 +26,19 @@ import org.junit.Test;
 
 public class TrackerOverlayTest
 {
-	private boolean showGoal;
-	private boolean showTrip;
-	private boolean showLoot;
+	private boolean enabled;
 	private boolean onlyOnTrip = true;
 	private boolean bar = true;
-	private OverlayGoalStat goalRow = OverlayGoalStat.KILLS_PER_HOUR;
-	private OverlayTripStat tripRow = OverlayTripStat.CURRENT_KILL;
-	private OverlayLootStat lootRow = OverlayLootStat.NET_PROFIT;
+	private OverlayStat row1 = OverlayStat.KILLS_PER_HOUR;
+	private OverlayOptionalStat row2 = OverlayOptionalStat.CURRENT_KILL;
+	private OverlayOptionalStat row3 = OverlayOptionalStat.NET_PROFIT;
 
 	private final BossTripTrackerConfig config = new BossTripTrackerConfig()
 	{
 		@Override
-		public boolean overlayShowGoal()
+		public boolean overlayEnabled()
 		{
-			return showGoal;
-		}
-
-		@Override
-		public boolean overlayShowTrip()
-		{
-			return showTrip;
-		}
-
-		@Override
-		public boolean overlayShowLoot()
-		{
-			return showLoot;
+			return enabled;
 		}
 
 		@Override
@@ -68,21 +54,21 @@ public class TrackerOverlayTest
 		}
 
 		@Override
-		public OverlayGoalStat overlayGoalRow()
+		public OverlayStat overlayRow1()
 		{
-			return goalRow;
+			return row1;
 		}
 
 		@Override
-		public OverlayTripStat overlayTripRow()
+		public OverlayOptionalStat overlayRow2()
 		{
-			return tripRow;
+			return row2;
 		}
 
 		@Override
-		public OverlayLootStat overlayLootRow()
+		public OverlayOptionalStat overlayRow3()
 		{
-			return lootRow;
+			return row3;
 		}
 
 		@Override
@@ -95,7 +81,7 @@ public class TrackerOverlayTest
 	public void offByDefaultAndOnlyDuringATrip()
 	{
 		assertNull(render(state(PanelState.Status.IN_TRIP, true)));
-		showAll();
+		enabled = true;
 		assertNotNull(render(state(PanelState.Status.IN_TRIP, true)));
 		assertNull(render(state(PanelState.Status.IDLE, true)));
 		onlyOnTrip = false;
@@ -105,8 +91,10 @@ public class TrackerOverlayTest
 	@Test
 	public void boxOnlyAppearsWithSomethingToShow()
 	{
-		showGoal = true;
+		enabled = true;
 		bar = false;
+		row2 = OverlayOptionalStat.NOTHING;
+		row3 = OverlayOptionalStat.NOTHING;
 		// Just the goal row
 		assertNotNull(render(state(PanelState.Status.IN_TRIP, true)));
 		// Without a goal the goal row and bar are hidden, and nothing is left
@@ -115,8 +103,24 @@ public class TrackerOverlayTest
 		bar = true;
 		assertNotNull(render(state(PanelState.Status.IN_TRIP, true)));
 		// A trip row shows without a goal
-		showTrip = true;
+		row2 = OverlayOptionalStat.TRIP_TIME;
 		assertNotNull(render(state(PanelState.Status.IN_TRIP, false)));
+	}
+
+	@Test
+	public void boxWidensOnlyForTheLuckRow()
+	{
+		Graphics2D g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).createGraphics();
+		java.awt.FontMetrics metrics = g.getFontMetrics(FontManager.getRunescapeSmallFont());
+		TrackerOverlay.Row kph = new TrackerOverlay.Row(TrackerOverlay.KILLS_PER_HOUR, "99.9", Color.WHITE);
+		assertEquals(ComponentConstants.STANDARD_WIDTH, TrackerOverlay.boxWidth(metrics, Collections.singletonList(kph)));
+		TrackerOverlay.Row luck = new TrackerOverlay.Row(TrackerOverlay.LUCK, "LUCKY AS RUCK", Color.WHITE);
+		int wider = TrackerOverlay.boxWidth(metrics, java.util.Arrays.asList(kph, luck));
+		assertTrue(wider > ComponentConstants.STANDARD_WIDTH);
+		// Everything in the wider box still fits beside the icon
+		int room = wider - (ComponentConstants.STANDARD_WIDTH - TrackerOverlay.ROW_WIDTH);
+		assertTrue(metrics.stringWidth(luck.getLeft()) + 4 + metrics.stringWidth(luck.getRight()) <= room);
+		g.dispose();
 	}
 
 	@Test
@@ -150,17 +154,10 @@ public class TrackerOverlayTest
 		g.dispose();
 	}
 
-	private void showAll()
-	{
-		showGoal = true;
-		showTrip = true;
-		showLoot = true;
-	}
-
 	@Test
 	public void preview() throws Exception
 	{
-		showAll();
+		enabled = true;
 		BufferedImage image = new BufferedImage(340, 110, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = image.createGraphics();
 		g.setColor(new Color(70, 90, 60));
@@ -169,9 +166,9 @@ public class TrackerOverlayTest
 		// All three rows on the left (KPH, current kill, net profit, bar); goal and trip only (TTG, trip time) in the
 		// middle, the size of RuneLite's XP tracker box
 		draw(g, 10, 10);
-		showLoot = false;
-		goalRow = OverlayGoalStat.TIME_TO_GOAL;
-		tripRow = OverlayTripStat.TRIP_TIME;
+		row1 = OverlayStat.TIME_TO_GOAL;
+		row2 = OverlayOptionalStat.TRIP_TIME;
+		row3 = OverlayOptionalStat.NOTHING;
 		draw(g, 160, 10);
 		g.dispose();
 		ImageIO.write(image, "PNG", new File("build/overlay-preview.png"));
@@ -240,7 +237,7 @@ public class TrackerOverlayTest
 			.status(status)
 			.currentTrip(trip)
 			.lifetime(lifetime)
-			.goal(withGoal ? new GoalView(392, 163, 24_247_000, now, true) : null)
+			.goal(withGoal ? new GoalView(392, 163, 24_247_000, now, true, now - 86_400_000L) : null)
 			.killStartedAt(now - 73_000)
 			.build();
 	}
