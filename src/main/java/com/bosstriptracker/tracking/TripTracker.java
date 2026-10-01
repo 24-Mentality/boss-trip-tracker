@@ -236,6 +236,10 @@ public class TripTracker
 	 */
 	private boolean suspendedOutside;
 	private boolean runeIdsLoaded;
+	/**
+	 * Lines saved at 0 gp have been repriced since the price list last loaded.
+	 */
+	private boolean zeroPricesChecked;
 	private final Deque<PreEntryUse> preEntryUses = new ArrayDeque<>();
 
 	// ---- Raids (TripModel.ONE_RAID) ----
@@ -805,6 +809,15 @@ public class TripTracker
 			loadRuneIds();
 		}
 
+		if (!prices.pricesLoaded())
+		{
+			zeroPricesChecked = false;
+		}
+		else if (!zeroPricesChecked && history != null && !readOnly)
+		{
+			repriceZeroPrices();
+		}
+
 		// Attacks from the previous tick are complete, including gear switched in that tick
 		chargeCounter.process(tick - 1, this::chargesUsed);
 
@@ -978,16 +991,64 @@ public class TripTracker
 		int chargeItemId = type == ChargeType.TOME_OF_FIRE ? config.tomePage().getItemId()
 			: type.isBlowpipeDarts() ? config.blowpipeDarts().getItemId()
 			: type.getChargeItemId();
+		ItemEntries.merge(currentTrip.getSupplies(), ItemEntry.charges(type.getSourceItemId(), used,
+			chargeItemId, rechargePrice(type, chargeItemId), type.getChargesPerRecharge()));
+		viewDirty = true;
+		requestSave();
+	}
+
+	/**
+	 * @param chargeItemId the first recharge item, as chosen (a tome page, a dart)
+	 */
+	private long rechargePrice(ChargeType type, int chargeItemId)
+	{
 		long rechargePrice = 0;
 		for (ChargeType.Component component : type.getComponents())
 		{
 			int itemId = component == type.getComponents().get(0) ? chargeItemId : component.getItemId();
 			rechargePrice += component.getQuantity() * prices.price(itemId);
 		}
-		ItemEntries.merge(currentTrip.getSupplies(), ItemEntry.charges(type.getSourceItemId(), used,
-			chargeItemId, rechargePrice, type.getChargesPerRecharge()));
-		viewDirty = true;
-		requestSave();
+		return rechargePrice;
+	}
+
+	/**
+	 * Lines saved at 0 gp while the price list wasn't loaded get today's price once it is.
+	 */
+	private void repriceZeroPrices()
+	{
+		zeroPricesChecked = true;
+		List<Trip> trips = new ArrayList<>();
+		for (BossHistory boss : history.getBosses().values())
+		{
+			trips.addAll(boss.getTrips());
+		}
+		int repriced = ZeroPrices.reprice(trips, new ZeroPrices.Pricing()
+		{
+			@Override
+			public boolean tradeable(ItemEntry entry)
+			{
+				return prices.isTradeable(entry.isCharges() ? entry.getChargeItemId() : entry.getItemId());
+			}
+
+			@Override
+			public long price(ItemEntry entry)
+			{
+				if (entry.isCharges())
+				{
+					ChargeType type = ChargeType.forLine(entry.getItemId(), entry.getChargeItemId());
+					return type == null ? 0 : rechargePrice(type, entry.getChargeItemId());
+				}
+				PriceService.DoseInfo dose = entry.isPerDose() ? prices.doseInfo(entry.getItemId()) : null;
+				return dose == null ? prices.price(entry.getItemId())
+					: Math.round((double) prices.price(entry.getItemId()) / dose.getDoses());
+			}
+		}, JUNK_PRICE);
+		if (repriced > 0)
+		{
+			log.debug("Repriced {} lines saved while prices weren't loaded", repriced);
+			historyChanged();
+			requestSave();
+		}
 	}
 
 	private static ChargeCounter.Gear gear(ItemContainer worn)
@@ -1691,7 +1752,8 @@ public class TripTracker
 		currentTrip.setEndedAt(at);
 		currentTrip.setEndReason(reason);
 		currentTrip.setLastActiveAt(at);
-		if (TripMath.isEmpty(currentTrip))
+		// Without prices, supplies can't be valued against the threshold yet
+		if (TripMath.isEmpty(currentTrip) && (prices.pricesLoaded() || currentTrip.getSupplies().isEmpty()))
 		{
 			// Nothing happened (e.g. walked in and straight back out): don't keep it
 			history.boss(tripBoss.getId()).getTrips().remove(currentTrip);
@@ -2121,7 +2183,8 @@ public class TripTracker
 		for (Map.Entry<Integer, Long> e : pendingDrops.entrySet())
 		{
 			long price = prices.price(e.getKey());
-			if (price >= JUNK_PRICE && e.getValue() > 0)
+			// Without prices nothing can be told to be junk: it's repriced, or removed as junk, later (ZeroPrices)
+			if ((price >= JUNK_PRICE || !prices.pricesLoaded()) && e.getValue() > 0)
 			{
 				ItemEntries.merge(currentTrip.getDropped(), e.getKey(), e.getValue(), price, false);
 			}
@@ -2260,6 +2323,7 @@ public class TripTracker
 		history = result.getHistory();
 		readOnly = result.isReadOnly();
 		loading = false;
+		zeroPricesChecked = false;
 		if (readOnly)
 		{
 			log.warn("Trip history is read-only (newer format or unreadable); changes will not be saved");

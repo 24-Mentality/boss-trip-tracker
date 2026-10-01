@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import com.bosstriptracker.model.ItemEntry;
 import java.util.ArrayList;
 import java.util.List;
+import net.runelite.api.gameval.ItemID;
 import org.junit.Test;
 
 public class ItemEntriesTest
@@ -69,18 +70,30 @@ public class ItemEntriesTest
 	{
 		List<ItemEntry> loot = new ArrayList<>();
 		ItemEntries.merge(loot, 1620, 11, 1_000, false);
-		ItemEntry tarnished = new ItemEntry(33642, 1, 0);
+		ItemEntry tarnished = new ItemEntry(ItemID.TARNISHED_SPEAR, 1, 0);
 		tarnished.setPending(true);
 		loot.add(tarnished);
 		ItemEntry polished = new ItemEntry(1199, 1, 9_000);
-		polished.setPolishedFrom(33642);
+		polished.setPolishedFrom(ItemID.TARNISHED_SPEAR);
 		loot.add(polished);
 
-		ItemEntries.removeLoot(loot, 33642, 1);
+		ItemEntries.removeLoot(loot, ItemID.TARNISHED_SPEAR, 1);
 		ItemEntries.removeLoot(loot, 1620, 11);
 
 		// A drop already polished stays
 		assertEquals(1, loot.size());
 		assertEquals(1199, loot.get(0).getItemId());
+	}
+
+	@Test
+	public void linesWithoutAPriceStayApartFromPricedOnes()
+	{
+		List<ItemEntry> entries = new ArrayList<>();
+		ItemEntries.merge(entries, ItemID.ANGLERFISH, 2, 0, false);
+		ItemEntries.merge(entries, ItemID.ANGLERFISH, 1, 1_600, false);
+		ItemEntries.merge(entries, ItemID.ANGLERFISH, 1, 0, false);
+
+		assertEquals(2, entries.size());
+		assertEquals(3, entries.get(0).getQuantity());
 	}
 }

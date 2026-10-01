@@ -177,6 +177,18 @@ public class SupplyAccountingTest
 	}
 
 	@Test
+	public void droppedSuppliesArentJunkWhilePricesAreMissing()
+	{
+		items.item(ItemID.VIAL_EMPTY, "Vial", 2);
+		assertTrue(accounting.droppedAsUsed(ImmutableMap.of(ItemID.VIAL_EMPTY, 3L)).isEmpty());
+
+		items.pricesLoaded = false;
+		List<ItemEntry> used = accounting.droppedAsUsed(ImmutableMap.of(ItemID.ANGLERFISH, 1L));
+		assertEquals(1, used.size());
+		assertEquals(0, used.get(0).getPriceEach());
+	}
+
+	@Test
 	public void namesShareAWord()
 	{
 		assertTrue(SupplyAccounting.sharesWord("Summer pie", "Half a summer pie"));

@@ -8,6 +8,11 @@ public interface ItemInfo
 {
 	long price(int itemId);
 
+	/**
+	 * Whether RuneLite's price list is loaded. Until it is, every price is 0.
+	 */
+	boolean pricesLoaded();
+
 	String name(int itemId);
 
 	/**

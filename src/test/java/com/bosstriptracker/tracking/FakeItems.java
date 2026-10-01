@@ -22,6 +22,7 @@ class FakeItems implements ItemInfo
 	final Set<Integer> stackable = new HashSet<>();
 	final Set<Integer> equipable = new HashSet<>();
 	final Set<Integer> food = new HashSet<>();
+	boolean pricesLoaded = true;
 
 	FakeItems item(int itemId, String name, long price)
 	{
@@ -52,7 +53,13 @@ class FakeItems implements ItemInfo
 	@Override
 	public long price(int itemId)
 	{
-		return prices.getOrDefault(itemId, 1_000L);
+		return pricesLoaded ? prices.getOrDefault(itemId, 1_000L) : 0;
+	}
+
+	@Override
+	public boolean pricesLoaded()
+	{
+		return pricesLoaded;
 	}
 
 	@Override

@@ -11,7 +11,8 @@ final class ItemEntries
 	}
 
 	/**
-	 * Adds to an existing line for the same item, keeping a quantity-weighted recorded price.
+	 * Adds to an existing line for the same item, keeping a quantity-weighted recorded price. A line recorded at 0 gp
+	 * while prices weren't loaded is kept apart from a priced one, so {@link ZeroPrices} can reprice it.
 	 */
 	static void merge(List<ItemEntry> entries, int itemId, long quantity, long priceEach, boolean perDose)
 	{
@@ -23,7 +24,7 @@ final class ItemEntries
 		for (ItemEntry entry : entries)
 		{
 			if (entry.getItemId() == itemId && entry.isPerDose() == perDose && !entry.isPending() && !entry.isCharges()
-				&& entry.getPolishedFrom() == 0)
+				&& entry.getPolishedFrom() == 0 && (entry.getPriceEach() == 0) == (priceEach == 0))
 			{
 				long total = entry.getQuantity() + quantity;
 				double value = (double) entry.getQuantity() * entry.getPriceEach() + (double) quantity * priceEach;
@@ -95,7 +96,8 @@ final class ItemEntries
 		{
 			// Blowpipe dart lines for different capes share an item and dart but not the darts lost per 25 shots
 			if (entry.getItemId() == added.getItemId() && entry.getChargeItemId() == added.getChargeItemId()
-				&& entry.getChargesPerItem() == added.getChargesPerItem())
+				&& entry.getChargesPerItem() == added.getChargesPerItem()
+				&& (entry.getPriceEach() == 0) == (added.getPriceEach() == 0))
 			{
 				long total = entry.getQuantity() + added.getQuantity();
 				double value = (double) entry.getQuantity() * entry.getPriceEach() + (double) added.getQuantity() * added.getPriceEach();

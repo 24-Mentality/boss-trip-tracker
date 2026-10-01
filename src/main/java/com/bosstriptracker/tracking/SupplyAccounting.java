@@ -308,8 +308,9 @@ class SupplyAccounting
 		for (Map.Entry<Integer, Long> e : dropped.entrySet())
 		{
 			int itemId = e.getKey();
+			// Without prices nothing can be told to be junk: it's repriced later (ZeroPrices)
 			if (e.getValue() <= 0 || items.isEquipable(itemId)
-				|| (items.doseInfo(itemId) == null && items.price(itemId) < JUNK_PRICE))
+				|| (items.pricesLoaded() && items.doseInfo(itemId) == null && items.price(itemId) < JUNK_PRICE))
 			{
 				continue;
 			}

@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.Value;
+import net.runelite.api.gameval.ItemID;
 import net.runelite.client.game.ItemEquipmentStats;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.ItemStats;
@@ -36,6 +37,20 @@ public class PriceService implements ItemInfo
 	public long price(int itemId)
 	{
 		return itemManager.getItemPrice(itemId);
+	}
+
+	/**
+	 * A shark always has a GE price, so 0 means the price list hasn't loaded (or failed to fetch).
+	 */
+	@Override
+	public boolean pricesLoaded()
+	{
+		return itemManager.getItemPrice(ItemID.SHARK) > 0;
+	}
+
+	public boolean isTradeable(int itemId)
+	{
+		return itemManager.getItemComposition(itemId).isTradeable();
 	}
 
 	@Override
@@ -165,7 +180,8 @@ public class PriceService implements ItemInfo
 
 		if (best == null)
 		{
-			best = new FullDose(seenItemId, seenDoses);
+			// Not cached: the search finds nothing until the price list has loaded
+			return new FullDose(seenItemId, seenDoses);
 		}
 		fullDoseCache.put(family, best);
 		return best;

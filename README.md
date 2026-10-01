@@ -183,8 +183,10 @@ For the Maggot King:
   result replaces the oldest pending drop of that type and is valued at the GE price then.
 - **Loot alerts** (Configuration → Loot alerts) notify you for uniques, the pet, or any drop
   worth at least a set amount. Nothing is drawn on the game screen.
-- Values use the GE price at the time of the drop or use. The Lifetime tab can also show
-  loot at today's prices (**Show today's value**).
+- Values use the GE price at the time of the drop or use. If RuneLite's prices haven't loaded
+  yet (or failed to load), items are recorded without a price and get the GE price as soon as
+  prices load. The Lifetime tab can also show loot at today's prices (**Show today's
+  value**).
 
 ## Data
 
