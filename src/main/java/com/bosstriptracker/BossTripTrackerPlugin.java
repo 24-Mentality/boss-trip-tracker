@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
@@ -35,6 +36,7 @@ import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ClientShutdown;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
@@ -286,8 +288,9 @@ public class BossTripTrackerPlugin extends Plugin
 		overlay = null;
 		latestState = null;
 
-		eventBus.unregister(tripTracker);
-		tripTracker.shutDown();
+		TripTracker tracker = tripTracker;
+		ScheduledExecutorService historyExecutor = executor;
+		eventBus.unregister(tracker);
 		tripTracker = null;
 
 		if (diagnosticRecorder != null)
@@ -297,7 +300,13 @@ public class BossTripTrackerPlugin extends Plugin
 			diagnosticRecorder = null;
 		}
 
-		executor.shutdownNow();
+		// The last save is made on the client thread, where the history lives; the executor then finishes the writes
+		// already queued and stops. Nothing here waits for them.
+		clientThread.invoke(() ->
+		{
+			tracker.shutDown();
+			historyExecutor.shutdown();
+		});
 		executor = null;
 		store = null;
 		shareCardExporter = null;
@@ -308,6 +317,23 @@ public class BossTripTrackerPlugin extends Plugin
 		panel = null;
 
 		log.debug("Boss Trip Tracker stopped");
+	}
+
+	/**
+	 * RuneLite doesn't shut plugins down when the client closes: save the open trip and have the client wait for
+	 * the write.
+	 */
+	@Subscribe
+	public void onClientShutdown(ClientShutdown event)
+	{
+		TripTracker tracker = tripTracker;
+		if (tracker == null)
+		{
+			return;
+		}
+		CompletableFuture<Void> saved = new CompletableFuture<>();
+		clientThread.invoke(() -> tracker.finalSave(() -> saved.complete(null)));
+		event.waitFor(saved);
 	}
 
 	@Subscribe
@@ -510,18 +536,20 @@ public class BossTripTrackerPlugin extends Plugin
 
 			TripTracker tracker = tripTracker;
 			TrackerPanel trackerPanel = panel;
-			store.readHistoryFile(chosen.get(0), (decoded, error) ->
+			store.readHistoryFile(chosen.get(0), tracker.knownBossIds(), (decoded, leftOut, error) ->
 			{
 				if (error != null)
 				{
-					SwingUtilities.invokeLater(() -> trackerPanel.showMessage("Import history",
-						"That file couldn't be read as a Boss Trip Tracker export.", true));
+					SwingUtilities.invokeLater(() -> trackerPanel.showMessage("Import history", error, true));
 					return;
 				}
 				AccountHistory imported = decoded.getHistory();
 				clientThread.invokeLater(() ->
 				{
-					String description = tracker.describeImport(imported);
+					String described = tracker.describeImport(imported);
+					String description = described.startsWith("!") || leftOut == 0 ? described
+						: described + " " + leftOut + (leftOut == 1 ? " entry" : " entries")
+						+ " in the file couldn't be read and will be left out.";
 					SwingUtilities.invokeLater(() ->
 					{
 						if (description.startsWith("!"))

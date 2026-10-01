@@ -41,6 +41,7 @@ public class TrackerPanel extends PluginPanel
 	private final HistoryPanel historyTab;
 	private final LifetimePanel lifetimeTab;
 	private final JLabel readOnlyWarning = new JLabel();
+	private final JLabel corruptWarning = new JLabel();
 	private final JLabel notice = new JLabel();
 	private final Timer noticeTimer = new Timer(3000, e -> notice.setVisible(false));
 	private final BossSelector bossSelector;
@@ -90,6 +91,11 @@ public class TrackerPanel extends PluginPanel
 		readOnlyWarning.setText("<html>History could not be loaded or is from a newer version. Changes will not be saved.</html>");
 		readOnlyWarning.setVisible(false);
 		readOnlyWarning.setBorder(BorderFactory.createEmptyBorder(0, 8, 4, 8));
+		corruptWarning.setFont(FontManager.getRunescapeSmallFont());
+		corruptWarning.setForeground(UiFormat.LOSS);
+		corruptWarning.setVisible(false);
+		corruptWarning.setBorder(BorderFactory.createEmptyBorder(0, 8, 4, 8));
+		corruptWarning.setAlignmentX(LEFT_ALIGNMENT);
 
 		bossSelector = new BossSelector(itemManager, actions::selectBoss);
 		variantChips = new VariantChips(actions::selectVariant);
@@ -133,6 +139,7 @@ public class TrackerPanel extends PluginPanel
 		messages.setOpaque(false);
 		messages.add(notice);
 		messages.add(readOnlyWarning);
+		messages.add(corruptWarning);
 		north.add(messages, BorderLayout.SOUTH);
 
 		JScrollPane scroll = new JScrollPane(display);
@@ -156,6 +163,12 @@ public class TrackerPanel extends PluginPanel
 		bossSelector.update(state.getBosses(), boss.getId());
 		variantChips.update(boss, state.getVariant());
 		readOnlyWarning.setVisible(state.isReadOnly());
+		corruptWarning.setVisible(state.getCorruptBackup() != null);
+		if (state.getCorruptBackup() != null)
+		{
+			corruptWarning.setText("<html>Your history file couldn't be read, so a new history was started. The old file"
+				+ " is kept in the plugin's data folder as " + state.getCorruptBackup() + ".</html>");
+		}
 		currentTab.update(state, System.currentTimeMillis());
 		historyTab.update(state.getHistory(), state.getLifetime());
 		lifetimeTab.update(state.getLifetime(), state.isReadOnly(), boss);

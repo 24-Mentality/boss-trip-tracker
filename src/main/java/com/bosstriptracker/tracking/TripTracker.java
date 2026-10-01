@@ -169,6 +169,10 @@ public class TripTracker
 
 	private AccountHistory history;
 	private boolean readOnly;
+	/**
+	 * Where an unreadable history file was moved when this account's history was loaded, or null.
+	 */
+	private String corruptBackup;
 	private long accountHash = -1;
 	private boolean loading;
 
@@ -318,14 +322,33 @@ public class TripTracker
 		pushState();
 	}
 
+	/**
+	 * Saves now (the trip in progress included) and forgets the session. Client thread.
+	 */
 	public void shutDown()
+	{
+		finalSave(() -> { });
+		resetSession();
+	}
+
+	/**
+	 * Saves now instead of waiting for a pending save. Client thread.
+	 *
+	 * @param written runs once the file is written (or at once if there is nothing to save)
+	 */
+	public void finalSave(Runnable written)
 	{
 		if (saveFuture != null)
 		{
 			saveFuture.cancel(false);
 			saveFuture = null;
 		}
-		resetSession();
+		if (history == null || readOnly)
+		{
+			written.run();
+			return;
+		}
+		saveNow(written);
 	}
 
 	/**
@@ -525,6 +548,19 @@ public class TripTracker
 				.append('\n');
 		}
 		return csv.toString();
+	}
+
+	/**
+	 * The bosses this version tracks, for checking an import. Any thread.
+	 */
+	public Set<String> knownBossIds()
+	{
+		Set<String> ids = new HashSet<>();
+		for (BossDefinition boss : registry.all())
+		{
+			ids.add(boss.getId());
+		}
+		return ids;
 	}
 
 	/**
@@ -2361,6 +2397,7 @@ public class TripTracker
 		accountHash = hash;
 		history = null;
 		readOnly = false;
+		corruptBackup = null;
 		loading = true;
 		currentTrip = null;
 		tripBoss = null;
@@ -2383,6 +2420,7 @@ public class TripTracker
 		readOnly = result.isReadOnly();
 		loading = false;
 		zeroPricesChecked = false;
+		corruptBackup = result.getCorruptBackup();
 		if (readOnly)
 		{
 			log.warn("Trip history is read-only (newer format or unreadable); changes will not be saved");
@@ -2441,6 +2479,12 @@ public class TripTracker
 			suspendedAt = open.getLastActiveAt();
 		}
 
+		if (!readOnly && result.getSourceVersion() < AccountHistory.CURRENT_SCHEMA_VERSION)
+		{
+			// Written in the new format straight away, so the next login doesn't migrate (and back up) again
+			saveNow();
+		}
+
 		historyChanged();
 		if (inArea)
 		{
@@ -2457,7 +2501,7 @@ public class TripTracker
 		}
 		try
 		{
-			saveFuture = executor.schedule(() -> clientThread.invokeLater(this::saveNow), SAVE_DELAY_MS, TimeUnit.MILLISECONDS);
+			saveFuture = executor.schedule(() -> clientThread.invokeLater(() -> saveNow()), SAVE_DELAY_MS, TimeUnit.MILLISECONDS);
 		}
 		catch (RejectedExecutionException e)
 		{
@@ -2467,15 +2511,21 @@ public class TripTracker
 
 	private void saveNow()
 	{
+		saveNow(() -> { });
+	}
+
+	private void saveNow(Runnable written)
+	{
 		if (history == null || readOnly)
 		{
+			written.run();
 			return;
 		}
 		if (currentTrip != null && currentTrip.getSegmentStartedAt() != null)
 		{
 			currentTrip.setLastActiveAt(System.currentTimeMillis());
 		}
-		store.save(accountHash, gson.toJson(history));
+		store.save(accountHash, gson.toJson(history), written);
 	}
 
 	private void historyChanged()
@@ -2550,6 +2600,7 @@ public class TripTracker
 			.pausedInLair(live && inLairPause != null)
 			.canPause(fighting)
 			.readOnly(readOnly)
+			.corruptBackup(corruptBackup)
 			.killStartedAt(fighting ? fightStartedAt : null)
 			.playerName(history == null ? null : history.getLastDisplayName())
 			.luckCardStyle(config.luckCardStyle())

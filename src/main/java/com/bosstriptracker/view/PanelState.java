@@ -71,6 +71,10 @@ public class PanelState
 	 * Pausing is possible: in the shown boss's area on an open trip.
 	 */
 	boolean canPause;
+	/**
+	 * The file an unreadable history was moved to when a new one was started, or null.
+	 */
+	String corruptBackup;
 	boolean readOnly;
 	/**
 	 * When the boss you're fighting spawned, for the live kill timer (the game's Fight duration counts from the

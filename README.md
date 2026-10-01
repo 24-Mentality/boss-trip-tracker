@@ -94,8 +94,10 @@ bosses are planned.
   - **Polish results:** what each type of tarnished item has polished into.
   - **Data:** export the shown boss's trips as CSV, export or import the account's full
     history (every boss) as JSON (imports only add trips you don't already have; exports from
-    older versions import too), and clear the shown boss's history. Export file names include
-    the date and time.
+    older versions import too; files over 50 MB are refused, and anything in a file that
+    can't be read is left out), and clear the shown boss's history. Export file names include
+    the date and time. Your history is saved when you turn the plugin off or close the client.
+    If the history file can't be read, it's kept aside and the panel tells you its name.
 
 The panel opens on the Trip tab automatically when you enter a tracked boss's area
 (Configuration → Display → **Open panel on entry**; on by default).
