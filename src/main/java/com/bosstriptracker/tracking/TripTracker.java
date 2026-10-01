@@ -590,6 +590,7 @@ public class TripTracker
 
 	/**
 	 * Sets the shown boss's kill goal target, keeping progress if a goal is already running. 0 or less removes it.
+	 * A new goal set during this boss's trip counts from the trip's start, so its kills so far aren't lost.
 	 */
 	public void setGoal(int target)
 	{
@@ -604,7 +605,9 @@ public class TripTracker
 		}
 		else if (boss.getGoal() == null)
 		{
-			boss.setGoal(new KillGoal(target, System.currentTimeMillis(), 0));
+			boolean onTrip = currentTrip != null && tripBoss == selectedBoss;
+			long startedAt = onTrip ? currentTrip.getStartedAt() : System.currentTimeMillis();
+			boss.setGoal(KillGoal.startingAt(target, startedAt, boss.getTrips()));
 		}
 		else
 		{

@@ -204,7 +204,8 @@ public class TrackerPanel extends PluginPanel
 	private void promptGoal(PanelActions actions)
 	{
 		String input = JOptionPane.showInputDialog(this,
-			"How many " + boss.getDisplayName() + " kills is your goal? (0 removes it)", "Set kill goal",
+			"How many " + boss.getDisplayName() + " kills is your goal? (0 removes it)\n"
+				+ "A new goal set during a trip counts that trip's kills so far.", "Set kill goal",
 			JOptionPane.QUESTION_MESSAGE);
 		if (input == null)
 		{
