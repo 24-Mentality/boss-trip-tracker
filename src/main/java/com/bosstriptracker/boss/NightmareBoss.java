@@ -60,7 +60,8 @@ public final class NightmareBoss extends BossDefinition
 
 	private static final List<BossVariant> VARIANTS = ImmutableList.of(
 		new BossVariant(PHOSANI, "Phosani's", false),
-		new BossVariant(REGULAR, "Regular", false));
+		// Not recognised yet (no diagnostic log of a regular kill), so it has no chip
+		new BossVariant(REGULAR, "Regular", false, false));
 	private static final Map<String, String> KILL_NAMES = ImmutableMap.of("Phosani's Nightmare", PHOSANI);
 	private static final Set<Integer> REGIONS = ImmutableSet.of(DREAM_REGION_ID);
 	private static final Set<Integer> WAITING_REGIONS = ImmutableSet.of(SANCTUARY_REGION_ID);

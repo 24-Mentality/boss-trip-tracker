@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import net.runelite.http.api.loottracker.LootRecordType;
 
 /**
@@ -34,6 +35,16 @@ public abstract class BossDefinition
 	public List<BossVariant> getVariants()
 	{
 		return Collections.emptyList();
+	}
+
+	/**
+	 * The variants with a chip under the boss dropdown: those whose kills are tracked. None when fewer than two are,
+	 * since a lone chip would show the same as All.
+	 */
+	public List<BossVariant> getShownVariants()
+	{
+		List<BossVariant> shown = getVariants().stream().filter(BossVariant::isTracked).collect(Collectors.toList());
+		return shown.size() < 2 ? Collections.emptyList() : shown;
 	}
 
 	// ---- Detection ----

@@ -42,6 +42,12 @@ public class TheatreOfBloodBossTest
 	}
 
 	@Test
+	public void normalAndHardBothHaveChips()
+	{
+		assertEquals(2, boss.getShownVariants().size());
+	}
+
+	@Test
 	public void onlyTheRewardEventIsLoot()
 	{
 		assertTrue(boss.isRaidLootEvent("Theatre of Blood", LootRecordType.EVENT));

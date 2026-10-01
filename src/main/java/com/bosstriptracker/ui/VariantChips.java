@@ -58,7 +58,7 @@ class VariantChips extends JPanel
 		removeAll();
 		chips.clear();
 		ids.clear();
-		List<BossVariant> variants = boss.getVariants();
+		List<BossVariant> variants = boss.getShownVariants();
 		setVisible(!variants.isEmpty());
 		if (variants.isEmpty())
 		{

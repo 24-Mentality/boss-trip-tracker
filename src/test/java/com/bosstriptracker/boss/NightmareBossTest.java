@@ -50,6 +50,14 @@ public class NightmareBossTest
 	}
 
 	@Test
+	public void regularHasNoChipUntilItsKillsAreTracked()
+	{
+		assertFalse(boss.getVariants().get(1).isTracked());
+		// Phosani's alone would show the same as All, so there's no chip row at all
+		assertTrue(boss.getShownVariants().isEmpty());
+	}
+
+	@Test
 	public void fightClockStartsEightTicksAfterTheAwokenMessage()
 	{
 		assertFalse(boss.isFightStartOnSpawn());
