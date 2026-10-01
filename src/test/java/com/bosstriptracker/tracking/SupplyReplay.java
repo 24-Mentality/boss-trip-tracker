@@ -1,8 +1,6 @@
 package com.bosstriptracker.tracking;
 
 import com.bosstriptracker.model.ItemEntry;
-import com.bosstriptracker.pricing.ItemInfo;
-import com.bosstriptracker.pricing.PriceService;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -28,13 +26,11 @@ class SupplyReplay
 	private static final Pattern ITEM = Pattern.compile("(?:^|\\[|, )([+-]?)([^,\\[]*?) \\((\\d+)\\) x(\\d+)");
 	private static final Pattern MENU = Pattern.compile("option=\"([^\"]*)\".* itemId=(-?\\d+)");
 	private static final Pattern STACKABLE_NAME = Pattern.compile("(?i)( rune|arrow|bolts|dart|^coins|scales|chinchompa|knife|stake)$");
-	private static final Pattern DOSE_NAME = Pattern.compile("^(.+)\\((\\d)\\)$");
 
 	/**
-	 * Items as the log names them, priced from {@link #prices} (1,000 gp otherwise).
+	 * Items as the log names them.
 	 */
-	final Items items = new Items();
-	final Map<Integer, Long> prices = new HashMap<>();
+	final FakeItems items = new FakeItems();
 
 	/**
 	 * Supplies used in the lair, merged as on a trip.
@@ -78,7 +74,7 @@ class SupplyReplay
 
 	SupplyReplay price(int itemId, long price)
 	{
-		prices.put(itemId, price);
+		items.prices.put(itemId, price);
 		return this;
 	}
 
@@ -243,6 +239,11 @@ class SupplyReplay
 	private void learnItems(String line)
 	{
 		Matcher m = LINE.matcher(line);
+		Matcher eat = MENU.matcher(line);
+		if (m.matches() && m.group(3).equals("MENU") && eat.find() && eat.group(1).equals("Eat"))
+		{
+			items.food.add(Integer.parseInt(eat.group(2)));
+		}
 		if (!m.matches() || !(m.group(3).equals("INVENTORY") || m.group(3).equals("EQUIPMENT")
 			|| m.group(3).equals("GROUND") || m.group(3).equals("LOOT")))
 		{
@@ -283,62 +284,5 @@ class SupplyReplay
 	{
 		ItemEntry entry = line(itemId);
 		return entry == null ? 0 : entry.getQuantity();
-	}
-
-	/**
-	 * Item facts learnt from the log: names from its lines, stackable by name (runes, ammo, coins), equipable if
-	 * ever worn. Unknown items cost 1,000 gp.
-	 */
-	class Items implements ItemInfo
-	{
-		final Map<Integer, String> names = new HashMap<>();
-		final Set<Integer> stackable = new HashSet<>();
-		final Set<Integer> equipable = new HashSet<>();
-
-		@Override
-		public long price(int itemId)
-		{
-			return prices.getOrDefault(itemId, 1_000L);
-		}
-
-		@Override
-		public String name(int itemId)
-		{
-			return names.getOrDefault(itemId, "Item " + itemId);
-		}
-
-		@Override
-		public PriceService.DoseInfo doseInfo(int itemId)
-		{
-			Matcher m = DOSE_NAME.matcher(name(itemId));
-			return m.matches() ? new PriceService.DoseInfo(m.group(1), Integer.parseInt(m.group(2))) : null;
-		}
-
-		@Override
-		public PriceService.FullDose fullDose(String family, int seenItemId, int seenDoses)
-		{
-			PriceService.FullDose best = new PriceService.FullDose(seenItemId, seenDoses);
-			for (Map.Entry<Integer, String> e : names.entrySet())
-			{
-				PriceService.DoseInfo dose = doseInfo(e.getKey());
-				if (dose != null && dose.getFamily().equals(family) && dose.getDoses() > best.getDoses())
-				{
-					best = new PriceService.FullDose(e.getKey(), dose.getDoses());
-				}
-			}
-			return best;
-		}
-
-		@Override
-		public boolean isEquipable(int itemId)
-		{
-			return equipable.contains(itemId);
-		}
-
-		@Override
-		public boolean isStackable(int itemId)
-		{
-			return stackable.contains(itemId);
-		}
 	}
 }

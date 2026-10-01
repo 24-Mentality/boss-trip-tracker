@@ -146,7 +146,13 @@ For the Maggot King:
   "Fight duration" message.
 - Loot includes items that overflow onto the ground, once you pick them up.
 - Supplies are everything used up in the lair, across inventory, equipment and rune pouch.
-  Potions are counted per dose. Gear switches don't count. With **Count supplies used
+  Potions are counted per dose. Gear switches don't count, and worn gear is never a supply:
+  a charged weapon running dry, Barrows gear degrading or a blood fury turning back into an
+  amulet of fury costs nothing (its charges are costed as they're used). Ammo still counts,
+  and so does jewellery that breaks, such as a ring of recoil. Putting darts, scales, blood
+  shards, pages or runes into a charged item isn't a supply either. Eating part of a pie or
+  pizza costs only the part eaten. Your own arrows, bolts or knives picked back up come off
+  the supply line again. With **Count supplies used
   before entry** (on by default), food, potions and spells used in the 60 seconds before
   entering are added to the trip too.
 - Charges used during a trip count as supplies, counted from your attacks: Amulet of blood

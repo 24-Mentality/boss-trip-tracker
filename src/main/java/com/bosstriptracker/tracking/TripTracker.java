@@ -211,6 +211,10 @@ public class TripTracker
 	private final List<GroundEntry> groundItems = new ArrayList<>();
 	private final List<GroundEntry> recentDespawns = new ArrayList<>();
 	private final Map<Integer, Long> pendingDrops = new HashMap<>();
+	/**
+	 * Worn ammo, and a worn weapon that stacks (knives, darts): your own lands on the floor and can be picked back up.
+	 */
+	private final Set<Integer> wornAmmo = new HashSet<>();
 	private final ChargeCounter chargeCounter;
 	/**
 	 * Why the clock is stopped while in the lair on a trip; null while it runs. Kills, loot and supplies still count.
@@ -289,7 +293,9 @@ public class TripTracker
 		if (client.getGameState() == GameState.LOGGED_IN)
 		{
 			ensureAccountLoaded();
-			chargeCounter.gearChanged(client.getTickCount(), gear(client.getItemContainer(InventoryID.WORN)));
+			ItemContainer worn = client.getItemContainer(InventoryID.WORN);
+			chargeCounter.gearChanged(client.getTickCount(), gear(worn));
+			wornAmmoChanged(worn);
 		}
 		pushState();
 	}
@@ -882,6 +888,7 @@ public class TripTracker
 		if (containerId == InventoryID.WORN)
 		{
 			chargeCounter.gearChanged(client.getTickCount(), gear(event.getItemContainer()));
+			wornAmmoChanged(event.getItemContainer());
 		}
 		else if (containerId == InventoryID.BANK)
 		{
@@ -987,6 +994,25 @@ public class TripTracker
 			wornId(worn, EquipmentInventorySlot.SHIELD),
 			wornId(worn, EquipmentInventorySlot.AMULET),
 			wornId(worn, EquipmentInventorySlot.CAPE));
+	}
+
+	private void wornAmmoChanged(ItemContainer worn)
+	{
+		wornAmmo.clear();
+		if (worn == null)
+		{
+			return;
+		}
+		int ammo = wornId(worn, EquipmentInventorySlot.AMMO);
+		if (ammo > 0)
+		{
+			wornAmmo.add(ammo);
+		}
+		int weapon = wornId(worn, EquipmentInventorySlot.WEAPON);
+		if (weapon > 0 && prices.isStackable(weapon))
+		{
+			wornAmmo.add(weapon);
+		}
 	}
 
 	private static int wornId(ItemContainer worn, EquipmentInventorySlot slot)
@@ -1411,6 +1437,12 @@ public class TripTracker
 		if (recentClicks.has(OPTION_DROP, item.getId(), tick) || tripBoss.getRecoverableItems().contains(item.getId()))
 		{
 			kind = GroundKind.OWN_DROP;
+		}
+		else if (wornAmmo.contains(item.getId()) && !tripBoss.isAcquiredInsideFree())
+		{
+			// Fired and landed: costed when fired, so picking it up makes up for it. In a raid, anything picked up
+			// already does (FreeSupplies)
+			kind = GroundKind.OWN_AMMO;
 		}
 		else if (tripBoss.isGroundOverflowLoot() && lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS)
 		{
@@ -1961,7 +1993,8 @@ public class TripTracker
 	}
 
 	/**
-	 * Gains that match a ground item just picked up: loot overflow becomes loot, own drops are no longer lost.
+	 * Gains that match a ground item just picked up: loot overflow becomes loot, own drops are no longer lost, and
+	 * your own ammo comes off the supply line it was costed on.
 	 * Matched quantities are removed from {@code gained}.
 	 */
 	private void matchPickups(Map<Integer, Long> gained, int tick)
@@ -1979,6 +2012,12 @@ public class TripTracker
 			if (entry.kind == GroundKind.LOOT_OVERFLOW)
 			{
 				addLoot(entry.kill, entry.itemId, taken);
+				viewDirty = true;
+				requestSave();
+			}
+			else if (entry.kind == GroundKind.OWN_AMMO)
+			{
+				ItemEntries.reduce(currentTrip.getSupplies(), entry.itemId, false, taken);
 				viewDirty = true;
 				requestSave();
 			}
@@ -2398,6 +2437,7 @@ public class TripTracker
 	private enum GroundKind
 	{
 		OWN_DROP,
+		OWN_AMMO,
 		LOOT_OVERFLOW,
 	}
 

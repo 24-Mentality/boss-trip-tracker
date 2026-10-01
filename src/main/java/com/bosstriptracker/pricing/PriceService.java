@@ -55,6 +55,7 @@ public class PriceService implements ItemInfo
 	/**
 	 * Food is anything with an Eat option.
 	 */
+	@Override
 	public boolean isFood(int itemId)
 	{
 		return foodCache.computeIfAbsent(itemId, id -> hasAction(id, "Eat"));

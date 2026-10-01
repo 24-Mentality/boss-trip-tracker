@@ -28,4 +28,9 @@ public interface ItemInfo
 	boolean isEquipable(int itemId);
 
 	boolean isStackable(int itemId);
+
+	/**
+	 * Anything with an Eat option.
+	 */
+	boolean isFood(int itemId);
 }
