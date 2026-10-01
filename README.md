@@ -163,8 +163,8 @@ For the Maggot King:
   priced is set by **Blowpipe darts**) and the Crystal halberd (one per attack; crystal
   shards are untradeable, so it shows the count at 0 gp). This applies at every supported
   boss.
-- Items you drop in the lair and don't pick up again are a "Dropped" cost. Zero-value items
-  such as empty vials are ignored.
+- Items you drop in the lair and don't pick up again are a "Dropped" cost. Items worth under
+  100 gp each, such as empty vials, are ignored.
 - Gravestone moves paid to the aranei scout are recorded as death costs.
 - Tarnished drops are pending until you polish them (anywhere, any time later). The
   result replaces the oldest pending drop of that type and is valued at the GE price then.
