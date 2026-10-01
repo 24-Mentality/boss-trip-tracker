@@ -142,6 +142,9 @@ For the Maggot King:
   within 5 minutes (both grace periods are configurable).
 - **Merge re-entries** (off by default) counts leaving and re-entering within the merge
   window as one trip.
+- A trip without kills is kept if anything was dropped or lost, or if it used at least 1,000 gp
+  of supplies or charges (a teleport out before the kill); History shows it as "No kills".
+  Walking in and straight back out leaves nothing.
 - A kill is counted from the game's kill-count message. Kill time comes from the game's
   "Fight duration" message.
 - Loot includes items that overflow onto the ground, once you pick them up.

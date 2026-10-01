@@ -79,11 +79,19 @@ public class TripMathTest
 	}
 
 	@Test
-	public void tripsWithoutKillsDeathsOrDropsAreEmpty()
+	public void tripsWithoutKillsDeathsDropsOrRealSupplyUseAreEmpty()
 	{
 		Trip trip = new Trip();
-		trip.getSupplies().add(new ItemEntry(2434, 1, 2_000));
+		trip.getSupplies().add(new ItemEntry(2434, 1, 999));
 		assertEquals(true, TripMath.isEmpty(trip));
+
+		// Supplies or charges used without a kill (a reset, a teleport out before the kill) are kept
+		Trip used = new Trip();
+		used.getSupplies().add(new ItemEntry(2434, 1, 1_000));
+		assertEquals(false, TripMath.isEmpty(used));
+		Trip charges = new Trip();
+		charges.getSupplies().add(ItemEntry.charges(24780, 5_000, 24777, 2_000_000, 10_000));
+		assertEquals(false, TripMath.isEmpty(charges));
 
 		Trip died = new Trip();
 		died.getDeaths().add(new DeathRecord());

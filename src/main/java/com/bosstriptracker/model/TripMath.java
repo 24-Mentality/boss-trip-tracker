@@ -52,12 +52,20 @@ public final class TripMath
 	}
 
 	/**
-	 * A trip worth keeping has at least one kill, death or dropped item. Walking in and straight back out
-	 * leaves none of these.
+	 * Supplies and charges worth less than this on a trip without kills are left out (a sip before walking in and
+	 * straight back out).
+	 */
+	public static final long MIN_KEPT_SUPPLY_COST = 1_000;
+
+	/**
+	 * A trip worth keeping has at least one kill, death or dropped item, or used supplies or charges worth
+	 * {@link #MIN_KEPT_SUPPLY_COST} or more (a raid reset at the first room, a teleport out before the kill).
+	 * Walking in and straight back out leaves none of these.
 	 */
 	public static boolean isEmpty(Trip trip)
 	{
-		return trip.getKills().isEmpty() && trip.getDeaths().isEmpty() && trip.getDropped().isEmpty();
+		return trip.getKills().isEmpty() && trip.getDeaths().isEmpty() && trip.getDropped().isEmpty()
+			&& supplyCost(trip) < MIN_KEPT_SUPPLY_COST;
 	}
 
 	public static int countChoice(Trip trip, String choice)

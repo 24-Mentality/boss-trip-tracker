@@ -52,7 +52,7 @@ class TripCard extends JPanel
 		net.setToolTipText(UiFormat.fullGp(trip.getNetProfit()));
 
 		JLabel summary = new JLabel((trip.getDetail() != null ? trip.getDetail()
-			: trip.getKills() + (trip.getKills() == 1 ? " kill" : " kills"))
+			: trip.getKills() == 0 ? "No kills" : trip.getKills() + (trip.getKills() == 1 ? " kill" : " kills"))
 			+ " · " + UiFormat.duration(trip.getActiveMs())
 			// A completed raid is the usual end, so only other ends are named
 			+ (trip.getEndReason() == TripEndReason.COMPLETED ? "" : " · " + CurrentTripPanel.endReason(trip.getEndReason())));
