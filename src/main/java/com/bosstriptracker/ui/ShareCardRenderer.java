@@ -92,17 +92,52 @@ final class ShareCardRenderer
 		g.fillRect(PAD, y, 2, h);
 
 		drawIcon(g, icons.apply(card.getIconItemId()), PAD + INNER, y + 6, 36, 32);
-		int x = PAD + INNER + 42;
+		int x = headerTextLeft();
 		String title = card.getBossName() + (card.getVariant() != null ? " (" + card.getVariant() + ")" : "");
 		text(g, bold, Color.WHITE, title, x, y + 19);
 		String name = card.getPlayerName() != null ? card.getPlayerName() : "Boss Trip Tracker";
 		text(g, regular, card.getPlayerName() != null ? TEXT : UiFormat.MUTED_TEXT, name, x, y + 36);
 
+		// Kill count, then total loot at the right edge
 		int right = WIDTH - PAD - INNER;
-		String kc = card.getKillCount() != null ? String.format(Locale.ROOT, "%,d", card.getKillCount()) : "-";
-		textRight(g, small, UiFormat.MUTED_TEXT, "Kill count", right, y + 17);
-		textRight(g, bold, Color.WHITE, kc, right, y + 35);
+		textRight(g, small, UiFormat.MUTED_TEXT, TOTAL_LOOT, right, y + 17);
+		textRight(g, bold, Color.WHITE, UiFormat.gp(card.getTotalLoot()), right, y + 35);
+		int kcRight = right - headerColumnWidth(g, TOTAL_LOOT, UiFormat.gp(card.getTotalLoot())) - HEADER_COLUMN_GAP;
+		textRight(g, small, UiFormat.MUTED_TEXT, KILL_COUNT, kcRight, y + 17);
+		textRight(g, bold, Color.WHITE, killCount(card), kcRight, y + 35);
 		return y + h;
+	}
+
+	private static final String KILL_COUNT = "Kill count";
+	private static final String TOTAL_LOOT = "Total loot";
+	private static final int HEADER_COLUMN_GAP = 14;
+
+	private static String killCount(ShareCard card)
+	{
+		return card.getKillCount() != null ? String.format(Locale.ROOT, "%,d", card.getKillCount()) : "-";
+	}
+
+	private int headerColumnWidth(Graphics2D g, String label, String value)
+	{
+		return Math.max(width(g, small, label), width(g, bold, value));
+	}
+
+	/**
+	 * Where the header's kill count column starts; the title and name must end before it.
+	 */
+	int headerStatsLeft(Graphics2D g, ShareCard card)
+	{
+		int right = WIDTH - PAD - INNER;
+		int kcRight = right - headerColumnWidth(g, TOTAL_LOOT, UiFormat.gp(card.getTotalLoot())) - HEADER_COLUMN_GAP;
+		return kcRight - headerColumnWidth(g, KILL_COUNT, killCount(card));
+	}
+
+	/**
+	 * Where the header's title and name start.
+	 */
+	static int headerTextLeft()
+	{
+		return PAD + INNER + 42;
 	}
 
 	/**

@@ -56,6 +56,11 @@ class ShareCard
 	 * The game's kill count; null if unknown.
 	 */
 	Integer killCount;
+	/**
+	 * Every drop's value: RuneLite's all-time Loot Tracker record at today's prices when there is one, otherwise the
+	 * tracked loot.
+	 */
+	long totalLoot;
 	int uniquesReceived;
 	double uniquesExpected;
 	/**
@@ -161,6 +166,7 @@ class ShareCard
 			.iconItemId(boss.getIconItemId())
 			.playerName(showName ? state.getPlayerName() : null)
 			.killCount(killCount)
+			.totalLoot(lifetime.getAllTimeLoot() != null ? lifetime.getAllTimeLootValue() : lifetime.getLootValue())
 			.uniquesReceived(luck.getReceived())
 			.uniquesExpected(luck.getExpected())
 			.tier(luck.getTier())

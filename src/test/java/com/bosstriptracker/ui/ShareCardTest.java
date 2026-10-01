@@ -70,6 +70,41 @@ public class ShareCardTest
 		assertEquals("All-time · 2,630 kills · KC 2,752", card.getChancesSource());
 		assertEquals(9_620_000, card.getCosts());
 		assertEquals(-5_350_000, card.getNet());
+		// No all-time loot record in this state, so the tracked loot
+		assertEquals(4_270_000, card.getTotalLoot());
+	}
+
+	@Test
+	public void totalLootIsTheAllTimeRecordWhenThereIsOne()
+	{
+		PanelState state = state(2);
+		LifetimeView withRecord = state.getLifetime().toBuilder()
+			.allTimeLoot(Collections.emptyList())
+			.allTimeLootValue(312_400_000)
+			.build();
+		ShareCard card = ShareCard.from(state.toBuilder().lifetime(withRecord).build(), true, NOW);
+		assertEquals(312_400_000, card.getTotalLoot());
+	}
+
+	@Test
+	public void headerTitleAndNameEndBeforeTheKillCount()
+	{
+		Graphics2D g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).createGraphics();
+		FontMetrics bold = g.getFontMetrics(FontManager.getRunescapeBoldFont());
+		FontMetrics regular = g.getFontMetrics(FontManager.getRunescapeFont());
+		ShareCardRenderer renderer = new ShareCardRenderer(ZoneId.of("UTC"));
+		// The longest titles, a 12-character name, and large numbers
+		ShareCard card = ShareCard.builder().killCount(123_456).totalLoot(-1_234_567_890L).build();
+		int statsLeft = renderer.headerStatsLeft(g, card);
+		int textLeft = ShareCardRenderer.headerTextLeft();
+		for (String title : new String[]{"Theatre of Blood (Normal)", "Phosani's Nightmare", "Maggot King"})
+		{
+			int end = textLeft + bold.stringWidth(title);
+			assertTrue(title + " ends at " + end + ", kill count starts at " + statsLeft, end + 6 <= statsLeft);
+		}
+		int nameEnd = textLeft + regular.stringWidth("WWWWWWWWWWWW");
+		assertTrue("Name ends at " + nameEnd + ", kill count starts at " + statsLeft, nameEnd + 6 <= statsLeft);
+		g.dispose();
 	}
 
 	@Test
