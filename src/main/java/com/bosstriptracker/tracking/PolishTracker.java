@@ -45,6 +45,14 @@ class PolishTracker
 		return registry.forTarnished(itemId) != null;
 	}
 
+	/**
+	 * Forgets polishes in progress, e.g. on logout.
+	 */
+	void reset()
+	{
+		pendingPolishes.clear();
+	}
+
 	void menuClicked(String option, int itemId, int tick)
 	{
 		if (OPTION_POLISH.equals(option) && isTarnished(itemId))

@@ -6,6 +6,7 @@ import com.bosstriptracker.model.Trip;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.function.IntUnaryOperator;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
@@ -446,6 +447,18 @@ public abstract class BossDefinition
 	public List<Integer> getTeamSlotVarbits()
 	{
 		return Collections.emptyList();
+	}
+
+	/**
+	 * Whether the game says you're still inside although the region isn't one of {@link #getRegions()} (a raid room
+	 * that isn't listed). Only keeps you inside; it never takes you in.
+	 *
+	 * @param varbits reads a varbit
+	 * @param instanced whether you're in an instance
+	 */
+	public boolean isStillInside(IntUnaryOperator varbits, int region, boolean instanced)
+	{
+		return false;
 	}
 
 	/**

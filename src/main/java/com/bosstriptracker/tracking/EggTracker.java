@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * Egg pops, anywhere, for bosses that drop pet eggs (the Maggot King). An egg leaving the inventory right after
- * a click on it is a pop; a pet message shortly after belongs to that egg. Client thread only.
+ * its Pop option is a pop; a pet message shortly after belongs to that egg. Client thread only.
  */
 class EggTracker
 {
@@ -35,6 +35,18 @@ class EggTracker
 		this.prices = prices;
 		this.clicks = clicks;
 		this.host = host;
+	}
+
+	/**
+	 * Forgets recent clicks and pops, e.g. on logout.
+	 */
+	void reset()
+	{
+		lastEggPop = null;
+		lastEggBoss = null;
+		lastEggPopTick = -100;
+		lastEggClickTick = -100;
+		unclaimedPetMessageTick = -100;
 	}
 
 	void menuClicked(String option, int itemId, int tick)
@@ -121,18 +133,12 @@ class EggTracker
 	}
 
 	/**
-	 * Any egg option that isn't dropping, using, examining or moving it. The pop option isn't hardcoded
-	 * because it has not been confirmed in game.
+	 * The egg's pop option. Unverified: no egg click is in the diagnostic logs yet, and the wiki calls it popping.
 	 */
+	static final String OPTION_POP = "Pop";
+
 	static boolean isPopOption(String option)
 	{
-		if (option == null)
-		{
-			return false;
-		}
-		String o = option.toLowerCase();
-		return !(o.equals("drop") || o.equals("use") || o.equals("examine") || o.equals("destroy")
-			|| o.equals("cancel") || o.startsWith("deposit") || o.startsWith("withdraw") || o.startsWith("offer")
-			|| o.startsWith("store") || o.startsWith("bank") || o.startsWith("take"));
+		return OPTION_POP.equalsIgnoreCase(option);
 	}
 }

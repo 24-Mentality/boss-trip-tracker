@@ -72,6 +72,7 @@ import net.runelite.api.GameState;
 import net.runelite.api.NPC;
 import net.runelite.api.Player;
 import net.runelite.api.TileItem;
+import net.runelite.api.WorldType;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.ActorDeath;
 import net.runelite.api.events.AnimationChanged;
@@ -90,6 +91,7 @@ import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.config.RuneScapeProfileType;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.game.ItemStack;
 import net.runelite.client.plugins.loottracker.LootReceived;
@@ -183,6 +185,11 @@ public class TripTracker
 	private BossDefinition lastEndedBoss;
 
 	private boolean inArea;
+	private final LeaveDelay leaveDelay = new LeaveDelay();
+	/**
+	 * Leagues, Deadman, beta and tournament worlds keep their own records in RuneLite, so they aren't tracked.
+	 */
+	private boolean untrackedWorld;
 	/**
 	 * The boss whose area you're in; null outside.
 	 */
@@ -318,6 +325,33 @@ public class TripTracker
 			saveFuture.cancel(false);
 			saveFuture = null;
 		}
+		resetSession();
+	}
+
+	/**
+	 * Forgets everything tied to the game session: the dead flag, pending drops and ground items, the current kill's
+	 * loot state and every tick-based window (corpse, gravestone, polishing, eggs). Trips and history are kept. Call
+	 * on logout, account switch, shutdown and when the live trip is deleted.
+	 */
+	private void resetSession()
+	{
+		dead = false;
+		ignoreDeltasUntilTick = -1;
+		graveWindowEndTick = -1;
+		pendingDrops.clear();
+		resetKillState();
+		leaveDelay.inside();
+		fightStartedAt = null;
+		bossSpawnedAt = null;
+		bossDiedAt = null;
+		recentClicks.clear();
+		preEntryUses.clear();
+		ledger.reset();
+		chargeCounter.reset();
+		polishTracker.reset();
+		eggTracker.reset();
+		enteredRaidMode = null;
+		enteredRaidModeTick = -100;
 	}
 
 	// ---- Panel actions (call on the client thread) ----
@@ -383,6 +417,7 @@ public class TripTracker
 			if (trip == currentTrip)
 			{
 				forgetCurrentTrip();
+				resetSession();
 			}
 			if (trip == lastEndedTrip)
 			{
@@ -414,9 +449,7 @@ public class TripTracker
 		{
 			forgetCurrentTrip();
 			pendingDeath = null;
-			pendingDrops.clear();
-			groundItems.clear();
-			recentDespawns.clear();
+			resetSession();
 		}
 		if (lastEndedBoss == selectedBoss)
 		{
@@ -761,7 +794,10 @@ public class TripTracker
 		switch (event.getGameState())
 		{
 			case LOGGED_IN:
+				untrackedWorld = RuneScapeProfileType.getCurrent(client) != RuneScapeProfileType.STANDARD
+					|| client.getWorldType().contains(WorldType.TOURNAMENT_WORLD);
 				ensureAccountLoaded();
+				pushState();
 				break;
 			case LOGIN_SCREEN:
 			case HOPPING:
@@ -769,10 +805,7 @@ public class TripTracker
 				{
 					suspendTrip(System.currentTimeMillis());
 				}
-				ledger.reset();
-				chargeCounter.reset();
-				recentClicks.clear();
-				preEntryUses.clear();
+				resetSession();
 				// Unclaimed raid rewards are lost on logout
 				unclaimedRaid = null;
 				unclaimedRaidBoss = null;
@@ -831,13 +864,27 @@ public class TripTracker
 		polishTracker.tick(tick);
 
 		int region = WorldPoint.fromLocalInstance(client, player.getLocalLocation()).getRegionID();
-		BossDefinition regionBoss = registry.forRegion(region);
+		BossDefinition regionBoss = untrackedWorld ? null : registry.forRegion(region);
+		if (inArea && regionBoss == null
+			&& areaBoss.isStillInside(client::getVarbitValue, region, client.getTopLevelWorldView().isInstance()))
+		{
+			// An unlisted room of a raid you're still in
+			regionBoss = areaBoss;
+		}
 		if (inArea && regionBoss != areaBoss)
 		{
-			// Left the area (or went straight into another boss's)
-			inArea = false;
-			areaBoss = null;
-			leaveLair(region, tick, now);
+			Long leftAt = leaveDelay.outside(now, dead);
+			if (leftAt != null)
+			{
+				// Left the area (or went straight into another boss's)
+				inArea = false;
+				areaBoss = null;
+				leaveLair(region, tick, leftAt);
+			}
+		}
+		else
+		{
+			leaveDelay.inside();
 		}
 		if (regionBoss != null && !inArea)
 		{
@@ -1152,15 +1199,26 @@ public class TripTracker
 	@Subscribe
 	public void onChatMessage(ChatMessage event)
 	{
-		// The Theatre of Blood also sends some of its messages as friends chat notifications (its damage summaries);
-		// the purple broadcast may be one of them (unverified)
-		if (event.getType() != ChatMessageType.GAMEMESSAGE && event.getType() != ChatMessageType.SPAM
-			&& event.getType() != ChatMessageType.FRIENDSCHATNOTIFICATION)
+		String message = event.getMessage();
+		if (event.getType() == ChatMessageType.FRIENDSCHATNOTIFICATION)
+		{
+			// The Theatre of Blood sends its damage summaries this way, and the purple broadcast may be one of them
+			// (unverified). Nothing else is read from them: another player's notification is never yours.
+			if (inArea && currentTrip != null && isRaid(tripBoss))
+			{
+				String uniqueName = tripBoss.teamUniqueName(Text.removeTags(message));
+				if (uniqueName != null)
+				{
+					teamUnique(tripBoss, uniqueName);
+				}
+			}
+			return;
+		}
+		if (event.getType() != ChatMessageType.GAMEMESSAGE && event.getType() != ChatMessageType.SPAM)
 		{
 			return;
 		}
 
-		String message = event.getMessage();
 		long now = System.currentTimeMillis();
 		int tick = client.getTickCount();
 
@@ -2299,6 +2357,7 @@ public class TripTracker
 			saveNow();
 		}
 
+		resetSession();
 		accountHash = hash;
 		history = null;
 		readOnly = false;
@@ -2465,7 +2524,7 @@ public class TripTracker
 		}
 		else
 		{
-			status = PanelState.Status.IDLE;
+			status = untrackedWorld ? PanelState.Status.UNTRACKED_WORLD : PanelState.Status.IDLE;
 			shown = historyViews.isEmpty() ? null : historyViews.get(0);
 		}
 

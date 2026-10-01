@@ -24,6 +24,10 @@ public class PanelState
 		 */
 		AFK_PAUSED,
 		IDLE,
+		/**
+		 * On a Leagues, Deadman, beta or tournament world, where nothing is tracked.
+		 */
+		UNTRACKED_WORLD,
 	}
 
 	/**

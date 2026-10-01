@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.function.IntUnaryOperator;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.api.gameval.NpcID;
 import net.runelite.api.gameval.VarbitID;
@@ -32,6 +33,12 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	 * Ver Sinhaza, where the Theatre is entered and the chest for unclaimed rewards is.
 	 */
 	public static final int VER_SINHAZA_REGION_ID = 14642;
+	/**
+	 * TOB_CLIENT_PARTYSTATUS values: 1 in a party, 2 in the raid, 3 leaving (the vault), 0 no party (diagnostic log
+	 * 2026-09-29).
+	 */
+	private static final int PARTY_IN_RAID = 2;
+	private static final int PARTY_LEAVING = 3;
 	/**
 	 * Inside the entrance, the rooms from the Maiden to Verzik, and the vault. 13379 is Sotetseg's maze, where one
 	 * player is sent during the fight (unverified: not visited in the log).
@@ -318,6 +325,17 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	public long getWipeFee()
 	{
 		return WIPE_FEE;
+	}
+
+	/**
+	 * In a raid while the party status is 2 (entered: seen from entry to the vault on one raid, 2026-09-29) or 3
+	 * (leaving: seen in the vault), in an instance outside Ver Sinhaza. Unverified while dead or after a wipe.
+	 */
+	@Override
+	public boolean isStillInside(IntUnaryOperator varbits, int region, boolean instanced)
+	{
+		int status = varbits.applyAsInt(VarbitID.TOB_CLIENT_PARTYSTATUS);
+		return instanced && region != VER_SINHAZA_REGION_ID && (status == PARTY_IN_RAID || status == PARTY_LEAVING);
 	}
 
 	@Override

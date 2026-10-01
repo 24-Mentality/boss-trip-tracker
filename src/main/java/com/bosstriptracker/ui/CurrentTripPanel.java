@@ -152,6 +152,8 @@ class CurrentTripPanel extends JPanel
 				return "Log in to track your trips.";
 			case LOADING:
 				return "Loading history...";
+			case UNTRACKED_WORLD:
+				return "Not tracked on this world type";
 			case IN_TRIP:
 				return "Trip in progress";
 			case PAUSED:

@@ -89,8 +89,8 @@ bosses are planned.
   - **All supplies:** everything used across tracked trips, by category, and anything dropped
     and left behind. Both only go back to when tracking began (RuneLite doesn't record
     supplies, so there's no all-time count); **From** shows the kill count it started at.
-  - **Eggs popped:** eggs popped per tier (anywhere, not just in the lair), pets from eggs,
-    and your total pet chance from the eggs popped so far.
+  - **Eggs popped:** eggs popped per tier with their Pop option (anywhere, not just in the
+    lair), pets from eggs, and your total pet chance from the eggs popped so far.
   - **Polish results:** what each type of tarnished item has polished into.
   - **Data:** export the shown boss's trips as CSV, export or import the account's full
     history (every boss) as JSON (imports only add trips you don't already have; exports from
@@ -101,6 +101,10 @@ The panel opens on the Trip tab automatically when you enter a tracked boss's ar
 (Configuration → Display → **Open panel on entry**; on by default).
 
 ## How trips are counted
+
+Nothing is tracked on Leagues, Deadman, beta or tournament worlds, which RuneLite keeps
+separate records for. You've left a boss's area after about 2 seconds outside it (3 game
+ticks), so a moment between rooms doesn't end a trip; the trip ends from when you stepped out.
 
 For the Theatre of Blood: a trip is one raid, from entering the Theatre until you're back
 in Ver Sinhaza (by the vault's teleport crystal, a teleport, a wipe or logging out).
