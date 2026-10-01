@@ -71,6 +71,31 @@ public final class MaggotKingBoss extends BossDefinition
 		ExpectedDrop.fixed(PET_ITEM, DropKind.PET, PET_PER_STOMACH)
 	);
 
+	private static final Set<Integer> TARNISHED_JEWELLERY = ImmutableSet.of(
+		ItemID.TARNISHED_RING,
+		ItemID.TARNISHED_BRACELET,
+		ItemID.TARNISHED_NECKLACE,
+		ItemID.TARNISHED_AMULET
+	);
+
+	/**
+	 * The OSRS Wiki drop table groups. Tarnished items are filed by type; a polished drop goes with the tarnished
+	 * item it came from (see {@link #lootCategory}), so no list of polish outcomes is needed.
+	 */
+	private static final Map<Integer, String> LOOT_CATEGORIES = LootCategories.builder()
+		.put(LootCategories.UNIQUES, FANG, KISTEN, PET_ITEM)
+		.put(LootCategories.JEWELLERY, ItemID.TARNISHED_RING, ItemID.TARNISHED_BRACELET, ItemID.TARNISHED_NECKLACE,
+			ItemID.TARNISHED_AMULET)
+		.put(LootCategories.WEAPONS, ItemID.TARNISHED_SPEAR, ItemID.TARNISHED_BATTLEAXE, ItemID.TARNISHED_LONGSWORD,
+			ItemID.TARNISHED_HALBERD, ItemID.TARNISHED_2H_SWORD)
+		.put(LootCategories.RESOURCES, ItemID.UNCUT_RUBY, ItemID.MORTMYREMUSHROOM, ItemID.STYMPHIKE_FEATHER,
+			ItemID.LETVEK, ItemID.ADAMANTITE_ORE, ItemID.RUNITE_ORE, ItemID.GOLD_ORE, ItemID.MITHRIL_ORE,
+			ItemID.BLOOD_SAC, ItemID.ORIKALKUM_GRAVEL, ItemID.VENATOR_FANG, ItemID.VENATOR_TOOTH)
+		.put(LootCategories.EGGS, ItemID.MAGGOT_EGG, ItemID.SICKLY_MAGGOT_EGG, ItemID.WARM_MAGGOT_EGG,
+			ItemID.PULSATING_MAGGOT_EGG, ItemID.WRIGGLING_MAGGOT_EGG, ItemID.WRITHING_MAGGOT_EGG)
+		.put(LootCategories.OTHER, ItemID.STYMPHIKE_TARTARE, ItemID.DULL_ZAROSIAN_MEDAL, ItemID.KONAR_KEY)
+		.build();
+
 	private static final TripStat SPLIT = new TripStat("Stom / Eggs",
 		"Kills where you chose Open-stomach / Take-eggs on the corpse.",
 		trip -> TripMath.countChoice(trip, STOMACH.getKey()) + " / " + TripMath.countChoice(trip, EGGS.getKey()));
@@ -184,6 +209,22 @@ public final class MaggotKingBoss extends BossDefinition
 	public Map<Integer, Double> getEggPetRates()
 	{
 		return EGG_PET;
+	}
+
+	@Override
+	public String lootCategory(int itemId, int polishedFrom)
+	{
+		if (polishedFrom > 0 && TARNISHED.contains(polishedFrom))
+		{
+			return TARNISHED_JEWELLERY.contains(polishedFrom) ? LootCategories.JEWELLERY : LootCategories.WEAPONS;
+		}
+		return super.lootCategory(itemId, polishedFrom);
+	}
+
+	@Override
+	protected Map<Integer, String> getLootCategoryMap()
+	{
+		return LOOT_CATEGORIES;
 	}
 
 	@Override

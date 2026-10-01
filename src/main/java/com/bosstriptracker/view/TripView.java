@@ -1,6 +1,7 @@
 package com.bosstriptracker.view;
 
 import com.bosstriptracker.model.TripEndReason;
+import java.util.Collections;
 import java.util.List;
 import lombok.Builder;
 import lombok.Value;
@@ -42,6 +43,12 @@ public class TripView
 	 */
 	Long lastKillMs;
 	List<ItemView> loot;
+	/**
+	 * Loot grouped by the boss's drop table categories, highest value first, at most five (the smallest folded
+	 * into Other, which always comes last).
+	 */
+	@Builder.Default
+	List<LootCategory> lootCategories = Collections.emptyList();
 	List<ItemView> supplies;
 	List<ItemView> dropped;
 	/**

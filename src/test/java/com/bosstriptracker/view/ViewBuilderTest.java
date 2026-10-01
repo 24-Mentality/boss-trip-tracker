@@ -44,6 +44,24 @@ public class ViewBuilderTest
 		{
 			return itemId == ItemID.ANGLERFISH;
 		}
+
+		@Override
+		public int canonicalize(int itemId)
+		{
+			return itemId;
+		}
+
+		@Override
+		public boolean isDrinkable(int itemId)
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isEquipable(int itemId)
+		{
+			return false;
+		}
 	});
 	private BossHistory history;
 

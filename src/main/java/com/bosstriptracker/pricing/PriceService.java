@@ -23,6 +23,7 @@ public class PriceService
 	private final Map<String, FullDose> fullDoseCache = new HashMap<>();
 	private final Map<Integer, Boolean> meleeWeaponCache = new HashMap<>();
 	private final Map<Integer, Boolean> foodCache = new HashMap<>();
+	private final Map<Integer, Boolean> drinkCache = new HashMap<>();
 	private final Map<Integer, Boolean> equipableCache = new HashMap<>();
 
 	public PriceService(ItemManager itemManager)
@@ -41,21 +42,39 @@ public class PriceService
 	}
 
 	/**
+	 * The unnoted item for a bank note (noted drops are saved under the note's id); other items unchanged.
+	 */
+	public int canonicalize(int itemId)
+	{
+		return itemManager.canonicalize(itemId);
+	}
+
+	/**
 	 * Food is anything with an Eat option.
 	 */
 	public boolean isFood(int itemId)
 	{
-		return foodCache.computeIfAbsent(itemId, id ->
+		return foodCache.computeIfAbsent(itemId, id -> hasAction(id, "Eat"));
+	}
+
+	/**
+	 * Anything with a Drink option, such as potions.
+	 */
+	public boolean isDrinkable(int itemId)
+	{
+		return drinkCache.computeIfAbsent(itemId, id -> hasAction(id, "Drink"));
+	}
+
+	private boolean hasAction(int itemId, String option)
+	{
+		for (String action : itemManager.getItemComposition(itemId).getInventoryActions())
 		{
-			for (String action : itemManager.getItemComposition(id).getInventoryActions())
+			if (option.equalsIgnoreCase(action))
 			{
-				if ("Eat".equalsIgnoreCase(action))
-				{
-					return true;
-				}
+				return true;
 			}
-			return false;
-		});
+		}
+		return false;
 	}
 
 	/**

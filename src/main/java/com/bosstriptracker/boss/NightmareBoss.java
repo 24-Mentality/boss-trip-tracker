@@ -100,6 +100,25 @@ public final class NightmareBoss extends BossDefinition
 
 	private static final TripStat UNIQUES = new TripStat("Uniques", "Uniques received this trip.",
 		trip -> String.valueOf(countUniques(trip)));
+
+	/**
+	 * The OSRS Wiki's Phosani's Nightmare drop table groups (the regular Nightmare drops the same items).
+	 */
+	private static final Map<Integer, String> LOOT_CATEGORIES = LootCategories.builder()
+		.put(LootCategories.UNIQUES, ItemID.NIGHTMARE_STAFF, ItemID.INQUISITORS_HELM, ItemID.INQUISITORS_BODY,
+			ItemID.INQUISITORS_SKIRT, ItemID.INQUISITORS_MACE, ItemID.ELDRITCH_ORB, ItemID.HARMONISED_ORB,
+			ItemID.VOLATILE_ORB, ItemID.NIGHTMAREPET)
+		.put(LootCategories.RUNES_AND_AMMO, ItemID.COSMICRUNE, ItemID.NATURERUNE, ItemID.DEATHRUNE, ItemID.BLOODRUNE,
+			ItemID.SOULRUNE, ItemID.MCANNONBALL, ItemID.RUNE_ARROW)
+		.put(LootCategories.RESOURCES, ItemID.MITHRIL_ORE, ItemID.COAL, ItemID.GOLD_ORE, ItemID.ADAMANTITE_ORE,
+			ItemID.RUNITE_ORE, ItemID.MAGIC_LOGS, ItemID.UNIDENTIFIED_CADANTINE, ItemID.UNIDENTIFIED_TORSTOL,
+			ItemID.SNAPDRAGON_SEED, ItemID.UNCUT_EMERALD, ItemID.UNCUT_RUBY)
+		.put(LootCategories.CONSUMABLES, ItemID.BASS, ItemID.SHARK, ItemID._3DOSEPRAYERRESTORE,
+			ItemID.SANFEW_SALVE_3_DOSE, ItemID._3DOSEPOTIONOFSARADOMIN, ItemID._3DOSEPOTIONOFZAMORAK)
+		.put(LootCategories.COINS, ItemID.COINS)
+		.put(LootCategories.OTHER, ItemID.BIG_BONES, ItemID.JAR_OF_DREAMS)
+		.build();
+
 	/**
 	 * Keys seen in the RS profile config. The regular Nightmare's ("drops_NPC_The Nightmare", "nightmare") is left
 	 * out until its kills are tracked: its odds depend on the team size.
@@ -185,6 +204,12 @@ public final class NightmareBoss extends BossDefinition
 	{
 		Matcher m = BANK_PAYMENT.matcher(text);
 		return m.find() ? Long.valueOf(m.group(1).replace(",", "")) : null;
+	}
+
+	@Override
+	protected Map<Integer, String> getLootCategoryMap()
+	{
+		return LOOT_CATEGORIES;
 	}
 
 	@Override

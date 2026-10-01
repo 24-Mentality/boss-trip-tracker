@@ -4,6 +4,7 @@ import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.DropKind;
 import com.bosstriptracker.boss.ExpectedDrop;
 import com.bosstriptracker.boss.KillContext;
+import com.bosstriptracker.boss.LootCategories;
 import com.bosstriptracker.boss.LootChoice;
 import com.bosstriptracker.boss.TripStat;
 import com.bosstriptracker.model.AllTimeCounts;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.ToDoubleFunction;
+import net.runelite.api.gameval.ItemID;
 import net.runelite.client.util.QuantityFormatter;
 
 /**
@@ -40,6 +42,11 @@ public class ViewBuilder
 		.comparing(ItemView::isUnique).reversed()
 		.thenComparing(Comparator.comparingLong(ItemView::getTotalValue).reversed())
 		.thenComparing(ItemView::getName);
+
+	/**
+	 * Categories shown in a loot header: the top four and Other.
+	 */
+	static final int MAX_LOOT_CATEGORIES = 5;
 
 	private final PriceService prices;
 	private Set<Integer> runeIds = Collections.emptySet();
@@ -125,6 +132,7 @@ public class ViewBuilder
 			.fastestKillMs(TripMath.fastestKillMs(Collections.singletonList(trip)))
 			.lastKillMs(lastKillMs(trip))
 			.loot(items(boss, loot))
+			.lootCategories(lootCategories(boss, loot))
 			.supplies(items(boss, trip.getSupplies()))
 			.dropped(items(boss, trip.getDropped()))
 			.supplyCategories(supplyCategories(trip.getSupplies()))
@@ -143,6 +151,17 @@ public class ViewBuilder
 		List<ItemEntry> entries = new ArrayList<>();
 		allTime.getDrops().forEach((itemId, quantity) -> entries.add(new ItemEntry(itemId, quantity, prices.price(itemId))));
 		return items(boss, entries);
+	}
+
+	private List<LootCategory> allTimeLootCategories(BossDefinition boss, AllTimeCounts allTime)
+	{
+		if (allTime == null)
+		{
+			return Collections.emptyList();
+		}
+		List<ItemEntry> entries = new ArrayList<>();
+		allTime.getDrops().forEach((itemId, quantity) -> entries.add(new ItemEntry(itemId, quantity, prices.price(itemId))));
+		return lootCategories(boss, entries);
 	}
 
 	private long allTimeLootValue(AllTimeCounts allTime)
@@ -264,11 +283,13 @@ public class ViewBuilder
 			.dryness(dryness(boss, history, trips, variant, allTime))
 			.polish(polish(boss, history))
 			.loot(items(boss, allLoot))
+			.lootCategories(lootCategories(boss, allLoot))
 			.supplies(items(boss, allSupplies))
 			.supplyCategories(supplyCategories(allSupplies))
 			.dropped(items(boss, allDropped))
 			.allTimeLoot(allTimeLoot(boss, allTime))
 			.allTimeLootValue(allTime == null ? 0 : allTimeLootValue(allTime))
+			.allTimeLootCategories(allTimeLootCategories(boss, allTime))
 			.allTimeSince(allTime == null ? 0 : allTime.getFirstRecordedAt())
 			.build();
 	}
@@ -627,6 +648,101 @@ public class ViewBuilder
 			views.add(new PolishView(tarnishedId, prices.name(tarnishedId), total, items));
 		}
 		return views;
+	}
+
+	/**
+	 * Loot grouped by category, highest value first, with all but the top {@link #MAX_LOOT_CATEGORIES} - 1 folded
+	 * into Other when there are more than {@link #MAX_LOOT_CATEGORIES}.
+	 */
+	List<LootCategory> lootCategories(BossDefinition boss, Collection<ItemEntry> loot)
+	{
+		Map<String, List<ItemEntry>> grouped = new LinkedHashMap<>();
+		for (ItemEntry entry : loot)
+		{
+			grouped.computeIfAbsent(lootCategory(boss, entry.getItemId(), entry.getPolishedFrom()), k -> new ArrayList<>())
+				.add(entry);
+		}
+
+		List<LootCategory> categories = new ArrayList<>();
+		for (Map.Entry<String, List<ItemEntry>> e : grouped.entrySet())
+		{
+			long value = 0;
+			for (ItemEntry entry : e.getValue())
+			{
+				value += entry.totalValue();
+			}
+			categories.add(new LootCategory(e.getKey(), value, items(boss, e.getValue())));
+		}
+		return foldCategories(categories);
+	}
+
+	/**
+	 * The boss's drop table group for an item, else a generic one: coins, runes, gear (equipable),
+	 * consumables (Eat or Drink) or other.
+	 */
+	String lootCategory(BossDefinition boss, int itemId, int polishedFrom)
+	{
+		int canonical = prices.canonicalize(itemId);
+		String category = boss.lootCategory(canonical, polishedFrom);
+		if (category != null)
+		{
+			return category;
+		}
+		if (canonical == ItemID.COINS)
+		{
+			return LootCategories.COINS;
+		}
+		if (runeIds.contains(canonical))
+		{
+			return LootCategories.RUNES;
+		}
+		if (prices.isEquipable(canonical))
+		{
+			return LootCategories.GEAR;
+		}
+		if (prices.isFood(canonical) || prices.isDrinkable(canonical))
+		{
+			return LootCategories.CONSUMABLES;
+		}
+		return LootCategories.OTHER;
+	}
+
+	static List<LootCategory> foldCategories(List<LootCategory> categories)
+	{
+		List<LootCategory> named = new ArrayList<>();
+		List<ItemView> otherItems = new ArrayList<>();
+		long otherValue = 0;
+		for (LootCategory category : categories)
+		{
+			if (LootCategories.OTHER.equals(category.getName()))
+			{
+				otherItems.addAll(category.getItems());
+				otherValue += category.getValue();
+			}
+			else
+			{
+				named.add(category);
+			}
+		}
+		named.sort(Comparator.comparingLong(LootCategory::getValue).reversed().thenComparing(LootCategory::getName));
+
+		boolean hasOther = !otherItems.isEmpty();
+		if (named.size() + (hasOther ? 1 : 0) > MAX_LOOT_CATEGORIES)
+		{
+			for (LootCategory folded : named.subList(MAX_LOOT_CATEGORIES - 1, named.size()))
+			{
+				otherItems.addAll(folded.getItems());
+				otherValue += folded.getValue();
+			}
+			named = new ArrayList<>(named.subList(0, MAX_LOOT_CATEGORIES - 1));
+			hasOther = true;
+		}
+		if (hasOther)
+		{
+			otherItems.sort(BY_VALUE);
+			named.add(new LootCategory(LootCategories.OTHER, otherValue, otherItems));
+		}
+		return named;
 	}
 
 	private List<SupplyCategory> supplyCategories(List<ItemEntry> supplies)

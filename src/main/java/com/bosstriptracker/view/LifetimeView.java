@@ -42,6 +42,11 @@ public class LifetimeView
 	 */
 	@Builder.Default
 	List<ItemView> loot = Collections.emptyList();
+	/**
+	 * Tracked loot by category; see {@link TripView#getLootCategories()}.
+	 */
+	@Builder.Default
+	List<LootCategory> lootCategories = Collections.emptyList();
 	@Builder.Default
 	List<ItemView> supplies = Collections.emptyList();
 	@Builder.Default
@@ -54,6 +59,11 @@ public class LifetimeView
 	 */
 	List<ItemView> allTimeLoot;
 	long allTimeLootValue;
+	/**
+	 * The Loot Tracker record by category; empty when there is no record.
+	 */
+	@Builder.Default
+	List<LootCategory> allTimeLootCategories = Collections.emptyList();
 	/**
 	 * When the Loot Tracker's record starts; 0 if unknown.
 	 */

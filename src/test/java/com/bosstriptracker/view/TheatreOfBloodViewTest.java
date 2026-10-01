@@ -44,6 +44,24 @@ public class TheatreOfBloodViewTest
 		{
 			return false;
 		}
+
+		@Override
+		public int canonicalize(int itemId)
+		{
+			return itemId;
+		}
+
+		@Override
+		public boolean isDrinkable(int itemId)
+		{
+			return false;
+		}
+
+		@Override
+		public boolean isEquipable(int itemId)
+		{
+			return false;
+		}
 	});
 	private final BossHistory history = new BossHistory();
 

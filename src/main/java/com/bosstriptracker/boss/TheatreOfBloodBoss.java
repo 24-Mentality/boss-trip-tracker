@@ -85,6 +85,25 @@ public final class TheatreOfBloodBoss extends BossDefinition
 
 	private static final List<ExpectedDrop> DROPS = drops();
 
+	/**
+	 * The OSRS Wiki's Monumental chest groups. The Hard Mode kits and dust go with the uniques (the user's choice).
+	 */
+	private static final Map<Integer, String> LOOT_CATEGORIES = LootCategories.builder()
+		.put(LootCategories.UNIQUES, PURPLES)
+		.put(LootCategories.UNIQUES, ItemID.VERZIKPET, ItemID.TOB_HARDMODE_KIT, ItemID.TOB_HARDMODE_KIT_BLOOD,
+			ItemID.TOB_HARDMODE_DUST)
+		.put(LootCategories.RUNES, ItemID.DEATHRUNE, ItemID.BLOODRUNE)
+		.put(LootCategories.RESOURCES, ItemID.VIAL_BLOOD, ItemID.SWAMP_TAR, ItemID.COAL, ItemID.GOLD_ORE,
+			ItemID.MOLTEN_GLASS, ItemID.ADAMANTITE_ORE, ItemID.RUNITE_ORE, ItemID.WINE_OF_ZAMORAK, ItemID.CACTUS_POTATO)
+		.put(LootCategories.HERBS_AND_SEEDS, ItemID.UNIDENTIFIED_CADANTINE, ItemID.UNIDENTIFIED_AVANTOE,
+			ItemID.UNIDENTIFIED_TOADFLAX, ItemID.UNIDENTIFIED_KWUARM, ItemID.UNIDENTIFIED_IRIT,
+			ItemID.UNIDENTIFIED_RANARR, ItemID.UNIDENTIFIED_SNAPDRAGON, ItemID.UNIDENTIFIED_LANTADYME,
+			ItemID.UNIDENTIFIED_DWARF_WEED, ItemID.UNIDENTIFIED_TORSTOL, ItemID.PALM_TREE_SEED, ItemID.YEW_SEED,
+			ItemID.MAGIC_TREE_SEED, ItemID.MAHOGANY_SEED)
+		.put(LootCategories.GEAR, ItemID.BATTLESTAFF, ItemID.RUNE_BATTLEAXE, ItemID.RUNE_PLATEBODY, ItemID.RUNE_CHAINBODY)
+		.put(LootCategories.OTHER, ItemID.CABBAGE)
+		.build();
+
 	private static final TripStat PURPLES_STAT = new TripStat("Purples",
 		"Purples this raid: yours / the team's (yours included). The team's come from the game's broadcast.",
 		trip -> countMine(trip) + " / " + countTeam(trip));
@@ -153,6 +172,12 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	public boolean isRaidLootEvent(String name, LootRecordType type)
 	{
 		return type == LootRecordType.EVENT && LOOT_EVENT.equals(name);
+	}
+
+	@Override
+	protected Map<Integer, String> getLootCategoryMap()
+	{
+		return LOOT_CATEGORIES;
 	}
 
 	@Override

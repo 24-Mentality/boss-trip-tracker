@@ -133,6 +133,26 @@ public abstract class BossDefinition
 		return false;
 	}
 
+	/**
+	 * The loot box category of an item from this boss's drop table (OSRS Wiki groups), or null to fall back to the
+	 * generic rules (coins, runes, gear, consumables, other).
+	 *
+	 * @param itemId the unnoted item id
+	 * @param polishedFrom the tarnished item a polished drop came from, or 0
+	 */
+	public String lootCategory(int itemId, int polishedFrom)
+	{
+		return getLootCategoryMap().get(itemId);
+	}
+
+	/**
+	 * Unnoted item id to loot box category; see {@link #lootCategory}.
+	 */
+	protected Map<Integer, String> getLootCategoryMap()
+	{
+		return Collections.emptyMap();
+	}
+
 	public LootChoice choiceForOption(String option)
 	{
 		for (LootChoice choice : getLootChoices())
