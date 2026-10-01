@@ -9,6 +9,7 @@ import com.bosstriptracker.persistence.HistoryStore;
 import com.bosstriptracker.pricing.PriceService;
 import com.bosstriptracker.tracking.TripTracker;
 import com.bosstriptracker.ui.PanelActions;
+import com.bosstriptracker.ui.SectionStates;
 import com.bosstriptracker.ui.ShareCardExporter;
 import com.bosstriptracker.ui.TrackerOverlay;
 import com.bosstriptracker.view.PanelState;
@@ -127,7 +128,8 @@ public class BossTripTrackerPlugin extends Plugin
 			return thread;
 		});
 
-		TrackerPanel trackerPanel = new TrackerPanel(itemManager, new Actions(), registry.first());
+		SectionStates sectionStates = new SectionStates(config.sectionStates(), config::setSectionStates);
+		TrackerPanel trackerPanel = new TrackerPanel(itemManager, sectionStates, new Actions(), registry.first());
 		panel = trackerPanel;
 
 		store = new HistoryStore(gson, this::getPluginDirectory, executor);

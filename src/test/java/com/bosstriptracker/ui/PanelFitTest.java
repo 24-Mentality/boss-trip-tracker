@@ -15,6 +15,7 @@ import com.bosstriptracker.view.DrynessView;
 import com.bosstriptracker.view.GoalView;
 import com.bosstriptracker.view.ItemView;
 import com.bosstriptracker.view.LifetimeView;
+import com.bosstriptracker.view.LootCategory;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.PolishView;
 import com.bosstriptracker.view.StatView;
@@ -22,6 +23,7 @@ import com.bosstriptracker.view.SupplyCategory;
 import com.bosstriptracker.view.TripView;
 import java.awt.Component;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +50,20 @@ public class PanelFitTest
 	 */
 	private static final int WIDTH = 242 - 17;
 	private static final BossDefinition BOSS = new MaggotKingBoss();
+	/**
+	 * Every box open, so their contents are laid out too (the headers show either way).
+	 */
+	private static final String OPEN_BOXES = "trip.loot=open,trip.supplies=open,trip.dropped=open,history.loot=open,"
+		+ "history.supplies=open,history.dropped=open";
+	/**
+	 * Five categories with the longest names, Other last, each at a very large value.
+	 */
+	private static final List<LootCategory> LOOT_CATEGORIES = Arrays.asList(
+		new LootCategory("Herbs & seeds", 99_999_999_000L, Collections.<ItemView>emptyList()),
+		new LootCategory("Runes & ammo", 99_999_999_000L, Collections.<ItemView>emptyList()),
+		new LootCategory("Consumables", 99_999_999_000L, Collections.<ItemView>emptyList()),
+		new LootCategory("Jewellery", 99_999_999_000L, Collections.<ItemView>emptyList()),
+		new LootCategory("Other", 99_999_999_000L, Collections.<ItemView>emptyList()));
 
 	@Test
 	public void everyLabelFitsOnAllTabs() throws Exception
@@ -55,7 +71,7 @@ public class PanelFitTest
 		List<String> problems = new ArrayList<>();
 		SwingUtilities.invokeAndWait(() ->
 		{
-			TrackerPanel panel = new TrackerPanel(null, new NoActions(), BOSS);
+			TrackerPanel panel = new TrackerPanel(null, new SectionStates(OPEN_BOXES, saved -> { }), new NoActions(), BOSS);
 			panel.update(worstCaseState(PanelState.Status.IN_TRIP, false));
 			for (int tab = 0; tab < 3; tab++)
 			{
@@ -64,6 +80,12 @@ public class PanelFitTest
 				if (tab == 0)
 				{
 					preview(panel);
+				}
+				if (tab == 1)
+				{
+					// An expanded History card: its boxes are a little narrower than the Trip tab's
+					expand(find(panel, TripCard.class));
+					check(panel, "history card", problems);
 				}
 			}
 
@@ -139,6 +161,13 @@ public class PanelFitTest
 		{
 			throw new UncheckedIOException(e);
 		}
+	}
+
+	private static void expand(TripCard card)
+	{
+		Component header = card.getComponent(0);
+		header.dispatchEvent(new MouseEvent(header, MouseEvent.MOUSE_PRESSED, 0, 0, 1, 1, 1, false, MouseEvent.BUTTON1));
+		assertTrue(card.isExpanded());
 	}
 
 	private static <T> T find(Component component, Class<T> type)
@@ -259,6 +288,7 @@ public class PanelFitTest
 			.fastestKillMs(599_900L)
 			.lastKillMs(599_900L)
 			.loot(Collections.<ItemView>emptyList())
+			.lootCategories(LOOT_CATEGORIES)
 			.supplies(Collections.<ItemView>emptyList())
 			.dropped(Collections.<ItemView>emptyList())
 			.supplyCategories(Arrays.asList(
@@ -336,6 +366,7 @@ public class PanelFitTest
 			// The Lifetime tab's loot and supplies cards, with every stat at its longest (item grids need the client's
 			// item icons, so they're left empty)
 			.loot(Collections.<ItemView>emptyList())
+			.lootCategories(LOOT_CATEGORIES)
 			.supplies(Collections.<ItemView>emptyList())
 			.supplyCategories(Arrays.asList(
 				new SupplyCategory("Charges", 99_999_999_000L),
@@ -345,6 +376,7 @@ public class PanelFitTest
 				new SupplyCategory("Other", 99_999_999_000L)))
 			.allTimeLoot(Collections.<ItemView>emptyList())
 			.allTimeLootValue(123_456_789_000L)
+			.allTimeLootCategories(LOOT_CATEGORIES)
 			.allTimeSince(1_785_447_588_633L)
 			.build();
 

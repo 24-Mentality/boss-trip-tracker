@@ -63,11 +63,16 @@ bosses are planned.
 - **Trip:** the current (or last) trip's time, kills, average kill time, fastest kill (PB)
   and a live timer for the kill in progress (it counts from the boss spawning, like the
   game's "Fight duration", and shows the last kill's time between kills), plus loot value,
-  costs, net profit and GP/hr, plus item grids for loot, supplies and anything you dropped and left behind.
-  Uniques have a gold border; tarnished drops waiting to be polished have a dashed border.
-  The profit card's eye icon collapses it to just net profit and net GP/hr (green or red).
-  Loot shows kills, loot per kill, loot per hour and net profit; Supplies shows the cost of
-  charges, runes, potions, food and anything else.
+  costs, net profit and net GP/hr. The profit card's eye icon collapses it to just net profit
+  and net GP/hr (green or red).
+  Below it are the Loot, Supplies and Dropped boxes. Each starts collapsed to its header; click
+  its eye icon to show the item grid (the plugin remembers which boxes you opened, and History
+  cards share one setting per box). Loot's header shows **Total GP** (the GE value of the
+  trip's loot), **GP/Kill** and the loot by category from the boss's drop table (for example
+  Uniques, Resources, Eggs), the four largest first and the rest under Other; hover a category
+  to see its items. Supplies' header shows its Total GP and the cost of charges, runes, potions,
+  food and anything else. In the item grids, uniques have a gold border and tarnished drops
+  waiting to be polished have a dashed border.
 - **History:** a profit-per-trip chart with the trip count and net for the selected chip, then
   one card per completed trip. Click a card to expand it, right-click to delete it.
 - **Lifetime:** totals across all trips (net profit and GP/hr from tracked trips, where costs are
@@ -77,9 +82,10 @@ bosses are planned.
     using your all-time kills and drops from RuneLite's Loot Tracker (and your kill count from
     Chat Commands) when available, otherwise the kills this plugin tracked. The tooltips give
     how dry you are and the kill counts of tracked uniques.
-  - **All loot:** every drop, with a Tracked / All-time switch. All-time is RuneLite's Loot
-    Tracker record for the boss, at today's prices; Tracked is every trip this plugin tracked,
-    at the prices then.
+  - **All loot:** every drop, with a Tracked / All-time switch and the same header as the
+    Trip tab's Loot box (Total GP, GP/Kill and the categories). All-time is RuneLite's Loot
+    Tracker record for the boss, at today's prices (with when the record starts); Tracked is
+    every trip this plugin tracked, at the prices then.
   - **All supplies:** everything used across tracked trips, by category, and anything dropped
     and left behind. Both only go back to when tracking began (RuneLite doesn't record
     supplies, so there's no all-time count); **From** shows the kill count it started at.

@@ -22,14 +22,17 @@ import net.runelite.client.ui.FontManager;
 class TripCard extends JPanel
 {
 	private final ItemManager itemManager;
+	private final SectionStates sectionStates;
 	private final TripView trip;
 	private final JPanel header = new JPanel(new BorderLayout());
 	private JPanel body;
 	private boolean expanded;
 
-	TripCard(ItemManager itemManager, TripView trip, boolean expanded, Consumer<TripCard> onToggle, Consumer<TripView> onDelete)
+	TripCard(ItemManager itemManager, SectionStates sectionStates, TripView trip, boolean expanded,
+		Consumer<TripCard> onToggle, Consumer<TripView> onDelete)
 	{
 		this.itemManager = itemManager;
+		this.sectionStates = sectionStates;
 		this.trip = trip;
 		setLayout(new BorderLayout());
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -113,11 +116,12 @@ class TripCard extends JPanel
 			// Built on first expand so long histories stay cheap
 			body = new JPanel(new BorderLayout(0, 4));
 			body.setOpaque(false);
-			body.setBorder(BorderFactory.createEmptyBorder(0, 6, 6, 6));
+			// No side padding: the profit card's six cells need the full width
+			body.setBorder(BorderFactory.createEmptyBorder(0, 0, 6, 0));
 			TripSummaryCard card = new TripSummaryCard();
 			card.setTrip(trip, System.currentTimeMillis());
 			body.add(card, BorderLayout.NORTH);
-			body.add(new TripDetails(itemManager, trip), BorderLayout.CENTER);
+			body.add(new TripDetails(itemManager, sectionStates, "history", trip), BorderLayout.CENTER);
 			add(body, BorderLayout.CENTER);
 		}
 		if (body != null)

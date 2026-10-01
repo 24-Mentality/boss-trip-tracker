@@ -4,12 +4,9 @@ import com.bosstriptracker.view.ItemView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -21,37 +18,47 @@ import net.runelite.client.ui.FontManager;
 
 /**
  * A loot-tracker style box: a bordered header with the section title, "Label: value" stats and an eye toggle,
- * above the section's item grid.
+ * above the section's item grid. Whether the grid is shown is saved in {@link SectionStates}; the grid is only
+ * built once it's first shown.
  */
 class ItemSection extends JPanel
 {
 	private static final Color HEADER_BORDER = new Color(57, 57, 57);
 
-	/**
-	 * Sections the user has hidden, by title, for this client session.
-	 */
-	private static final Set<String> HIDDEN = new HashSet<>();
-
-	private final String title;
+	private final ItemManager itemManager;
+	private final SectionStates states;
+	private final String stateKey;
+	private final boolean defaultOpen;
+	private final List<ItemView> items;
+	private final String emptyText;
 	private final JLabel eye = new JLabel();
-	private final JPanel body;
+	private final Runnable stateListener = this::applyVisibility;
+	private JPanel body;
 
 	/**
+	 * @param stateKey the key its open state is saved under; boxes sharing a key open and close together
+	 * @param defaultOpen whether it's open before the user has toggled it
 	 * @param stats label and value pairs, shown two per row, each with a hover explanation
 	 */
-	ItemSection(ItemManager itemManager, String title, List<ItemView> items, String emptyText, List<SectionStat> stats)
+	ItemSection(ItemManager itemManager, SectionStates states, String stateKey, boolean defaultOpen, String title,
+		List<ItemView> items, String emptyText, List<SectionStat> stats)
 	{
-		this(itemManager, title, items, emptyText, stats, null);
+		this(itemManager, states, stateKey, defaultOpen, title, items, emptyText, stats, null);
 	}
 
 	/**
 	 * @param titleExtra shown in the title row between the title and the eye (e.g. a Tracked / All-time switch);
 	 * null for none
 	 */
-	ItemSection(ItemManager itemManager, String title, List<ItemView> items, String emptyText, List<SectionStat> stats,
-		JComponent titleExtra)
+	ItemSection(ItemManager itemManager, SectionStates states, String stateKey, boolean defaultOpen, String title,
+		List<ItemView> items, String emptyText, List<SectionStat> stats, JComponent titleExtra)
 	{
-		this.title = title;
+		this.itemManager = itemManager;
+		this.states = states;
+		this.stateKey = stateKey;
+		this.defaultOpen = defaultOpen;
+		this.items = items;
+		this.emptyText = emptyText;
 		setLayout(new BorderLayout(0, 3));
 		setOpaque(false);
 		setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 0));
@@ -89,7 +96,7 @@ class ItemSection extends JPanel
 
 		if (!stats.isEmpty())
 		{
-			JPanel statGrid = new JPanel(new GridLayout(0, 2, 6, 0));
+			JPanel statGrid = new JPanel(new StatGridLayout(6));
 			statGrid.setOpaque(false);
 			for (SectionStat stat : stats)
 			{
@@ -101,11 +108,23 @@ class ItemSection extends JPanel
 			header.add(statGrid, BorderLayout.CENTER);
 		}
 
-		body = items.isEmpty() ? wrap(ItemGrid.emptyMessage(emptyText)) : new ItemGrid(itemManager, items);
-
 		add(header, BorderLayout.NORTH);
-		add(body, BorderLayout.CENTER);
 		applyVisibility();
+	}
+
+	@Override
+	public void addNotify()
+	{
+		super.addNotify();
+		states.addListener(stateListener);
+		applyVisibility();
+	}
+
+	@Override
+	public void removeNotify()
+	{
+		states.removeListener(stateListener);
+		super.removeNotify();
 	}
 
 	private static JPanel wrap(JLabel label)
@@ -118,17 +137,27 @@ class ItemSection extends JPanel
 
 	private void toggle()
 	{
-		if (!HIDDEN.remove(title))
-		{
-			HIDDEN.add(title);
-		}
+		states.setOpen(stateKey, !states.isOpen(stateKey, defaultOpen));
 		applyVisibility();
+	}
+
+	boolean isOpen()
+	{
+		return states.isOpen(stateKey, defaultOpen);
 	}
 
 	private void applyVisibility()
 	{
-		boolean hidden = HIDDEN.contains(title);
-		body.setVisible(!hidden);
+		boolean hidden = !isOpen();
+		if (!hidden && body == null)
+		{
+			body = items.isEmpty() ? wrap(ItemGrid.emptyMessage(emptyText)) : new ItemGrid(itemManager, items);
+			add(body, BorderLayout.CENTER);
+		}
+		if (body != null)
+		{
+			body.setVisible(!hidden);
+		}
 		eye.setIcon(new EyeIcon(hidden));
 		eye.setToolTipText(hidden ? "Show items" : "Hide items");
 		revalidate();

@@ -5,6 +5,7 @@ import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.DrynessView;
 import com.bosstriptracker.view.ItemView;
 import com.bosstriptracker.view.LifetimeView;
+import com.bosstriptracker.view.LootCategory;
 import com.bosstriptracker.view.PolishView;
 import com.bosstriptracker.view.SupplyCategory;
 import java.awt.BorderLayout;
@@ -41,6 +42,7 @@ class LifetimePanel extends JPanel
 	private static boolean trackedLoot;
 
 	private final ItemManager itemManager;
+	private final SectionStates sectionStates;
 	private final StatCell trips = new StatCell("Trips", false);
 	private final StatCell kills = new StatCell("Kills", false);
 	private final StatCell time = new StatCell("Time", false);
@@ -74,9 +76,10 @@ class LifetimePanel extends JPanel
 	private List<Object> shownLoot;
 	private List<Object> shownSupplies;
 
-	LifetimePanel(ItemManager itemManager, PanelActions actions, Runnable onClear)
+	LifetimePanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, Runnable onClear)
 	{
 		this.itemManager = itemManager;
+		this.sectionStates = sectionStates;
 		this.dropChances = new DropChancesCard(itemManager);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
@@ -273,8 +276,11 @@ class LifetimePanel extends JPanel
 		trackedSwitch.setToolTipText(UiFormat.tooltip("Loot of every trip this plugin tracked, at the prices recorded then."));
 
 		List<ItemView> items = allTime ? view.getAllTimeLoot() : view.getLoot();
+		List<LootCategory> categories = allTime ? view.getAllTimeLootCategories() : view.getLootCategories();
 		List<Object> key = new ArrayList<>(items);
 		key.add(allTime);
+		key.add(categories);
+		key.add(view.getKills());
 		if (key.equals(shownLoot))
 		{
 			return;
@@ -288,12 +294,11 @@ class LifetimePanel extends JPanel
 			DrynessView.AllTime record = view.getDryness().getAllTime();
 			int recordKills = record == null ? 0 : record.getLootKills();
 			long value = view.getAllTimeLootValue();
-			stats.add(SectionStat.of("Total", UiFormat.gp(value),
+			stats.add(SectionStat.of("Total GP", UiFormat.gp(value),
 				UiFormat.fullGp(value) + " at today's prices: everything in RuneLite's Loot Tracker record."));
 			stats.add(SectionStat.of("GP/Kill", UiFormat.gp(recordKills > 0 ? value / recordKills : 0),
-				"Total divided by the " + String.format(Locale.ROOT, "%,d", recordKills) + " " + killsName + " in the record."));
-			stats.add(SectionStat.of("Kills", String.format(Locale.ROOT, "%,d", recordKills),
-				Character.toUpperCase(killsName.charAt(0)) + killsName.substring(1) + " in RuneLite's Loot Tracker record."));
+				"Total GP divided by the " + String.format(Locale.ROOT, "%,d", recordKills) + " " + killsName
+					+ " in the record."));
 			if (view.getAllTimeSince() > 0)
 			{
 				stats.add(SectionStat.of("Since", UiFormat.date(view.getAllTimeSince()),
@@ -303,17 +308,15 @@ class LifetimePanel extends JPanel
 		else
 		{
 			long value = view.getLootValue();
-			stats.add(SectionStat.of("Total", UiFormat.gp(value),
+			stats.add(SectionStat.of("Total GP", UiFormat.gp(value),
 				UiFormat.fullGp(value) + " at the prices recorded when each drop came in."));
 			stats.add(SectionStat.of("GP/Kill", UiFormat.gp(view.getKills() > 0 ? value / view.getKills() : 0),
-				"Total divided by the " + view.getKills() + " kills tracked."));
-			stats.add(SectionStat.of("Kills", String.valueOf(view.getKills()), "Kills tracked by this plugin."));
-			stats.add(SectionStat.of("Loot GP/hr", UiFormat.gp(TripMath.gpPerHour(value, view.getActiveMs())),
-				"Loot per hour in the " + boss.getAreaNoun() + ", before costs."));
+				"Total GP divided by the " + view.getKills() + " kills tracked."));
 		}
+		stats.addAll(TripDetails.categoryStats(categories));
 
 		lootHolder.removeAll();
-		lootHolder.add(section(new ItemSection(itemManager, "All loot", items,
+		lootHolder.add(section(new ItemSection(itemManager, sectionStates, "lifetime.loot", true, "All loot", items,
 			allTime ? "Nothing in the record yet" : "No loot tracked yet", stats, lootSwitch)));
 	}
 
@@ -334,7 +337,7 @@ class LifetimePanel extends JPanel
 
 		List<SectionStat> stats = new ArrayList<>();
 		stats.add(trackedStat(view));
-		stats.add(SectionStat.of("Total", UiFormat.gp(view.getSupplyCost()),
+		stats.add(SectionStat.of("Total GP", UiFormat.gp(view.getSupplyCost()),
 			"Everything used up across the trips this plugin tracked (RuneLite doesn't record supplies, so there's no"
 				+ " all-time count). Dropped items and death costs are counted separately under Costs."));
 		for (SupplyCategory category : view.getSupplyCategories())
@@ -342,12 +345,14 @@ class LifetimePanel extends JPanel
 			stats.add(SectionStat.of(category.getName(), UiFormat.gp(category.getValue()), TripDetails.categoryHelp(category.getName())));
 		}
 		suppliesHolder.removeAll();
-		suppliesHolder.add(section(new ItemSection(itemManager, "All supplies", view.getSupplies(), "No supplies tracked yet", stats)));
+		suppliesHolder.add(section(new ItemSection(itemManager, sectionStates, "lifetime.supplies", true, "All supplies",
+			view.getSupplies(), "No supplies tracked yet", stats)));
 		if (!view.getDropped().isEmpty())
 		{
-			List<SectionStat> droppedStats = Arrays.asList(trackedStat(view), SectionStat.of("Total", UiFormat.gp(view.getDroppedCost()),
-				"Items dropped and left behind across all trips, at GE price."));
-			suppliesHolder.add(section(new ItemSection(itemManager, "All dropped", view.getDropped(), null, droppedStats)));
+			List<SectionStat> droppedStats = Arrays.asList(trackedStat(view), SectionStat.of("Total GP",
+				UiFormat.gp(view.getDroppedCost()), "Items dropped and left behind across all trips, at GE price."));
+			suppliesHolder.add(section(new ItemSection(itemManager, sectionStates, "lifetime.dropped", true, "All dropped",
+				view.getDropped(), null, droppedStats)));
 		}
 	}
 

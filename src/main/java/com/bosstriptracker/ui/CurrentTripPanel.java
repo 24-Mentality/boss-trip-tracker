@@ -18,6 +18,7 @@ import net.runelite.client.ui.FontManager;
 class CurrentTripPanel extends JPanel
 {
 	private final ItemManager itemManager;
+	private final SectionStates sectionStates;
 	private final GoalCard goalCard;
 	private final JLabel status = new JLabel();
 	private final TripSummaryCard summary = new TripSummaryCard();
@@ -30,10 +31,11 @@ class CurrentTripPanel extends JPanel
 	private final JPanel detailsHolder = new JPanel();
 	private TripView shownDetails;
 
-	CurrentTripPanel(ItemManager itemManager, PanelActions actions, Runnable onSetGoal, Runnable onPause,
-		Runnable onResetGoal, Runnable onSetLastUniqueKc, Runnable onClearLastUniqueKc)
+	CurrentTripPanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, Runnable onSetGoal,
+		Runnable onPause, Runnable onResetGoal, Runnable onSetLastUniqueKc, Runnable onClearLastUniqueKc)
 	{
 		this.itemManager = itemManager;
+		this.sectionStates = sectionStates;
 		this.luckCard = new LuckCard(onSetLastUniqueKc, onClearLastUniqueKc);
 		this.goalCard = new GoalCard(itemManager, onSetGoal, onPause, onResetGoal);
 		this.luckOverview = new LuckOverviewCard(itemManager, onSetLastUniqueKc, onClearLastUniqueKc);
@@ -116,7 +118,7 @@ class CurrentTripPanel extends JPanel
 			detailsHolder.removeAll();
 			if (trip != null)
 			{
-				detailsHolder.add(new TripDetails(itemManager, trip));
+				detailsHolder.add(new TripDetails(itemManager, sectionStates, "trip", trip));
 			}
 		}
 		revalidate();

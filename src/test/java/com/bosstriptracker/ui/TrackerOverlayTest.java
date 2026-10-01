@@ -75,6 +75,11 @@ public class TrackerOverlayTest
 		public void setSelectedBoss(String bossId)
 		{
 		}
+
+		@Override
+		public void setSectionStates(String states)
+		{
+		}
 	};
 
 	@Test

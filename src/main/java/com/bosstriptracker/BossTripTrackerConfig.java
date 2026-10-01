@@ -429,4 +429,23 @@ public interface BossTripTrackerConfig extends Config
 		hidden = true
 	)
 	void setSelectedBoss(String bossId);
+
+	@ConfigItem(
+		keyName = "sectionStates",
+		name = "",
+		description = "Which item boxes in the side panel are open, e.g. trip.loot=open,history.supplies=closed",
+		hidden = true
+	)
+	default String sectionStates()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = "sectionStates",
+		name = "",
+		description = "",
+		hidden = true
+	)
+	void setSectionStates(String states);
 }

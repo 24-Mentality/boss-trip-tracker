@@ -49,7 +49,7 @@ public class TrackerPanel extends PluginPanel
 	private MaterialTabGroup tabGroup;
 	private MaterialTab tripTab;
 
-	public TrackerPanel(ItemManager itemManager, PanelActions actions, BossDefinition initialBoss)
+	public TrackerPanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, BossDefinition initialBoss)
 	{
 		// Not wrapped in PluginPanel's scroll pane, so the tabs stay visible while content scrolls
 		super(false);
@@ -57,10 +57,10 @@ public class TrackerPanel extends PluginPanel
 		setLayout(new BorderLayout());
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 
-		currentTab = new CurrentTripPanel(itemManager, actions, () -> promptGoal(actions), actions::togglePause,
+		currentTab = new CurrentTripPanel(itemManager, sectionStates, actions, () -> promptGoal(actions), actions::togglePause,
 			() -> promptRestartGoal(actions), () -> promptLastUniqueKc(actions), () -> actions.setLastUniqueKc(null));
-		historyTab = new HistoryPanel(itemManager, trip -> confirmDelete(trip, actions::deleteTrip));
-		lifetimeTab = new LifetimePanel(itemManager, actions, () -> confirmClear(actions::clearHistory));
+		historyTab = new HistoryPanel(itemManager, sectionStates, trip -> confirmDelete(trip, actions::deleteTrip));
+		lifetimeTab = new LifetimePanel(itemManager, sectionStates, actions, () -> confirmClear(actions::clearHistory));
 
 		ScrollableContent display = new ScrollableContent();
 		display.setBackground(ColorScheme.DARK_GRAY_COLOR);

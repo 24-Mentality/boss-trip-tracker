@@ -39,8 +39,8 @@ class TripSummaryCard extends JPanel
 	private final StatCell net = new StatCell("Net profit", true)
 		.help("Loot minus costs (supplies, dropped items and death costs), at the GE prices recorded at the time.");
 	private final StatCell gpPerHour = new StatCell("Net GP/hr", true)
-		.help("Net profit per hour of time inside the lair (paused time excluded). The Loot box's Loot GP/hr is loot"
-			+ " before costs.");
+		.help("Net profit per hour of fighting time (loot minus supplies, dropped items and death costs; paused time"
+			+ " excluded).");
 	private final StatCell loot = new StatCell("Loot", false)
 		.help("GE value of everything received, including overflow picked up from the ground. Tarnished drops count"
 			+ " once polished.");

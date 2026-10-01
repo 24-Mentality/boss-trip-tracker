@@ -21,6 +21,7 @@ import net.runelite.client.ui.FontManager;
 class HistoryPanel extends JPanel
 {
 	private final ItemManager itemManager;
+	private final SectionStates sectionStates;
 	private final Consumer<TripView> onDelete;
 	private final Set<String> expandedTrips = new HashSet<>();
 	private final JLabel chartTitle = new JLabel();
@@ -29,9 +30,10 @@ class HistoryPanel extends JPanel
 	private final JPanel cards = new JPanel();
 	private List<TripView> shown;
 
-	HistoryPanel(ItemManager itemManager, Consumer<TripView> onDelete)
+	HistoryPanel(ItemManager itemManager, SectionStates sectionStates, Consumer<TripView> onDelete)
 	{
 		this.itemManager = itemManager;
+		this.sectionStates = sectionStates;
 		this.onDelete = onDelete;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
@@ -86,7 +88,8 @@ class HistoryPanel extends JPanel
 			cards.removeAll();
 			for (TripView trip : trips)
 			{
-				TripCard card = new TripCard(itemManager, trip, expandedTrips.contains(trip.getId()), this::toggled, onDelete);
+				TripCard card = new TripCard(itemManager, sectionStates, trip, expandedTrips.contains(trip.getId()),
+					this::toggled, onDelete);
 				card.setAlignmentX(LEFT_ALIGNMENT);
 				cards.add(card);
 			}
