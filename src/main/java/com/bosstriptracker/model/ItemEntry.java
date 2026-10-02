@@ -65,4 +65,10 @@ public class ItemEntry
 		}
 		return quantity * priceEach;
 	}
+
+	public ItemEntry copy()
+	{
+		return new ItemEntry(itemId, quantity, priceEach, perDose, pending, pendingId, chargeItemId, chargesPerItem,
+			polishedFrom);
+	}
 }

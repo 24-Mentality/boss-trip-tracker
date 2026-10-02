@@ -43,4 +43,31 @@ public class Trip
 	{
 		return activeMs + (segmentStartedAt != null ? Math.max(0, now - segmentStartedAt) : 0);
 	}
+
+	/**
+	 * A deep copy. Finished trips are never changed in place (the history is written from another thread), so a change
+	 * to one is made to a copy that replaces it.
+	 */
+	public Trip copy()
+	{
+		Trip copy = new Trip();
+		copy.id = id;
+		copy.startedAt = startedAt;
+		copy.endedAt = endedAt;
+		copy.endReason = endReason;
+		copy.activeMs = activeMs;
+		copy.segmentStartedAt = segmentStartedAt;
+		copy.lastActiveAt = lastActiveAt;
+		for (Kill kill : kills)
+		{
+			copy.kills.add(kill.copy());
+		}
+		copy.supplies = Kill.copies(supplies);
+		copy.dropped = Kill.copies(dropped);
+		for (DeathRecord death : deaths)
+		{
+			copy.deaths.add(death.copy());
+		}
+		return copy;
+	}
 }

@@ -6,6 +6,7 @@ import com.bosstriptracker.model.Trip;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 /**
  * Lines recorded while RuneLite's price list wasn't loaded (or failed to fetch) were saved at 0 gp. A tradeable item
@@ -32,14 +33,25 @@ final class ZeroPrices
 	}
 
 	/**
+	 * @param editable gives the trip to change (a finished trip is replaced by a copy); only trips with a line to
+	 *                 reprice are asked for
 	 * @param junkPrice dropped items repriced below this each are junk and are removed
 	 * @return how many lines were repriced
 	 */
-	static int reprice(Iterable<Trip> trips, Pricing pricing, long junkPrice)
+	static int reprice(Iterable<Trip> trips, UnaryOperator<Trip> editable, Pricing pricing, long junkPrice)
 	{
 		int repriced = 0;
-		for (Trip trip : trips)
+		for (Trip original : trips)
 		{
+			if (!needsRepricing(original, pricing))
+			{
+				continue;
+			}
+			Trip trip = editable.apply(original);
+			if (trip == null)
+			{
+				continue;
+			}
 			for (Kill kill : trip.getKills())
 			{
 				repriced += reprice(kill.getLoot(), pricing, -1);
@@ -48,6 +60,30 @@ final class ZeroPrices
 			repriced += reprice(trip.getDropped(), pricing, junkPrice);
 		}
 		return repriced;
+	}
+
+	private static boolean needsRepricing(Trip trip, Pricing pricing)
+	{
+		for (Kill kill : trip.getKills())
+		{
+			if (needsRepricing(kill.getLoot(), pricing))
+			{
+				return true;
+			}
+		}
+		return needsRepricing(trip.getSupplies(), pricing) || needsRepricing(trip.getDropped(), pricing);
+	}
+
+	private static boolean needsRepricing(List<ItemEntry> lines, Pricing pricing)
+	{
+		for (ItemEntry entry : lines)
+		{
+			if (entry.getPriceEach() == 0 && !entry.isPending() && pricing.tradeable(entry) && pricing.price(entry) > 0)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private static int reprice(List<ItemEntry> lines, Pricing pricing, long junkPrice)

@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class AccountHistory
 {
-	public static final int CURRENT_SCHEMA_VERSION = 5;
+	public static final int CURRENT_SCHEMA_VERSION = 6;
 
 	private int schemaVersion = CURRENT_SCHEMA_VERSION;
 	private long accountHash;

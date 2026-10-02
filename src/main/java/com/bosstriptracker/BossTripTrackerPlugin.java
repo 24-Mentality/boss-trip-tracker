@@ -25,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.swing.SwingUtilities;
@@ -573,7 +574,7 @@ public class BossTripTrackerPlugin extends Plugin
 		}
 
 		private void export(String title, String fileName, String filterName, String extension,
-			Function<TripTracker, String> content)
+			Function<TripTracker, Supplier<String>> content)
 		{
 			List<Filepath> chosen = new Filepath.Chooser()
 				.setIsSave()
@@ -594,7 +595,7 @@ public class BossTripTrackerPlugin extends Plugin
 			HistoryStore historyStore = store;
 			clientThread.invokeLater(() ->
 			{
-				String data = content.apply(tracker);
+				Supplier<String> data = content.apply(tracker);
 				if (data == null)
 				{
 					SwingUtilities.invokeLater(() -> trackerPanel.showMessage(title, "Log in first.", true));

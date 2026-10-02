@@ -194,17 +194,22 @@ class PolishTracker
 		host.historyChanged();
 	}
 
-	private static ItemEntry oldestPending(BossHistory history, int tarnishedId)
+	/**
+	 * The oldest unpolished drop of this type, in a trip that may be changed (a finished trip is replaced by a copy).
+	 */
+	private ItemEntry oldestPending(BossHistory history, int tarnishedId)
 	{
 		for (Trip trip : history.getTrips())
 		{
-			for (Kill kill : trip.getKills())
+			for (int k = 0; k < trip.getKills().size(); k++)
 			{
-				for (ItemEntry entry : kill.getLoot())
+				List<ItemEntry> loot = trip.getKills().get(k).getLoot();
+				for (int i = 0; i < loot.size(); i++)
 				{
-					if (entry.isPending() && entry.getItemId() == tarnishedId)
+					if (loot.get(i).isPending() && loot.get(i).getItemId() == tarnishedId)
 					{
-						return entry;
+						Trip editable = host.editable(trip);
+						return editable == null ? null : editable.getKills().get(k).getLoot().get(i);
 					}
 				}
 			}

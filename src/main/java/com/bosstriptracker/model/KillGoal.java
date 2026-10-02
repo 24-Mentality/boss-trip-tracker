@@ -37,4 +37,9 @@ public class KillGoal
 		}
 		return new KillGoal(target, startedAt, activeMs);
 	}
+
+	public KillGoal copy()
+	{
+		return new KillGoal(target, startedAt, activeMs);
+	}
 }

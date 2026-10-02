@@ -36,4 +36,32 @@ public class Kill
 	 */
 	private List<Integer> teamUniques = new ArrayList<>();
 	private boolean pet;
+
+	public Kill copy()
+	{
+		Kill copy = new Kill();
+		copy.killCount = killCount;
+		copy.endedAt = endedAt;
+		copy.durationMs = durationMs;
+		copy.choice = choice;
+		copy.variant = variant;
+		copy.partySize = partySize;
+		copy.loot = copies(loot);
+		copy.teamUniques = teamUniques == null ? new ArrayList<>() : new ArrayList<>(teamUniques);
+		copy.pet = pet;
+		return copy;
+	}
+
+	static List<ItemEntry> copies(List<ItemEntry> entries)
+	{
+		List<ItemEntry> copies = new ArrayList<>();
+		if (entries != null)
+		{
+			for (ItemEntry entry : entries)
+			{
+				copies.add(entry.copy());
+			}
+		}
+		return copies;
+	}
 }

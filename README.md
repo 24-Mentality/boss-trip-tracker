@@ -197,9 +197,13 @@ For the Maggot King:
 
 ## Data
 
-History is saved per account to
-`~/.runelite/plugin-data/boss-trip-tracker/history-<account>.json`. When a file from an older version is
-upgraded, the old file is kept next to it as `history-<account>.json.v1-backup-<date>`.
+History is saved per account in the folder
+`~/.runelite/plugin-data/boss-trip-tracker/history-<account>/`: `account.json` (goals, egg pops,
+polish results), one file of finished trips per boss and month (`<boss>/trips-2026-10.jsonl`) and
+`open-trips.json` for a trip in progress. A save only writes what changed, and it's written in
+the background, so the game never waits for it. A single-file history from an older version
+(`history-<account>.json`) is moved into the folder at login, checked, and then kept as
+`history-<account>.json.v5-backup-<date>` (the newest 3 backups are kept).
 
 ## Credits
 

@@ -59,7 +59,7 @@ public class ZeroPricesTest
 		trip.getDropped().add(new ItemEntry(ItemID.ANGLERFISH, 1, 0));
 		assertEquals(2, trip.getSupplies().stream().filter(e -> e.getItemId() == ItemID.ANGLERFISH).count());
 
-		int repriced = ZeroPrices.reprice(Collections.singletonList(trip), pricing, 100);
+		int repriced = ZeroPrices.reprice(Collections.singletonList(trip), t -> t, pricing, 100);
 
 		assertEquals(6, repriced);
 		assertEquals(900, kill.getLoot().get(0).getPriceEach());

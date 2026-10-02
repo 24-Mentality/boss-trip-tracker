@@ -28,6 +28,7 @@ import com.bosstriptracker.model.TripClock;
 import com.bosstriptracker.model.SupplyCorrections;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.model.VariantFilter;
+import com.bosstriptracker.persistence.HistoryLayout;
 import com.bosstriptracker.persistence.HistoryStore;
 import com.bosstriptracker.pricing.PriceService;
 import com.bosstriptracker.view.BossOption;
@@ -56,6 +57,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Actor;
@@ -203,6 +205,12 @@ public class TripTracker
 	private boolean dead;
 	private int ignoreDeltasUntilTick = -1;
 	private DeathRecord pendingDeath;
+	/**
+	 * The trip with {@link #pendingDeath}, and the death's place in it: the trip has ended, so the death is changed
+	 * through {@link #pendingDeathForChange()}.
+	 */
+	private Trip pendingDeathTrip;
+	private int pendingDeathIndex;
 	private BossDefinition deathBoss;
 	private int graveWindowEndTick = -1;
 
@@ -268,6 +276,8 @@ public class TripTracker
 	 * until logging out.
 	 */
 	private Kill unclaimedRaid;
+	private Trip unclaimedRaidTrip;
+	private int unclaimedRaidIndex;
 	private BossDefinition unclaimedRaidBoss;
 
 	private ScheduledFuture<?> saveFuture;
@@ -277,6 +287,10 @@ public class TripTracker
 	 * Goes up whenever the history changes, so cached totals of finished trips are worked out again.
 	 */
 	private long historyVersion;
+	/**
+	 * Months ("boss/2026-09") whose finished trips changed since the last save, so their files are written again.
+	 */
+	private final Set<String> dirtyMonths = new HashSet<>();
 	private long lastPushAt;
 	/**
 	 * RuneLite's all-time records for the shown boss and chip, read again only when they change.
@@ -468,13 +482,18 @@ public class TripTracker
 				forgetCurrentTrip();
 				resetSession();
 			}
+			else
+			{
+				monthChanged(bossIdOf(boss), trip);
+			}
 			if (trip == lastEndedTrip)
 			{
 				lastEndedTrip = null;
 			}
-			if (pendingDeath != null && trip.getDeaths().contains(pendingDeath))
+			if (pendingDeathTrip != null && pendingDeathTrip.getId().equals(trip.getId()))
 			{
 				pendingDeath = null;
+				pendingDeathTrip = null;
 			}
 		}
 		historyChanged();
@@ -493,11 +512,16 @@ public class TripTracker
 			return;
 		}
 
+		for (Trip trip : boss.getTrips())
+		{
+			monthChanged(selectedBoss.getId(), trip);
+		}
 		boss.getTrips().clear();
 		if (tripBoss == selectedBoss)
 		{
 			forgetCurrentTrip();
 			pendingDeath = null;
+			pendingDeathTrip = null;
 			resetSession();
 		}
 		if (lastEndedBoss == selectedBoss)
@@ -520,23 +544,44 @@ public class TripTracker
 	}
 
 	/**
-	 * @return this account's full history (every boss) as JSON, or null if none is loaded. Client thread.
+	 * @return this account's full history (every boss) as JSON, made when called (on the IO thread), or null if none
+	 * is loaded. Client thread.
 	 */
-	public String exportJson()
-	{
-		return history == null ? null : gson.toJson(history);
-	}
-
-	/**
-	 * @return the shown boss's completed trips as CSV (oldest first), or null if no history is loaded. Client thread.
-	 */
-	public String exportCsv()
+	public Supplier<String> exportJson()
 	{
 		if (history == null)
 		{
 			return null;
 		}
+		// Finished trips never change in place, so they're shared; the rest is copied now
+		AccountHistory export = HistoryLayout.accountWithoutTrips(history);
+		history.getBosses().forEach((bossId, boss) ->
+		{
+			List<Trip> trips = new ArrayList<>();
+			for (Trip trip : boss.getTrips())
+			{
+				trips.add(trip == currentTrip ? trip.copy() : trip);
+			}
+			export.getBosses().get(bossId).setTrips(trips);
+		});
+		return () -> gson.toJson(export);
+	}
 
+	/**
+	 * @return the shown boss's completed trips as CSV (oldest first), or null if no history is loaded. Client thread.
+	 */
+	public Supplier<String> exportCsv()
+	{
+		if (history == null)
+		{
+			return null;
+		}
+		String csv = csv();
+		return () -> csv;
+	}
+
+	private String csv()
+	{
 		BossDefinition boss = selectedBoss;
 		StringBuilder csv = new StringBuilder("start,end,active_minutes,end_reason,kills,");
 		for (TripStat column : boss.getCsvColumns())
@@ -656,6 +701,7 @@ public class TripTracker
 				if (isImportable(trip, mine))
 				{
 					mine.getTrips().add(trip);
+					monthChanged(bossId, trip);
 				}
 			}
 			mine.getTrips().sort(Comparator.comparingLong(Trip::getStartedAt));
@@ -874,6 +920,7 @@ public class TripTracker
 				resetSession();
 				// Unclaimed raid rewards are lost on logout
 				unclaimedRaid = null;
+				unclaimedRaidTrip = null;
 				unclaimedRaidBoss = null;
 				pushState();
 				break;
@@ -1136,7 +1183,7 @@ public class TripTracker
 		{
 			trips.addAll(boss.getTrips());
 		}
-		int repriced = ZeroPrices.reprice(trips, new ZeroPrices.Pricing()
+		int repriced = ZeroPrices.reprice(trips, this::editable, new ZeroPrices.Pricing()
 		{
 			@Override
 			public boolean tradeable(ItemEntry entry)
@@ -1317,7 +1364,8 @@ public class TripTracker
 			Long fee = deathBoss.reclaimFee(text);
 			if (fee != null)
 			{
-				pendingDeath.setReclaimFee(pendingDeath.getReclaimFee() + fee);
+				DeathRecord death = pendingDeathForChange();
+				death.setReclaimFee(death.getReclaimFee() + fee);
 				historyChanged();
 				requestSave();
 				return;
@@ -1594,8 +1642,9 @@ public class TripTracker
 		{
 			return false;
 		}
-		Kill kill = inRaid ? (raid.isCompleted() ? lootKill : null) : unclaimedRaid;
+		Kill kill = inRaid ? (raid.isCompleted() ? lootKill : null) : unclaimedRaidForChange();
 		unclaimedRaid = null;
+		unclaimedRaidTrip = null;
 		unclaimedRaidBoss = null;
 		if (kill == null)
 		{
@@ -1741,7 +1790,8 @@ public class TripTracker
 			&& now - lastEndedTrip.getEndedAt() <= TimeUnit.MINUTES.toMillis(config.mergeWindowMinutes())
 			&& trips.contains(lastEndedTrip))
 		{
-			currentTrip = lastEndedTrip;
+			// Open again: it leaves its month's file for the trips in progress
+			currentTrip = editable(lastEndedTrip);
 			currentTrip.setEndedAt(null);
 			currentTrip.setEndReason(null);
 		}
@@ -1762,6 +1812,7 @@ public class TripTracker
 			freeSupplies.clear();
 			// A new raid: an earlier one's reward can't be claimed any more
 			unclaimedRaid = null;
+			unclaimedRaidTrip = null;
 			unclaimedRaidBoss = null;
 		}
 		TripClock.start(currentTrip, now);
@@ -1822,6 +1873,8 @@ public class TripTracker
 			{
 				// Left without claiming: the reward waits in the chest outside until you log out
 				unclaimedRaid = lootKill;
+				unclaimedRaidTrip = currentTrip;
+				unclaimedRaidIndex = currentTrip.getKills().indexOf(lootKill);
 				unclaimedRaidBoss = tripBoss;
 			}
 		}
@@ -1889,6 +1942,8 @@ public class TripTracker
 		{
 			lastEndedTrip = currentTrip;
 			lastEndedBoss = tripBoss;
+			// Finished: it's never changed in place again, and goes into its month's file
+			monthChanged(tripBoss.getId(), currentTrip);
 		}
 		currentTrip = null;
 		tripBoss = null;
@@ -1933,6 +1988,8 @@ public class TripTracker
 			death.setAt(now);
 			currentTrip.getDeaths().add(death);
 			pendingDeath = death;
+			pendingDeathTrip = currentTrip;
+			pendingDeathIndex = currentTrip.getDeaths().size() - 1;
 			viewDirty = true;
 			requestSave();
 		}
@@ -2238,7 +2295,8 @@ public class TripTracker
 			Long quantity = removed.remove(itemId);
 			if (quantity != null)
 			{
-				pendingDeath.setGraveMoveCost(pendingDeath.getGraveMoveCost() + quantity * prices.price(itemId));
+				DeathRecord death = pendingDeathForChange();
+				death.setGraveMoveCost(death.getGraveMoveCost() + quantity * prices.price(itemId));
 				historyChanged();
 				requestSave();
 			}
@@ -2436,6 +2494,8 @@ public class TripTracker
 		lastEndedTrip = null;
 		lastEndedBoss = null;
 		pendingDeath = null;
+		pendingDeathTrip = null;
+		dirtyMonths.clear();
 		historyViews = Collections.emptyList();
 		store.load(hash, result -> clientThread.invokeLater(() -> onHistoryLoaded(hash, result)));
 	}
@@ -2468,6 +2528,7 @@ public class TripTracker
 			if (fixed > 0)
 			{
 				log.info("Repriced {} Scythe of Vitur charge lines (200 blood runes per 100 charges, not 300)", fixed);
+				allMonthsChanged();
 				saveNow();
 			}
 		}
@@ -2490,9 +2551,11 @@ public class TripTracker
 					trip.setSegmentStartedAt(null);
 				}
 				Trip older = trip;
+				BossDefinition olderBoss = boss;
 				if (open == null || trip.getLastActiveAt() >= open.getLastActiveAt())
 				{
 					older = open;
+					olderBoss = openBoss;
 					open = trip;
 					openBoss = boss;
 				}
@@ -2500,6 +2563,7 @@ public class TripTracker
 				{
 					older.setEndedAt(older.getLastActiveAt());
 					older.setEndReason(TripEndReason.LOGOUT);
+					monthChanged(olderBoss.getId(), older);
 				}
 			}
 		}
@@ -2556,7 +2620,156 @@ public class TripTracker
 		{
 			currentTrip.setLastActiveAt(System.currentTimeMillis());
 		}
-		store.save(accountHash, gson.toJson(history), written);
+		store.save(accountHash, snapshot(), written);
+	}
+
+	/**
+	 * What to write, made without turning anything into JSON here: the account without trips (copied), the months
+	 * that changed (finished trips are never changed in place, so they're shared, not copied) and a copy of the trip
+	 * in progress.
+	 */
+	private HistoryLayout.Snapshot snapshot()
+	{
+		Map<String, Map<String, List<Trip>>> months = new LinkedHashMap<>();
+		for (String key : dirtyMonths)
+		{
+			int slash = key.lastIndexOf('/');
+			months.computeIfAbsent(key.substring(0, slash), k -> new LinkedHashMap<>()).put(key.substring(slash + 1),
+				new ArrayList<>());
+		}
+		dirtyMonths.clear();
+		months.forEach((bossId, byMonth) ->
+		{
+			BossHistory boss = history.getBosses().get(bossId);
+			if (boss == null)
+			{
+				return;
+			}
+			for (Trip trip : boss.getTrips())
+			{
+				List<Trip> month = trip.isOpen() ? null : byMonth.get(HistoryLayout.month(trip));
+				if (month != null)
+				{
+					month.add(trip);
+				}
+			}
+		});
+
+		List<HistoryLayout.OpenTrip> open = new ArrayList<>();
+		if (currentTrip != null && tripBoss != null && history.boss(tripBoss.getId()).getTrips().contains(currentTrip))
+		{
+			open.add(new HistoryLayout.OpenTrip(tripBoss.getId(), currentTrip.copy()));
+		}
+		return new HistoryLayout.Snapshot(HistoryLayout.accountWithoutTrips(history), months, open);
+	}
+
+	/**
+	 * A finished trip was added, removed or replaced: its month is written again at the next save.
+	 */
+	private void monthChanged(String bossId, Trip trip)
+	{
+		if (bossId != null)
+		{
+			dirtyMonths.add(bossId + "/" + HistoryLayout.month(trip));
+		}
+	}
+
+	private void allMonthsChanged()
+	{
+		history.getBosses().forEach((bossId, boss) ->
+		{
+			for (Trip trip : boss.getTrips())
+			{
+				monthChanged(bossId, trip);
+			}
+		});
+	}
+
+	private String bossIdOf(BossHistory boss)
+	{
+		for (Map.Entry<String, BossHistory> e : history.getBosses().entrySet())
+		{
+			if (e.getValue() == boss)
+			{
+				return e.getKey();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * The trip to change. The trip in progress is changed as it is; a finished trip is replaced in the history by a
+	 * copy, which is changed instead (the saver may be writing the original from another thread), and its month is
+	 * saved again.
+	 *
+	 * @param trip the trip, or an earlier copy of it (found by id)
+	 * @return the trip to change, or null if it's no longer in the history
+	 */
+	private Trip editable(Trip trip)
+	{
+		if (trip == null || history == null)
+		{
+			return null;
+		}
+		if (trip == currentTrip)
+		{
+			return trip;
+		}
+		for (Map.Entry<String, BossHistory> e : history.getBosses().entrySet())
+		{
+			List<Trip> trips = e.getValue().getTrips();
+			for (int i = 0; i < trips.size(); i++)
+			{
+				Trip found = trips.get(i);
+				if (!found.getId().equals(trip.getId()))
+				{
+					continue;
+				}
+				if (found == currentTrip || found.isOpen())
+				{
+					return found;
+				}
+				Trip copy = found.copy();
+				trips.set(i, copy);
+				if (lastEndedTrip == found)
+				{
+					lastEndedTrip = copy;
+				}
+				monthChanged(e.getKey(), copy);
+				historyChanged();
+				return copy;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * The death waiting for its reclaim fee or grave move, in a trip that has usually ended.
+	 */
+	private DeathRecord pendingDeathForChange()
+	{
+		Trip trip = editable(pendingDeathTrip);
+		if (trip == null || pendingDeathIndex >= trip.getDeaths().size())
+		{
+			// Its trip was deleted: nothing to record the cost on
+			return new DeathRecord();
+		}
+		pendingDeathTrip = trip;
+		pendingDeath = trip.getDeaths().get(pendingDeathIndex);
+		return pendingDeath;
+	}
+
+	/**
+	 * The completed raid whose reward is claimed from the chest outside, in its (ended) trip.
+	 */
+	private Kill unclaimedRaidForChange()
+	{
+		Trip trip = editable(unclaimedRaidTrip);
+		if (trip == null || unclaimedRaidIndex < 0 || unclaimedRaidIndex >= trip.getKills().size())
+		{
+			return null;
+		}
+		return trip.getKills().get(unclaimedRaidIndex);
 	}
 
 	private void historyChanged()
@@ -2704,6 +2917,12 @@ public class TripTracker
 		{
 			TripTracker.this.historyChanged();
 			requestSave();
+		}
+
+		@Override
+		public Trip editable(Trip trip)
+		{
+			return TripTracker.this.editable(trip);
 		}
 
 		@Override

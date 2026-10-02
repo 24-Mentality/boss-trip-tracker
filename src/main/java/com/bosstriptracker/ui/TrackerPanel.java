@@ -221,8 +221,8 @@ public class TrackerPanel extends PluginPanel
 		corruptWarning.setVisible(state.getCorruptBackup() != null);
 		if (state.getCorruptBackup() != null)
 		{
-			corruptWarning.setText("<html>Your history file couldn't be read, so a new history was started. The old file"
-				+ " is kept in the plugin's data folder as " + state.getCorruptBackup() + ".</html>");
+			corruptWarning.setText("<html>Part of your trip history couldn't be read. Everything readable was loaded; the"
+				+ " unreadable files are kept in the plugin's data folder: " + state.getCorruptBackup() + ".</html>");
 		}
 	}
 

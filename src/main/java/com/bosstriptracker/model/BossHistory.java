@@ -61,4 +61,25 @@ public class BossHistory
 			polishOutcomes = new HashMap<>();
 		}
 	}
+
+	/**
+	 * Everything but the trips (left null), copied: what account.json keeps for this boss.
+	 */
+	public BossHistory withoutTrips()
+	{
+		BossHistory copy = new BossHistory();
+		copy.trips = null;
+		copy.goal = goal == null ? null : goal.copy();
+		copy.lastUniqueKc = lastUniqueKc;
+		copy.gameDryStreak = gameDryStreak;
+		copy.gameDryStreakKc = gameDryStreakKc;
+		copy.gameTeamDryStreak = gameTeamDryStreak;
+		copy.gameTeamDryStreakAt = gameTeamDryStreakAt;
+		for (EggPop pop : eggPops)
+		{
+			copy.eggPops.add(pop.copy());
+		}
+		polishOutcomes.forEach((tarnished, outcomes) -> copy.polishOutcomes.put(tarnished, new HashMap<>(outcomes)));
+		return copy;
+	}
 }

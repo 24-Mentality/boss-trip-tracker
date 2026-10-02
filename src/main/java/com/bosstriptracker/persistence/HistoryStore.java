@@ -22,12 +22,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.util.Filepath;
 
 /**
- * Reads and writes one history-&lt;accountHash&gt;.json per account in the plugin data folder.
+ * Reads and writes one history-&lt;accountHash&gt; folder per account in the plugin data folder ({@link HistoryLayout}),
+ * moving older single-file histories into it.
  * All disk IO runs on the supplied executor; callbacks are invoked on that executor thread.
  */
 @Slf4j
@@ -56,23 +58,22 @@ public class HistoryStore
 	}
 
 	/**
-	 * @param json the history already serialized on the client thread
-	 */
-	public void save(long accountHash, String json)
-	{
-		save(accountHash, json, () -> { });
-	}
-
-	/**
+	 * Writes what changed: the months in the snapshot, the trips in progress and the account. The snapshot is turned
+	 * into JSON here, on the IO thread.
+	 *
 	 * @param written runs once the write is done or has failed (at once if the plugin is shutting down)
 	 */
-	public void save(long accountHash, String json, Runnable written)
+	public void save(long accountHash, HistoryLayout.Snapshot snapshot, Runnable written)
 	{
 		if (!submit(() ->
 		{
 			try
 			{
-				writeHistory(accountHash, json);
+				HistoryLayout.write(gson, directory().joinSegment(folderName(accountHash)), snapshot);
+			}
+			catch (Exception e)
+			{
+				log.warn("Unable to save trip history", e);
 			}
 			finally
 			{
@@ -86,14 +87,16 @@ public class HistoryStore
 
 	/**
 	 * Writes a user-chosen export file. The callback gets null on success, or the error.
+	 *
+	 * @param content made here, on the IO thread (an export of the whole history is turned into JSON here)
 	 */
-	public void writeFile(Filepath file, String content, Consumer<Exception> callback)
+	public void writeFile(Filepath file, Supplier<String> content, Consumer<Exception> callback)
 	{
 		submit(() ->
 		{
 			try
 			{
-				file.write(content.getBytes(StandardCharsets.UTF_8),
+				file.write(content.get().getBytes(StandardCharsets.UTF_8),
 					StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
 				callback.accept(null);
 			}
@@ -171,54 +174,104 @@ public class HistoryStore
 	{
 		try
 		{
-			Filepath file = directory().joinSegment(fileName(accountHash));
-			if (!file.exists())
+			Filepath oldFile = directory().joinSegment(fileName(accountHash));
+			Filepath folder = directory().joinSegment(folderName(accountHash));
+			if (oldFile.exists())
 			{
-				return new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, null);
+				// Until it's been moved to a backup, a single-file history is the one to use
+				return migrate(accountHash, oldFile, folder);
 			}
-
-			HistoryCodec.Decoded decoded;
-			try
+			if (HistoryLayout.exists(folder))
 			{
-				decoded = HistoryCodec.decode(gson, readString(file));
+				return readFolder(accountHash, folder, null);
 			}
-			catch (JsonParseException e)
-			{
-				Filepath backup = directory().joinSegment(fileName(accountHash) + ".corrupt-" + System.currentTimeMillis());
-				log.warn("Trip history for this account is unreadable; moving it to {}", backup.getFileName(), e);
-				file.moveTo(backup);
-				return new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION,
-					backup.getFileName());
-			}
-
-			if (decoded == null)
-			{
-				return new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, null);
-			}
-			if (decoded.isMigrated())
-			{
-				// Keep the old file as it was before it's rewritten in the new format
-				Filepath backup = directory().joinSegment(fileName(accountHash) + ".v" + decoded.getSourceVersion()
-					+ "-backup-" + BACKUP_STAMP.format(LocalDateTime.now()));
-				if (!backup.exists())
-				{
-					file.copyTo(backup);
-				}
-				pruneBackups(accountHash);
-				log.info("Upgraded trip history from schema {} to {}; the old file is kept as {}",
-					decoded.getSourceVersion(), AccountHistory.CURRENT_SCHEMA_VERSION, backup.getFileName());
-			}
-
-			AccountHistory history = decoded.getHistory();
-			history.setAccountHash(accountHash);
-			// A file from a newer plugin version is shown but never overwritten
-			return new LoadResult(history, decoded.isNewer(), decoded.getSourceVersion(), null);
+			return new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, null);
 		}
 		catch (Exception e)
 		{
 			log.warn("Unable to load trip history", e);
 			return new LoadResult(emptyHistory(accountHash), true, AccountHistory.CURRENT_SCHEMA_VERSION, null);
 		}
+	}
+
+	private LoadResult readFolder(long accountHash, Filepath folder, String alsoUnreadable) throws IOException
+	{
+		HistoryLayout.Loaded loaded = HistoryLayout.read(gson, folder);
+		AccountHistory history = loaded.getHistory();
+		history.setAccountHash(accountHash);
+		List<String> unreadable = new java.util.ArrayList<>(loaded.getUnreadable());
+		if (alsoUnreadable != null)
+		{
+			unreadable.add(0, alsoUnreadable);
+		}
+		// A folder from a newer plugin version is shown but never written to
+		boolean newer = history.getSchemaVersion() > AccountHistory.CURRENT_SCHEMA_VERSION;
+		return new LoadResult(history, newer, history.getSchemaVersion(),
+			unreadable.isEmpty() ? null : String.join(", ", unreadable));
+	}
+
+	/**
+	 * Moves a single-file history (schema 5 and older) into the folder layout. The folder is read back and its trips
+	 * checked against the file before the file is renamed to a backup; if anything fails, the file is left as it is
+	 * and the history is shown read-only, to be tried again at the next login.
+	 */
+	private LoadResult migrate(long accountHash, Filepath oldFile, Filepath folder) throws Exception
+	{
+		HistoryCodec.Decoded decoded;
+		try
+		{
+			decoded = HistoryCodec.decode(gson, readString(oldFile));
+		}
+		catch (JsonParseException e)
+		{
+			Filepath backup = directory().joinSegment(fileName(accountHash) + ".corrupt-" + System.currentTimeMillis());
+			log.warn("Trip history for this account is unreadable; moving it to {}", backup.getFileName(), e);
+			oldFile.moveTo(backup);
+			return HistoryLayout.exists(folder) ? readFolder(accountHash, folder, backup.getFileName())
+				: new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, backup.getFileName());
+		}
+		if (decoded == null)
+		{
+			// An empty file
+			oldFile.delete();
+			return HistoryLayout.exists(folder) ? readFolder(accountHash, folder, null)
+				: new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, null);
+		}
+
+		AccountHistory history = decoded.getHistory();
+		history.setAccountHash(accountHash);
+		if (decoded.isNewer())
+		{
+			return new LoadResult(history, true, decoded.getSourceVersion(), null);
+		}
+
+		try
+		{
+			// What's there is from a migration that didn't finish (nothing is saved to it until the file is gone)
+			if (folder.exists())
+			{
+				folder.deleteRecursively();
+			}
+			HistoryLayout.write(gson, folder, HistoryLayout.Snapshot.of(history));
+			HistoryLayout.Loaded back = HistoryLayout.read(gson, folder);
+			if (!back.getUnreadable().isEmpty() || !HistoryLayout.sameTrips(history, back.getHistory()))
+			{
+				log.warn("The new history folder didn't read back the same trips; keeping the old file (read-only this session)");
+				return new LoadResult(history, true, decoded.getSourceVersion(), null);
+			}
+			Filepath backup = directory().joinSegment(fileName(accountHash) + ".v" + decoded.getSourceVersion()
+				+ "-backup-" + BACKUP_STAMP.format(LocalDateTime.now()));
+			oldFile.moveTo(backup);
+			pruneBackups(accountHash);
+			log.info("Moved trip history from schema {} to the folder layout (schema {}); the old file is kept as {}",
+				decoded.getSourceVersion(), AccountHistory.CURRENT_SCHEMA_VERSION, backup.getFileName());
+		}
+		catch (Exception e)
+		{
+			log.warn("Unable to move trip history to the folder layout; keeping the old file (read-only this session)", e);
+			return new LoadResult(history, true, decoded.getSourceVersion(), null);
+		}
+		return new LoadResult(history, false, decoded.getSourceVersion(), null);
 	}
 
 	/**
@@ -266,29 +319,6 @@ public class HistoryStore
 		}
 	}
 
-	private void writeHistory(long accountHash, String json)
-	{
-		try
-		{
-			Filepath target = directory().joinSegment(fileName(accountHash));
-			Filepath temp = directory().joinSegment(fileName(accountHash) + ".tmp");
-			temp.write(json.getBytes(StandardCharsets.UTF_8),
-				StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
-			try
-			{
-				temp.moveTo(target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
-			}
-			catch (IOException e)
-			{
-				temp.moveTo(target, StandardCopyOption.REPLACE_EXISTING);
-			}
-		}
-		catch (Exception e)
-		{
-			log.warn("Unable to save trip history", e);
-		}
-	}
-
 	private Filepath directory() throws Exception
 	{
 		if (directory == null)
@@ -303,6 +333,11 @@ public class HistoryStore
 	private static String fileName(long accountHash)
 	{
 		return "history-" + accountHash + ".json";
+	}
+
+	private static String folderName(long accountHash)
+	{
+		return "history-" + accountHash;
 	}
 
 	private static AccountHistory emptyHistory(long accountHash)
@@ -325,7 +360,7 @@ public class HistoryStore
 		 */
 		int sourceVersion;
 		/**
-		 * The name an unreadable history file was moved to (a new history was started), or null.
+		 * The names unreadable history files were moved to (their readable trips were kept), or null.
 		 */
 		String corruptBackup;
 	}

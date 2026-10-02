@@ -12,4 +12,9 @@ public class EggPop
 	private int eggItemId;
 	private long at;
 	private boolean pet;
+
+	public EggPop copy()
+	{
+		return new EggPop(eggItemId, at, pet);
+	}
 }

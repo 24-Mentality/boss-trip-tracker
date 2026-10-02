@@ -16,4 +16,13 @@ public class DeathRecord
 	{
 		return reclaimFee + graveMoveCost;
 	}
+
+	public DeathRecord copy()
+	{
+		DeathRecord copy = new DeathRecord();
+		copy.at = at;
+		copy.reclaimFee = reclaimFee;
+		copy.graveMoveCost = graveMoveCost;
+		return copy;
+	}
 }
