@@ -127,6 +127,7 @@ public class TripTracker
 	private static final long PRE_ENTRY_WINDOW_MS = 60_000;
 	private static final long JUNK_PRICE = SupplyAccounting.JUNK_PRICE;
 	private static final long SAVE_DELAY_MS = 1_000;
+	private static final long PUSH_INTERVAL_MS = 1_000;
 	private static final long ACTIVE_SAVE_INTERVAL_MS = 60_000;
 
 	private static final String OPTION_DROP = SupplyAccounting.OPTION_DROP;
@@ -271,6 +272,16 @@ public class TripTracker
 	private ScheduledFuture<?> saveFuture;
 	private long lastPeriodicSave;
 	private boolean viewDirty = true;
+	/**
+	 * Goes up whenever the history changes, so cached totals of finished trips are worked out again.
+	 */
+	private long historyVersion;
+	private long lastPushAt;
+	/**
+	 * RuneLite's all-time records for the shown boss and chip, read again only when they change.
+	 */
+	private AllTimeCounts allTimeCache;
+	private String allTimeCacheKey;
 	private boolean historyDirty = true;
 	private List<TripView> historyViews = Collections.emptyList();
 
@@ -788,6 +799,7 @@ public class TripTracker
 
 	public void refreshView()
 	{
+		allTimeRecordsInvalid();
 		historyChanged();
 		pushState();
 	}
@@ -798,6 +810,7 @@ public class TripTracker
 	 */
 	public void allTimeRecordsChanged(String group, String key)
 	{
+		allTimeRecordsInvalid();
 		for (BossDefinition boss : registry.all())
 		{
 			for (AllTimeSource source : boss.getAllTimeSources())
@@ -830,6 +843,8 @@ public class TripTracker
 		switch (event.getGameState())
 		{
 			case LOGGED_IN:
+				// RuneLite's records are kept per RuneScape profile
+				allTimeRecordsInvalid();
 				untrackedWorld = RuneScapeProfileType.getCurrent(client) != RuneScapeProfileType.STANDARD
 					|| client.getWorldType().contains(WorldType.TOURNAMENT_WORLD);
 				ensureAccountLoaded();
@@ -974,7 +989,8 @@ public class TripTracker
 		}
 
 		prune(tick, now);
-		if (viewDirty || historyDirty)
+		// At most once a second: charges and supplies change on almost every tick in a fight
+		if ((viewDirty || historyDirty) && now - lastPushAt >= PUSH_INTERVAL_MS)
 		{
 			pushState();
 		}
@@ -2530,12 +2546,14 @@ public class TripTracker
 
 	private void historyChanged()
 	{
+		historyVersion++;
 		historyDirty = true;
 		viewDirty = true;
 	}
 
 	private void pushState()
 	{
+		lastPushAt = System.currentTimeMillis();
 		BossDefinition boss = selectedBoss;
 		viewBuilder.setPastTeamSize(config.tobPastTeamSize());
 		BossHistory bossHistory = history == null ? null : history.boss(boss.getId());
@@ -2594,8 +2612,8 @@ public class TripTracker
 			.currentTrip(shown)
 			.history(historyViews)
 			.lifetime(bossHistory == null ? null : viewBuilder.lifetime(boss, bossHistory, selectedVariant, allTime(boss),
-				config.showCurrentValue(), now))
-			.goal(bossHistory == null ? null : viewBuilder.goal(bossHistory, live ? currentTrip : null, now))
+				config.showCurrentValue(), now, live ? currentTrip : null, historyVersion))
+			.goal(bossHistory == null ? null : viewBuilder.goal(bossHistory, live ? currentTrip : null, now, historyVersion))
 			.pauseText(live ? pauseText() : null)
 			.pausedInLair(live && inLairPause != null)
 			.canPause(fighting)
@@ -2613,7 +2631,18 @@ public class TripTracker
 	 */
 	private AllTimeCounts allTime(BossDefinition boss)
 	{
-		return allTimeRecords.read(boss.getAllTimeSources(), selectedVariant);
+		String key = boss.getId() + "/" + selectedVariant;
+		if (!key.equals(allTimeCacheKey))
+		{
+			allTimeCache = allTimeRecords.read(boss.getAllTimeSources(), selectedVariant);
+			allTimeCacheKey = key;
+		}
+		return allTimeCache;
+	}
+
+	private void allTimeRecordsInvalid()
+	{
+		allTimeCacheKey = null;
 	}
 
 	private String pauseText()

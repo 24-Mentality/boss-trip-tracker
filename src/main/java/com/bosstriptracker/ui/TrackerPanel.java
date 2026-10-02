@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 import java.util.function.Consumer;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -52,6 +53,16 @@ public class TrackerPanel extends PluginPanel
 	private final Timer timer;
 	private MaterialTabGroup tabGroup;
 	private MaterialTab tripTab;
+	/**
+	 * The panel is open in the sidebar. While it isn't, updates are only kept for when it opens.
+	 */
+	private boolean active;
+	private int selectedTab;
+	/**
+	 * Tabs (Trip, History, Lifetime) that haven't been shown the latest state yet.
+	 */
+	private final boolean[] staleTabs = {true, true, true};
+	private boolean staleHeader = true;
 
 	public TrackerPanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, BossDefinition initialBoss)
 	{
@@ -77,10 +88,19 @@ public class TrackerPanel extends PluginPanel
 		MaterialTab current = new MaterialTab("Trip", tabs, currentTab);
 		MaterialTab history = new MaterialTab("History", tabs, historyTab);
 		MaterialTab lifetime = new MaterialTab("Lifetime", tabs, lifetimeTab);
-		for (MaterialTab tab : new MaterialTab[]{current, history, lifetime})
+		MaterialTab[] allTabs = {current, history, lifetime};
+		for (int i = 0; i < allTabs.length; i++)
 		{
-			tab.setHorizontalAlignment(SwingConstants.CENTER);
-			tabs.addTab(tab);
+			int index = i;
+			allTabs[i].setHorizontalAlignment(SwingConstants.CENTER);
+			// Only the tab on screen is kept up to date; another catches up when it's opened
+			allTabs[i].setOnSelectEvent(() ->
+			{
+				selectedTab = index;
+				refreshTab();
+				return true;
+			});
+			tabs.addTab(allTabs[i]);
 		}
 		tabs.select(current);
 		tabGroup = tabs;
@@ -151,14 +171,48 @@ public class TrackerPanel extends PluginPanel
 		add(north, BorderLayout.NORTH);
 		add(scroll, BorderLayout.CENTER);
 
+		// Runs only while the panel is open (onActivate)
 		timer = new Timer(1000, e -> currentTab.tick(System.currentTimeMillis()));
+	}
+
+	@Override
+	public void onActivate()
+	{
+		active = true;
+		refreshHeader();
+		refreshTab();
 		timer.start();
+	}
+
+	@Override
+	public void onDeactivate()
+	{
+		active = false;
+		timer.stop();
 	}
 
 	public void update(PanelState state)
 	{
 		this.state = state;
 		boss = state.getBoss();
+		staleHeader = true;
+		Arrays.fill(staleTabs, true);
+		refreshHeader();
+		refreshTab();
+	}
+
+	private boolean onScreen()
+	{
+		return active || isShowing();
+	}
+
+	private void refreshHeader()
+	{
+		if (state == null || !staleHeader || !onScreen())
+		{
+			return;
+		}
+		staleHeader = false;
 		shareButton.setEnabled(state.getLifetime() != null);
 		bossSelector.update(state.getBosses(), boss.getId());
 		variantChips.update(boss, state.getVariant());
@@ -169,9 +223,30 @@ public class TrackerPanel extends PluginPanel
 			corruptWarning.setText("<html>Your history file couldn't be read, so a new history was started. The old file"
 				+ " is kept in the plugin's data folder as " + state.getCorruptBackup() + ".</html>");
 		}
-		currentTab.update(state, System.currentTimeMillis());
-		historyTab.update(state.getHistory(), state.getLifetime());
-		lifetimeTab.update(state.getLifetime(), state.isReadOnly(), boss);
+	}
+
+	/**
+	 * Shows the latest state on the tab on screen, if it hasn't been yet.
+	 */
+	private void refreshTab()
+	{
+		if (state == null || !staleTabs[selectedTab] || !onScreen())
+		{
+			return;
+		}
+		staleTabs[selectedTab] = false;
+		switch (selectedTab)
+		{
+			case 0:
+				currentTab.update(state, System.currentTimeMillis());
+				break;
+			case 1:
+				historyTab.update(state.getHistory(), state.getLifetime());
+				break;
+			default:
+				lifetimeTab.update(state.getLifetime(), state.isReadOnly(), boss);
+				break;
+		}
 	}
 
 	/**

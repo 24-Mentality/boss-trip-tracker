@@ -1,5 +1,7 @@
 package com.bosstriptracker.ui;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import com.bosstriptracker.CanvasSection;
 import com.bosstriptracker.LuckCardStyle;
@@ -72,6 +74,8 @@ public class PanelFitTest
 		SwingUtilities.invokeAndWait(() ->
 		{
 			TrackerPanel panel = new TrackerPanel(null, new SectionStates(OPEN_BOXES, saved -> { }), new NoActions(), BOSS);
+			// As when the panel is opened in the sidebar
+			panel.onActivate();
 			panel.update(worstCaseState(PanelState.Status.IN_TRIP, false));
 			for (int tab = 0; tab < 3; tab++)
 			{
@@ -168,6 +172,26 @@ public class PanelFitTest
 		Component header = card.getComponent(0);
 		header.dispatchEvent(new MouseEvent(header, MouseEvent.MOUSE_PRESSED, 0, 0, 1, 1, 1, false, MouseEvent.BUTTON1));
 		assertTrue(card.isExpanded());
+	}
+
+	@Test
+	public void onlyTheTabOnScreenIsUpdated() throws Exception
+	{
+		SwingUtilities.invokeAndWait(() ->
+		{
+			TrackerPanel panel = new TrackerPanel(null, new SectionStates(OPEN_BOXES, saved -> { }), new NoActions(), BOSS);
+			// Closed in the sidebar: nothing is built
+			panel.update(worstCaseState(PanelState.Status.IN_TRIP, false));
+			assertNull(find(panel, TripDetails.class));
+
+			// Opened on the Trip tab: the History tab's cards wait until it's shown
+			panel.onActivate();
+			assertNotNull(find(panel, TripDetails.class));
+			assertNull(find(panel, TripCard.class));
+			panel.selectTab(1);
+			assertNotNull(find(panel, TripCard.class));
+			panel.onDeactivate();
+		});
 	}
 
 	private static <T> T find(Component component, Class<T> type)

@@ -27,6 +27,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.ToDoubleFunction;
 import net.runelite.api.gameval.ItemID;
@@ -49,6 +50,8 @@ public class ViewBuilder
 	static final int MAX_LOOT_CATEGORIES = 5;
 
 	private final PriceService prices;
+	private final Cache cache = new Cache();
+	private final GoalCache goalCache = new GoalCache();
 	private Set<Integer> runeIds = Collections.emptySet();
 	/**
 	 * The "Typical team size for past raids" setting, for all-time raid records that don't say the team size.
@@ -78,26 +81,57 @@ public class ViewBuilder
 	 */
 	public GoalView goal(BossHistory history, Trip currentTrip, long now)
 	{
+		return goal(history, currentTrip, now, -1);
+	}
+
+	/**
+	 * @param historyVersion as for the cached lifetime: kills of other trips are only counted again when it changes;
+	 *                       -1 counts every time
+	 */
+	public GoalView goal(BossHistory history, Trip currentTrip, long now, long historyVersion)
+	{
 		KillGoal goal = history.getGoal();
 		if (goal == null)
 		{
 			return null;
 		}
 
-		int done = 0;
-		for (Trip trip : history.getTrips())
+		boolean cached = historyVersion >= 0 && goalCache.history == history && goalCache.historyVersion == historyVersion
+			&& goalCache.startedAt == goal.getStartedAt() && goalCache.currentTrip == currentTrip;
+		if (!cached)
 		{
-			for (Kill kill : trip.getKills())
+			int done = 0;
+			for (Trip trip : history.getTrips())
 			{
-				if (kill.getEndedAt() >= goal.getStartedAt())
+				if (trip != currentTrip)
 				{
-					done++;
+					done += killsSince(trip, goal.getStartedAt());
 				}
 			}
+			goalCache.history = history;
+			goalCache.historyVersion = historyVersion;
+			goalCache.startedAt = goal.getStartedAt();
+			goalCache.currentTrip = currentTrip;
+			goalCache.otherTripsDone = done;
 		}
+		int done = goalCache.otherTripsDone
+			+ (currentTrip != null && history.getTrips().contains(currentTrip) ? killsSince(currentTrip, goal.getStartedAt()) : 0);
 		Long segmentStart = TripClock.goalSegmentStart(goal, currentTrip);
 		return new GoalView(goal.getTarget(), done, goal.getActiveMs(), segmentStart != null ? segmentStart : now,
 			segmentStart != null, goal.getStartedAt());
+	}
+
+	private static int killsSince(Trip trip, long startedAt)
+	{
+		int done = 0;
+		for (Kill kill : trip.getKills())
+		{
+			if (kill.getEndedAt() >= startedAt)
+			{
+				done++;
+			}
+		}
+		return done;
 	}
 
 	public TripView trip(BossDefinition boss, Trip trip)
@@ -188,12 +222,95 @@ public class ViewBuilder
 	}
 
 	/**
+	 * Adds up every trip; see {@link #lifetime(BossDefinition, BossHistory, String, AllTimeCounts, boolean, long, Trip, long)}
+	 * for the cached version used on every update.
+	 *
 	 * @param variant variant chip selected, or null for All
 	 * @param allTime records from RuneLite's core plugins; null if there are none
 	 * @param now current time, for the running segment of an open trip
 	 */
 	public LifetimeView lifetime(BossDefinition boss, BossHistory history, String variant, AllTimeCounts allTime,
 		boolean includeTodayValue, long now)
+	{
+		List<Trip> trips = filtered(history, variant);
+		LifetimeTotals totals = new LifetimeTotals();
+		for (Trip trip : trips)
+		{
+			totals.add(trip, now);
+		}
+		return lifetime(boss, history, totals, dryness(boss, history, trips, variant, allTime), allTime, includeTodayValue);
+	}
+
+	/**
+	 * The same as {@link #lifetime(BossDefinition, BossHistory, String, AllTimeCounts, boolean, long)}, without adding
+	 * up the history again on every update: the totals of finished trips are kept until the history changes, and the
+	 * trip in progress is added on top. Luck is worked out again only when a kill or its loot changed.
+	 *
+	 * @param openTrip       the trip in progress if it's this boss's, else null
+	 * @param historyVersion changes whenever the saved history does (a trip ends, is deleted or imported, loot is
+	 *                       polished or repriced, settings behind the luck numbers change)
+	 */
+	public LifetimeView lifetime(BossDefinition boss, BossHistory history, String variant, AllTimeCounts allTime,
+		boolean includeTodayValue, long now, Trip openTrip, long historyVersion)
+	{
+		boolean sameHistory = cache.boss == boss && cache.history == history && Objects.equals(cache.variant, variant)
+			&& cache.historyVersion == historyVersion && cache.pastTeamSize == pastTeamSize && cache.openTrip == openTrip;
+		if (!sameHistory)
+		{
+			cache.boss = boss;
+			cache.history = history;
+			cache.variant = variant;
+			cache.historyVersion = historyVersion;
+			cache.pastTeamSize = pastTeamSize;
+			cache.openTrip = openTrip;
+			cache.closed = new LifetimeTotals();
+			for (Trip trip : filtered(history, variant))
+			{
+				if (trip != openTrip)
+				{
+					cache.closed.add(trip, now);
+				}
+			}
+			cache.dryness = null;
+		}
+
+		boolean openShown = openTrip != null && VariantFilter.matches(openTrip, variant);
+		LifetimeTotals totals = cache.closed;
+		if (openShown)
+		{
+			totals = totals.copy();
+			totals.add(openTrip, now);
+		}
+
+		int openKills = openShown ? killsSignature(openTrip) : 0;
+		if (cache.dryness == null || cache.allTime != allTime || cache.openKills != openKills)
+		{
+			cache.dryness = dryness(boss, history, filtered(history, variant), variant, allTime);
+			cache.allTime = allTime;
+			cache.openKills = openKills;
+		}
+		return lifetime(boss, history, totals, cache.dryness, allTime, includeTodayValue);
+	}
+
+	/**
+	 * Changes when anything the luck numbers read from the trip's kills does.
+	 */
+	private static int killsSignature(Trip trip)
+	{
+		int hash = 1;
+		for (Kill kill : trip.getKills())
+		{
+			hash = 31 * hash + Objects.hash(kill.getKillCount(), kill.getEndedAt(), kill.getChoice(), kill.getVariant(),
+				kill.getPartySize(), kill.isPet(), kill.getTeamUniques());
+			for (ItemEntry entry : kill.getLoot())
+			{
+				hash = 31 * hash + Objects.hash(entry.getItemId(), entry.getQuantity());
+			}
+		}
+		return hash;
+	}
+
+	private static List<Trip> filtered(BossHistory history, String variant)
 	{
 		List<Trip> trips = new ArrayList<>();
 		for (Trip trip : history.getTrips())
@@ -203,90 +320,55 @@ public class ViewBuilder
 				trips.add(trip);
 			}
 		}
+		return trips;
+	}
 
-		int kills = 0;
-		int deaths = 0;
-		int pets = 0;
-		long activeMs = 0;
-		long loot = 0;
-		long supplies = 0;
-		long dropped = 0;
-		long deathCost = 0;
-		long today = 0;
-		List<Long> netPerTrip = new ArrayList<>();
-		List<ItemEntry> allLoot = new ArrayList<>();
-		List<ItemEntry> allSupplies = new ArrayList<>();
-		List<ItemEntry> allDropped = new ArrayList<>();
-
-		for (Trip trip : trips)
+	private LifetimeView lifetime(BossDefinition boss, BossHistory history, LifetimeTotals totals, DrynessView dryness,
+		AllTimeCounts allTime, boolean includeTodayValue)
+	{
+		Long today = null;
+		if (includeTodayValue)
 		{
-			kills += trip.getKills().size();
-			deaths += trip.getDeaths().size();
-			activeMs += trip.activeMsAt(now);
-			loot += TripMath.lootValue(trip);
-			supplies += TripMath.supplyCost(trip);
-			dropped += TripMath.droppedCost(trip);
-			deathCost += TripMath.deathCost(trip);
-			allSupplies.addAll(trip.getSupplies());
-			allDropped.addAll(trip.getDropped());
-			for (Kill kill : trip.getKills())
+			long value = 0;
+			for (ItemTotals.Line line : totals.lootItems.lines())
 			{
-				allLoot.addAll(kill.getLoot());
-				if (kill.isPet())
+				if (!line.first.isPending())
 				{
-					pets++;
-				}
-				if (includeTodayValue)
-				{
-					for (ItemEntry entry : kill.getLoot())
-					{
-						if (!entry.isPending())
-						{
-							today += entry.getQuantity() * prices.price(entry.getItemId());
-						}
-					}
+					value += line.quantity * prices.price(line.first.getItemId());
 				}
 			}
-			if (!trip.isOpen())
-			{
-				netPerTrip.add(TripMath.netProfit(trip));
-			}
+			today = value;
 		}
 
 		List<String> choices = new ArrayList<>();
 		for (LootChoice choice : boss.getLootChoices())
 		{
-			int count = 0;
-			for (Trip trip : trips)
-			{
-				count += TripMath.countChoice(trip, choice.getKey());
-			}
-			choices.add(choice.getLabel() + " " + count);
+			choices.add(choice.getLabel() + " " + totals.choices.getOrDefault(choice.getKey(), 0));
 		}
 
 		return LifetimeView.builder()
-			.trips(trips.size())
-			.trackedSince(trips.stream().mapToLong(Trip::getStartedAt).min().orElse(0))
-			.kills(kills)
+			.trips(totals.trips)
+			.trackedSince(totals.trackedSince())
+			.kills(totals.kills)
 			.choiceSummary(String.join(" · ", choices))
-			.deaths(deaths)
-			.pets(pets)
-			.activeMs(activeMs)
-			.lootValue(loot)
-			.supplyCost(supplies)
-			.droppedCost(dropped)
-			.deathCost(deathCost)
-			.netProfit(loot - supplies - dropped - deathCost)
-			.averageKillMs(TripMath.averageKillMs(trips))
-			.lootValueToday(includeTodayValue ? today : null)
-			.netPerTrip(netPerTrip)
-			.dryness(dryness(boss, history, trips, variant, allTime))
+			.deaths(totals.deaths)
+			.pets(totals.pets)
+			.activeMs(totals.activeMs)
+			.lootValue(totals.loot)
+			.supplyCost(totals.supplies)
+			.droppedCost(totals.dropped)
+			.deathCost(totals.deathCost)
+			.netProfit(totals.loot - totals.supplies - totals.dropped - totals.deathCost)
+			.averageKillMs(totals.averageKillMs())
+			.lootValueToday(today)
+			.netPerTrip(new ArrayList<>(totals.netPerTrip))
+			.dryness(dryness)
 			.polish(polish(boss, history))
-			.loot(items(boss, allLoot))
-			.lootCategories(lootCategories(boss, allLoot))
-			.supplies(items(boss, allSupplies))
-			.supplyCategories(supplyCategories(allSupplies))
-			.dropped(items(boss, allDropped))
+			.loot(items(boss, totals.lootItems))
+			.lootCategories(lootCategories(boss, totals.lootItems))
+			.supplies(items(boss, totals.supplyItems))
+			.supplyCategories(supplyCategories(totals.supplyItems))
+			.dropped(items(boss, totals.droppedItems))
 			.allTimeLoot(allTimeLoot(boss, allTime))
 			.allTimeLootValue(allTime == null ? 0 : allTimeLootValue(allTime))
 			.allTimeLootCategories(allTimeLootCategories(boss, allTime))
@@ -656,20 +738,25 @@ public class ViewBuilder
 	 */
 	List<LootCategory> lootCategories(BossDefinition boss, Collection<ItemEntry> loot)
 	{
-		Map<String, List<ItemEntry>> grouped = new LinkedHashMap<>();
-		for (ItemEntry entry : loot)
+		return lootCategories(boss, ItemTotals.of(loot));
+	}
+
+	private List<LootCategory> lootCategories(BossDefinition boss, ItemTotals loot)
+	{
+		Map<String, List<ItemTotals.Line>> grouped = new LinkedHashMap<>();
+		for (ItemTotals.Line line : loot.lines())
 		{
-			grouped.computeIfAbsent(lootCategory(boss, entry.getItemId(), entry.getPolishedFrom()), k -> new ArrayList<>())
-				.add(entry);
+			grouped.computeIfAbsent(lootCategory(boss, line.first.getItemId(), line.first.getPolishedFrom()),
+				k -> new ArrayList<>()).add(line);
 		}
 
 		List<LootCategory> categories = new ArrayList<>();
-		for (Map.Entry<String, List<ItemEntry>> e : grouped.entrySet())
+		for (Map.Entry<String, List<ItemTotals.Line>> e : grouped.entrySet())
 		{
 			long value = 0;
-			for (ItemEntry entry : e.getValue())
+			for (ItemTotals.Line line : e.getValue())
 			{
-				value += entry.totalValue();
+				value += line.value;
 			}
 			categories.add(new LootCategory(e.getKey(), value, items(boss, e.getValue())));
 		}
@@ -747,14 +834,20 @@ public class ViewBuilder
 
 	private List<SupplyCategory> supplyCategories(List<ItemEntry> supplies)
 	{
+		return supplyCategories(ItemTotals.of(supplies));
+	}
+
+	private List<SupplyCategory> supplyCategories(ItemTotals supplies)
+	{
 		long charges = 0;
 		long runes = 0;
 		long potions = 0;
 		long food = 0;
 		long other = 0;
-		for (ItemEntry entry : supplies)
+		for (ItemTotals.Line line : supplies.lines())
 		{
-			long value = entry.totalValue();
+			ItemEntry entry = line.first;
+			long value = line.value;
 			if (entry.isCharges())
 			{
 				charges += value;
@@ -825,28 +918,26 @@ public class ViewBuilder
 
 	private List<ItemView> items(BossDefinition boss, Collection<ItemEntry> entries)
 	{
-		// Combine lines for the same item; pending tarnished drops stay separate
-		Map<String, long[]> totals = new LinkedHashMap<>();
-		Map<String, ItemEntry> firsts = new LinkedHashMap<>();
-		for (ItemEntry entry : entries)
-		{
-			String key = entry.getItemId() + (entry.isPerDose() ? "d" : "") + (entry.isPending() ? "p" : "")
-				+ (entry.isCharges() ? "c" + entry.getChargeItemId() : "")
-				+ (entry.getPolishedFrom() > 0 ? "f" + entry.getPolishedFrom() : "");
-			long[] sum = totals.computeIfAbsent(key, k -> new long[2]);
-			sum[0] += entry.getQuantity();
-			sum[1] += entry.totalValue();
-			firsts.putIfAbsent(key, entry);
-		}
+		return items(boss, ItemTotals.of(entries));
+	}
 
+	private List<ItemView> items(BossDefinition boss, ItemTotals totals)
+	{
+		return items(boss, totals.lines());
+	}
+
+	/**
+	 * Lines for the same item are already combined; pending tarnished drops stay separate.
+	 */
+	private List<ItemView> items(BossDefinition boss, Iterable<ItemTotals.Line> lines)
+	{
 		Set<Integer> highlighted = boss.getHighlightedItems();
 		List<ItemView> views = new ArrayList<>();
-		for (Map.Entry<String, ItemEntry> e : firsts.entrySet())
+		for (ItemTotals.Line line : lines)
 		{
-			ItemEntry first = e.getValue();
-			long[] sum = totals.get(e.getKey());
+			ItemEntry first = line.first;
 			int itemId = first.getItemId();
-			views.add(new ItemView(itemId, prices.name(itemId), sum[0], sum[1], first.isPerDose(),
+			views.add(new ItemView(itemId, prices.name(itemId), line.quantity, line.value, first.isPerDose(),
 				highlighted.contains(itemId), first.isPending(),
 				first.isCharges() ? rechargeName(first) : null, first.getChargesPerItem(),
 				first.getPolishedFrom() > 0 ? prices.name(first.getPolishedFrom()) : null,
@@ -854,5 +945,32 @@ public class ViewBuilder
 		}
 		views.sort(BY_VALUE);
 		return views;
+	}
+
+	/**
+	 * What {@link #lifetime(BossDefinition, BossHistory, String, AllTimeCounts, boolean, long, Trip, long)} keeps
+	 * between updates.
+	 */
+	private static final class Cache
+	{
+		BossDefinition boss;
+		BossHistory history;
+		String variant;
+		long historyVersion = -1;
+		int pastTeamSize;
+		Trip openTrip;
+		LifetimeTotals closed;
+		DrynessView dryness;
+		AllTimeCounts allTime;
+		int openKills;
+	}
+
+	private static final class GoalCache
+	{
+		BossHistory history;
+		long historyVersion = -1;
+		long startedAt;
+		Trip currentTrip;
+		int otherTripsDone;
 	}
 }
