@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
+import javax.swing.AbstractButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import net.runelite.client.ui.ColorScheme;
@@ -155,6 +156,14 @@ final class UiFormat
 		if (!Objects.equals(label.getText(), text))
 		{
 			label.setText(text);
+		}
+	}
+
+	static void setText(AbstractButton button, String text)
+	{
+		if (!Objects.equals(button.getText(), text))
+		{
+			button.setText(text);
 		}
 	}
 

@@ -1,13 +1,17 @@
 package com.bosstriptracker.ui;
 
 import com.bosstriptracker.view.LifetimeView;
+import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
+import java.awt.Insets;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.function.Consumer;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import net.runelite.client.game.ItemManager;
@@ -28,9 +32,10 @@ class HistoryPanel extends JPanel
 	private final ProfitTrendChart chart = new ProfitTrendChart();
 	private final JLabel count = new JLabel();
 	private final JPanel cards = new JPanel();
+	private final JButton showMore = new JButton();
 	private List<TripView> shown;
 
-	HistoryPanel(ItemManager itemManager, SectionStates sectionStates, Consumer<TripView> onDelete)
+	HistoryPanel(ItemManager itemManager, SectionStates sectionStates, Consumer<TripView> onDelete, Runnable onShowMore)
 	{
 		this.itemManager = itemManager;
 		this.sectionStates = sectionStates;
@@ -51,16 +56,26 @@ class HistoryPanel extends JPanel
 		cards.setOpaque(false);
 		cards.setAlignmentX(LEFT_ALIGNMENT);
 
+		showMore.setFont(FontManager.getRunescapeSmallFont());
+		showMore.setMargin(new Insets(0, 4, 0, 4));
+		showMore.setFocusPainted(false);
+		showMore.setAlignmentX(LEFT_ALIGNMENT);
+		showMore.setVisible(false);
+		showMore.addActionListener(e -> onShowMore.run());
+
 		add(chartTitle);
 		add(chart);
 		add(count);
 		add(cards);
+		add(showMore);
 	}
 
 	/**
+	 * @param trips    the newest completed trips, a page at a time
+	 * @param total    completed trips in all, shown or not
 	 * @param lifetime the selected boss and chip's totals, for the chart and net; null before the history loads
 	 */
-	void update(List<TripView> trips, LifetimeView lifetime)
+	void update(List<TripView> trips, int total, LifetimeView lifetime)
 	{
 		boolean charted = lifetime != null && !trips.isEmpty();
 		chartTitle.setVisible(charted);
@@ -74,12 +89,17 @@ class HistoryPanel extends JPanel
 
 		// Completed trips only, like the list (the Lifetime totals include a trip in progress)
 		long net = lifetime == null ? 0 : lifetime.getNetPerTrip().stream().mapToLong(Long::longValue).sum();
-		String tripCount = trips.size() + (trips.size() == 1 ? " trip" : " trips");
+		String tripCount = String.format(Locale.ROOT, "%,d", total) + (total == 1 ? " trip" : " trips");
 		count.setText(trips.isEmpty() ? "No completed trips yet."
 			: lifetime == null ? tripCount
 			: UiFormat.pair(tripCount + " · Net", UiFormat.gp(net), UiFormat.profitColor(net)));
 		count.setToolTipText(trips.isEmpty() ? null : UiFormat.tooltip("Right-click a trip to delete it."
 			+ (lifetime != null ? " Net profit of these trips: " + UiFormat.fullGp(net) + "." : "")));
+
+		int hidden = total - trips.size();
+		showMore.setVisible(hidden > 0);
+		UiFormat.setText(showMore, "Show " + Math.min(hidden, PanelState.HISTORY_PAGE) + " more ("
+			+ String.format(Locale.ROOT, "%,d", hidden) + " older)");
 
 		// Rebuilding the cards loses hover and scroll state, so only when the trips changed
 		if (trips != shown)

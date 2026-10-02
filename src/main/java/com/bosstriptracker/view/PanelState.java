@@ -31,6 +31,11 @@ public class PanelState
 	}
 
 	/**
+	 * History cards shown at first, and added by each "Show more".
+	 */
+	public static final int HISTORY_PAGE = 50;
+
+	/**
 	 * The boss shown in all three tabs.
 	 */
 	BossDefinition boss;
@@ -51,9 +56,13 @@ public class PanelState
 	 */
 	TripView currentTrip;
 	/**
-	 * Completed trips, newest first.
+	 * The newest completed trips (a page at a time), newest first.
 	 */
 	List<TripView> history;
+	/**
+	 * Completed trips for the selected chip, including those not in {@link #history} yet.
+	 */
+	int historyTotal;
 	LifetimeView lifetime;
 	/**
 	 * Null when no goal is set.

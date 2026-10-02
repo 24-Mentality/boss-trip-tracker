@@ -74,7 +74,8 @@ bosses are planned.
   food and anything else. In the item grids, uniques have a gold border and tarnished drops
   waiting to be polished have a dashed border.
 - **History:** a profit-per-trip chart with the trip count and net for the selected chip, then
-  one card per completed trip. Click a card to expand it, right-click to delete it.
+  one card per completed trip, the newest 50 first (**Show more** adds older ones). Click a
+  card to expand it, right-click to delete it.
 - **Lifetime:** totals across all trips (net profit and GP/hr from tracked trips, where costs are
   known), the Open-stomach / Take-eggs split, and a note of when tracking began (the plugin only
   knows kills from after it was installed), then:

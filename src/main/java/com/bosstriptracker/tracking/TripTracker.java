@@ -128,6 +128,7 @@ public class TripTracker
 	private static final long JUNK_PRICE = SupplyAccounting.JUNK_PRICE;
 	private static final long SAVE_DELAY_MS = 1_000;
 	private static final long PUSH_INTERVAL_MS = 1_000;
+	private static final int HISTORY_PAGE = PanelState.HISTORY_PAGE;
 	private static final long ACTIVE_SAVE_INTERVAL_MS = 60_000;
 
 	private static final String OPTION_DROP = SupplyAccounting.OPTION_DROP;
@@ -284,6 +285,8 @@ public class TripTracker
 	private String allTimeCacheKey;
 	private boolean historyDirty = true;
 	private List<TripView> historyViews = Collections.emptyList();
+	private int historyTotal;
+	private int historyLimit = HISTORY_PAGE;
 
 	public TripTracker(Client client, ClientThread clientThread, BossTripTrackerConfig config,
 		PriceService prices, HistoryStore store, Gson gson, ScheduledExecutorService executor,
@@ -402,6 +405,7 @@ public class TripTracker
 		}
 		selectedBoss = boss;
 		selectedVariant = null;
+		historyLimit = HISTORY_PAGE;
 		config.setSelectedBoss(boss.getId());
 		historyChanged();
 		pushState();
@@ -413,7 +417,18 @@ public class TripTracker
 	public void selectVariant(String variant)
 	{
 		selectedVariant = variant;
+		historyLimit = HISTORY_PAGE;
 		historyChanged();
+		pushState();
+	}
+
+	/**
+	 * Shows the next page of older trips in History.
+	 */
+	public void showMoreHistory()
+	{
+		historyLimit += HISTORY_PAGE;
+		historyDirty = true;
 		pushState();
 	}
 
@@ -2562,17 +2577,23 @@ public class TripTracker
 
 		if (historyDirty && bossHistory != null)
 		{
+			// Views only for the trips shown: a page at a time
 			List<TripView> views = new ArrayList<>();
+			int total = 0;
 			List<Trip> trips = bossHistory.getTrips();
 			for (int i = trips.size() - 1; i >= 0; i--)
 			{
 				Trip trip = trips.get(i);
 				if (!trip.isOpen() && VariantFilter.matches(trip, selectedVariant))
 				{
-					views.add(viewBuilder.trip(boss, trip));
+					if (total++ < historyLimit)
+					{
+						views.add(viewBuilder.trip(boss, trip));
+					}
 				}
 			}
 			historyViews = Collections.unmodifiableList(views);
+			historyTotal = total;
 		}
 		historyDirty = false;
 		viewDirty = false;
@@ -2611,6 +2632,7 @@ public class TripTracker
 			.status(status)
 			.currentTrip(shown)
 			.history(historyViews)
+			.historyTotal(historyTotal)
 			.lifetime(bossHistory == null ? null : viewBuilder.lifetime(boss, bossHistory, selectedVariant, allTime(boss),
 				config.showCurrentValue(), now, live ? currentTrip : null, historyVersion))
 			.goal(bossHistory == null ? null : viewBuilder.goal(bossHistory, live ? currentTrip : null, now, historyVersion))

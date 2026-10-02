@@ -428,6 +428,13 @@ public class BossTripTrackerPlugin extends Plugin
 		}
 
 		@Override
+		public void showMoreHistory()
+		{
+			TripTracker tracker = tripTracker;
+			clientThread.invokeLater(tracker::showMoreHistory);
+		}
+
+		@Override
 		public void clearHistory()
 		{
 			TripTracker tracker = tripTracker;

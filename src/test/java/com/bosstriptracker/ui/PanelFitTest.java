@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import net.runelite.api.gameval.ItemID;
@@ -190,8 +191,37 @@ public class PanelFitTest
 			assertNull(find(panel, TripCard.class));
 			panel.selectTab(1);
 			assertNotNull(find(panel, TripCard.class));
+
+			// "Show 50 more (12,344 older)" fits at sidebar width (with room for the button's own margins)
+			panel.setSize(WIDTH, 4000);
+			layout(panel);
+			layout(panel);
+			JButton showMore = find(panel, JButton.class, b -> b.getText().startsWith("Show "));
+			assertNotNull(showMore);
+			assertTrue(showMore.getText(), showMore.getFontMetrics(showMore.getFont()).stringWidth(showMore.getText()) + 30
+				<= showMore.getParent().getWidth());
 			panel.onDeactivate();
 		});
+	}
+
+	private static <T> T find(Component component, Class<T> type, java.util.function.Predicate<T> matches)
+	{
+		if (type.isInstance(component) && matches.test(type.cast(component)))
+		{
+			return type.cast(component);
+		}
+		if (component instanceof Container)
+		{
+			for (Component child : ((Container) component).getComponents())
+			{
+				T found = find(child, type, matches);
+				if (found != null)
+				{
+					return found;
+				}
+			}
+		}
+		return null;
 	}
 
 	private static <T> T find(Component component, Class<T> type)
@@ -414,6 +444,8 @@ public class PanelFitTest
 			.status(status)
 			.currentTrip(trip)
 			.history(Collections.singletonList(trip))
+			// "Show 50 more (12,344 older)"
+			.historyTotal(12_345)
 			.lifetime(lifetime)
 			.goal(goal)
 			.pauseText(paused ? "Trip paused (outside the lair)" : null)
@@ -427,6 +459,11 @@ public class PanelFitTest
 
 	private static class NoActions implements PanelActions
 	{
+		@Override
+		public void showMoreHistory()
+		{
+		}
+
 		@Override
 		public boolean isOnCanvas(CanvasSection section)
 		{

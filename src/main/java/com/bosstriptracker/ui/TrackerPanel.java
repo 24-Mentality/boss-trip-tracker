@@ -74,7 +74,8 @@ public class TrackerPanel extends PluginPanel
 
 		currentTab = new CurrentTripPanel(itemManager, sectionStates, actions, () -> promptGoal(actions), actions::togglePause,
 			() -> promptRestartGoal(actions), () -> promptLastUniqueKc(actions), () -> actions.setLastUniqueKc(null));
-		historyTab = new HistoryPanel(itemManager, sectionStates, trip -> confirmDelete(trip, actions::deleteTrip));
+		historyTab = new HistoryPanel(itemManager, sectionStates, trip -> confirmDelete(trip, actions::deleteTrip),
+			actions::showMoreHistory);
 		lifetimeTab = new LifetimePanel(itemManager, sectionStates, actions, () -> confirmClear(actions::clearHistory));
 
 		ScrollableContent display = new ScrollableContent();
@@ -241,7 +242,7 @@ public class TrackerPanel extends PluginPanel
 				currentTab.update(state, System.currentTimeMillis());
 				break;
 			case 1:
-				historyTab.update(state.getHistory(), state.getLifetime());
+				historyTab.update(state.getHistory(), state.getHistoryTotal(), state.getLifetime());
 				break;
 			default:
 				lifetimeTab.update(state.getLifetime(), state.isReadOnly(), boss);

@@ -34,6 +34,11 @@ public interface PanelActions
 
 	void deleteTrip(String tripId);
 
+	/**
+	 * Shows the next page of older trips in History.
+	 */
+	void showMoreHistory();
+
 	void clearHistory();
 
 	void exportCsv();
