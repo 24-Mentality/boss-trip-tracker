@@ -21,6 +21,10 @@ class TripDetails extends JPanel
 	 */
 	static final int MAX_TOOLTIP_ITEMS = 10;
 
+	private final ItemSection loot;
+	private final ItemSection supplies;
+	private final ItemSection dropped;
+
 	/**
 	 * @param statePrefix "trip" for the Trip tab, "history" for History cards (which all share one state per box)
 	 */
@@ -29,6 +33,42 @@ class TripDetails extends JPanel
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 
+		loot = new ItemSection(itemManager, states, statePrefix + ".loot", false, "Loot", trip.getLoot(),
+			"No loot yet", lootStats(trip));
+		add(section(loot));
+		supplies = new ItemSection(itemManager, states, statePrefix + ".supplies", false, "Supplies", trip.getSupplies(),
+			"No supplies used yet", supplyStats(trip));
+		add(section(supplies));
+		if (!trip.getDropped().isEmpty())
+		{
+			dropped = new ItemSection(itemManager, states, statePrefix + ".dropped", false, "Dropped", trip.getDropped(),
+				null, droppedStats(trip));
+			add(section(dropped));
+		}
+		else
+		{
+			dropped = null;
+		}
+	}
+
+	/**
+	 * Shows the trip's new numbers in place, keeping the boxes and their item grids where it can.
+	 *
+	 * @return false if the boxes changed (a Dropped box appearing, a new loot category): build new details instead
+	 */
+	boolean update(TripView trip)
+	{
+		if ((dropped == null) != trip.getDropped().isEmpty())
+		{
+			return false;
+		}
+		return loot.update(trip.getLoot(), lootStats(trip))
+			&& supplies.update(trip.getSupplies(), supplyStats(trip))
+			&& (dropped == null || dropped.update(trip.getDropped(), droppedStats(trip)));
+	}
+
+	private static List<SectionStat> lootStats(TripView trip)
+	{
 		long lootPerKill = trip.getKills() > 0 ? trip.getLootValue() / trip.getKills() : 0;
 		List<SectionStat> lootStats = new ArrayList<>();
 		lootStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getLootValue()),
@@ -37,9 +77,11 @@ class TripDetails extends JPanel
 		lootStats.add(SectionStat.of("GP/Kill", UiFormat.gp(lootPerKill),
 			"Loot value divided by kills: " + UiFormat.fullGp(trip.getLootValue()) + " / " + trip.getKills() + "."));
 		lootStats.addAll(categoryStats(trip.getLootCategories()));
-		add(section(new ItemSection(itemManager, states, statePrefix + ".loot", false, "Loot", trip.getLoot(),
-			"No loot yet", lootStats)));
+		return lootStats;
+	}
 
+	private static List<SectionStat> supplyStats(TripView trip)
+	{
 		List<SectionStat> supplyStats = new ArrayList<>();
 		supplyStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getSupplyCost()),
 			"Everything used up in the lair: the sum of the categories below (charges, runes, potions, food and other)."
@@ -48,17 +90,15 @@ class TripDetails extends JPanel
 		{
 			supplyStats.add(SectionStat.of(category.getName(), UiFormat.gp(category.getValue()), categoryHelp(category.getName())));
 		}
-		add(section(new ItemSection(itemManager, states, statePrefix + ".supplies", false, "Supplies", trip.getSupplies(),
-			"No supplies used yet", supplyStats)));
+		return supplyStats;
+	}
 
-		if (!trip.getDropped().isEmpty())
-		{
-			List<SectionStat> droppedStats = new ArrayList<>();
-			droppedStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getDroppedCost()),
-				"Items dropped in the lair and not picked back up before leaving, at GE price. Items under 100 gp are ignored."));
-			add(section(new ItemSection(itemManager, states, statePrefix + ".dropped", false, "Dropped", trip.getDropped(),
-				null, droppedStats)));
-		}
+	private static List<SectionStat> droppedStats(TripView trip)
+	{
+		List<SectionStat> droppedStats = new ArrayList<>();
+		droppedStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getDroppedCost()),
+			"Items dropped in the lair and not picked back up before leaving, at GE price. Items under 100 gp are ignored."));
+		return droppedStats;
 	}
 
 	/**

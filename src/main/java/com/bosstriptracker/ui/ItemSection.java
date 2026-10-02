@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -29,8 +30,9 @@ class ItemSection extends JPanel
 	private final SectionStates states;
 	private final String stateKey;
 	private final boolean defaultOpen;
-	private final List<ItemView> items;
+	private List<ItemView> items;
 	private final String emptyText;
+	private final List<JLabel> statLabels = new ArrayList<>();
 	private final JLabel eye = new JLabel();
 	private final Runnable stateListener = this::applyVisibility;
 	private JPanel body;
@@ -100,9 +102,10 @@ class ItemSection extends JPanel
 			statGrid.setOpaque(false);
 			for (SectionStat stat : stats)
 			{
-				JLabel label = new JLabel(UiFormat.pair(stat.getLabel(), stat.getValue(), stat.getValueColor()));
+				JLabel label = new JLabel();
 				label.setFont(FontManager.getRunescapeSmallFont());
-				label.setToolTipText(stat.getTooltip() == null ? null : UiFormat.tooltip(stat.getTooltip()));
+				showStat(label, stat);
+				statLabels.add(label);
 				statGrid.add(label);
 			}
 			header.add(statGrid, BorderLayout.CENTER);
@@ -110,6 +113,53 @@ class ItemSection extends JPanel
 
 		add(header, BorderLayout.NORTH);
 		applyVisibility();
+	}
+
+	private static void showStat(JLabel label, SectionStat stat)
+	{
+		UiFormat.setText(label, UiFormat.pair(stat.getLabel(), stat.getValue(), stat.getValueColor()));
+		UiFormat.setToolTip(label, stat.getTooltip() == null ? null : UiFormat.tooltip(stat.getTooltip()));
+	}
+
+	/**
+	 * Shows new stats and items in place, keeping the grid when only quantities changed.
+	 *
+	 * @return false if the stats changed in number (a new loot category): build a new section instead
+	 */
+	boolean update(List<ItemView> newItems, List<SectionStat> stats)
+	{
+		if (stats.size() != statLabels.size())
+		{
+			return false;
+		}
+		for (int i = 0; i < stats.size(); i++)
+		{
+			showStat(statLabels.get(i), stats.get(i));
+		}
+
+		List<ItemView> before = items;
+		items = newItems;
+		if (body == null)
+		{
+			// Built when it's first opened
+			return true;
+		}
+		if (body instanceof ItemGrid && !newItems.isEmpty() && ((ItemGrid) body).update(newItems))
+		{
+			return true;
+		}
+		if (before.isEmpty() && newItems.isEmpty())
+		{
+			return true;
+		}
+		boolean visible = body.isVisible();
+		remove(body);
+		body = null;
+		if (visible)
+		{
+			applyVisibility();
+		}
+		return true;
 	}
 
 	@Override

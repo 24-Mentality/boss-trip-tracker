@@ -32,19 +32,19 @@ class StatCell extends JPanel
 
 	void setCaption(String text)
 	{
-		caption.setText(text);
+		UiFormat.setText(caption, text);
 	}
 
 	void setValue(String text)
 	{
-		value.setText(text);
+		UiFormat.setText(value, text);
 	}
 
 	void setValue(String text, Color color, String tooltip)
 	{
-		value.setText(text);
-		value.setForeground(color);
-		value.setToolTipText(tooltip);
+		UiFormat.setText(value, text);
+		UiFormat.setForeground(value, color);
+		UiFormat.setToolTip(value, tooltip);
 	}
 
 	/**
@@ -52,7 +52,7 @@ class StatCell extends JPanel
 	 */
 	StatCell help(String text)
 	{
-		caption.setToolTipText(text == null ? null : UiFormat.tooltip(text));
+		UiFormat.setToolTip(caption, text == null ? null : UiFormat.tooltip(text));
 		return this;
 	}
 }

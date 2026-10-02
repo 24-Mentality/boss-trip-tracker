@@ -179,7 +179,7 @@ class GoalCard extends JPanel
 		progress.setValue(Math.min(doneKills, target));
 		double percent = Math.min(100, doneKills * 100.0 / Math.max(1, target));
 		progress.setCenterLabel(String.format(Locale.ROOT, "%.1f%%", percent));
-		setToolTipText("Goal: " + String.format(Locale.ROOT, "%,d", target) + " kills · " + UiFormat.duration(activeMs)
+		UiFormat.setToolTip(this, "Goal: " + String.format(Locale.ROOT, "%,d", target) + " kills · " + UiFormat.duration(activeMs)
 			+ " of fighting time" + (paused ? " · clock stopped" : "") + " · counting since " + UiFormat.dateTime(goal.getStartedAt()));
 	}
 
@@ -200,9 +200,9 @@ class GoalCard extends JPanel
 	{
 		// Time-based values are greyed while paused
 		Color clock = paused ? UiFormat.MUTED_TEXT : null;
-		kph.setText(UiFormat.pair("KPH", kphValue, clock));
-		done.setText(UiFormat.pair("Kills Done", doneValue));
-		ttg.setText(UiFormat.pair("TTG", ttgValue, clock));
-		left.setText(UiFormat.pair("Kills Left", leftValue));
+		UiFormat.setText(kph, UiFormat.pair("KPH", kphValue, clock));
+		UiFormat.setText(done, UiFormat.pair("Kills Done", doneValue));
+		UiFormat.setText(ttg, UiFormat.pair("TTG", ttgValue, clock));
+		UiFormat.setText(left, UiFormat.pair("Kills Left", leftValue));
 	}
 }

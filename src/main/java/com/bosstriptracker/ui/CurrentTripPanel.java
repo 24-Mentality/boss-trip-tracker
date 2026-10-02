@@ -30,6 +30,7 @@ class CurrentTripPanel extends JPanel
 	private final JPanel luckHolder = new JPanel(new BorderLayout());
 	private final JPanel detailsHolder = new JPanel();
 	private TripView shownDetails;
+	private TripDetails details;
 
 	CurrentTripPanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, Runnable onSetGoal,
 		Runnable onPause, Runnable onResetGoal, Runnable onSetLastUniqueKc, Runnable onClearLastUniqueKc)
@@ -103,7 +104,7 @@ class CurrentTripPanel extends JPanel
 			luckCard.setVisible(classic);
 			luckOverview.setVisible(!classic);
 		}
-		status.setText(statusText(state));
+		UiFormat.setText(status, statusText(state));
 
 		summary.setVisible(trip != null);
 		if (trip != null)
@@ -111,14 +112,20 @@ class CurrentTripPanel extends JPanel
 			summary.setTrip(trip, now);
 		}
 
-		// Rebuilding icon grids resets hovered tooltips, so only do it when the items changed
+		// Rebuilding icon grids resets hovered tooltips, so only when the items changed, and then in place if it can be
 		if (!sameItems(trip, shownDetails))
 		{
+			boolean updated = trip != null && shownDetails != null && details != null
+				&& shownDetails.getId().equals(trip.getId()) && details.update(trip);
 			shownDetails = trip;
-			detailsHolder.removeAll();
-			if (trip != null)
+			if (!updated)
 			{
-				detailsHolder.add(new TripDetails(itemManager, sectionStates, "trip", trip));
+				detailsHolder.removeAll();
+				details = trip == null ? null : new TripDetails(itemManager, sectionStates, "trip", trip);
+				if (details != null)
+				{
+					detailsHolder.add(details);
+				}
 			}
 		}
 		revalidate();

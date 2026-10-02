@@ -6,6 +6,9 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Objects;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.util.QuantityFormatter;
 
@@ -142,5 +145,32 @@ final class UiFormat
 	static String html(String text)
 	{
 		return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+	}
+
+	/**
+	 * Sets the text only when it changed: setText always lays out and repaints, which adds up on per-second updates.
+	 */
+	static void setText(JLabel label, String text)
+	{
+		if (!Objects.equals(label.getText(), text))
+		{
+			label.setText(text);
+		}
+	}
+
+	static void setToolTip(JComponent component, String tooltip)
+	{
+		if (!Objects.equals(component.getToolTipText(), tooltip))
+		{
+			component.setToolTipText(tooltip);
+		}
+	}
+
+	static void setForeground(JComponent component, Color color)
+	{
+		if (!Objects.equals(component.getForeground(), color))
+		{
+			component.setForeground(color);
+		}
 	}
 }
