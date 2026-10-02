@@ -51,13 +51,6 @@ class AllTimeRecords
 				continue;
 			}
 			boolean sharedByModes = !source.getVariantKillCountKeys().isEmpty();
-			if (variant != null && sharedByModes)
-			{
-				// One record for every mode can't be split by mode
-				continue;
-			}
-			LootTrackerRecord record = parse(source.getLootTrackerKey(),
-				configManager.getRSProfileConfiguration(LOOT_TRACKER_GROUP, source.getLootTrackerKey()));
 			if (sharedByModes)
 			{
 				Map<String, Integer> killCounts = new LinkedHashMap<>();
@@ -69,14 +62,52 @@ class AllTimeRecords
 						killCounts.put(mode, count);
 					}
 				});
-				combined = combine(combined, byMode(snapshot(record, null), killCounts));
+				Map<String, Integer> shown = killCountsShown(variant, killCounts);
+				if (shown == null)
+				{
+					continue;
+				}
+				LootTrackerRecord record = parse(source.getLootTrackerKey(),
+					configManager.getRSProfileConfiguration(LOOT_TRACKER_GROUP, source.getLootTrackerKey()));
+				combined = combine(combined, byMode(snapshot(record, null), shown));
 				continue;
 			}
+			LootTrackerRecord record = parse(source.getLootTrackerKey(),
+				configManager.getRSProfileConfiguration(LOOT_TRACKER_GROUP, source.getLootTrackerKey()));
 			Integer killCount = record == null || source.getKillCountKey() == null ? null
 				: configManager.getRSProfileConfiguration(KILL_COUNT_GROUP, source.getKillCountKey(), Integer.class);
 			combined = combine(combined, snapshot(record, killCount));
 		}
 		return combined;
+	}
+
+	/**
+	 * Which modes' kill counts a record shared by several modes is shown with. Under All, every mode's. Under one mode's
+	 * chip, the record can only be shown when the other modes that count for luck have no kills (a record of Normal
+	 * raids only, for a player who hasn't done Hard Mode): the record can't be split by mode otherwise.
+	 *
+	 * @param variant    the chip selected, or null for All
+	 * @param killCounts each mode's kill count from Chat Commands (modes with none saved are missing)
+	 * @return the kill counts to show it with, or null if it can't be shown under this chip
+	 */
+	static Map<String, Integer> killCountsShown(String variant, Map<String, Integer> killCounts)
+	{
+		if (variant == null)
+		{
+			return killCounts;
+		}
+		if (!killCounts.containsKey(variant))
+		{
+			return null;
+		}
+		for (Map.Entry<String, Integer> e : killCounts.entrySet())
+		{
+			if (!e.getKey().equals(variant) && e.getValue() > 0)
+			{
+				return null;
+			}
+		}
+		return Collections.singletonMap(variant, killCounts.get(variant));
 	}
 
 	/**

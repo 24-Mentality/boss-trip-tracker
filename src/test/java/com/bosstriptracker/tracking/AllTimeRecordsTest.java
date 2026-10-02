@@ -2,10 +2,12 @@ package com.bosstriptracker.tracking;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import com.bosstriptracker.boss.TheatreOfBloodBoss;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 import com.bosstriptracker.model.AllTimeCounts;
 import java.util.Collections;
+import java.util.Map;
 import net.runelite.api.gameval.ItemID;
 import org.junit.Test;
 
@@ -67,5 +69,21 @@ public class AllTimeRecordsTest
 		assertEquals(3, byMode.dropped(ItemID.RUNE_PLATEBODY));
 		// Without Chat Commands' counts, the record's own total stays
 		assertEquals(7, AllTimeRecords.byMode(record, Collections.emptyMap()).getLootKills());
+	}
+
+	@Test
+	public void theatreRecordShowsUnderAModeWhenItsTheOnlyOneWithRaids()
+	{
+		Map<String, Integer> normalOnly = ImmutableMap.of(TheatreOfBloodBoss.NORMAL, 6);
+		assertEquals(normalOnly, AllTimeRecords.killCountsShown(TheatreOfBloodBoss.NORMAL, normalOnly));
+		// Hard Mode's count saved as 0
+		assertEquals(normalOnly, AllTimeRecords.killCountsShown(TheatreOfBloodBoss.NORMAL,
+			ImmutableMap.of(TheatreOfBloodBoss.NORMAL, 6, TheatreOfBloodBoss.HARD, 0)));
+		assertEquals(normalOnly, AllTimeRecords.killCountsShown(null, normalOnly));
+
+		// With raids in both modes, one record can't be split
+		assertNull(AllTimeRecords.killCountsShown(TheatreOfBloodBoss.NORMAL,
+			ImmutableMap.of(TheatreOfBloodBoss.NORMAL, 6, TheatreOfBloodBoss.HARD, 2)));
+		assertNull(AllTimeRecords.killCountsShown(TheatreOfBloodBoss.HARD, normalOnly));
 	}
 }

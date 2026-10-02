@@ -25,7 +25,8 @@ public class AllTimeSource
 	/**
 	 * For one loot record shared by several modes (the Theatre of Blood's): each mode that counts for luck, to its
 	 * Chat Commands kill-count key. Its kill counts replace the record's kill total, so modes without uniques (Entry)
-	 * are left out, and each mode is expected at its own rate. The record then only shows under All. Empty otherwise.
+	 * are left out, and each mode is expected at its own rate. Under one mode's chip the record shows only while the
+	 * other modes have no kills, since it can't be split. Empty otherwise.
 	 */
 	Map<String, String> variantKillCountKeys;
 

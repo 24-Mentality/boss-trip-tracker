@@ -128,7 +128,9 @@ in Ver Sinhaza (by the vault's teleport crystal, a teleport, a wipe or logging o
 - Luck: your chance per raid is the team's purple chance (1/9.1 Normal, 1/7.7 Hard) divided by
   the team size, which assumes equal contribution and no deaths. Entry Mode raids count for
   profit but not luck. For past raids from RuneLite's records, **Typical team size for past
-  raids** (default 4) is used. The chips show All, Normal or Hard.
+  raids** (default 4) is used. The chips show All, Normal or Hard. RuneLite keeps one loot
+  record for every mode, so its all-time numbers show under Normal (or Hard) only while you have
+  no raids in the other mode; otherwise they show under All.
 - **Team dry streak** (Luck card and Lifetime tab): raids since you last saw a purple from
   anyone in your team, starting from the game's own count ("You have completed 7 raids since
   you've seen any purple." when you enter the vault). It isn't your personal dry streak: a
