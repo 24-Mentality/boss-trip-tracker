@@ -30,27 +30,41 @@ public final class DryStreak
 	}
 
 	/**
-	 * The longest gap between uniques, by kill count, among the uniques whose kill count is known (tracked ones and
-	 * the one you entered), or the current streak if that is longer.
+	 * The worst dry streak: the longest gap between uniques, by kill count, among the uniques whose kill count is known
+	 * (tracked ones and the one you entered), or the current streak if that is longer.
 	 *
-	 * @param uniqueKcs kill counts of tracked uniques, in any order
-	 * @param enteredKc kill count of your last unique as you entered it; null if none
-	 * @param current the current dry streak
+	 * @param uniqueKcs  kill counts of tracked uniques, in any order
+	 * @param enteredKc  kill count of your last unique as you entered it; null if none
+	 * @param current    the current dry streak
+	 * @param allKnown   every unique you've had is among these (RuneLite's record has no more): the kills before the
+	 *                   first of them, from your first kill, were a dry streak too
 	 */
-	public static int longest(List<Integer> uniqueKcs, Integer enteredKc, int current)
+	public static int longest(List<Integer> uniqueKcs, Integer enteredKc, int current, boolean allKnown)
 	{
 		List<Integer> kcs = new ArrayList<>(uniqueKcs);
-		if (enteredKc != null)
+		if (enteredKc != null && !kcs.contains(enteredKc))
 		{
 			kcs.add(enteredKc);
 		}
 		Collections.sort(kcs);
+		if (allKnown && !kcs.isEmpty())
+		{
+			kcs.add(0, 0);
+		}
 		int longest = current;
 		for (int i = 1; i < kcs.size(); i++)
 		{
 			longest = Math.max(longest, kcs.get(i) - kcs.get(i - 1));
 		}
 		return longest;
+	}
+
+	/**
+	 * How many uniques have a known kill count: the tracked ones and the one you entered, counted once.
+	 */
+	public static int knownUniques(List<Integer> uniqueKcs, Integer enteredKc)
+	{
+		return uniqueKcs.size() + (enteredKc != null && !uniqueKcs.contains(enteredKc) ? 1 : 0);
 	}
 
 	/**

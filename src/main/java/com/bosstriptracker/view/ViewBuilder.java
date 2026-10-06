@@ -539,6 +539,11 @@ public class ViewBuilder
 			since = Math.max(since, allTimeView.getKillCount());
 		}
 
+		// RuneLite's record has no uniques beyond the ones whose kill count is known (e.g. your only unique, entered by
+		// kill count): the kills before the first one were a dry streak as well
+		int knownUniques = DryStreak.knownUniques(uniqueKcs, lastUniqueKc);
+		boolean allUniquesKnown = allTimeView != null && knownUniques > 0 && allTimeView.getUniquesReceived() <= knownUniques;
+
 		Integer teamDryStreak = boss.hasTeamDryStreak() ? teamDryStreak(boss, history) : null;
 
 		return DrynessView.builder()
@@ -549,7 +554,7 @@ public class ViewBuilder
 			.teamDryStreak(teamDryStreak)
 			.teamDryStreakFromGame(history.getGameTeamDryStreak() != null)
 			.sinceWholeKillCount(wholeKillCount)
-			.longestDryStreak(DryStreak.longest(uniqueKcs, lastUniqueKc, since))
+			.longestDryStreak(DryStreak.longest(uniqueKcs, lastUniqueKc, since, allUniquesKnown))
 			.chanceThisDry(Math.pow(1 - anyRate, since))
 			.anyUniqueRate(anyRate)
 			.uniquesReceived(uniquesReceived)

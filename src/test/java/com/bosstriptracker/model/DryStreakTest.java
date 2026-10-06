@@ -107,7 +107,7 @@ public class DryStreakTest
 		assertEquals(17 - 1, result.getSince());
 		assertTrue(result.isFromEnteredKc());
 		// The longest streak counts them too
-		assertEquals(16, DryStreak.longest(Collections.emptyList(), 148, result.getSince()));
+		assertEquals(16, DryStreak.longest(Collections.emptyList(), 148, result.getSince(), false));
 
 		// After a tracked unique, the same
 		List<Kill> withUnique = kills(149, 150);
@@ -126,12 +126,25 @@ public class DryStreakTest
 	public void longestIsTheBiggestGapBetweenKnownUniquesOrTheCurrentStreak()
 	{
 		// Entered unique at 1,920, tracked kisten at 2,767: the 847 kc dry spell from the diagnostic logs
-		assertEquals(847, DryStreak.longest(Collections.singletonList(2767), 1920, 4));
+		assertEquals(847, DryStreak.longest(Collections.singletonList(2767), 1920, 4, false));
 		// A current streak longer than any past gap
-		assertEquals(900, DryStreak.longest(Arrays.asList(2767, 2800), 1920, 900));
+		assertEquals(900, DryStreak.longest(Arrays.asList(2767, 2800), 1920, 900, false));
 		// Order doesn't matter, and without known uniques it's the current streak
-		assertEquals(200, DryStreak.longest(Arrays.asList(2500, 2200, 2400), null, 50));
-		assertEquals(12, DryStreak.longest(new ArrayList<>(), null, 12));
+		assertEquals(200, DryStreak.longest(Arrays.asList(2500, 2200, 2400), null, 50, false));
+		assertEquals(12, DryStreak.longest(new ArrayList<>(), null, 12, false));
+	}
+
+	@Test
+	public void withEveryUniqueKnownTheKillsBeforeTheFirstCountToo()
+	{
+		// Your only unique, at KC 148: kills 1 to 148 went without one
+		assertEquals(148, DryStreak.longest(Collections.emptyList(), 148, 20, true));
+		assertEquals(1, DryStreak.knownUniques(Collections.emptyList(), 148));
+		// The same unique tracked and entered is one unique
+		assertEquals(1, DryStreak.knownUniques(Collections.singletonList(148), 148));
+		assertEquals(148, DryStreak.longest(Collections.singletonList(148), 148, 20, true));
+		// Not when earlier uniques aren't known
+		assertEquals(20, DryStreak.longest(Collections.emptyList(), 148, 20, false));
 	}
 
 	private static List<Kill> kills(int fromKc, int toKc)

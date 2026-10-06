@@ -50,8 +50,9 @@ class LuckOverviewCard extends JPanel
 	private final JLabel due = statLabel();
 	private final JLabel rate = statLabel();
 	private final JLabel longest = statLabel();
+	private final JLabel lastUnique = statLabel();
 	private final JLabel teamDry = statLabel();
-	private final JPanel stats = new JPanel(new GridLayout(3, 1, 0, 0));
+	private final JPanel stats = new JPanel(new GridLayout(4, 1, 0, 0));
 	private final JPanel drops = new JPanel();
 	private final JPanel dropRow = new JPanel();
 	private final List<JLabel> counts = new ArrayList<>();
@@ -92,6 +93,7 @@ class LuckOverviewCard extends JPanel
 		stats.add(row(uniques, due));
 		stats.add(row(since, rate));
 		stats.add(longest);
+		stats.add(lastUnique);
 
 		// Laid out in buildDrops as a box or a grid, never a flow: a flow would silently wrap a count out of sight
 		drops.setOpaque(false);
@@ -210,10 +212,18 @@ class LuckOverviewCard extends JPanel
 				+ (dryness.getLastUniqueKc() != null ? ", by your all-time kill count, so kills done without the plugin"
 				+ " count too" : ""))
 				+ ". Right-click to set the kill count of your last unique.");
-		set(longest, "Longest dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getLongestDryStreak()), null,
+		set(longest, "Worst dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getLongestDryStreak()), null,
 			"The longest gap between two of your uniques, by kill count, counting the uniques this plugin tracked and"
 				+ " the kill count you entered for your last unique from before tracking (or the current streak, if"
-				+ " that is longer). Earlier uniques aren't known.");
+				+ " that is longer). When RuneLite's Loot Tracker has no other uniques, the kills before your first"
+				+ " one count too; otherwise earlier uniques aren't known.");
+		set(lastUnique, "Last Unique KC", dryness.getLastUniqueKc() != null
+				? String.format(Locale.ROOT, "%,d", dryness.getLastUniqueKc())
+				: dryness.isSinceWholeKillCount() ? "None yet" : "Unknown", null,
+			dryness.getLastUniqueKc() != null
+				? "The kill count of your last unique" + (dryness.isSinceFromEnteredKc() ? ", as you entered it" : "")
+				+ ". Right-click to change it."
+				: "Right-click to set the kill count of your last unique from before you installed the plugin.");
 		// Theatre of Blood only: a row of its own, shown when the boss has a team dry streak
 		boolean team = dryness.getTeamDryStreak() != null;
 		if (team != (teamDry.getParent() == stats))
@@ -226,7 +236,7 @@ class LuckOverviewCard extends JPanel
 			{
 				stats.remove(teamDry);
 			}
-			stats.setLayout(new GridLayout(team ? 4 : 3, 1, 0, 0));
+			stats.setLayout(new GridLayout(team ? 5 : 4, 1, 0, 0));
 			stats.revalidate();
 		}
 		if (team)

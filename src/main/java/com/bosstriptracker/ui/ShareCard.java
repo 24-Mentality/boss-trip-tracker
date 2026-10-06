@@ -74,6 +74,10 @@ class ShareCard
 	int dryKills;
 	int longestDryStreak;
 	/**
+	 * Kill count of your last unique; null if unknown.
+	 */
+	Integer lastUniqueKc;
+	/**
 	 * Raids since anyone in the team got a unique (Theatre of Blood); null for other bosses.
 	 */
 	Integer teamDryStreak;
@@ -173,6 +177,7 @@ class ShareCard
 			.allTime(luck.isAllTime())
 			.dryKills(dryness.getKillsSinceUnique())
 			.longestDryStreak(dryness.getLongestDryStreak())
+			.lastUniqueKc(dryness.getLastUniqueKc())
 			.teamDryStreak(dryness.getTeamDryStreak())
 			.dueInKills(LuckSummary.dueInKills(dryness))
 			.uniqueRate(dryness.getAnyUniqueRate())

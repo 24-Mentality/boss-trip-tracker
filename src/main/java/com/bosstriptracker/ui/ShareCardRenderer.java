@@ -180,11 +180,15 @@ final class ShareCardRenderer
 			pair(g, "Overdue", String.format(Locale.ROOT, "+%,d kc", -card.getDueInKills()), UiFormat.LOSS, left, y + 54);
 		}
 		pair(g, "Rate", "1/" + UiFormat.oneIn(card.getUniqueRate()), left + half, y + 54);
-		pair(g, "Longest dry streak", String.format(Locale.ROOT, "%,d kc", card.getLongestDryStreak()), left, y + 72);
+		pair(g, "Worst dry streak", String.format(Locale.ROOT, "%,d kc", card.getLongestDryStreak()), left, y + 72);
 		if (card.getTeamDryStreak() != null)
 		{
 			// Anyone's purple resets it, unlike the dry streak above
 			pair(g, "Team dry streak", String.format(Locale.ROOT, "%,d kc", card.getTeamDryStreak()), left + half, y + 72);
+		}
+		else if (card.getLastUniqueKc() != null)
+		{
+			pair(g, "Last Unique KC", String.format(Locale.ROOT, "%,d", card.getLastUniqueKc()), left + half, y + 72);
 		}
 
 		// One icon and count per unique, then the pet
