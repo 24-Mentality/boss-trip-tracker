@@ -519,9 +519,13 @@ public class ViewBuilder
 		{
 			lastUniqueKc = Math.max(0, history.getGameDryStreakKc() - history.getGameDryStreak());
 		}
+		// The dry streak counts by kill count, so it needs the all-time count on the same scale as the kills: under All,
+		// records of variants with their own kill counts (as the regular Nightmare will have) can't be added up
+		boolean oneScale = variant != null || boss.getAllTimeSources().stream().allMatch(source -> source.getVariant() == null)
+			|| boss.getAllTimeSources().size() == 1;
 		DryStreak.Result streak = DryStreak.compute(kills, boss::countsForLuck,
 			kill -> kill.getLoot().stream().anyMatch(e -> boss.isUnique(e.getItemId())),
-			lastUniqueKc, allTime == null ? null : allTime.getKillCount());
+			lastUniqueKc, allTime == null || !oneScale ? null : allTime.getKillCount());
 		DrynessView.AllTime allTimeView = allTime(boss, uniqueDrops, allTime, kills, currentKc,
 			petsFromKills + petsFromEggs, eggPetExpected);
 

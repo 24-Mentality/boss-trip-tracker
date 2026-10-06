@@ -206,7 +206,9 @@ class LuckOverviewCard extends JPanel
 				: dryness.isSinceFromGameCount()
 				? "From the game's own dry streak count, which also counts Entry Mode raids"
 				: "Kills since your last unique" + (dryness.isSinceFromEnteredKc() && dryness.getLastUniqueKc() != null
-				? String.format(Locale.ROOT, " (KC %,d, as you entered it)", dryness.getLastUniqueKc()) : ""))
+				? String.format(Locale.ROOT, " (KC %,d, as you entered it)", dryness.getLastUniqueKc()) : "")
+				+ (dryness.getLastUniqueKc() != null ? ", by your all-time kill count, so kills done without the plugin"
+				+ " count too" : ""))
 				+ ". Right-click to set the kill count of your last unique.");
 		set(longest, "Longest dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getLongestDryStreak()), null,
 			"The longest gap between two of your uniques, by kill count, counting the uniques this plugin tracked and"

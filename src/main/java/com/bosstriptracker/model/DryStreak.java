@@ -7,8 +7,10 @@ import java.util.function.Predicate;
 import lombok.Value;
 
 /**
- * Kills since the last unique. Counts tracked luck kills since the last tracked unique, or, when you entered the
- * kill count of a unique from before tracking and nothing newer was tracked, since that kill count.
+ * Kills since the last unique, by kill count: from the last tracked unique, or the kill count you entered for a unique
+ * from before tracking when nothing newer was tracked, to your current kill count (RuneLite's all-time count or the
+ * latest tracked kill, whichever is higher). Kills done without the plugin count too. Without a known unique kill
+ * count, it's the tracked kills since tracking began.
  */
 public final class DryStreak
 {
@@ -56,7 +58,8 @@ public final class DryStreak
 	 * @param countsForLuck kills that can roll uniques (e.g. Open-stomach)
 	 * @param hasUnique kills that dropped a unique
 	 * @param enteredKc kill count of your last unique as you entered it; null if none
-	 * @param knownKc your current kill count from elsewhere (Chat Commands), used only when no tracked kill has one
+	 * @param knownKc your current kill count from RuneLite's Chat Commands (all kills, with or without the plugin);
+	 *                null if unknown
 	 */
 	public static Result compute(List<Kill> kills, Predicate<Kill> countsForLuck, Predicate<Kill> hasUnique,
 		Integer enteredKc, Integer knownKc)
@@ -85,39 +88,35 @@ public final class DryStreak
 		}
 
 		// A tracked unique newer than the entered kill count wins (one with an unknown kill count too)
-		if (enteredKc == null || (trackedUnique && (trackedUniqueKcUnknown || lastUniqueKc > enteredKc)))
+		boolean fromEntered = enteredKc != null
+			&& !(trackedUnique && (trackedUniqueKcUnknown || lastUniqueKc > enteredKc));
+		Integer fromKc = fromEntered ? enteredKc : lastUniqueKc;
+		if (fromKc == null || (!fromEntered && trackedUniqueKcUnknown))
 		{
+			// Nothing to count from by kill count: the tracked kills since the last tracked unique (or since tracking began)
 			return new Result(since, lastUniqueKc, false);
 		}
 
-		Integer firstKc = null;
+		// By kill count, so kills done without the plugin count too: before tracking began, between tracked trips and
+		// since the last tracked one. They can't be told apart, so all of them count; only tracked kills that can't roll
+		// a unique (Take-eggs) are left out
+		int currentKc = knownKc == null ? fromKc : Math.max(fromKc, knownKc);
+		int notForLuck = 0;
+		Integer effectiveKc = null;
 		for (Kill kill : kills)
 		{
-			if (kill.getKillCount() != null)
+			// A kill whose kill count was missed is taken to be one after the previous kill
+			effectiveKc = kill.getKillCount() != null ? kill.getKillCount() : effectiveKc == null ? null : effectiveKc + 1;
+			if (effectiveKc == null)
 			{
-				firstKc = kill.getKillCount();
-				break;
+				continue;
+			}
+			currentKc = Math.max(currentKc, effectiveKc);
+			if (effectiveKc > fromKc && !countsForLuck.test(kill))
+			{
+				notForLuck++;
 			}
 		}
-		if (firstKc == null)
-		{
-			// No tracked kill counts: go by the current kill count, if known
-			int gap = knownKc == null ? 0 : Math.max(0, knownKc - enteredKc);
-			return new Result(gap, enteredKc, true);
-		}
-
-		// Kills between the entered kill count and the start of tracking can't be told apart, so all of them count
-		int count = Math.max(0, firstKc - enteredKc - 1);
-		// A kill whose kill count was missed is taken to be one after the previous kill
-		int effectiveKc = firstKc - 1;
-		for (Kill kill : kills)
-		{
-			effectiveKc = kill.getKillCount() != null ? kill.getKillCount() : effectiveKc + 1;
-			if (effectiveKc > enteredKc && countsForLuck.test(kill))
-			{
-				count++;
-			}
-		}
-		return new Result(count, enteredKc, true);
+		return new Result(Math.max(0, currentKc - fromKc - notForLuck), fromKc, fromEntered);
 	}
 }

@@ -95,6 +95,34 @@ public class DryStreakTest
 	}
 
 	@Test
+	public void killsDoneWithoutThePluginCountByKillCount()
+	{
+		// Unique entered at 148; 149-150 and 160-161 tracked, the rest done on another client; all-time KC 165
+		List<Kill> kills = kills(149, 150);
+		kills.addAll(kills(160, 161));
+		kills.get(2).setChoice("EGGS");
+
+		DryStreak.Result result = DryStreak.compute(kills, LUCK, UNIQUE, 148, 165);
+		// 149..165, less the tracked Take-eggs kill at 160
+		assertEquals(17 - 1, result.getSince());
+		assertTrue(result.isFromEnteredKc());
+		// The longest streak counts them too
+		assertEquals(16, DryStreak.longest(Collections.emptyList(), 148, result.getSince()));
+
+		// After a tracked unique, the same
+		List<Kill> withUnique = kills(149, 150);
+		unique(withUnique, 150);
+		assertEquals(15, DryStreak.compute(withUnique, LUCK, UNIQUE, 148, 165).getSince());
+	}
+
+	@Test
+	public void aLowerAllTimeKcThanTrackedIsIgnored()
+	{
+		// Chat Commands saves a few seconds late
+		assertEquals(12, DryStreak.compute(kills(149, 160), LUCK, UNIQUE, 148, 150).getSince());
+	}
+
+	@Test
 	public void longestIsTheBiggestGapBetweenKnownUniquesOrTheCurrentStreak()
 	{
 		// Entered unique at 1,920, tracked kisten at 2,767: the 847 kc dry spell from the diagnostic logs

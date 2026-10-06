@@ -58,8 +58,10 @@ bosses are planned.
   Display) switches to the Classic card, which adds the chance by now, the next unique's kill
   count and a progress bar. On either card, right-click
   the card to enter the kill count of your last unique from before you installed the plugin;
-  the dry streak then counts from there (kills before tracking began are counted from your
-  kill count) until the plugin tracks a newer unique.
+  the dry streak then counts from there until the plugin tracks a newer unique. The dry streak
+  and longest dry streak go by your all-time kill count (RuneLite's Chat Commands), so kills
+  done without the plugin, before or after you installed it, count too; only tracked kills that
+  can't give a unique (Take-eggs) are left out.
 - **Trip:** the current (or last) trip's time, kills, average kill time, fastest kill (PB)
   and a live timer for the kill in progress (it counts from the boss spawning, like the
   game's "Fight duration", and shows the last kill's time between kills), plus loot value,
