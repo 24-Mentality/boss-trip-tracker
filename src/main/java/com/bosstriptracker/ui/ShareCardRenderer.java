@@ -188,7 +188,7 @@ final class ShareCardRenderer
 		}
 		else if (card.getLastUniqueKc() != null)
 		{
-			pair(g, "Last Unique KC", String.format(Locale.ROOT, "%,d", card.getLastUniqueKc()), left + half, y + 72);
+			pair(g, "Last Unique", String.format(Locale.ROOT, "%,d", card.getLastUniqueKc()), left + half, y + 72);
 		}
 
 		// One icon and count per unique, then the pet

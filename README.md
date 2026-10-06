@@ -58,8 +58,8 @@ bosses are planned.
   Display) switches to the Classic card, which adds the chance by now, the next unique's kill
   count and a progress bar. On either card, right-click
   the card to enter the kill count of your last unique from before you installed the plugin;
-  the dry streak then counts from there until the plugin tracks a newer unique (**Last Unique
-  KC** shows the one in use). The dry streak and **Worst dry streak** go by your all-time kill
+  the dry streak then counts from there until the plugin tracks a newer unique (**Last Unique**
+  shows its kill count). The dry streak and **Worst dry streak** go by your all-time kill
   count (RuneLite's Chat Commands), so kills done without the plugin, before or after you
   installed it, count too; only tracked kills that can't give a unique (Take-eggs) are left out.
   When RuneLite's Loot Tracker has no uniques beyond the ones with a known kill count (say your
