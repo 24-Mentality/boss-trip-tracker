@@ -364,6 +364,12 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	}
 
 	@Override
+	public String getUnitNoun()
+	{
+		return "raid";
+	}
+
+	@Override
 	public List<Integer> getTeamSlotVarbits()
 	{
 		return TEAM_SLOTS;

@@ -157,6 +157,7 @@ public class ViewBuilder
 
 		TripStat stat = boss.getProfitCell();
 		return TripView.builder()
+			.words(Words.of(boss))
 			.id(trip.getId())
 			.startedAt(trip.getStartedAt())
 			.endedAt(trip.getEndedAt())
@@ -566,6 +567,7 @@ public class ViewBuilder
 		Integer teamDryStreak = boss.hasTeamDryStreak() ? teamDryStreak(boss, history) : null;
 
 		return DrynessView.builder()
+			.words(Words.of(boss))
 			.uniqueChances(anyChances)
 			.chanceOfOne(chanceOfOne)
 			.minExpectedForRuck(boss.getMinExpectedForRuckTiers())

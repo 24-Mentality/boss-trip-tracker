@@ -3,6 +3,7 @@ package com.bosstriptracker.ui;
 import com.bosstriptracker.CanvasSection;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.TripView;
+import com.bosstriptracker.view.Words;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.GridLayout;
@@ -72,6 +73,7 @@ class TripSummaryCard extends JPanel
 	private boolean profitCollapsed;
 	private static final String PROFIT_STATE = "trip.profit";
 	private TripView trip;
+	private Words words;
 	private boolean paused;
 	private Long killStartedAt;
 
@@ -182,6 +184,7 @@ class TripSummaryCard extends JPanel
 	void setTrip(TripView trip, long now)
 	{
 		this.trip = trip;
+		setWords(trip.getWords());
 		kills.setValue(String.valueOf(trip.getKills()));
 		averageKill.setValue(UiFormat.killTime(trip.getAverageKillMs()));
 		fastestKill.setValue(UiFormat.killTime(trip.getFastestKillMs()));
@@ -225,6 +228,28 @@ class TripSummaryCard extends JPanel
 	}
 
 	/**
+	 * "Kills" or "Raids", and where the fight is, in the captions and explanations.
+	 */
+	private void setWords(Words words)
+	{
+		if (words.equals(this.words))
+		{
+			return;
+		}
+		this.words = words;
+		String area = words.getArea();
+		time.help("Time spent inside the " + area + " this trip. Time outside (banking, logged out) and time paused with"
+			+ " the Pause button isn't counted.");
+		kills.setCaption(words.unitsTitle());
+		kills.help(words.unitsTitle() + " this trip, from the game's " + ("kill".equals(words.getUnit()) ? "kill-count"
+			: "completion-count") + " message.");
+		averageKill.setCaption("Avg " + words.getUnit());
+		averageKill.help("Average time of this trip's " + words.units() + ", from the game's own timer.");
+		fastestKill.help("This trip's fastest " + words.getUnit() + ", not your all-time personal best.");
+		deaths.help("Deaths in the " + area + " this trip.");
+	}
+
+	/**
 	 * @param killStartedAt when the boss you're fighting spawned; null between kills
 	 */
 	void setKillStartedAt(Long killStartedAt)
@@ -250,7 +275,8 @@ class TripSummaryCard extends JPanel
 		time.setValue(UiFormat.duration(activeMs), paused ? UiFormat.MUTED_TEXT : ColorScheme.LIGHT_GRAY_COLOR,
 			paused ? "Paused: the clock resumes when you press Resume" + " or attack the boss (if auto-resume is on)." : null);
 		long rate = TripMath.gpPerHour(trip.getNetProfit(), activeMs);
-		gpPerHour.setValue(UiFormat.gp(rate), UiFormat.profitColor(rate), UiFormat.fullGp(rate) + " net per hour in the lair");
+		gpPerHour.setValue(UiFormat.gp(rate), UiFormat.profitColor(rate), UiFormat.fullGp(rate) + " net per hour in the "
+			+ words.getArea());
 
 		if (killStartedAt != null)
 		{

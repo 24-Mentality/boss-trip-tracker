@@ -2,6 +2,7 @@ package com.bosstriptracker.ui;
 
 import com.bosstriptracker.view.LifetimeView;
 import com.bosstriptracker.view.PanelState;
+import com.bosstriptracker.view.Words;
 import com.bosstriptracker.view.TripView;
 import java.awt.Insets;
 import java.time.LocalDate;
@@ -82,7 +83,8 @@ class HistoryPanel extends JPanel
 	 */
 	void update(List<TripView> trips, int total, LifetimeView lifetime)
 	{
-		killCharts.update(lifetime == null ? Collections.emptyMap() : lifetime.getKillsByDay());
+		killCharts.update(lifetime == null ? Collections.emptyMap() : lifetime.getKillsByDay(),
+			lifetime == null ? Words.KILLS : lifetime.getDryness().getWords());
 		boolean charted = lifetime != null && !trips.isEmpty();
 		chartTitle.setVisible(charted);
 		chart.setVisible(charted);

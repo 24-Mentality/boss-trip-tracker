@@ -2,6 +2,7 @@ package com.bosstriptracker.ui;
 
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.view.GoalView;
+import com.bosstriptracker.view.Words;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -46,6 +47,7 @@ class GoalCard extends JPanel
 	 * Without a goal, only Set kill goal and Pause are shown.
 	 */
 	private boolean empty;
+	private Words words = Words.KILLS;
 	/**
 	 * The goal clock isn't running (outside the lair, paused or idle); time-based stats are greyed.
 	 */
@@ -124,7 +126,7 @@ class GoalCard extends JPanel
 		this.empty = empty;
 		top.setVisible(!empty);
 		progressRow.setVisible(!empty);
-		setButton.setText(empty ? "Set kill goal" : "Set goal");
+		setButton.setText(empty ? "Set " + words.getUnit() + " goal" : "Set goal");
 		buttons.removeAll();
 		// Equal widths: a grid, not a row of natural-width buttons
 		buttons.setLayout(new GridLayout(1, empty ? 2 : 3, 4, 0));
@@ -143,6 +145,17 @@ class GoalCard extends JPanel
 	 */
 	void setBoss(BossDefinition boss)
 	{
+		Words newWords = Words.of(boss);
+		if (!newWords.equals(words))
+		{
+			words = newWords;
+			pauseButton.setToolTipText(UiFormat.tooltip("Stop the trip and goal clocks now, before the automatic idle"
+				+ " pause. " + words.unitsTitle() + ", loot and supplies still count. Resumes when you press it again or"
+				+ " attack the boss. The clocks only run in the " + words.getArea() + " while you're fighting."));
+			resetButton.setToolTipText(UiFormat.tooltip("Count the goal's " + words.units() + " again, from now or from"
+				+ " one of your recent trips."));
+			setButton.setText(empty ? "Set " + words.getUnit() + " goal" : "Set goal");
+		}
 		int itemId = boss.getIconItemId();
 		if (itemId == iconItemId || itemManager == null)
 		{
@@ -223,7 +236,7 @@ class GoalCard extends JPanel
 		progress.setValue(Math.min(doneKills, target));
 		double percent = Math.min(100, doneKills * 100.0 / Math.max(1, target));
 		progress.setCenterLabel(String.format(Locale.ROOT, "%.1f%%", percent));
-		UiFormat.setToolTip(this, "Goal: " + String.format(Locale.ROOT, "%,d", target) + " kills · " + UiFormat.duration(activeMs)
+		UiFormat.setToolTip(this, "Goal: " + words.count(target) + " · " + UiFormat.duration(activeMs)
 			+ " of fighting time" + (paused ? " · clock stopped" : "") + " · counting since " + UiFormat.dateTime(goal.getStartedAt()));
 	}
 
@@ -245,8 +258,8 @@ class GoalCard extends JPanel
 		// Time-based values are greyed while paused
 		Color clock = paused ? UiFormat.MUTED_TEXT : null;
 		UiFormat.setText(kph, UiFormat.pair("KPH", kphValue, clock));
-		UiFormat.setText(done, UiFormat.pair("Kills Done", doneValue));
+		UiFormat.setText(done, UiFormat.pair(words.unitsTitle() + " Done", doneValue));
 		UiFormat.setText(ttg, UiFormat.pair("TTG", ttgValue, clock));
-		UiFormat.setText(left, UiFormat.pair("Kills Left", leftValue));
+		UiFormat.setText(left, UiFormat.pair(words.unitsTitle() + " Left", leftValue));
 	}
 }

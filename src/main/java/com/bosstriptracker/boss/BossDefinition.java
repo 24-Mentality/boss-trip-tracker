@@ -535,6 +535,14 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * What one of the boss's kill-count units is called: "kill", or "raid" for a raid.
+	 */
+	public String getUnitNoun()
+	{
+		return "kill";
+	}
+
+	/**
 	 * What the trip area is called, e.g. "lair", as in "Trip paused (outside the lair)".
 	 */
 	public String getAreaNoun()

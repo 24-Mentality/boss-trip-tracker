@@ -204,7 +204,7 @@ public class PanelFitTest
 				kills.put(today.minusDays(i), 1 + (i * 7) % 40);
 			}
 			KillChartsPanel charts = new KillChartsPanel(() -> today);
-			charts.update(kills);
+			charts.update(kills, com.bosstriptracker.view.Words.KILLS);
 			javax.swing.JPanel holder = new javax.swing.JPanel(new java.awt.BorderLayout());
 			holder.setBackground(net.runelite.client.ui.ColorScheme.DARK_GRAY_COLOR);
 			holder.add(charts, java.awt.BorderLayout.NORTH);

@@ -5,6 +5,7 @@ import com.bosstriptracker.boss.BossVariant;
 import com.bosstriptracker.model.LuckTier;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.DrynessView;
+import com.bosstriptracker.view.Words;
 import com.bosstriptracker.view.LifetimeView;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
@@ -76,6 +77,11 @@ class ShareCard
 	 */
 	boolean approximate;
 	int dryKills;
+	/**
+	 * "kill" or "raid", for the card's wording.
+	 */
+	@Builder.Default
+	Words words = Words.KILLS;
 	int longestDryStreak;
 	/**
 	 * Kill count of your last unique; null if unknown.
@@ -179,6 +185,7 @@ class ShareCard
 			.uniquesExpected(luck.getExpected())
 			.tier(luck.getTier())
 			.allTime(luck.isAllTime())
+			.words(dryness.getWords())
 			.dryKills(dryness.getKillsSinceUnique())
 			.longestDryStreak(dryness.getLongestDryStreak())
 			.lastUniqueKc(dryness.getLastUniqueKc())

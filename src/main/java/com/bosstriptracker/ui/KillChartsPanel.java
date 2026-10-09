@@ -1,6 +1,7 @@
 package com.bosstriptracker.ui;
 
 import com.bosstriptracker.view.KillCalendar;
+import com.bosstriptracker.view.Words;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -66,6 +67,8 @@ class KillChartsPanel extends JPanel
 	private final JLabel monthKc = stat();
 	private final JLabel yearKc = stat();
 	private Map<LocalDate, Integer> kills = Collections.emptyMap();
+	private final JLabel heading = new JLabel();
+	private Words words = Words.KILLS;
 	private LocalDate shownToday;
 
 	KillChartsPanel(Supplier<LocalDate> today)
@@ -94,7 +97,7 @@ class KillChartsPanel extends JPanel
 			periodTabs[p.ordinal()] = tab;
 			tabs.add(tab);
 		}
-		JLabel heading = new JLabel("Kills");
+		heading.setText("Kills");
 		heading.setFont(FontManager.getRunescapeBoldFont());
 		heading.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
 		JPanel top = new JPanel(new BorderLayout(6, 0));
@@ -134,14 +137,16 @@ class KillChartsPanel extends JPanel
 	/**
 	 * @param kills tracked kills per day for the shown boss and chip
 	 */
-	void update(Map<LocalDate, Integer> kills)
+	void update(Map<LocalDate, Integer> kills, Words words)
 	{
 		LocalDate now = today.get();
-		if (kills.equals(this.kills) && now.equals(shownToday))
+		if (kills.equals(this.kills) && now.equals(shownToday) && words.equals(this.words))
 		{
 			return;
 		}
 		this.kills = kills;
+		this.words = words;
+		heading.setText(words.unitsTitle());
 		refresh();
 	}
 
@@ -162,8 +167,7 @@ class KillChartsPanel extends JPanel
 
 		int year = start.getYear();
 		LocalDate jan1 = LocalDate.of(year, 1, 1);
-		UiFormat.setText(heatmapTitle, year + String.format(Locale.ROOT, " · %,d kills",
-			KillCalendar.total(kills, jan1, jan1.plusYears(1))));
+		UiFormat.setText(heatmapTitle, year + " · " + words.count(KillCalendar.total(kills, jan1, jan1.plusYears(1))));
 		heatmap.setYear(year);
 
 		KillCalendar.Totals totals = KillCalendar.totals(kills, now);
@@ -241,7 +245,7 @@ class KillChartsPanel extends JPanel
 	/**
 	 * Bars with their labels underneath; hovering a bar shows its day (or month) and kills.
 	 */
-	private static class BarChart extends JComponent
+	private class BarChart extends JComponent
 	{
 		private static final int HEIGHT = 64;
 		private static final int LABEL = 11;
@@ -270,7 +274,7 @@ class KillChartsPanel extends JPanel
 				return null;
 			}
 			KillCalendar.Bar bar = bars.get(i);
-			return bar.getName() + String.format(Locale.ROOT, ": %,d %s", bar.getKills(), bar.getKills() == 1 ? "kill" : "kills");
+			return bar.getName() + ": " + words.count(bar.getKills());
 		}
 
 		private int index(int x)
@@ -378,7 +382,7 @@ class KillChartsPanel extends JPanel
 				return null;
 			}
 			int count = kills.getOrDefault(day, 0);
-			return KillCalendar.dayName(day) + String.format(Locale.ROOT, ": %,d %s", count, count == 1 ? "kill" : "kills");
+			return KillCalendar.dayName(day) + ": " + words.count(count);
 		}
 
 		@Override

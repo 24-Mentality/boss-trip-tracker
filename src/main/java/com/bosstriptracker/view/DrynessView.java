@@ -68,6 +68,8 @@ public class DrynessView
 	 * Shown instead of the pet's average rate when it depends on things not tracked (Lil' Zik); null otherwise.
 	 */
 	String petRateNote;
+	@Builder.Default
+	Words words = Words.KILLS;
 	/**
 	 * Tracked kills that can roll uniques (for the Maggot King, Open-stomach kills).
 	 */

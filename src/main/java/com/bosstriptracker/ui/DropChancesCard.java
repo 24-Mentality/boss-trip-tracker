@@ -149,7 +149,7 @@ class DropChancesCard extends JPanel
 		DrynessView.AllTime allTime = dryness.getAllTime();
 		List<DrynessView.Drop> uniques = allTime != null ? allTime.getUniques() : dryness.getUniques();
 		names.add("Any unique (1/" + UiFormat.oneIn(dryness.getAnyUniqueRate()) + ")");
-		extras.add(String.format(Locale.ROOT, " You're on a %,d kill dry streak: %s of players would have had a unique by now.",
+		extras.add(String.format(Locale.ROOT, " You're on a %,d " + dryness.getWords().getUnit() + " dry streak: %s of players would have had a unique by now.",
 			dryness.getKillsSinceUnique(), percent(1 - dryness.getChanceThisDry())));
 		for (DrynessView.Drop unique : uniques)
 		{
@@ -163,7 +163,7 @@ class DropChancesCard extends JPanel
 		if (pet != null)
 		{
 			names.add(boss.getDisplayName() + " pet (" + (dryness.getPetRateNote() != null ? dryness.getPetRateNote()
-				: "1/" + UiFormat.oneIn(pet.getRate()) + " per kill")
+				: "1/" + UiFormat.oneIn(pet.getRate()) + " per " + dryness.getWords().getUnit())
 				+ (hasEggs ? ", plus eggs" : "") + ")");
 			extras.add("");
 		}
@@ -174,8 +174,8 @@ class DropChancesCard extends JPanel
 		{
 			// All-time: the Loot Tracker records every loot-dropping kill and its drops
 			int kills = allTime.getLootKills();
-			basis = String.format(Locale.ROOT, "%,d kills recorded by RuneLite's Loot Tracker since %s", kills,
-				UiFormat.date(allTime.getFirstRecordedAt()))
+			basis = dryness.getWords().count(kills) + " recorded by RuneLite's Loot Tracker since "
+				+ UiFormat.date(allTime.getFirstRecordedAt())
 				+ (allTime.getKillCount() != null ? String.format(Locale.ROOT, " (KC %,d)", allTime.getKillCount()) : "");
 			source.setText(DropChances.source(dryness));
 		}
@@ -183,7 +183,7 @@ class DropChancesCard extends JPanel
 		{
 			int kills = dryness.getLuckKills();
 			basis = kills + " " + boss.getLuckKillsName() + " tracked by this plugin";
-			source.setText("Tracked · " + kills + " kills (enable Loot Tracker for all-time)");
+			source.setText("Tracked · " + dryness.getWords().count(kills) + " (enable Loot Tracker for all-time)");
 		}
 		source.setToolTipText(UiFormat.tooltip("Based on " + basis + "."));
 
@@ -206,7 +206,8 @@ class DropChancesCard extends JPanel
 			String help = names.get(i) + ": " + chance.getReceived() + " received, "
 				+ String.format(Locale.ROOT, "%.2f", chance.getExpected()) + " expected from " + basis
 				+ (i == petRow && eggPetExpected > 0 ? String.format(Locale.ROOT, " plus eggs popped (%.3f)", eggPetExpected) : "")
-				+ ". " + percent(byNow) + " of players with as many kills would have at least one by now."
+				+ ". " + percent(byNow) + " of players with as many " + dryness.getWords().units()
+				+ " would have at least one by now."
 				+ (i == petRow && allTime != null ? " The Loot Tracker doesn't record pets, so pets are the ones this plugin saw." : "")
 				+ extras.get(i);
 			row.panel.setToolTipText(UiFormat.tooltip(help));

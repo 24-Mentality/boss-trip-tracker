@@ -74,8 +74,9 @@ class TripDetails extends JPanel
 		lootStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getLootValue()),
 			UiFormat.fullGp(trip.getLootValue()) + ": everything looted this trip, at the GE prices recorded when each"
 				+ " drop came in, before costs."));
-		lootStats.add(SectionStat.of("GP/Kill", UiFormat.gp(lootPerKill),
-			"Loot value divided by kills: " + UiFormat.fullGp(trip.getLootValue()) + " / " + trip.getKills() + "."));
+		lootStats.add(SectionStat.of("GP/" + trip.getWords().unitTitle(), UiFormat.gp(lootPerKill),
+			"Loot value divided by " + trip.getWords().units() + ": " + UiFormat.fullGp(trip.getLootValue()) + " / "
+				+ trip.getKills() + "."));
 		lootStats.addAll(categoryStats(trip.getLootCategories()));
 		return lootStats;
 	}
@@ -84,7 +85,7 @@ class TripDetails extends JPanel
 	{
 		List<SectionStat> supplyStats = new ArrayList<>();
 		supplyStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getSupplyCost()),
-			"Everything used up in the lair: the sum of the categories below (charges, runes, potions, food and other)."
+			"Everything used up in the " + trip.getWords().getArea() + ": the sum of the categories below (charges, runes, potions, food and other)."
 				+ " Dropped items and death costs are counted separately under Costs."));
 		for (SupplyCategory category : trip.getSupplyCategories())
 		{
@@ -97,7 +98,7 @@ class TripDetails extends JPanel
 	{
 		List<SectionStat> droppedStats = new ArrayList<>();
 		droppedStats.add(SectionStat.of("Total GP", UiFormat.gp(trip.getDroppedCost()),
-			"Items dropped in the lair and not picked back up before leaving, at GE price. Items under 100 gp are ignored."));
+			"Items dropped in the " + trip.getWords().getArea() + " and not picked back up before leaving, at GE price. Items under 100 gp are ignored."));
 		return droppedStats;
 	}
 
@@ -139,8 +140,13 @@ class TripDetails extends JPanel
 		switch (category)
 		{
 			case "Charges":
-				return "Charges used, priced from what recharges them: Amulet of blood fury (blood shard / 10,000),"
-					+ " Tome of fire (page / 20) and revenant bows (1 revenant ether per shot).";
+				return "Charges used, counted from your attacks and priced from what recharges them: Amulet of blood"
+					+ " fury (a blood shard per 10,000), Tome of fire (a page per 20), revenant bows such as the"
+					+ " Webweaver bow (a revenant ether per shot), Scythe of Vitur (a vial of blood and 200 blood runes"
+					+ " per 100), Tumeken's shadow (2 soul and 5 chaos runes a cast), Sanguinesti staff (2 blood runes"
+					+ " a cast), Trident of the swamp and of the seas (runes plus a Zulrah's scale or 10 coins a cast),"
+					+ " Eye of Ayak (a demon tear or runes a cast), Toxic blowpipe (scales and the darts lost) and"
+					+ " Crystal halberd (crystal shards, 0 gp).";
 			case "Runes":
 				return "Runes used from your inventory and rune pouch, at GE price.";
 			case "Potions":

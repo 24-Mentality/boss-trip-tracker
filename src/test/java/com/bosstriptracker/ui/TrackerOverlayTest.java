@@ -22,6 +22,8 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.components.ComponentConstants;
+import com.bosstriptracker.boss.TheatreOfBloodBoss;
+import com.bosstriptracker.view.Words;
 import org.junit.Test;
 
 public class TrackerOverlayTest
@@ -117,7 +119,7 @@ public class TrackerOverlayTest
 	{
 		Graphics2D g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).createGraphics();
 		java.awt.FontMetrics metrics = g.getFontMetrics(FontManager.getRunescapeSmallFont());
-		TrackerOverlay.Row kph = new TrackerOverlay.Row(TrackerOverlay.KILLS_PER_HOUR, "99.9", Color.WHITE);
+		TrackerOverlay.Row kph = new TrackerOverlay.Row(TrackerOverlay.killsPerHour(Words.KILLS), "99.9", Color.WHITE);
 		assertEquals(ComponentConstants.STANDARD_WIDTH, TrackerOverlay.boxWidth(metrics, Collections.singletonList(kph)));
 		TrackerOverlay.Row luck = new TrackerOverlay.Row(TrackerOverlay.LUCK, "LUCKY AS RUCK", Color.WHITE);
 		int wider = TrackerOverlay.boxWidth(metrics, java.util.Arrays.asList(kph, luck));
@@ -134,21 +136,29 @@ public class TrackerOverlayTest
 		Graphics2D g = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).createGraphics();
 		java.awt.FontMetrics metrics = g.getFontMetrics(FontManager.getRunescapeSmallFont());
 		// Worst cases: big goals, long trips, 10-minute kills, billions of gp
-		String[][] rows = {
-			{TrackerOverlay.KILLS_PER_HOUR, "99.9"},
-			{TrackerOverlay.TIME_TO_GOAL, "100h+"},
-			{TrackerOverlay.KC_DONE, "12.3K"},
-			{TrackerOverlay.KC_LEFT, "87.7K"},
-			{TrackerOverlay.CURRENT_KILL, "9:59"},
-			{TrackerOverlay.LAST_KILL, "9:59.9"},
-			{TrackerOverlay.TRIP_TIME, TrackerOverlay.tripTime(9 * 3_600_000L + 59 * 60_000L + 59_000L)},
-			{TrackerOverlay.TRIP_TIME, TrackerOverlay.tripTime(12 * 3_600_000L)},
-			{TrackerOverlay.TRIP_KC, "999"},
-			{TrackerOverlay.AVERAGE_KILL, "9:59.9"},
-			{TrackerOverlay.PB, "9:59.9"},
-			{TrackerOverlay.NET_PROFIT, "-12.4B"},
-			{TrackerOverlay.NET_GP_PER_HOUR, "-985M"},
-		};
+		for (Words words : new Words[]{Words.of(new MaggotKingBoss()), Words.of(new TheatreOfBloodBoss())})
+		{
+			assertRowsFit(metrics, new String[][]{
+				{TrackerOverlay.killsPerHour(words), "99.9"},
+				{TrackerOverlay.TIME_TO_GOAL, "100h+"},
+				{TrackerOverlay.done(words), "12.3K"},
+				{TrackerOverlay.left(words), "87.7K"},
+				{TrackerOverlay.current(words), "9:59"},
+				{TrackerOverlay.last(words), "9:59.9"},
+				{TrackerOverlay.TRIP_TIME, TrackerOverlay.tripTime(9 * 3_600_000L + 59 * 60_000L + 59_000L)},
+				{TrackerOverlay.TRIP_TIME, TrackerOverlay.tripTime(12 * 3_600_000L)},
+				{TrackerOverlay.tripKills(words), "999"},
+				{TrackerOverlay.average(words), "9:59.9"},
+				{TrackerOverlay.PB, "9:59.9"},
+				{TrackerOverlay.NET_PROFIT, "-12.4B"},
+				{TrackerOverlay.NET_GP_PER_HOUR, "-985M"},
+			});
+		}
+		g.dispose();
+	}
+
+	private static void assertRowsFit(java.awt.FontMetrics metrics, String[][] rows)
+	{
 		for (String[] row : rows)
 		{
 			// LineComponent needs a few pixels between the two sides
@@ -156,7 +166,6 @@ public class TrackerOverlayTest
 			assertTrue(row[0] + " " + row[1] + " needs " + needed + "px, has " + TrackerOverlay.ROW_WIDTH,
 				needed <= TrackerOverlay.ROW_WIDTH);
 		}
-		g.dispose();
 	}
 
 	@Test

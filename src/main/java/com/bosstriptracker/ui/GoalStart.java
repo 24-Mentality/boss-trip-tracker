@@ -76,6 +76,6 @@ class GoalStart
 
 	private static String kills(TripView trip)
 	{
-		return trip.getKills() == 1 ? "1 kill" : trip.getKills() + " kills";
+		return trip.getWords().count(trip.getKills());
 	}
 }

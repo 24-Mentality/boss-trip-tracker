@@ -42,6 +42,11 @@ public class TripView
 	 * Fight duration of the trip's most recent kill; null if unknown.
 	 */
 	Long lastKillMs;
+	/**
+	 * How the boss's numbers are worded ("kill" or "raid", "lair" or "dream").
+	 */
+	@Builder.Default
+	Words words = Words.KILLS;
 	List<ItemView> loot;
 	/**
 	 * Loot grouped by the boss's drop table categories, highest value first, at most five (the smallest folded

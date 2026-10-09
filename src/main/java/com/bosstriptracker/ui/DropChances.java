@@ -87,9 +87,9 @@ final class DropChances
 		DrynessView.AllTime allTime = dryness.getAllTime();
 		if (allTime != null)
 		{
-			return String.format(Locale.ROOT, "All-time · %,d kills", allTime.getLootKills())
+			return "All-time · " + dryness.getWords().count(allTime.getLootKills())
 				+ (allTime.getKillCount() != null ? String.format(Locale.ROOT, " · KC %,d", allTime.getKillCount()) : "");
 		}
-		return String.format(Locale.ROOT, "Tracked · %,d kills", dryness.getLuckKills());
+		return "Tracked · " + dryness.getWords().count(dryness.getLuckKills());
 	}
 }

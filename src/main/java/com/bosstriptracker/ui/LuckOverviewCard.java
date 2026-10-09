@@ -2,6 +2,7 @@ package com.bosstriptracker.ui;
 
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.view.DrynessView;
+import com.bosstriptracker.view.Words;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -198,6 +199,7 @@ class LuckOverviewCard extends JPanel
 
 	void update(DrynessView dryness, BossDefinition boss)
 	{
+		Words words = dryness.getWords();
 		LuckSummary luck = LuckSummary.of(dryness);
 		List<DrynessView.Drop> shown = new ArrayList<>(luck.getUniques());
 		DrynessView.Drop pet = LuckSummary.pet(dryness);
@@ -221,27 +223,27 @@ class LuckOverviewCard extends JPanel
 			tier.setForeground(UiFormat.tierColor(luck.getTier()));
 		}
 		// On the title too, so hovering "Luck Status:" explains the tiers
-		String help = luck.getTier() == null ? UiFormat.tooltip("No tier until there are kills to compare.") : luck.tierHelp();
+		String help = luck.getTier() == null ? UiFormat.tooltip("No tier until there are " + words.units() + " to compare.") : luck.tierHelp();
 		tier.setToolTipText(help);
 		title.setToolTipText(help);
 		source.setText((luck.isAllTime() ? "All-time" : "Tracked") + (luck.isApproximate() ? " (approx.)" : ""));
 		source.setToolTipText(UiFormat.tooltip(luck.isAllTime()
-			? String.format(Locale.ROOT, "From RuneLite's Loot Tracker record: %,d kills.", luck.getBasisKills())
+			? "From RuneLite's Loot Tracker record: " + words.count(luck.getBasisKills()) + "."
 			: String.format(Locale.ROOT, "From the %,d %s this plugin has tracked.", luck.getBasisKills(), boss.getLuckKillsName())));
 
 		String expected = String.format(Locale.ROOT, luck.getExpected() >= 10 ? "%.1f" : "%.2f", luck.getExpected());
 		set(uniques, "Uniques", luck.getReceived() + " / " + expected, null, "Uniques received vs expected.");
-		set(since, "Dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getKillsSinceUnique()), null,
+		set(since, "Dry streak", words.kc(dryness.getKillsSinceUnique()), null,
 			(dryness.isSinceWholeKillCount()
 				? "You haven't had a unique yet (RuneLite's Loot Tracker has none either), so this is your whole kill count"
 				: dryness.isSinceFromGameCount()
 				? "From the game's own dry streak count, which also counts Entry Mode raids"
-				: "Kills since your last unique" + (dryness.isSinceFromEnteredKc() && dryness.getLastUniqueKc() != null
+				: words.unitsTitle() + " since your last unique" + (dryness.isSinceFromEnteredKc() && dryness.getLastUniqueKc() != null
 				? String.format(Locale.ROOT, " (KC %,d, as you entered it)", dryness.getLastUniqueKc()) : "")
 				+ (dryness.getLastUniqueKc() != null ? ", by your all-time kill count, so kills done without the plugin"
 				+ " count too" : ""))
 				+ ". Click Last Unique to set the kill count of your last unique.");
-		set(longest, "Worst dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getLongestDryStreak()), null,
+		set(longest, "Worst dry streak", words.kc(dryness.getLongestDryStreak()), null,
 			"The longest gap between two of your uniques, by kill count, counting the uniques this plugin tracked and"
 				+ " the kill count you entered for your last unique from before tracking (or the current streak, if"
 				+ " that is longer). When RuneLite's Loot Tracker has no other uniques, the kills before your first"
@@ -272,16 +274,17 @@ class LuckOverviewCard extends JPanel
 		}
 		if (team)
 		{
-			set(teamDry, "Team dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getTeamDryStreak()), null,
+			set(teamDry, "Team dry streak", words.kc(dryness.getTeamDryStreak()), null,
 				UiFormat.teamDryStreakHelp(dryness.isTeamDryStreakFromGame()));
 		}
 		int dry = dryness.getKillsSinceUnique();
 		set(due, "Vs rate", String.format(Locale.ROOT, "%.1f\u00d7", luck.dryVsRate(dry)), null,
 			String.format(Locale.ROOT, "Your dry streak is %.1f times the drop rate (1/%s). %.0f%% of players would have"
-				+ " had a unique within this many kills; each kill is still the same chance.", luck.dryVsRate(dry),
+				+ " had a unique within this many " + words.units() + "; each " + words.getUnit() + " is still the same"
+				+ " chance.", luck.dryVsRate(dry),
 				UiFormat.oneIn(luck.getRate()), luck.chanceByNow(dry) * 100));
-		set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per kill"
-			+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked kills.")
+		set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per " + words.getUnit()
+			+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked " + words.units() + ".")
 			+ (luck.isApproximate() ? " Approximate: an equal share of the team's chance." : ""));
 
 		for (int i = 0; i < counts.size() && i < shown.size(); i++)

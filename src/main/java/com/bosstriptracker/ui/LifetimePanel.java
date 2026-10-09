@@ -5,6 +5,7 @@ import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.DrynessView;
 import com.bosstriptracker.view.ItemView;
 import com.bosstriptracker.view.LifetimeView;
+import com.bosstriptracker.view.Words;
 import com.bosstriptracker.view.LootCategory;
 import com.bosstriptracker.view.PolishView;
 import com.bosstriptracker.view.SupplyCategory;
@@ -246,6 +247,9 @@ class LifetimePanel extends JPanel
 		this.boss = boss;
 
 		String area = boss.getAreaNoun();
+		Words words = Words.of(boss);
+		kills.setCaption(words.unitsTitle());
+		averageKill.setCaption("Avg " + words.getUnit());
 		eggCard.setVisible(!boss.getEggPetRates().isEmpty());
 		polishCard.setVisible(!boss.getTarnishedItems().isEmpty());
 
@@ -332,7 +336,7 @@ class LifetimePanel extends JPanel
 			long value = view.getAllTimeLootValue();
 			stats.add(SectionStat.of("Total GP", UiFormat.gp(value),
 				UiFormat.fullGp(value) + " at today's prices: everything in RuneLite's Loot Tracker record."));
-			stats.add(SectionStat.of("GP/Kill", UiFormat.gp(recordKills > 0 ? value / recordKills : 0),
+			stats.add(SectionStat.of("GP/" + Words.of(boss).unitTitle(), UiFormat.gp(recordKills > 0 ? value / recordKills : 0),
 				"Total GP divided by the " + String.format(Locale.ROOT, "%,d", recordKills) + " " + killsName
 					+ " in the record."));
 			if (view.getAllTimeSince() > 0)
@@ -346,8 +350,8 @@ class LifetimePanel extends JPanel
 			long value = view.getLootValue();
 			stats.add(SectionStat.of("Total GP", UiFormat.gp(value),
 				UiFormat.fullGp(value) + " at the prices recorded when each drop came in."));
-			stats.add(SectionStat.of("GP/Kill", UiFormat.gp(view.getKills() > 0 ? value / view.getKills() : 0),
-				"Total GP divided by the " + view.getKills() + " kills tracked."));
+			stats.add(SectionStat.of("GP/" + Words.of(boss).unitTitle(), UiFormat.gp(view.getKills() > 0 ? value / view.getKills() : 0),
+				"Total GP divided by the " + Words.of(boss).count(view.getKills()) + " tracked."));
 		}
 		stats.addAll(TripDetails.categoryStats(categories));
 
@@ -409,10 +413,11 @@ class LifetimePanel extends JPanel
 	private static String trackedHelp(LifetimeView view, String what)
 	{
 		Integer firstKc = view.getDryness().getFirstTrackedKc();
-		return what + " only count kills this plugin recorded after it was installed"
+		String units = view.getDryness().getWords().units();
+		return what + " only count " + units + " this plugin recorded after it was installed"
 			+ (view.getTrackedSince() > 0 ? ", starting " + UiFormat.date(view.getTrackedSince())
 			+ (firstKc != null ? String.format(Locale.ROOT, " at KC %,d", firstKc) : "") : "")
-			+ ". Earlier kills aren't included.";
+			+ ". Earlier " + units + " aren't included.";
 	}
 
 	/**

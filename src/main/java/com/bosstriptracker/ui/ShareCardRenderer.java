@@ -165,20 +165,20 @@ final class ShareCardRenderer
 		{
 			text(g, bold, UiFormat.tierColor(card.getTier()), card.getTier().getLabel(), left + width(g, bold, "Luck Status:") + 6, y + 17);
 		}
-		textRight(g, small, UiFormat.MUTED_TEXT, (card.isAllTime() ? "All-time (Loot Tracker)" : "Tracked kills")
+		textRight(g, small, UiFormat.MUTED_TEXT, (card.isAllTime() ? "All-time (Loot Tracker)" : "Tracked " + card.getWords().units())
 			+ (card.isApproximate() ? " · approx." : ""), right, y + 16);
 
 		String expected = String.format(Locale.ROOT, card.getUniquesExpected() >= 10 ? "%.1f" : "%.2f", card.getUniquesExpected());
 		int half = (right - left) / 2;
 		pair(g, "Uniques", card.getUniquesReceived() + " / " + expected, left, y + 36);
-		pair(g, "Dry streak", String.format(Locale.ROOT, "%,d kc", card.getDryKills()), left + half, y + 36);
+		pair(g, "Dry streak", card.getWords().kc(card.getDryKills()), left + half, y + 36);
 		pair(g, "Dry streak vs rate", String.format(Locale.ROOT, "%.1f\u00d7", card.getDryVsRate()), left, y + 54);
 		pair(g, "Rate", "1/" + UiFormat.oneIn(card.getUniqueRate()), left + half, y + 54);
-		pair(g, "Worst dry streak", String.format(Locale.ROOT, "%,d kc", card.getLongestDryStreak()), left, y + 72);
+		pair(g, "Worst dry streak", card.getWords().kc(card.getLongestDryStreak()), left, y + 72);
 		if (card.getTeamDryStreak() != null)
 		{
 			// Anyone's purple resets it, unlike the dry streak above
-			pair(g, "Team dry streak", String.format(Locale.ROOT, "%,d kc", card.getTeamDryStreak()), left + half, y + 72);
+			pair(g, "Team dry streak", card.getWords().kc(card.getTeamDryStreak()), left + half, y + 72);
 		}
 		else if (card.getLastUniqueKc() != null)
 		{
@@ -263,7 +263,7 @@ final class ShareCardRenderer
 		card(g, y, h);
 		// The totals only cover what the plugin has tracked, so say from where
 		text(g, bold, TEXT, "Tracked totals", PAD + INNER, y + 17);
-		String since = String.format(Locale.ROOT, "%,d kills", card.getTrackedKills())
+		String since = card.getWords().count(card.getTrackedKills())
 			+ (card.getTrackedFromKc() != null ? String.format(Locale.ROOT, " since KC %,d", card.getTrackedFromKc()) : "");
 		textRight(g, small, UiFormat.MUTED_TEXT, since, WIDTH - PAD - INNER, y + 16);
 		int row = y + 20;
@@ -304,7 +304,7 @@ final class ShareCardRenderer
 		{
 			text(g, regular, TEXT, TRIP_DATE.format(Instant.ofEpochMilli(trip.getStartedAt()).atZone(zone)), left, row);
 			text(g, regular, TEXT, trip.getDetail() != null ? trip.getDetail()
-				: trip.getKills() + (trip.getKills() == 1 ? " kill" : " kills"), left + 150, row);
+				: card.getWords().count(trip.getKills()), left + 150, row);
 			textRight(g, bold, UiFormat.profitColor(trip.getNet()), UiFormat.gp(trip.getNet()), right, row);
 			row += 16;
 		}

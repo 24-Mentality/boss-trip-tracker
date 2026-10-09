@@ -9,6 +9,7 @@ import com.bosstriptracker.view.DrynessView;
 import com.bosstriptracker.view.GoalView;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
+import com.bosstriptracker.view.Words;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
@@ -68,20 +69,48 @@ public class TrackerOverlay extends OverlayPanel
 	static final int ROW_WIDTH = ComponentConstants.STANDARD_WIDTH - 2 * BORDER_SIZE
 		- (ROWS_AND_ICON_BORDER.x + ROWS_AND_ICON_BORDER.width) - ICON_WIDTH - ROWS_AND_ICON_GAP;
 	private static final Color BAR_BACKGROUND = new Color(61, 56, 49);
-	// Row labels
-	static final String KILLS_PER_HOUR = "KC/Hr:";
+	// Row labels, worded like the panel; "kill" becomes "raid" for a raid
 	static final String TIME_TO_GOAL = "TTG:";
-	static final String KC_DONE = "KC Done:";
-	static final String KC_LEFT = "KC Left:";
-	static final String CURRENT_KILL = "Kill:";
-	static final String LAST_KILL = "Last KC:";
-	static final String TRIP_TIME = "Trip Time:";
-	static final String TRIP_KC = "Trip KC:";
-	static final String AVERAGE_KILL = "Avg KC:";
+	static final String TRIP_TIME = "Trip time:";
 	static final String PB = "PB:";
-	static final String NET_PROFIT = "Net Profit:";
-	static final String NET_GP_PER_HOUR = "GP/hr:";
+	static final String NET_PROFIT = "Net profit:";
+	static final String NET_GP_PER_HOUR = "Net GP/hr:";
 	static final String LUCK = "Luck:";
+
+	static String killsPerHour(Words words)
+	{
+		return "kill".equals(words.getUnit()) ? "KPH:" : words.unitsTitle() + "/hr:";
+	}
+
+	static String done(Words words)
+	{
+		return words.unitsTitle() + " done:";
+	}
+
+	static String left(Words words)
+	{
+		return words.unitsTitle() + " left:";
+	}
+
+	static String current(Words words)
+	{
+		return words.unitTitle() + ":";
+	}
+
+	static String last(Words words)
+	{
+		return "Last " + words.getUnit() + ":";
+	}
+
+	static String tripKills(Words words)
+	{
+		return words.unitsTitle() + ":";
+	}
+
+	static String average(Words words)
+	{
+		return "Avg " + words.getUnit() + ":";
+	}
 	private static final String NOT_AVAILABLE = "N/A";
 	/**
 	 * LineComponent needs a few pixels between its two sides.
@@ -244,6 +273,7 @@ public class TrackerOverlay extends OverlayPanel
 	 */
 	private void addRow(List<Row> rows, OverlayStat stat, PanelState s, GoalView goal, TripView trip, long now)
 	{
+		Words words = Words.of(s.getBoss());
 		// Time-based numbers are greyed while the clocks are stopped, as in the panel
 		Color goalClock = goal != null && goal.isRunning() ? Color.WHITE : MUTED;
 		switch (stat)
@@ -252,7 +282,7 @@ public class TrackerOverlay extends OverlayPanel
 				if (goal != null)
 				{
 					double killsPerHour = goal.killsPerHourAt(now);
-					rows.add(line(KILLS_PER_HOUR, killsPerHour > 0 ? String.format(Locale.ROOT, "%.1f", killsPerHour) : NOT_AVAILABLE, goalClock));
+					rows.add(line(killsPerHour(words), killsPerHour > 0 ? String.format(Locale.ROOT, "%.1f", killsPerHour) : NOT_AVAILABLE, goalClock));
 				}
 				break;
 			case TIME_TO_GOAL:
@@ -266,13 +296,13 @@ public class TrackerOverlay extends OverlayPanel
 			case KILLS_DONE:
 				if (goal != null)
 				{
-					rows.add(line(KC_DONE, GoalCard.count(goal.getDone()), Color.WHITE));
+					rows.add(line(done(words), GoalCard.count(goal.getDone()), Color.WHITE));
 				}
 				break;
 			case KILLS_LEFT:
 				if (goal != null)
 				{
-					rows.add(line(KC_LEFT, GoalCard.count(goal.getRemaining()), Color.WHITE));
+					rows.add(line(left(words), GoalCard.count(goal.getRemaining()), Color.WHITE));
 				}
 				break;
 			case CURRENT_KILL:
@@ -280,8 +310,8 @@ public class TrackerOverlay extends OverlayPanel
 				{
 					Long start = s.getKillStartedAt();
 					// Counts from the boss spawning, like the game's Fight duration; the last kill's time between kills
-					rows.add(start != null ? line(CURRENT_KILL, UiFormat.duration(now - start), Color.WHITE)
-						: line(LAST_KILL, UiFormat.killTime(trip.getLastKillMs()), MUTED));
+					rows.add(start != null ? line(current(words), UiFormat.duration(now - start), Color.WHITE)
+						: line(last(words), UiFormat.killTime(trip.getLastKillMs()), MUTED));
 				}
 				break;
 			case TRIP_TIME:
@@ -293,13 +323,13 @@ public class TrackerOverlay extends OverlayPanel
 			case KILLS:
 				if (trip != null)
 				{
-					rows.add(line(TRIP_KC, String.valueOf(trip.getKills()), Color.WHITE));
+					rows.add(line(tripKills(words), String.valueOf(trip.getKills()), Color.WHITE));
 				}
 				break;
 			case AVERAGE_KILL:
 				if (trip != null)
 				{
-					rows.add(line(AVERAGE_KILL, UiFormat.killTime(trip.getAverageKillMs()), Color.WHITE));
+					rows.add(line(average(words), UiFormat.killTime(trip.getAverageKillMs()), Color.WHITE));
 				}
 				break;
 			case PB:

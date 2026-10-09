@@ -3,6 +3,7 @@ package com.bosstriptracker.ui;
 import com.bosstriptracker.model.LuckOdds;
 import com.bosstriptracker.model.LuckTier;
 import com.bosstriptracker.view.DrynessView;
+import com.bosstriptracker.view.Words;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -41,6 +42,7 @@ class LuckSummary
 	 */
 	LuckTier tier;
 	boolean approximate;
+	Words words;
 	/**
 	 * Each unique with its received and expected count, from the same source.
 	 */
@@ -65,7 +67,7 @@ class LuckSummary
 		LuckTier tier = basisKills == 0 ? null : LuckTier.of(atMost, atLeast, expected, dryness.getMinExpectedForRuck());
 		return new LuckSummary(received, expected, basisKills, allTime != null, atMost, atLeast,
 			1 - LuckOdds.atMost(chances, 0), rate, tier,
-			dryness.isLuckApproximate(), allTime != null ? allTime.getUniques() : dryness.getUniques());
+			dryness.isLuckApproximate(), dryness.getWords(), allTime != null ? allTime.getUniques() : dryness.getUniques());
 	}
 
 	/**
@@ -80,16 +82,16 @@ class LuckSummary
 		}
 		else if (atMost <= LuckTier.TAIL)
 		{
-			help.append(String.format(Locale.ROOT, "1 in %s players with as many kills is this dry or drier.", oneIn(atMost)));
+			help.append(String.format(Locale.ROOT, "1 in %s players with as many " + words.units() + " is this dry or drier.", oneIn(atMost)));
 		}
 		else if (atLeast <= LuckTier.TAIL)
 		{
-			help.append(String.format(Locale.ROOT, "Only 1 in %s players with as many kills is this lucky or luckier.",
+			help.append(String.format(Locale.ROOT, "Only 1 in %s players with as many " + words.units() + " is this lucky or luckier.",
 				oneIn(atLeast)));
 		}
 		else
 		{
-			help.append("Most players with as many kills have about as many uniques as you.");
+			help.append("Most players with as many " + words.units() + " have about as many uniques as you.");
 		}
 		help.append("\n\nDRY AS RUCK: in the driest 10% of players\nDry: the driest 35%\nOn Rate: in between\n"
 			+ "Lucky: the luckiest 35%\nLUCKY AS RUCK: the luckiest 10%");
