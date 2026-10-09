@@ -32,15 +32,15 @@ import net.runelite.client.util.AsyncBufferedImage;
 import net.runelite.client.util.ImageUtil;
 
 /**
- * Expected vs received drops per unique, with an Expected tab (progress to the next statistical drop) and a
+ * Expected vs received drops per unique, with an Expected tab (the chance of at least one by now) and a
  * Received tab (luck: actual minus expected). Rows follow the shown boss: any unique, each unique, the pet.
  * The two-tab layout follows the look of Speaax's Delve calculator plugin (BSD-2-Clause); the code is this plugin's
  * own.
  */
 class DropChancesCard extends JPanel
 {
-	private static final String HELP = "<html><b>Expected:</b> each bar fills as your kills add up to the next drop the"
-		+ " rate predicts, and the number is how many of that drop the rate predicts so far.<br><br>"
+	private static final String HELP = "<html><b>Expected:</b> each bar shows the share of players with as many kills"
+		+ " who would have at least one of that drop by now, and the number is how many the rate predicts so far.<br><br>"
 		+ "<b>Received:</b> each bar shows how many drops you are ahead of (green, to the right) or behind (red, to the"
 		+ " left) that prediction, and the number is how many you have actually received.<br><br>"
 		+ "%s All-time numbers come from RuneLite's Loot Tracker when it has a record for this account.</html>";
@@ -158,7 +158,8 @@ class DropChancesCard extends JPanel
 		DrynessView.Drop pet = dryness.getPet();
 		if (pet != null)
 		{
-			names.add(boss.getDisplayName() + " pet (1/" + UiFormat.oneIn(pet.getRate()) + " per kill"
+			names.add(boss.getDisplayName() + " pet (" + (dryness.getPetRateNote() != null ? dryness.getPetRateNote()
+				: "1/" + UiFormat.oneIn(pet.getRate()) + " per kill")
 				+ (hasEggs ? ", plus eggs" : "") + ")");
 			extras.add("");
 		}
@@ -187,7 +188,7 @@ class DropChancesCard extends JPanel
 		{
 			Row row = rows.get(i);
 			DropChances.Row chance = chances.get(i);
-			double toNext = chance.toNext();
+			double byNow = chance.getChanceOfOne();
 			if (showReceived)
 			{
 				row.bar.showReceived(chance.luck(), scale);
@@ -195,13 +196,13 @@ class DropChancesCard extends JPanel
 			}
 			else
 			{
-				row.bar.showExpected(toNext);
+				row.bar.showExpected(byNow);
 				row.number.setText(String.valueOf((int) Math.floor(chance.getExpected())));
 			}
 			String help = names.get(i) + ": " + chance.getReceived() + " received, "
 				+ String.format(Locale.ROOT, "%.2f", chance.getExpected()) + " expected from " + basis
 				+ (i == petRow && eggPetExpected > 0 ? String.format(Locale.ROOT, " plus eggs popped (%.3f)", eggPetExpected) : "")
-				+ ". " + String.format(Locale.ROOT, "%.0f%%", toNext * 100) + " of the way to the next expected drop."
+				+ ". " + percent(byNow) + " of players with as many kills would have at least one by now."
 				+ (i == petRow && allTime != null ? " The Loot Tracker doesn't record pets, so pets are the ones this plugin saw." : "")
 				+ extras.get(i);
 			row.panel.setToolTipText(UiFormat.tooltip(help));

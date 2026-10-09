@@ -1,6 +1,5 @@
 package com.bosstriptracker.view;
 
-import com.bosstriptracker.LuckCardStyle;
 import com.bosstriptracker.boss.BossDefinition;
 import java.util.List;
 import lombok.Builder;
@@ -94,8 +93,4 @@ public class PanelState
 	 * Your display name, for share cards; null if unknown.
 	 */
 	String playerName;
-	/**
-	 * Which Luck card the Trip tab shows; null means the default (Overview).
-	 */
-	LuckCardStyle luckCardStyle;
 }

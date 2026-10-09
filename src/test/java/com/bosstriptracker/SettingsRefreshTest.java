@@ -11,7 +11,6 @@ public class SettingsRefreshTest
 	{
 		assertTrue(BossTripTrackerPlugin.refreshesView("tobPastTeamSize"));
 		assertTrue(BossTripTrackerPlugin.refreshesView("showCurrentValue"));
-		assertTrue(BossTripTrackerPlugin.refreshesView("luckCardStyle"));
 		assertTrue(BossTripTrackerPlugin.refreshesView("idlePauseSeconds"));
 	}
 

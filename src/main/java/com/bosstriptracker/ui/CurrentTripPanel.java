@@ -1,7 +1,6 @@
 package com.bosstriptracker.ui;
 
 import com.bosstriptracker.CanvasSection;
-import com.bosstriptracker.LuckCardStyle;
 import com.bosstriptracker.model.TripEndReason;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
@@ -22,9 +21,8 @@ class CurrentTripPanel extends JPanel
 	private final GoalCard goalCard;
 	private final JLabel status = new JLabel();
 	private final TripSummaryCard summary = new TripSummaryCard();
-	private final LuckCard luckCard;
 	/**
-	 * The share card's luck section as a panel card; shown instead of the classic Luck card by default.
+	 * The share card's luck section as a panel card.
 	 */
 	private final LuckOverviewCard luckOverview;
 	private final JPanel luckHolder = new JPanel(new BorderLayout());
@@ -37,7 +35,6 @@ class CurrentTripPanel extends JPanel
 	{
 		this.itemManager = itemManager;
 		this.sectionStates = sectionStates;
-		this.luckCard = new LuckCard(onSetLastUniqueKc, onClearLastUniqueKc);
 		this.goalCard = new GoalCard(itemManager, onSetGoal, onPause, onResetGoal);
 		this.luckOverview = new LuckOverviewCard(itemManager, onSetLastUniqueKc, onClearLastUniqueKc);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -64,15 +61,8 @@ class CurrentTripPanel extends JPanel
 		luckHolder.setOpaque(false);
 		luckHolder.setAlignmentX(LEFT_ALIGNMENT);
 		luckHolder.setBorder(BorderFactory.createEmptyBorder(4, 0, 0, 0));
-		// One of the two Luck cards is visible, per the "Luck card" setting
-		JPanel cards = new JPanel();
-		cards.setLayout(new BoxLayout(cards, BoxLayout.Y_AXIS));
-		cards.setOpaque(false);
-		luckCard.setAlignmentX(LEFT_ALIGNMENT);
 		luckOverview.setAlignmentX(LEFT_ALIGNMENT);
-		cards.add(luckOverview);
-		cards.add(luckCard);
-		luckHolder.add(cards, BorderLayout.CENTER);
+		luckHolder.add(luckOverview, BorderLayout.CENTER);
 		add(luckHolder);
 		add(goalSpacer);
 		add(status);
@@ -98,11 +88,7 @@ class CurrentTripPanel extends JPanel
 		luckHolder.setVisible(state.getLifetime() != null);
 		if (state.getLifetime() != null)
 		{
-			luckCard.update(state.getLifetime().getDryness(), state.getBoss());
 			luckOverview.update(state.getLifetime().getDryness(), state.getBoss());
-			boolean classic = state.getLuckCardStyle() == LuckCardStyle.CLASSIC;
-			luckCard.setVisible(classic);
-			luckOverview.setVisible(!classic);
 		}
 		UiFormat.setText(status, statusText(state));
 

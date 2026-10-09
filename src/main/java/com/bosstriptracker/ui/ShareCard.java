@@ -71,6 +71,10 @@ class ShareCard
 	 * The luck numbers come from RuneLite's all-time records rather than tracked kills.
 	 */
 	boolean allTime;
+	/**
+	 * The luck numbers rest on assumptions (the Theatre of Blood's share of the team's chance).
+	 */
+	boolean approximate;
 	int dryKills;
 	int longestDryStreak;
 	/**
@@ -82,9 +86,9 @@ class ShareCard
 	 */
 	Integer teamDryStreak;
 	/**
-	 * Kills until the average kills between uniques is reached; negative when overdue by that many.
+	 * The dry streak as a multiple of the drop rate.
 	 */
-	int dueInKills;
+	double dryVsRate;
 	/**
 	 * Average chance of any unique per kill.
 	 */
@@ -179,8 +183,9 @@ class ShareCard
 			.longestDryStreak(dryness.getLongestDryStreak())
 			.lastUniqueKc(dryness.getLastUniqueKc())
 			.teamDryStreak(dryness.getTeamDryStreak())
-			.dueInKills(LuckSummary.dueInKills(dryness))
-			.uniqueRate(dryness.getAnyUniqueRate())
+			.dryVsRate(luck.dryVsRate(dryness.getKillsSinceUnique()))
+			.uniqueRate(luck.getRate())
+			.approximate(luck.isApproximate())
 			.drops(drops)
 			.chances(DropChances.rows(dryness))
 			.chancesSource(DropChances.source(dryness))

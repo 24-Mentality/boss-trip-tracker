@@ -1,14 +1,17 @@
 package com.bosstriptracker.ui;
 
-import com.bosstriptracker.model.DropOdds;
+import com.bosstriptracker.model.LuckOdds;
 import com.bosstriptracker.model.LuckTier;
 import com.bosstriptracker.view.DrynessView;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import lombok.Value;
 
 /**
  * Uniques received vs expected and the luck tier, from RuneLite's all-time records when there are some, otherwise
- * from the kills this plugin tracked. Shared by the Luck card and the share card so they always agree.
+ * from the kills this plugin tracked. Shared by the Luck card, the share card and the overlay so they always agree.
  */
 @Value
 class LuckSummary
@@ -20,11 +23,24 @@ class LuckSummary
 	 */
 	int basisKills;
 	boolean allTime;
-	double percentile;
+	/**
+	 * Chance of this many uniques or fewer, and of this many or more, over the same kills.
+	 */
+	double atMost;
+	double atLeast;
+	/**
+	 * Chance of at least one unique over the same kills.
+	 */
+	double chanceOfAny;
+	/**
+	 * Average chance of any unique per kill over the same kills: the one rate every row uses.
+	 */
+	double rate;
 	/**
 	 * Null without kills.
 	 */
 	LuckTier tier;
+	boolean approximate;
 	/**
 	 * Each unique with its received and expected count, from the same source.
 	 */
@@ -36,10 +52,20 @@ class LuckSummary
 		int received = allTime != null ? allTime.getUniquesReceived() : dryness.getUniquesReceived();
 		double expected = allTime != null ? allTime.getExpectedUniques() : dryness.getExpectedUniques();
 		int basisKills = allTime != null ? allTime.getLootKills() : dryness.getLuckKills();
-		double percentile = DropOdds.luckPercentile(received, expected);
-		return new LuckSummary(received, expected, basisKills, allTime != null, percentile,
-			basisKills == 0 ? null : LuckTier.of(percentile),
-			allTime != null ? allTime.getUniques() : dryness.getUniques());
+		Map<Double, Integer> chances = allTime != null ? allTime.getUniqueChances() : dryness.getUniqueChances();
+		if (chances == null || chances.isEmpty())
+		{
+			// Without each kill's chance, every kill at the average rate
+			chances = basisKills == 0 ? Collections.emptyMap()
+				: Collections.singletonMap(expected / basisKills, basisKills);
+		}
+		double atMost = LuckOdds.atMost(chances, received);
+		double atLeast = LuckOdds.atLeast(chances, received);
+		double rate = basisKills > 0 && expected > 0 ? expected / basisKills : dryness.getAnyUniqueRate();
+		LuckTier tier = basisKills == 0 ? null : LuckTier.of(atMost, atLeast, expected, dryness.getMinExpectedForRuck());
+		return new LuckSummary(received, expected, basisKills, allTime != null, atMost, atLeast,
+			1 - LuckOdds.atMost(chances, 0), rate, tier,
+			dryness.isLuckApproximate(), allTime != null ? allTime.getUniques() : dryness.getUniques());
 	}
 
 	/**
@@ -47,18 +73,52 @@ class LuckSummary
 	 */
 	String tierHelp()
 	{
-		return UiFormat.tooltip("You've had more uniques than about " + Math.round(percentile * 100)
-			+ "% of players with the same kills (50% is exactly average).\n\n"
-			+ "LUCKY AS RUCK: 90% and up\nLucky: 65% to 90%\nOn Rate: 35% to 65%\nDry: 10% to 35%\n"
-			+ "DRY AS RUCK: 10% and down");
+		StringBuilder help = new StringBuilder();
+		if (tier == LuckTier.TOO_EARLY)
+		{
+			help.append("Under one unique is expected so far, so it's too early to tell.");
+		}
+		else if (atMost <= LuckTier.TAIL)
+		{
+			help.append(String.format(Locale.ROOT, "1 in %s players with as many kills is this dry or drier.", oneIn(atMost)));
+		}
+		else if (atLeast <= LuckTier.TAIL)
+		{
+			help.append(String.format(Locale.ROOT, "Only 1 in %s players with as many kills is this lucky or luckier.",
+				oneIn(atLeast)));
+		}
+		else
+		{
+			help.append("Most players with as many kills have about as many uniques as you.");
+		}
+		help.append("\n\nDRY AS RUCK: in the driest 10% of players\nDry: the driest 35%\nOn Rate: in between\n"
+			+ "Lucky: the luckiest 35%\nLUCKY AS RUCK: the luckiest 10%");
+		if (approximate)
+		{
+			help.append("\n\nApproximate: your chance is taken as an equal share of the team's, with no deaths.");
+		}
+		return UiFormat.tooltip(help.toString());
 	}
 
 	/**
-	 * Kills until the average number of kills between uniques; negative when past it by that many.
+	 * The dry streak as a multiple of the drop rate, e.g. 1.4 for 1.4 times the average kills between uniques.
 	 */
-	static int dueInKills(DrynessView dryness)
+	double dryVsRate(int killsSinceUnique)
 	{
-		return (int) Math.ceil(1 / dryness.getAnyUniqueRate()) - dryness.getKillsSinceUnique();
+		return rate <= 0 ? 0 : killsSinceUnique * rate;
+	}
+
+	/**
+	 * Share of players who would have had a unique within this many kills.
+	 */
+	double chanceByNow(int killsSinceUnique)
+	{
+		return rate <= 0 ? 0 : 1 - Math.pow(1 - rate, killsSinceUnique);
+	}
+
+	private static String oneIn(double chance)
+	{
+		return String.format(Locale.ROOT, "%,d", Math.max(1, Math.round(1 / Math.max(chance, 1e-9))));
 	}
 
 	/**

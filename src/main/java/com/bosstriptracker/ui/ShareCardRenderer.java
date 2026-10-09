@@ -165,20 +165,14 @@ final class ShareCardRenderer
 		{
 			text(g, bold, UiFormat.tierColor(card.getTier()), card.getTier().getLabel(), left + width(g, bold, "Luck Status:") + 6, y + 17);
 		}
-		textRight(g, small, UiFormat.MUTED_TEXT, card.isAllTime() ? "All-time (Loot Tracker)" : "Tracked kills", right, y + 16);
+		textRight(g, small, UiFormat.MUTED_TEXT, (card.isAllTime() ? "All-time (Loot Tracker)" : "Tracked kills")
+			+ (card.isApproximate() ? " · approx." : ""), right, y + 16);
 
 		String expected = String.format(Locale.ROOT, card.getUniquesExpected() >= 10 ? "%.1f" : "%.2f", card.getUniquesExpected());
 		int half = (right - left) / 2;
 		pair(g, "Uniques", card.getUniquesReceived() + " / " + expected, left, y + 36);
 		pair(g, "Dry streak", String.format(Locale.ROOT, "%,d kc", card.getDryKills()), left + half, y + 36);
-		if (card.getDueInKills() > 0)
-		{
-			pair(g, "Next unique due in", String.format(Locale.ROOT, "%,d kc", card.getDueInKills()), left, y + 54);
-		}
-		else
-		{
-			pair(g, "Overdue", String.format(Locale.ROOT, "+%,d kc", -card.getDueInKills()), UiFormat.LOSS, left, y + 54);
-		}
+		pair(g, "Dry streak vs rate", String.format(Locale.ROOT, "%.1f\u00d7", card.getDryVsRate()), left, y + 54);
 		pair(g, "Rate", "1/" + UiFormat.oneIn(card.getUniqueRate()), left + half, y + 54);
 		pair(g, "Worst dry streak", String.format(Locale.ROOT, "%,d kc", card.getLongestDryStreak()), left, y + 72);
 		if (card.getTeamDryStreak() != null)
@@ -217,7 +211,7 @@ final class ShareCardRenderer
 	}
 
 	/**
-	 * Both of the panel's drop chances tabs side by side: Expected (progress to the next statistical drop, and the
+	 * Both of the panel's drop chances tabs side by side: Expected (the chance of at least one by now, and the
 	 * drops expected) and Received (ahead of or behind expectation, and the drops received).
 	 */
 	private int drawChances(Graphics2D g, ShareCard card, IntFunction<Image> icons, int y)
@@ -249,7 +243,7 @@ final class ShareCardRenderer
 				drawIcon(g, icons.apply(row.getItemId()), left, rowY, 23, 20);
 			}
 			int barY = rowY + (CHANCE_ROW - CHANCE_BAR) / 2;
-			DropBar.paintExpected(g, small, barsLeft, barY, barWidth, CHANCE_BAR, row.toNext());
+			DropBar.paintExpected(g, small, barsLeft, barY, barWidth, CHANCE_BAR, row.getChanceOfOne());
 			textRight(g, small, TEXT, String.valueOf((int) Math.floor(row.getExpected())), barsLeft + column, barY + 12);
 			DropBar.paintReceived(g, small, receivedLeft, barY, barWidth, CHANCE_BAR, row.luck(), scale);
 			textRight(g, small, TEXT, String.valueOf(row.getReceived()), receivedLeft + column, barY + 12);

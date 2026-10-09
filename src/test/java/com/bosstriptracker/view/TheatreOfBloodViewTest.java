@@ -106,6 +106,20 @@ public class TheatreOfBloodViewTest
 	}
 
 	@Test
+	public void trackedRaidsInTheRecordUseTheirRealTeamSize()
+	{
+		// Raids 5 and 6 were duos, and the Loot Tracker saved after them: only the other 4 Normal raids use the
+		// typical team of 4
+		history.getTrips().forEach(trip -> trip.getKills().forEach(kill -> kill.setPartySize(2)));
+		AllTimeCounts counts = new AllTimeCounts(6, 6, 1, 10_000, ImmutableMap.of(),
+			ImmutableMap.of(TheatreOfBloodBoss.NORMAL, 6));
+		DrynessView.AllTime allTime = builder.lifetime(boss, history, null, counts, false, 0).getDryness().getAllTime();
+		assertEquals(4 / 9.1 / 4 + 2 / 9.1 / 2, allTime.getExpectedUniques(), DELTA);
+		// The exact odds use the same chances
+		assertEquals(ImmutableMap.of(1 / 9.1 / 4, 4, 1 / 9.1 / 2, 2), allTime.getUniqueChances());
+	}
+
+	@Test
 	public void theGamesDryStreakPlacesTheLastPurple()
 	{
 		// A purple before tracking (the record has one); in the vault of raid 6 the game said "dry streak of 2"

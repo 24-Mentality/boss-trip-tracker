@@ -48,12 +48,13 @@ public class ShareCardTest
 		assertEquals(Integer.valueOf(2_752), card.getKillCount());
 		assertEquals(11, card.getUniquesReceived());
 		assertEquals(2630 / 205.6, card.getUniquesExpected(), 1e-9);
-		assertEquals(LuckTier.of(com.bosstriptracker.model.DropOdds.luckPercentile(11, 2630 / 205.6)), card.getTier());
+		// 11 against 12.8 expected: just over 35% of players are as dry or drier
+		assertEquals(LuckTier.ON_RATE, card.getTier());
 		assertTrue(card.isAllTime());
 		assertEquals(832, card.getDryKills());
 		assertEquals(847, card.getLongestDryStreak());
-		// 206 kills on average between uniques, so 626 past it
-		assertEquals(-626, card.getDueInKills());
+		// 832 kills at 1/205.6: about 4 times the drop rate
+		assertEquals(832 / 205.6, card.getDryVsRate(), 1e-9);
 		assertEquals(172, card.getTrackedKills());
 		assertEquals(Integer.valueOf(2_565), card.getTrackedFromKc());
 		// Fang, kisten, then the pet

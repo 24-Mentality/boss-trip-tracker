@@ -51,13 +51,16 @@ bosses are planned.
   without dealing damage they pause (the idle time isn't counted) and restart on your next
   hit. **Pause** stops them straight away; it resumes when you press it again or, with
   **Auto-resume when I attack** on, when you next damage the boss.
-- **Luck** (Trip tab, under the kill goal): uniques received vs expected with a luck tier (LUCKY AS RUCK, Lucky,
-  On Rate, Dry, DRY AS RUCK), kills since your last unique, how far past the drop rate you
-  are, the rate and a count of each unique and the pet, laid out like the share card. The eye
-  icon collapses it to the title row, which keeps the tier. **Luck card** (Configuration →
-  Display) switches to the Classic card, which adds the chance by now, the next unique's kill
-  count and a progress bar. On either card, right-click
-  the card to enter the kill count of your last unique from before you installed the plugin;
+- **Luck** (Trip tab, under the kill goal): uniques received vs expected with a luck tier, kills
+  since your last unique, that streak as a multiple of the drop rate, the rate and a count of
+  each unique and the pet, laid out like the share card. The tier comes from the tail you're in:
+  **DRY AS RUCK** in the driest 10% of players with as many kills, **Dry** in the driest 35%,
+  **Lucky** and **LUCKY AS RUCK** the same on the lucky side, **On Rate** otherwise, and
+  **Too early to tell** until at least one unique is expected. The odds are exact, with every
+  kill at its own rate. At the Theatre of Blood they're marked approximate (your chance is taken
+  as an equal share of the team's), and the AS RUCK tiers wait for 3 expected purples. The eye
+  icon collapses the card to the title row, which keeps the tier. Right-click the card to enter
+  the kill count of your last unique from before you installed the plugin;
   the dry streak then counts from there until the plugin tracks a newer unique (**Last Unique**
   shows its kill count). The dry streak and **Worst dry streak** go by your all-time kill
   count (RuneLite's Chat Commands), so kills done without the plugin, before or after you

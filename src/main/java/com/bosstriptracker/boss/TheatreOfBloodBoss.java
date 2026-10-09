@@ -338,6 +338,31 @@ public final class TheatreOfBloodBoss extends BossDefinition
 		return instanced && region != VER_SINHAZA_REGION_ID && (status == PARTY_IN_RAID || status == PARTY_LEAVING);
 	}
 
+	/**
+	 * Your share of the team's purple chance is an estimate (equal contribution, no deaths), so the AS RUCK tiers wait
+	 * for enough raids to mean something.
+	 */
+	@Override
+	public double getMinExpectedForRuckTiers()
+	{
+		return 3;
+	}
+
+	@Override
+	public boolean isLuckApproximate()
+	{
+		return true;
+	}
+
+	/**
+	 * Lil' Zik: 1/650 in Normal and 1/500 in Hard (OSRS Wiki), lower with weaker personal performance.
+	 */
+	@Override
+	public String getPetRateNote()
+	{
+		return "1/650 (Normal) to 1/500 (Hard), lower with weaker personal performance";
+	}
+
 	@Override
 	public List<Integer> getTeamSlotVarbits()
 	{

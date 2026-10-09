@@ -2856,7 +2856,6 @@ public class TripTracker
 			.corruptBackup(corruptBackup)
 			.killStartedAt(fighting ? fightStartedAt : null)
 			.playerName(history == null ? null : history.getLastDisplayName())
-			.luckCardStyle(config.luckCardStyle())
 			.build();
 		stateListener.accept(state);
 	}

@@ -61,7 +61,7 @@ class LuckOverviewCard extends JPanel
 	private final JMenuItem clearKc = new JMenuItem("Clear KC of my last unique");
 	private BossDefinition boss;
 	/**
-	 * Collapsed with the eye icon; remembered for the session, like the classic card.
+	 * Collapsed with the eye icon; remembered for the session.
 	 */
 	private boolean hidden;
 
@@ -138,7 +138,7 @@ class LuckOverviewCard extends JPanel
 		menu.add(setKc);
 		menu.add(clearKc);
 		setComponentPopupMenu(menu);
-		LuckCard.inheritPopupMenu(this);
+		UiFormat.inheritPopupMenu(this);
 		applyVisibility();
 	}
 
@@ -195,7 +195,7 @@ class LuckOverviewCard extends JPanel
 		String help = luck.getTier() == null ? UiFormat.tooltip("No tier until there are kills to compare.") : luck.tierHelp();
 		tier.setToolTipText(help);
 		title.setToolTipText(help);
-		source.setText(luck.isAllTime() ? "All-time" : "Tracked");
+		source.setText((luck.isAllTime() ? "All-time" : "Tracked") + (luck.isApproximate() ? " (approx.)" : ""));
 		source.setToolTipText(UiFormat.tooltip(luck.isAllTime()
 			? String.format(Locale.ROOT, "From RuneLite's Loot Tracker record: %,d kills.", luck.getBasisKills())
 			: String.format(Locale.ROOT, "From the %,d %s this plugin has tracked.", luck.getBasisKills(), boss.getLuckKillsName())));
@@ -244,19 +244,15 @@ class LuckOverviewCard extends JPanel
 			set(teamDry, "Team dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getTeamDryStreak()), null,
 				UiFormat.teamDryStreakHelp(dryness.isTeamDryStreakFromGame()));
 		}
-		int dueIn = LuckSummary.dueInKills(dryness);
-		if (dueIn > 0)
-		{
-			set(due, "Due in", String.format(Locale.ROOT, "%,d kc", dueIn), null,
-				"Kills until the average number of kills between uniques.");
-		}
-		else
-		{
-			set(due, "Overdue", String.format(Locale.ROOT, "+%,d kc", -dueIn), UiFormat.LOSS,
-				"Kills past the average number of kills between uniques. Each kill is still the same chance.");
-		}
+		int dry = dryness.getKillsSinceUnique();
+		set(due, "Vs rate", String.format(Locale.ROOT, "%.1f\u00d7", luck.dryVsRate(dry)), null,
+			String.format(Locale.ROOT, "Your dry streak is %.1f times the drop rate (1/%s). %.0f%% of players would have"
+				+ " had a unique within this many kills; each kill is still the same chance.", luck.dryVsRate(dry),
+				UiFormat.oneIn(luck.getRate()), luck.chanceByNow(dry) * 100));
 		clearKc.setEnabled(dryness.getEnteredLastUniqueKc() != null);
-		set(rate, "Rate", "1/" + UiFormat.oneIn(dryness.getAnyUniqueRate()), null, "Chance of any unique per kill.");
+		set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per kill"
+			+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked kills.")
+			+ (luck.isApproximate() ? " Approximate: an equal share of the team's chance." : ""));
 
 		for (int i = 0; i < counts.size() && i < shown.size(); i++)
 		{
@@ -265,7 +261,9 @@ class LuckOverviewCard extends JPanel
 			count.setText("x" + drop.getReceived());
 			count.setForeground(drop.getReceived() > 0 ? UiFormat.UNIQUE_BORDER : UiFormat.MUTED_TEXT);
 			count.setToolTipText(UiFormat.tooltip(drop.getName() + ": " + drop.getReceived() + " received, "
-				+ String.format(Locale.ROOT, "%.2f", drop.getExpected()) + " expected (1/" + UiFormat.oneIn(drop.getRate()) + ")."));
+				+ String.format(Locale.ROOT, "%.2f", drop.getExpected()) + " expected ("
+				+ (pet != null && drop.getItemId() == pet.getItemId() && dryness.getPetRateNote() != null
+				? dryness.getPetRateNote() : "1/" + UiFormat.oneIn(drop.getRate())) + ")."));
 		}
 	}
 
@@ -315,7 +313,7 @@ class LuckOverviewCard extends JPanel
 			}
 		}
 		// New icon and count labels need the right-click menu too
-		LuckCard.inheritPopupMenu(drops);
+		UiFormat.inheritPopupMenu(drops);
 		drops.revalidate();
 	}
 

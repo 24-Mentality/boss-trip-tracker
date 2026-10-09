@@ -4,7 +4,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import com.bosstriptracker.CanvasSection;
-import com.bosstriptracker.LuckCardStyle;
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.DropKind;
 import com.bosstriptracker.boss.ExpectedDrop;
@@ -121,18 +120,6 @@ public class PanelFitTest
 				panel.selectTab(tab);
 				check(panel, "raid tab " + tab, problems);
 			}
-			panel.selectTab(0);
-			panel.update(worstCaseState(PanelState.Status.IN_TRIP, false, true).toBuilder()
-				.luckCardStyle(LuckCardStyle.CLASSIC)
-				.build());
-			check(panel, "raid classic luck card", problems);
-
-			// The classic Luck card, hidden by default
-			PanelState classic = worstCaseState(PanelState.Status.IN_TRIP, false).toBuilder()
-				.luckCardStyle(LuckCardStyle.CLASSIC)
-				.build();
-			panel.update(classic);
-			check(panel, "classic luck card", problems);
 			panel.shutDown();
 		});
 		assertTrue("Labels that don't fit:\n" + String.join("\n", problems), problems.isEmpty());

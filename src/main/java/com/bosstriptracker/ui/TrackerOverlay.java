@@ -5,6 +5,7 @@ import com.bosstriptracker.OverlayRows;
 import com.bosstriptracker.OverlayStat;
 import com.bosstriptracker.model.LuckTier;
 import com.bosstriptracker.model.TripMath;
+import com.bosstriptracker.view.DrynessView;
 import com.bosstriptracker.view.GoalView;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
@@ -97,6 +98,8 @@ public class TrackerOverlay extends OverlayPanel
 	 * Scaled icons by item id. Only used on the client thread, where both drawing and icon loading callbacks run.
 	 */
 	private final Map<Integer, BufferedImage> scaledIcons = new HashMap<>();
+	private DrynessView luckFor;
+	private LuckTier luckTier;
 
 	/**
 	 * @param state the latest panel state; read on the client thread, where it is also produced
@@ -239,7 +242,7 @@ public class TrackerOverlay extends OverlayPanel
 	/**
 	 * Adds the row for a stat, or nothing when what it shows isn't there (no goal, no trip).
 	 */
-	private static void addRow(List<Row> rows, OverlayStat stat, PanelState s, GoalView goal, TripView trip, long now)
+	private void addRow(List<Row> rows, OverlayStat stat, PanelState s, GoalView goal, TripView trip, long now)
 	{
 		// Time-based numbers are greyed while the clocks are stopped, as in the panel
 		Color goalClock = goal != null && goal.isRunning() ? Color.WHITE : MUTED;
@@ -320,12 +323,25 @@ public class TrackerOverlay extends OverlayPanel
 				break;
 			case LUCK:
 				// The Luck card's tier, from the same numbers
-				LuckTier tier = s.getLifetime().getDryness() == null ? null : LuckSummary.of(s.getLifetime().getDryness()).getTier();
+				LuckTier tier = luckTier(s.getLifetime().getDryness());
 				rows.add(tier == null ? line(LUCK, NOT_AVAILABLE, MUTED) : line(LUCK, tier.getLabel(), UiFormat.tierColor(tier)));
 				break;
 			default:
 				break;
 		}
+	}
+
+	/**
+	 * Worked out once per luck view rather than every frame.
+	 */
+	private LuckTier luckTier(DrynessView dryness)
+	{
+		if (dryness != luckFor)
+		{
+			luckFor = dryness;
+			luckTier = dryness == null ? null : LuckSummary.of(dryness).getTier();
+		}
+		return luckTier;
 	}
 
 	/**

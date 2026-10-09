@@ -2,6 +2,8 @@ package com.bosstriptracker.ui;
 
 import com.bosstriptracker.model.LuckTier;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -180,6 +182,24 @@ final class UiFormat
 		if (!Objects.equals(component.getForeground(), color))
 		{
 			component.setForeground(color);
+		}
+	}
+
+	/**
+	 * Lets every child show the container's right-click menu.
+	 */
+	static void inheritPopupMenu(Container container)
+	{
+		for (Component child : container.getComponents())
+		{
+			if (child instanceof JComponent)
+			{
+				((JComponent) child).setInheritsPopupMenu(true);
+			}
+			if (child instanceof Container)
+			{
+				inheritPopupMenu((Container) child);
+			}
 		}
 	}
 }

@@ -121,6 +121,8 @@ public class BossTripTrackerPlugin extends Plugin
 	{
 		migrateSettings();
 		migrateOverlaySettings();
+		// The Classic luck card was removed: its setting does nothing now
+		configManager.unsetConfiguration(BossTripTrackerConfig.GROUP, "luckCardStyle");
 		BossRegistry registry = BossRegistry.standard();
 		// The diagnostic log is only for collecting data during development (./gradlew run passes --developer-mode)
 		if (developerMode)

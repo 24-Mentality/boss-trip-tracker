@@ -276,19 +276,6 @@ public interface BossTripTrackerConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "luckCardStyle",
-		name = "Luck card",
-		description = "Overview is laid out like the share card; Classic is the original card with the dry streak"
-			+ " progress bar",
-		section = displaySection,
-		position = 2
-	)
-	default LuckCardStyle luckCardStyle()
-	{
-		return LuckCardStyle.OVERVIEW;
-	}
-
-	@ConfigItem(
 		keyName = "shareShowName",
 		name = "Show my name on share cards",
 		description = "Put your display name on share cards made with the camera button",

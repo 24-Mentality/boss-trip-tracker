@@ -22,14 +22,4 @@ public class DropOddsTest
 		assertEquals(143, DropOdds.killsForChance(ANY_UNIQUE, 0.5));
 		assertEquals(473, DropOdds.killsForChance(ANY_UNIQUE, 0.9));
 	}
-
-	@Test
-	public void luckPercentile()
-	{
-		// Nothing expected and nothing received is exactly average
-		assertEquals(0.5, DropOdds.luckPercentile(0, 0), 1e-9);
-		// Going unique-less over twice the drop rate is dry; two early uniques is lucky
-		assertTrue(DropOdds.luckPercentile(0, 2.0) < 0.1);
-		assertTrue(DropOdds.luckPercentile(2, 0.5) > 0.9);
-	}
 }

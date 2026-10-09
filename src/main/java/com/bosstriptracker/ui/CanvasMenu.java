@@ -47,6 +47,6 @@ final class CanvasMenu
 			}
 		});
 		card.setComponentPopupMenu(menu);
-		LuckCard.inheritPopupMenu(card);
+		UiFormat.inheritPopupMenu(card);
 	}
 }

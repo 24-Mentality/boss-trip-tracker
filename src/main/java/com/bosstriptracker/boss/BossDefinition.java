@@ -444,6 +444,31 @@ public abstract class BossDefinition
 	 * Varbits that are set for each player in the team (the Theatre of Blood's health bar slots), to count the
 	 * team size at the start of a raid. Empty for solo bosses.
 	 */
+	/**
+	 * The AS RUCK luck tiers need at least this many uniques expected; 0 for any.
+	 */
+	public double getMinExpectedForRuckTiers()
+	{
+		return 0;
+	}
+
+	/**
+	 * Luck rests on assumptions (e.g. an equal share of a team's chance), so it's labelled approximate.
+	 */
+	public boolean isLuckApproximate()
+	{
+		return false;
+	}
+
+	/**
+	 * The pet's rate when it can't be one number (it depends on mode and personal performance); null to show the
+	 * average rate.
+	 */
+	public String getPetRateNote()
+	{
+		return null;
+	}
+
 	public List<Integer> getTeamSlotVarbits()
 	{
 		return Collections.emptyList();

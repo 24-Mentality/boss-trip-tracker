@@ -4,6 +4,7 @@ import com.bosstriptracker.view.DrynessView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import lombok.Value;
 
 /**
@@ -27,14 +28,10 @@ final class DropChances
 		int itemId;
 		double expected;
 		int received;
-
 		/**
-		 * Expected tab: how far toward the next statistical drop (0 to 1).
+		 * Expected tab: the share of players with as many kills who'd have at least one by now.
 		 */
-		double toNext()
-		{
-			return expected - Math.floor(expected);
-		}
+		double chanceOfOne;
 
 		/**
 		 * Received tab: drops ahead of (or behind) expectation.
@@ -49,19 +46,22 @@ final class DropChances
 	{
 		List<Row> rows = new ArrayList<>();
 		DrynessView.AllTime allTime = dryness.getAllTime();
-		rows.add(new Row(ANY, allTime != null ? allTime.getExpectedUniques() : dryness.getExpectedUniques(),
-			allTime != null ? allTime.getUniquesReceived() : dryness.getUniquesReceived()));
+		LuckSummary luck = LuckSummary.of(dryness);
+		rows.add(new Row(ANY, luck.getExpected(), luck.getReceived(), luck.getChanceOfAny()));
+		Map<Integer, Double> chanceOfOne = allTime != null ? allTime.getChanceOfOne() : dryness.getChanceOfOne();
 		for (DrynessView.Drop unique : allTime != null ? allTime.getUniques() : dryness.getUniques())
 		{
-			rows.add(new Row(unique.getItemId(), unique.getExpected(), unique.getReceived()));
+			Double chance = chanceOfOne == null ? null : chanceOfOne.get(unique.getItemId());
+			rows.add(new Row(unique.getItemId(), unique.getExpected(), unique.getReceived(),
+				chance != null ? chance : 1 - Math.exp(-unique.getExpected())));
 		}
 		DrynessView.Drop pet = dryness.getPet();
 		if (pet != null)
 		{
 			// Eggs popped add to the pet (the Maggot King); the all-time figures already include them
-			rows.add(allTime != null
-				? new Row(pet.getItemId(), allTime.getPet().getExpected(), allTime.getPet().getReceived())
-				: new Row(pet.getItemId(), pet.getExpected() + dryness.getEggPetExpected(), pet.getReceived() + dryness.getPetsFromEggs()));
+			double expected = allTime != null ? allTime.getPet().getExpected() : pet.getExpected() + dryness.getEggPetExpected();
+			int received = allTime != null ? allTime.getPet().getReceived() : pet.getReceived() + dryness.getPetsFromEggs();
+			rows.add(new Row(pet.getItemId(), expected, received, 1 - Math.exp(-expected)));
 		}
 		return rows;
 	}

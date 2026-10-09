@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Five luck tiers from a luck percentile (see {@link DropOdds#luckPercentile}), symmetric around 50%:
- * 90% and up / 65% and up / between / 35% and down / 10% and down.
+ * Luck tiers from the tail you're in: on the dry side, the chance of this many uniques or fewer; on the lucky side,
+ * the chance of this many or more (see {@link LuckOdds}). 10% or less is AS RUCK, 35% or less is Dry or Lucky.
  */
 @Getter
 @RequiredArgsConstructor
@@ -15,39 +15,45 @@ public enum LuckTier
 	LUCKY("Lucky"),
 	ON_RATE("On Rate"),
 	DRY("Dry"),
-	DRY_AS_RUCK("DRY AS RUCK");
-
+	DRY_AS_RUCK("DRY AS RUCK"),
 	/**
-	 * Distance from 50% at which a tier starts: 0.15 gives 65% / 35%, 0.40 gives 90% / 10%.
+	 * Under one unique expected, and not already in a 10% tail.
 	 */
-	public static final double LUCKY_DISTANCE = 0.15;
-	public static final double RUCK_DISTANCE = 0.40;
+	TOO_EARLY("Too early to tell");
+
+	public static final double RUCK_TAIL = 0.10;
+	public static final double TAIL = 0.35;
 
 	private final String label;
 
 	/**
-	 * @param percentile share of players with the same kills who have fewer drops (0.5 is average)
+	 * @param atMost             chance of this many uniques or fewer
+	 * @param atLeast            chance of this many or more
+	 * @param expected           uniques expected
+	 * @param minExpectedForRuck the AS RUCK tiers need at least this many uniques expected (the Theatre of Blood's
+	 *                           numbers are approximate); 0 for none
 	 */
-	public static LuckTier of(double percentile)
+	public static LuckTier of(double atMost, double atLeast, double expected, double minExpectedForRuck)
 	{
 		// Rounding avoids floating point putting an exact boundary on the wrong side
-		double distance = Math.round((percentile - 0.5) * 1_000_000) / 1_000_000.0;
-		if (distance >= RUCK_DISTANCE)
+		atMost = round(atMost);
+		atLeast = round(atLeast);
+		boolean ruck = expected >= minExpectedForRuck;
+		LuckTier tier = ON_RATE;
+		if (atMost <= TAIL)
 		{
-			return LUCKY_AS_RUCK;
+			tier = atMost <= RUCK_TAIL && ruck ? DRY_AS_RUCK : DRY;
 		}
-		if (distance >= LUCKY_DISTANCE)
+		else if (atLeast <= TAIL)
 		{
-			return LUCKY;
+			tier = atLeast <= RUCK_TAIL && ruck ? LUCKY_AS_RUCK : LUCKY;
 		}
-		if (distance <= -RUCK_DISTANCE)
-		{
-			return DRY_AS_RUCK;
-		}
-		if (distance <= -LUCKY_DISTANCE)
-		{
-			return DRY;
-		}
-		return ON_RATE;
+		boolean farOut = atMost <= RUCK_TAIL || atLeast <= RUCK_TAIL;
+		return expected < 1 && !farOut ? TOO_EARLY : tier;
+	}
+
+	private static double round(double chance)
+	{
+		return Math.round(chance * 1_000_000) / 1_000_000.0;
 	}
 }
