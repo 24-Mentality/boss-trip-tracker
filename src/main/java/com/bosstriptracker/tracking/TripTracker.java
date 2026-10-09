@@ -36,7 +36,6 @@ import java.util.Comparator;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,15 +97,6 @@ public class TripTracker
 {
 	private static final int CLICK_MATCH_TICKS = RecentClicks.MATCH_TICKS;
 	/**
-	 * After a corpse click, ground spawns count as loot overflow and pet messages count for this kill.
-	 */
-	private static final int CORPSE_WINDOW_TICKS = 10;
-	/**
-	 * If the Loot Tracker has not reported the kill this many ticks after the corpse click,
-	 * inventory gains are used instead.
-	 */
-	private static final int LOOT_FALLBACK_TICKS = 8;
-	/**
 	 * Paying the aranei scout goes through dialogue, so allow about a minute after clicking it.
 	 */
 	private static final int GRAVE_MOVE_WINDOW_TICKS = 100;
@@ -149,6 +139,8 @@ public class TripTracker
 	private final TripSession s = new TripSession();
 	private final HistoryKeeper keeper;
 	private final RaidSession raids;
+	private final LootRecorder loot;
+	private int lastBankTick = -100;
 	private final SupplyAccounting accounting;
 	private final EggTracker eggTracker;
 	private final PolishTracker polishTracker;
@@ -170,30 +162,6 @@ public class TripTracker
 	private BossDefinition deathBoss;
 	private int graveWindowEndTick = -1;
 
-	private Kill lootKill;
-	private int lastKillTick = -100;
-	private int lastCorpseClickTick = -100;
-	private boolean lootReceived;
-	private int fallbackEndTick = -1;
-	private final Map<Integer, Long> fallbackGains = new HashMap<>();
-	private final KillLootSources lootSources = new KillLootSources();
-	/**
-	 * A corpse choice clicked before its kill exists (the kill-count message was missed); the loot event's kill
-	 * takes it.
-	 */
-	private String pendingChoice;
-	private int pendingChoiceTick = -100;
-	private Long bossSpawnedAt;
-	private Long bossDiedAt;
-	/**
-	 * When the boss you're fighting spawned, for the live kill timer; null between kills. The game's Fight
-	 * duration is the time from the spawn to the kill-count message (checked against the diagnostic logs).
-	 */
-	private Long fightStartedAt;
-
-	private int lastBankTick = -100;
-	private final List<GroundEntry> groundItems = new ArrayList<>();
-	private final List<GroundEntry> recentDespawns = new ArrayList<>();
 	private final Map<Integer, Long> pendingDrops = new HashMap<>();
 	/**
 	 * Worn ammo, and a worn weapon that stacks (knives, darts): your own lands on the floor and can be picked back up.
@@ -210,7 +178,6 @@ public class TripTracker
 	 */
 	private boolean zeroPricesChecked;
 	private final Deque<PreEntryUse> preEntryUses = new ArrayDeque<>();
-
 
 	private long lastPeriodicSave;
 	private long lastPushAt;
@@ -243,18 +210,48 @@ public class TripTracker
 		this.allTimeRecords = new AllTimeRecords(configManager, gson);
 		this.keeper = new HistoryKeeper(s, store, gson, executor, clientThread, registry);
 		this.ledger = new InventoryLedger(client);
+		TrackerHost host = new Host();
+		this.eggTracker = new EggTracker(registry, prices, recentClicks, host);
+		this.loot = new LootRecorder(s, keeper, client, prices, eggTracker, new LootRecorder.Host()
+		{
+			@Override
+			public void alertForDrop(BossDefinition boss, int itemId, long quantity)
+			{
+				TripTracker.this.alertForDrop(boss, itemId, quantity);
+			}
+
+			@Override
+			public void alertPet(String message)
+			{
+				TripTracker.this.alertPet(message);
+			}
+
+			@Override
+			public void ownDropPickedUp(int itemId, long quantity)
+			{
+				pendingDrops.computeIfPresent(itemId, (id, q) -> q - quantity > 0 ? q - quantity : null);
+			}
+
+			@Override
+			public void ownAmmoPickedUp(int itemId, long quantity)
+			{
+				ItemEntries.reduce(s.currentTrip.getSupplies(), itemId, false, quantity);
+				s.viewDirty = true;
+				keeper.requestSave();
+			}
+		});
 		this.raids = new RaidSession(s, keeper, registry, prices, new RaidSession.Host()
 		{
 			@Override
 			public void recordKill(Integer killCount, String variant, int tick, long now)
 			{
-				TripTracker.this.recordKill(killCount, variant, tick, now);
+				loot.recordKill(killCount, variant, tick, now);
 			}
 
 			@Override
 			public Kill lootKill()
 			{
-				return lootKill;
+				return loot.getLootKill();
 			}
 
 			@Override
@@ -278,8 +275,6 @@ public class TripTracker
 		this.accounting = new SupplyAccounting(prices);
 		this.chargeCounter = new ChargeCounter(prices::isMeleeWeapon);
 		this.registry = registry;
-		TrackerHost host = new Host();
-		this.eggTracker = new EggTracker(registry, prices, recentClicks, host);
 		this.polishTracker = new PolishTracker(registry, prices, host);
 		for (BossDefinition boss : registry.all())
 		{
@@ -325,11 +320,9 @@ public class TripTracker
 		s.ignoreDeltasUntilTick = -1;
 		graveWindowEndTick = -1;
 		pendingDrops.clear();
-		resetKillState();
+		loot.resetKillState();
 		leaveDelay.inside();
-		fightStartedAt = null;
-		bossSpawnedAt = null;
-		bossDiedAt = null;
+		loot.resetFight();
 		recentClicks.clear();
 		preEntryUses.clear();
 		ledger.reset();
@@ -517,7 +510,7 @@ public class TripTracker
 		s.suspendedAt = null;
 		s.suspendedOutside = false;
 		s.inLairPause = null;
-		lootKill = null;
+		loot.forgetKill();
 	}
 
 	/**
@@ -812,7 +805,7 @@ public class TripTracker
 		{
 			processDelta(delta, tick, now);
 		}
-		applyLootFallback(tick);
+		loot.applyLootFallback(tick);
 		polishTracker.tick(tick);
 
 		int region = WorldPoint.fromLocalInstance(client, player.getLocalLocation()).getRegionID();
@@ -1105,34 +1098,7 @@ public class TripTracker
 				return;
 			}
 
-			if (tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS)
-			{
-				// Repeated clicks on the same corpse
-				return;
-			}
-
-			// Kills come from the kill-count message or a loot event, never a click: a corpse clicked again after an
-			// interruption is the same kill
-			if (choice != null)
-			{
-				Kill kill = unchosenKill();
-				if (kill != null)
-				{
-					kill.setChoice(choice.getKey());
-				}
-				else if (lootKill == null)
-				{
-					pendingChoice = choice.getKey();
-					pendingChoiceTick = tick;
-				}
-			}
-			s.viewDirty = true;
-			lastCorpseClickTick = tick;
-			if (!lootReceived)
-			{
-				fallbackEndTick = tick + LOOT_FALLBACK_TICKS;
-				fallbackGains.clear();
-			}
+			loot.corpseClicked(choice, tick);
 		}
 		else if (pendingDeath != null && deathBoss.getGraveHelperNpcs().contains(npc.getId()))
 		{
@@ -1166,7 +1132,7 @@ public class TripTracker
 		}
 		if (ChatPatterns.isPetMessage(message))
 		{
-			petMessage(tick);
+			loot.petMessage(tick);
 			return;
 		}
 		Boolean thrall = ChatPatterns.thrall(message);
@@ -1202,57 +1168,24 @@ public class TripTracker
 		Long fightDelay = s.tripBoss.fightStartDelayMs(text);
 		if (fightDelay != null)
 		{
-			fightStartedAt = now + fightDelay;
-			bossSpawnedAt = fightStartedAt;
-			bossDiedAt = null;
-			s.viewDirty = true;
+			loot.fightStarts(now + fightDelay);
 			return;
 		}
 
 		ChatPatterns.KillCount killCount = ChatPatterns.killCount(message);
 		if (killCount != null && isKillName(s.tripBoss, killCount.getName()))
 		{
-			recordKill(killCount.getCount(), variantForKillName(s.tripBoss, killCount.getName()), tick, now);
+			loot.recordKill(killCount.getCount(), variantForKillName(s.tripBoss, killCount.getName()), tick, now);
 			return;
 		}
 
 		Long duration = ChatPatterns.fightDurationMs(message);
 		if (duration != null)
 		{
-			if (lootKill != null && tick - lastKillTick <= 2)
-			{
-				lootKill.setDurationMs(duration);
-				s.viewDirty = true;
-			}
+			loot.fightDuration(duration, tick);
 			return;
 		}
 
-	}
-
-	/**
-	 * Pet messages are shared by every pet, so they only count right after a corpse or egg interaction.
-	 */
-	private void petMessage(int tick)
-	{
-		// Right after the corpse click, or for bosses without a corpse, right after the kill
-		int lootTick = s.currentTrip != null && s.tripBoss.getLootTriggerNpcs().isEmpty() ? lastKillTick : lastCorpseClickTick;
-		if (s.inArea && s.currentTrip != null && lootKill != null && tick - lootTick <= CORPSE_WINDOW_TICKS)
-		{
-			lootKill.setPet(true);
-			int petItem = s.tripBoss.getPet() == null ? -1 : s.tripBoss.getPet().getItemId();
-			boolean listed = lootKill.getLoot().stream().anyMatch(e -> e.getItemId() == petItem);
-			if (!listed && petItem > 0)
-			{
-				lootKill.getLoot().add(new ItemEntry(petItem, 1, 0));
-			}
-			alertPet(s.tripBoss.getDisplayName() + (s.tripBoss.getLootTriggerNpcs().isEmpty() ? " pet!" : " pet from the corpse!"));
-			s.viewDirty = true;
-			keeper.requestSave();
-		}
-		else if (eggTracker.recentlyClicked(tick))
-		{
-			eggTracker.petMessage(tick);
-		}
 	}
 
 	@Subscribe
@@ -1272,28 +1205,12 @@ public class TripTracker
 			return;
 		}
 
-		Kill kill = lootKillOrCreate();
 		Map<Integer, Long> items = new HashMap<>();
 		for (ItemStack stack : event.getItems())
 		{
 			items.merge(stack.getId(), (long) stack.getQuantity(), Long::sum);
 		}
-		// Arrived after the inventory fallback recorded this kill's loot: the event replaces it
-		Map<Integer, Long> replaced = lootSources.eventReceived(items);
-		replaced.forEach((itemId, quantity) -> ItemEntries.removeLoot(kill.getLoot(), itemId, quantity));
-		for (Map.Entry<Integer, Long> e : items.entrySet())
-		{
-			addLoot(kill, e.getKey(), e.getValue());
-			if (!replaced.containsKey(e.getKey()))
-			{
-				alertForDrop(s.tripBoss, e.getKey(), e.getValue());
-			}
-		}
-		lootReceived = true;
-		fallbackEndTick = -1;
-		fallbackGains.clear();
-		s.viewDirty = true;
-		keeper.requestSave();
+		loot.lootEvent(items);
 	}
 
 	@Subscribe
@@ -1306,7 +1223,7 @@ public class TripTracker
 		}
 		else if (actor instanceof NPC && bossNpcIds.contains(((NPC) actor).getId()))
 		{
-			bossDiedAt = System.currentTimeMillis();
+			loot.bossDied(System.currentTimeMillis());
 		}
 	}
 
@@ -1316,10 +1233,7 @@ public class TripTracker
 		BossDefinition boss = registry.forBossNpc(event.getNpc().getId());
 		if (boss != null && boss.isFightStartOnSpawn())
 		{
-			bossSpawnedAt = System.currentTimeMillis();
-			bossDiedAt = null;
-			fightStartedAt = bossSpawnedAt;
-			s.viewDirty = true;
+			loot.fightStarts(System.currentTimeMillis());
 		}
 	}
 
@@ -1333,48 +1247,19 @@ public class TripTracker
 		}
 
 		int tick = client.getTickCount();
-		GroundKind kind;
-		Kill kill = null;
-		if (recentClicks.has(OPTION_DROP, item.getId(), tick) || s.tripBoss.getRecoverableItems().contains(item.getId()))
-		{
-			kind = GroundKind.OWN_DROP;
-		}
-		else if (wornAmmo.contains(item.getId()) && !s.tripBoss.isAcquiredInsideFree())
-		{
-			// Fired and landed: costed when fired, so picking it up makes up for it. In a raid, anything picked up
-			// already does (FreeSupplies)
-			kind = GroundKind.OWN_AMMO;
-		}
-		else if (s.tripBoss.isGroundOverflowLoot() && lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS)
-		{
-			kind = GroundKind.LOOT_OVERFLOW;
-			kill = lootKill;
-			alertForDrop(s.tripBoss, item.getId(), item.getQuantity());
-		}
-		else
-		{
-			return;
-		}
-
-		groundItems.add(new GroundEntry(item.getId(), item.getQuantity(), event.getTile().getWorldLocation(), kind, kill, tick));
+		boolean ownDrop = recentClicks.has(OPTION_DROP, item.getId(), tick)
+			|| s.tripBoss.getRecoverableItems().contains(item.getId());
+		// Fired and landed: costed when fired, so picking it up makes up for it. In a raid, anything picked up
+		// already does (FreeSupplies)
+		boolean ownAmmo = wornAmmo.contains(item.getId()) && !s.tripBoss.isAcquiredInsideFree();
+		loot.itemSpawned(item.getId(), item.getQuantity(), event.getTile().getWorldLocation(), ownDrop, ownAmmo, tick);
 	}
 
 	@Subscribe
 	public void onItemDespawned(ItemDespawned event)
 	{
 		TileItem item = event.getItem();
-		WorldPoint location = event.getTile().getWorldLocation();
-		for (Iterator<GroundEntry> it = groundItems.iterator(); it.hasNext(); )
-		{
-			GroundEntry entry = it.next();
-			if (entry.itemId == item.getId() && entry.quantity == item.getQuantity() && entry.location.equals(location))
-			{
-				it.remove();
-				entry.tick = client.getTickCount();
-				recentDespawns.add(entry);
-				return;
-			}
-		}
+		loot.itemDespawned(item.getId(), item.getQuantity(), event.getTile().getWorldLocation(), client.getTickCount());
 	}
 
 	// ---- Trip lifecycle ----
@@ -1402,7 +1287,7 @@ public class TripTracker
 		graveWindowEndTick = -1;
 		s.inLairPause = null;
 		lastActivityAt = now;
-		resetKillState();
+		loot.resetKillState();
 
 		if (s.currentTrip != null && (s.tripBoss != boss || (s.suspendedAt != null && (RaidSession.isRaid(boss) || now - s.suspendedAt > TimeUnit.MINUTES.toMillis(
 			s.suspendedOutside ? config.outsideGraceMinutes() : config.logoutGraceMinutes())))))
@@ -1459,7 +1344,7 @@ public class TripTracker
 
 	private void leaveLair(int region, int tick, long now)
 	{
-		fightStartedAt = null;
+		loot.fightEnded();
 		TripEndReason reason = s.dead ? TripEndReason.DEATH
 			: s.tripBoss != null && s.tripBoss.getWaitingRegions().contains(region) ? TripEndReason.WALKED_OUT
 			: TripEndReason.TELEPORT;
@@ -1476,7 +1361,7 @@ public class TripTracker
 
 		if (RaidSession.isRaid(s.tripBoss))
 		{
-			reason = raids.left(reason, lootKill);
+			reason = raids.left(reason, loot.getLootKill());
 		}
 
 		// The instance is gone either way, so anything left on the floor is lost
@@ -1488,7 +1373,7 @@ public class TripTracker
 			// AFK just outside: the trip stays open, paused, until you go back in or the grace period ends
 			s.suspendedAt = now;
 			s.suspendedOutside = true;
-			resetKillState();
+			loot.resetKillState();
 			s.viewDirty = true;
 			keeper.requestSave();
 			return;
@@ -1498,7 +1383,7 @@ public class TripTracker
 
 	private void suspendTrip(long now)
 	{
-		fightStartedAt = null;
+		loot.fightEnded();
 		s.inArea = false;
 		s.areaBoss = null;
 		if (s.currentTrip == null)
@@ -1518,7 +1403,7 @@ public class TripTracker
 		}
 		s.suspendedAt = now;
 		s.suspendedOutside = false;
-		resetKillState();
+		loot.resetKillState();
 		s.viewDirty = true;
 		keeper.saveNow();
 	}
@@ -1548,7 +1433,7 @@ public class TripTracker
 		s.currentTrip = null;
 		s.tripBoss = null;
 		s.suspendedAt = null;
-		resetKillState();
+		loot.resetKillState();
 		historyChanged();
 		keeper.requestSave();
 	}
@@ -1579,7 +1464,7 @@ public class TripTracker
 			return;
 		}
 		s.dead = true;
-		fightStartedAt = null;
+		loot.fightEnded();
 		s.ignoreDeltasUntilTick = Integer.MAX_VALUE;
 		if (s.currentTrip != null)
 		{
@@ -1596,133 +1481,6 @@ public class TripTracker
 	}
 
 	// ---- Kills and loot ----
-
-	/**
-	 * @param killCount the game's kill count, or null if the kill isn't on the boss's kill-count scale
-	 */
-	private void recordKill(Integer killCount, String variant, int tick, long now)
-	{
-		Kill kill = new Kill();
-		kill.setKillCount(killCount);
-		kill.setVariant(variant);
-		kill.setEndedAt(now);
-		if (bossSpawnedAt != null)
-		{
-			long end = bossDiedAt != null ? bossDiedAt : now;
-			kill.setDurationMs(Math.max(0, end - bossSpawnedAt));
-		}
-		s.currentTrip.getKills().add(kill);
-		lootKill = kill;
-		lastKillTick = tick;
-		fightStartedAt = null;
-		lootReceived = false;
-		fallbackEndTick = -1;
-		fallbackGains.clear();
-		lootSources.clear();
-		s.viewDirty = true;
-		keeper.requestSave();
-	}
-
-	/**
-	 * The kill that loot should be attached to. Creates one if the kill-count message was missed.
-	 */
-	private Kill lootKillOrCreate()
-	{
-		return lootKill != null ? lootKill : newKill();
-	}
-
-	/**
-	 * A kill from a loot event whose kill-count message was missed, so the loot still has somewhere to go.
-	 */
-	private Kill newKill()
-	{
-		Kill kill = new Kill();
-		kill.setEndedAt(System.currentTimeMillis());
-		if (pendingChoice != null && client.getTickCount() - pendingChoiceTick <= CORPSE_WINDOW_TICKS)
-		{
-			kill.setChoice(pendingChoice);
-		}
-		pendingChoice = null;
-		s.currentTrip.getKills().add(kill);
-		lootKill = kill;
-		lootReceived = false;
-		fallbackEndTick = -1;
-		fallbackGains.clear();
-		lootSources.clear();
-		return kill;
-	}
-
-	/**
-	 * The most recent kill of this trip without a corpse choice yet, or null.
-	 */
-	private Kill unchosenKill()
-	{
-		List<Kill> kills = s.currentTrip.getKills();
-		for (int i = kills.size() - 1; i >= 0; i--)
-		{
-			if (kills.get(i).getChoice() == null)
-			{
-				return kills.get(i);
-			}
-		}
-		return null;
-	}
-
-	private void addLoot(Kill kill, int itemId, long quantity)
-	{
-		if (s.tripBoss.getTarnishedItems().contains(itemId))
-		{
-			// Real value is only known once polished; see PolishTracker
-			for (long i = 0; i < quantity; i++)
-			{
-				ItemEntry pending = new ItemEntry(itemId, 1, 0);
-				pending.setPending(true);
-				pending.setPendingId(UUID.randomUUID().toString());
-				kill.getLoot().add(pending);
-			}
-		}
-		else
-		{
-			ItemEntries.merge(kill.getLoot(), itemId, quantity, prices.price(itemId), false);
-		}
-	}
-
-	private void applyLootFallback(int tick)
-	{
-		if (fallbackEndTick < 0 || tick <= fallbackEndTick)
-		{
-			return;
-		}
-
-		if (!lootReceived && lootKill != null && s.currentTrip != null && !fallbackGains.isEmpty())
-		{
-			log.debug("No Loot Tracker event for this kill; using inventory changes");
-			for (Map.Entry<Integer, Long> e : fallbackGains.entrySet())
-			{
-				addLoot(lootKill, e.getKey(), e.getValue());
-				alertForDrop(s.tripBoss, e.getKey(), e.getValue());
-			}
-			lootSources.fallbackUsed(fallbackGains);
-			lootReceived = true;
-			s.viewDirty = true;
-			keeper.requestSave();
-		}
-		fallbackEndTick = -1;
-		fallbackGains.clear();
-	}
-
-	private void resetKillState()
-	{
-		lootKill = null;
-		lootReceived = false;
-		fallbackEndTick = -1;
-		fallbackGains.clear();
-		lootSources.clear();
-		pendingChoice = null;
-		lastCorpseClickTick = -100;
-		groundItems.clear();
-		recentDespawns.clear();
-	}
 
 	private void loadRuneIds()
 	{
@@ -1812,7 +1570,7 @@ public class TripTracker
 
 		if (trackingTrip)
 		{
-			matchPickups(gained, tick);
+			loot.matchPickups(gained, tick);
 		}
 
 		List<ItemEntry> used = tick <= s.ignoreDeltasUntilTick ? Collections.emptyList() : accounting.consumption(change);
@@ -1833,24 +1591,9 @@ public class TripTracker
 			used = raids.freeSupplies().paidFor(used);
 		}
 
-		boolean afterCorpseClick = lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS;
-		if (trackingTrip && (afterCorpseClick || fallbackEndTick >= 0) && !recentClicks.has(OPTION_POLISH, -1, tick))
+		if (trackingTrip && !recentClicks.has(OPTION_POLISH, -1, tick))
 		{
-			for (Map.Entry<Integer, Long> e : gained.entrySet())
-			{
-				if (e.getKey() == ItemID.VIAL_EMPTY || prices.doseInfo(e.getKey()) != null)
-				{
-					continue;
-				}
-				if (fallbackEndTick >= 0 && !lootReceived)
-				{
-					fallbackGains.merge(e.getKey(), e.getValue(), Long::sum);
-				}
-				if (afterCorpseClick)
-				{
-					lootSources.inventoryGained(e.getKey(), e.getValue());
-				}
-			}
+			loot.inventoryGained(gained, tick);
 		}
 
 		if (used.isEmpty())
@@ -1905,58 +1648,6 @@ public class TripTracker
 		}
 	}
 
-	/**
-	 * Gains that match a ground item just picked up: loot overflow becomes loot, own drops are no longer lost, and
-	 * your own ammo comes off the supply line it was costed on.
-	 * Matched quantities are removed from {@code gained}.
-	 */
-	private void matchPickups(Map<Integer, Long> gained, int tick)
-	{
-		for (Iterator<GroundEntry> it = recentDespawns.iterator(); it.hasNext(); )
-		{
-			GroundEntry entry = it.next();
-			Long available = gained.get(entry.itemId);
-			if (available == null || tick - entry.tick > CLICK_MATCH_TICKS)
-			{
-				continue;
-			}
-
-			long taken = Math.min(available, entry.quantity);
-			if (entry.kind == GroundKind.LOOT_OVERFLOW)
-			{
-				// Not what this kill's loot event already listed
-				long added = entry.kill == lootKill ? lootSources.overflowPickedUp(entry.itemId, taken) : taken;
-				addLoot(entry.kill, entry.itemId, added);
-				s.viewDirty = true;
-				keeper.requestSave();
-			}
-			else if (entry.kind == GroundKind.OWN_AMMO)
-			{
-				ItemEntries.reduce(s.currentTrip.getSupplies(), entry.itemId, false, taken);
-				s.viewDirty = true;
-				keeper.requestSave();
-			}
-			else
-			{
-				pendingDrops.computeIfPresent(entry.itemId, (id, q) -> q - taken > 0 ? q - taken : null);
-			}
-
-			if (available - taken > 0)
-			{
-				gained.put(entry.itemId, available - taken);
-			}
-			else
-			{
-				gained.remove(entry.itemId);
-			}
-			entry.quantity -= taken;
-			if (entry.quantity <= 0)
-			{
-				it.remove();
-			}
-		}
-	}
-
 	private void finalizeDrops()
 	{
 		if (s.tripBoss.isDroppedSupplyUsed())
@@ -1998,7 +1689,7 @@ public class TripTracker
 	private void prune(int tick, long now)
 	{
 		recentClicks.prune(tick);
-		recentDespawns.removeIf(d -> tick - d.tick > CLICK_MATCH_TICKS);
+		loot.prune(tick);
 		while (!preEntryUses.isEmpty() && now - preEntryUses.peekFirst().at > PRE_ENTRY_WINDOW_MS)
 		{
 			preEntryUses.removeFirst();
@@ -2274,7 +1965,7 @@ public class TripTracker
 			.canPause(fighting)
 			.readOnly(s.readOnly)
 			.corruptBackup(s.corruptBackup)
-			.killStartedAt(fighting ? fightStartedAt : null)
+			.killStartedAt(fighting ? loot.getFightStartedAt() : null)
 			.playerName(s.history == null ? null : s.history.getLastDisplayName())
 			.build();
 		stateListener.accept(state);
@@ -2358,24 +2049,6 @@ public class TripTracker
 	}
 
 	// ---- Small records ----
-
-	private enum GroundKind
-	{
-		OWN_DROP,
-		OWN_AMMO,
-		LOOT_OVERFLOW,
-	}
-
-	@AllArgsConstructor
-	private static class GroundEntry
-	{
-		final int itemId;
-		long quantity;
-		final WorldPoint location;
-		final GroundKind kind;
-		final Kill kill;
-		int tick;
-	}
 
 	@AllArgsConstructor
 	private static class PreEntryUse
