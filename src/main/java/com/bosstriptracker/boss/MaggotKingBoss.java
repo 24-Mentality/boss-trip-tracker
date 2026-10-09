@@ -14,7 +14,7 @@ import net.runelite.api.gameval.NpcID;
  * The Maggot King in Vampyrium: a solo instanced boss with several kills per trip. Ids and messages are from the
  * diagnostic logs (PROJECT_BRIEF.md, "Observed in-game"); rates are from the OSRS Wiki.
  */
-public final class MaggotKingBoss extends BossDefinition
+public final class MaggotKingBoss extends TableBoss
 {
 	public static final String ID = "maggot_king";
 
@@ -65,11 +65,6 @@ public final class MaggotKingBoss extends BossDefinition
 		ItemID.TARNISHED_AMULET
 	);
 
-	private static final List<ExpectedDrop> DROPS = ImmutableList.of(
-		ExpectedDrop.fixed(FANG, DropKind.UNIQUE, FANG_RATE),
-		ExpectedDrop.fixed(KISTEN, DropKind.UNIQUE, KISTEN_RATE),
-		ExpectedDrop.fixed(PET_ITEM, DropKind.PET, PET_PER_STOMACH)
-	);
 
 	private static final Set<Integer> TARNISHED_JEWELLERY = ImmutableSet.of(
 		ItemID.TARNISHED_RING,
@@ -77,6 +72,30 @@ public final class MaggotKingBoss extends BossDefinition
 		ItemID.TARNISHED_NECKLACE,
 		ItemID.TARNISHED_AMULET
 	);
+
+
+	private static final TripStat SPLIT = new TripStat("Stom / Eggs",
+		"Kills where you chose Open-stomach / Take-eggs on the corpse.",
+		trip -> TripMath.countChoice(trip, STOMACH.getKey()) + " / " + TripMath.countChoice(trip, EGGS.getKey()));
+
+	private static final Set<Integer> CORPSE_NPCS = ImmutableSet.of(CORPSE);
+	private static final List<LootChoice> CHOICES = ImmutableList.of(STOMACH, EGGS);
+	/**
+	 * Popping eggs and polishing tarnished items convert them rather than use them up.
+	 */
+	private static final Set<Integer> CONVERTED = ImmutableSet.<Integer>builder()
+		.addAll(EGG_PET.keySet()).addAll(TARNISHED).build();
+	/**
+	 * The aranei scout variants that handle death recovery, and what they accept for moving a gravestone.
+	 */
+	private static final Set<Integer> ARANEI_SCOUTS = ImmutableSet.of(
+		NpcID.VAMPYRIUM_ARANEI_DEATH_HELPER,
+		NpcID.VAMPYRIUM_ARANEI_DEATH_HELPER_1OP,
+		NpcID.VAMPYRIUM_ARANEI_DEATH_HELPER_3OP);
+	private static final Set<Integer> GRAVE_PAYMENTS = ImmutableSet.of(ItemID.COINS, ItemID.VIAL_BLOOD, ItemID.STYMPHIKE_FEATHER);
+	private static final List<TripStat> CSV_COLUMNS = ImmutableList.of(
+		new TripStat("stomach", null, trip -> String.valueOf(TripMath.countChoice(trip, STOMACH.getKey()))),
+		new TripStat("eggs", null, trip -> String.valueOf(TripMath.countChoice(trip, EGGS.getKey()))));
 
 	/**
 	 * The OSRS Wiki drop table groups. Tarnished items are filed by type; a polished drop goes with the tarnished
@@ -96,77 +115,34 @@ public final class MaggotKingBoss extends BossDefinition
 		.put(LootCategories.OTHER, ItemID.STYMPHIKE_TARTARE, ItemID.DULL_ZAROSIAN_MEDAL, ItemID.KONAR_KEY)
 		.build();
 
-	private static final TripStat SPLIT = new TripStat("Stom / Eggs",
-		"Kills where you chose Open-stomach / Take-eggs on the corpse.",
-		trip -> TripMath.countChoice(trip, STOMACH.getKey()) + " / " + TripMath.countChoice(trip, EGGS.getKey()));
-
-	private static final Set<Integer> REGIONS = ImmutableSet.of(LAIR_REGION_ID);
-	private static final Set<Integer> WAITING_REGIONS = ImmutableSet.of(LAIR_ENTRANCE_REGION_ID);
-	private static final Set<Integer> BOSS_NPCS = ImmutableSet.of(BOSS);
-	private static final Set<Integer> CORPSE_NPCS = ImmutableSet.of(CORPSE);
-	private static final List<LootChoice> CHOICES = ImmutableList.of(STOMACH, EGGS);
 	/**
-	 * Popping eggs and polishing tarnished items convert them rather than use them up.
+	 * The Maggot King's table entry; its own mechanics (the corpse choice, eggs, tarnished items, the aranei scout)
+	 * are the overrides below.
 	 */
-	private static final Set<Integer> CONVERTED = ImmutableSet.<Integer>builder()
-		.addAll(EGG_PET.keySet()).addAll(TARNISHED).build();
-	/**
-	 * The aranei scout variants that handle death recovery, and what they accept for moving a gravestone.
-	 */
-	private static final Set<Integer> ARANEI_SCOUTS = ImmutableSet.of(
-		NpcID.VAMPYRIUM_ARANEI_DEATH_HELPER,
-		NpcID.VAMPYRIUM_ARANEI_DEATH_HELPER_1OP,
-		NpcID.VAMPYRIUM_ARANEI_DEATH_HELPER_3OP);
-	private static final Set<Integer> GRAVE_PAYMENTS = ImmutableSet.of(ItemID.COINS, ItemID.VIAL_BLOOD, ItemID.STYMPHIKE_FEATHER);
-	private static final List<TripStat> CSV_COLUMNS = ImmutableList.of(
-		new TripStat("stomach", null, trip -> String.valueOf(TripMath.countChoice(trip, STOMACH.getKey()))),
-		new TripStat("eggs", null, trip -> String.valueOf(TripMath.countChoice(trip, EGGS.getKey()))));
-	/**
-	 * Both keys seen in the RS profile config (PROJECT_BRIEF.md, 2026-09-27).
-	 */
-	private static final List<AllTimeSource> ALL_TIME = ImmutableList.of(
-		new AllTimeSource("drops_NPC_Maggot King", "maggot king", null));
+	static final BossData DATA = BossData.builder()
+		.id(ID)
+		.displayName("Maggot King")
+		.iconItemId(PET_ITEM)
+		.nameNpcId(BOSS)
+		.bossNpcIds(ImmutableSet.of(BOSS))
+		.regions(ImmutableSet.of(LAIR_REGION_ID))
+		.waitingRegions(ImmutableSet.of(LAIR_ENTRANCE_REGION_ID))
+		.drops(ImmutableList.of(
+			ExpectedDrop.fixed(FANG, DropKind.UNIQUE, FANG_RATE),
+			ExpectedDrop.fixed(KISTEN, DropKind.UNIQUE, KISTEN_RATE),
+			ExpectedDrop.fixed(PET_ITEM, DropKind.PET, PET_PER_STOMACH)))
+		.dropModel(DropModel.anyUniqueRate(ANY_UNIQUE))
+		// Both keys seen in the RS profile config (PROJECT_BRIEF.md, 2026-09-27)
+		.allTimeSources(ImmutableList.of(new AllTimeSource("drops_NPC_Maggot King", "maggot king", null)))
+		.lootCategories(LOOT_CATEGORIES)
+		.areaNoun("lair")
+		.emptyStateText("No trips yet. Enter the Maggot King's lair to start one.")
+		.profitCell(SPLIT)
+		.build();
 
-	@Override
-	public String getId()
+	public MaggotKingBoss()
 	{
-		return ID;
-	}
-
-	@Override
-	public String getDisplayName()
-	{
-		return "Maggot King";
-	}
-
-	@Override
-	public int getIconItemId()
-	{
-		return PET_ITEM;
-	}
-
-	@Override
-	public Set<Integer> getRegions()
-	{
-		return REGIONS;
-	}
-
-	@Override
-	public Set<Integer> getWaitingRegions()
-	{
-		return WAITING_REGIONS;
-	}
-
-	@Override
-	public Set<Integer> getBossNpcIds()
-	{
-		return BOSS_NPCS;
-	}
-
-	@Override
-	public int getNameNpcId()
-	{
-		return BOSS;
+		super(DATA);
 	}
 
 	@Override
@@ -185,18 +161,6 @@ public final class MaggotKingBoss extends BossDefinition
 	public boolean isGroundOverflowLoot()
 	{
 		return true;
-	}
-
-	@Override
-	public List<ExpectedDrop> getDrops()
-	{
-		return DROPS;
-	}
-
-	@Override
-	public double anyUniqueChance(KillContext context)
-	{
-		return ANY_UNIQUE;
 	}
 
 	@Override
@@ -219,12 +183,6 @@ public final class MaggotKingBoss extends BossDefinition
 			return TARNISHED_JEWELLERY.contains(polishedFrom) ? LootCategories.JEWELLERY : LootCategories.WEAPONS;
 		}
 		return super.lootCategory(itemId, polishedFrom);
-	}
-
-	@Override
-	protected Map<Integer, String> getLootCategoryMap()
-	{
-		return LOOT_CATEGORIES;
 	}
 
 	@Override
@@ -252,27 +210,9 @@ public final class MaggotKingBoss extends BossDefinition
 	}
 
 	@Override
-	public TripStat getProfitCell()
-	{
-		return SPLIT;
-	}
-
-	@Override
 	public List<TripStat> getCsvColumns()
 	{
 		return CSV_COLUMNS;
-	}
-
-	@Override
-	public String getEmptyStateText()
-	{
-		return "No trips yet. Enter the Maggot King's lair to start one.";
-	}
-
-	@Override
-	public String getAreaNoun()
-	{
-		return "lair";
 	}
 
 	@Override
@@ -287,9 +227,4 @@ public final class MaggotKingBoss extends BossDefinition
 		return "Stomach kills";
 	}
 
-	@Override
-	public List<AllTimeSource> getAllTimeSources()
-	{
-		return ALL_TIME;
-	}
 }

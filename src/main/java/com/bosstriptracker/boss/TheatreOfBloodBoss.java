@@ -22,7 +22,7 @@ import net.runelite.http.api.loottracker.LootRecordType;
  * from the Normal Mode diagnostic raid of 2026-09-29 (PROJECT_BRIEF.md, "Observed in-game"); Entry and Hard Mode
  * texts and keys follow the same pattern but are unverified. Rates are from the OSRS Wiki.
  */
-public final class TheatreOfBloodBoss extends BossDefinition
+public final class TheatreOfBloodBoss extends TableBoss
 {
 	public static final String ID = "theatre_of_blood";
 	public static final String ENTRY = "entry";
@@ -119,53 +119,33 @@ public final class TheatreOfBloodBoss extends BossDefinition
 			// Hard Mode's key follows Chat Commands' naming (unverified)
 			ImmutableMap.of(NORMAL, "theatre of blood", HARD, "theatre of blood hard mode")));
 
-	@Override
-	public String getId()
-	{
-		return ID;
-	}
-
-	@Override
-	public String getDisplayName()
-	{
-		return "Theatre of Blood";
-	}
-
-	@Override
-	public int getIconItemId()
-	{
-		return ItemID.VERZIKPET;
-	}
-
-	@Override
-	public List<BossVariant> getVariants()
-	{
+	/**
+	 * The Theatre of Blood's table entry. Your purple chance is the team's (by mode) shared by the team at the start of
+	 * the raid; the raid's own mechanics (messages, the reward chest, free supplies, deaths) are the overrides below.
+	 */
+	static final BossData DATA = BossData.builder()
+		.id(ID)
+		.displayName("Theatre of Blood")
+		.iconItemId(ItemID.VERZIKPET)
+		.nameNpcId(NpcID.TOB_MAIDEN_100)
+		.bossNpcIds(BOSS_NPCS)
 		// Entry Mode raids have no purples: they only show under All
-		return VARIANTS;
-	}
+		.variants(VARIANTS)
+		.regions(REGIONS)
+		.tripModel(TripModel.ONE_RAID)
+		.drops(DROPS)
+		.dropModel(DropModel.teamShare(TheatreOfBloodBoss::teamChance, TheatreOfBloodBoss::teamSize))
+		.allTimeSources(ALL_TIME)
+		.lootCategories(LOOT_CATEGORIES)
+		.unitNoun("raid")
+		.areaNoun("Theatre")
+		.emptyStateText("No raids yet. Enter the Theatre of Blood to start one.")
+		.profitCell(PURPLES_STAT)
+		.build();
 
-	@Override
-	public Set<Integer> getRegions()
+	public TheatreOfBloodBoss()
 	{
-		return REGIONS;
-	}
-
-	@Override
-	public TripModel getTripModel()
-	{
-		return TripModel.ONE_RAID;
-	}
-
-	@Override
-	public Set<Integer> getBossNpcIds()
-	{
-		return BOSS_NPCS;
-	}
-
-	@Override
-	public int getNameNpcId()
-	{
-		return NpcID.TOB_MAIDEN_100;
+		super(DATA);
 	}
 
 	@Override
@@ -179,24 +159,6 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	public boolean isRaidLootEvent(String name, LootRecordType type)
 	{
 		return type == LootRecordType.EVENT && LOOT_EVENT.equals(name);
-	}
-
-	@Override
-	protected Map<Integer, String> getLootCategoryMap()
-	{
-		return LOOT_CATEGORIES;
-	}
-
-	@Override
-	public List<ExpectedDrop> getDrops()
-	{
-		return DROPS;
-	}
-
-	@Override
-	public double anyUniqueChance(KillContext context)
-	{
-		return teamChance(context.getVariant()) / teamSize(context);
 	}
 
 	@Override
@@ -364,21 +326,9 @@ public final class TheatreOfBloodBoss extends BossDefinition
 	}
 
 	@Override
-	public String getUnitNoun()
-	{
-		return "raid";
-	}
-
-	@Override
 	public List<Integer> getTeamSlotVarbits()
 	{
 		return TEAM_SLOTS;
-	}
-
-	@Override
-	public TripStat getProfitCell()
-	{
-		return PURPLES_STAT;
 	}
 
 	@Override
@@ -403,24 +353,6 @@ public final class TheatreOfBloodBoss extends BossDefinition
 		}
 		// Deaths are in the card's Deaths cell: with them this line wouldn't fit the sidebar
 		return String.join(" · ", parts);
-	}
-
-	@Override
-	public String getEmptyStateText()
-	{
-		return "No raids yet. Enter the Theatre of Blood to start one.";
-	}
-
-	@Override
-	public String getAreaNoun()
-	{
-		return "Theatre";
-	}
-
-	@Override
-	public List<AllTimeSource> getAllTimeSources()
-	{
-		return ALL_TIME;
 	}
 
 	static double teamChance(String variant)

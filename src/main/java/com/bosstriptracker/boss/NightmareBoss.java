@@ -21,7 +21,7 @@ import net.runelite.http.api.loottracker.LootRecordType;
  * its regions, messages and NPCs come from the diagnostic log of 2026-09-28 (PROJECT_BRIEF.md, "Observed in-game").
  * The regular Nightmare is not verified yet, so its kills aren't recognised. Rates are from the OSRS Wiki.
  */
-public final class NightmareBoss extends BossDefinition
+public final class NightmareBoss extends TableBoss
 {
 	public static final String ID = "nightmare";
 	public static final String PHOSANI = "phosani";
@@ -127,58 +127,32 @@ public final class NightmareBoss extends BossDefinition
 	private static final List<AllTimeSource> ALL_TIME = ImmutableList.of(
 		new AllTimeSource("drops_NPC_Phosani's Nightmare", "phosani's nightmare", PHOSANI));
 
-	@Override
-	public String getId()
-	{
-		return ID;
-	}
+	/**
+	 * The Nightmare's table entry; its own mechanics (the fight clock, Sister Senga's fee, blisterwood stakes) are the
+	 * overrides below.
+	 */
+	static final BossData DATA = BossData.builder()
+		.id(ID)
+		.displayName("Nightmare")
+		.iconItemId(ItemID.NIGHTMAREPET)
+		.nameNpcId(NpcID.NIGHTMARE_CHALLENGE_INITIAL)
+		.bossNpcIds(BOSS_NPCS)
+		.variants(VARIANTS)
+		.killNames(KILL_NAMES)
+		.regions(REGIONS)
+		.waitingRegions(WAITING_REGIONS)
+		.drops(DROPS)
+		.dropModel(DropModel.anyUniqueRate(ANY_UNIQUE))
+		.allTimeSources(ALL_TIME)
+		.lootCategories(LOOT_CATEGORIES)
+		.areaNoun("dream")
+		.emptyStateText("No trips yet. Drink from the Pool of Nightmares to start one.")
+		.profitCell(UNIQUES)
+		.build();
 
-	@Override
-	public String getDisplayName()
+	public NightmareBoss()
 	{
-		return "Nightmare";
-	}
-
-	@Override
-	public int getIconItemId()
-	{
-		return ItemID.NIGHTMAREPET;
-	}
-
-	@Override
-	public List<BossVariant> getVariants()
-	{
-		return VARIANTS;
-	}
-
-	@Override
-	public Set<Integer> getRegions()
-	{
-		return REGIONS;
-	}
-
-	@Override
-	public Set<Integer> getWaitingRegions()
-	{
-		return WAITING_REGIONS;
-	}
-
-	@Override
-	public Set<Integer> getBossNpcIds()
-	{
-		return BOSS_NPCS;
-	}
-
-	@Override
-	public int getNameNpcId()
-	{
-		return NpcID.NIGHTMARE_CHALLENGE_INITIAL;
-	}
-
-	@Override
-	public Map<String, String> getKillNames()
-	{
-		return KILL_NAMES;
+		super(DATA);
 	}
 
 	@Override
@@ -208,24 +182,6 @@ public final class NightmareBoss extends BossDefinition
 	}
 
 	@Override
-	protected Map<Integer, String> getLootCategoryMap()
-	{
-		return LOOT_CATEGORIES;
-	}
-
-	@Override
-	public List<ExpectedDrop> getDrops()
-	{
-		return DROPS;
-	}
-
-	@Override
-	public double anyUniqueChance(KillContext context)
-	{
-		return ANY_UNIQUE;
-	}
-
-	@Override
 	public String getChargeNote(ChargeType type)
 	{
 		// Leaving out the thrall's hits, four Check readings (2026-09-28/29) that used 90, 52, 130 and 15 charges
@@ -250,33 +206,9 @@ public final class NightmareBoss extends BossDefinition
 	}
 
 	@Override
-	public TripStat getProfitCell()
-	{
-		return UNIQUES;
-	}
-
-	@Override
 	public List<TripStat> getCsvColumns()
 	{
 		return ImmutableList.of(UNIQUES);
-	}
-
-	@Override
-	public String getEmptyStateText()
-	{
-		return "No trips yet. Drink from the Pool of Nightmares to start one.";
-	}
-
-	@Override
-	public String getAreaNoun()
-	{
-		return "dream";
-	}
-
-	@Override
-	public List<AllTimeSource> getAllTimeSources()
-	{
-		return ALL_TIME;
 	}
 
 	private static int countUniques(Trip trip)
