@@ -1,27 +1,24 @@
 package com.bosstriptracker.ui;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.awt.Color;
 import org.junit.Test;
 
 public class DropBarTest
 {
-	/**
-	 * Colours sampled from the reference screenshot's Expected tab.
-	 */
 	@Test
-	public void expectedColourMatchesReference()
+	public void expectedBarsAreOneHueGettingBrighter()
 	{
-		assertClose(new Color(100, 32, 0), DropBar.expectedColor(0.168));
-		assertClose(new Color(100, 64, 0), DropBar.expectedColor(0.329));
-		assertClose(new Color(45, 100, 0), DropBar.expectedColor(0.78));
-		assertClose(new Color(6, 100, 0), DropBar.expectedColor(0.975));
-	}
-
-	private static void assertClose(Color expected, Color actual)
-	{
-		assertEquals(expected.getRed(), actual.getRed(), 3);
-		assertEquals(expected.getGreen(), actual.getGreen(), 3);
-		assertEquals(expected.getBlue(), actual.getBlue(), 3);
+		Color empty = DropBar.expectedColor(0);
+		Color full = DropBar.expectedColor(1);
+		assertEquals(new Color(20, 60, 120), empty);
+		assertEquals(new Color(40, 130, 230), full);
+		// Blue throughout, so it never reads as the red-green scale colour-blind players can't tell apart
+		for (int i = 0; i <= 10; i++)
+		{
+			Color c = DropBar.expectedColor(i / 10.0);
+			assertTrue(c.getBlue() > c.getGreen() && c.getGreen() > c.getRed());
+		}
 	}
 }

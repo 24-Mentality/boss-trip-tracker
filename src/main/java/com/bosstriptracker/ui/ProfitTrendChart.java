@@ -4,13 +4,15 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.ToolTipManager;
 import net.runelite.client.ui.ColorScheme;
 
 /**
- * Net profit per trip as green/red bars around a zero line, newest on the right.
+ * Net profit per trip as green/red bars around a zero line, newest on the right; hovering a bar shows its value.
  */
 class ProfitTrendChart extends JPanel
 {
@@ -22,6 +24,26 @@ class ProfitTrendChart extends JPanel
 	{
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		setPreferredSize(new Dimension(0, 56));
+		ToolTipManager.sharedInstance().registerComponent(this);
+	}
+
+	@Override
+	public String getToolTipText(MouseEvent e)
+	{
+		if (values.isEmpty())
+		{
+			return null;
+		}
+		int pad = 4;
+		double slot = (double) (getWidth() - pad * 2) / values.size();
+		int i = (int) Math.floor((e.getX() - pad) / slot);
+		if (i < 0 || i >= values.size())
+		{
+			return null;
+		}
+		int back = values.size() - 1 - i;
+		return (back == 0 ? "Last trip" : back + (back == 1 ? " trip" : " trips") + " before the last") + ": "
+			+ UiFormat.fullGp(values.get(i));
 	}
 
 	void setValues(List<Long> allTrips)

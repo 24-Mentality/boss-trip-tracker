@@ -12,16 +12,17 @@ import javax.swing.JComponent;
 import net.runelite.client.ui.FontManager;
 
 /**
- * A bar in the drop chances card. Expected mode fills left to right with a red-to-green colour and a percentage;
- * received mode grows from the centre, green to the right when ahead of expectation and red to the left when behind.
+ * A bar in the drop chances card. Expected mode fills left to right in blue, brighter as it fills, with a percentage;
+ * received mode grows from the centre, blue to the right when ahead of expectation and orange to the left when
+ * behind, with a + or − difference. Blue and orange stay apart for colour-blind players, unlike green and red.
  */
 class DropBar extends JComponent
 {
 	private static final Color BACKGROUND = new Color(30, 30, 30);
 	private static final Color BORDER = new Color(165, 165, 165);
 	private static final Color CENTRE_LINE = new Color(192, 192, 192);
-	private static final Color AHEAD = new Color(0, 100, 0);
-	private static final Color BEHIND = new Color(150, 3, 0);
+	private static final Color AHEAD = new Color(30, 110, 210);
+	private static final Color BEHIND = new Color(220, 120, 20);
 
 	private boolean received;
 	private double fraction;
@@ -130,12 +131,12 @@ class DropBar extends JComponent
 	}
 
 	/**
-	 * Red at 0%, amber at 50%, green at 100%.
+	 * Dark blue at 0%, bright blue at 100%.
 	 */
 	static Color expectedColor(double fraction)
 	{
-		int red = (int) Math.round(Math.min(100, 200 * (1 - fraction)));
-		int green = (int) Math.round(Math.min(100, 200 * fraction));
-		return new Color(red, green, 0);
+		fraction = Math.max(0, Math.min(1, fraction));
+		return new Color((int) Math.round(20 + 20 * fraction), (int) Math.round(60 + 70 * fraction),
+			(int) Math.round(120 + 110 * fraction));
 	}
 }
