@@ -48,8 +48,16 @@ final class ShareCardRenderer
 	 */
 	BufferedImage render(ShareCard card, IntFunction<Image> icons)
 	{
-		int height = PAD + header() + GAP + luck(card) + GAP + chances(card) + GAP + stats() + GAP + trips(card) + GAP
-			+ footer() + PAD;
+		return render(card, icons, true);
+	}
+
+	/**
+	 * @param detailed with the drop chances and recent trips; the compact card has the header, luck and totals
+	 */
+	BufferedImage render(ShareCard card, IntFunction<Image> icons, boolean detailed)
+	{
+		int height = PAD + header() + GAP + luck(card, detailed) + GAP
+			+ (detailed ? chances(card) + GAP : 0) + stats() + GAP + (detailed ? trips(card) + GAP : 0) + footer() + PAD;
 		BufferedImage image = new BufferedImage(WIDTH * SCALE, height * SCALE, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = image.createGraphics();
 		try
@@ -63,10 +71,16 @@ final class ShareCardRenderer
 
 			int y = PAD;
 			y = drawHeader(g, card, icons, y) + GAP;
-			y = drawLuck(g, card, icons, y) + GAP;
-			y = drawChances(g, card, icons, y) + GAP;
+			y = drawLuck(g, card, icons, y, detailed) + GAP;
+			if (detailed)
+			{
+				y = drawChances(g, card, icons, y) + GAP;
+			}
 			y = drawStats(g, card, y) + GAP;
-			y = drawTrips(g, card, y) + GAP;
+			if (detailed)
+			{
+				y = drawTrips(g, card, y) + GAP;
+			}
 			drawFooter(g, card, y);
 		}
 		finally
@@ -147,15 +161,22 @@ final class ShareCardRenderer
 	private static final int DROP_ROW = 26;
 	private static final int DROPS_PER_ROW = (WIDTH - 2 * PAD - 2 * INNER) / DROP_CELL;
 
-	private static int luck(ShareCard card)
+	/**
+	 * The detailed card shows each unique's count in its drop chances, so the luck section leaves its icons out.
+	 */
+	private static int luck(ShareCard card, boolean detailed)
 	{
+		if (detailed)
+		{
+			return 82;
+		}
 		int rows = Math.max(1, (card.getDrops().size() + DROPS_PER_ROW - 1) / DROPS_PER_ROW);
 		return 112 + (rows - 1) * DROP_ROW;
 	}
 
-	private int drawLuck(Graphics2D g, ShareCard card, IntFunction<Image> icons, int y)
+	private int drawLuck(Graphics2D g, ShareCard card, IntFunction<Image> icons, int y, boolean detailed)
 	{
-		int h = luck(card);
+		int h = luck(card, detailed);
 		card(g, y, h);
 		int left = PAD + INNER;
 		int right = WIDTH - PAD - INNER;
@@ -185,8 +206,8 @@ final class ShareCardRenderer
 			pair(g, "Last Unique", String.format(Locale.ROOT, "%,d", card.getLastUniqueKc()), left + half, y + 72);
 		}
 
-		// One icon and count per unique, then the pet
-		for (int i = 0; i < card.getDrops().size(); i++)
+		// One icon and count per unique, then the pet (the detailed card has them in its drop chances)
+		for (int i = 0; i < card.getDrops().size() && !detailed; i++)
 		{
 			ShareCard.Drop drop = card.getDrops().get(i);
 			int x = left + (i % DROPS_PER_ROW) * DROP_CELL;

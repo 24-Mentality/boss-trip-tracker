@@ -127,6 +127,11 @@ public class ShareCardTest
 		BufferedImage few = renderer.render(ShareCard.from(state(0), false, NOW), id -> null);
 		assertTrue(few.getHeight() < image.getHeight());
 
+		// The compact card leaves out the drop chances and trips
+		BufferedImage compact = renderer.render(ShareCard.from(state(8), true, NOW), ShareCardTest::placeholderIcon, false);
+		assertTrue(compact.getHeight() < image.getHeight() / 2 + 100);
+		ImageIO.write(compact, "PNG", new File("build/share-card-compact.png"));
+
 		// For looking at the layout: build/share-card-preview.png
 		File out = new File("build/share-card-preview.png");
 		out.getParentFile().mkdirs();
@@ -178,8 +183,12 @@ public class ShareCardTest
 		ShareCardRenderer renderer = new ShareCardRenderer(ZoneId.of("UTC"));
 		BufferedImage maggotKing = renderer.render(ShareCard.from(base, true, NOW), ShareCardTest::placeholderIcon);
 		BufferedImage image = renderer.render(ShareCard.from(state, true, NOW), ShareCardTest::placeholderIcon);
-		// Eight uniques and the pet: two rows of icons instead of one, and six more drop chances rows
-		assertEquals(maggotKing.getHeight() + (26 + 6 * ShareCardRenderer.CHANCE_ROW) * ShareCardRenderer.SCALE, image.getHeight());
+		// Eight uniques and the pet: six more drop chances rows (the detailed card shows counts there, not as icons)
+		assertEquals(maggotKing.getHeight() + 6 * ShareCardRenderer.CHANCE_ROW * ShareCardRenderer.SCALE, image.getHeight());
+		// The compact card shows them as icons: two rows instead of one
+		assertEquals(renderer.render(ShareCard.from(base, true, NOW), ShareCardTest::placeholderIcon, false).getHeight()
+			+ 26 * ShareCardRenderer.SCALE,
+			renderer.render(ShareCard.from(state, true, NOW), ShareCardTest::placeholderIcon, false).getHeight());
 		ImageIO.write(image, "PNG", new File("build/share-card-nightmare.png"));
 	}
 

@@ -346,7 +346,7 @@ public class BossTripTrackerPlugin extends Plugin
 				}
 				if (config.screenshotShareCard())
 				{
-					exporter.saveAutomatically(latestState, config.shareShowName());
+					exporter.saveAutomatically(latestState, config.shareShowName(), config.shareDetailed());
 				}
 				if (config.screenshotWindow())
 				{
@@ -584,7 +584,7 @@ public class BossTripTrackerPlugin extends Plugin
 		public void shareCard()
 		{
 			TrackerPanel trackerPanel = panel;
-			shareCardExporter.share(trackerPanel.getState(), config.shareShowName(),
+			shareCardExporter.share(trackerPanel.getState(), config.shareShowName(), config.shareDetailed(),
 				message -> trackerPanel.showMessage("Share card", message, false),
 				() -> trackerPanel.showNotice("Share card copied to clipboard"));
 		}

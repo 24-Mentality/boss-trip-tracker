@@ -276,11 +276,23 @@ public interface BossTripTrackerConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "shareDetailed",
+		name = "Detailed share card",
+		description = "Add the drop chances and your last 5 trips to share cards; the compact card has your luck and totals",
+		section = displaySection,
+		position = 4
+	)
+	default boolean shareDetailed()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "overlayEnabled",
 		name = "Show overlay",
 		description = "A small box on the game screen like RuneLite's XP tracker box, with the boss icon and up to three"
-			+ " rows picked below. Also: right-click the goal, trip time or profit card, Add to canvas. Alt+drag the box"
-			+ " to move it.",
+			+ " rows picked below. Also: click the pin on the goal, trip time or profit card. Alt+drag the box to move"
+			+ " it.",
 		section = overlaySection,
 		position = 0
 	)

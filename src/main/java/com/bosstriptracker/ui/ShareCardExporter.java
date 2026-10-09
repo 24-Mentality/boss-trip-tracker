@@ -68,7 +68,7 @@ public class ShareCardExporter
 	 * @param onMessage shows a message in the panel when the game chat can't (not logged in, or nothing to share)
 	 * @param onCopied  called on the Swing thread once the image is on the clipboard
 	 */
-	public void share(PanelState state, boolean showName, Consumer<String> onMessage, Runnable onCopied)
+	public void share(PanelState state, boolean showName, boolean detailed, Consumer<String> onMessage, Runnable onCopied)
 	{
 		ShareCard card = state == null ? null : ShareCard.from(state, showName, System.currentTimeMillis());
 		if (card == null)
@@ -76,19 +76,19 @@ public class ShareCardExporter
 			onMessage.accept("Log in first so there is something to share.");
 			return;
 		}
-		withIcons(card, icons -> export(card, icons, onMessage, onCopied));
+		withIcons(card, icons -> export(renderer.render(card, icons::get, detailed), card, onMessage, onCopied));
 	}
 
 	/**
 	 * After a unique or pet: saves the share card to the screenshots folder (not the clipboard). Call on the Swing
 	 * thread.
 	 */
-	public void saveAutomatically(PanelState state, boolean showName)
+	public void saveAutomatically(PanelState state, boolean showName, boolean detailed)
 	{
 		ShareCard card = state == null ? null : ShareCard.from(state, showName, System.currentTimeMillis());
 		if (card != null)
 		{
-			withIcons(card, icons -> save(renderer.render(card, icons::get), card.getBossName() + " share card",
+			withIcons(card, icons -> save(renderer.render(card, icons::get, detailed), card.getBossName() + " share card",
 				card.getBossName() + " share card", "saved to your screenshots folder"));
 		}
 	}
@@ -168,9 +168,8 @@ public class ShareCardExporter
 		fallback.start();
 	}
 
-	private void export(ShareCard card, Map<Integer, Image> icons, Consumer<String> onMessage, Runnable onCopied)
+	private void export(BufferedImage image, ShareCard card, Consumer<String> onMessage, Runnable onCopied)
 	{
-		BufferedImage image = renderer.render(card, icons::get);
 		try
 		{
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new ImageSelection(image), null);
