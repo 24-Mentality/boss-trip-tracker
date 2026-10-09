@@ -1,18 +1,33 @@
 # Boss Trip Tracker
 
-> **No combat or mechanic assistance, for any supported boss.** This plugin only tracks loot,
-> supplies, costs, deaths, time and luck. It has no attack, prayer, phase or hazard cues, no
-> tile or NPC highlighting, and no alerts tied to boss mechanics. The only thing it can draw on
-> the game screen is an optional box, off by default, with your kill goal progress, trip
-> times and profit; it never shows anything about the boss or its mechanics. It only listens to game
-> events and never creates input or menu actions.
+See what every boss trip really earned: net profit after every supply, charge and death, and how
+lucky you are against the real drop rates, with share cards ready for Discord.
 
-Tracks loot, supplies used and net profit for each boss trip, with persistent per-account
-history in a side panel. Formerly **Maggot King Trip Tracker**.
+RuneLite's Loot Tracker counts what you got. This plugin also takes off what each trip cost and
+measures your uniques against the drop rates, trip by trip and all-time.
+
+No combat or mechanic help of any kind: it only tracks loot, supplies, costs, time and luck.
+
+<!-- Screenshots to add: docs/panel.png (the side panel on a trip) and docs/share-card.png -->
+![The side panel during a trip](docs/panel.png)
+![A share card](docs/share-card.png)
+
+## Features
+
+- **Net profit per trip:** loot minus potions, food, runes, ammo, charges (scythe, blowpipe,
+  blood fury and more), dropped items and death costs, with net GP/hr.
+- **Luck against the real drop rates:** uniques received vs expected with an exact luck tier,
+  your dry streak and worst dry streak by your all-time kill count, and drop chances for each
+  unique and the pet.
+- **History:** kills per day, week, month and year, a yearly heatmap, a profit chart and a
+  card for every trip.
+- **Lifetime:** totals, all-time loot from RuneLite's Loot Tracker, supplies by category.
+- **Share cards** for Discord, and optional automatic screenshots after a unique or pet.
+- **Kill goals** with kills per hour and time to goal, and an optional overlay box.
 
 **Supported bosses:** the Maggot King in Vampyrium, Phosani's Nightmare, and the Theatre of
 Blood (Entry, Normal and Hard Mode). The regular Nightmare's kills aren't tracked yet. More
-bosses are planned.
+bosses are planned. Formerly **Maggot King Trip Tracker**.
 
 ## Requirements
 
@@ -20,17 +35,17 @@ bosses are planned.
   Loot Tracker's loot events (for the Maggot King, if no loot event arrives, it falls back to
   inventory changes after you open the corpse).
 
-## Side panel
+## Details
+
+### Side panel
 
 - **Share card** (camera button next to the boss dropdown): makes an image of the shown
-  boss's stats (kill count, uniques received vs expected with the luck tier, kills since
-  your last unique and how far past the drop rate you are, each unique, the drop chances
-  with both the Expected and Received bars, the loot, costs, net
-  profit and GP/hr of the kills tracked since the plugin was installed (with the kill count
-  tracking began at), and your last 5 trips), copies it
-  to the clipboard ready to paste into Discord, and saves it to your RuneLite screenshots
-  folder under "Boss Trip Tracker". Nothing is uploaded. Your name is on the card unless you
-  turn off **Show my name on share cards** (Configuration → Display).
+  boss's stats: kill count and total loot, your luck tier with uniques received vs expected,
+  dry streak, worst dry streak and a count of each unique and the pet, and the loot, costs, net
+  profit and GP/hr of the trips tracked. **Detailed share card** (Configuration → Display) adds
+  the drop chances and your last 5 trips. It's copied to the clipboard, ready to paste into
+  Discord, and saved to your RuneLite screenshots folder under "Boss Trip Tracker". Nothing is
+  uploaded. Your name is on the card unless you turn off **Show my name on share cards**.
 - **Overlay** (off by default): a small box on the game screen built like RuneLite's XP
   tracker box, with the boss icon and up to three rows, each picked from one list: kill goal
   stats (KPH, TTG, kills done or left), trip stats (current kill, trip time, kills, average
@@ -115,7 +130,7 @@ bosses are planned.
 The panel opens on the Trip tab automatically when you enter a tracked boss's area
 (Configuration → Display → **Open panel on entry**; on by default).
 
-## How trips are counted
+### How trips are counted
 
 Nothing is tracked on Leagues, Deadman, beta or tournament worlds, which RuneLite keeps
 separate records for. You've left a boss's area after about 2 seconds outside it (3 game
@@ -213,7 +228,7 @@ For the Maggot King:
   prices load. The Lifetime tab can also show loot at today's prices (**Show today's
   value**).
 
-## Data
+### Data
 
 History is saved per account in the folder
 `~/.runelite/plugin-data/boss-trip-tracker/history-<account>/`: `account.json` (goals, egg pops,
