@@ -16,9 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
@@ -58,18 +56,25 @@ class LuckOverviewCard extends JPanel
 	private final List<JLabel> counts = new ArrayList<>();
 	private final JPanel body = new JPanel(new BorderLayout(0, 4));
 	private final JLabel eye = new JLabel();
-	private final JMenuItem clearKc = new JMenuItem("Clear KC of my last unique");
+	/**
+	 * Shown when the dry streak can't be placed: no tracked unique and no kill count entered.
+	 */
+	private final JLabel setKcLink = new JLabel("Dry streak off? Set your last unique's KC");
+	private final SectionStates states;
 	private BossDefinition boss;
 	/**
-	 * Collapsed with the eye icon; remembered for the session.
+	 * Collapsed with the eye icon; saved in the settings.
 	 */
 	private boolean hidden;
+	private static final String STATE_KEY = "trip.luck";
 
 	/**
-	 * @param onSetLastUniqueKc asks for the kill count of your last unique from before tracking
+	 * @param onSetLastUniqueKc asks for the kill count of your last unique from before tracking (or clears it)
 	 */
-	LuckOverviewCard(ItemManager itemManager, Runnable onSetLastUniqueKc, Runnable onClearLastUniqueKc)
+	LuckOverviewCard(ItemManager itemManager, SectionStates states, Runnable onSetLastUniqueKc)
 	{
+		this.states = states;
+		this.hidden = !states.isOpen(STATE_KEY, true);
 		this.itemManager = itemManager;
 		setLayout(new BorderLayout(0, 4));
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
@@ -104,9 +109,25 @@ class LuckOverviewCard extends JPanel
 		dropRow.add(drops, BorderLayout.CENTER);
 		dropRow.add(source, BorderLayout.EAST);
 
+		setKcLink.setFont(FontManager.getRunescapeSmallFont());
+		setKcLink.setForeground(ColorScheme.BRAND_ORANGE);
+		setKcLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		setKcLink.setToolTipText(UiFormat.tooltip("Your dry streak counts from when you installed the plugin until it"
+			+ " knows the kill count of your last unique. Click to enter it."));
+		setKcLink.addMouseListener(clickTo(onSetLastUniqueKc));
+		setKcLink.setVisible(false);
+		// The Last Unique row opens the same prompt, to change or clear it
+		lastUnique.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lastUnique.addMouseListener(clickTo(onSetLastUniqueKc));
+
+		JPanel bottom = new JPanel(new BorderLayout());
+		bottom.setOpaque(false);
+		bottom.add(dropRow, BorderLayout.CENTER);
+		bottom.add(setKcLink, BorderLayout.SOUTH);
+
 		body.setOpaque(false);
 		body.add(stats, BorderLayout.NORTH);
-		body.add(dropRow, BorderLayout.CENTER);
+		body.add(bottom, BorderLayout.CENTER);
 
 		eye.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		eye.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -118,6 +139,7 @@ class LuckOverviewCard extends JPanel
 				if (e.getButton() == MouseEvent.BUTTON1)
 				{
 					hidden = !hidden;
+					states.setOpen(STATE_KEY, !hidden);
 					applyVisibility();
 				}
 			}
@@ -131,15 +153,22 @@ class LuckOverviewCard extends JPanel
 		add(titleRow, BorderLayout.NORTH);
 		add(body, BorderLayout.CENTER);
 
-		JPopupMenu menu = new JPopupMenu();
-		JMenuItem setKc = new JMenuItem("Set KC of my last unique...");
-		setKc.addActionListener(e -> onSetLastUniqueKc.run());
-		clearKc.addActionListener(e -> onClearLastUniqueKc.run());
-		menu.add(setKc);
-		menu.add(clearKc);
-		setComponentPopupMenu(menu);
-		UiFormat.inheritPopupMenu(this);
 		applyVisibility();
+	}
+
+	private static MouseAdapter clickTo(Runnable action)
+	{
+		return new MouseAdapter()
+		{
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+				if (e.getButton() == MouseEvent.BUTTON1)
+				{
+					action.run();
+				}
+			}
+		};
 	}
 
 	private void applyVisibility()
@@ -211,7 +240,7 @@ class LuckOverviewCard extends JPanel
 				? String.format(Locale.ROOT, " (KC %,d, as you entered it)", dryness.getLastUniqueKc()) : "")
 				+ (dryness.getLastUniqueKc() != null ? ", by your all-time kill count, so kills done without the plugin"
 				+ " count too" : ""))
-				+ ". Right-click to set the kill count of your last unique.");
+				+ ". Click Last Unique to set the kill count of your last unique.");
 		set(longest, "Worst dry streak", String.format(Locale.ROOT, "%,d kc", dryness.getLongestDryStreak()), null,
 			"The longest gap between two of your uniques, by kill count, counting the uniques this plugin tracked and"
 				+ " the kill count you entered for your last unique from before tracking (or the current streak, if"
@@ -222,8 +251,10 @@ class LuckOverviewCard extends JPanel
 				: dryness.isSinceWholeKillCount() ? "None yet" : "Unknown", null,
 			dryness.getLastUniqueKc() != null
 				? "The kill count of your last unique" + (dryness.isSinceFromEnteredKc() ? ", as you entered it" : "")
-				+ ". Right-click to change it."
-				: "Right-click to set the kill count of your last unique from before you installed the plugin.");
+				+ ". Click to change or clear it."
+				: "Click to set the kill count of your last unique from before you installed the plugin.");
+		setKcLink.setVisible(dryness.getLastUniqueKc() == null && !dryness.isSinceWholeKillCount()
+			&& !dryness.isSinceFromGameCount());
 		// Theatre of Blood only: a row of its own, shown when the boss has a team dry streak
 		boolean team = dryness.getTeamDryStreak() != null;
 		if (team != (teamDry.getParent() == stats))
@@ -249,7 +280,6 @@ class LuckOverviewCard extends JPanel
 			String.format(Locale.ROOT, "Your dry streak is %.1f times the drop rate (1/%s). %.0f%% of players would have"
 				+ " had a unique within this many kills; each kill is still the same chance.", luck.dryVsRate(dry),
 				UiFormat.oneIn(luck.getRate()), luck.chanceByNow(dry) * 100));
-		clearKc.setEnabled(dryness.getEnteredLastUniqueKc() != null);
 		set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per kill"
 			+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked kills.")
 			+ (luck.isApproximate() ? " Approximate: an equal share of the team's chance." : ""));
@@ -313,7 +343,6 @@ class LuckOverviewCard extends JPanel
 			}
 		}
 		// New icon and count labels need the right-click menu too
-		UiFormat.inheritPopupMenu(drops);
 		drops.revalidate();
 	}
 

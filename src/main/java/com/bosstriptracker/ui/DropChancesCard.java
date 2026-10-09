@@ -46,9 +46,11 @@ class DropChancesCard extends JPanel
 		+ "%s All-time numbers come from RuneLite's Loot Tracker when it has a record for this account.</html>";
 
 	/**
-	 * Remembered for the session, like the tab choice in other trackers.
+	 * The Received tab is shown; saved in the settings.
 	 */
-	private static boolean showReceived;
+	private boolean showReceived;
+	private final SectionStates states;
+	private static final String STATE_KEY = "lifetime.chances.received";
 
 	private final ItemManager itemManager;
 	private final JLabel expectedTab = tabLabel("Expected");
@@ -60,9 +62,11 @@ class DropChancesCard extends JPanel
 	private DrynessView dryness;
 	private BossDefinition boss;
 
-	DropChancesCard(ItemManager itemManager)
+	DropChancesCard(ItemManager itemManager, SectionStates states)
 	{
 		this.itemManager = itemManager;
+		this.states = states;
+		this.showReceived = states.isOpen(STATE_KEY, false);
 		setLayout(new BorderLayout(0, 3));
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		setBorder(BorderFactory.createEmptyBorder(3, 6, 6, 6));
@@ -244,6 +248,7 @@ class DropChancesCard extends JPanel
 			public void mousePressed(MouseEvent e)
 			{
 				showReceived = received;
+				states.setOpen(STATE_KEY, received);
 				styleTabs();
 				refresh();
 			}

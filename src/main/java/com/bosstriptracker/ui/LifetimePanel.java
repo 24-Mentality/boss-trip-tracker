@@ -39,9 +39,10 @@ import net.runelite.client.ui.FontManager;
 class LifetimePanel extends JPanel
 {
 	/**
-	 * Remembered for the session. All-time (RuneLite's Loot Tracker record) when there is one.
+	 * Tracked loot rather than all-time (RuneLite's Loot Tracker record, when there is one); saved in the settings.
 	 */
-	private static boolean trackedLoot;
+	private boolean trackedLoot;
+	private static final String TRACKED_LOOT_KEY = "lifetime.loot.tracked";
 
 	private final ItemManager itemManager;
 	private final SectionStates sectionStates;
@@ -82,7 +83,8 @@ class LifetimePanel extends JPanel
 	{
 		this.itemManager = itemManager;
 		this.sectionStates = sectionStates;
-		this.dropChances = new DropChancesCard(itemManager);
+		this.trackedLoot = sectionStates.isOpen(TRACKED_LOOT_KEY, false);
+		this.dropChances = new DropChancesCard(itemManager, sectionStates);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 
@@ -223,6 +225,7 @@ class LifetimePanel extends JPanel
 			public void mousePressed(MouseEvent e)
 			{
 				trackedLoot = tracked;
+				sectionStates.setOpen(TRACKED_LOOT_KEY, tracked);
 				shownLoot = null;
 				updateLoot();
 				revalidate();

@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
@@ -54,13 +56,21 @@ class TripSummaryCard extends JPanel
 		.help("Deaths in the lair this trip.");
 
 	private final JPanel timeCard;
+	private final JPanel timePinHolder = new JPanel(new BorderLayout());
 	private final JPanel profitCard;
+	private final JPanel eyeHolder = new JPanel(new BorderLayout());
+	private final List<CanvasPin> pins = new ArrayList<>();
+	/**
+	 * Where the profit card's collapsed state is saved; null to keep it for the session (History cards).
+	 */
+	private SectionStates states;
 	private final JPanel profitGrid = new JPanel();
 	private final JLabel eye = new JLabel();
 	/**
-	 * Collapsed with the eye icon; remembered for the session, like the other cards.
+	 * Collapsed with the eye icon.
 	 */
 	private boolean profitCollapsed;
+	private static final String PROFIT_STATE = "trip.profit";
 	private TripView trip;
 	private boolean paused;
 	private Long killStartedAt;
@@ -70,7 +80,19 @@ class TripSummaryCard extends JPanel
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 
-		timeCard = card(new FitRowLayout(4), time, kills, averageKill, fastestKill, currentKill);
+		JPanel timeCells = new JPanel(new FitRowLayout(4));
+		timeCells.setOpaque(false);
+		for (StatCell cell : new StatCell[]{time, kills, averageKill, fastestKill, currentKill})
+		{
+			timeCells.add(cell);
+		}
+		timePinHolder.setOpaque(false);
+		timeCard = new JPanel(new BorderLayout(3, 0));
+		timeCard.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		timeCard.setBorder(BorderFactory.createEmptyBorder(5, 6, 5, 6));
+		timeCard.setAlignmentX(LEFT_ALIGNMENT);
+		timeCard.add(timeCells, BorderLayout.CENTER);
+		timeCard.add(timePinHolder, BorderLayout.EAST);
 
 		// The profit card collapses with the eye icon to just net profit and net GP/hr
 		profitGrid.setOpaque(false);
@@ -84,11 +106,14 @@ class TripSummaryCard extends JPanel
 				if (e.getButton() == MouseEvent.BUTTON1)
 				{
 					profitCollapsed = !profitCollapsed;
+					if (states != null)
+					{
+						states.setOpen(PROFIT_STATE, !profitCollapsed);
+					}
 					layoutProfit();
 				}
 			}
 		});
-		JPanel eyeHolder = new JPanel(new BorderLayout());
 		eyeHolder.setOpaque(false);
 		eyeHolder.add(eye, BorderLayout.NORTH);
 		profitCard = new JPanel(new BorderLayout());
@@ -175,13 +200,28 @@ class TripSummaryCard extends JPanel
 	}
 
 	/**
-	 * Adds the right-click Add to canvas menus: the time card for the overlay's trip row, the profit card for its
-	 * profit row.
+	 * The Trip tab's card: pins that put the time card's and profit card's numbers on the overlay, and the profit
+	 * card's collapsed state saved in the settings.
 	 */
-	void attachCanvasMenus(PanelActions actions)
+	void attachPins(PanelActions actions, SectionStates states)
 	{
-		CanvasMenu.attach(timeCard, CanvasSection.TRIP, actions);
-		CanvasMenu.attach(profitCard, CanvasSection.LOOT, actions);
+		CanvasPin timePin = new CanvasPin(CanvasSection.TRIP, actions);
+		CanvasPin profitPin = new CanvasPin(CanvasSection.LOOT, actions);
+		pins.add(timePin);
+		pins.add(profitPin);
+		timePinHolder.add(timePin, BorderLayout.NORTH);
+		profitPin.setBorder(BorderFactory.createEmptyBorder(3, 5, 0, 0));
+		eyeHolder.add(profitPin, BorderLayout.CENTER);
+		this.states = states;
+		setProfitCollapsed(!states.isOpen(PROFIT_STATE, true));
+	}
+
+	/**
+	 * Reads whether each card's numbers are on the overlay.
+	 */
+	void refreshPins()
+	{
+		pins.forEach(CanvasPin::refresh);
 	}
 
 	/**

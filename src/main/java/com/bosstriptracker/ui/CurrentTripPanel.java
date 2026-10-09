@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.ColorScheme;
@@ -31,18 +30,19 @@ class CurrentTripPanel extends JPanel
 	private TripDetails details;
 
 	CurrentTripPanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, Runnable onSetGoal,
-		Runnable onPause, Runnable onResetGoal, Runnable onSetLastUniqueKc, Runnable onClearLastUniqueKc)
+		Runnable onPause, Runnable onResetGoal, Runnable onSetLastUniqueKc)
 	{
 		this.itemManager = itemManager;
 		this.sectionStates = sectionStates;
-		this.goalCard = new GoalCard(itemManager, onSetGoal, onPause, onResetGoal);
-		this.luckOverview = new LuckOverviewCard(itemManager, onSetLastUniqueKc, onClearLastUniqueKc);
+		this.goalCard = new GoalCard(itemManager, new CanvasPin(CanvasSection.GOAL, actions), onSetGoal, onPause,
+			onResetGoal);
+		this.luckOverview = new LuckOverviewCard(itemManager, sectionStates, onSetLastUniqueKc);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 
 		status.setFont(FontManager.getRunescapeSmallFont());
 		status.setForeground(UiFormat.MUTED_TEXT);
-		status.setBorder(BorderFactory.createEmptyBorder(0, 0, 1, 0));
+		status.setBorder(BorderFactory.createEmptyBorder(0, 0, 3, 0));
 		status.setAlignmentX(LEFT_ALIGNMENT);
 		summary.setAlignmentX(LEFT_ALIGNMENT);
 		detailsHolder.setLayout(new BoxLayout(detailsHolder, BoxLayout.Y_AXIS));
@@ -57,6 +57,8 @@ class CurrentTripPanel extends JPanel
 
 		// The goal and luck (all-time; collapses to its title row with the eye icon), then this trip: its times and
 		// profit, then its loot and supplies. Drop chances are on the Lifetime tab
+		// What's happening first, then the goal and luck
+		add(status);
 		add(goalCard);
 		luckHolder.setOpaque(false);
 		luckHolder.setAlignmentX(LEFT_ALIGNMENT);
@@ -65,15 +67,11 @@ class CurrentTripPanel extends JPanel
 		luckHolder.add(luckOverview, BorderLayout.CENTER);
 		add(luckHolder);
 		add(goalSpacer);
-		add(status);
 		add(summary);
 		add(detailsHolder);
 
-		// Right-click a card to put its numbers on the overlay; the goal card also restarts its count from a chosen trip
-		JMenuItem countFrom = new JMenuItem("Count from...");
-		countFrom.addActionListener(e -> onResetGoal.run());
-		CanvasMenu.attach(goalCard, CanvasSection.GOAL, actions, countFrom);
-		summary.attachCanvasMenus(actions);
+		// A pin on each card puts its numbers on the overlay
+		summary.attachPins(actions, sectionStates);
 	}
 
 	void update(PanelState state, long now)
@@ -84,6 +82,7 @@ class CurrentTripPanel extends JPanel
 		goalCard.setPauseState(state.isPausedInLair(), state.isCanPause());
 		goalCard.setGoal(state.getGoal(), now);
 		summary.setPaused(state.getPauseText() != null);
+		summary.refreshPins();
 		summary.setKillStartedAt(state.getKillStartedAt());
 		luckHolder.setVisible(state.getLifetime() != null);
 		if (state.getLifetime() != null)

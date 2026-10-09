@@ -35,8 +35,17 @@ class GoalCard extends JPanel
 	private final JLabel ttg = new JLabel();
 	private final JLabel left = new JLabel();
 	private final ProgressBar progress = new ProgressBar();
-	private final JButton resetButton = smallButton("Reset");
+	private final JButton resetButton = smallButton("Reset...");
 	private final JButton pauseButton = smallButton("Pause");
+	private final JButton setButton = smallButton("Set goal");
+	private final JPanel top;
+	private final JPanel buttons = new JPanel();
+	private final JPanel progressRow = new JPanel(new BorderLayout(4, 0));
+	private final CanvasPin pin;
+	/**
+	 * Without a goal, only Set kill goal and Pause are shown.
+	 */
+	private boolean empty;
 	/**
 	 * The goal clock isn't running (outside the lair, paused or idle); time-based stats are greyed.
 	 */
@@ -47,8 +56,12 @@ class GoalCard extends JPanel
 	private final JLabel icon = new JLabel();
 	private int iconItemId = -1;
 
-	GoalCard(ItemManager itemManager, Runnable onSetGoal, Runnable onPause, Runnable onReset)
+	/**
+	 * @param onReset counts the goal's kills again from a chosen point
+	 */
+	GoalCard(ItemManager itemManager, CanvasPin pin, Runnable onSetGoal, Runnable onPause, Runnable onReset)
 	{
+		this.pin = pin;
 		setLayout(new BorderLayout(0, 4));
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -66,10 +79,11 @@ class GoalCard extends JPanel
 		}
 
 		// The icon sits at the top left beside the stats, as in RuneLite's XP tracker
-		JPanel top = new JPanel(new BorderLayout(3, 0));
+		top = new JPanel(new BorderLayout(3, 0));
 		top.setOpaque(false);
 		top.add(icon, BorderLayout.WEST);
 		top.add(stats, BorderLayout.CENTER);
+
 
 		progress.setBackground(BAR_BACKGROUND);
 		progress.setForeground(ColorScheme.PROGRESS_COMPLETE_COLOR);
@@ -77,23 +91,51 @@ class GoalCard extends JPanel
 		progress.setLeftLabel("");
 		progress.setRightLabel("");
 
-		JButton setButton = smallButton("Set goal");
 		setButton.addActionListener(e -> onSetGoal.run());
 		pauseButton.addActionListener(e -> onPause.run());
 		pauseButton.setToolTipText(UiFormat.tooltip("Stop the trip and goal clocks now, before the automatic idle pause."
 			+ " Kills, loot and supplies still count. Resumes when you press it again or attack the boss. The clocks only"
 			+ " run in the lair while you're fighting."));
 		resetButton.addActionListener(e -> onReset.run());
-		// Equal widths: a grid, not a row of natural-width buttons
-		JPanel buttons = new JPanel(new GridLayout(1, 3, 4, 0));
+		resetButton.setToolTipText(UiFormat.tooltip("Count the goal's kills again, from now or from one of your recent"
+			+ " trips."));
 		buttons.setOpaque(false);
-		buttons.add(setButton);
-		buttons.add(pauseButton);
-		buttons.add(resetButton);
+
+		// The pin sits beside the progress bar, which can spare the width
+		progressRow.setOpaque(false);
+		progressRow.add(progress, BorderLayout.CENTER);
+		progressRow.add(pin, BorderLayout.EAST);
 
 		add(top, BorderLayout.NORTH);
-		add(progress, BorderLayout.CENTER);
+		add(progressRow, BorderLayout.CENTER);
 		add(buttons, BorderLayout.SOUTH);
+		setEmpty(true);
+	}
+
+	/**
+	 * Without a goal: just Set kill goal (and Pause, which also stops the trip clock).
+	 */
+	private void setEmpty(boolean empty)
+	{
+		if (empty == this.empty && buttons.getComponentCount() > 0)
+		{
+			return;
+		}
+		this.empty = empty;
+		top.setVisible(!empty);
+		progressRow.setVisible(!empty);
+		setButton.setText(empty ? "Set kill goal" : "Set goal");
+		buttons.removeAll();
+		// Equal widths: a grid, not a row of natural-width buttons
+		buttons.setLayout(new GridLayout(1, empty ? 2 : 3, 4, 0));
+		buttons.add(setButton);
+		buttons.add(pauseButton);
+		if (!empty)
+		{
+			buttons.add(resetButton);
+		}
+		revalidate();
+		repaint();
 	}
 
 	/**
@@ -141,6 +183,8 @@ class GoalCard extends JPanel
 	void setGoal(GoalView goal, long now)
 	{
 		this.goal = goal;
+		setEmpty(goal == null);
+		pin.refresh();
 		paused = goal == null || !goal.isRunning();
 		resetButton.setEnabled(goal != null);
 		if (goal == null)

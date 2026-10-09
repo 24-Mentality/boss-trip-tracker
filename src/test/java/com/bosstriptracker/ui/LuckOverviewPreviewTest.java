@@ -66,9 +66,7 @@ public class LuckOverviewPreviewTest
 	{
 		SwingUtilities.invokeAndWait(() ->
 		{
-			LuckOverviewCard card = new LuckOverviewCard(null, () ->
-			{
-			}, () ->
+			LuckOverviewCard card = new LuckOverviewCard(null, new SectionStates("", saved -> { }), () ->
 			{
 			});
 			card.update(dryness, boss);

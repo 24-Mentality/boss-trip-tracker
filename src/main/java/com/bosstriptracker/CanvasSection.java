@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * A panel card whose right-click menu puts its numbers on the overlay ("Add to canvas") or takes them off.
+ * A panel card whose pin puts its numbers on the overlay or takes them off.
  */
 @Getter
 @RequiredArgsConstructor
@@ -15,7 +15,7 @@ public enum CanvasSection
 	LOOT;
 
 	/**
-	 * The stat "Add to canvas" puts on the overlay for this card.
+	 * The stat the pin puts on the overlay for this card.
 	 */
 	public OverlayStat defaultStat()
 	{

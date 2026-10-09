@@ -73,7 +73,7 @@ public class TrackerPanel extends PluginPanel
 		setBackground(ColorScheme.DARK_GRAY_COLOR);
 
 		currentTab = new CurrentTripPanel(itemManager, sectionStates, actions, () -> promptGoal(actions), actions::togglePause,
-			() -> promptRestartGoal(actions), () -> promptLastUniqueKc(actions), () -> actions.setLastUniqueKc(null));
+			() -> promptRestartGoal(actions), () -> promptLastUniqueKc(actions));
 		historyTab = new HistoryPanel(itemManager, sectionStates, trip -> confirmDelete(trip, actions::deleteTrip),
 			actions::showMoreHistory);
 		lifetimeTab = new LifetimePanel(itemManager, sectionStates, actions, () -> confirmClear(actions::clearHistory));
@@ -407,17 +407,25 @@ public class TrackerPanel extends PluginPanel
 
 	private void promptLastUniqueKc(PanelActions actions)
 	{
-		String input = JOptionPane.showInputDialog(this,
+		Integer entered = state == null || state.getLifetime() == null ? null
+			: state.getLifetime().getDryness().getEnteredLastUniqueKc();
+		Object input = JOptionPane.showInputDialog(this,
 			"At what " + boss.getDisplayName() + " kill count did you get your last unique?\n"
-				+ "Your dry streak counts from there unless the plugin tracks a newer unique.",
-			"Last unique", JOptionPane.QUESTION_MESSAGE);
+				+ "Your dry streak counts from there unless the plugin tracks a newer unique.\n"
+				+ "Leave it empty to clear it.",
+			"Last unique", JOptionPane.QUESTION_MESSAGE, null, null, entered == null ? "" : String.valueOf(entered));
 		if (input == null)
 		{
 			return;
 		}
+		if (input.toString().trim().isEmpty())
+		{
+			actions.setLastUniqueKc(null);
+			return;
+		}
 		try
 		{
-			int killCount = Integer.parseInt(input.trim().replace(",", ""));
+			int killCount = Integer.parseInt(input.toString().trim().replace(",", ""));
 			if (killCount < 0 || killCount > 10_000_000)
 			{
 				throw new NumberFormatException();

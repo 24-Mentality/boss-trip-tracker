@@ -36,18 +36,18 @@ bosses are planned.
   stats (KPH, TTG, kills done or left), trip stats (current kill, trip time, kills, average
   kill, PB), the trip's net profit or net GP/hr, and your luck status (the Luck card's tier);
   rows 2 and 3 can also show nothing. With a goal set there is an optional progress bar.
-  Turn it on with **Show overlay** in Configuration → Overlay, or right-click the goal card,
-  the trip time card or the profit card and choose **Add to canvas** (or **Remove from
-  canvas**). Hold Alt and drag the box to move it. By default it only shows during a trip.
+  Turn it on with **Show overlay** in Configuration → Overlay, or click the pin on the goal
+  card, the trip time card or the profit card (a filled pin is on the overlay; click again to
+  take it off). Hold Alt and drag the box to move it. By default it only shows during a trip.
 - **Boss dropdown** (top of the panel): picks the boss shown in all three tabs. Entering a
   tracked boss's area selects it; otherwise your last choice is kept, so you can browse any
   boss's trips while a trip keeps tracking in the background. A green dot marks the boss with
   a trip in progress. Bosses with modes get a row of chips under the dropdown.
-- **Kill goal** (top of the Trip tab): set a kill target and see kills per hour (logged-in
-  time), kills done and left, time to goal, and a progress bar. **Set goal** asks where to
+- **Kill goal** (Trip tab, under the status line): **Set kill goal** to set a kill target and
+  see kills per hour, kills done and left, time to goal, and a progress bar. **Set goal** asks where to
   count from: the trip in progress (the default on a trip, so kills before you set the goal
   count), now, or a trip from the last 12 hours (that trip and every later one count).
-  **Reset** (or right-click the card, **Count from...**) restarts a goal's count the same way. The clocks only run while you're fighting in the lair: after 30 seconds
+  **Reset...** restarts a goal's count the same way. The clocks only run while you're fighting in the lair: after 30 seconds
   without dealing damage they pause (the idle time isn't counted) and restart on your next
   hit. **Pause** stops them straight away; it resumes when you press it again or, with
   **Auto-resume when I attack** on, when you next damage the boss.
@@ -59,8 +59,9 @@ bosses are planned.
   **Too early to tell** until at least one unique is expected. The odds are exact, with every
   kill at its own rate. At the Theatre of Blood they're marked approximate (your chance is taken
   as an equal share of the team's), and the AS RUCK tiers wait for 3 expected purples. The eye
-  icon collapses the card to the title row, which keeps the tier. Right-click the card to enter
-  the kill count of your last unique from before you installed the plugin;
+  icon collapses the card to the title row, which keeps the tier. Click **Last Unique** (or the
+  "Dry streak off?" link) to enter the kill count of your last unique from before you
+  installed the plugin;
   the dry streak then counts from there until the plugin tracks a newer unique (**Last Unique**
   shows its kill count). The dry streak and **Worst dry streak** go by your all-time kill
   count (RuneLite's Chat Commands), so kills done without the plugin, before or after you
