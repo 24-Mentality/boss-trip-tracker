@@ -12,7 +12,6 @@ import com.bosstriptracker.boss.ExpectedDrop;
 import com.bosstriptracker.boss.LootChoice;
 import com.bosstriptracker.boss.RaidCompletion;
 import com.bosstriptracker.boss.TripModel;
-import com.bosstriptracker.boss.TripStat;
 import com.bosstriptracker.model.AccountHistory;
 import com.bosstriptracker.model.AllTimeCounts;
 import com.bosstriptracker.model.BossHistory;
@@ -28,16 +27,12 @@ import com.bosstriptracker.model.TripClock;
 import com.bosstriptracker.model.SupplyCorrections;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.model.VariantFilter;
-import com.bosstriptracker.persistence.HistoryLayout;
 import com.bosstriptracker.persistence.HistoryStore;
 import com.bosstriptracker.pricing.PriceService;
 import com.bosstriptracker.view.BossOption;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import com.bosstriptracker.view.ViewBuilder;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,9 +47,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -128,7 +121,6 @@ public class TripTracker
 	private static final int POST_DEATH_IGNORE_TICKS = 5;
 	private static final long PRE_ENTRY_WINDOW_MS = 60_000;
 	private static final long JUNK_PRICE = SupplyAccounting.JUNK_PRICE;
-	private static final long SAVE_DELAY_MS = 1_000;
 	private static final long PUSH_INTERVAL_MS = 1_000;
 	private static final int HISTORY_PAGE = PanelState.HISTORY_PAGE;
 	private static final long ACTIVE_SAVE_INTERVAL_MS = 60_000;
@@ -156,6 +148,11 @@ public class TripTracker
 	private final InventoryLedger ledger;
 	private final BossRegistry registry;
 	private final RecentClicks recentClicks = new RecentClicks();
+	/**
+	 * What the parts of the tracker share: the trip in progress, where you are, the loaded history.
+	 */
+	private final TripSession s = new TripSession();
+	private final HistoryKeeper keeper;
 	private final SupplyAccounting accounting;
 	private final EggTracker eggTracker;
 	private final PolishTracker polishTracker;
@@ -166,48 +163,7 @@ public class TripTracker
 	private final Set<Integer> bossNpcIds = new HashSet<>();
 	private final Map<String, String> bossNames = new HashMap<>();
 
-	/**
-	 * The boss the panel shows. Changing it never affects tracking.
-	 */
-	private BossDefinition selectedBoss;
-	/**
-	 * Variant chip selected for the shown boss; null for All.
-	 */
-	private String selectedVariant;
-
-	private AccountHistory history;
-	private boolean readOnly;
-	/**
-	 * Where an unreadable history file was moved when this account's history was loaded, or null.
-	 */
-	private String corruptBackup;
-	private long accountHash = -1;
-	private boolean loading;
-
-	private Trip currentTrip;
-	/**
-	 * The boss of the current trip; null when there is none.
-	 */
-	private BossDefinition tripBoss;
-	/**
-	 * When the player logged out mid-trip; the trip resumes if they are back within the grace period.
-	 */
-	private Long suspendedAt;
-	private Trip lastEndedTrip;
-	private BossDefinition lastEndedBoss;
-
-	private boolean inArea;
 	private final LeaveDelay leaveDelay = new LeaveDelay();
-	/**
-	 * Leagues, Deadman, beta and tournament worlds keep their own records in RuneLite, so they aren't tracked.
-	 */
-	private boolean untrackedWorld;
-	/**
-	 * The boss whose area you're in; null outside.
-	 */
-	private BossDefinition areaBoss;
-	private boolean dead;
-	private int ignoreDeltasUntilTick = -1;
 	private DeathRecord pendingDeath;
 	/**
 	 * The trip with {@link #pendingDeath}, and the death's place in it: the trip has ended, so the death is changed
@@ -249,17 +205,9 @@ public class TripTracker
 	private final Set<Integer> wornAmmo = new HashSet<>();
 	private final ChargeCounter chargeCounter;
 	/**
-	 * Why the clock is stopped while in the lair on a trip; null while it runs. Kills, loot and supplies still count.
-	 */
-	private InLairPause inLairPause;
-	/**
 	 * Last time the player dealt a hitsplat in the lair (or entered it), for the idle pause.
 	 */
 	private long lastActivityAt;
-	/**
-	 * The open trip is waiting outside the lair (walked out), rather than logged out.
-	 */
-	private boolean suspendedOutside;
 	private boolean runeIdsLoaded;
 	/**
 	 * Lines saved at 0 gp have been repriced since the price list last loaded.
@@ -284,24 +232,13 @@ public class TripTracker
 	private int unclaimedRaidIndex;
 	private BossDefinition unclaimedRaidBoss;
 
-	private ScheduledFuture<?> saveFuture;
 	private long lastPeriodicSave;
-	private boolean viewDirty = true;
-	/**
-	 * Goes up whenever the history changes, so cached totals of finished trips are worked out again.
-	 */
-	private long historyVersion;
-	/**
-	 * Months ("boss/2026-09") whose finished trips changed since the last save, so their files are written again.
-	 */
-	private final Set<String> dirtyMonths = new HashSet<>();
 	private long lastPushAt;
 	/**
 	 * RuneLite's all-time records for the shown boss and chip, read again only when they change.
 	 */
 	private AllTimeCounts allTimeCache;
 	private String allTimeCacheKey;
-	private boolean historyDirty = true;
 	private List<TripView> historyViews = Collections.emptyList();
 	private int historyTotal;
 	private int historyLimit = HISTORY_PAGE;
@@ -324,6 +261,7 @@ public class TripTracker
 		this.alerter = alerter;
 		this.onLairEntered = onLairEntered;
 		this.allTimeRecords = new AllTimeRecords(configManager, gson);
+		this.keeper = new HistoryKeeper(s, store, gson, executor, clientThread, registry);
 		this.ledger = new InventoryLedger(client);
 		this.accounting = new SupplyAccounting(prices);
 		this.chargeCounter = new ChargeCounter(prices::isMeleeWeapon);
@@ -337,7 +275,7 @@ public class TripTracker
 			bossNpcIds.addAll(boss.getBossNpcIds());
 		}
 		BossDefinition saved = registry.byId(config.selectedBoss());
-		this.selectedBoss = saved != null ? saved : registry.first();
+		s.selectedBoss = saved != null ? saved : registry.first();
 	}
 
 	/**
@@ -360,28 +298,8 @@ public class TripTracker
 	 */
 	public void shutDown()
 	{
-		finalSave(() -> { });
+		keeper.finalSave(() -> { });
 		resetSession();
-	}
-
-	/**
-	 * Saves now instead of waiting for a pending save. Client thread.
-	 *
-	 * @param written runs once the file is written (or at once if there is nothing to save)
-	 */
-	public void finalSave(Runnable written)
-	{
-		if (saveFuture != null)
-		{
-			saveFuture.cancel(false);
-			saveFuture = null;
-		}
-		if (history == null || readOnly)
-		{
-			written.run();
-			return;
-		}
-		saveNow(written);
 	}
 
 	/**
@@ -391,8 +309,8 @@ public class TripTracker
 	 */
 	private void resetSession()
 	{
-		dead = false;
-		ignoreDeltasUntilTick = -1;
+		s.dead = false;
+		s.ignoreDeltasUntilTick = -1;
 		graveWindowEndTick = -1;
 		pendingDrops.clear();
 		resetKillState();
@@ -410,6 +328,49 @@ public class TripTracker
 		enteredRaidModeTick = -100;
 	}
 
+	/**
+	 * Saves now (the trip in progress included). Client thread.
+	 *
+	 * @param written runs once the file is written (or at once if there is nothing to save)
+	 */
+	public void finalSave(Runnable written)
+	{
+		keeper.finalSave(written);
+	}
+
+	/**
+	 * @return this account's full history (every boss) as JSON, made when called (on the IO thread), or null if none
+	 * is loaded. Client thread.
+	 */
+	public Supplier<String> exportJson()
+	{
+		return keeper.exportJson();
+	}
+
+	/**
+	 * @return the shown boss's completed trips as CSV, or null if no history is loaded. Client thread.
+	 */
+	public Supplier<String> exportCsv()
+	{
+		return keeper.exportCsv();
+	}
+
+	/**
+	 * The bosses this version tracks, for checking an import. Any thread.
+	 */
+	public Set<String> knownBossIds()
+	{
+		return keeper.knownBossIds();
+	}
+
+	/**
+	 * Describes what importing would do, or returns an error message starting with "!". Client thread.
+	 */
+	public String describeImport(AccountHistory imported)
+	{
+		return keeper.describeImport(imported);
+	}
+
 	// ---- Panel actions (call on the client thread) ----
 
 	/**
@@ -418,12 +379,12 @@ public class TripTracker
 	public void selectBoss(String bossId)
 	{
 		BossDefinition boss = registry.byId(bossId);
-		if (boss == null || boss == selectedBoss)
+		if (boss == null || boss == s.selectedBoss)
 		{
 			return;
 		}
-		selectedBoss = boss;
-		selectedVariant = null;
+		s.selectedBoss = boss;
+		s.selectedVariant = null;
 		historyLimit = HISTORY_PAGE;
 		config.setSelectedBoss(boss.getId());
 		historyChanged();
@@ -435,7 +396,7 @@ public class TripTracker
 	 */
 	public void selectVariant(String variant)
 	{
-		selectedVariant = variant;
+		s.selectedVariant = variant;
 		historyLimit = HISTORY_PAGE;
 		historyChanged();
 		pushState();
@@ -447,7 +408,7 @@ public class TripTracker
 	public void showMoreHistory()
 	{
 		historyLimit += HISTORY_PAGE;
-		historyDirty = true;
+		s.historyDirty = true;
 		pushState();
 	}
 
@@ -456,44 +417,44 @@ public class TripTracker
 	 */
 	public void setLastUniqueKc(Integer killCount)
 	{
-		BossHistory boss = writableHistory(selectedBoss);
+		BossHistory boss = writableHistory(s.selectedBoss);
 		if (boss == null)
 		{
 			return;
 		}
 		boss.setLastUniqueKc(killCount);
 		historyChanged();
-		saveNow();
+		keeper.saveNow();
 		pushState();
 	}
 
 	public void deleteTrip(String tripId)
 	{
-		if (history == null || readOnly)
+		if (s.history == null || s.readOnly)
 		{
 			return;
 		}
 
-		for (BossHistory boss : history.getBosses().values())
+		for (BossHistory boss : s.history.getBosses().values())
 		{
-			Trip trip = findTrip(boss, tripId);
+			Trip trip = HistoryKeeper.findTrip(boss, tripId);
 			if (trip == null)
 			{
 				continue;
 			}
 			boss.getTrips().remove(trip);
-			if (trip == currentTrip)
+			if (trip == s.currentTrip)
 			{
 				forgetCurrentTrip();
 				resetSession();
 			}
 			else
 			{
-				monthChanged(bossIdOf(boss), trip);
+				keeper.monthChanged(keeper.bossIdOf(boss), trip);
 			}
-			if (trip == lastEndedTrip)
+			if (trip == s.lastEndedTrip)
 			{
-				lastEndedTrip = null;
+				s.lastEndedTrip = null;
 			}
 			if (pendingDeathTrip != null && pendingDeathTrip.getId().equals(trip.getId()))
 			{
@@ -502,7 +463,7 @@ public class TripTracker
 			}
 		}
 		historyChanged();
-		saveNow();
+		keeper.saveNow();
 		pushState();
 	}
 
@@ -511,7 +472,7 @@ public class TripTracker
 	 */
 	public void clearHistory()
 	{
-		BossHistory boss = writableHistory(selectedBoss);
+		BossHistory boss = writableHistory(s.selectedBoss);
 		if (boss == null)
 		{
 			return;
@@ -519,169 +480,33 @@ public class TripTracker
 
 		for (Trip trip : boss.getTrips())
 		{
-			monthChanged(selectedBoss.getId(), trip);
+			keeper.monthChanged(s.selectedBoss.getId(), trip);
 		}
 		boss.getTrips().clear();
-		if (tripBoss == selectedBoss)
+		if (s.tripBoss == s.selectedBoss)
 		{
 			forgetCurrentTrip();
 			pendingDeath = null;
 			pendingDeathTrip = null;
 			resetSession();
 		}
-		if (lastEndedBoss == selectedBoss)
+		if (s.lastEndedBoss == s.selectedBoss)
 		{
-			lastEndedTrip = null;
+			s.lastEndedTrip = null;
 		}
 		historyChanged();
-		saveNow();
+		keeper.saveNow();
 		pushState();
 	}
 
 	private void forgetCurrentTrip()
 	{
-		currentTrip = null;
-		tripBoss = null;
-		suspendedAt = null;
-		suspendedOutside = false;
-		inLairPause = null;
+		s.currentTrip = null;
+		s.tripBoss = null;
+		s.suspendedAt = null;
+		s.suspendedOutside = false;
+		s.inLairPause = null;
 		lootKill = null;
-	}
-
-	/**
-	 * @return this account's full history (every boss) as JSON, made when called (on the IO thread), or null if none
-	 * is loaded. Client thread.
-	 */
-	public Supplier<String> exportJson()
-	{
-		if (history == null)
-		{
-			return null;
-		}
-		// Finished trips never change in place, so they're shared; the rest is copied now
-		AccountHistory export = HistoryLayout.accountWithoutTrips(history);
-		history.getBosses().forEach((bossId, boss) ->
-		{
-			List<Trip> trips = new ArrayList<>();
-			for (Trip trip : boss.getTrips())
-			{
-				trips.add(trip == currentTrip ? trip.copy() : trip);
-			}
-			export.getBosses().get(bossId).setTrips(trips);
-		});
-		return () -> gson.toJson(export);
-	}
-
-	/**
-	 * @return the shown boss's completed trips as CSV (oldest first), or null if no history is loaded. Client thread.
-	 */
-	public Supplier<String> exportCsv()
-	{
-		if (history == null)
-		{
-			return null;
-		}
-		String csv = csv();
-		return () -> csv;
-	}
-
-	private String csv()
-	{
-		BossDefinition boss = selectedBoss;
-		StringBuilder csv = new StringBuilder("start,end,active_minutes,end_reason,kills,");
-		for (TripStat column : boss.getCsvColumns())
-		{
-			csv.append(column.getLabel()).append(',');
-		}
-		csv.append("deaths,pet,loot_gp,supplies_gp,dropped_gp,death_costs_gp,net_gp,gp_per_hour,avg_kill_seconds\n");
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		for (Trip trip : history.boss(boss.getId()).getTrips())
-		{
-			if (trip.isOpen())
-			{
-				continue;
-			}
-			long net = TripMath.netProfit(trip);
-			Long averageKill = TripMath.averageKillMs(Collections.singletonList(trip));
-			csv.append(format.format(Instant.ofEpochMilli(trip.getStartedAt()).atZone(ZoneId.systemDefault()))).append(',')
-				.append(format.format(Instant.ofEpochMilli(trip.getEndedAt()).atZone(ZoneId.systemDefault()))).append(',')
-				.append(String.format(Locale.ROOT, "%.1f", trip.getActiveMs() / 60_000.0)).append(',')
-				.append(trip.getEndReason()).append(',')
-				.append(trip.getKills().size()).append(',');
-			for (TripStat column : boss.getCsvColumns())
-			{
-				csv.append(column.valueOf(trip)).append(',');
-			}
-			csv.append(trip.getDeaths().size()).append(',')
-				.append(trip.getKills().stream().anyMatch(Kill::isPet)).append(',')
-				.append(TripMath.lootValue(trip)).append(',')
-				.append(TripMath.supplyCost(trip)).append(',')
-				.append(TripMath.droppedCost(trip)).append(',')
-				.append(TripMath.deathCost(trip)).append(',')
-				.append(net).append(',')
-				.append(TripMath.gpPerHour(net, trip.getActiveMs())).append(',')
-				.append(averageKill == null ? "" : String.format(Locale.ROOT, "%.1f", averageKill / 1000.0))
-				.append('\n');
-		}
-		return csv.toString();
-	}
-
-	/**
-	 * The bosses this version tracks, for checking an import. Any thread.
-	 */
-	public Set<String> knownBossIds()
-	{
-		Set<String> ids = new HashSet<>();
-		for (BossDefinition boss : registry.all())
-		{
-			ids.add(boss.getId());
-		}
-		return ids;
-	}
-
-	/**
-	 * Describes what importing would do, or returns an error message starting with "!". Client thread.
-	 */
-	public String describeImport(AccountHistory imported)
-	{
-		if (history == null)
-		{
-			return "!Log in first so the history can be imported into your account.";
-		}
-		if (readOnly)
-		{
-			return "!This account's history is read-only.";
-		}
-		if (imported.getSchemaVersion() > AccountHistory.CURRENT_SCHEMA_VERSION)
-		{
-			return "!This file is from a newer version of the plugin.";
-		}
-
-		int added = 0;
-		int total = 0;
-		for (Map.Entry<String, BossHistory> e : imported.getBosses().entrySet())
-		{
-			BossHistory mine = history.getBosses().get(e.getKey());
-			for (Trip trip : e.getValue().getTrips())
-			{
-				total++;
-				if (isImportable(trip, mine))
-				{
-					added++;
-				}
-			}
-		}
-		String account = imported.getAccountHash() != 0 && imported.getAccountHash() != accountHash
-			? " The file is from a different account" + (imported.getLastDisplayName() != null
-			? " (" + imported.getLastDisplayName() + ")" : "") + "."
-			: "";
-		return "Add " + added + " of " + total + " trips from the file to this account?"
-			+ " Trips you already have are skipped." + account;
-	}
-
-	private static boolean isImportable(Trip trip, BossHistory mine)
-	{
-		return trip.getId() != null && !trip.isOpen() && (mine == null || findTrip(mine, trip.getId()) == null);
 	}
 
 	/**
@@ -689,7 +514,7 @@ public class TripTracker
 	 */
 	public void importHistory(AccountHistory imported, int sourceVersion)
 	{
-		if (describeImport(imported).startsWith("!"))
+		if (keeper.describeImport(imported).startsWith("!"))
 		{
 			return;
 		}
@@ -700,13 +525,13 @@ public class TripTracker
 
 		imported.getBosses().forEach((bossId, theirs) ->
 		{
-			BossHistory mine = history.boss(bossId);
+			BossHistory mine = s.history.boss(bossId);
 			for (Trip trip : theirs.getTrips())
 			{
-				if (isImportable(trip, mine))
+				if (HistoryKeeper.isImportable(trip, mine))
 				{
 					mine.getTrips().add(trip);
-					monthChanged(bossId, trip);
+					keeper.monthChanged(bossId, trip);
 				}
 			}
 			mine.getTrips().sort(Comparator.comparingLong(Trip::getStartedAt));
@@ -745,7 +570,7 @@ public class TripTracker
 		});
 
 		historyChanged();
-		saveNow();
+		keeper.saveNow();
 		pushState();
 	}
 
@@ -758,7 +583,7 @@ public class TripTracker
 	 */
 	public void setGoal(int target, Long countFrom)
 	{
-		BossHistory boss = writableHistory(selectedBoss);
+		BossHistory boss = writableHistory(s.selectedBoss);
 		if (boss == null)
 		{
 			return;
@@ -776,8 +601,8 @@ public class TripTracker
 			}
 			else
 			{
-				boolean onTrip = currentTrip != null && tripBoss == selectedBoss;
-				startedAt = onTrip ? currentTrip.getStartedAt() : System.currentTimeMillis();
+				boolean onTrip = s.currentTrip != null && s.tripBoss == s.selectedBoss;
+				startedAt = onTrip ? s.currentTrip.getStartedAt() : System.currentTimeMillis();
 			}
 			boss.setGoal(KillGoal.startingAt(target, startedAt, boss.getTrips()));
 		}
@@ -785,8 +610,8 @@ public class TripTracker
 		{
 			boss.getGoal().setTarget(target);
 		}
-		viewDirty = true;
-		saveNow();
+		s.viewDirty = true;
+		keeper.saveNow();
 		pushState();
 	}
 
@@ -795,14 +620,14 @@ public class TripTracker
 	 */
 	public void togglePause()
 	{
-		if (!inArea || currentTrip == null || suspendedAt != null)
+		if (!s.inArea || s.currentTrip == null || s.suspendedAt != null)
 		{
 			return;
 		}
 		long now = System.currentTimeMillis();
-		if (inLairPause == null)
+		if (s.inLairPause == null)
 		{
-			pauseInLair(InLairPause.MANUAL, now);
+			pauseInLair(TripSession.InLairPause.MANUAL, now);
 		}
 		else
 		{
@@ -813,24 +638,24 @@ public class TripTracker
 	/**
 	 * @param end when the clock stops; for an idle pause this is the last hit, so the idle time is left out
 	 */
-	private void pauseInLair(InLairPause reason, long end)
+	private void pauseInLair(TripSession.InLairPause reason, long end)
 	{
-		TripClock.stop(currentTrip, goal(), end);
-		currentTrip.setLastActiveAt(end);
-		inLairPause = reason;
-		viewDirty = true;
-		requestSave();
+		TripClock.stop(s.currentTrip, goal(), end);
+		s.currentTrip.setLastActiveAt(end);
+		s.inLairPause = reason;
+		s.viewDirty = true;
+		keeper.requestSave();
 		pushState();
 	}
 
 	private void resumeInLair(long now)
 	{
-		inLairPause = null;
+		s.inLairPause = null;
 		lastActivityAt = now;
-		TripClock.start(currentTrip, now);
-		currentTrip.setLastActiveAt(now);
-		viewDirty = true;
-		requestSave();
+		TripClock.start(s.currentTrip, now);
+		s.currentTrip.setLastActiveAt(now);
+		s.viewDirty = true;
+		keeper.requestSave();
 		pushState();
 	}
 
@@ -839,7 +664,7 @@ public class TripTracker
 	 */
 	private KillGoal goal()
 	{
-		return history == null || tripBoss == null ? null : history.boss(tripBoss.getId()).getGoal();
+		return s.history == null || s.tripBoss == null ? null : s.history.boss(s.tripBoss.getId()).getGoal();
 	}
 
 	private long idlePauseMs()
@@ -852,14 +677,14 @@ public class TripTracker
 	 */
 	public void restartGoalFrom(long countFrom)
 	{
-		BossHistory boss = writableHistory(selectedBoss);
+		BossHistory boss = writableHistory(s.selectedBoss);
 		if (boss == null || boss.getGoal() == null)
 		{
 			return;
 		}
 		boss.setGoal(KillGoal.startingAt(boss.getGoal().getTarget(), countFrom, boss.getTrips()));
-		viewDirty = true;
-		saveNow();
+		s.viewDirty = true;
+		keeper.saveNow();
 		pushState();
 	}
 
@@ -883,9 +708,9 @@ public class TripTracker
 			{
 				boolean match = AllTimeRecords.LOOT_TRACKER_GROUP.equals(group) ? source.getLootTrackerKey().equals(key)
 					: key.equals(source.getKillCountKey());
-				if (match && boss == selectedBoss)
+				if (match && boss == s.selectedBoss)
 				{
-					viewDirty = true;
+					s.viewDirty = true;
 					pushState();
 					return;
 				}
@@ -911,14 +736,14 @@ public class TripTracker
 			case LOGGED_IN:
 				// RuneLite's records are kept per RuneScape profile
 				allTimeRecordsInvalid();
-				untrackedWorld = RuneScapeProfileType.getCurrent(client) != RuneScapeProfileType.STANDARD
+				s.untrackedWorld = RuneScapeProfileType.getCurrent(client) != RuneScapeProfileType.STANDARD
 					|| client.getWorldType().contains(WorldType.TOURNAMENT_WORLD);
 				ensureAccountLoaded();
 				pushState();
 				break;
 			case LOGIN_SCREEN:
 			case HOPPING:
-				if (inArea)
+				if (s.inArea)
 				{
 					suspendTrip(System.currentTimeMillis());
 				}
@@ -948,11 +773,11 @@ public class TripTracker
 
 		// The player's name isn't available yet when the history loads at login
 		String name = player.getName();
-		if (history != null && name != null && !name.equals(history.getLastDisplayName()))
+		if (s.history != null && name != null && !name.equals(s.history.getLastDisplayName()))
 		{
-			history.setLastDisplayName(name);
-			viewDirty = true;
-			requestSave();
+			s.history.setLastDisplayName(name);
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
 
 		if (!runeIdsLoaded)
@@ -964,7 +789,7 @@ public class TripTracker
 		{
 			zeroPricesChecked = false;
 		}
-		else if (!zeroPricesChecked && history != null && !readOnly)
+		else if (!zeroPricesChecked && s.history != null && !s.readOnly)
 		{
 			repriceZeroPrices();
 		}
@@ -982,21 +807,21 @@ public class TripTracker
 		polishTracker.tick(tick);
 
 		int region = WorldPoint.fromLocalInstance(client, player.getLocalLocation()).getRegionID();
-		BossDefinition regionBoss = untrackedWorld ? null : registry.forRegion(region);
-		if (inArea && regionBoss == null
-			&& areaBoss.isStillInside(client::getVarbitValue, region, client.getTopLevelWorldView().isInstance()))
+		BossDefinition regionBoss = s.untrackedWorld ? null : registry.forRegion(region);
+		if (s.inArea && regionBoss == null
+			&& s.areaBoss.isStillInside(client::getVarbitValue, region, client.getTopLevelWorldView().isInstance()))
 		{
 			// An unlisted room of a raid you're still in
-			regionBoss = areaBoss;
+			regionBoss = s.areaBoss;
 		}
-		if (inArea && regionBoss != areaBoss)
+		if (s.inArea && regionBoss != s.areaBoss)
 		{
-			Long leftAt = leaveDelay.outside(now, dead);
+			Long leftAt = leaveDelay.outside(now, s.dead);
 			if (leftAt != null)
 			{
 				// Left the area (or went straight into another boss's)
-				inArea = false;
-				areaBoss = null;
+				s.inArea = false;
+				s.areaBoss = null;
 				leaveLair(region, tick, leftAt);
 			}
 		}
@@ -1004,35 +829,35 @@ public class TripTracker
 		{
 			leaveDelay.inside();
 		}
-		if (regionBoss != null && !inArea)
+		if (regionBoss != null && !s.inArea)
 		{
-			inArea = true;
-			areaBoss = regionBoss;
+			s.inArea = true;
+			s.areaBoss = regionBoss;
 			enterLair(regionBoss, now);
 			onLairEntered.run();
 		}
 
-		if (!inArea && currentTrip != null && suspendedAt != null)
+		if (!s.inArea && s.currentTrip != null && s.suspendedAt != null)
 		{
-			if (suspendedOutside)
+			if (s.suspendedOutside)
 			{
 				// The trip only waits while you stay just outside
-				if (!tripBoss.getWaitingRegions().contains(region)
-					|| now - suspendedAt > TimeUnit.MINUTES.toMillis(config.outsideGraceMinutes()))
+				if (!s.tripBoss.getWaitingRegions().contains(region)
+					|| now - s.suspendedAt > TimeUnit.MINUTES.toMillis(config.outsideGraceMinutes()))
 				{
-					endTrip(TripEndReason.WALKED_OUT, suspendedAt);
+					endTrip(TripEndReason.WALKED_OUT, s.suspendedAt);
 				}
 			}
-			else if (now - suspendedAt > TimeUnit.MINUTES.toMillis(config.logoutGraceMinutes()))
+			else if (now - s.suspendedAt > TimeUnit.MINUTES.toMillis(config.logoutGraceMinutes()))
 			{
-				endTrip(TripEndReason.LOGOUT, suspendedAt);
+				endTrip(TripEndReason.LOGOUT, s.suspendedAt);
 			}
 		}
 
-		if (inArea && currentTrip != null && isRaid(tripBoss))
+		if (s.inArea && s.currentTrip != null && isRaid(s.tripBoss))
 		{
 			int players = 0;
-			for (int varbit : tripBoss.getTeamSlotVarbits())
+			for (int varbit : s.tripBoss.getTeamSlotVarbits())
 			{
 				if (client.getVarbitValue(varbit) != 0)
 				{
@@ -1043,21 +868,21 @@ public class TripTracker
 		}
 
 		// Raids don't pause while idle: the time between rooms is part of the raid
-		if (inArea && currentTrip != null && suspendedAt == null && inLairPause == null && !isRaid(tripBoss)
+		if (s.inArea && s.currentTrip != null && s.suspendedAt == null && s.inLairPause == null && !isRaid(s.tripBoss)
 			&& TripClock.idle(lastActivityAt, now, idlePauseMs()))
 		{
-			pauseInLair(InLairPause.IDLE, lastActivityAt);
+			pauseInLair(TripSession.InLairPause.IDLE, lastActivityAt);
 		}
 
-		if (inArea && currentTrip != null && now - lastPeriodicSave > ACTIVE_SAVE_INTERVAL_MS)
+		if (s.inArea && s.currentTrip != null && now - lastPeriodicSave > ACTIVE_SAVE_INTERVAL_MS)
 		{
 			lastPeriodicSave = now;
-			requestSave();
+			keeper.requestSave();
 		}
 
 		prune(tick, now);
 		// At most once a second: charges and supplies change on almost every tick in a fight
-		if ((viewDirty || historyDirty) && now - lastPushAt >= PUSH_INTERVAL_MS)
+		if ((s.viewDirty || s.historyDirty) && now - lastPushAt >= PUSH_INTERVAL_MS)
 		{
 			pushState();
 		}
@@ -1125,13 +950,13 @@ public class TripTracker
 		if (hitsplat.isMine() && event.getActor() instanceof NPC)
 		{
 			chargeCounter.hitsplat(client.getTickCount(), hitsplat.getHitsplatType(), hitsplat.getAmount());
-			if (inArea && currentTrip != null && suspendedAt == null)
+			if (s.inArea && s.currentTrip != null && s.suspendedAt == null)
 			{
 				long now = System.currentTimeMillis();
 				lastActivityAt = now;
-				boolean onBoss = tripBoss.getBossNpcIds().contains(((NPC) event.getActor()).getId()) && hitsplat.getAmount() > 0;
-				if (inLairPause == InLairPause.IDLE
-					|| (inLairPause == InLairPause.MANUAL && config.autoResumeOnAttack() && onBoss))
+				boolean onBoss = s.tripBoss.getBossNpcIds().contains(((NPC) event.getActor()).getId()) && hitsplat.getAmount() > 0;
+				if (s.inLairPause == TripSession.InLairPause.IDLE
+					|| (s.inLairPause == TripSession.InLairPause.MANUAL && config.autoResumeOnAttack() && onBoss))
 				{
 					resumeInLair(now);
 				}
@@ -1144,7 +969,7 @@ public class TripTracker
 	 */
 	private void chargesUsed(ChargeType type, int used)
 	{
-		if (!inArea || currentTrip == null || dead)
+		if (!s.inArea || s.currentTrip == null || s.dead)
 		{
 			return;
 		}
@@ -1157,10 +982,10 @@ public class TripTracker
 		int chargeItemId = type == ChargeType.TOME_OF_FIRE ? config.tomePage().getItemId()
 			: type.isBlowpipeDarts() ? config.blowpipeDarts().getItemId()
 			: type.getChargeItemId();
-		ItemEntries.merge(currentTrip.getSupplies(), ItemEntry.charges(type.getSourceItemId(), used,
+		ItemEntries.merge(s.currentTrip.getSupplies(), ItemEntry.charges(type.getSourceItemId(), used,
 			chargeItemId, rechargePrice(type, chargeItemId), type.getChargesPerRecharge()));
-		viewDirty = true;
-		requestSave();
+		s.viewDirty = true;
+		keeper.requestSave();
 	}
 
 	/**
@@ -1184,11 +1009,11 @@ public class TripTracker
 	{
 		zeroPricesChecked = true;
 		List<Trip> trips = new ArrayList<>();
-		for (BossHistory boss : history.getBosses().values())
+		for (BossHistory boss : s.history.getBosses().values())
 		{
 			trips.addAll(boss.getTrips());
 		}
-		int repriced = ZeroPrices.reprice(trips, this::editable, new ZeroPrices.Pricing()
+		int repriced = ZeroPrices.reprice(trips, keeper::editable, new ZeroPrices.Pricing()
 		{
 			@Override
 			public boolean tradeable(ItemEntry entry)
@@ -1213,7 +1038,7 @@ public class TripTracker
 		{
 			log.debug("Repriced {} lines saved while prices weren't loaded", repriced);
 			historyChanged();
-			requestSave();
+			keeper.requestSave();
 		}
 	}
 
@@ -1255,7 +1080,6 @@ public class TripTracker
 		return item == null ? -1 : item.getId();
 	}
 
-
 	@Subscribe
 	public void onMenuOptionClicked(MenuOptionClicked event)
 	{
@@ -1272,10 +1096,10 @@ public class TripTracker
 			return;
 		}
 
-		if (inArea && currentTrip != null && tripBoss.getLootTriggerNpcs().contains(npc.getId()))
+		if (s.inArea && s.currentTrip != null && s.tripBoss.getLootTriggerNpcs().contains(npc.getId()))
 		{
-			LootChoice choice = tripBoss.choiceForOption(option);
-			if (choice == null && !tripBoss.getLootChoices().isEmpty())
+			LootChoice choice = s.tripBoss.choiceForOption(option);
+			if (choice == null && !s.tripBoss.getLootChoices().isEmpty())
 			{
 				return;
 			}
@@ -1301,7 +1125,7 @@ public class TripTracker
 					pendingChoiceTick = tick;
 				}
 			}
-			viewDirty = true;
+			s.viewDirty = true;
 			lastCorpseClickTick = tick;
 			if (!lootReceived)
 			{
@@ -1323,12 +1147,12 @@ public class TripTracker
 		{
 			// The Theatre of Blood sends its damage summaries this way, and the purple broadcast may be one of them
 			// (unverified). Nothing else is read from them: another player's notification is never yours.
-			if (inArea && currentTrip != null && isRaid(tripBoss))
+			if (s.inArea && s.currentTrip != null && isRaid(s.tripBoss))
 			{
-				String uniqueName = tripBoss.teamUniqueName(Text.removeTags(message));
+				String uniqueName = s.tripBoss.teamUniqueName(Text.removeTags(message));
 				if (uniqueName != null)
 				{
-					teamUnique(tripBoss, uniqueName);
+					teamUnique(s.tripBoss, uniqueName);
 				}
 			}
 			return;
@@ -1372,29 +1196,29 @@ public class TripTracker
 				DeathRecord death = pendingDeathForChange();
 				death.setReclaimFee(death.getReclaimFee() + fee);
 				historyChanged();
-				requestSave();
+				keeper.requestSave();
 				return;
 			}
 		}
-		if (!inArea || currentTrip == null)
+		if (!s.inArea || s.currentTrip == null)
 		{
 			return;
 		}
 
-		Long fightDelay = tripBoss.fightStartDelayMs(text);
+		Long fightDelay = s.tripBoss.fightStartDelayMs(text);
 		if (fightDelay != null)
 		{
 			fightStartedAt = now + fightDelay;
 			bossSpawnedAt = fightStartedAt;
 			bossDiedAt = null;
-			viewDirty = true;
+			s.viewDirty = true;
 			return;
 		}
 
 		ChatPatterns.KillCount killCount = ChatPatterns.killCount(message);
-		if (killCount != null && isKillName(tripBoss, killCount.getName()))
+		if (killCount != null && isKillName(s.tripBoss, killCount.getName()))
 		{
-			recordKill(killCount.getCount(), variantForKillName(tripBoss, killCount.getName()), tick, now);
+			recordKill(killCount.getCount(), variantForKillName(s.tripBoss, killCount.getName()), tick, now);
 			return;
 		}
 
@@ -1404,7 +1228,7 @@ public class TripTracker
 			if (lootKill != null && tick - lastKillTick <= 2)
 			{
 				lootKill.setDurationMs(duration);
-				viewDirty = true;
+				s.viewDirty = true;
 			}
 			return;
 		}
@@ -1419,7 +1243,7 @@ public class TripTracker
 	 */
 	private boolean raidMessage(String text, int tick, long now)
 	{
-		if (!inArea)
+		if (!s.inArea)
 		{
 			// The entry message comes a tick before you're inside
 			for (BossDefinition boss : registry.all())
@@ -1434,12 +1258,12 @@ public class TripTracker
 			}
 			return false;
 		}
-		if (currentTrip == null || !isRaid(tripBoss))
+		if (s.currentTrip == null || !isRaid(s.tripBoss))
 		{
 			return false;
 		}
 
-		BossDefinition boss = tripBoss;
+		BossDefinition boss = s.tripBoss;
 		String mode = boss.raidMode(text);
 		if (mode != null)
 		{
@@ -1483,7 +1307,7 @@ public class TripTracker
 				bossHistory.setGameDryStreak(dryStreak);
 				bossHistory.setGameDryStreakKc(killCount);
 				historyChanged();
-				requestSave();
+				keeper.requestSave();
 			}
 			return true;
 		}
@@ -1496,7 +1320,7 @@ public class TripTracker
 				bossHistory.setGameTeamDryStreak(teamDryStreak);
 				bossHistory.setGameTeamDryStreakAt(lootKill.getEndedAt());
 				historyChanged();
-				requestSave();
+				keeper.requestSave();
 			}
 			return true;
 		}
@@ -1508,7 +1332,7 @@ public class TripTracker
 	 */
 	private void recordRaid(RaidCompletion completion, int tick, long now)
 	{
-		recordKill(tripBoss.raidKillCount(completion, allTimeRecords::killCount), completion.getVariant(), tick, now);
+		recordKill(s.tripBoss.raidKillCount(completion, allTimeRecords::killCount), completion.getVariant(), tick, now);
 		lootKill.setPartySize(raid.getTeamSize());
 		if (raid.getRaidTimeMs() != null)
 		{
@@ -1532,8 +1356,8 @@ public class TripTracker
 		if (raid.isCompleted() && lootKill != null)
 		{
 			lootKill.getTeamUniques().add(itemId);
-			viewDirty = true;
-			requestSave();
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
 		else
 		{
@@ -1573,19 +1397,19 @@ public class TripTracker
 	private void petMessage(int tick)
 	{
 		// Right after the corpse click, or for bosses without a corpse, right after the kill
-		int lootTick = currentTrip != null && tripBoss.getLootTriggerNpcs().isEmpty() ? lastKillTick : lastCorpseClickTick;
-		if (inArea && currentTrip != null && lootKill != null && tick - lootTick <= CORPSE_WINDOW_TICKS)
+		int lootTick = s.currentTrip != null && s.tripBoss.getLootTriggerNpcs().isEmpty() ? lastKillTick : lastCorpseClickTick;
+		if (s.inArea && s.currentTrip != null && lootKill != null && tick - lootTick <= CORPSE_WINDOW_TICKS)
 		{
 			lootKill.setPet(true);
-			int petItem = tripBoss.getPet() == null ? -1 : tripBoss.getPet().getItemId();
+			int petItem = s.tripBoss.getPet() == null ? -1 : s.tripBoss.getPet().getItemId();
 			boolean listed = lootKill.getLoot().stream().anyMatch(e -> e.getItemId() == petItem);
 			if (!listed && petItem > 0)
 			{
 				lootKill.getLoot().add(new ItemEntry(petItem, 1, 0));
 			}
-			alertPet(tripBoss.getDisplayName() + (tripBoss.getLootTriggerNpcs().isEmpty() ? " pet!" : " pet from the corpse!"));
-			viewDirty = true;
-			requestSave();
+			alertPet(s.tripBoss.getDisplayName() + (s.tripBoss.getLootTriggerNpcs().isEmpty() ? " pet!" : " pet from the corpse!"));
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
 		else if (eggTracker.recentlyClicked(tick))
 		{
@@ -1605,7 +1429,7 @@ public class TripTracker
 			polishTracker.lootEvent(event, client.getTickCount());
 			return;
 		}
-		if (!inArea || currentTrip == null || !tripBoss.isLootEvent(event.getName(), event.getType(), bossName(tripBoss)))
+		if (!s.inArea || s.currentTrip == null || !s.tripBoss.isLootEvent(event.getName(), event.getType(), bossName(s.tripBoss)))
 		{
 			return;
 		}
@@ -1624,14 +1448,14 @@ public class TripTracker
 			addLoot(kill, e.getKey(), e.getValue());
 			if (!replaced.containsKey(e.getKey()))
 			{
-				alertForDrop(tripBoss, e.getKey(), e.getValue());
+				alertForDrop(s.tripBoss, e.getKey(), e.getValue());
 			}
 		}
 		lootReceived = true;
 		fallbackEndTick = -1;
 		fallbackGains.clear();
-		viewDirty = true;
-		requestSave();
+		s.viewDirty = true;
+		keeper.requestSave();
 	}
 
 	/**
@@ -1641,8 +1465,8 @@ public class TripTracker
 	 */
 	private boolean raidLoot(LootReceived event)
 	{
-		boolean inRaid = currentTrip != null && isRaid(tripBoss);
-		BossDefinition boss = inRaid ? tripBoss : unclaimedRaidBoss;
+		boolean inRaid = s.currentTrip != null && isRaid(s.tripBoss);
+		BossDefinition boss = inRaid ? s.tripBoss : unclaimedRaidBoss;
 		if (boss == null || !boss.isRaidLootEvent(event.getName(), event.getType()))
 		{
 			return false;
@@ -1662,7 +1486,7 @@ public class TripTracker
 			alertForDrop(boss, stack.getId(), stack.getQuantity());
 		}
 		historyChanged();
-		requestSave();
+		keeper.requestSave();
 		return true;
 	}
 
@@ -1689,7 +1513,7 @@ public class TripTracker
 			bossSpawnedAt = System.currentTimeMillis();
 			bossDiedAt = null;
 			fightStartedAt = bossSpawnedAt;
-			viewDirty = true;
+			s.viewDirty = true;
 		}
 	}
 
@@ -1697,7 +1521,7 @@ public class TripTracker
 	public void onItemSpawned(ItemSpawned event)
 	{
 		TileItem item = event.getItem();
-		if (!inArea || currentTrip == null || item.getOwnership() != TileItem.OWNERSHIP_SELF)
+		if (!s.inArea || s.currentTrip == null || item.getOwnership() != TileItem.OWNERSHIP_SELF)
 		{
 			return;
 		}
@@ -1705,21 +1529,21 @@ public class TripTracker
 		int tick = client.getTickCount();
 		GroundKind kind;
 		Kill kill = null;
-		if (recentClicks.has(OPTION_DROP, item.getId(), tick) || tripBoss.getRecoverableItems().contains(item.getId()))
+		if (recentClicks.has(OPTION_DROP, item.getId(), tick) || s.tripBoss.getRecoverableItems().contains(item.getId()))
 		{
 			kind = GroundKind.OWN_DROP;
 		}
-		else if (wornAmmo.contains(item.getId()) && !tripBoss.isAcquiredInsideFree())
+		else if (wornAmmo.contains(item.getId()) && !s.tripBoss.isAcquiredInsideFree())
 		{
 			// Fired and landed: costed when fired, so picking it up makes up for it. In a raid, anything picked up
 			// already does (FreeSupplies)
 			kind = GroundKind.OWN_AMMO;
 		}
-		else if (tripBoss.isGroundOverflowLoot() && lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS)
+		else if (s.tripBoss.isGroundOverflowLoot() && lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS)
 		{
 			kind = GroundKind.LOOT_OVERFLOW;
 			kill = lootKill;
-			alertForDrop(tripBoss, item.getId(), item.getQuantity());
+			alertForDrop(s.tripBoss, item.getId(), item.getQuantity());
 		}
 		else
 		{
@@ -1752,54 +1576,54 @@ public class TripTracker
 	private void enterLair(BossDefinition boss, long now)
 	{
 		// Entering a boss's area shows that boss
-		if (boss != selectedBoss)
+		if (boss != s.selectedBoss)
 		{
-			selectedBoss = boss;
-			selectedVariant = null;
+			s.selectedBoss = boss;
+			s.selectedVariant = null;
 			config.setSelectedBoss(boss.getId());
 			historyChanged();
 		}
 
-		if (history == null)
+		if (s.history == null)
 		{
 			// Picked up in onHistoryLoaded
 			return;
 		}
 
-		dead = false;
-		ignoreDeltasUntilTick = -1;
+		s.dead = false;
+		s.ignoreDeltasUntilTick = -1;
 		pendingDeath = null;
 		graveWindowEndTick = -1;
-		inLairPause = null;
+		s.inLairPause = null;
 		lastActivityAt = now;
 		resetKillState();
 
-		if (currentTrip != null && (tripBoss != boss || (suspendedAt != null && (isRaid(boss) || now - suspendedAt > TimeUnit.MINUTES.toMillis(
-			suspendedOutside ? config.outsideGraceMinutes() : config.logoutGraceMinutes())))))
+		if (s.currentTrip != null && (s.tripBoss != boss || (s.suspendedAt != null && (isRaid(boss) || now - s.suspendedAt > TimeUnit.MINUTES.toMillis(
+			s.suspendedOutside ? config.outsideGraceMinutes() : config.logoutGraceMinutes())))))
 		{
 			// Past the grace period, a different boss's trip left open, or a raid left open by a client exit (you can't
 			// rejoin a raid)
-			endTrip(suspendedOutside ? TripEndReason.WALKED_OUT : TripEndReason.LOGOUT,
-				suspendedAt != null ? suspendedAt : now);
+			endTrip(s.suspendedOutside ? TripEndReason.WALKED_OUT : TripEndReason.LOGOUT,
+				s.suspendedAt != null ? s.suspendedAt : now);
 		}
-		List<Trip> trips = history.boss(boss.getId()).getTrips();
+		List<Trip> trips = s.history.boss(boss.getId()).getTrips();
 
-		if (currentTrip != null)
+		if (s.currentTrip != null)
 		{
 			// Back from just outside the lair, or from logging out, within the grace period
-			suspendedAt = null;
-			suspendedOutside = false;
+			s.suspendedAt = null;
+			s.suspendedOutside = false;
 		}
 		else
 		{
-			currentTrip = new Trip();
-			currentTrip.setId(UUID.randomUUID().toString());
-			currentTrip.setStartedAt(now);
-			trips.add(currentTrip);
+			s.currentTrip = new Trip();
+			s.currentTrip.setId(UUID.randomUUID().toString());
+			s.currentTrip.setStartedAt(now);
+			trips.add(s.currentTrip);
 		}
-		tripBoss = boss;
-		lastEndedTrip = null;
-		lastEndedBoss = null;
+		s.tripBoss = boss;
+		s.lastEndedTrip = null;
+		s.lastEndedBoss = null;
 		if (isRaid(boss))
 		{
 			raid.start(client.getTickCount() - enteredRaidModeTick <= CLICK_MATCH_TICKS ? enteredRaidMode : null);
@@ -1810,8 +1634,8 @@ public class TripTracker
 			unclaimedRaidTrip = null;
 			unclaimedRaidBoss = null;
 		}
-		TripClock.start(currentTrip, now);
-		currentTrip.setLastActiveAt(now);
+		TripClock.start(s.currentTrip, now);
+		s.currentTrip.setLastActiveAt(now);
 		lastPeriodicSave = now;
 
 		if (config.countPreEntrySupplies())
@@ -1822,7 +1646,7 @@ public class TripTracker
 				{
 					for (ItemEntry entry : use.items)
 					{
-						ItemEntries.merge(currentTrip.getSupplies(), entry);
+						ItemEntries.merge(s.currentTrip.getSupplies(), entry);
 					}
 				}
 			}
@@ -1830,27 +1654,27 @@ public class TripTracker
 		preEntryUses.clear();
 
 		historyChanged();
-		requestSave();
+		keeper.requestSave();
 	}
 
 	private void leaveLair(int region, int tick, long now)
 	{
 		fightStartedAt = null;
-		TripEndReason reason = dead ? TripEndReason.DEATH
-			: tripBoss != null && tripBoss.getWaitingRegions().contains(region) ? TripEndReason.WALKED_OUT
+		TripEndReason reason = s.dead ? TripEndReason.DEATH
+			: s.tripBoss != null && s.tripBoss.getWaitingRegions().contains(region) ? TripEndReason.WALKED_OUT
 			: TripEndReason.TELEPORT;
-		if (dead)
+		if (s.dead)
 		{
-			dead = false;
-			ignoreDeltasUntilTick = tick + POST_DEATH_IGNORE_TICKS;
+			s.dead = false;
+			s.ignoreDeltasUntilTick = tick + POST_DEATH_IGNORE_TICKS;
 		}
 
-		if (currentTrip == null)
+		if (s.currentTrip == null)
 		{
 			return;
 		}
 
-		if (isRaid(tripBoss))
+		if (isRaid(s.tripBoss))
 		{
 			TripEndReason raidEnd = raid.endReason();
 			if (raidEnd != null)
@@ -1860,32 +1684,32 @@ public class TripTracker
 			if (raidEnd == TripEndReason.WIPED)
 			{
 				// Items are reclaimed from the chest for a fee (no payment has been logged yet, so it's added here)
-				List<DeathRecord> deaths = currentTrip.getDeaths();
+				List<DeathRecord> deaths = s.currentTrip.getDeaths();
 				DeathRecord last = deaths.get(deaths.size() - 1);
-				last.setReclaimFee(last.getReclaimFee() + tripBoss.getWipeFee());
+				last.setReclaimFee(last.getReclaimFee() + s.tripBoss.getWipeFee());
 			}
 			else if (raidEnd == TripEndReason.COMPLETED && lootKill != null && lootKill.getLoot().isEmpty())
 			{
 				// Left without claiming: the reward waits in the chest outside until you log out
 				unclaimedRaid = lootKill;
-				unclaimedRaidTrip = currentTrip;
-				unclaimedRaidIndex = currentTrip.getKills().indexOf(lootKill);
-				unclaimedRaidBoss = tripBoss;
+				unclaimedRaidTrip = s.currentTrip;
+				unclaimedRaidIndex = s.currentTrip.getKills().indexOf(lootKill);
+				unclaimedRaidBoss = s.tripBoss;
 			}
 		}
 
 		// The instance is gone either way, so anything left on the floor is lost
 		finalizeDrops();
 		commitSegment(now);
-		inLairPause = null;
+		s.inLairPause = null;
 		if (reason == TripEndReason.WALKED_OUT && config.outsideGraceMinutes() > 0)
 		{
 			// AFK just outside: the trip stays open, paused, until you go back in or the grace period ends
-			suspendedAt = now;
-			suspendedOutside = true;
+			s.suspendedAt = now;
+			s.suspendedOutside = true;
 			resetKillState();
-			viewDirty = true;
-			requestSave();
+			s.viewDirty = true;
+			keeper.requestSave();
 			return;
 		}
 		endTrip(reason, now);
@@ -1894,99 +1718,99 @@ public class TripTracker
 	private void suspendTrip(long now)
 	{
 		fightStartedAt = null;
-		inArea = false;
-		areaBoss = null;
-		if (currentTrip == null)
+		s.inArea = false;
+		s.areaBoss = null;
+		if (s.currentTrip == null)
 		{
 			return;
 		}
 
 		finalizeDrops();
 		commitSegment(now);
-		inLairPause = null;
-		if (isRaid(tripBoss))
+		s.inLairPause = null;
+		if (isRaid(s.tripBoss))
 		{
 			// Logging out leaves the raid
 			endTrip(TripEndReason.LOGOUT, now);
-			saveNow();
+			keeper.saveNow();
 			return;
 		}
-		suspendedAt = now;
-		suspendedOutside = false;
+		s.suspendedAt = now;
+		s.suspendedOutside = false;
 		resetKillState();
-		viewDirty = true;
-		saveNow();
+		s.viewDirty = true;
+		keeper.saveNow();
 	}
 
 	private void endTrip(TripEndReason reason, long at)
 	{
-		inLairPause = null;
-		suspendedOutside = false;
-		currentTrip.setEndedAt(at);
-		currentTrip.setEndReason(reason);
-		currentTrip.setLastActiveAt(at);
+		s.inLairPause = null;
+		s.suspendedOutside = false;
+		s.currentTrip.setEndedAt(at);
+		s.currentTrip.setEndReason(reason);
+		s.currentTrip.setLastActiveAt(at);
 		// Without prices, supplies can't be valued against the threshold yet
-		if (TripMath.isEmpty(currentTrip) && (prices.pricesLoaded() || currentTrip.getSupplies().isEmpty()))
+		if (TripMath.isEmpty(s.currentTrip) && (prices.pricesLoaded() || s.currentTrip.getSupplies().isEmpty()))
 		{
 			// Nothing happened (e.g. walked in and straight back out): don't keep it
-			history.boss(tripBoss.getId()).getTrips().remove(currentTrip);
-			lastEndedTrip = null;
-			lastEndedBoss = null;
+			s.history.boss(s.tripBoss.getId()).getTrips().remove(s.currentTrip);
+			s.lastEndedTrip = null;
+			s.lastEndedBoss = null;
 		}
 		else
 		{
-			lastEndedTrip = currentTrip;
-			lastEndedBoss = tripBoss;
+			s.lastEndedTrip = s.currentTrip;
+			s.lastEndedBoss = s.tripBoss;
 			// Finished: it's never changed in place again, and goes into its month's file
-			monthChanged(tripBoss.getId(), currentTrip);
+			keeper.monthChanged(s.tripBoss.getId(), s.currentTrip);
 		}
-		currentTrip = null;
-		tripBoss = null;
-		suspendedAt = null;
+		s.currentTrip = null;
+		s.tripBoss = null;
+		s.suspendedAt = null;
 		resetKillState();
 		historyChanged();
-		requestSave();
+		keeper.requestSave();
 	}
 
 	private void commitSegment(long now)
 	{
-		TripClock.stop(currentTrip, goal(), now);
-		currentTrip.setLastActiveAt(now);
+		TripClock.stop(s.currentTrip, goal(), now);
+		s.currentTrip.setLastActiveAt(now);
 	}
 
 	private void markDead(long now)
 	{
-		if (dead || !inArea)
+		if (s.dead || !s.inArea)
 		{
 			return;
 		}
-		if (!areaBoss.isDeathEndsTrip())
+		if (!s.areaBoss.isDeathEndsTrip())
 		{
 			// You keep your items and carry on (a Theatre of Blood room); only a wipe costs anything
-			if (currentTrip != null && raid.died(client.getTickCount()))
+			if (s.currentTrip != null && raid.died(client.getTickCount()))
 			{
 				DeathRecord death = new DeathRecord();
 				death.setAt(now);
-				currentTrip.getDeaths().add(death);
-				viewDirty = true;
-				requestSave();
+				s.currentTrip.getDeaths().add(death);
+				s.viewDirty = true;
+				keeper.requestSave();
 			}
 			return;
 		}
-		dead = true;
+		s.dead = true;
 		fightStartedAt = null;
-		ignoreDeltasUntilTick = Integer.MAX_VALUE;
-		if (currentTrip != null)
+		s.ignoreDeltasUntilTick = Integer.MAX_VALUE;
+		if (s.currentTrip != null)
 		{
-			deathBoss = tripBoss;
+			deathBoss = s.tripBoss;
 			DeathRecord death = new DeathRecord();
 			death.setAt(now);
-			currentTrip.getDeaths().add(death);
+			s.currentTrip.getDeaths().add(death);
 			pendingDeath = death;
-			pendingDeathTrip = currentTrip;
-			pendingDeathIndex = currentTrip.getDeaths().size() - 1;
-			viewDirty = true;
-			requestSave();
+			pendingDeathTrip = s.currentTrip;
+			pendingDeathIndex = s.currentTrip.getDeaths().size() - 1;
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
 	}
 
@@ -2006,7 +1830,7 @@ public class TripTracker
 			long end = bossDiedAt != null ? bossDiedAt : now;
 			kill.setDurationMs(Math.max(0, end - bossSpawnedAt));
 		}
-		currentTrip.getKills().add(kill);
+		s.currentTrip.getKills().add(kill);
 		lootKill = kill;
 		lastKillTick = tick;
 		fightStartedAt = null;
@@ -2014,8 +1838,8 @@ public class TripTracker
 		fallbackEndTick = -1;
 		fallbackGains.clear();
 		lootSources.clear();
-		viewDirty = true;
-		requestSave();
+		s.viewDirty = true;
+		keeper.requestSave();
 	}
 
 	/**
@@ -2038,7 +1862,7 @@ public class TripTracker
 			kill.setChoice(pendingChoice);
 		}
 		pendingChoice = null;
-		currentTrip.getKills().add(kill);
+		s.currentTrip.getKills().add(kill);
 		lootKill = kill;
 		lootReceived = false;
 		fallbackEndTick = -1;
@@ -2052,7 +1876,7 @@ public class TripTracker
 	 */
 	private Kill unchosenKill()
 	{
-		List<Kill> kills = currentTrip.getKills();
+		List<Kill> kills = s.currentTrip.getKills();
 		for (int i = kills.size() - 1; i >= 0; i--)
 		{
 			if (kills.get(i).getChoice() == null)
@@ -2065,7 +1889,7 @@ public class TripTracker
 
 	private void addLoot(Kill kill, int itemId, long quantity)
 	{
-		if (tripBoss.getTarnishedItems().contains(itemId))
+		if (s.tripBoss.getTarnishedItems().contains(itemId))
 		{
 			// Real value is only known once polished; see PolishTracker
 			for (long i = 0; i < quantity; i++)
@@ -2089,18 +1913,18 @@ public class TripTracker
 			return;
 		}
 
-		if (!lootReceived && lootKill != null && currentTrip != null && !fallbackGains.isEmpty())
+		if (!lootReceived && lootKill != null && s.currentTrip != null && !fallbackGains.isEmpty())
 		{
 			log.debug("No Loot Tracker event for this kill; using inventory changes");
 			for (Map.Entry<Integer, Long> e : fallbackGains.entrySet())
 			{
 				addLoot(lootKill, e.getKey(), e.getValue());
-				alertForDrop(tripBoss, e.getKey(), e.getValue());
+				alertForDrop(s.tripBoss, e.getKey(), e.getValue());
 			}
 			lootSources.fallbackUsed(fallbackGains);
 			lootReceived = true;
-			viewDirty = true;
-			requestSave();
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
 		fallbackEndTick = -1;
 		fallbackGains.clear();
@@ -2136,7 +1960,7 @@ public class TripTracker
 		}
 		viewBuilder.setRuneIds(ids);
 		runeIdsLoaded = true;
-		viewDirty = true;
+		s.viewDirty = true;
 	}
 
 	// ---- Alerts ----
@@ -2167,7 +1991,7 @@ public class TripTracker
 
 	private void alertPet(String message)
 	{
-		onNotableDrop.accept(tripBoss != null ? tripBoss : selectedBoss);
+		onNotableDrop.accept(s.tripBoss != null ? s.tripBoss : s.selectedBoss);
 		if (config.alertPet())
 		{
 			alerter.accept(message);
@@ -2184,13 +2008,13 @@ public class TripTracker
 
 		recordGraveMovePayment(removed, tick);
 
-		boolean trackingTrip = inArea && currentTrip != null && !dead;
+		boolean trackingTrip = s.inArea && s.currentTrip != null && !s.dead;
 		Map<Integer, Long> dropped = accounting.takeDrops(change, recentClicks, tick);
 		if (trackingTrip)
 		{
 			dropped.forEach((itemId, quantity) -> pendingDrops.merge(itemId, quantity, Long::sum));
 			// Thrown and usually picked back up: like a drop, only what's left behind counts
-			for (int itemId : tripBoss.getRecoverableItems())
+			for (int itemId : s.tripBoss.getRecoverableItems())
 			{
 				Long quantity = removed.remove(itemId);
 				if (quantity != null)
@@ -2210,8 +2034,8 @@ public class TripTracker
 			matchPickups(gained, tick);
 		}
 
-		List<ItemEntry> used = tick <= ignoreDeltasUntilTick ? Collections.emptyList() : accounting.consumption(change);
-		if (trackingTrip && tripBoss.isAcquiredInsideFree())
+		List<ItemEntry> used = tick <= s.ignoreDeltasUntilTick ? Collections.emptyList() : accounting.consumption(change);
+		if (trackingTrip && s.tripBoss.isAcquiredInsideFree())
 		{
 			// Supply chest purchases and items picked up inside cost nothing: only use beyond them is paid for
 			for (ItemEntry entry : accounting.acquisitions(change))
@@ -2220,9 +2044,9 @@ public class TripTracker
 				if (refund > 0)
 				{
 					// Makes up for use already charged this raid (e.g. arrows picked back up)
-					ItemEntries.reduce(currentTrip.getSupplies(), entry.getItemId(), entry.isPerDose(), refund);
-					viewDirty = true;
-					requestSave();
+					ItemEntries.reduce(s.currentTrip.getSupplies(), entry.getItemId(), entry.isPerDose(), refund);
+					s.viewDirty = true;
+					keeper.requestSave();
 				}
 			}
 			used = freeSupplies.paidFor(used);
@@ -2257,23 +2081,23 @@ public class TripTracker
 		{
 			for (ItemEntry entry : used)
 			{
-				ItemEntries.merge(currentTrip.getSupplies(), entry);
+				ItemEntries.merge(s.currentTrip.getSupplies(), entry);
 			}
-			viewDirty = true;
-			requestSave();
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
-		else if (!inArea && !dead && currentTrip != null && suspendedOutside
+		else if (!s.inArea && !s.dead && s.currentTrip != null && s.suspendedOutside
 			&& tick - lastBankTick > CLICK_MATCH_TICKS && recentClicks.has(-1, tick, CONSUME_OPTIONS::contains))
 		{
 			// Waiting just outside the lair: the trip is still open
 			for (ItemEntry entry : used)
 			{
-				ItemEntries.merge(currentTrip.getSupplies(), entry);
+				ItemEntries.merge(s.currentTrip.getSupplies(), entry);
 			}
-			viewDirty = true;
-			requestSave();
+			s.viewDirty = true;
+			keeper.requestSave();
 		}
-		else if (!inArea && !dead && config.countPreEntrySupplies()
+		else if (!s.inArea && !s.dead && config.countPreEntrySupplies()
 			&& tick - lastBankTick > CLICK_MATCH_TICKS && recentClicks.has(-1, tick, CONSUME_OPTIONS::contains))
 		{
 			preEntryUses.addLast(new PreEntryUse(now, used));
@@ -2282,7 +2106,7 @@ public class TripTracker
 
 	private void recordGraveMovePayment(Map<Integer, Long> removed, int tick)
 	{
-		if (pendingDeath == null || tick > graveWindowEndTick || inArea)
+		if (pendingDeath == null || tick > graveWindowEndTick || s.inArea)
 		{
 			return;
 		}
@@ -2295,7 +2119,7 @@ public class TripTracker
 				DeathRecord death = pendingDeathForChange();
 				death.setGraveMoveCost(death.getGraveMoveCost() + quantity * prices.price(itemId));
 				historyChanged();
-				requestSave();
+				keeper.requestSave();
 			}
 		}
 	}
@@ -2322,14 +2146,14 @@ public class TripTracker
 				// Not what this kill's loot event already listed
 				long added = entry.kill == lootKill ? lootSources.overflowPickedUp(entry.itemId, taken) : taken;
 				addLoot(entry.kill, entry.itemId, added);
-				viewDirty = true;
-				requestSave();
+				s.viewDirty = true;
+				keeper.requestSave();
 			}
 			else if (entry.kind == GroundKind.OWN_AMMO)
 			{
-				ItemEntries.reduce(currentTrip.getSupplies(), entry.itemId, false, taken);
-				viewDirty = true;
-				requestSave();
+				ItemEntries.reduce(s.currentTrip.getSupplies(), entry.itemId, false, taken);
+				s.viewDirty = true;
+				keeper.requestSave();
 			}
 			else
 			{
@@ -2354,7 +2178,7 @@ public class TripTracker
 
 	private void finalizeDrops()
 	{
-		if (tripBoss.isDroppedSupplyUsed())
+		if (s.tripBoss.isDroppedSupplyUsed())
 		{
 			dropsAsUsed();
 			pendingDrops.clear();
@@ -2366,7 +2190,7 @@ public class TripTracker
 			// Without prices nothing can be told to be junk: it's repriced, or removed as junk, later (ZeroPrices)
 			if ((price >= JUNK_PRICE || !prices.pricesLoaded()) && e.getValue() > 0)
 			{
-				ItemEntries.merge(currentTrip.getDropped(), e.getKey(), e.getValue(), price, false);
+				ItemEntries.merge(s.currentTrip.getDropped(), e.getKey(), e.getValue(), price, false);
 			}
 		}
 		pendingDrops.clear();
@@ -2378,13 +2202,13 @@ public class TripTracker
 	private void dropsAsUsed()
 	{
 		List<ItemEntry> used = accounting.droppedAsUsed(pendingDrops);
-		if (tripBoss.isAcquiredInsideFree())
+		if (s.tripBoss.isAcquiredInsideFree())
 		{
 			used = freeSupplies.paidFor(used);
 		}
 		for (ItemEntry entry : used)
 		{
-			ItemEntries.merge(currentTrip.getSupplies(), entry);
+			ItemEntries.merge(s.currentTrip.getSupplies(), entry);
 		}
 	}
 
@@ -2398,7 +2222,7 @@ public class TripTracker
 		{
 			preEntryUses.removeFirst();
 		}
-		if (pendingDeath != null && !inArea && graveWindowEndTick >= 0 && tick > graveWindowEndTick)
+		if (pendingDeath != null && !s.inArea && graveWindowEndTick >= 0 && tick > graveWindowEndTick)
 		{
 			graveWindowEndTick = -1;
 		}
@@ -2443,21 +2267,9 @@ public class TripTracker
 		return null;
 	}
 
-	private static Trip findTrip(BossHistory boss, String id)
-	{
-		for (Trip trip : boss.getTrips())
-		{
-			if (trip.getId().equals(id))
-			{
-				return trip;
-			}
-		}
-		return null;
-	}
-
 	private BossHistory writableHistory(BossDefinition boss)
 	{
-		return history == null || readOnly ? null : history.boss(boss.getId());
+		return s.writableHistory(boss);
 	}
 
 	// ---- Accounts and persistence ----
@@ -2465,51 +2277,51 @@ public class TripTracker
 	private void ensureAccountLoaded()
 	{
 		long hash = client.getAccountHash();
-		if (hash == -1 || hash == accountHash)
+		if (hash == -1 || hash == s.accountHash)
 		{
 			return;
 		}
 
-		if (history != null)
+		if (s.history != null)
 		{
-			if (currentTrip != null)
+			if (s.currentTrip != null)
 			{
-				endTrip(TripEndReason.LOGOUT, suspendedAt != null ? suspendedAt : System.currentTimeMillis());
+				endTrip(TripEndReason.LOGOUT, s.suspendedAt != null ? s.suspendedAt : System.currentTimeMillis());
 			}
-			saveNow();
+			keeper.saveNow();
 		}
 
 		resetSession();
-		accountHash = hash;
-		history = null;
-		readOnly = false;
-		corruptBackup = null;
-		loading = true;
-		currentTrip = null;
-		tripBoss = null;
-		suspendedAt = null;
-		lastEndedTrip = null;
-		lastEndedBoss = null;
+		s.accountHash = hash;
+		s.history = null;
+		s.readOnly = false;
+		s.corruptBackup = null;
+		s.loading = true;
+		s.currentTrip = null;
+		s.tripBoss = null;
+		s.suspendedAt = null;
+		s.lastEndedTrip = null;
+		s.lastEndedBoss = null;
 		pendingDeath = null;
 		pendingDeathTrip = null;
-		dirtyMonths.clear();
+		keeper.clearPending();
 		historyViews = Collections.emptyList();
 		store.load(hash, result -> clientThread.invokeLater(() -> onHistoryLoaded(hash, result)));
 	}
 
 	private void onHistoryLoaded(long hash, HistoryStore.LoadResult result)
 	{
-		if (hash != accountHash)
+		if (hash != s.accountHash)
 		{
 			return;
 		}
 
-		history = result.getHistory();
-		readOnly = result.isReadOnly();
-		loading = false;
+		s.history = result.getHistory();
+		s.readOnly = result.isReadOnly();
+		s.loading = false;
 		zeroPricesChecked = false;
-		corruptBackup = result.getCorruptBackup();
-		if (readOnly)
+		s.corruptBackup = result.getCorruptBackup();
+		if (s.readOnly)
 		{
 			log.warn("Trip history is read-only (newer format or unreadable); changes will not be saved");
 		}
@@ -2517,16 +2329,16 @@ public class TripTracker
 		Player player = client.getLocalPlayer();
 		if (player != null && player.getName() != null)
 		{
-			history.setLastDisplayName(player.getName());
+			s.history.setLastDisplayName(player.getName());
 		}
-		if (!readOnly && result.getSourceVersion() < SupplyCorrections.SCYTHE_FIXED_IN_SCHEMA)
+		if (!s.readOnly && result.getSourceVersion() < SupplyCorrections.SCYTHE_FIXED_IN_SCHEMA)
 		{
-			int fixed = SupplyCorrections.repriceScythe(history, prices.price(ItemID.BLOODRUNE));
+			int fixed = SupplyCorrections.repriceScythe(s.history, prices.price(ItemID.BLOODRUNE));
 			if (fixed > 0)
 			{
 				log.info("Repriced {} Scythe of Vitur charge lines (200 blood runes per 100 charges, not 300)", fixed);
-				allMonthsChanged();
-				saveNow();
+				keeper.allMonthsChanged();
+				keeper.saveNow();
 			}
 		}
 
@@ -2535,7 +2347,7 @@ public class TripTracker
 		BossDefinition openBoss = null;
 		for (BossDefinition boss : registry.all())
 		{
-			for (Trip trip : history.boss(boss.getId()).getTrips())
+			for (Trip trip : s.history.boss(boss.getId()).getTrips())
 			{
 				if (!trip.isOpen())
 				{
@@ -2560,184 +2372,29 @@ public class TripTracker
 				{
 					older.setEndedAt(older.getLastActiveAt());
 					older.setEndReason(TripEndReason.LOGOUT);
-					monthChanged(olderBoss.getId(), older);
+					keeper.monthChanged(olderBoss.getId(), older);
 				}
 			}
 		}
 		if (open != null)
 		{
-			currentTrip = open;
-			tripBoss = openBoss;
-			suspendedAt = open.getLastActiveAt();
+			s.currentTrip = open;
+			s.tripBoss = openBoss;
+			s.suspendedAt = open.getLastActiveAt();
 		}
 
-		if (!readOnly && result.getSourceVersion() < AccountHistory.CURRENT_SCHEMA_VERSION)
+		if (!s.readOnly && result.getSourceVersion() < AccountHistory.CURRENT_SCHEMA_VERSION)
 		{
 			// Written in the new format straight away, so the next login doesn't migrate (and back up) again
-			saveNow();
+			keeper.saveNow();
 		}
 
 		historyChanged();
-		if (inArea)
+		if (s.inArea)
 		{
-			enterLair(areaBoss, System.currentTimeMillis());
+			enterLair(s.areaBoss, System.currentTimeMillis());
 		}
 		pushState();
-	}
-
-	private void requestSave()
-	{
-		if (history == null || readOnly || (saveFuture != null && !saveFuture.isDone()))
-		{
-			return;
-		}
-		try
-		{
-			saveFuture = executor.schedule(() -> clientThread.invokeLater(() -> saveNow()), SAVE_DELAY_MS, TimeUnit.MILLISECONDS);
-		}
-		catch (RejectedExecutionException e)
-		{
-			// Plugin is shutting down
-		}
-	}
-
-	private void saveNow()
-	{
-		saveNow(() -> { });
-	}
-
-	private void saveNow(Runnable written)
-	{
-		if (history == null || readOnly)
-		{
-			written.run();
-			return;
-		}
-		if (currentTrip != null && currentTrip.getSegmentStartedAt() != null)
-		{
-			currentTrip.setLastActiveAt(System.currentTimeMillis());
-		}
-		store.save(accountHash, snapshot(), written);
-	}
-
-	/**
-	 * What to write, made without turning anything into JSON here: the account without trips (copied), the months
-	 * that changed (finished trips are never changed in place, so they're shared, not copied) and a copy of the trip
-	 * in progress.
-	 */
-	private HistoryLayout.Snapshot snapshot()
-	{
-		Map<String, Map<String, List<Trip>>> months = new LinkedHashMap<>();
-		for (String key : dirtyMonths)
-		{
-			int slash = key.lastIndexOf('/');
-			months.computeIfAbsent(key.substring(0, slash), k -> new LinkedHashMap<>()).put(key.substring(slash + 1),
-				new ArrayList<>());
-		}
-		dirtyMonths.clear();
-		months.forEach((bossId, byMonth) ->
-		{
-			BossHistory boss = history.getBosses().get(bossId);
-			if (boss == null)
-			{
-				return;
-			}
-			for (Trip trip : boss.getTrips())
-			{
-				List<Trip> month = trip.isOpen() ? null : byMonth.get(HistoryLayout.month(trip));
-				if (month != null)
-				{
-					month.add(trip);
-				}
-			}
-		});
-
-		List<HistoryLayout.OpenTrip> open = new ArrayList<>();
-		if (currentTrip != null && tripBoss != null && history.boss(tripBoss.getId()).getTrips().contains(currentTrip))
-		{
-			open.add(new HistoryLayout.OpenTrip(tripBoss.getId(), currentTrip.copy()));
-		}
-		return new HistoryLayout.Snapshot(HistoryLayout.accountWithoutTrips(history), months, open);
-	}
-
-	/**
-	 * A finished trip was added, removed or replaced: its month is written again at the next save.
-	 */
-	private void monthChanged(String bossId, Trip trip)
-	{
-		if (bossId != null)
-		{
-			dirtyMonths.add(bossId + "/" + HistoryLayout.month(trip));
-		}
-	}
-
-	private void allMonthsChanged()
-	{
-		history.getBosses().forEach((bossId, boss) ->
-		{
-			for (Trip trip : boss.getTrips())
-			{
-				monthChanged(bossId, trip);
-			}
-		});
-	}
-
-	private String bossIdOf(BossHistory boss)
-	{
-		for (Map.Entry<String, BossHistory> e : history.getBosses().entrySet())
-		{
-			if (e.getValue() == boss)
-			{
-				return e.getKey();
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * The trip to change. The trip in progress is changed as it is; a finished trip is replaced in the history by a
-	 * copy, which is changed instead (the saver may be writing the original from another thread), and its month is
-	 * saved again.
-	 *
-	 * @param trip the trip, or an earlier copy of it (found by id)
-	 * @return the trip to change, or null if it's no longer in the history
-	 */
-	private Trip editable(Trip trip)
-	{
-		if (trip == null || history == null)
-		{
-			return null;
-		}
-		if (trip == currentTrip)
-		{
-			return trip;
-		}
-		for (Map.Entry<String, BossHistory> e : history.getBosses().entrySet())
-		{
-			List<Trip> trips = e.getValue().getTrips();
-			for (int i = 0; i < trips.size(); i++)
-			{
-				Trip found = trips.get(i);
-				if (!found.getId().equals(trip.getId()))
-				{
-					continue;
-				}
-				if (found == currentTrip || found.isOpen())
-				{
-					return found;
-				}
-				Trip copy = found.copy();
-				trips.set(i, copy);
-				if (lastEndedTrip == found)
-				{
-					lastEndedTrip = copy;
-				}
-				monthChanged(e.getKey(), copy);
-				historyChanged();
-				return copy;
-			}
-		}
-		return null;
 	}
 
 	/**
@@ -2745,7 +2402,7 @@ public class TripTracker
 	 */
 	private DeathRecord pendingDeathForChange()
 	{
-		Trip trip = editable(pendingDeathTrip);
+		Trip trip = keeper.editable(pendingDeathTrip);
 		if (trip == null || pendingDeathIndex >= trip.getDeaths().size())
 		{
 			// Its trip was deleted: nothing to record the cost on
@@ -2761,7 +2418,7 @@ public class TripTracker
 	 */
 	private Kill unclaimedRaidForChange()
 	{
-		Trip trip = editable(unclaimedRaidTrip);
+		Trip trip = keeper.editable(unclaimedRaidTrip);
 		if (trip == null || unclaimedRaidIndex < 0 || unclaimedRaidIndex >= trip.getKills().size())
 		{
 			return null;
@@ -2771,21 +2428,19 @@ public class TripTracker
 
 	private void historyChanged()
 	{
-		historyVersion++;
-		historyDirty = true;
-		viewDirty = true;
+		s.historyChanged();
 	}
 
 	private void pushState()
 	{
 		lastPushAt = System.currentTimeMillis();
-		BossDefinition boss = selectedBoss;
+		BossDefinition boss = s.selectedBoss;
 		viewBuilder.setPastTeamSize(config.tobPastTeamSize());
-		BossHistory bossHistory = history == null ? null : history.boss(boss.getId());
+		BossHistory bossHistory = s.history == null ? null : s.history.boss(boss.getId());
 		// The Trip tab only shows the live trip for its own boss; others keep tracking in the background
-		boolean live = currentTrip != null && tripBoss == boss;
+		boolean live = s.currentTrip != null && s.tripBoss == boss;
 
-		if (historyDirty && bossHistory != null)
+		if (s.historyDirty && bossHistory != null)
 		{
 			// Views only for the trips shown: a page at a time
 			List<TripView> views = new ArrayList<>();
@@ -2794,7 +2449,7 @@ public class TripTracker
 			for (int i = trips.size() - 1; i >= 0; i--)
 			{
 				Trip trip = trips.get(i);
-				if (!trip.isOpen() && VariantFilter.matches(trip, selectedVariant))
+				if (!trip.isOpen() && VariantFilter.matches(trip, s.selectedVariant))
 				{
 					if (total++ < historyLimit)
 					{
@@ -2805,54 +2460,54 @@ public class TripTracker
 			historyViews = Collections.unmodifiableList(views);
 			historyTotal = total;
 		}
-		historyDirty = false;
-		viewDirty = false;
+		s.historyDirty = false;
+		s.viewDirty = false;
 
 		PanelState.Status status;
 		TripView shown = null;
-		if (history == null)
+		if (s.history == null)
 		{
-			status = loading ? PanelState.Status.LOADING : PanelState.Status.LOGGED_OUT;
+			status = s.loading ? PanelState.Status.LOADING : PanelState.Status.LOGGED_OUT;
 		}
 		else if (live)
 		{
-			status = suspendedAt != null && !suspendedOutside ? PanelState.Status.PAUSED
-				: suspendedAt != null || inLairPause != null ? PanelState.Status.AFK_PAUSED
+			status = s.suspendedAt != null && !s.suspendedOutside ? PanelState.Status.PAUSED
+				: s.suspendedAt != null || s.inLairPause != null ? PanelState.Status.AFK_PAUSED
 				: PanelState.Status.IN_TRIP;
-			shown = viewBuilder.trip(boss, currentTrip);
+			shown = viewBuilder.trip(boss, s.currentTrip);
 		}
 		else
 		{
-			status = untrackedWorld ? PanelState.Status.UNTRACKED_WORLD : PanelState.Status.IDLE;
+			status = s.untrackedWorld ? PanelState.Status.UNTRACKED_WORLD : PanelState.Status.IDLE;
 			shown = historyViews.isEmpty() ? null : historyViews.get(0);
 		}
 
 		List<BossOption> options = new ArrayList<>();
 		for (BossDefinition b : registry.all())
 		{
-			options.add(new BossOption(b.getId(), b.getDisplayName(), b.getIconItemId(), currentTrip != null && tripBoss == b));
+			options.add(new BossOption(b.getId(), b.getDisplayName(), b.getIconItemId(), s.currentTrip != null && s.tripBoss == b));
 		}
 
 		long now = System.currentTimeMillis();
-		boolean fighting = live && inArea && suspendedAt == null;
+		boolean fighting = live && s.inArea && s.suspendedAt == null;
 		PanelState state = PanelState.builder()
 			.boss(boss)
 			.bosses(options)
-			.variant(selectedVariant)
+			.variant(s.selectedVariant)
 			.status(status)
 			.currentTrip(shown)
 			.history(historyViews)
 			.historyTotal(historyTotal)
-			.lifetime(bossHistory == null ? null : viewBuilder.lifetime(boss, bossHistory, selectedVariant, allTime(boss),
-				config.showCurrentValue(), now, live ? currentTrip : null, historyVersion))
-			.goal(bossHistory == null ? null : viewBuilder.goal(bossHistory, live ? currentTrip : null, now, historyVersion))
+			.lifetime(bossHistory == null ? null : viewBuilder.lifetime(boss, bossHistory, s.selectedVariant, allTime(boss),
+				config.showCurrentValue(), now, live ? s.currentTrip : null, s.historyVersion))
+			.goal(bossHistory == null ? null : viewBuilder.goal(bossHistory, live ? s.currentTrip : null, now, s.historyVersion))
 			.pauseText(live ? pauseText() : null)
-			.pausedInLair(live && inLairPause != null)
+			.pausedInLair(live && s.inLairPause != null)
 			.canPause(fighting)
-			.readOnly(readOnly)
-			.corruptBackup(corruptBackup)
+			.readOnly(s.readOnly)
+			.corruptBackup(s.corruptBackup)
 			.killStartedAt(fighting ? fightStartedAt : null)
-			.playerName(history == null ? null : history.getLastDisplayName())
+			.playerName(s.history == null ? null : s.history.getLastDisplayName())
 			.build();
 		stateListener.accept(state);
 	}
@@ -2862,10 +2517,10 @@ public class TripTracker
 	 */
 	private AllTimeCounts allTime(BossDefinition boss)
 	{
-		String key = boss.getId() + "/" + selectedVariant;
+		String key = boss.getId() + "/" + s.selectedVariant;
 		if (!key.equals(allTimeCacheKey))
 		{
-			allTimeCache = allTimeRecords.read(boss.getAllTimeSources(), selectedVariant);
+			allTimeCache = allTimeRecords.read(boss.getAllTimeSources(), s.selectedVariant);
 			allTimeCacheKey = key;
 		}
 		return allTimeCache;
@@ -2878,19 +2533,19 @@ public class TripTracker
 
 	private String pauseText()
 	{
-		if (currentTrip == null)
+		if (s.currentTrip == null)
 		{
 			return null;
 		}
-		if (suspendedAt != null)
+		if (s.suspendedAt != null)
 		{
-			return suspendedOutside ? "Trip paused (outside the " + tripBoss.getAreaNoun() + ")" : "Trip paused (logged out)";
+			return s.suspendedOutside ? "Trip paused (outside the " + s.tripBoss.getAreaNoun() + ")" : "Trip paused (logged out)";
 		}
-		if (inLairPause == InLairPause.MANUAL)
+		if (s.inLairPause == TripSession.InLairPause.MANUAL)
 		{
 			return "Trip paused (AFK)";
 		}
-		if (inLairPause == InLairPause.IDLE)
+		if (s.inLairPause == TripSession.InLairPause.IDLE)
 		{
 			return "Trip paused (idle)";
 		}
@@ -2912,13 +2567,13 @@ public class TripTracker
 		public void historyChanged()
 		{
 			TripTracker.this.historyChanged();
-			requestSave();
+			keeper.requestSave();
 		}
 
 		@Override
 		public Trip editable(Trip trip)
 		{
-			return TripTracker.this.editable(trip);
+			return keeper.editable(trip);
 		}
 
 		@Override
@@ -2935,12 +2590,6 @@ public class TripTracker
 	}
 
 	// ---- Small records ----
-
-	private enum InLairPause
-	{
-		MANUAL,
-		IDLE,
-	}
 
 	private enum GroundKind
 	{
