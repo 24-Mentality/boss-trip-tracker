@@ -7,11 +7,7 @@ import com.bosstriptracker.BossTripTrackerConfig;
 import com.bosstriptracker.boss.AllTimeSource;
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.BossRegistry;
-import com.bosstriptracker.boss.DropKind;
-import com.bosstriptracker.boss.ExpectedDrop;
 import com.bosstriptracker.boss.LootChoice;
-import com.bosstriptracker.boss.RaidCompletion;
-import com.bosstriptracker.boss.TripModel;
 import com.bosstriptracker.model.AccountHistory;
 import com.bosstriptracker.model.AllTimeCounts;
 import com.bosstriptracker.model.BossHistory;
@@ -43,7 +39,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -153,6 +148,7 @@ public class TripTracker
 	 */
 	private final TripSession s = new TripSession();
 	private final HistoryKeeper keeper;
+	private final RaidSession raids;
 	private final SupplyAccounting accounting;
 	private final EggTracker eggTracker;
 	private final PolishTracker polishTracker;
@@ -215,22 +211,6 @@ public class TripTracker
 	private boolean zeroPricesChecked;
 	private final Deque<PreEntryUse> preEntryUses = new ArrayDeque<>();
 
-	// ---- Raids (TripModel.ONE_RAID) ----
-	private final RaidState raid = new RaidState();
-	private final FreeSupplies freeSupplies = new FreeSupplies();
-	/**
-	 * The mode named by the entry message, which comes a tick before you're inside.
-	 */
-	private String enteredRaidMode;
-	private int enteredRaidModeTick = -100;
-	/**
-	 * A completed raid whose reward hasn't been claimed yet: it can be claimed after leaving (the chest by the bank),
-	 * until logging out.
-	 */
-	private Kill unclaimedRaid;
-	private Trip unclaimedRaidTrip;
-	private int unclaimedRaidIndex;
-	private BossDefinition unclaimedRaidBoss;
 
 	private long lastPeriodicSave;
 	private long lastPushAt;
@@ -263,6 +243,38 @@ public class TripTracker
 		this.allTimeRecords = new AllTimeRecords(configManager, gson);
 		this.keeper = new HistoryKeeper(s, store, gson, executor, clientThread, registry);
 		this.ledger = new InventoryLedger(client);
+		this.raids = new RaidSession(s, keeper, registry, prices, new RaidSession.Host()
+		{
+			@Override
+			public void recordKill(Integer killCount, String variant, int tick, long now)
+			{
+				TripTracker.this.recordKill(killCount, variant, tick, now);
+			}
+
+			@Override
+			public Kill lootKill()
+			{
+				return lootKill;
+			}
+
+			@Override
+			public void markDead(long now)
+			{
+				TripTracker.this.markDead(now);
+			}
+
+			@Override
+			public void alertForDrop(BossDefinition boss, int itemId, long quantity)
+			{
+				TripTracker.this.alertForDrop(boss, itemId, quantity);
+			}
+
+			@Override
+			public Integer killCount(String key)
+			{
+				return allTimeRecords.killCount(key);
+			}
+		});
 		this.accounting = new SupplyAccounting(prices);
 		this.chargeCounter = new ChargeCounter(prices::isMeleeWeapon);
 		this.registry = registry;
@@ -324,8 +336,7 @@ public class TripTracker
 		chargeCounter.reset();
 		polishTracker.reset();
 		eggTracker.reset();
-		enteredRaidMode = null;
-		enteredRaidModeTick = -100;
+		raids.reset();
 	}
 
 	/**
@@ -749,9 +760,7 @@ public class TripTracker
 				}
 				resetSession();
 				// Unclaimed raid rewards are lost on logout
-				unclaimedRaid = null;
-				unclaimedRaidTrip = null;
-				unclaimedRaidBoss = null;
+				raids.loggedOut();
 				pushState();
 				break;
 			default:
@@ -854,21 +863,13 @@ public class TripTracker
 			}
 		}
 
-		if (s.inArea && s.currentTrip != null && isRaid(s.tripBoss))
+		if (s.inArea && s.currentTrip != null && RaidSession.isRaid(s.tripBoss))
 		{
-			int players = 0;
-			for (int varbit : s.tripBoss.getTeamSlotVarbits())
-			{
-				if (client.getVarbitValue(varbit) != 0)
-				{
-					players++;
-				}
-			}
-			raid.teamSeen(players);
+			raids.tick(client::getVarbitValue);
 		}
 
 		// Raids don't pause while idle: the time between rooms is part of the raid
-		if (s.inArea && s.currentTrip != null && s.suspendedAt == null && s.inLairPause == null && !isRaid(s.tripBoss)
+		if (s.inArea && s.currentTrip != null && s.suspendedAt == null && s.inLairPause == null && !RaidSession.isRaid(s.tripBoss)
 			&& TripClock.idle(lastActivityAt, now, idlePauseMs()))
 		{
 			pauseInLair(TripSession.InLairPause.IDLE, lastActivityAt);
@@ -1147,14 +1148,7 @@ public class TripTracker
 		{
 			// The Theatre of Blood sends its damage summaries this way, and the purple broadcast may be one of them
 			// (unverified). Nothing else is read from them: another player's notification is never yours.
-			if (s.inArea && s.currentTrip != null && isRaid(s.tripBoss))
-			{
-				String uniqueName = s.tripBoss.teamUniqueName(Text.removeTags(message));
-				if (uniqueName != null)
-				{
-					teamUnique(s.tripBoss, uniqueName);
-				}
-			}
+			raids.friendsChat(Text.removeTags(message));
 			return;
 		}
 		if (event.getType() != ChatMessageType.GAMEMESSAGE && event.getType() != ChatMessageType.SPAM)
@@ -1183,7 +1177,7 @@ public class TripTracker
 			return;
 		}
 		String text = Text.removeTags(message);
-		if (raidMessage(text, tick, now))
+		if (raids.message(text, tick, now))
 		{
 			return;
 		}
@@ -1236,162 +1230,6 @@ public class TripTracker
 	}
 
 	/**
-	 * Raid progress messages: the mode, rooms cleared, your deaths, the raid's time and completion, purples and the
-	 * game's dry streak.
-	 *
-	 * @return whether the message was one of them
-	 */
-	private boolean raidMessage(String text, int tick, long now)
-	{
-		if (!s.inArea)
-		{
-			// The entry message comes a tick before you're inside
-			for (BossDefinition boss : registry.all())
-			{
-				String mode = isRaid(boss) ? boss.raidMode(text) : null;
-				if (mode != null)
-				{
-					enteredRaidMode = mode;
-					enteredRaidModeTick = tick;
-					return true;
-				}
-			}
-			return false;
-		}
-		if (s.currentTrip == null || !isRaid(s.tripBoss))
-		{
-			return false;
-		}
-
-		BossDefinition boss = s.tripBoss;
-		String mode = boss.raidMode(text);
-		if (mode != null)
-		{
-			raid.modeSeen(mode);
-			if (boss.isRaidRoomComplete(text))
-			{
-				raid.roomCleared();
-			}
-			return true;
-		}
-		if (boss.isOwnRaidDeath(text))
-		{
-			markDead(now);
-			return true;
-		}
-		Long raidTime = boss.raidTimeMs(text);
-		if (raidTime != null)
-		{
-			raid.raidTime(raidTime);
-			return true;
-		}
-		RaidCompletion completion = boss.raidCompletion(text);
-		if (completion != null)
-		{
-			recordRaid(completion, tick, now);
-			return true;
-		}
-		String uniqueName = boss.teamUniqueName(text);
-		if (uniqueName != null)
-		{
-			teamUnique(boss, uniqueName);
-			return true;
-		}
-		Integer dryStreak = boss.gameDryStreak(text);
-		if (dryStreak != null)
-		{
-			BossHistory bossHistory = writableHistory(boss);
-			Integer killCount = lootKill != null && raid.isCompleted() ? lootKill.getKillCount() : null;
-			if (bossHistory != null && killCount != null)
-			{
-				bossHistory.setGameDryStreak(dryStreak);
-				bossHistory.setGameDryStreakKc(killCount);
-				historyChanged();
-				keeper.requestSave();
-			}
-			return true;
-		}
-		Integer teamDryStreak = boss.gameTeamDryStreak(text);
-		if (teamDryStreak != null)
-		{
-			BossHistory bossHistory = writableHistory(boss);
-			if (bossHistory != null && lootKill != null && raid.isCompleted())
-			{
-				bossHistory.setGameTeamDryStreak(teamDryStreak);
-				bossHistory.setGameTeamDryStreakAt(lootKill.getEndedAt());
-				historyChanged();
-				keeper.requestSave();
-			}
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * A completed raid is its trip's one kill. Its reward is claimed from a chest, maybe after leaving.
-	 */
-	private void recordRaid(RaidCompletion completion, int tick, long now)
-	{
-		recordKill(s.tripBoss.raidKillCount(completion, allTimeRecords::killCount), completion.getVariant(), tick, now);
-		lootKill.setPartySize(raid.getTeamSize());
-		if (raid.getRaidTimeMs() != null)
-		{
-			lootKill.setDurationMs(raid.getRaidTimeMs());
-		}
-		lootKill.getTeamUniques().addAll(raid.getTeamUniques());
-		raid.getTeamUniques().clear();
-		raid.completed();
-	}
-
-	/**
-	 * A purple for anyone in the raid. Only the item is kept, never who got it.
-	 */
-	private void teamUnique(BossDefinition boss, String name)
-	{
-		int itemId = uniqueNamed(boss, name);
-		if (itemId < 0)
-		{
-			return;
-		}
-		if (raid.isCompleted() && lootKill != null)
-		{
-			lootKill.getTeamUniques().add(itemId);
-			s.viewDirty = true;
-			keeper.requestSave();
-		}
-		else
-		{
-			raid.getTeamUniques().add(itemId);
-		}
-	}
-
-	/**
-	 * @return the boss's unique with this name ("(uncharged)" or not), or -1
-	 */
-	private int uniqueNamed(BossDefinition boss, String name)
-	{
-		String wanted = baseName(name);
-		for (ExpectedDrop drop : boss.getDrops())
-		{
-			if (drop.getKind() == DropKind.UNIQUE && baseName(prices.name(drop.getItemId())).equals(wanted))
-			{
-				return drop.getItemId();
-			}
-		}
-		return -1;
-	}
-
-	private static String baseName(String name)
-	{
-		return name.toLowerCase(Locale.ROOT).replace("(uncharged)", "").replaceAll("[.!]+$", "").trim();
-	}
-
-	private static boolean isRaid(BossDefinition boss)
-	{
-		return boss != null && boss.getTripModel() == TripModel.ONE_RAID;
-	}
-
-	/**
 	 * Pet messages are shared by every pet, so they only count right after a corpse or egg interaction.
 	 */
 	private void petMessage(int tick)
@@ -1420,7 +1258,7 @@ public class TripTracker
 	@Subscribe
 	public void onLootReceived(LootReceived event)
 	{
-		if (raidLoot(event))
+		if (raids.loot(event))
 		{
 			return;
 		}
@@ -1456,38 +1294,6 @@ public class TripTracker
 		fallbackGains.clear();
 		s.viewDirty = true;
 		keeper.requestSave();
-	}
-
-	/**
-	 * A raid's reward, claimed in the raid or later from the chest outside (until logging out).
-	 *
-	 * @return whether the event was a raid reward
-	 */
-	private boolean raidLoot(LootReceived event)
-	{
-		boolean inRaid = s.currentTrip != null && isRaid(s.tripBoss);
-		BossDefinition boss = inRaid ? s.tripBoss : unclaimedRaidBoss;
-		if (boss == null || !boss.isRaidLootEvent(event.getName(), event.getType()))
-		{
-			return false;
-		}
-		Kill kill = inRaid ? (raid.isCompleted() ? lootKill : null) : unclaimedRaidForChange();
-		unclaimedRaid = null;
-		unclaimedRaidTrip = null;
-		unclaimedRaidBoss = null;
-		if (kill == null)
-		{
-			// The reward of a raid this plugin didn't see completed
-			return true;
-		}
-		for (ItemStack stack : event.getItems())
-		{
-			ItemEntries.merge(kill.getLoot(), stack.getId(), stack.getQuantity(), prices.price(stack.getId()), false);
-			alertForDrop(boss, stack.getId(), stack.getQuantity());
-		}
-		historyChanged();
-		keeper.requestSave();
-		return true;
 	}
 
 	@Subscribe
@@ -1598,7 +1404,7 @@ public class TripTracker
 		lastActivityAt = now;
 		resetKillState();
 
-		if (s.currentTrip != null && (s.tripBoss != boss || (s.suspendedAt != null && (isRaid(boss) || now - s.suspendedAt > TimeUnit.MINUTES.toMillis(
+		if (s.currentTrip != null && (s.tripBoss != boss || (s.suspendedAt != null && (RaidSession.isRaid(boss) || now - s.suspendedAt > TimeUnit.MINUTES.toMillis(
 			s.suspendedOutside ? config.outsideGraceMinutes() : config.logoutGraceMinutes())))))
 		{
 			// Past the grace period, a different boss's trip left open, or a raid left open by a client exit (you can't
@@ -1624,15 +1430,9 @@ public class TripTracker
 		s.tripBoss = boss;
 		s.lastEndedTrip = null;
 		s.lastEndedBoss = null;
-		if (isRaid(boss))
+		if (RaidSession.isRaid(boss))
 		{
-			raid.start(client.getTickCount() - enteredRaidModeTick <= CLICK_MATCH_TICKS ? enteredRaidMode : null);
-			enteredRaidMode = null;
-			freeSupplies.clear();
-			// A new raid: an earlier one's reward can't be claimed any more
-			unclaimedRaid = null;
-			unclaimedRaidTrip = null;
-			unclaimedRaidBoss = null;
+			raids.entered(client.getTickCount());
 		}
 		TripClock.start(s.currentTrip, now);
 		s.currentTrip.setLastActiveAt(now);
@@ -1674,28 +1474,9 @@ public class TripTracker
 			return;
 		}
 
-		if (isRaid(s.tripBoss))
+		if (RaidSession.isRaid(s.tripBoss))
 		{
-			TripEndReason raidEnd = raid.endReason();
-			if (raidEnd != null)
-			{
-				reason = raidEnd;
-			}
-			if (raidEnd == TripEndReason.WIPED)
-			{
-				// Items are reclaimed from the chest for a fee (no payment has been logged yet, so it's added here)
-				List<DeathRecord> deaths = s.currentTrip.getDeaths();
-				DeathRecord last = deaths.get(deaths.size() - 1);
-				last.setReclaimFee(last.getReclaimFee() + s.tripBoss.getWipeFee());
-			}
-			else if (raidEnd == TripEndReason.COMPLETED && lootKill != null && lootKill.getLoot().isEmpty())
-			{
-				// Left without claiming: the reward waits in the chest outside until you log out
-				unclaimedRaid = lootKill;
-				unclaimedRaidTrip = s.currentTrip;
-				unclaimedRaidIndex = s.currentTrip.getKills().indexOf(lootKill);
-				unclaimedRaidBoss = s.tripBoss;
-			}
+			reason = raids.left(reason, lootKill);
 		}
 
 		// The instance is gone either way, so anything left on the floor is lost
@@ -1728,7 +1509,7 @@ public class TripTracker
 		finalizeDrops();
 		commitSegment(now);
 		s.inLairPause = null;
-		if (isRaid(s.tripBoss))
+		if (RaidSession.isRaid(s.tripBoss))
 		{
 			// Logging out leaves the raid
 			endTrip(TripEndReason.LOGOUT, now);
@@ -1787,7 +1568,7 @@ public class TripTracker
 		if (!s.areaBoss.isDeathEndsTrip())
 		{
 			// You keep your items and carry on (a Theatre of Blood room); only a wipe costs anything
-			if (s.currentTrip != null && raid.died(client.getTickCount()))
+			if (s.currentTrip != null && raids.died(client.getTickCount()))
 			{
 				DeathRecord death = new DeathRecord();
 				death.setAt(now);
@@ -2040,7 +1821,7 @@ public class TripTracker
 			// Supply chest purchases and items picked up inside cost nothing: only use beyond them is paid for
 			for (ItemEntry entry : accounting.acquisitions(change))
 			{
-				long refund = freeSupplies.acquired(entry);
+				long refund = raids.freeSupplies().acquired(entry);
 				if (refund > 0)
 				{
 					// Makes up for use already charged this raid (e.g. arrows picked back up)
@@ -2049,7 +1830,7 @@ public class TripTracker
 					keeper.requestSave();
 				}
 			}
-			used = freeSupplies.paidFor(used);
+			used = raids.freeSupplies().paidFor(used);
 		}
 
 		boolean afterCorpseClick = lootKill != null && tick - lastCorpseClickTick <= CORPSE_WINDOW_TICKS;
@@ -2204,7 +1985,7 @@ public class TripTracker
 		List<ItemEntry> used = accounting.droppedAsUsed(pendingDrops);
 		if (s.tripBoss.isAcquiredInsideFree())
 		{
-			used = freeSupplies.paidFor(used);
+			used = raids.freeSupplies().paidFor(used);
 		}
 		for (ItemEntry entry : used)
 		{
@@ -2411,19 +2192,6 @@ public class TripTracker
 		pendingDeathTrip = trip;
 		pendingDeath = trip.getDeaths().get(pendingDeathIndex);
 		return pendingDeath;
-	}
-
-	/**
-	 * The completed raid whose reward is claimed from the chest outside, in its (ended) trip.
-	 */
-	private Kill unclaimedRaidForChange()
-	{
-		Trip trip = keeper.editable(unclaimedRaidTrip);
-		if (trip == null || unclaimedRaidIndex < 0 || unclaimedRaidIndex >= trip.getKills().size())
-		{
-			return null;
-		}
-		return trip.getKills().get(unclaimedRaidIndex);
 	}
 
 	private void historyChanged()
