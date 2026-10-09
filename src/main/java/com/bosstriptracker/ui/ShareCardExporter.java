@@ -28,6 +28,7 @@ import net.runelite.client.chat.ChatMessageBuilder;
 import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.game.ItemManager;
+import net.runelite.client.ui.DrawManager;
 import net.runelite.client.util.AsyncBufferedImage;
 import net.runelite.client.util.ImageCapture;
 
@@ -75,7 +76,63 @@ public class ShareCardExporter
 			onMessage.accept("Log in first so there is something to share.");
 			return;
 		}
+		withIcons(card, icons -> export(card, icons, onMessage, onCopied));
+	}
 
+	/**
+	 * After a unique or pet: saves the share card to the screenshots folder (not the clipboard). Call on the Swing
+	 * thread.
+	 */
+	public void saveAutomatically(PanelState state, boolean showName)
+	{
+		ShareCard card = state == null ? null : ShareCard.from(state, showName, System.currentTimeMillis());
+		if (card != null)
+		{
+			withIcons(card, icons -> save(renderer.render(card, icons::get), card.getBossName() + " share card",
+				card.getBossName() + " share card", "saved to your screenshots folder"));
+		}
+	}
+
+	/**
+	 * After a unique or pet: saves an image of the whole RuneLite window, the sidebar included. Call on the Swing
+	 * thread.
+	 */
+	public void saveWindow(DrawManager drawManager, String bossName)
+	{
+		WindowScreenshot.capture(drawManager, client.getCanvas(), image ->
+			save(image, bossName + " drop", "Screenshot", "of the RuneLite window saved to your screenshots folder"));
+	}
+
+	private void save(BufferedImage image, String fileName, String what, String done)
+	{
+		try
+		{
+			executor.execute(() ->
+			{
+				if (client.getGameState() != GameState.LOGGED_IN)
+				{
+					return;
+				}
+				imageCapture.saveScreenshot(image, fileName, SCREENSHOT_FOLDER, false, false);
+				chatMessageManager.queue(QueuedMessage.builder()
+					.type(ChatMessageType.GAMEMESSAGE)
+					.runeLiteFormattedMessage(new ChatMessageBuilder()
+						.append(ChatColorType.HIGHLIGHT)
+						.append(what)
+						.append(ChatColorType.NORMAL)
+						.append(" " + done + " (" + SCREENSHOT_FOLDER + ").")
+						.build())
+					.build());
+			});
+		}
+		catch (RejectedExecutionException e)
+		{
+			// Plugin is shutting down
+		}
+	}
+
+	private void withIcons(ShareCard card, Consumer<Map<Integer, Image>> then)
+	{
 		Set<Integer> ids = new LinkedHashSet<>();
 		ids.add(card.getIconItemId());
 		for (ShareCard.Drop drop : card.getDrops())
@@ -91,7 +148,7 @@ public class ShareCardExporter
 		{
 			if (done.compareAndSet(false, true))
 			{
-				export(card, icons, onMessage, onCopied);
+				then.accept(icons);
 			}
 		};
 		for (int id : ids)

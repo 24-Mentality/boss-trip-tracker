@@ -147,6 +147,10 @@ public class TripTracker
 	private final ScheduledExecutorService executor;
 	private final Consumer<PanelState> stateListener;
 	private final Consumer<String> alerter;
+	/**
+	 * A unique or pet came in, for the automatic screenshots.
+	 */
+	private final Consumer<BossDefinition> onNotableDrop;
 	private final Runnable onLairEntered;
 	private final AllTimeRecords allTimeRecords;
 	private final InventoryLedger ledger;
@@ -304,9 +308,10 @@ public class TripTracker
 
 	public TripTracker(Client client, ClientThread clientThread, BossTripTrackerConfig config,
 		PriceService prices, HistoryStore store, Gson gson, ScheduledExecutorService executor,
-		Consumer<PanelState> stateListener, Consumer<String> alerter, Runnable onLairEntered,
-		ConfigManager configManager, BossRegistry registry)
+		Consumer<PanelState> stateListener, Consumer<String> alerter, Consumer<BossDefinition> onNotableDrop,
+		Runnable onLairEntered, ConfigManager configManager, BossRegistry registry)
 	{
+		this.onNotableDrop = onNotableDrop;
 		this.client = client;
 		this.clientThread = clientThread;
 		this.config = config;
@@ -2150,6 +2155,7 @@ public class TripTracker
 	{
 		if (boss.isUnique(itemId))
 		{
+			onNotableDrop.accept(boss);
 			if (config.alertUniques())
 			{
 				alerter.accept(boss.getDisplayName() + " unique: " + prices.name(itemId) + "!");
@@ -2171,6 +2177,7 @@ public class TripTracker
 
 	private void alertPet(String message)
 	{
+		onNotableDrop.accept(tripBoss != null ? tripBoss : selectedBoss);
 		if (config.alertPet())
 		{
 			alerter.accept(message);

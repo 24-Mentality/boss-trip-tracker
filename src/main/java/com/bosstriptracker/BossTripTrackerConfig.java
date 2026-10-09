@@ -56,6 +56,13 @@ public interface BossTripTrackerConfig extends Config
 	)
 	String overlaySection = "overlay";
 
+	@ConfigSection(
+		name = "Screenshots",
+		description = "Save images automatically a few seconds after a unique or pet",
+		position = 5
+	)
+	String screenshotSection = "screenshots";
+
 	@ConfigItem(
 		keyName = "logoutGraceMinutes",
 		name = "Logout grace period",
@@ -362,6 +369,46 @@ public interface BossTripTrackerConfig extends Config
 	default boolean overlayOnlyOnTrip()
 	{
 		return true;
+	}
+
+	@ConfigItem(
+		keyName = "screenshotShareCard",
+		name = "Save share card",
+		description = "After a unique or pet, save the share card to your screenshots folder (Boss Trip Tracker)",
+		section = screenshotSection,
+		position = 0
+	)
+	default boolean screenshotShareCard()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "screenshotWindow",
+		name = "Screenshot the window",
+		description = "After a unique or pet, save an image of the whole RuneLite window, with the side panel that's"
+			+ " open (e.g. this plugin's), to your screenshots folder (Boss Trip Tracker)",
+		section = screenshotSection,
+		position = 1
+	)
+	default boolean screenshotWindow()
+	{
+		return false;
+	}
+
+	@Range(min = 2, max = 15)
+	@Units(Units.SECONDS)
+	@ConfigItem(
+		keyName = "screenshotDelaySeconds",
+		name = "Wait before saving",
+		description = "Seconds after the drop before the images are saved, so the Loot Tracker and this panel have"
+			+ " caught up with it",
+		section = screenshotSection,
+		position = 2
+	)
+	default int screenshotDelaySeconds()
+	{
+		return 5;
 	}
 
 	/**

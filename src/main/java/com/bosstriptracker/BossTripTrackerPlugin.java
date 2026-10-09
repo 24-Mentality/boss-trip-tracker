@@ -3,6 +3,7 @@ package com.bosstriptracker;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
 import com.google.inject.Provides;
+import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.BossRegistry;
 import com.bosstriptracker.diagnostic.DiagnosticRecorder;
 import com.bosstriptracker.model.AccountHistory;
@@ -23,7 +24,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import javax.inject.Inject;
@@ -43,6 +47,7 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
+import net.runelite.client.ui.DrawManager;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.Filepath;
@@ -94,6 +99,9 @@ public class BossTripTrackerPlugin extends Plugin
 	private ImageCapture imageCapture;
 
 	@Inject
+	private DrawManager drawManager;
+
+	@Inject
 	private ChatMessageManager chatMessageManager;
 
 	@Inject
@@ -111,6 +119,7 @@ public class BossTripTrackerPlugin extends Plugin
 	private NavigationButton navigationButton;
 	private ShareCardExporter shareCardExporter;
 	private TrackerOverlay overlay;
+	private ScheduledFuture<?> screenshotFuture;
 	/**
 	 * The latest panel state, for the overlays. Written and read on the client thread.
 	 */
@@ -166,7 +175,7 @@ public class BossTripTrackerPlugin extends Plugin
 				SwingUtilities.invokeLater(() -> trackerPanel.update(state));
 			},
 			message -> notifier.notify(config.alertNotification(), message),
-			this::lairEntered, configManager, registry);
+			this::notableDrop, this::lairEntered, configManager, registry);
 		tripTracker = tracker;
 		eventBus.register(tracker);
 		clientThread.invokeLater(tracker::start);
@@ -284,9 +293,55 @@ public class BossTripTrackerPlugin extends Plugin
 		configManager.setConfiguration(group, "overlayRow3", rows.getRow3());
 	}
 
+	/**
+	 * A unique or pet: save the share card and/or a window screenshot a few seconds later, once the panel and
+	 * RuneLite's Loot Tracker have caught up. Client thread.
+	 */
+	private void notableDrop(BossDefinition boss)
+	{
+		if (!config.screenshotShareCard() && !config.screenshotWindow())
+		{
+			return;
+		}
+		if (screenshotFuture != null && !screenshotFuture.isDone())
+		{
+			// Already waiting: one set of images covers drops that come together
+			return;
+		}
+		String bossName = boss.getDisplayName();
+		try
+		{
+			screenshotFuture = executor.schedule(() -> SwingUtilities.invokeLater(() ->
+			{
+				ShareCardExporter exporter = shareCardExporter;
+				if (exporter == null)
+				{
+					return;
+				}
+				if (config.screenshotShareCard())
+				{
+					exporter.saveAutomatically(latestState, config.shareShowName());
+				}
+				if (config.screenshotWindow())
+				{
+					exporter.saveWindow(drawManager, bossName);
+				}
+			}), config.screenshotDelaySeconds(), TimeUnit.SECONDS);
+		}
+		catch (RejectedExecutionException e)
+		{
+			// Shutting down
+		}
+	}
+
 	@Override
 	protected void shutDown() throws Exception
 	{
+		if (screenshotFuture != null)
+		{
+			screenshotFuture.cancel(false);
+			screenshotFuture = null;
+		}
 		overlayManager.remove(overlay);
 		overlay = null;
 		latestState = null;
