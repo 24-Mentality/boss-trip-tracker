@@ -1,8 +1,6 @@
 package com.bosstriptracker.tracking;
 
-import com.google.common.collect.ImmutableSet;
 import com.google.gson.Gson;
-import com.bosstriptracker.EyeOfAyakCharge;
 import com.bosstriptracker.BossTripTrackerConfig;
 import com.bosstriptracker.boss.AllTimeSource;
 import com.bosstriptracker.boss.BossDefinition;
@@ -11,10 +9,8 @@ import com.bosstriptracker.boss.LootChoice;
 import com.bosstriptracker.model.AccountHistory;
 import com.bosstriptracker.model.AllTimeCounts;
 import com.bosstriptracker.model.BossHistory;
-import com.bosstriptracker.model.ChargeType;
 import com.bosstriptracker.model.DeathRecord;
 import com.bosstriptracker.model.EggPop;
-import com.bosstriptracker.model.ItemEntry;
 import com.bosstriptracker.model.Kill;
 import com.bosstriptracker.model.KillGoal;
 import com.bosstriptracker.model.Trip;
@@ -29,11 +25,9 @@ import com.bosstriptracker.view.BossOption;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import com.bosstriptracker.view.ViewBuilder;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -45,7 +39,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Actor;
 import net.runelite.api.ActorSpotAnim;
@@ -53,7 +46,6 @@ import net.runelite.api.EnumComposition;
 import net.runelite.api.EnumID;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Hitsplat;
-import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -104,15 +96,12 @@ public class TripTracker
 	 * Container changes this soon after respawning are the death itself, not consumption.
 	 */
 	private static final int POST_DEATH_IGNORE_TICKS = 5;
-	private static final long PRE_ENTRY_WINDOW_MS = 60_000;
-	private static final long JUNK_PRICE = SupplyAccounting.JUNK_PRICE;
 	private static final long PUSH_INTERVAL_MS = 1_000;
 	private static final int HISTORY_PAGE = PanelState.HISTORY_PAGE;
 	private static final long ACTIVE_SAVE_INTERVAL_MS = 60_000;
 
 	private static final String OPTION_DROP = SupplyAccounting.OPTION_DROP;
 	private static final String OPTION_POLISH = SupplyAccounting.OPTION_POLISH;
-	private static final Set<String> CONSUME_OPTIONS = ImmutableSet.of("Eat", "Drink", "Cast");
 
 	private final Client client;
 	private final ClientThread clientThread;
@@ -140,8 +129,7 @@ public class TripTracker
 	private final HistoryKeeper keeper;
 	private final RaidSession raids;
 	private final LootRecorder loot;
-	private int lastBankTick = -100;
-	private final SupplyAccounting accounting;
+	private final SupplyRecorder supplies;
 	private final EggTracker eggTracker;
 	private final PolishTracker polishTracker;
 	/**
@@ -162,22 +150,12 @@ public class TripTracker
 	private BossDefinition deathBoss;
 	private int graveWindowEndTick = -1;
 
-	private final Map<Integer, Long> pendingDrops = new HashMap<>();
-	/**
-	 * Worn ammo, and a worn weapon that stacks (knives, darts): your own lands on the floor and can be picked back up.
-	 */
-	private final Set<Integer> wornAmmo = new HashSet<>();
 	private final ChargeCounter chargeCounter;
 	/**
 	 * Last time the player dealt a hitsplat in the lair (or entered it), for the idle pause.
 	 */
 	private long lastActivityAt;
 	private boolean runeIdsLoaded;
-	/**
-	 * Lines saved at 0 gp have been repriced since the price list last loaded.
-	 */
-	private boolean zeroPricesChecked;
-	private final Deque<PreEntryUse> preEntryUses = new ArrayDeque<>();
 
 	private long lastPeriodicSave;
 	private long lastPushAt;
@@ -229,7 +207,7 @@ public class TripTracker
 			@Override
 			public void ownDropPickedUp(int itemId, long quantity)
 			{
-				pendingDrops.computeIfPresent(itemId, (id, q) -> q - quantity > 0 ? q - quantity : null);
+				supplies.ownDropPickedUp(itemId, quantity);
 			}
 
 			@Override
@@ -272,10 +250,11 @@ public class TripTracker
 				return allTimeRecords.killCount(key);
 			}
 		});
-		this.accounting = new SupplyAccounting(prices);
 		this.chargeCounter = new ChargeCounter(prices::isMeleeWeapon);
 		this.registry = registry;
 		this.polishTracker = new PolishTracker(registry, prices, host);
+		this.supplies = new SupplyRecorder(s, keeper, config, prices, recentClicks, eggTracker, polishTracker, loot, raids,
+			convertedItems, this::recordGraveMovePayment);
 		for (BossDefinition boss : registry.all())
 		{
 			convertedItems.addAll(boss.getConvertedItems());
@@ -295,7 +274,7 @@ public class TripTracker
 			ensureAccountLoaded();
 			ItemContainer worn = client.getItemContainer(InventoryID.WORN);
 			chargeCounter.gearChanged(client.getTickCount(), gear(worn));
-			wornAmmoChanged(worn);
+			supplies.wornChanged(worn);
 		}
 		pushState();
 	}
@@ -319,12 +298,11 @@ public class TripTracker
 		s.dead = false;
 		s.ignoreDeltasUntilTick = -1;
 		graveWindowEndTick = -1;
-		pendingDrops.clear();
+		supplies.reset();
 		loot.resetKillState();
 		leaveDelay.inside();
 		loot.resetFight();
 		recentClicks.clear();
-		preEntryUses.clear();
 		ledger.reset();
 		chargeCounter.reset();
 		polishTracker.reset();
@@ -787,23 +765,16 @@ public class TripTracker
 			loadRuneIds();
 		}
 
-		if (!prices.pricesLoaded())
-		{
-			zeroPricesChecked = false;
-		}
-		else if (!zeroPricesChecked && s.history != null && !s.readOnly)
-		{
-			repriceZeroPrices();
-		}
+		supplies.pricesTick();
 
 		// Attacks from the previous tick are complete, including gear switched in that tick
-		chargeCounter.process(tick - 1, this::chargesUsed);
+		chargeCounter.process(tick - 1, supplies::chargesUsed);
 
 		// Changes are attributed to where the player was before any region change this tick
 		Map<Integer, Long> delta = ledger.poll();
 		if (!delta.isEmpty())
 		{
-			processDelta(delta, tick, now);
+			supplies.processDelta(delta, tick, now);
 		}
 		loot.applyLootFallback(tick);
 		polishTracker.tick(tick);
@@ -893,11 +864,11 @@ public class TripTracker
 		if (containerId == InventoryID.WORN)
 		{
 			chargeCounter.gearChanged(client.getTickCount(), gear(event.getItemContainer()));
-			wornAmmoChanged(event.getItemContainer());
+			supplies.wornChanged(event.getItemContainer());
 		}
 		else if (containerId == InventoryID.BANK)
 		{
-			lastBankTick = client.getTickCount();
+			supplies.bankOpened(client.getTickCount());
 		}
 	}
 
@@ -958,84 +929,6 @@ public class TripTracker
 		}
 	}
 
-	/**
-	 * Charges used in the lair are supplies, priced from the item that recharges them.
-	 */
-	private void chargesUsed(ChargeType type, int used)
-	{
-		if (!s.inArea || s.currentTrip == null || s.dead)
-		{
-			return;
-		}
-
-		// Priced from everything one recharge takes (e.g. a vial of blood and 200 blood runes for 100 scythe charges)
-		if (type == ChargeType.EYE_OF_AYAK && config.eyeOfAyakCharge() == EyeOfAyakCharge.RUNES)
-		{
-			type = ChargeType.EYE_OF_AYAK_RUNES;
-		}
-		int chargeItemId = type == ChargeType.TOME_OF_FIRE ? config.tomePage().getItemId()
-			: type.isBlowpipeDarts() ? config.blowpipeDarts().getItemId()
-			: type.getChargeItemId();
-		ItemEntries.merge(s.currentTrip.getSupplies(), ItemEntry.charges(type.getSourceItemId(), used,
-			chargeItemId, rechargePrice(type, chargeItemId), type.getChargesPerRecharge()));
-		s.viewDirty = true;
-		keeper.requestSave();
-	}
-
-	/**
-	 * @param chargeItemId the first recharge item, as chosen (a tome page, a dart)
-	 */
-	private long rechargePrice(ChargeType type, int chargeItemId)
-	{
-		long rechargePrice = 0;
-		for (ChargeType.Component component : type.getComponents())
-		{
-			int itemId = component == type.getComponents().get(0) ? chargeItemId : component.getItemId();
-			rechargePrice += component.getQuantity() * prices.price(itemId);
-		}
-		return rechargePrice;
-	}
-
-	/**
-	 * Lines saved at 0 gp while the price list wasn't loaded get today's price once it is.
-	 */
-	private void repriceZeroPrices()
-	{
-		zeroPricesChecked = true;
-		List<Trip> trips = new ArrayList<>();
-		for (BossHistory boss : s.history.getBosses().values())
-		{
-			trips.addAll(boss.getTrips());
-		}
-		int repriced = ZeroPrices.reprice(trips, keeper::editable, new ZeroPrices.Pricing()
-		{
-			@Override
-			public boolean tradeable(ItemEntry entry)
-			{
-				return prices.isTradeable(entry.isCharges() ? entry.getChargeItemId() : entry.getItemId());
-			}
-
-			@Override
-			public long price(ItemEntry entry)
-			{
-				if (entry.isCharges())
-				{
-					ChargeType type = ChargeType.forLine(entry.getItemId(), entry.getChargeItemId());
-					return type == null ? 0 : rechargePrice(type, entry.getChargeItemId());
-				}
-				PriceService.DoseInfo dose = entry.isPerDose() ? prices.doseInfo(entry.getItemId()) : null;
-				return dose == null ? prices.price(entry.getItemId())
-					: Math.round((double) prices.price(entry.getItemId()) / dose.getDoses());
-			}
-		}, JUNK_PRICE);
-		if (repriced > 0)
-		{
-			log.debug("Repriced {} lines saved while prices weren't loaded", repriced);
-			historyChanged();
-			keeper.requestSave();
-		}
-	}
-
 	private static ChargeCounter.Gear gear(ItemContainer worn)
 	{
 		if (worn == null)
@@ -1043,35 +936,10 @@ public class TripTracker
 			return ChargeCounter.Gear.NONE;
 		}
 		return new ChargeCounter.Gear(
-			wornId(worn, EquipmentInventorySlot.WEAPON),
-			wornId(worn, EquipmentInventorySlot.SHIELD),
-			wornId(worn, EquipmentInventorySlot.AMULET),
-			wornId(worn, EquipmentInventorySlot.CAPE));
-	}
-
-	private void wornAmmoChanged(ItemContainer worn)
-	{
-		wornAmmo.clear();
-		if (worn == null)
-		{
-			return;
-		}
-		int ammo = wornId(worn, EquipmentInventorySlot.AMMO);
-		if (ammo > 0)
-		{
-			wornAmmo.add(ammo);
-		}
-		int weapon = wornId(worn, EquipmentInventorySlot.WEAPON);
-		if (weapon > 0 && prices.isStackable(weapon))
-		{
-			wornAmmo.add(weapon);
-		}
-	}
-
-	private static int wornId(ItemContainer worn, EquipmentInventorySlot slot)
-	{
-		Item item = worn.getItem(slot.getSlotIdx());
-		return item == null ? -1 : item.getId();
+			SupplyRecorder.wornId(worn, EquipmentInventorySlot.WEAPON),
+			SupplyRecorder.wornId(worn, EquipmentInventorySlot.SHIELD),
+			SupplyRecorder.wornId(worn, EquipmentInventorySlot.AMULET),
+			SupplyRecorder.wornId(worn, EquipmentInventorySlot.CAPE));
 	}
 
 	@Subscribe
@@ -1251,7 +1119,7 @@ public class TripTracker
 			|| s.tripBoss.getRecoverableItems().contains(item.getId());
 		// Fired and landed: costed when fired, so picking it up makes up for it. In a raid, anything picked up
 		// already does (FreeSupplies)
-		boolean ownAmmo = wornAmmo.contains(item.getId()) && !s.tripBoss.isAcquiredInsideFree();
+		boolean ownAmmo = supplies.isWornAmmo(item.getId()) && !s.tripBoss.isAcquiredInsideFree();
 		loot.itemSpawned(item.getId(), item.getQuantity(), event.getTile().getWorldLocation(), ownDrop, ownAmmo, tick);
 	}
 
@@ -1323,20 +1191,7 @@ public class TripTracker
 		s.currentTrip.setLastActiveAt(now);
 		lastPeriodicSave = now;
 
-		if (config.countPreEntrySupplies())
-		{
-			for (PreEntryUse use : preEntryUses)
-			{
-				if (now - use.at <= PRE_ENTRY_WINDOW_MS)
-				{
-					for (ItemEntry entry : use.items)
-					{
-						ItemEntries.merge(s.currentTrip.getSupplies(), entry);
-					}
-				}
-			}
-		}
-		preEntryUses.clear();
+		supplies.entered(now);
 
 		historyChanged();
 		keeper.requestSave();
@@ -1365,7 +1220,7 @@ public class TripTracker
 		}
 
 		// The instance is gone either way, so anything left on the floor is lost
-		finalizeDrops();
+		supplies.finalizeDrops();
 		commitSegment(now);
 		s.inLairPause = null;
 		if (reason == TripEndReason.WALKED_OUT && config.outsideGraceMinutes() > 0)
@@ -1391,7 +1246,7 @@ public class TripTracker
 			return;
 		}
 
-		finalizeDrops();
+		supplies.finalizeDrops();
 		commitSegment(now);
 		s.inLairPause = null;
 		if (RaidSession.isRaid(s.tripBoss))
@@ -1539,95 +1394,6 @@ public class TripTracker
 
 	// ---- Inventory changes ----
 
-	private void processDelta(Map<Integer, Long> delta, int tick, long now)
-	{
-		SupplyAccounting.Change change = SupplyAccounting.Change.of(delta);
-		Map<Integer, Long> removed = change.removed;
-		Map<Integer, Long> gained = change.gained;
-
-		recordGraveMovePayment(removed, tick);
-
-		boolean trackingTrip = s.inArea && s.currentTrip != null && !s.dead;
-		Map<Integer, Long> dropped = accounting.takeDrops(change, recentClicks, tick);
-		if (trackingTrip)
-		{
-			dropped.forEach((itemId, quantity) -> pendingDrops.merge(itemId, quantity, Long::sum));
-			// Thrown and usually picked back up: like a drop, only what's left behind counts
-			for (int itemId : s.tripBoss.getRecoverableItems())
-			{
-				Long quantity = removed.remove(itemId);
-				if (quantity != null)
-				{
-					pendingDrops.merge(itemId, quantity, Long::sum);
-				}
-			}
-		}
-
-		eggTracker.itemsRemoved(removed, tick, now);
-		polishTracker.gained(gained, tick);
-
-		accounting.removeConversions(change, recentClicks, tick, convertedItems);
-
-		if (trackingTrip)
-		{
-			loot.matchPickups(gained, tick);
-		}
-
-		List<ItemEntry> used = tick <= s.ignoreDeltasUntilTick ? Collections.emptyList() : accounting.consumption(change);
-		if (trackingTrip && s.tripBoss.isAcquiredInsideFree())
-		{
-			// Supply chest purchases and items picked up inside cost nothing: only use beyond them is paid for
-			for (ItemEntry entry : accounting.acquisitions(change))
-			{
-				long refund = raids.freeSupplies().acquired(entry);
-				if (refund > 0)
-				{
-					// Makes up for use already charged this raid (e.g. arrows picked back up)
-					ItemEntries.reduce(s.currentTrip.getSupplies(), entry.getItemId(), entry.isPerDose(), refund);
-					s.viewDirty = true;
-					keeper.requestSave();
-				}
-			}
-			used = raids.freeSupplies().paidFor(used);
-		}
-
-		if (trackingTrip && !recentClicks.has(OPTION_POLISH, -1, tick))
-		{
-			loot.inventoryGained(gained, tick);
-		}
-
-		if (used.isEmpty())
-		{
-			return;
-		}
-
-		if (trackingTrip)
-		{
-			for (ItemEntry entry : used)
-			{
-				ItemEntries.merge(s.currentTrip.getSupplies(), entry);
-			}
-			s.viewDirty = true;
-			keeper.requestSave();
-		}
-		else if (!s.inArea && !s.dead && s.currentTrip != null && s.suspendedOutside
-			&& tick - lastBankTick > CLICK_MATCH_TICKS && recentClicks.has(-1, tick, CONSUME_OPTIONS::contains))
-		{
-			// Waiting just outside the lair: the trip is still open
-			for (ItemEntry entry : used)
-			{
-				ItemEntries.merge(s.currentTrip.getSupplies(), entry);
-			}
-			s.viewDirty = true;
-			keeper.requestSave();
-		}
-		else if (!s.inArea && !s.dead && config.countPreEntrySupplies()
-			&& tick - lastBankTick > CLICK_MATCH_TICKS && recentClicks.has(-1, tick, CONSUME_OPTIONS::contains))
-		{
-			preEntryUses.addLast(new PreEntryUse(now, used));
-		}
-	}
-
 	private void recordGraveMovePayment(Map<Integer, Long> removed, int tick)
 	{
 		if (pendingDeath == null || tick > graveWindowEndTick || s.inArea)
@@ -1648,52 +1414,13 @@ public class TripTracker
 		}
 	}
 
-	private void finalizeDrops()
-	{
-		if (s.tripBoss.isDroppedSupplyUsed())
-		{
-			dropsAsUsed();
-			pendingDrops.clear();
-			return;
-		}
-		for (Map.Entry<Integer, Long> e : pendingDrops.entrySet())
-		{
-			long price = prices.price(e.getKey());
-			// Without prices nothing can be told to be junk: it's repriced, or removed as junk, later (ZeroPrices)
-			if ((price >= JUNK_PRICE || !prices.pricesLoaded()) && e.getValue() > 0)
-			{
-				ItemEntries.merge(s.currentTrip.getDropped(), e.getKey(), e.getValue(), price, false);
-			}
-		}
-		pendingDrops.clear();
-	}
-
-	/**
-	 * Dropped supplies left behind count as used (per dose for potions, less anything obtained inside).
-	 */
-	private void dropsAsUsed()
-	{
-		List<ItemEntry> used = accounting.droppedAsUsed(pendingDrops);
-		if (s.tripBoss.isAcquiredInsideFree())
-		{
-			used = raids.freeSupplies().paidFor(used);
-		}
-		for (ItemEntry entry : used)
-		{
-			ItemEntries.merge(s.currentTrip.getSupplies(), entry);
-		}
-	}
-
 	// ---- Helpers ----
 
 	private void prune(int tick, long now)
 	{
 		recentClicks.prune(tick);
 		loot.prune(tick);
-		while (!preEntryUses.isEmpty() && now - preEntryUses.peekFirst().at > PRE_ENTRY_WINDOW_MS)
-		{
-			preEntryUses.removeFirst();
-		}
+		supplies.prune(now);
 		if (pendingDeath != null && !s.inArea && graveWindowEndTick >= 0 && tick > graveWindowEndTick)
 		{
 			graveWindowEndTick = -1;
@@ -1791,7 +1518,7 @@ public class TripTracker
 		s.history = result.getHistory();
 		s.readOnly = result.isReadOnly();
 		s.loading = false;
-		zeroPricesChecked = false;
+		supplies.historyLoaded();
 		s.corruptBackup = result.getCorruptBackup();
 		if (s.readOnly)
 		{
@@ -2050,10 +1777,4 @@ public class TripTracker
 
 	// ---- Small records ----
 
-	@AllArgsConstructor
-	private static class PreEntryUse
-	{
-		final long at;
-		final List<ItemEntry> items;
-	}
 }
