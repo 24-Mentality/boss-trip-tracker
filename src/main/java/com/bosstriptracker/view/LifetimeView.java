@@ -1,7 +1,9 @@
 package com.bosstriptracker.view;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import lombok.Builder;
 import lombok.Value;
 
@@ -36,6 +38,11 @@ public class LifetimeView
 	 * Net profit of completed trips, oldest first.
 	 */
 	List<Long> netPerTrip;
+	/**
+	 * Tracked kills per calendar day (only kills this plugin saw have a date).
+	 */
+	@Builder.Default
+	Map<LocalDate, Integer> killsByDay = Collections.emptyMap();
 	DrynessView dryness;
 	/**
 	 * Every tracked trip's loot, supplies and items left behind added together, at the prices recorded then.

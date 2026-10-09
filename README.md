@@ -80,7 +80,11 @@ bosses are planned.
   to see its items. Supplies' header shows its Total GP and the cost of charges, runes, potions,
   food and anything else. In the item grids, uniques have a gold border and tarnished drops
   waiting to be polished have a dashed border.
-- **History:** a profit-per-trip chart with the trip count and net for the selected chip, then
+- **History:** at the top, your tracked kills as bars for a **Week** or **Month** (a bar per
+  day) or a **Year** (a bar per month), with arrows to step back through earlier periods, a
+  heatmap of the year's days (darker squares had more kills) and your kills today, this week,
+  this month and this year. Only kills the plugin saw have a date, so kills done without it
+  aren't in these. Then a profit-per-trip chart with the trip count and net for the selected chip, then
   one card per completed trip, the newest 50 first (**Show more** adds older ones). Click a
   card to expand it, right-click to delete it.
 - **Lifetime:** totals across all trips (net profit and GP/hr from tracked trips, where costs are

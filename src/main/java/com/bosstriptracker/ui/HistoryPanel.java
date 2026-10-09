@@ -4,6 +4,8 @@ import com.bosstriptracker.view.LifetimeView;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import java.awt.Insets;
+import java.time.LocalDate;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -28,6 +30,7 @@ class HistoryPanel extends JPanel
 	private final SectionStates sectionStates;
 	private final Consumer<TripView> onDelete;
 	private final Set<String> expandedTrips = new HashSet<>();
+	private final KillChartsPanel killCharts = new KillChartsPanel(LocalDate::now);
 	private final JLabel chartTitle = new JLabel();
 	private final ProfitTrendChart chart = new ProfitTrendChart();
 	private final JLabel count = new JLabel();
@@ -63,6 +66,8 @@ class HistoryPanel extends JPanel
 		showMore.setVisible(false);
 		showMore.addActionListener(e -> onShowMore.run());
 
+		killCharts.setAlignmentX(LEFT_ALIGNMENT);
+		add(killCharts);
 		add(chartTitle);
 		add(chart);
 		add(count);
@@ -77,6 +82,7 @@ class HistoryPanel extends JPanel
 	 */
 	void update(List<TripView> trips, int total, LifetimeView lifetime)
 	{
+		killCharts.update(lifetime == null ? Collections.emptyMap() : lifetime.getKillsByDay());
 		boolean charted = lifetime != null && !trips.isEmpty();
 		chartTitle.setVisible(charted);
 		chart.setVisible(charted);

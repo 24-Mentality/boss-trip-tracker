@@ -20,6 +20,7 @@ import com.bosstriptracker.model.TripClock;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.model.VariantFilter;
 import com.bosstriptracker.pricing.PriceService;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.function.ToDoubleFunction;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.client.util.QuantityFormatter;
@@ -51,6 +53,10 @@ public class ViewBuilder
 
 	private final PriceService prices;
 	private final Cache cache = new Cache();
+	/**
+	 * The time zone kills are put on calendar days in.
+	 */
+	private ZoneId zone = ZoneId.systemDefault();
 	private final GoalCache goalCache = new GoalCache();
 	private Set<Integer> runeIds = Collections.emptySet();
 	/**
@@ -66,6 +72,11 @@ public class ViewBuilder
 	/**
 	 * Item ids that count as runes in the supply breakdown (every rune the rune pouch can hold).
 	 */
+	public void setZone(ZoneId zone)
+	{
+		this.zone = zone;
+	}
+
 	public void setRuneIds(Set<Integer> runeIds)
 	{
 		this.runeIds = runeIds;
@@ -233,7 +244,7 @@ public class ViewBuilder
 		boolean includeTodayValue, long now)
 	{
 		List<Trip> trips = filtered(history, variant);
-		LifetimeTotals totals = new LifetimeTotals();
+		LifetimeTotals totals = new LifetimeTotals(zone);
 		for (Trip trip : trips)
 		{
 			totals.add(trip, now);
@@ -263,7 +274,7 @@ public class ViewBuilder
 			cache.historyVersion = historyVersion;
 			cache.pastTeamSize = pastTeamSize;
 			cache.openTrip = openTrip;
-			cache.closed = new LifetimeTotals();
+			cache.closed = new LifetimeTotals(zone);
 			for (Trip trip : filtered(history, variant))
 			{
 				if (trip != openTrip)
@@ -362,6 +373,7 @@ public class ViewBuilder
 			.averageKillMs(totals.averageKillMs())
 			.lootValueToday(today)
 			.netPerTrip(new ArrayList<>(totals.netPerTrip))
+			.killsByDay(Collections.unmodifiableMap(new TreeMap<>(totals.killsByDay)))
 			.dryness(dryness)
 			.polish(polish(boss, history))
 			.loot(items(boss, totals.lootItems))

@@ -3,10 +3,14 @@ package com.bosstriptracker.view;
 import com.bosstriptracker.model.Kill;
 import com.bosstriptracker.model.Trip;
 import com.bosstriptracker.model.TripMath;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Running totals over trips for the Lifetime tab. The totals of finished trips are kept and the trip in progress is
@@ -34,6 +38,16 @@ final class LifetimeTotals
 	final ItemTotals lootItems = new ItemTotals();
 	final ItemTotals supplyItems = new ItemTotals();
 	final ItemTotals droppedItems = new ItemTotals();
+	/**
+	 * Kills per calendar day, in {@link #zone}.
+	 */
+	final Map<LocalDate, Integer> killsByDay = new TreeMap<>();
+	private final ZoneId zone;
+
+	LifetimeTotals(ZoneId zone)
+	{
+		this.zone = zone;
+	}
 
 	/**
 	 * @param now current time, for the running segment of an open trip
@@ -62,6 +76,7 @@ final class LifetimeTotals
 			{
 				choices.merge(kill.getChoice(), 1, Integer::sum);
 			}
+			killsByDay.merge(Instant.ofEpochMilli(kill.getEndedAt()).atZone(zone).toLocalDate(), 1, Integer::sum);
 			if (kill.getDurationMs() != null)
 			{
 				killMsTotal += kill.getDurationMs();
@@ -76,7 +91,7 @@ final class LifetimeTotals
 
 	LifetimeTotals copy()
 	{
-		LifetimeTotals copy = new LifetimeTotals();
+		LifetimeTotals copy = new LifetimeTotals(zone);
 		copy.trips = trips;
 		copy.kills = kills;
 		copy.deaths = deaths;
@@ -94,6 +109,7 @@ final class LifetimeTotals
 		copy.lootItems.addAll(lootItems);
 		copy.supplyItems.addAll(supplyItems);
 		copy.droppedItems.addAll(droppedItems);
+		copy.killsByDay.putAll(killsByDay);
 		return copy;
 	}
 

@@ -191,6 +191,43 @@ public class PanelFitTest
 		});
 	}
 
+	@Test
+	public void killChartsFitAtSidebarWidth() throws Exception
+	{
+		List<String> problems = new ArrayList<>();
+		SwingUtilities.invokeAndWait(() ->
+		{
+			java.time.LocalDate today = java.time.LocalDate.of(2026, 10, 8);
+			java.util.Map<java.time.LocalDate, Integer> kills = new java.util.TreeMap<>();
+			for (int i = 0; i < 300; i += 1 + i % 3)
+			{
+				kills.put(today.minusDays(i), 1 + (i * 7) % 40);
+			}
+			KillChartsPanel charts = new KillChartsPanel(() -> today);
+			charts.update(kills);
+			javax.swing.JPanel holder = new javax.swing.JPanel(new java.awt.BorderLayout());
+			holder.setBackground(net.runelite.client.ui.ColorScheme.DARK_GRAY_COLOR);
+			holder.add(charts, java.awt.BorderLayout.NORTH);
+			holder.setSize(WIDTH - 10, 400);
+			layout(holder);
+			layout(holder);
+			findLabels(holder, "kill charts", problems);
+			BufferedImage image = new BufferedImage(WIDTH - 10, 200, BufferedImage.TYPE_INT_RGB);
+			Graphics2D g = image.createGraphics();
+			holder.printAll(g);
+			g.dispose();
+			try
+			{
+				ImageIO.write(image, "PNG", new File("build/kill-charts-preview.png"));
+			}
+			catch (IOException e)
+			{
+				throw new RuntimeException(e);
+			}
+		});
+		assertTrue("Labels that don't fit:\n" + String.join("\n", problems), problems.isEmpty());
+	}
+
 	private static <T> T find(Component component, Class<T> type, java.util.function.Predicate<T> matches)
 	{
 		if (type.isInstance(component) && matches.test(type.cast(component)))
