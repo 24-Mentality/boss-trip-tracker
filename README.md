@@ -161,8 +161,6 @@ For the Maggot King:
 - A trip starts when you enter the lair. It ends when you teleport out, die, walk out and
   don't come back within 5 minutes while staying just outside, or log out and don't return
   within 5 minutes (both grace periods are configurable).
-- **Merge re-entries** (off by default) counts leaving and re-entering within the merge
-  window as one trip.
 - A trip without kills is kept if anything was dropped or lost, or if it used at least 1,000 gp
   of supplies or charges (a teleport out before the kill); History shows it as "No kills".
   Walking in and straight back out leaves nothing.

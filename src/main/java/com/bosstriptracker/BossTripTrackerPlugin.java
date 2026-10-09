@@ -132,6 +132,7 @@ public class BossTripTrackerPlugin extends Plugin
 		migrateOverlaySettings();
 		// The Classic luck card was removed: its setting does nothing now
 		configManager.unsetConfiguration(BossTripTrackerConfig.GROUP, "luckCardStyle");
+		migrateMergeReentries();
 		BossRegistry registry = BossRegistry.standard();
 		// The diagnostic log is only for collecting data during development (./gradlew run passes --developer-mode)
 		if (developerMode)
@@ -224,6 +225,31 @@ public class BossTripTrackerPlugin extends Plugin
 		{
 			log.info("Copied {} settings from the {} config group", copied, legacy);
 		}
+	}
+
+	/**
+	 * "Merge re-entries" and its window were folded into the outside grace period: if they were on, the grace period
+	 * keeps at least that window.
+	 */
+	private void migrateMergeReentries()
+	{
+		String group = BossTripTrackerConfig.GROUP;
+		String merge = configManager.getConfiguration(group, "mergeReentries");
+		String window = configManager.getConfiguration(group, "mergeWindowMinutes");
+		if (merge == null && window == null)
+		{
+			return;
+		}
+		if (Boolean.parseBoolean(merge))
+		{
+			int minutes = window == null ? 5 : Integer.parseInt(window);
+			if (minutes > config.outsideGraceMinutes())
+			{
+				configManager.setConfiguration(group, "outsideGraceMinutes", Math.min(30, minutes));
+			}
+		}
+		configManager.unsetConfiguration(group, "mergeReentries");
+		configManager.unsetConfiguration(group, "mergeWindowMinutes");
 	}
 
 	/**

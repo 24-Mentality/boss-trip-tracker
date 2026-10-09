@@ -1790,16 +1790,6 @@ public class TripTracker
 			suspendedAt = null;
 			suspendedOutside = false;
 		}
-		else if (config.mergeReentries() && !isRaid(boss) && lastEndedTrip != null && lastEndedBoss == boss
-			&& lastEndedTrip.getEndedAt() != null
-			&& now - lastEndedTrip.getEndedAt() <= TimeUnit.MINUTES.toMillis(config.mergeWindowMinutes())
-			&& trips.contains(lastEndedTrip))
-		{
-			// Open again: it leaves its month's file for the trips in progress
-			currentTrip = editable(lastEndedTrip);
-			currentTrip.setEndedAt(null);
-			currentTrip.setEndReason(null);
-		}
 		else
 		{
 			currentTrip = new Trip();

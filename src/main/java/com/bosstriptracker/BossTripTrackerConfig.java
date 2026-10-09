@@ -31,35 +31,42 @@ public interface BossTripTrackerConfig extends Config
 	@ConfigSection(
 		name = "Charges",
 		description = "Charged item costs",
-		position = 1
+		position = 2
 	)
 	String chargesSection = "charges";
 
 	@ConfigSection(
 		name = "Loot alerts",
 		description = "Notifications for good drops",
-		position = 2
+		position = 3
 	)
 	String alertsSection = "alerts";
 
 	@ConfigSection(
 		name = "Display",
 		description = "Side panel options",
-		position = 3
+		position = 4
 	)
 	String displaySection = "display";
 
 	@ConfigSection(
 		name = "Overlay",
 		description = "An optional box on the game screen with your kill goal, trip times and profit",
-		position = 4
+		position = 5
 	)
 	String overlaySection = "overlay";
 
 	@ConfigSection(
+		name = "Theatre of Blood",
+		description = "Settings that only apply to the Theatre of Blood",
+		position = 1
+	)
+	String theatreSection = "theatreOfBlood";
+
+	@ConfigSection(
 		name = "Screenshots",
 		description = "Save images automatically a few seconds after a unique or pet",
-		position = 5
+		position = 6
 	)
 	String screenshotSection = "screenshots";
 
@@ -73,32 +80,6 @@ public interface BossTripTrackerConfig extends Config
 	@Range(max = 60)
 	@Units(Units.MINUTES)
 	default int logoutGraceMinutes()
-	{
-		return 5;
-	}
-
-	@ConfigItem(
-		keyName = "mergeReentries",
-		name = "Merge re-entries",
-		description = "Count leaving and re-entering a boss's area within the merge window as one trip",
-		section = tripsSection,
-		position = 1
-	)
-	default boolean mergeReentries()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "mergeWindowMinutes",
-		name = "Merge window",
-		description = "How soon you must re-enter for it to count as the same trip",
-		section = tripsSection,
-		position = 2
-	)
-	@Range(min = 1, max = 60)
-	@Units(Units.MINUTES)
-	default int mergeWindowMinutes()
 	{
 		return 5;
 	}
@@ -134,8 +115,8 @@ public interface BossTripTrackerConfig extends Config
 	@ConfigItem(
 		keyName = "outsideGraceMinutes",
 		name = "Outside grace period",
-		description = "After walking out (e.g. out of the Maggot King's lair), the trip stays open (paused) while you stay just outside for"
-			+ " this long. Going back in continues it. 0 ends the trip when you walk out.",
+		description = "After walking out (e.g. out of the Maggot King's lair), the trip stays open (paused) while you stay"
+			+ " just outside for this long, so going back in continues it. 0 ends the trip when you walk out.",
 		section = tripsSection,
 		position = 5
 	)
@@ -163,8 +144,8 @@ public interface BossTripTrackerConfig extends Config
 		name = "Typical team size for past raids",
 		description = "Theatre of Blood raids from RuneLite's all-time records don't say the team size; luck assumes"
 			+ " this one. Raids this plugin tracks use their own team size.",
-		section = tripsSection,
-		position = 7
+		section = theatreSection,
+		position = 0
 	)
 	@Range(min = 1, max = 5)
 	default int tobPastTeamSize()
