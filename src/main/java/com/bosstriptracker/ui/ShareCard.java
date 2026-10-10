@@ -92,9 +92,9 @@ class ShareCard
 	 */
 	Integer teamDryStreak;
 	/**
-	 * The dry streak as a multiple of the drop rate.
+	 * Share of players who go as long as the current dry streak without a unique.
 	 */
-	double dryVsRate;
+	double streakChance;
 	/**
 	 * Average chance of any unique per kill.
 	 */
@@ -190,7 +190,7 @@ class ShareCard
 			.longestDryStreak(dryness.getLongestDryStreak())
 			.lastUniqueKc(dryness.getLastUniqueKc())
 			.teamDryStreak(dryness.getTeamDryStreak())
-			.dryVsRate(luck.dryVsRate(dryness.getKillsSinceUnique()))
+			.streakChance(luck.chanceThisDry(dryness.getKillsSinceUnique()))
 			.uniqueRate(luck.getRate())
 			.approximate(luck.isApproximate())
 			.drops(drops)

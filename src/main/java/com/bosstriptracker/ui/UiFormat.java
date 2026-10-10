@@ -41,6 +41,20 @@ final class UiFormat
 	/**
 	 * The "N" of a 1/N drop rate: whole numbers with separators ("3,500"), otherwise one decimal ("205.6").
 	 */
+	/**
+	 * The share of players this dry, as "1 in 58" (whole numbers from 10 up, "1 in 2.5" below); "-" when it isn't
+	 * known.
+	 */
+	static String streakOdds(double chanceThisDry)
+	{
+		if (chanceThisDry <= 0 || chanceThisDry > 1)
+		{
+			return "-";
+		}
+		double n = 1 / chanceThisDry;
+		return "1 in " + (n >= 9.95 ? String.format(Locale.ROOT, "%,d", Math.round(n)) : oneIn(chanceThisDry));
+	}
+
 	static String oneIn(double rate)
 	{
 		double n = 1 / rate;

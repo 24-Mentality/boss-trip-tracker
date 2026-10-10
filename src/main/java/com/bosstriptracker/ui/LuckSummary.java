@@ -111,6 +111,14 @@ class LuckSummary
 	}
 
 	/**
+	 * Share of players who go this many kills without a unique (1 when the rate is unknown).
+	 */
+	double chanceThisDry(int killsSinceUnique)
+	{
+		return rate <= 0 ? 1 : Math.pow(1 - rate, killsSinceUnique);
+	}
+
+	/**
 	 * Share of players who would have had a unique within this many kills.
 	 */
 	double chanceByNow(int killsSinceUnique)

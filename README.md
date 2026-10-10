@@ -48,8 +48,8 @@ bosses are planned. Formerly **Maggot King Trip Tracker**.
   uploaded. Your name is on the card unless you turn off **Show my name on share cards**.
 - **Overlay** (off by default): a small box on the game screen built like RuneLite's XP
   tracker box, with the boss icon and up to three rows, each picked from one list: kill goal
-  stats (KPH, TTG, kills done or left), trip stats (current kill, trip time, kills, average
-  kill, PB), the trip's net profit or net GP/hr, and your luck status (the Luck card's tier);
+  stats (KPH, TTG, KC done or left), trip stats (current KC, trip time, trip KC, avg KC,
+  PB), the trip's net profit or net GP/hr, and your luck status (the Luck card's tier);
   rows 2 and 3 can also show nothing. With a goal set there is an optional progress bar.
   Turn it on with **Show overlay** in Configuration → Overlay and pick its rows there. Hold
   Alt and drag the box to move it. By default it only shows during a trip.
@@ -66,7 +66,8 @@ bosses are planned. Formerly **Maggot King Trip Tracker**.
   hit. **Pause** stops them straight away; it resumes when you press it again or, with
   **Auto-resume when I attack** on, when you next damage the boss.
 - **Luck** (Trip tab, under the kill goal): uniques received vs expected with a luck tier, kills
-  since your last unique, that streak as a multiple of the drop rate, the rate and a count of
+  since your last unique, streak odds (how many players go that long without a unique, e.g.
+  "1 in 58"), the rate and a count of
   each unique and the pet, laid out like the share card. The tier comes from the tail you're in:
   **DRY AS RUCK** in the driest 10% of players with as many kills, **Dry** in the driest 35%,
   **Lucky** and **LUCKY AS RUCK** the same on the lucky side, **On Rate** otherwise, and

@@ -193,7 +193,7 @@ final class ShareCardRenderer
 		int half = (right - left) / 2;
 		pair(g, "Uniques", card.getUniquesReceived() + " / " + expected, left, y + 36);
 		pair(g, "Dry streak", card.getWords().kc(card.getDryKills()), left + half, y + 36);
-		pair(g, "Dry streak vs rate", String.format(Locale.ROOT, "%.1f\u00d7", card.getDryVsRate()), left, y + 54);
+		pair(g, "Streak odds", UiFormat.streakOdds(card.getStreakChance()), left, y + 54);
 		pair(g, "Rate", "1/" + UiFormat.oneIn(card.getUniqueRate()), left + half, y + 54);
 		pair(g, "Worst dry streak", card.getWords().kc(card.getLongestDryStreak()), left, y + 72);
 		if (card.getTeamDryStreak() != null)
