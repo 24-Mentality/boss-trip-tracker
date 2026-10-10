@@ -34,12 +34,29 @@ tasks.withType(JavaCompile).configureEach {
 	options.release.set(11)
 }
 
+// The client runs from its own copy of the plugin's classes, so building again while it's open can't swap
+// classes under it (a half-old, half-new plugin fails with NoSuchMethodError). Copies older than a day are removed.
+def privateRunClasspath = {
+	def runRoot = layout.buildDirectory.dir('run-classes').get().asFile
+	runRoot.listFiles()?.findAll { it.lastModified() < System.currentTimeMillis() - 86_400_000L }?.each { project.delete(it) }
+	def runDir = new File(runRoot, String.valueOf(System.currentTimeMillis()))
+	project.copy {
+		from sourceSets.main.output
+		from sourceSets.test.output
+		into runDir
+	}
+	return files(runDir) + (sourceSets.test.runtimeClasspath - sourceSets.main.output - sourceSets.test.output)
+}
+
 tasks.register('run', JavaExec) {
-	classpath = sourceSets.test.runtimeClasspath
+	dependsOn tasks.named('testClasses')
 	mainClass = pluginMainClass
 
 	jvmArgs "-ea"
 	args "--developer-mode", "--debug"
+	doFirst {
+		classpath = privateRunClasspath()
+	}
 }
 
 tasks.register('shadowJar', Jar) {
