@@ -152,6 +152,9 @@ public class TrackerOverlayTest
 				{TrackerOverlay.PB, "9:59.9"},
 				{TrackerOverlay.NET_PROFIT, "-12.4B"},
 				{TrackerOverlay.NET_GP_PER_HOUR, "-985M"},
+				{TrackerOverlay.TODAY_KC, "999"},
+				{TrackerOverlay.WEEK_KC, "9,999"},
+				{TrackerOverlay.MONTH_KC, "9,999"},
 			});
 		}
 		g.dispose();

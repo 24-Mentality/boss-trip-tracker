@@ -23,7 +23,10 @@ public enum OverlayOptionalStat
 	PB(OverlayStat.PB),
 	NET_PROFIT(OverlayStat.NET_PROFIT),
 	NET_GP_PER_HOUR(OverlayStat.NET_GP_PER_HOUR),
-	LUCK(OverlayStat.LUCK);
+	LUCK(OverlayStat.LUCK),
+	KC_TODAY(OverlayStat.KC_TODAY),
+	KC_THIS_WEEK(OverlayStat.KC_THIS_WEEK),
+	KC_THIS_MONTH(OverlayStat.KC_THIS_MONTH);
 
 	/**
 	 * Null for NOTHING.

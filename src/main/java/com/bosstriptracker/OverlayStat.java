@@ -22,7 +22,10 @@ public enum OverlayStat
 	PB("PB (fastest this trip)"),
 	NET_PROFIT("Net profit"),
 	NET_GP_PER_HOUR("Net GP/hr"),
-	LUCK("Luck status");
+	LUCK("Luck status"),
+	KC_TODAY("KC today"),
+	KC_THIS_WEEK("KC this week"),
+	KC_THIS_MONTH("KC this month");
 
 	private final String label;
 

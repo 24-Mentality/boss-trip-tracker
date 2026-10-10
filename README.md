@@ -49,8 +49,8 @@ bosses are planned. Formerly **Maggot King Trip Tracker**.
 - **Overlay** (off by default): a small box on the game screen built like RuneLite's XP
   tracker box, with the boss icon and up to three rows, each picked from one list: kill goal
   stats (KPH, TTG, KC done or left), trip stats (current KC, trip time, trip KC, avg KC,
-  PB), the trip's net profit or net GP/hr, and your luck status (the Luck card's tier);
-  rows 2 and 3 can also show nothing. With a goal set there is an optional progress bar.
+  PB), the trip's net profit or net GP/hr, your KC today, this week or this month (tracked
+  kills, weeks from Monday), and your luck status (the Luck card's tier); rows 2 and 3 can also show nothing. With a goal set there is an optional progress bar.
   Turn it on with **Show overlay** in Configuration → Overlay and pick its rows there. Hold
   Alt and drag the box to move it. By default it only shows during a trip.
 - **Boss dropdown** (top of the panel): picks the boss shown in all three tabs. Entering a

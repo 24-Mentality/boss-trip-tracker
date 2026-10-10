@@ -7,6 +7,7 @@ import com.bosstriptracker.model.LuckTier;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.DrynessView;
 import com.bosstriptracker.view.GoalView;
+import com.bosstriptracker.view.KillCalendar;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import com.bosstriptracker.view.Words;
@@ -17,6 +18,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -77,6 +79,9 @@ public class TrackerOverlay extends OverlayPanel
 	static final String LAST_KC = "Last KC:";
 	static final String TRIP_KC = "Trip KC:";
 	static final String AVERAGE_KC = "Avg KC:";
+	static final String TODAY_KC = "Today KC:";
+	static final String WEEK_KC = "Week KC:";
+	static final String MONTH_KC = "Month KC:";
 	static final String TRIP_TIME = "Trip time:";
 	static final String PB = "PB:";
 	static final String NET_PROFIT = "Net profit:";
@@ -106,6 +111,9 @@ public class TrackerOverlay extends OverlayPanel
 	private final Map<Integer, BufferedImage> scaledIcons = new HashMap<>();
 	private DrynessView luckFor;
 	private LuckTier luckTier;
+	private Map<LocalDate, Integer> totalsFor;
+	private LocalDate totalsDay;
+	private KillCalendar.Totals totals;
 
 	/**
 	 * @param state the latest panel state; read on the client thread, where it is also produced
@@ -333,9 +341,34 @@ public class TrackerOverlay extends OverlayPanel
 				LuckTier tier = luckTier(s.getLifetime().getDryness());
 				rows.add(tier == null ? line(LUCK, NOT_AVAILABLE, MUTED) : line(LUCK, tier.getLabel(), UiFormat.tierColor(tier)));
 				break;
+			case KC_TODAY:
+			case KC_THIS_WEEK:
+			case KC_THIS_MONTH:
+				// Tracked kills by calendar day, as in the History tab
+				KillCalendar.Totals kc = totals(s.getLifetime().getKillsByDay());
+				int count = stat == OverlayStat.KC_TODAY ? kc.getToday()
+					: stat == OverlayStat.KC_THIS_WEEK ? kc.getWeek() : kc.getMonth();
+				String label = stat == OverlayStat.KC_TODAY ? TODAY_KC : stat == OverlayStat.KC_THIS_WEEK ? WEEK_KC : MONTH_KC;
+				rows.add(line(label, String.format(Locale.ROOT, "%,d", count), Color.WHITE));
+				break;
 			default:
 				break;
 		}
+	}
+
+	/**
+	 * Worked out once per change in kills or day rather than every frame.
+	 */
+	private KillCalendar.Totals totals(Map<LocalDate, Integer> killsByDay)
+	{
+		LocalDate today = LocalDate.now();
+		if (killsByDay != totalsFor || !today.equals(totalsDay))
+		{
+			totalsFor = killsByDay;
+			totalsDay = today;
+			totals = KillCalendar.totals(killsByDay, today);
+		}
+		return totals;
 	}
 
 	/**
