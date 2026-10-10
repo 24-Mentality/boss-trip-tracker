@@ -1,6 +1,5 @@
 package com.bosstriptracker.ui;
 
-import com.bosstriptracker.CanvasSection;
 import com.bosstriptracker.model.TripMath;
 import com.bosstriptracker.view.TripView;
 import com.bosstriptracker.view.Words;
@@ -8,8 +7,6 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
-import java.util.ArrayList;
-import java.util.List;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
@@ -57,10 +54,8 @@ class TripSummaryCard extends JPanel
 		.help("Deaths in the lair this trip.");
 
 	private final JPanel timeCard;
-	private final JPanel timePinHolder = new JPanel(new BorderLayout());
 	private final JPanel profitCard;
 	private final JPanel eyeHolder = new JPanel(new BorderLayout());
-	private final List<CanvasPin> pins = new ArrayList<>();
 	/**
 	 * Where the profit card's collapsed state is saved; null to keep it for the session (History cards).
 	 */
@@ -88,13 +83,11 @@ class TripSummaryCard extends JPanel
 		{
 			timeCells.add(cell);
 		}
-		timePinHolder.setOpaque(false);
 		timeCard = new JPanel(new BorderLayout(3, 0));
 		timeCard.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		timeCard.setBorder(BorderFactory.createEmptyBorder(5, 6, 5, 6));
 		timeCard.setAlignmentX(LEFT_ALIGNMENT);
 		timeCard.add(timeCells, BorderLayout.CENTER);
-		timeCard.add(timePinHolder, BorderLayout.EAST);
 
 		// The profit card collapses with the eye icon to just net profit and net GP/hr
 		profitGrid.setOpaque(false);
@@ -203,28 +196,12 @@ class TripSummaryCard extends JPanel
 	}
 
 	/**
-	 * The Trip tab's card: pins that put the time card's and profit card's numbers on the overlay, and the profit
-	 * card's collapsed state saved in the settings.
+	 * The Trip tab's card: the profit card's collapsed state is saved in the settings.
 	 */
-	void attachPins(PanelActions actions, SectionStates states)
+	void attachStates(SectionStates states)
 	{
-		CanvasPin timePin = new CanvasPin(CanvasSection.TRIP, actions);
-		CanvasPin profitPin = new CanvasPin(CanvasSection.LOOT, actions);
-		pins.add(timePin);
-		pins.add(profitPin);
-		timePinHolder.add(timePin, BorderLayout.NORTH);
-		profitPin.setBorder(BorderFactory.createEmptyBorder(3, 5, 0, 0));
-		eyeHolder.add(profitPin, BorderLayout.CENTER);
 		this.states = states;
 		setProfitCollapsed(!states.isOpen(PROFIT_STATE, true));
-	}
-
-	/**
-	 * Reads whether each card's numbers are on the overlay.
-	 */
-	void refreshPins()
-	{
-		pins.forEach(CanvasPin::refresh);
 	}
 
 	/**

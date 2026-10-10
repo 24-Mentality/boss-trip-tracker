@@ -3,7 +3,6 @@ package com.bosstriptracker.ui;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import com.bosstriptracker.CanvasSection;
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.DropKind;
 import com.bosstriptracker.boss.ExpectedDrop;
@@ -485,17 +484,6 @@ public class PanelFitTest
 	{
 		@Override
 		public void showMoreHistory()
-		{
-		}
-
-		@Override
-		public boolean isOnCanvas(CanvasSection section)
-		{
-			return false;
-		}
-
-		@Override
-		public void toggleCanvas(CanvasSection section)
 		{
 		}
 

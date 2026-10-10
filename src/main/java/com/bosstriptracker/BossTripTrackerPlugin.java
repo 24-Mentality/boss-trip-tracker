@@ -568,19 +568,6 @@ public class BossTripTrackerPlugin extends Plugin
 		}
 
 		@Override
-		public boolean isOnCanvas(CanvasSection section)
-		{
-			return OverlayRows.of(config).shows(section);
-		}
-
-		@Override
-		public void toggleCanvas(CanvasSection section)
-		{
-			OverlayRows rows = OverlayRows.of(config);
-			saveOverlayRows(rows.shows(section) ? rows.without(section) : rows.with(section));
-		}
-
-		@Override
 		public void shareCard()
 		{
 			TrackerPanel trackerPanel = panel;

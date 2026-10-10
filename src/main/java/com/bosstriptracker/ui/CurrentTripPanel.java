@@ -1,6 +1,5 @@
 package com.bosstriptracker.ui;
 
-import com.bosstriptracker.CanvasSection;
 import com.bosstriptracker.model.TripEndReason;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
@@ -29,12 +28,12 @@ class CurrentTripPanel extends JPanel
 	private TripView shownDetails;
 	private TripDetails details;
 
-	CurrentTripPanel(ItemManager itemManager, SectionStates sectionStates, PanelActions actions, Runnable onSetGoal,
+	CurrentTripPanel(ItemManager itemManager, SectionStates sectionStates, Runnable onSetGoal,
 		Runnable onPause, Runnable onResetGoal, Runnable onSetLastUniqueKc)
 	{
 		this.itemManager = itemManager;
 		this.sectionStates = sectionStates;
-		this.goalCard = new GoalCard(itemManager, new CanvasPin(CanvasSection.GOAL, actions), onSetGoal, onPause,
+		this.goalCard = new GoalCard(itemManager, onSetGoal, onPause,
 			onResetGoal);
 		this.luckOverview = new LuckOverviewCard(itemManager, sectionStates, onSetLastUniqueKc);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -70,8 +69,7 @@ class CurrentTripPanel extends JPanel
 		add(summary);
 		add(detailsHolder);
 
-		// A pin on each card puts its numbers on the overlay
-		summary.attachPins(actions, sectionStates);
+		summary.attachStates(sectionStates);
 	}
 
 	void update(PanelState state, long now)
@@ -82,7 +80,6 @@ class CurrentTripPanel extends JPanel
 		goalCard.setPauseState(state.isPausedInLair(), state.isCanPause());
 		goalCard.setGoal(state.getGoal(), now);
 		summary.setPaused(state.getPauseText() != null);
-		summary.refreshPins();
 		summary.setKillStartedAt(state.getKillStartedAt());
 		luckHolder.setVisible(state.getLifetime() != null);
 		if (state.getLifetime() != null)

@@ -42,7 +42,6 @@ class GoalCard extends JPanel
 	private final JPanel top;
 	private final JPanel buttons = new JPanel();
 	private final JPanel progressRow = new JPanel(new BorderLayout(4, 0));
-	private final CanvasPin pin;
 	/**
 	 * Without a goal, only Set kill goal and Pause are shown.
 	 */
@@ -61,9 +60,8 @@ class GoalCard extends JPanel
 	/**
 	 * @param onReset counts the goal's kills again from a chosen point
 	 */
-	GoalCard(ItemManager itemManager, CanvasPin pin, Runnable onSetGoal, Runnable onPause, Runnable onReset)
+	GoalCard(ItemManager itemManager, Runnable onSetGoal, Runnable onPause, Runnable onReset)
 	{
-		this.pin = pin;
 		setLayout(new BorderLayout(0, 4));
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -103,10 +101,8 @@ class GoalCard extends JPanel
 			+ " trips."));
 		buttons.setOpaque(false);
 
-		// The pin sits beside the progress bar, which can spare the width
 		progressRow.setOpaque(false);
 		progressRow.add(progress, BorderLayout.CENTER);
-		progressRow.add(pin, BorderLayout.EAST);
 
 		add(top, BorderLayout.NORTH);
 		add(progressRow, BorderLayout.CENTER);
@@ -197,7 +193,6 @@ class GoalCard extends JPanel
 	{
 		this.goal = goal;
 		setEmpty(goal == null);
-		pin.refresh();
 		paused = goal == null || !goal.isRunning();
 		resetButton.setEnabled(goal != null);
 		if (goal == null)

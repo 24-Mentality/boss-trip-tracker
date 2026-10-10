@@ -51,9 +51,8 @@ bosses are planned. Formerly **Maggot King Trip Tracker**.
   stats (KPH, TTG, kills done or left), trip stats (current kill, trip time, kills, average
   kill, PB), the trip's net profit or net GP/hr, and your luck status (the Luck card's tier);
   rows 2 and 3 can also show nothing. With a goal set there is an optional progress bar.
-  Turn it on with **Show overlay** in Configuration → Overlay, or click the pin on the goal
-  card, the trip time card or the profit card (a filled pin is on the overlay; click again to
-  take it off). Hold Alt and drag the box to move it. By default it only shows during a trip.
+  Turn it on with **Show overlay** in Configuration → Overlay and pick its rows there. Hold
+  Alt and drag the box to move it. By default it only shows during a trip.
 - **Boss dropdown** (top of the panel): picks the boss shown in all three tabs. Entering a
   tracked boss's area selects it; otherwise your last choice is kept, so you can browse any
   boss's trips while a trip keeps tracking in the background. A green dot marks the boss with

@@ -38,7 +38,10 @@ import net.runelite.client.ui.FontManager;
  */
 class KillChartsPanel extends JPanel
 {
-	private static final Color BAR = new Color(64, 196, 99);
+	/**
+	 * The profit chart's green, so the History tab's bars match.
+	 */
+	private static final Color BAR = UiFormat.PROFIT;
 	/**
 	 * Heatmap shades from fewest to most kills in a day: lighter is fewer, darker is more.
 	 */

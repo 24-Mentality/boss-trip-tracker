@@ -1,22 +1,10 @@
 package com.bosstriptracker.ui;
 
-import com.bosstriptracker.CanvasSection;
-
 /**
  * What the panel's buttons do. Called on the Swing thread.
  */
 public interface PanelActions
 {
-	/**
-	 * @return whether this section is shown on the overlay
-	 */
-	boolean isOnCanvas(CanvasSection section);
-
-	/**
-	 * Show or hide this section on the overlay ("Add to canvas" / "Remove from canvas").
-	 */
-	void toggleCanvas(CanvasSection section);
-
 	/**
 	 * Show this boss in all three tabs.
 	 */

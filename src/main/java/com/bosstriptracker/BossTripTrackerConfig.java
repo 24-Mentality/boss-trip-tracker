@@ -291,8 +291,7 @@ public interface BossTripTrackerConfig extends Config
 		keyName = "overlayEnabled",
 		name = "Show overlay",
 		description = "A small box on the game screen like RuneLite's XP tracker box, with the boss icon and up to three"
-			+ " rows picked below. Also: click the pin on the goal, trip time or profit card. Alt+drag the box to move"
-			+ " it.",
+			+ " rows picked below. Alt+drag the box to move it.",
 		section = overlaySection,
 		position = 0
 	)
