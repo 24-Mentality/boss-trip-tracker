@@ -52,11 +52,6 @@ public class DrynessView
 	@Builder.Default
 	Map<Double, Integer> uniqueChances = Collections.emptyMap();
 	/**
-	 * Chance of at least one of each unique (by item id) by now, over the tracked kills.
-	 */
-	@Builder.Default
-	Map<Integer, Double> chanceOfOne = Collections.emptyMap();
-	/**
 	 * The AS RUCK tiers need at least this many uniques expected (the Theatre of Blood's are approximate).
 	 */
 	double minExpectedForRuck;
@@ -153,8 +148,6 @@ public class DrynessView
 	{
 		@Builder.Default
 		Map<Double, Integer> uniqueChances = Collections.emptyMap();
-		@Builder.Default
-		Map<Integer, Double> chanceOfOne = Collections.emptyMap();
 		/**
 		 * Kills recorded by the Loot Tracker (loot kills only).
 		 */

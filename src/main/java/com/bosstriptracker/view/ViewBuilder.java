@@ -410,8 +410,7 @@ public class ViewBuilder
 		double expectedAny = 0;
 		double expectedPet = 0;
 		double[] expected = new double[uniqueDrops.size()];
-		// Chance of none of each unique so far, in logs; and each kill's chance of any unique, for the exact odds
-		double[] logNone = new double[uniqueDrops.size()];
+		// Each kill's chance of any unique, for the exact odds
 		Map<Double, Integer> anyChances = new LinkedHashMap<>();
 		Map<Integer, List<Integer>> received = new LinkedHashMap<>();
 		for (ExpectedDrop drop : uniqueDrops)
@@ -459,7 +458,6 @@ public class ViewBuilder
 				for (int i = 0; i < uniqueDrops.size(); i++)
 				{
 					expected[i] += uniqueDrops.get(i).chance(context);
-					logNone[i] += Math.log1p(-Math.min(uniqueDrops.get(i).chance(context), 1 - 1e-12));
 				}
 				for (ItemEntry entry : kill.getLoot())
 				{
@@ -477,10 +475,8 @@ public class ViewBuilder
 
 		int uniquesReceived = 0;
 		List<DrynessView.Drop> uniques = new ArrayList<>();
-		Map<Integer, Double> chanceOfOne = new LinkedHashMap<>();
 		for (int i = 0; i < uniqueDrops.size(); i++)
 		{
-			chanceOfOne.put(uniqueDrops.get(i).getItemId(), 1 - Math.exp(logNone[i]));
 			ExpectedDrop drop = uniqueDrops.get(i);
 			List<Integer> kcs = received.get(drop.getItemId());
 			uniquesReceived += kcs.size();
@@ -569,7 +565,6 @@ public class ViewBuilder
 		return DrynessView.builder()
 			.words(Words.of(boss))
 			.uniqueChances(anyChances)
-			.chanceOfOne(chanceOfOne)
 			.minExpectedForRuck(boss.getMinExpectedForRuckTiers())
 			.luckApproximate(boss.isLuckApproximate())
 			.petRateNote(boss.getPetRateNote())
@@ -707,21 +702,10 @@ public class ViewBuilder
 		{
 			anyChances.merge(boss.anyUniqueChance(KillContext.of(kill)), 1, Integer::sum);
 		}
-		Map<Integer, Double> chanceOfOne = new LinkedHashMap<>();
 		List<DrynessView.Drop> uniques = new ArrayList<>();
 		for (ExpectedDrop drop : uniqueDrops)
 		{
 			double expected = expected(pastKills, exactKills, drop::chance);
-			double logNone = 0;
-			for (Map.Entry<KillContext, Integer> e : pastKills.entrySet())
-			{
-				logNone += e.getValue() * Math.log1p(-Math.min(drop.chance(e.getKey()), 1 - 1e-12));
-			}
-			for (Kill kill : exactKills)
-			{
-				logNone += Math.log1p(-Math.min(drop.chance(KillContext.of(kill)), 1 - 1e-12));
-			}
-			chanceOfOne.put(drop.getItemId(), 1 - Math.exp(logNone));
 			int got = counts.dropped(drop.getItemId()) + unsaved.getOrDefault(drop.getItemId(), 0);
 			received += got;
 			uniques.add(new DrynessView.Drop(drop.getItemId(), prices.name(drop.getItemId()),
@@ -741,7 +725,6 @@ public class ViewBuilder
 
 		return DrynessView.AllTime.builder()
 			.uniqueChances(anyChances)
-			.chanceOfOne(chanceOfOne)
 			.lootKills(kills)
 			// Chat Commands may also be a kill behind
 			.killCount(counts.getKillCount() == null ? trackedKc

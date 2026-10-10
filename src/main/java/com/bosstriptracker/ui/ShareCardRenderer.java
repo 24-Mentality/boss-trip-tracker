@@ -264,7 +264,7 @@ final class ShareCardRenderer
 				drawIcon(g, icons.apply(row.getItemId()), left, rowY, 23, 20);
 			}
 			int barY = rowY + (CHANCE_ROW - CHANCE_BAR) / 2;
-			DropBar.paintExpected(g, small, barsLeft, barY, barWidth, CHANCE_BAR, row.getChanceOfOne());
+			DropBar.paintExpected(g, small, barsLeft, barY, barWidth, CHANCE_BAR, row.fraction());
 			textRight(g, small, TEXT, String.valueOf((int) Math.floor(row.getExpected())), barsLeft + column, barY + 12);
 			DropBar.paintReceived(g, small, receivedLeft, barY, barWidth, CHANCE_BAR, row.luck(), scale);
 			textRight(g, small, TEXT, String.valueOf(row.getReceived()), receivedLeft + column, barY + 12);

@@ -39,8 +39,9 @@ import net.runelite.client.util.ImageUtil;
  */
 class DropChancesCard extends JPanel
 {
-	private static final String HELP = "<html><b>Expected:</b> each bar shows the share of players with as many kills"
-		+ " who would have at least one of that drop by now, and the number is how many the rate predicts so far.<br><br>"
+	private static final String HELP = "<html><b>Expected:</b> how many of each drop the rate predicts for your kills so"
+		+ " far. The number is the whole drops and the bar the part after it: 1.62 expected shows 1 and a bar 62%% full."
+		+ " Every kill has the same chance, however long you've gone without.<br><br>"
 		+ "<b>Received:</b> each bar shows how many drops you are ahead of (green, to the right) or behind (red, to the"
 		+ " left) that prediction, and the number is how many you have actually received.<br><br>"
 		+ "%s All-time numbers come from RuneLite's Loot Tracker when it has a record for this account.</html>";
@@ -192,7 +193,6 @@ class DropChancesCard extends JPanel
 		{
 			Row row = rows.get(i);
 			DropChances.Row chance = chances.get(i);
-			double byNow = chance.getChanceOfOne();
 			if (showReceived)
 			{
 				row.bar.showReceived(chance.luck(), scale);
@@ -200,14 +200,13 @@ class DropChancesCard extends JPanel
 			}
 			else
 			{
-				row.bar.showExpected(byNow);
+				row.bar.showExpected(chance.fraction());
 				row.number.setText(String.valueOf((int) Math.floor(chance.getExpected())));
 			}
 			String help = names.get(i) + ": " + chance.getReceived() + " received, "
-				+ String.format(Locale.ROOT, "%.2f", chance.getExpected()) + " expected from " + basis
+				+ String.format(Locale.ROOT, "%.2f", chance.getExpected()) + " expected at this rate from " + basis
 				+ (i == petRow && eggPetExpected > 0 ? String.format(Locale.ROOT, " plus eggs popped (%.3f)", eggPetExpected) : "")
-				+ ". " + percent(byNow) + " of players with as many " + dryness.getWords().units()
-				+ " would have at least one by now."
+				+ "."
 				+ (i == petRow && allTime != null ? " The Loot Tracker doesn't record pets, so pets are the ones this plugin saw." : "")
 				+ extras.get(i);
 			row.panel.setToolTipText(UiFormat.tooltip(help));
