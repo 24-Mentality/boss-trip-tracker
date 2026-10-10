@@ -33,7 +33,8 @@ import net.runelite.client.ui.FontManager;
 
 /**
  * The top of the History tab: tracked kills per day as bars for a week or a month (a bar per month for a year), with
- * arrows to step back, a heatmap of the year's days, then kills today, this week, this month and this year.
+ * arrows to step back, a heatmap of the year's days, then kills today, this week, this month and this year, and the
+ * most kills in one day (PB) this week, this month, this year and of all time. Hovering a bar or a day shows its kills.
  */
 class KillChartsPanel extends JPanel
 {
@@ -66,6 +67,10 @@ class KillChartsPanel extends JPanel
 	private final JLabel weekKc = stat();
 	private final JLabel monthKc = stat();
 	private final JLabel yearKc = stat();
+	private final JLabel pbWeek = stat();
+	private final JLabel pbMonth = stat();
+	private final JLabel pbYear = stat();
+	private final JLabel pbAllTime = stat();
 	private Map<LocalDate, Integer> kills = Collections.emptyMap();
 	private final JLabel heading = new JLabel();
 	private Words words = Words.KILLS;
@@ -118,13 +123,17 @@ class KillChartsPanel extends JPanel
 		heatmapTitle.setForeground(UiFormat.MUTED_TEXT);
 		heatmapTitle.setBorder(BorderFactory.createEmptyBorder(4, 0, 1, 0));
 
-		JPanel totals = new JPanel(new GridLayout(2, 2, 4, 0));
+		JPanel totals = new JPanel(new GridLayout(4, 2, 4, 0));
 		totals.setOpaque(false);
 		totals.setBorder(BorderFactory.createEmptyBorder(4, 0, 4, 0));
 		totals.add(todayKc);
 		totals.add(weekKc);
 		totals.add(monthKc);
 		totals.add(yearKc);
+		totals.add(pbWeek);
+		totals.add(pbMonth);
+		totals.add(pbYear);
+		totals.add(pbAllTime);
 
 		for (JComponent c : new JComponent[]{top, nav, bars, heatmapTitle, heatmap, totals})
 		{
@@ -171,12 +180,28 @@ class KillChartsPanel extends JPanel
 		heatmap.setYear(year);
 
 		KillCalendar.Totals totals = KillCalendar.totals(kills, now);
-		UiFormat.setText(todayKc, UiFormat.pair("Today", String.format(Locale.ROOT, "%,d", totals.getToday())));
-		UiFormat.setText(weekKc, UiFormat.pair("This week", String.format(Locale.ROOT, "%,d", totals.getWeek())));
-		UiFormat.setText(monthKc, UiFormat.pair("This month", String.format(Locale.ROOT, "%,d", totals.getMonth())));
-		UiFormat.setText(yearKc, UiFormat.pair("This year", String.format(Locale.ROOT, "%,d", totals.getYear())));
+		UiFormat.setText(todayKc, UiFormat.pair("Today", words.kc(totals.getToday())));
+		UiFormat.setText(weekKc, UiFormat.pair("This week", words.kc(totals.getWeek())));
+		UiFormat.setText(monthKc, UiFormat.pair("This month", words.kc(totals.getMonth())));
+		UiFormat.setText(yearKc, UiFormat.pair("This year", words.kc(totals.getYear())));
+		setBest(pbWeek, "week", "this week", totals.getBestWeek());
+		setBest(pbMonth, "month", "this month", totals.getBestMonth());
+		setBest(pbYear, "year", "this year", totals.getBestYear());
+		setBest(pbAllTime, "all", "of all time", totals.getBestAllTime());
 		revalidate();
 		repaint();
+	}
+
+	/**
+	 * E.g. "PB (week): 200 kc", with the day in the tooltip.
+	 */
+	private void setBest(JLabel label, String period, String periodWords, KillCalendar.BestDay best)
+	{
+		UiFormat.setText(label, UiFormat.pair("PB (" + period + ")", best == null ? "-" : words.kc(best.getKills())));
+		UiFormat.setToolTip(label, UiFormat.tooltip(best == null
+			? "No tracked " + words.units() + " " + periodWords + " yet."
+			: "Most " + words.units() + " in one day " + periodWords + ": " + words.kc(best.getKills()) + ", on "
+				+ KillCalendar.dayName(best.getDay()) + "."));
 	}
 
 	private JLabel arrow(int step)
@@ -274,7 +299,7 @@ class KillChartsPanel extends JPanel
 				return null;
 			}
 			KillCalendar.Bar bar = bars.get(i);
-			return bar.getName() + ": " + words.count(bar.getKills());
+			return bar.getName() + ": " + words.kc(bar.getKills());
 		}
 
 		private int index(int x)
@@ -382,7 +407,7 @@ class KillChartsPanel extends JPanel
 				return null;
 			}
 			int count = kills.getOrDefault(day, 0);
-			return KillCalendar.dayName(day) + ": " + words.count(count);
+			return KillCalendar.dayName(day) + ": " + words.kc(count);
 		}
 
 		@Override

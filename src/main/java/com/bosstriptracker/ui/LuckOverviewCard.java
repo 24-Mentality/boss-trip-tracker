@@ -249,7 +249,7 @@ class LuckOverviewCard extends JPanel
 				+ " that is longer). When RuneLite's Loot Tracker has no other uniques, the kills before your first"
 				+ " one count too; otherwise earlier uniques aren't known.");
 		set(lastUnique, "Last Unique", dryness.getLastUniqueKc() != null
-				? String.format(Locale.ROOT, "%,d", dryness.getLastUniqueKc())
+				? String.format(Locale.ROOT, "%,d kc", dryness.getLastUniqueKc())
 				: dryness.isSinceWholeKillCount() ? "None yet" : "Unknown", null,
 			dryness.getLastUniqueKc() != null
 				? "The kill count of your last unique" + (dryness.isSinceFromEnteredKc() ? ", as you entered it" : "")

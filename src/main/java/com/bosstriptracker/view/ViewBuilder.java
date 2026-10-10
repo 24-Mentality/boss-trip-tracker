@@ -374,6 +374,7 @@ public class ViewBuilder
 			.averageKillMs(totals.averageKillMs())
 			.lootValueToday(today)
 			.netPerTrip(new ArrayList<>(totals.netPerTrip))
+			.tripPoints(new ArrayList<>(totals.tripPoints))
 			.killsByDay(Collections.unmodifiableMap(new TreeMap<>(totals.killsByDay)))
 			.dryness(dryness)
 			.polish(polish(boss, history))

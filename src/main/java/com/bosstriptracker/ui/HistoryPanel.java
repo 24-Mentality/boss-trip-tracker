@@ -92,7 +92,8 @@ class HistoryPanel extends JPanel
 		{
 			int shownTrips = Math.min(lifetime.getNetPerTrip().size(), ProfitTrendChart.MAX_TRIPS);
 			chartTitle.setText("Profit per trip (last " + shownTrips + ")");
-			chart.setValues(lifetime.getNetPerTrip());
+			chart.setValues(lifetime.getNetPerTrip(), lifetime.getTripPoints(), lifetime.getDryness() != null
+				? lifetime.getDryness().getWords() : Words.KILLS);
 		}
 
 		// Completed trips only, like the list (the Lifetime totals include a trip in progress)

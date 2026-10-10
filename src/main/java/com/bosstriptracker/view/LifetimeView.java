@@ -39,6 +39,11 @@ public class LifetimeView
 	 */
 	List<Long> netPerTrip;
 	/**
+	 * Completed trips' day, kills and net, oldest first, matching {@link #netPerTrip}.
+	 */
+	@Builder.Default
+	List<TripPoint> tripPoints = Collections.emptyList();
+	/**
 	 * Tracked kills per calendar day (only kills this plugin saw have a date).
 	 */
 	@Builder.Default
@@ -79,4 +84,18 @@ public class LifetimeView
 	 * Tarnished items polished; empty for bosses without them.
 	 */
 	List<PolishView> polish;
+
+	/**
+	 * One completed trip on the profit chart.
+	 */
+	@Value
+	public static class TripPoint
+	{
+		/**
+		 * The day the trip ended.
+		 */
+		LocalDate day;
+		int kills;
+		long net;
+	}
 }

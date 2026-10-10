@@ -32,6 +32,10 @@ final class LifetimeTotals
 	 * Net profit of each finished trip, oldest first.
 	 */
 	final List<Long> netPerTrip = new ArrayList<>();
+	/**
+	 * Each finished trip's day, kills and net, oldest first (for the profit chart's tooltips).
+	 */
+	final List<LifetimeView.TripPoint> tripPoints = new ArrayList<>();
 	final Map<String, Integer> choices = new HashMap<>();
 	long killMsTotal;
 	int killMsCount;
@@ -85,7 +89,11 @@ final class LifetimeTotals
 		}
 		if (!trip.isOpen())
 		{
-			netPerTrip.add(TripMath.netProfit(trip));
+			long net = TripMath.netProfit(trip);
+			netPerTrip.add(net);
+			long endedAt = trip.getEndedAt() != null ? trip.getEndedAt() : trip.getStartedAt();
+			tripPoints.add(new LifetimeView.TripPoint(Instant.ofEpochMilli(endedAt).atZone(zone).toLocalDate(),
+				trip.getKills().size(), net));
 		}
 	}
 
@@ -103,6 +111,7 @@ final class LifetimeTotals
 		copy.deathCost = deathCost;
 		copy.firstStartedAt = firstStartedAt;
 		copy.netPerTrip.addAll(netPerTrip);
+		copy.tripPoints.addAll(tripPoints);
 		copy.choices.putAll(choices);
 		copy.killMsTotal = killMsTotal;
 		copy.killMsCount = killMsCount;

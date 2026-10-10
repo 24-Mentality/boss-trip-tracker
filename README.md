@@ -19,8 +19,8 @@ No combat or mechanic help of any kind: it only tracks loot, supplies, costs, ti
 - **Luck against the real drop rates:** uniques received vs expected with an exact luck tier,
   your dry streak and worst dry streak by your all-time kill count, and drop chances for each
   unique and the pet.
-- **History:** kills per day, week, month and year, a yearly heatmap, a profit chart and a
-  card for every trip.
+- **History:** kills per day, week, month and year, a yearly heatmap, your best day (PB) per
+  period, a profit chart and a card for every trip.
 - **Lifetime:** totals, all-time loot from RuneLite's Loot Tracker, supplies by category.
 - **Share cards** for Discord, and optional automatic screenshots after a unique or pet.
 - **Kill goals** with kills per hour and time to goal, and an optional overlay box.
@@ -98,9 +98,11 @@ bosses are planned. Formerly **Maggot King Trip Tracker**.
   waiting to be polished have a dashed border.
 - **History:** at the top, your tracked kills as bars for a **Week** or **Month** (a bar per
   day) or a **Year** (a bar per month), with arrows to step back through earlier periods, a
-  heatmap of the year's days (darker squares had more kills) and your kills today, this week,
-  this month and this year. Only kills the plugin saw have a date, so kills done without it
-  aren't in these. Then a profit-per-trip chart with the trip count and net for the selected chip, then
+  heatmap of the year's days (darker squares had more kills), your kills today, this week,
+  this month and this year, and your PB: the most kills in one day this week, this month, this
+  year and of all time. Hover a bar or a square for its exact count. Only kills the plugin saw
+  have a date, so kills done without it aren't in these. Then a profit-per-trip chart (hover a
+  bar for the trip's day, kills and net) with the trip count and net for the selected chip, then
   one card per completed trip, the newest 50 first (**Show more** adds older ones). Click a
   card to expand it, right-click to delete it.
 - **Lifetime:** totals across all trips (net profit and GP/hr from tracked trips, where costs are

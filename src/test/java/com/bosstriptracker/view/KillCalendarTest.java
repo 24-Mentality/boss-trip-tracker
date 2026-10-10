@@ -1,6 +1,7 @@
 package com.bosstriptracker.view;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import com.google.common.collect.ImmutableMap;
 import java.time.LocalDate;
 import java.util.List;
@@ -67,6 +68,22 @@ public class KillCalendarTest
 		assertEquals(13, totals.getWeek());
 		assertEquals(13, totals.getMonth());
 		assertEquals(20, totals.getYear());
+	}
+
+	@Test
+	public void personalBestDayPerPeriod()
+	{
+		KillCalendar.Totals totals = KillCalendar.totals(KILLS, THU);
+		// This week (from Mon 5 Oct): the 5th with 10
+		assertEquals(new KillCalendar.BestDay(LocalDate.of(2026, 10, 5), 10), totals.getBestWeek());
+		assertEquals(new KillCalendar.BestDay(LocalDate.of(2026, 10, 5), 10), totals.getBestMonth());
+		assertEquals(new KillCalendar.BestDay(LocalDate.of(2026, 10, 5), 10), totals.getBestYear());
+		assertEquals(10, totals.getBestAllTime().getKills());
+		// A week with no kills has no PB
+		assertNull(KillCalendar.totals(KILLS, LocalDate.of(2026, 11, 20)).getBestWeek());
+		// The earliest day wins a tie
+		Map<LocalDate, Integer> tie = ImmutableMap.of(LocalDate.of(2026, 1, 9), 5, LocalDate.of(2026, 1, 2), 5);
+		assertEquals(LocalDate.of(2026, 1, 2), KillCalendar.best(tie, LocalDate.MIN, LocalDate.MAX).getDay());
 	}
 
 	@Test

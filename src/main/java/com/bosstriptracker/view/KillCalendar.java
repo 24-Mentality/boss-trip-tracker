@@ -56,7 +56,7 @@ public final class KillCalendar
 	}
 
 	/**
-	 * Kills today, this week, this month and this year.
+	 * Kills today, this week, this month and this year, and the best day (most kills) of each period and of all time.
 	 */
 	@Value
 	public static class Totals
@@ -65,6 +65,23 @@ public final class KillCalendar
 		int week;
 		int month;
 		int year;
+		/**
+		 * Null when the period has no kills.
+		 */
+		BestDay bestWeek;
+		BestDay bestMonth;
+		BestDay bestYear;
+		BestDay bestAllTime;
+	}
+
+	/**
+	 * The day with the most kills in a period (the earliest, on a tie).
+	 */
+	@Value
+	public static class BestDay
+	{
+		LocalDate day;
+		int kills;
 	}
 
 	private KillCalendar()
@@ -180,10 +197,35 @@ public final class KillCalendar
 
 	public static Totals totals(Map<LocalDate, Integer> kills, LocalDate today)
 	{
+		LocalDate tomorrow = today.plusDays(1);
 		return new Totals(kills.getOrDefault(today, 0),
-			total(kills, start(Period.WEEK, today), today.plusDays(1)),
-			total(kills, start(Period.MONTH, today), today.plusDays(1)),
-			total(kills, start(Period.YEAR, today), today.plusDays(1)));
+			total(kills, start(Period.WEEK, today), tomorrow),
+			total(kills, start(Period.MONTH, today), tomorrow),
+			total(kills, start(Period.YEAR, today), tomorrow),
+			best(kills, start(Period.WEEK, today), tomorrow),
+			best(kills, start(Period.MONTH, today), tomorrow),
+			best(kills, start(Period.YEAR, today), tomorrow),
+			best(kills, LocalDate.MIN, LocalDate.MAX));
+	}
+
+	/**
+	 * The day from {@code from} up to (not including) {@code to} with the most kills, or null if none had any.
+	 */
+	public static BestDay best(Map<LocalDate, Integer> kills, LocalDate from, LocalDate to)
+	{
+		LocalDate bestDay = null;
+		int most = 0;
+		for (Map.Entry<LocalDate, Integer> e : kills.entrySet())
+		{
+			LocalDate day = e.getKey();
+			boolean earlierTie = e.getValue() == most && bestDay != null && day.isBefore(bestDay);
+			if (!day.isBefore(from) && day.isBefore(to) && (e.getValue() > most || earlierTie))
+			{
+				bestDay = day;
+				most = e.getValue();
+			}
+		}
+		return bestDay == null ? null : new BestDay(bestDay, most);
 	}
 
 	/**

@@ -1,5 +1,8 @@
 package com.bosstriptracker.ui;
 
+import com.bosstriptracker.view.KillCalendar;
+import com.bosstriptracker.view.LifetimeView;
+import com.bosstriptracker.view.Words;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,13 +15,16 @@ import javax.swing.ToolTipManager;
 import net.runelite.client.ui.ColorScheme;
 
 /**
- * Net profit per trip as green/red bars around a zero line, newest on the right; hovering a bar shows its value.
+ * Net profit per trip as green/red bars around a zero line, newest on the right; hovering a bar shows the trip's day,
+ * kills and net profit.
  */
 class ProfitTrendChart extends JPanel
 {
 	static final int MAX_TRIPS = 50;
 
 	private List<Long> values = Collections.emptyList();
+	private List<LifetimeView.TripPoint> points = Collections.emptyList();
+	private Words words = Words.KILLS;
 
 	ProfitTrendChart()
 	{
@@ -41,14 +47,34 @@ class ProfitTrendChart extends JPanel
 		{
 			return null;
 		}
-		int back = values.size() - 1 - i;
-		return (back == 0 ? "Last trip" : back + (back == 1 ? " trip" : " trips") + " before the last") + ": "
-			+ UiFormat.fullGp(values.get(i));
+		return tooltip(i);
 	}
 
-	void setValues(List<Long> allTrips)
+	/**
+	 * E.g. "Last trip · Fri 9 Oct 2026" then "26 kills · Net: 1,234,567 gp".
+	 */
+	String tooltip(int i)
 	{
-		values = allTrips.subList(Math.max(0, allTrips.size() - MAX_TRIPS), allTrips.size());
+		int back = values.size() - 1 - i;
+		String which = back == 0 ? "Last trip" : back + (back == 1 ? " trip" : " trips") + " before the last";
+		long net = values.get(i);
+		LifetimeView.TripPoint point = i < points.size() ? points.get(i) : null;
+		String netText = UiFormat.pair("Net", UiFormat.fullGp(net), UiFormat.profitColor(net))
+			.replace("<html>", "").replace("</html>", "");
+		return "<html>" + which + (point != null ? " · " + KillCalendar.dayName(point.getDay()) : "") + "<br>"
+			+ (point != null ? words.count(point.getKills()) + " · " : "") + netText + "</html>";
+	}
+
+	/**
+	 * @param allTrips  net profit of every completed trip, oldest first
+	 * @param allPoints each one's day and kills, matching {@code allTrips} (may be empty)
+	 */
+	void setValues(List<Long> allTrips, List<LifetimeView.TripPoint> allPoints, Words words)
+	{
+		int from = Math.max(0, allTrips.size() - MAX_TRIPS);
+		values = allTrips.subList(from, allTrips.size());
+		points = allPoints.size() == allTrips.size() ? allPoints.subList(from, allPoints.size()) : Collections.emptyList();
+		this.words = words;
 		repaint();
 	}
 
