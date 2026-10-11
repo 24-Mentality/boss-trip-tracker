@@ -66,9 +66,9 @@ bosses are planned. Formerly **Maggot King Trip Tracker**.
   hit. **Pause** stops them straight away; it resumes when you press it again or, with
   **Auto-resume when I attack** on, when you next damage the boss.
 - **Luck** (Trip tab, under the kill goal): uniques received vs expected with a luck tier, kills
-  since your last unique, streak odds (how many players go that long without a unique, e.g.
-  "1 in 58"), the rate and a count of
-  each unique and the pet, laid out like the share card. The tier comes from the tail you're in:
+  since your last unique, kills until the next unique is due on average (or how far past it you
+  are, in red as Overdue; each kill is still the same chance), the rate and a count of each
+  unique and the pet, laid out like the share card. The tier comes from the tail you're in:
   **DRY AS RUCK** in the driest 10% of players with as many kills, **Dry** in the driest 35%,
   **Lucky** and **LUCKY AS RUCK** the same on the lucky side, **On Rate** otherwise, and
   **Too early to tell** until at least one unique is expected. The odds are exact, with every

@@ -278,15 +278,18 @@ class LuckOverviewCard extends JPanel
 				UiFormat.teamDryStreakHelp(dryness.isTeamDryStreakFromGame()));
 		}
 		int dry = dryness.getKillsSinceUnique();
-		double thisDry = luck.chanceThisDry(dry);
-		set(due, "Streak odds", UiFormat.streakOdds(thisDry), null, luck.getRate() <= 0
-			? "How rare your current dry streak is, once a drop rate is known."
-			: String.format(Locale.ROOT, "Only %s players go %s without a unique (any unique, 1/%s per %s). That's"
-				+ " %.1f times the average gap of %s between uniques: %.0f%% of players would have had one by now."
-				+ " Each %s is still the same chance. The Luck Status above judges your whole record; this is just"
-				+ " the current streak.", UiFormat.streakOdds(thisDry), words.kc(dry), UiFormat.oneIn(luck.getRate()),
-				words.getUnit(), luck.dryVsRate(dry), words.kc(Math.round(1 / luck.getRate())),
-				luck.chanceByNow(dry) * 100, words.getUnit()));
+		int dueIn = luck.dueInKills(dry);
+		if (dueIn > 0)
+		{
+			set(due, "Due in", words.kc(dueIn), null, "Kills until the average number of " + words.units()
+				+ " between uniques (1/" + UiFormat.oneIn(luck.getRate()) + ").");
+		}
+		else
+		{
+			set(due, "Overdue", "+" + words.kc(-dueIn), UiFormat.LOSS, "Kills past the average number of "
+				+ words.units() + " between uniques (1/" + UiFormat.oneIn(luck.getRate()) + "). Each " + words.getUnit()
+				+ " is still the same chance.");
+		}
 		set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per " + words.getUnit()
 			+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked " + words.units() + ".")
 			+ (luck.isApproximate() ? " Approximate: an equal share of the team's chance." : ""));

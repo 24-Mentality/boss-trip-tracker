@@ -103,27 +103,11 @@ class LuckSummary
 	}
 
 	/**
-	 * The dry streak as a multiple of the drop rate, e.g. 1.4 for 1.4 times the average kills between uniques.
+	 * Kills until the average number of kills between uniques; negative when past it by that many.
 	 */
-	double dryVsRate(int killsSinceUnique)
+	int dueInKills(int killsSinceUnique)
 	{
-		return rate <= 0 ? 0 : killsSinceUnique * rate;
-	}
-
-	/**
-	 * Share of players who go this many kills without a unique (1 when the rate is unknown).
-	 */
-	double chanceThisDry(int killsSinceUnique)
-	{
-		return rate <= 0 ? 1 : Math.pow(1 - rate, killsSinceUnique);
-	}
-
-	/**
-	 * Share of players who would have had a unique within this many kills.
-	 */
-	double chanceByNow(int killsSinceUnique)
-	{
-		return rate <= 0 ? 0 : 1 - Math.pow(1 - rate, killsSinceUnique);
+		return rate <= 0 ? 0 : (int) Math.ceil(1 / rate) - killsSinceUnique;
 	}
 
 	private static String oneIn(double chance)

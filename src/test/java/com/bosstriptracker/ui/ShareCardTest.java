@@ -53,13 +53,8 @@ public class ShareCardTest
 		assertTrue(card.isAllTime());
 		assertEquals(832, card.getDryKills());
 		assertEquals(847, card.getLongestDryStreak());
-		// 832 kills at 1/205.6 without a unique: about 1 in 58 players
-		assertEquals(Math.pow(1 - 1 / 205.6, 832), card.getStreakChance(), 1e-12);
-		assertEquals("1 in 58", UiFormat.streakOdds(card.getStreakChance()));
-		assertEquals("1 in 1", UiFormat.streakOdds(1));
-		assertEquals("1 in 2.5", UiFormat.streakOdds(0.4));
-		assertEquals("1 in 1,000", UiFormat.streakOdds(0.001));
-		assertEquals("-", UiFormat.streakOdds(0));
+		// 832 kills at 1/205.6: 626 past the average of 206 kills between uniques
+		assertEquals(-626, card.getDueInKills());
 		assertEquals(172, card.getTrackedKills());
 		assertEquals(Integer.valueOf(2_565), card.getTrackedFromKc());
 		// Fang, kisten, then the pet
