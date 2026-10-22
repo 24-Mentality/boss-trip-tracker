@@ -6,8 +6,8 @@ import java.util.List;
 import lombok.Getter;
 
 /**
- * The raid in progress (Theatre of Blood): its mode, team size, your deaths and how it ended. No client calls, so it
- * can be tested.
+ * The raid in progress (Theatre of Blood, Fractured Archive): its mode, team size, your deaths and how it ended. No
+ * client calls, so it can be tested.
  */
 class RaidState
 {
@@ -28,6 +28,16 @@ class RaidState
 	private Integer teamSize;
 	@Getter
 	private boolean completed;
+	/**
+	 * The game said the whole team died (the Fractured Archive's "You failed to survive").
+	 */
+	@Getter
+	private boolean wiped;
+	/**
+	 * You gave the raid up (the Fractured Archive's abandon option).
+	 */
+	@Getter
+	private boolean abandoned;
 	/**
 	 * The game's total time for the raid, from the message just before the completion count.
 	 */
@@ -52,6 +62,8 @@ class RaidState
 		this.mode = mode;
 		teamSize = null;
 		completed = false;
+		wiped = false;
+		abandoned = false;
 		raidTimeMs = null;
 		teamUniques.clear();
 		firstRoomCleared = false;
@@ -105,9 +117,19 @@ class RaidState
 		completed = true;
 	}
 
+	void wiped()
+	{
+		wiped = true;
+	}
+
+	void abandoned()
+	{
+		abandoned = true;
+	}
+
 	/**
-	 * How the raid ended when you left it: completed, or wiped if you had died in the room you left from (the team
-	 * is sent out once everyone has died). Null for leaving any other way.
+	 * How the raid ended when you left it: completed; wiped when the game said so, or if you had died in the room you
+	 * left from (the team is sent out once everyone has died); null for leaving any other way, abandoning included.
 	 */
 	TripEndReason endReason()
 	{
@@ -115,6 +137,10 @@ class RaidState
 		{
 			return TripEndReason.COMPLETED;
 		}
-		return diedInCurrentRoom ? TripEndReason.WIPED : null;
+		if (wiped)
+		{
+			return TripEndReason.WIPED;
+		}
+		return diedInCurrentRoom && !abandoned ? TripEndReason.WIPED : null;
 	}
 }

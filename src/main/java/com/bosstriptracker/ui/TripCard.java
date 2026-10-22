@@ -55,7 +55,8 @@ class TripCard extends JPanel
 			: trip.getKills() == 0 ? "No " + trip.getWords().units() : trip.getWords().count(trip.getKills()))
 			+ " · " + UiFormat.duration(trip.getActiveMs())
 			// A completed raid is the usual end, so only other ends are named
-			+ (trip.getEndReason() == TripEndReason.COMPLETED ? "" : " · " + CurrentTripPanel.endReason(trip.getEndReason())));
+			+ (trip.getEndReason() == TripEndReason.COMPLETED ? ""
+			: " · " + CurrentTripPanel.endReason(trip.getEndReason(), trip.getWords())));
 		summary.setFont(FontManager.getRunescapeSmallFont());
 		summary.setForeground(UiFormat.MUTED_TEXT);
 

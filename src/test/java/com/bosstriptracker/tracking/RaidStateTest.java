@@ -50,4 +50,37 @@ public class RaidStateTest
 		assertTrue(raid.died(100));
 		assertTrue(raid.died(500));
 	}
+
+	/**
+	 * The Fractured Archive says when the team has wiped, and lets you give the raid up.
+	 */
+	@Test
+	public void theGamesOwnWipeAndAbandonMessagesDecide()
+	{
+		RaidState raid = new RaidState();
+		raid.start(null);
+		raid.teamSeen(5);
+		raid.roomCleared();
+		raid.roomCleared();
+		// Died at Dreadnoth, respawned when the challenge was won, then the team fell at Xarth without you dying again
+		assertTrue(raid.died(28_772));
+		raid.roomCleared();
+		assertNull(raid.endReason());
+		raid.wiped();
+		assertEquals(TripEndReason.WIPED, raid.endReason());
+		assertTrue(raid.isWiped());
+
+		// Abandoning after a death in the room isn't a wipe
+		raid.start(null);
+		assertTrue(raid.died(100));
+		raid.abandoned();
+		assertNull(raid.endReason());
+		assertTrue(raid.isAbandoned());
+
+		// The next raid starts clean
+		raid.start(null);
+		assertFalse(raid.isWiped());
+		assertFalse(raid.isAbandoned());
+		assertNull(raid.endReason());
+	}
 }

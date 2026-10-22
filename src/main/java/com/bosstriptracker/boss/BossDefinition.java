@@ -393,6 +393,25 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * The game says the raid is over because the whole team died ("You failed to survive the Fractured Archive."). Your
+	 * items go to a gravestone, so container changes until you're back outside are the wipe, not supplies. Raids
+	 * without such a message (the Theatre of Blood) are taken as wiped when you leave after dying in the room.
+	 */
+	public boolean isRaidFailed(String text)
+	{
+		return false;
+	}
+
+	/**
+	 * You gave the raid up ("You abandon the raid and leave the Fractured Archive."): leaving afterwards is neither a
+	 * wipe nor a completion, even after dying in the room.
+	 */
+	public boolean isRaidAbandoned(String text)
+	{
+		return false;
+	}
+
+	/**
 	 * @return the item name from a broadcast of a unique anyone in the raid received, or null
 	 */
 	public String teamUniqueName(String text)
@@ -433,11 +452,21 @@ public abstract class BossDefinition
 	}
 
 	/**
-	 * What a wipe costs (the reclaim fee), added when a raid ends in one.
+	 * What a wipe costs (the reclaim fee), added when a raid ends in one. 0 when the fee is read from the payment
+	 * message instead, after the gravestone is checked (see {@link #getGraveHelperNpcs()} and {@link #reclaimFee}).
 	 */
 	public long getWipeFee()
 	{
 		return 0;
+	}
+
+	/**
+	 * Whether the boss's drop rates are known. False while Jagex hasn't published them (the Fractured Archive at
+	 * release): uniques are still counted, but nothing is expected and there is no luck tier.
+	 */
+	public boolean hasPublishedRates()
+	{
+		return true;
 	}
 
 	/**

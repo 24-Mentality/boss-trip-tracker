@@ -1,6 +1,7 @@
 package com.bosstriptracker.ui;
 
 import com.bosstriptracker.model.TripEndReason;
+import com.bosstriptracker.view.Words;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import java.awt.BorderLayout;
@@ -154,22 +155,32 @@ class CurrentTripPanel extends JPanel
 				{
 					return state.getBoss().getEmptyStateText();
 				}
-				return "Last trip · " + UiFormat.dateTime(last.getStartedAt()) + " · " + endReason(last.getEndReason());
+				return "Last trip · " + UiFormat.dateTime(last.getStartedAt()) + " · " + endReason(last.getEndReason(), last.getWords());
 		}
 	}
 
 	static String endReason(TripEndReason reason)
 	{
+		return endReason(reason, Words.KILLS);
+	}
+
+	/**
+	 * @param words the boss's wording: a raid isn't walked out of or teleported from, it's left (abandoned, or the
+	 *              Theatre of Blood's vault crystal)
+	 */
+	static String endReason(TripEndReason reason, Words words)
+	{
 		if (reason == null)
 		{
 			return "in progress";
 		}
+		boolean raid = "raid".equals(words.getUnit());
 		switch (reason)
 		{
 			case WALKED_OUT:
-				return "walked out";
+				return raid ? "left" : "walked out";
 			case TELEPORT:
-				return "teleported";
+				return raid ? "left" : "teleported";
 			case DEATH:
 				return "died";
 			case LOGOUT:

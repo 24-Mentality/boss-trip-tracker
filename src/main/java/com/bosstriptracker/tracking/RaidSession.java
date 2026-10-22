@@ -19,9 +19,9 @@ import net.runelite.client.game.ItemStack;
 import net.runelite.client.plugins.loottracker.LootReceived;
 
 /**
- * Raids (one raid per trip, the Theatre of Blood): the mode, rooms, deaths and completion from the raid's messages,
- * the team's purples (the item only, never who got it), the reward claimed in the raid or later from the chest
- * outside, and what was obtained inside (free). Client thread.
+ * Raids (one raid per trip: the Theatre of Blood, the Fractured Archive): the mode, rooms, deaths, wipes and
+ * completion from the raid's messages, the team's purples (the item only, never who got it), the reward claimed in
+ * the raid or later from the chest outside, and what was obtained inside (free). Client thread.
  */
 class RaidSession
 {
@@ -40,6 +40,17 @@ class RaidSession
 		Kill lootKill();
 
 		void markDead(long now);
+
+		/**
+		 * The game ended the raid with the whole team dead: your items are in a gravestone outside, so container
+		 * changes until you're back out are the wipe, not supplies.
+		 */
+		void wiped(long now);
+
+		/**
+		 * The wipe's reclaim fee is paid later, at the gravestone outside: watch for the payment on this death.
+		 */
+		void expectReclaimFee(DeathRecord death);
 
 		void alertForDrop(BossDefinition boss, int itemId, long quantity);
 
@@ -137,7 +148,7 @@ class RaidSession
 	 * @param reason how the trip ended going by where you are
 	 * @return how the raid ended, if known, else {@code reason}
 	 */
-	TripEndReason left(TripEndReason reason, Kill completion)
+	TripEndReason left(TripEndReason reason, Kill completion, long now)
 	{
 		TripEndReason raidEnd = raid.endReason();
 		if (raidEnd != null)
@@ -146,10 +157,25 @@ class RaidSession
 		}
 		if (raidEnd == TripEndReason.WIPED)
 		{
-			// Items are reclaimed from the chest for a fee (no payment has been logged yet, so it's added here)
 			List<DeathRecord> deaths = s.currentTrip.getDeaths();
+			if (deaths.isEmpty())
+			{
+				// A wipe means you died too; the message must have been missed
+				DeathRecord death = new DeathRecord();
+				death.setAt(now);
+				deaths.add(death);
+			}
 			DeathRecord last = deaths.get(deaths.size() - 1);
-			last.setReclaimFee(last.getReclaimFee() + s.tripBoss.getWipeFee());
+			if (s.tripBoss.getWipeFee() > 0)
+			{
+				// Items are reclaimed from a chest for a fixed fee (the Theatre of Blood; no payment has been logged yet)
+				last.setReclaimFee(last.getReclaimFee() + s.tripBoss.getWipeFee());
+			}
+			else if (!s.tripBoss.getGraveHelperNpcs().isEmpty())
+			{
+				// Items are in a gravestone outside and the fee is read from the bank payment (the Fractured Archive)
+				host.expectReclaimFee(last);
+			}
 		}
 		else if (raidEnd == TripEndReason.COMPLETED && completion != null && completion.getLoot().isEmpty())
 		{
@@ -218,10 +244,21 @@ class RaidSession
 		if (mode != null)
 		{
 			raid.modeSeen(mode);
-			if (boss.isRaidRoomComplete(text))
-			{
-				raid.roomCleared();
-			}
+		}
+		// The Fractured Archive's challenge messages carry the raid's running total, so a completed raid has a time
+		// even if the total-time message is missed
+		Long raidTime = boss.raidTimeMs(text);
+		if (raidTime != null)
+		{
+			raid.raidTime(raidTime);
+		}
+		if (boss.isRaidRoomComplete(text))
+		{
+			raid.roomCleared();
+			return true;
+		}
+		if (mode != null || raidTime != null)
+		{
 			return true;
 		}
 		if (boss.isOwnRaidDeath(text))
@@ -229,10 +266,15 @@ class RaidSession
 			host.markDead(now);
 			return true;
 		}
-		Long raidTime = boss.raidTimeMs(text);
-		if (raidTime != null)
+		if (boss.isRaidFailed(text))
 		{
-			raid.raidTime(raidTime);
+			raid.wiped();
+			host.wiped(now);
+			return true;
+		}
+		if (boss.isRaidAbandoned(text))
+		{
+			raid.abandoned();
 			return true;
 		}
 		RaidCompletion completion = boss.raidCompletion(text);

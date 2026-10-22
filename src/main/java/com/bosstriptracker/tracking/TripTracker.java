@@ -239,6 +239,18 @@ public class TripTracker
 			}
 
 			@Override
+			public void wiped(long now)
+			{
+				TripTracker.this.wipedInRaid();
+			}
+
+			@Override
+			public void expectReclaimFee(DeathRecord death)
+			{
+				TripTracker.this.expectReclaimFee(death);
+			}
+
+			@Override
 			public void alertForDrop(BossDefinition boss, int itemId, long quantity)
 			{
 				TripTracker.this.alertForDrop(boss, itemId, quantity);
@@ -1216,7 +1228,7 @@ public class TripTracker
 
 		if (RaidSession.isRaid(s.tripBoss))
 		{
-			reason = raids.left(reason, loot.getLootKill());
+			reason = raids.left(reason, loot.getLootKill(), now);
 		}
 
 		// The instance is gone either way, so anything left on the floor is lost
@@ -1297,6 +1309,35 @@ public class TripTracker
 	{
 		TripClock.stop(s.currentTrip, goal(), now);
 		s.currentTrip.setLastActiveAt(now);
+	}
+
+	/**
+	 * The raid ended with the whole team dead (the Fractured Archive's "You failed to survive"): your items go to a
+	 * gravestone outside in the same tick, so container changes from here until shortly after you're out are the
+	 * wipe, never supplies. The deaths themselves were recorded as they happened.
+	 */
+	private void wipedInRaid()
+	{
+		if (!s.inArea || s.dead)
+		{
+			return;
+		}
+		s.dead = true;
+		loot.fightEnded();
+		s.ignoreDeltasUntilTick = Integer.MAX_VALUE;
+	}
+
+	/**
+	 * The wipe's reclaim fee is paid at the gravestone outside the raid (the Fractured Archive: "Check" on the grave,
+	 * then the bank payment message), after the trip has ended: watch for it on this death, as after dying at the
+	 * Nightmare.
+	 */
+	private void expectReclaimFee(DeathRecord death)
+	{
+		deathBoss = s.tripBoss;
+		pendingDeath = death;
+		pendingDeathTrip = s.currentTrip;
+		pendingDeathIndex = s.currentTrip.getDeaths().indexOf(death);
 	}
 
 	private void markDead(long now)
