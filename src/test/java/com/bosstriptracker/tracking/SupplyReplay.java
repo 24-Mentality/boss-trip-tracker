@@ -49,6 +49,11 @@ class SupplyReplay
 	private final Map<Integer, Long> worn = new HashMap<>();
 	private Map<Integer, Long> before;
 	private boolean deathEndsTrip = true;
+	/**
+	 * A game message that ends the raid with your items in a gravestone (the Fractured Archive's wipe), after which
+	 * changes until you're outside are the wipe itself.
+	 */
+	private String wipeMessage;
 	private boolean inArea;
 	private boolean dead;
 	private int ignoreUntilTick = -1;
@@ -105,6 +110,17 @@ class SupplyReplay
 		return this;
 	}
 
+	/**
+	 * Dying keeps your items, but this message means the team wiped and everything went to a gravestone outside (the
+	 * Fractured Archive), as TripTracker treats it.
+	 */
+	SupplyReplay wipedOn(String message)
+	{
+		deathEndsTrip = false;
+		wipeMessage = message;
+		return this;
+	}
+
 	SupplyReplay run()
 	{
 		return run(change -> { });
@@ -156,6 +172,12 @@ class SupplyReplay
 					break;
 				case "DEATH":
 					if (deathEndsTrip && details.startsWith("local player died"))
+					{
+						dead = true;
+					}
+					break;
+				case "CHAT":
+					if (wipeMessage != null && details.contains("message=\"" + wipeMessage + "\""))
 					{
 						dead = true;
 					}

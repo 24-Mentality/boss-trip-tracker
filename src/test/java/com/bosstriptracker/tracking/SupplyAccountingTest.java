@@ -15,6 +15,10 @@ import org.junit.Test;
 public class SupplyAccountingTest
 {
 	private static final Integer[] TOB_REGIONS = {12869, 12613, 13125, 13122, 13123, 12612, 12611, 12867, 13379};
+	/**
+	 * The Nexus, Xarth, Bork, Dreadnoth the Jellied and the inner vault.
+	 */
+	private static final Integer[] TFA_REGIONS = {16471, 16726, 16727, 16728, 16472};
 
 	/**
 	 * A Maggot King trip (2026-09-28, 14:35 to 15:40): every Drink and Eat click in the lair is one dose or item.
@@ -67,6 +71,61 @@ public class SupplyAccountingTest
 		assertTrue(replay.line(ItemID._4DOSE2RESTORE).isPerDose());
 		// Picked up at Verzik and gone when the room ends: gear is never a supply
 		assertNull(replay.line(ItemID.VERZIK_SPECIAL_WEAPON));
+	}
+
+	/**
+	 * A Fractured Archive raid (2026-10-21, 22:26 to 23:09): five challenges, deaths at Dreadnoth and Ocellus, four
+	 * brews, a restore and a prayer potion bought from the Quartermaster, part-used potions picked up from and dropped
+	 * on the Nexus floor for teammates, and a wipe at Ocellus that put every item in a gravestone in the same tick.
+	 * Only what was used is a supply: the wipe isn't, and neither is gear.
+	 */
+	@Test
+	public void fracturedArchiveRaidLeavesOutTheWipe() throws Exception
+	{
+		SupplyReplay replay = new SupplyReplay("supply-test-fractured-archive.log", TFA_REGIONS)
+			.wipedOn("You failed to survive the Fractured Archive.").run();
+
+		// Arrows shot and chinchompas thrown (switching a stack to the weapon slot nets out); the 754 arrows and 23
+		// chinchompas lost to the gravestone aren't counted
+		assertEquals(21, replay.quantity(ItemID.DRAGON_ARROW));
+		assertEquals(7, replay.quantity(ItemID.CHINCHOMPA_BLACK));
+		// Potions by the dose: 31 brew doses drunk, plus the 11 in the brews dropped for teammates, match the 42 Drink
+		// clicks on brews. No whole potions from the wipe.
+		assertTrue(replay.line(ItemID._4DOSEPOTIONOFSARADOMIN).isPerDose());
+		assertEquals(31, replay.quantity(ItemID._4DOSEPOTIONOFSARADOMIN));
+		assertEquals(13, replay.quantity(ItemID._4DOSE2RESTORE));
+		assertEquals(6, replay.quantity(ItemID._4DOSEPRAYERRESTORE));
+		assertEquals(4, replay.quantity(ItemID._4DOSERANGERSPOTION));
+		assertEquals(2, replay.quantity(ItemID._4DOSE2COMBAT));
+		assertEquals(2, replay.quantity(ItemID._4DOSESTATRENEWAL));
+		assertEquals(1, replay.quantity(ItemID.SANFEW_SALVE_4_DOSE));
+		assertEquals(Long.valueOf(2), replay.dropped.get(ItemID._4DOSEPOTIONOFSARADOMIN));
+		assertEquals(Long.valueOf(1), replay.dropped.get(ItemID._3DOSEPOTIONOFSARADOMIN));
+		assertEquals(Long.valueOf(2), replay.dropped.get(ItemID._1DOSE2RESTORE));
+		// What the raid gave you, in doses: Quartermaster purchases (4 brews, a restore, a prayer potion) and the
+		// part-used potions picked up in the Nexus (a brew(2), restore(2) and (1), prayer potion(2))
+		assertEquals(18, acquired(replay, ItemID._4DOSEPOTIONOFSARADOMIN));
+		assertEquals(7, acquired(replay, ItemID._4DOSE2RESTORE));
+		assertEquals(6, acquired(replay, ItemID._4DOSEPRAYERRESTORE));
+		// Gear switched, worn and lost is never a supply; nor is the chugging barrel
+		assertNull(replay.line(ItemID.SCYTHE_OF_VITUR));
+		assertNull(replay.line(ItemID.TWISTED_BOW));
+		assertNull(replay.line(ItemID.TONALZTICS_OF_RALOS_CHARGED));
+		assertNull(replay.line(ItemID.TOXIC_BLOWPIPE_LOADED));
+		assertNull(replay.line(ItemID.MM_PREPOT_DEVICE));
+		assertEquals(9, replay.used.size());
+	}
+
+	private static long acquired(SupplyReplay replay, int itemId)
+	{
+		for (ItemEntry entry : replay.acquired)
+		{
+			if (entry.getItemId() == itemId)
+			{
+				return entry.getQuantity();
+			}
+		}
+		return 0;
 	}
 
 	private final FakeItems items = new FakeItems()

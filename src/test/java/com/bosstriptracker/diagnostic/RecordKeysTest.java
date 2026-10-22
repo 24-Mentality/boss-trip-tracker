@@ -20,6 +20,10 @@ public class RecordKeysTest
 		assertTrue(RecordKeys.isPlannedBoss("nex"));
 		assertTrue(RecordKeys.isPlannedBoss("drops_EVENT_Theatre of Blood"));
 		assertTrue(RecordKeys.isPlannedBoss("theatre of blood hard mode"));
+		// The Fractured Archive's keys are assumed from RuneLite's naming until a raid is completed
+		assertTrue(RecordKeys.isPlannedBoss("drops_EVENT_Fractured Archive"));
+		assertTrue(RecordKeys.isPlannedBoss("fractured archive"));
+		assertTrue(RecordKeys.isPlannedBoss("the fractured archive"));
 	}
 
 	@Test

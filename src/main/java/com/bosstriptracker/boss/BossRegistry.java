@@ -19,7 +19,8 @@ public final class BossRegistry
 
 	public static BossRegistry standard()
 	{
-		return new BossRegistry(ImmutableList.of(new MaggotKingBoss(), new NightmareBoss(), new TheatreOfBloodBoss()));
+		return new BossRegistry(ImmutableList.of(new MaggotKingBoss(), new NightmareBoss(), new TheatreOfBloodBoss(),
+			new FracturedArchiveBoss()));
 	}
 
 	public List<BossDefinition> all()

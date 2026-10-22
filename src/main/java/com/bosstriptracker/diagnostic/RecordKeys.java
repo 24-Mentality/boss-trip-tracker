@@ -5,15 +5,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Which of RuneLite's saved Loot Tracker and Chat Commands records belong to the bosses planned next (the
- * Nightmare, Theatre of Blood, Nex), so diagnostic mode can list their exact keys.
+ * Which of RuneLite's saved Loot Tracker and Chat Commands records belong to the bosses planned next or whose keys
+ * are unverified (the Nightmare, Theatre of Blood, Nex, the Fractured Archive), so diagnostic mode can list them.
  */
 final class RecordKeys
 {
 	/**
 	 * Whole words, so "nex" matches "drops_NPC_Nex" and "nex" but not "annex".
 	 */
-	private static final Pattern PLANNED_BOSSES = Pattern.compile("\\b(nightmare|nex|theatre of blood|verzik)\\b");
+	private static final Pattern PLANNED_BOSSES = Pattern.compile("\\b(nightmare|nex|theatre of blood|verzik|fractured archive|tfa)\\b");
 	private static final Pattern KILLS = Pattern.compile("\"kills\"\\s*:\\s*(\\d+)");
 
 	private RecordKeys()

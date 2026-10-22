@@ -86,7 +86,11 @@ public class DiagnosticRecorder
 	 */
 	private static final int NAME_LIST_TICKS = 10;
 	private static final int[] TOB_PARTY_NAMES = {VarClientID.TOB_CLIENT_NAME0, VarClientID.TOB_CLIENT_NAME1,
-		VarClientID.TOB_CLIENT_NAME2, VarClientID.TOB_CLIENT_NAME3, VarClientID.TOB_CLIENT_NAME4};
+		VarClientID.TOB_CLIENT_NAME2, VarClientID.TOB_CLIENT_NAME3, VarClientID.TOB_CLIENT_NAME4,
+		// The Fractured Archive's party of up to 8
+		VarClientID.TFA_CLIENT_NAME0, VarClientID.TFA_CLIENT_NAME1, VarClientID.TFA_CLIENT_NAME2,
+		VarClientID.TFA_CLIENT_NAME3, VarClientID.TFA_CLIENT_NAME4, VarClientID.TFA_CLIENT_NAME5,
+		VarClientID.TFA_CLIENT_NAME6, VarClientID.TFA_CLIENT_NAME7};
 
 	private static final Set<Integer> RUNE_POUCH_VARBITS = ImmutableSet.of(
 		VarbitID.RUNE_POUCH_TYPE_1, VarbitID.RUNE_POUCH_TYPE_2, VarbitID.RUNE_POUCH_TYPE_3,
@@ -115,7 +119,10 @@ public class DiagnosticRecorder
 	 */
 	private static final String[] EVERYWHERE_NPC_NAMES = {"Nightmare", "Totem", "Sister Senga", "Shura",
 		// Theatre of Blood room bosses
-		"Maiden of Sugadinti", "Pestilent Bloat", "Nylocas Vasilias", "Sotetseg", "Xarpus", "Verzik Vitur"};
+		"Maiden of Sugadinti", "Pestilent Bloat", "Nylocas Vasilias", "Sotetseg", "Xarpus", "Verzik Vitur",
+		// Fractured Archive challenges, its hub NPCs and the gravestone outside
+		"Archive Guardian", "Inert Guardian", "Bork", "Dreadnoth", "Xarth", "Ezekiel", "Moia", "Dagon'hai", "Ocellus",
+		"Quartermaster", "Alliance Navigator", "Grave"};
 
 	/**
 	 * What players type or send (public, private, clan and friends chat, trade requests) isn't needed and carries
@@ -152,6 +159,40 @@ public class DiagnosticRecorder
 		.put(VarbitID.TOB_DAMAGE_TAKEN, "damage_taken")
 		.put(VarbitID.TOB_PROGRESS, "progress")
 		.build();
+	/**
+	 * Fractured Archive state (unverified meanings): party status and slots for up to 8, Supply Credits, the vault
+	 * chests, whether loot is due, and the path taken. Logged by name when they change.
+	 */
+	static final Map<Integer, String> TFA_VARBITS = ImmutableMap.<Integer, String>builder()
+		.put(VarbitID.TFA_CLIENT_PARTYSTATUS, "partystatus")
+		.put(VarbitID.TFA_CLIENT_PARTYSLOT, "partyslot")
+		.put(VarbitID.TFA_CLIENT_P0, "p0")
+		.put(VarbitID.TFA_CLIENT_P1, "p1")
+		.put(VarbitID.TFA_CLIENT_P2, "p2")
+		.put(VarbitID.TFA_CLIENT_P3, "p3")
+		.put(VarbitID.TFA_CLIENT_P4, "p4")
+		.put(VarbitID.TFA_CLIENT_P5, "p5")
+		.put(VarbitID.TFA_CLIENT_P6, "p6")
+		.put(VarbitID.TFA_CLIENT_P7, "p7")
+		.put(VarbitID.TFA_SUPPLY_POINTS, "supply_credits")
+		.put(VarbitID.TFA_VAULT_CHEST_0_STATE, "vaultchest0")
+		.put(VarbitID.TFA_VAULT_CHEST_1_STATE, "vaultchest1")
+		.put(VarbitID.TFA_VAULT_CHEST_2_STATE, "vaultchest2")
+		.put(VarbitID.TFA_VAULT_CHEST_3_STATE, "vaultchest3")
+		.put(VarbitID.TFA_VAULT_CHEST_4_STATE, "vaultchest4")
+		.put(VarbitID.TFA_VAULT_CHEST_5_STATE, "vaultchest5")
+		.put(VarbitID.TFA_VAULT_CHEST_6_STATE, "vaultchest6")
+		.put(VarbitID.TFA_VAULT_CHEST_7_STATE, "vaultchest7")
+		.put(VarbitID.TFA_VAULT_OWN_CHEST, "own_chest")
+		.put(VarbitID.TFA_HAS_CLAIMABLE_LOOT, "has_claimable_loot")
+		.put(VarbitID.TFA_CLIENT_CURRENT_PATH, "current_path")
+		.build();
+	/**
+	 * Containers logged besides the inventory and equipment: the Fractured Archive's reward chests and the
+	 * Quartermaster's shop, to see how the reward and Supply Credit purchases are delivered.
+	 */
+	private static final Map<Integer, String> EXTRA_CONTAINERS = ImmutableMap.of(
+		InventoryID.TFA_CHESTS, "TFA_CHESTS", InventoryID.TFA_MIDRAID_SUPPLIES_SHOP, "TFA_SHOP");
 	private static final String LOOT_TRACKER_GROUP = "loottracker";
 	private static final String KILL_COUNT_GROUP = "killcount";
 
@@ -286,7 +327,7 @@ public class DiagnosticRecorder
 				found++;
 			}
 		}
-		record("RECORDKEY", found + " record keys found for the Nightmare, Nex and Theatre of Blood");
+		record("RECORDKEY", found + " record keys found for the Nightmare, Nex, Theatre of Blood and Fractured Archive");
 	}
 
 	@Subscribe
@@ -439,6 +480,14 @@ public class DiagnosticRecorder
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
 		int containerId = event.getContainerId();
+		if (EXTRA_CONTAINERS.containsKey(containerId))
+		{
+			if (isRecording())
+			{
+				recordContainer(EXTRA_CONTAINERS.get(containerId), event.getItemContainer());
+			}
+			return;
+		}
 		if (containerId != InventoryID.INV && containerId != InventoryID.WORN)
 		{
 			return;
@@ -485,6 +534,12 @@ public class DiagnosticRecorder
 		if (tob != null)
 		{
 			record("TOB", tob + "=" + event.getValue());
+			return;
+		}
+		String tfa = TFA_VARBITS.get(event.getVarbitId());
+		if (tfa != null)
+		{
+			record("TFA", tfa + "=" + event.getValue());
 		}
 
 	}
@@ -674,12 +729,37 @@ public class DiagnosticRecorder
 	 */
 	private void recordTobSnapshot()
 	{
+		record("TOB", varbitSnapshot(TOB_VARBITS));
+		record("TFA", varbitSnapshot(TFA_VARBITS));
+	}
+
+	private String varbitSnapshot(Map<Integer, String> varbits)
+	{
 		StringBuilder sb = new StringBuilder("snapshot");
-		for (Map.Entry<Integer, String> e : TOB_VARBITS.entrySet())
+		for (Map.Entry<Integer, String> e : varbits.entrySet())
 		{
 			sb.append(' ').append(e.getValue()).append('=').append(client.getVarbitValue(e.getKey()));
 		}
-		record("TOB", sb.toString());
+		return sb.toString();
+	}
+
+	/**
+	 * Everything in a container, for the raid chests whose contents are the loot.
+	 */
+	private void recordContainer(String name, ItemContainer container)
+	{
+		StringBuilder sb = new StringBuilder("contents [");
+		boolean first = true;
+		for (Map.Entry<Integer, Integer> e : toQuantities(container).entrySet())
+		{
+			if (!first)
+			{
+				sb.append(", ");
+			}
+			first = false;
+			sb.append(describeItem(e.getKey(), e.getValue()));
+		}
+		record(name, sb.append(']').toString());
 	}
 
 	private boolean isRecording()

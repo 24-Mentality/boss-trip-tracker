@@ -25,9 +25,10 @@ No combat or mechanic help of any kind: it only tracks loot, supplies, costs, ti
 - **Share cards** for Discord, and optional automatic screenshots after a unique or pet.
 - **Kill goals** with kills per hour and time to goal, and an optional overlay box.
 
-**Supported bosses:** the Maggot King in Vampyrium, Phosani's Nightmare, and the Theatre of
-Blood (Entry, Normal and Hard Mode). The regular Nightmare's kills aren't tracked yet. More
-bosses are planned. Formerly **Maggot King Trip Tracker**.
+**Supported bosses:** the Maggot King in Vampyrium, Phosani's Nightmare, the Theatre of
+Blood (Entry, Normal and Hard Mode) and the Fractured Archive (trips, deaths, wipe fees and
+supplies; luck once Jagex publishes its drop rates). The regular Nightmare's kills aren't
+tracked yet. More bosses are planned. Formerly **Maggot King Trip Tracker**.
 
 ## Requirements
 
@@ -165,6 +166,34 @@ in Ver Sinhaza (by the vault's teleport crystal, a teleport, a wipe or logging o
   you've seen any purple." when you enter the vault). It isn't your personal dry streak: a
   teammate's purple resets it, and Entry Mode raids count.
 - The clock doesn't pause while idle during a raid; the time between rooms is part of it.
+
+For the Fractured Archive: a trip is one raid, from stepping through the Archive Door into
+the Nexus until you're back in the lobby (a completed raid, a wipe, abandoning the raid, or
+logging out).
+
+- Each challenge's clock starts at "Challenge started" (the Trip tab's live timer); the
+  raid's time is the running total the game reports as each challenge completes. A completed
+  raid counts from the game's completion-count message, with the team size at the start
+  (both are built from RuneLite's wording and haven't been seen in game yet: no raid in the
+  logs reached the end).
+- Loot is the reward from your chest in the vault, from the Loot Tracker's "Fractured
+  Archive" event (unverified for the same reason).
+- Quartermaster purchases with Supply Credits are free, like Theatre of Blood supply chest
+  purchases: only what you use beyond them is a cost, per dose. Dropped potions and food count
+  as used; dropped gear never does.
+- Dying in a challenge costs nothing ("You will respawn when your party completes or fails the
+  challenge"), and your deaths per raid are shown. If the whole team dies ("You failed to
+  survive the Fractured Archive."), your items go to a gravestone in the lobby and nothing
+  that vanished counts as a supply. The fee is recorded when you check the grave and the game
+  says "Payment has been taken from your bank: 125,000 x Coins" (the amount is whatever the
+  game charges: it's reduced until 5 completions).
+- Abandoning the raid ends the trip as "left".
+- Luck: Jagex hasn't published the drop rates yet, so the Luck and Drop chances cards show
+  "No rates yet" and count your uniques (Rondache, Zorya's tome, Horn of Bran, Ascension
+  crossbows, Obligator) and the pet without expecting any. Rates will be added once they're
+  known.
+- Potions drunk from a chugging barrel inside the raid aren't tracked yet (the barrel's
+  contents aren't in your inventory).
 
 For Phosani's Nightmare: a trip runs from drinking from the Pool of Nightmares until you
 leave the dream (through the barrier, which works like walking out of the Maggot King's lair,
