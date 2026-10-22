@@ -76,6 +76,10 @@ class ShareCard
 	 * The luck numbers rest on assumptions (the Theatre of Blood's share of the team's chance).
 	 */
 	boolean approximate;
+	/**
+	 * The boss's drop rates aren't published (the Fractured Archive at release): counts only.
+	 */
+	boolean ratesPending;
 	int dryKills;
 	/**
 	 * "kill" or "raid", for the card's wording.
@@ -193,6 +197,7 @@ class ShareCard
 			.dueInKills(luck.dueInKills(dryness.getKillsSinceUnique()))
 			.uniqueRate(luck.getRate())
 			.approximate(luck.isApproximate())
+			.ratesPending(luck.isRatesPending())
 			.drops(drops)
 			.chances(DropChances.rows(dryness))
 			.chancesSource(DropChances.source(dryness))

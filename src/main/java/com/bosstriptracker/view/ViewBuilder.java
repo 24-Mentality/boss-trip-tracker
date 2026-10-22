@@ -568,6 +568,7 @@ public class ViewBuilder
 			.uniqueChances(anyChances)
 			.minExpectedForRuck(boss.getMinExpectedForRuckTiers())
 			.luckApproximate(boss.isLuckApproximate())
+			.ratesPending(!boss.hasPublishedRates())
 			.petRateNote(boss.getPetRateNote())
 			.luckKills(luckKills)
 			.killsSinceUnique(since)

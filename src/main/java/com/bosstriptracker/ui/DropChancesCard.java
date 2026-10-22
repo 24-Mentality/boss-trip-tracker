@@ -149,12 +149,16 @@ class DropChancesCard extends JPanel
 		List<String> extras = new ArrayList<>();
 		DrynessView.AllTime allTime = dryness.getAllTime();
 		List<DrynessView.Drop> uniques = allTime != null ? allTime.getUniques() : dryness.getUniques();
-		names.add("Any unique (1/" + UiFormat.oneIn(dryness.getAnyUniqueRate()) + ")");
-		extras.add(String.format(Locale.ROOT, " You're on a %,d " + dryness.getWords().getUnit() + " dry streak: %s of players would have had a unique by now.",
+		// Rates unpublished (the Fractured Archive at release): counts only, nothing expected
+		boolean pending = dryness.isRatesPending();
+		String unpublished = " (rate unpublished)";
+		names.add(pending ? "Any unique" + unpublished : "Any unique (1/" + UiFormat.oneIn(dryness.getAnyUniqueRate()) + ")");
+		extras.add(pending ? "" : String.format(Locale.ROOT, " You're on a %,d " + dryness.getWords().getUnit()
+			+ " dry streak: %s of players would have had a unique by now.",
 			dryness.getKillsSinceUnique(), percent(1 - dryness.getChanceThisDry())));
 		for (DrynessView.Drop unique : uniques)
 		{
-			names.add(unique.getName() + " (1/" + UiFormat.oneIn(unique.getRate()) + ")");
+			names.add(unique.getName() + (pending ? unpublished : " (1/" + UiFormat.oneIn(unique.getRate()) + ")"));
 			extras.add(trackedKcs(unique.getItemId()));
 		}
 
@@ -163,9 +167,10 @@ class DropChancesCard extends JPanel
 		DrynessView.Drop pet = dryness.getPet();
 		if (pet != null)
 		{
-			names.add(boss.getDisplayName() + " pet (" + (dryness.getPetRateNote() != null ? dryness.getPetRateNote()
+			names.add(boss.getDisplayName() + " pet" + (pending ? unpublished
+				: " (" + (dryness.getPetRateNote() != null ? dryness.getPetRateNote()
 				: "1/" + UiFormat.oneIn(pet.getRate()) + " per " + dryness.getWords().getUnit())
-				+ (hasEggs ? ", plus eggs" : "") + ")");
+				+ (hasEggs ? ", plus eggs" : "") + ")"));
 			extras.add("");
 		}
 		int petRow = pet != null ? names.size() - 1 : -1;
@@ -201,10 +206,11 @@ class DropChancesCard extends JPanel
 			else
 			{
 				row.bar.showExpected(chance.fraction());
-				row.number.setText(String.valueOf((int) Math.floor(chance.getExpected())));
+				row.number.setText(pending ? "?" : String.valueOf((int) Math.floor(chance.getExpected())));
 			}
 			String help = names.get(i) + ": " + chance.getReceived() + " received, "
-				+ String.format(Locale.ROOT, "%.2f", chance.getExpected()) + " expected at this rate from " + basis
+				+ (pending ? "nothing expected until Jagex publishes the drop rates; counted from " + basis
+				: String.format(Locale.ROOT, "%.2f", chance.getExpected()) + " expected at this rate from " + basis)
 				+ (i == petRow && eggPetExpected > 0 ? String.format(Locale.ROOT, " plus eggs popped (%.3f)", eggPetExpected) : "")
 				+ "."
 				+ (i == petRow && allTime != null ? " The Loot Tracker doesn't record pets, so pets are the ones this plugin saw." : "")

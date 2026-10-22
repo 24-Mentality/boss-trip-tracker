@@ -60,6 +60,11 @@ public class DrynessView
 	 */
 	boolean luckApproximate;
 	/**
+	 * The boss's drop rates haven't been published (the Fractured Archive at release): every rate and expected count
+	 * here is 0, uniques are counted, and the cards say so instead of showing a tier.
+	 */
+	boolean ratesPending;
+	/**
 	 * Shown instead of the pet's average rate when it depends on things not tracked (Lil' Zik); null otherwise.
 	 */
 	String petRateNote;

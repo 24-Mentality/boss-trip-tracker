@@ -231,8 +231,11 @@ class LuckOverviewCard extends JPanel
 			? "From RuneLite's Loot Tracker record: " + words.count(luck.getBasisKills()) + "."
 			: String.format(Locale.ROOT, "From the %,d %s this plugin has tracked.", luck.getBasisKills(), boss.getLuckKillsName())));
 
-		String expected = String.format(Locale.ROOT, luck.getExpected() >= 10 ? "%.1f" : "%.2f", luck.getExpected());
-		set(uniques, "Uniques", luck.getReceived() + " / " + expected, null, "Uniques received vs expected.");
+		String expected = luck.isRatesPending() ? "?"
+			: String.format(Locale.ROOT, luck.getExpected() >= 10 ? "%.1f" : "%.2f", luck.getExpected());
+		set(uniques, "Uniques", luck.getReceived() + " / " + expected, null, luck.isRatesPending()
+			? "Uniques received. Nothing is expected until the drop rates are published."
+			: "Uniques received vs expected.");
 		set(since, "Dry streak", words.kc(dryness.getKillsSinceUnique()), null,
 			(dryness.isSinceWholeKillCount()
 				? "You haven't had a unique yet (RuneLite's Loot Tracker has none either), so this is your whole kill count"
@@ -279,7 +282,12 @@ class LuckOverviewCard extends JPanel
 		}
 		int dry = dryness.getKillsSinceUnique();
 		int dueIn = luck.dueInKills(dry);
-		if (dueIn > 0)
+		if (luck.isRatesPending())
+		{
+			set(due, "Due in", "Unknown", null, "The drop rates haven't been published yet.");
+			set(rate, "Rate", "Unpublished", null, "Jagex hasn't published the drop rates yet.");
+		}
+		else if (dueIn > 0)
 		{
 			set(due, "Due in", words.kc(dueIn), null, "Kills until the average number of " + words.units()
 				+ " between uniques (1/" + UiFormat.oneIn(luck.getRate()) + ").");
@@ -290,9 +298,12 @@ class LuckOverviewCard extends JPanel
 				+ words.units() + " between uniques (1/" + UiFormat.oneIn(luck.getRate()) + "). Each " + words.getUnit()
 				+ " is still the same chance.");
 		}
-		set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per " + words.getUnit()
-			+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked " + words.units() + ".")
-			+ (luck.isApproximate() ? " Approximate: an equal share of the team's chance." : ""));
+		if (!luck.isRatesPending())
+		{
+			set(rate, "Rate", "1/" + UiFormat.oneIn(luck.getRate()), null, "Chance of any unique per " + words.getUnit()
+				+ (luck.isAllTime() ? ", averaged over the all-time record." : ", averaged over the tracked " + words.units() + ".")
+				+ (luck.isApproximate() ? " Approximate: an equal share of the team's chance." : ""));
+		}
 
 		for (int i = 0; i < counts.size() && i < shown.size(); i++)
 		{
@@ -300,10 +311,11 @@ class LuckOverviewCard extends JPanel
 			JLabel count = counts.get(i);
 			count.setText("x" + drop.getReceived());
 			count.setForeground(drop.getReceived() > 0 ? UiFormat.UNIQUE_BORDER : UiFormat.MUTED_TEXT);
-			count.setToolTipText(UiFormat.tooltip(drop.getName() + ": " + drop.getReceived() + " received, "
-				+ String.format(Locale.ROOT, "%.2f", drop.getExpected()) + " expected ("
+			count.setToolTipText(UiFormat.tooltip(drop.getName() + ": " + drop.getReceived() + " received"
+				+ (luck.isRatesPending() ? " (rate unpublished)."
+				: ", " + String.format(Locale.ROOT, "%.2f", drop.getExpected()) + " expected ("
 				+ (pet != null && drop.getItemId() == pet.getItemId() && dryness.getPetRateNote() != null
-				? dryness.getPetRateNote() : "1/" + UiFormat.oneIn(drop.getRate())) + ")."));
+				? dryness.getPetRateNote() : "1/" + UiFormat.oneIn(drop.getRate())) + ").")));
 		}
 	}
 

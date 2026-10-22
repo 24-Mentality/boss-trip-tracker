@@ -19,7 +19,11 @@ public enum LuckTier
 	/**
 	 * Under one unique expected, and not already in a 10% tail.
 	 */
-	TOO_EARLY("Too early to tell");
+	TOO_EARLY("Too early to tell"),
+	/**
+	 * The boss's drop rates haven't been published yet, so there is nothing to compare with.
+	 */
+	NO_RATES("No rates yet");
 
 	public static final double RUCK_TAIL = 0.10;
 	public static final double TAIL = 0.35;

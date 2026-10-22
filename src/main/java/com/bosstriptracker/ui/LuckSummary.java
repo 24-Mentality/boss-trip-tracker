@@ -42,6 +42,10 @@ class LuckSummary
 	 */
 	LuckTier tier;
 	boolean approximate;
+	/**
+	 * The boss's drop rates aren't published: received counts only, no expectation and no tier.
+	 */
+	boolean ratesPending;
 	Words words;
 	/**
 	 * Each unique with its received and expected count, from the same source.
@@ -64,10 +68,12 @@ class LuckSummary
 		double atMost = LuckOdds.atMost(chances, received);
 		double atLeast = LuckOdds.atLeast(chances, received);
 		double rate = basisKills > 0 && expected > 0 ? expected / basisKills : dryness.getAnyUniqueRate();
-		LuckTier tier = basisKills == 0 ? null : LuckTier.of(atMost, atLeast, expected, dryness.getMinExpectedForRuck());
+		LuckTier tier = basisKills == 0 ? null
+			: dryness.isRatesPending() ? LuckTier.NO_RATES
+			: LuckTier.of(atMost, atLeast, expected, dryness.getMinExpectedForRuck());
 		return new LuckSummary(received, expected, basisKills, allTime != null, atMost, atLeast,
-			1 - LuckOdds.atMost(chances, 0), rate, tier,
-			dryness.isLuckApproximate(), dryness.getWords(), allTime != null ? allTime.getUniques() : dryness.getUniques());
+			1 - LuckOdds.atMost(chances, 0), rate, tier, dryness.isLuckApproximate(), dryness.isRatesPending(),
+			dryness.getWords(), allTime != null ? allTime.getUniques() : dryness.getUniques());
 	}
 
 	/**
@@ -76,6 +82,11 @@ class LuckSummary
 	String tierHelp()
 	{
 		StringBuilder help = new StringBuilder();
+		if (ratesPending)
+		{
+			return UiFormat.tooltip("Jagex hasn't published this boss's drop rates yet, so there is nothing to compare"
+				+ " your uniques with. They are still counted; the tiers appear once the rates are known.");
+		}
 		if (tier == LuckTier.TOO_EARLY)
 		{
 			help.append("Under one unique is expected so far, so it's too early to tell.");
