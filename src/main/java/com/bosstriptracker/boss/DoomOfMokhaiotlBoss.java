@@ -148,6 +148,10 @@ public final class DoomOfMokhaiotlBoss extends TableBoss
 		return variant.startsWith("level") ? Integer.parseInt(variant.substring(5)) : 0;
 	}
 
+	/**
+	 * A past delve of unknown level, from the all-time records: the average over the levels of a typical run, so a
+	 * run's worth of them expects what the run would.
+	 */
 	private static double uniqueRate(KillContext context, int fromLevel)
 	{
 		if (PAST_RUN.equals(context.getVariant()))
@@ -157,7 +161,7 @@ public final class DoomOfMokhaiotlBoss extends TableBoss
 			{
 				sum += level >= fromLevel ? UNIQUE_RATES[level] : 0;
 			}
-			return sum;
+			return sum / PAST_RUN_LEVELS;
 		}
 		int level = levelOf(context.getVariant());
 		return level >= fromLevel ? UNIQUE_RATES[level] : 0;
@@ -172,7 +176,7 @@ public final class DoomOfMokhaiotlBoss extends TableBoss
 			{
 				sum += PET_RATES[level];
 			}
-			return sum;
+			return sum / PAST_RUN_LEVELS;
 		}
 		return PET_RATES[levelOf(context.getVariant())];
 	}
@@ -288,6 +292,16 @@ public final class DoomOfMokhaiotlBoss extends TableBoss
 	}
 
 	/**
+	 * RuneLite's record counts claims; each is taken as a run of {@link #PAST_RUN_LEVELS} delves, the kill unit the
+	 * Collection Log's "Total delves" and this plugin's kills use.
+	 */
+	@Override
+	public int recordKillUnits()
+	{
+		return PAST_RUN_LEVELS;
+	}
+
+	/**
 	 * The page counts "Total delves: 1,446" (every level completed, this boss's kill unit), "Deep delves" and
 	 * "Deepest delve".
 	 */
@@ -308,7 +322,8 @@ public final class DoomOfMokhaiotlBoss extends TableBoss
 	{
 		return "Each level completed is a delve with its own rates: the Mokhaiotl cloth from level 2, the Eye of Ayak "
 			+ "from 3, the Avernic treads from 4, and Dom from 6, all rarer the shallower the level. RuneLite's record "
-			+ "counts claims, not levels, so each past claim is taken as a " + PAST_RUN_LEVELS + "-level run.";
+			+ "counts claims, not levels, so each past claim is taken as a " + PAST_RUN_LEVELS + "-level run; the "
+			+ "Collection Log's total delves are levels.";
 	}
 
 	@Override

@@ -86,10 +86,14 @@ public class DoomOfMokhaiotlBossTest
 		assertEquals(0, boss.getPet().chance(context(5)), 0);
 		assertEquals(1 / 1_000.0, boss.getPet().chance(context(6)), 1e-12);
 		assertEquals(1 / 250.0, boss.getPet().chance(new KillContext("deep", null)), 1e-12);
-		// A past claim from RuneLite's record is taken as a 7-level run
+		// A past delve of unknown level: the average over a 7-level run, and a record claim counts as 7 of them, so
+		// 1,446 delves (the user's Collection Log total) expect about 3 uniques, not 19
 		KillContext past = boss.pastKillContext(null, 4);
-		assertEquals(1 / 2_500.0 + 2 / 2_000.0 + 3 / 1_350.0 + 3 * 3 / 810.0, boss.anyUniqueChance(past), 1e-12);
-		assertEquals(1 / 1_000.0 + 1 / 750.0, boss.getPet().chance(past), 1e-12);
+		double runChance = 1 / 2_500.0 + 2 / 2_000.0 + 3 / 1_350.0 + 3 * 3 / 810.0;
+		assertEquals(runChance / 7, boss.anyUniqueChance(past), 1e-12);
+		assertEquals((1 / 1_000.0 + 1 / 750.0) / 7, boss.getPet().chance(past), 1e-12);
+		assertEquals(7, boss.recordKillUnits());
+		assertEquals(3.04, 1_446 * boss.anyUniqueChance(past), 0.01);
 		// Nothing is expected of a kill without a level
 		assertEquals(0, boss.anyUniqueChance(KillContext.DEFAULT), 0);
 		assertTrue(boss.isLuckApproximate());

@@ -1880,8 +1880,9 @@ public class TripTracker
 		if (!key.equals(allTimeCacheKey))
 		{
 			// The Collection Log page fills in what the Loot Tracker has lost (it forgets a boss a year after the last drop)
-			allTimeCache = CollectionLogMerge.merge(allTimeRecords.read(boss.getAllTimeSources(), s.selectedVariant), log, boss,
-				s.selectedVariant);
+			AllTimeCounts record = AllTimeRecords.inUnits(allTimeRecords.read(boss.getAllTimeSources(), s.selectedVariant),
+				boss.recordKillUnits());
+			allTimeCache = CollectionLogMerge.merge(record, log, boss, s.selectedVariant);
 			allTimeCacheKey = key;
 		}
 		return allTimeCache;

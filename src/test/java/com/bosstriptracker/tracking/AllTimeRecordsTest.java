@@ -2,6 +2,7 @@ package com.bosstriptracker.tracking;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import com.bosstriptracker.boss.TheatreOfBloodBoss;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
@@ -85,5 +86,21 @@ public class AllTimeRecordsTest
 		assertNull(AllTimeRecords.killCountsShown(TheatreOfBloodBoss.NORMAL,
 			ImmutableMap.of(TheatreOfBloodBoss.NORMAL, 6, TheatreOfBloodBoss.HARD, 2)));
 		assertNull(AllTimeRecords.killCountsShown(TheatreOfBloodBoss.HARD, normalOnly));
+	}
+
+	/**
+	 * The Doom of Mokhaiotl's record counts claims; in the plugin's units each is a 7-level run.
+	 */
+	@Test
+	public void aRecordOfClaimsBecomesDelves()
+	{
+		AllTimeCounts claims = new AllTimeCounts(10, null, 5, 50, Collections.singletonMap(1, 2));
+		AllTimeCounts delves = AllTimeRecords.inUnits(claims, 7);
+		assertEquals(70, delves.getLootKills());
+		assertNull(delves.getKillCount());
+		assertEquals(2, delves.dropped(1));
+		assertEquals(50, delves.getLastRecordedAt());
+		assertSame(claims, AllTimeRecords.inUnits(claims, 1));
+		assertNull(AllTimeRecords.inUnits(null, 7));
 	}
 }

@@ -599,6 +599,16 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * How many of the boss's kill units one kill in RuneLite's Loot Tracker record stands for: 1 for a boss whose
+	 * record counts kills, more where the record counts something larger (the Doom of Mokhaiotl's record counts claims,
+	 * each taken as a 7-level run, while its kill unit and Collection Log count levels).
+	 */
+	public int recordKillUnits()
+	{
+		return 1;
+	}
+
+	/**
 	 * A short description of a trip for the History card (e.g. "Normal · team of 4"); null to show the
 	 * kill count.
 	 */

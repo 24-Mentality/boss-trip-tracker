@@ -126,6 +126,22 @@ class AllTimeRecords
 	}
 
 	/**
+	 * A record whose kills each stand for several of the boss's kill units (the Doom of Mokhaiotl's claims as 7-level
+	 * runs), put in those units.
+	 */
+	static AllTimeCounts inUnits(AllTimeCounts record, int units)
+	{
+		if (record == null || units <= 1)
+		{
+			return record;
+		}
+		return new AllTimeCounts(record.getLootKills() * units,
+			record.getKillCount() == null ? null : Integer.valueOf(record.getKillCount() * units),
+			record.getFirstRecordedAt(), record.getLastRecordedAt(), record.getDrops(), record.getVariantKillCounts(),
+			record.getCollectionLogReadAt());
+	}
+
+	/**
 	 * @return a kill count Chat Commands saved, or null if there is none (or no key)
 	 */
 	Integer killCount(String key)
