@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,7 @@ class BossSelector extends JComboBox<BossOption>
 	 * Set while the list is changed from code, so it isn't taken as the user choosing a boss.
 	 */
 	private boolean updating;
+	private BossOption chosen;
 
 	BossSelector(ItemManager itemManager, Consumer<String> onSelect)
 	{
@@ -53,16 +55,32 @@ class BossSelector extends JComboBox<BossOption>
 		setForeground(Color.WHITE);
 		setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		setFocusable(false);
-		setMaximumRowCount(12);
+		setMaximumRowCount(16);
 		setRenderer(new Renderer());
 		setToolTipText("Boss shown in the Trip, History and Lifetime tabs. Entering a boss's area selects it.");
 		addActionListener(e ->
 		{
 			BossOption option = (BossOption) getSelectedItem();
-			if (!updating && option != null)
+			if (updating || option == null)
 			{
-				onSelect.accept(option.getId());
+				return;
 			}
+			if (option.isHeader())
+			{
+				// A section header can't be chosen: back to the boss that was
+				updating = true;
+				try
+				{
+					setSelectedItem(chosen);
+				}
+				finally
+				{
+					updating = false;
+				}
+				return;
+			}
+			chosen = option;
+			onSelect.accept(option.getId());
 		});
 	}
 
@@ -74,13 +92,14 @@ class BossSelector extends JComboBox<BossOption>
 			if (!Objects.equals(options, shown))
 			{
 				shown = options;
-				setModel(new DefaultComboBoxModel<>(options.toArray(new BossOption[0])));
+				setModel(new DefaultComboBoxModel<>(withHeaders(options).toArray(new BossOption[0])));
 			}
 			for (BossOption option : options)
 			{
 				if (option.getId().equals(selectedId) && getSelectedItem() != option)
 				{
 					setSelectedItem(option);
+					chosen = option;
 				}
 			}
 		}
@@ -88,6 +107,31 @@ class BossSelector extends JComboBox<BossOption>
 		{
 			updating = false;
 		}
+	}
+
+	/**
+	 * Bosses and raids under their own headers, when there are both.
+	 */
+	static List<BossOption> withHeaders(List<BossOption> options)
+	{
+		boolean anyRaid = options.stream().anyMatch(BossOption::isRaid);
+		boolean anyBoss = options.stream().anyMatch(o -> !o.isRaid());
+		if (!anyRaid || !anyBoss)
+		{
+			return options;
+		}
+		List<BossOption> rows = new ArrayList<>();
+		Boolean lastRaid = null;
+		for (BossOption option : options)
+		{
+			if (lastRaid == null || lastRaid != option.isRaid())
+			{
+				rows.add(BossOption.header(option.isRaid() ? "Raids" : "Bosses", option.isRaid()));
+				lastRaid = option.isRaid();
+			}
+			rows.add(option);
+		}
+		return rows;
 	}
 
 	private Icon icon(int itemId)
@@ -140,6 +184,17 @@ class BossSelector extends JComboBox<BossOption>
 				dot.setVisible(false);
 				return panel;
 			}
+			if (option.isHeader())
+			{
+				panel.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+				name.setForeground(ColorScheme.LIGHT_GRAY_COLOR);
+				name.setFont(FontManager.getRunescapeSmallFont());
+				name.setText(option.getName().toUpperCase());
+				name.setIcon(null);
+				dot.setVisible(false);
+				return panel;
+			}
+			name.setFont(FontManager.getRunescapeFont());
 			name.setText(option.getName());
 			name.setIcon(icon(option.getIconItemId()));
 			dot.setVisible(option.isLive());

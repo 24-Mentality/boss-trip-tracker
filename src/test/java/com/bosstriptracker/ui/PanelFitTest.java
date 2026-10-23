@@ -324,8 +324,8 @@ public class PanelFitTest
 			.allTime(state.getLifetime().getDryness().getAllTime().toBuilder().uniques(uniques).build())
 			.build();
 		List<BossOption> bosses = Arrays.asList(
-			new BossOption(BOSS.getId(), BOSS.getDisplayName(), BOSS.getIconItemId(), false),
-			new BossOption(nightmare.getId(), nightmare.getDisplayName(), nightmare.getIconItemId(), true));
+			new BossOption(BOSS.getId(), BOSS.getDisplayName(), BOSS.getIconItemId(), false, false),
+			new BossOption(nightmare.getId(), nightmare.getDisplayName(), nightmare.getIconItemId(), true, false));
 		return state.toBuilder()
 			.boss(nightmare)
 			.bosses(bosses)
@@ -460,7 +460,7 @@ public class PanelFitTest
 		// 1 kill per hour for 12,000 hours: KPH and the time to goal are at their longest
 		GoalView goal = new GoalView(99_999, 12_345, 12_345L * 3600 * 1000, System.currentTimeMillis(), !paused, 0);
 		List<BossOption> bosses = Collections.singletonList(
-			new BossOption(BOSS.getId(), BOSS.getDisplayName(), BOSS.getIconItemId(), true));
+			new BossOption(BOSS.getId(), BOSS.getDisplayName(), BOSS.getIconItemId(), true, false));
 		return PanelState.builder()
 			.boss(BOSS)
 			.bosses(bosses)
