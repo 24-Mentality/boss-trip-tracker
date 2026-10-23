@@ -130,8 +130,8 @@ public class DiagnosticRecorder
 		"Quartermaster", "Alliance Navigator", "Grave",
 		// The Forgotten Four (the Odd Figure is the Whisperer before it's disturbed)
 		"Vardorvis", "Duke Sucellus", "Whisperer", "Odd Figure", "Leviathan",
-		// Planned diagnostic runs: Vorkath (and his spawn), the Phantom Muspah, the Doom of Mokhaiotl
-		"Vorkath", "Zombified Spawn", "Muspah", "Mokhaiotl", "Doom"};
+		// Planned diagnostic runs: Vorkath (and his spawn), the Phantom Muspah, the Doom of Mokhaiotl, Nex and her minions
+		"Vorkath", "Zombified Spawn", "Muspah", "Mokhaiotl", "Doom", "Nex", "Fumus", "Umbra", "Cruor", "Glacies"};
 
 	/**
 	 * What players type or send (public, private, clan and friends chat, trade requests) isn't needed and carries
