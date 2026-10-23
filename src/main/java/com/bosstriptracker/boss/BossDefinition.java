@@ -313,6 +313,16 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * Dying leaves your items in an ordinary gravestone, so the fee is estimated from what you carried by the
+	 * gravestone's brackets as soon as you die, and replaced by the payment message when the grave is checked. False
+	 * where the fee is fixed (Sister Senga's 60,000) or free.
+	 */
+	public boolean isGravestoneFeeEstimated()
+	{
+		return false;
+	}
+
+	/**
 	 * What the grave helpers accept as payment.
 	 */
 	public Set<Integer> getGravePaymentItems()

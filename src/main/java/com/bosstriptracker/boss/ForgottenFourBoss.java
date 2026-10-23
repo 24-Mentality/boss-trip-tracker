@@ -386,14 +386,21 @@ public final class ForgottenFourBoss extends TableBoss
 	}
 
 	/**
-	 * Dying puts your items in a gravestone outside the instance (OSRS Wiki). Unverified: no death in the logs, so the
-	 * grave's options and payment message are assumed to match the Fractured Archive's ("Check", then "Payment has
-	 * been taken from your bank: ... x Coins").
+	 * Dying puts your items in a gravestone outside the instance (OSRS Wiki). The fee is estimated from what you
+	 * carried, by the gravestone's brackets, the moment you die. Unverified: no death in the logs, so the grave's
+	 * options and payment message are assumed to match the Fractured Archive's ("Check", then "Payment has been taken
+	 * from your bank: ... x Coins"), which replaces the estimate.
 	 */
 	@Override
 	public Set<Integer> getGraveHelperNpcs()
 	{
 		return FracturedArchiveBoss.GRAVESTONES;
+	}
+
+	@Override
+	public boolean isGravestoneFeeEstimated()
+	{
+		return true;
 	}
 
 	@Override

@@ -46,7 +46,9 @@ import net.runelite.api.EnumComposition;
 import net.runelite.api.EnumID;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Hitsplat;
+import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
+import net.runelite.api.SkullIcon;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
@@ -71,6 +73,7 @@ import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.ItemID;
+import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneScapeProfileType;
@@ -150,6 +153,11 @@ public class TripTracker
 	private int pendingDeathIndex;
 	private BossDefinition deathBoss;
 	private int graveWindowEndTick = -1;
+	/**
+	 * Whether {@link #pendingDeath}'s fee is an estimate from the gravestone's brackets, to be replaced by what the
+	 * game charges.
+	 */
+	private boolean pendingFeeEstimated;
 
 	private final ChargeCounter chargeCounter;
 	/**
@@ -1041,7 +1049,9 @@ public class TripTracker
 			if (fee != null)
 			{
 				DeathRecord death = pendingDeathForChange();
-				death.setReclaimFee(death.getReclaimFee() + fee);
+				// What the game charged replaces an estimate made at death
+				death.setReclaimFee(pendingFeeEstimated ? fee : death.getReclaimFee() + fee);
+				pendingFeeEstimated = false;
 				historyChanged();
 				keeper.requestSave();
 				return;
@@ -1357,6 +1367,7 @@ public class TripTracker
 	private void expectReclaimFee(DeathRecord death)
 	{
 		deathBoss = s.tripBoss;
+		pendingFeeEstimated = false;
 		pendingDeath = death;
 		pendingDeathTrip = s.currentTrip;
 		pendingDeathIndex = s.currentTrip.getDeaths().indexOf(death);
@@ -1389,6 +1400,12 @@ public class TripTracker
 			deathBoss = s.tripBoss;
 			DeathRecord death = new DeathRecord();
 			death.setAt(now);
+			pendingFeeEstimated = s.tripBoss.isGravestoneFeeEstimated();
+			if (pendingFeeEstimated)
+			{
+				// The items are still in the containers at the death message; they go in the respawn tick
+				death.setReclaimFee(estimateGravestoneFee());
+			}
 			s.currentTrip.getDeaths().add(death);
 			pendingDeath = death;
 			pendingDeathTrip = s.currentTrip;
@@ -1456,6 +1473,36 @@ public class TripTracker
 	}
 
 	// ---- Inventory changes ----
+
+	/**
+	 * The gravestone's fee for everything in the inventory and worn right now, less the items kept on death.
+	 */
+	private long estimateGravestoneFee()
+	{
+		List<GravestoneFee.Stack> carried = new ArrayList<>();
+		for (int containerId : new int[]{InventoryID.INV, InventoryID.WORN})
+		{
+			ItemContainer container = client.getItemContainer(containerId);
+			if (container == null)
+			{
+				continue;
+			}
+			for (Item item : container.getItems())
+			{
+				if (item.getId() > 0 && item.getQuantity() > 0)
+				{
+					int id = prices.canonicalize(item.getId());
+					long price = prices.isTradeable(id) ? prices.price(id) : 0;
+					carried.add(new GravestoneFee.Stack(id, item.getQuantity(), price));
+				}
+			}
+		}
+		Player me = client.getLocalPlayer();
+		boolean skulled = me != null && me.getSkullIcon() != SkullIcon.NONE;
+		boolean protectItem = client.getVarbitValue(VarbitID.PRAYER_PROTECTITEM) == 1;
+		boolean ironman = GravestoneFee.hasIronmanDiscount(client.getVarbitValue(VarbitID.IRONMAN));
+		return GravestoneFee.estimate(carried, GravestoneFee.keptUnits(skulled, protectItem), ironman);
+	}
 
 	private void recordGraveMovePayment(Map<Integer, Long> removed, int tick)
 	{

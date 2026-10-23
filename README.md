@@ -211,9 +211,14 @@ the outside grace period, so walking out and back between kills keeps one trip.
   the boss appearing (the last two are the best fit to the logs and unverified).
 - Supplies follow the usual rules. The mushrooms, powders, salt and poisons gathered in Duke
   Sucellus' chamber are never supplies.
-- Dying ends the trip. Your items go to a gravestone outside the instance; the fee is recorded
-  when you check the grave and the game says "Payment has been taken from your bank: ... x
-  Coins" (unverified: no death in the logs).
+- Dying ends the trip. Your items go to a gravestone outside the instance. The fee is
+  estimated the moment you die from what you were carrying, by the gravestone's rules (per
+  stack at Grand Exchange value: free under 100k, 1,000 up to 1m, 10,000 up to 10m, 100,000
+  above, 500,000 at most, half for ironmen, after the 3 items kept on death, 4 with Protect
+  Item, none when skulled). A near-max setup pays the 500,000 cap. When you check the grave
+  and the game says "Payment has been taken from your bank: ... x Coins", that amount replaces
+  the estimate (the message is unverified for these graves: no death in the logs). Untradeable
+  items are taken as free.
 - Luck uses each boss's unique table (1 in 136, 90, 64 and 96 per kill): the vestige, the
   Soulreaper axe piece, the Virtus pieces and chromium ingots, which the OSRS Wiki lists as
   uniques. The vestige only drops on the third hit of its slot, so its luck is marked
