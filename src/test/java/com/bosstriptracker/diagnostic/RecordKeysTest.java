@@ -33,6 +33,13 @@ public class RecordKeysTest
 		assertTrue(RecordKeys.isPlannedBoss("duke sucellus (awakened)"));
 		assertTrue(RecordKeys.isPlannedBoss("whisperer"));
 		assertTrue(RecordKeys.isPlannedBoss("leviathan"));
+		// Planned diagnostic runs (2026-10-23); keys predicted from the boss names
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_Vorkath"));
+		assertTrue(RecordKeys.isPlannedBoss("vorkath"));
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_Phantom Muspah"));
+		assertTrue(RecordKeys.isPlannedBoss("phantom muspah"));
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_Doom of Mokhaiotl"));
+		assertTrue(RecordKeys.isPlannedBoss("doom of mokhaiotl"));
 	}
 
 	@Test
