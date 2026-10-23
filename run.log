@@ -3175,3 +3175,119 @@ WARNING: All illegal access operations will be denied in a future release
 2026-10-23 03:03:36 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.p.w.WorldHopperPlugin - Done pinging worlds in PT1M12.492228417S
 2026-10-23 03:03:37 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (321 != 5287)
 2026-10-23 03:03:37 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Set delay to 10
+2026-10-23 03:03:38 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (321 != 5288)
+2026-10-23 03:03:39 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (321 != 5289)
+2026-10-23 03:03:39 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:39 GMT-04:00 [Client] DEBUG n.r.client.config.ConfigManager - Setting configuration value for bosstriptracker.selectedBoss to doom_of_mokhaiotl
+2026-10-23 03:03:40 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (323 != 5291)
+2026-10-23 03:03:41 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (323 != 5292)
+2026-10-23 03:03:42 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (323 != 5293)
+2026-10-23 03:03:42 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:43 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (325 != 5295)
+2026-10-23 03:03:44 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (325 != 5296)
+2026-10-23 03:03:45 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (325 != 5297)
+2026-10-23 03:03:45 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:46 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (327 != 5299)
+2026-10-23 03:03:47 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (327 != 5300)
+2026-10-23 03:03:47 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Reset delay to 5
+2026-10-23 03:03:48 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (327 != 5301)
+2026-10-23 03:03:48 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:49 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (329 != 5303)
+2026-10-23 03:03:50 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (329 != 5304)
+2026-10-23 03:03:51 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (329 != 5305)
+2026-10-23 03:03:51 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:52 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (331 != 5307)
+2026-10-23 03:03:53 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (331 != 5308)
+2026-10-23 03:03:54 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (331 != 5309)
+2026-10-23 03:03:54 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:55 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (333 != 5311)
+2026-10-23 03:03:55 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:03:56 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (333 != 5312)
+2026-10-23 03:03:57 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (333 != 5313)
+2026-10-23 03:03:57 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:03:58 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (335 != 5315)
+2026-10-23 03:03:59 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (335 != 5316)
+2026-10-23 03:04:00 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (335 != 5317)
+2026-10-23 03:04:00 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:04:00 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Set delay to 10
+2026-10-23 03:04:01 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (337 != 5319)
+2026-10-23 03:04:02 GMT-04:00 [Client] DEBUG injected-client - Replacing archive 12/1049
+2026-10-23 03:04:02 GMT-04:00 [Client] DEBUG injected-client - Replacing archive 12/920
+2026-10-23 03:04:02 GMT-04:00 [Client] DEBUG injected-client - Replacing archive 12/84
+2026-10-23 03:04:02 GMT-04:00 [Client] DEBUG injected-client - Replacing archive 12/4742
+2026-10-23 03:04:02 GMT-04:00 [Client] DEBUG injected-client - Replacing archive 12/89
+2026-10-23 03:04:02 GMT-04:00 [Client] DEBUG injected-client - Replacing archive 12/223
+2026-10-23 03:04:02 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (337 != 5320)
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG injected-client - Game state changed: LOGIN_SCREEN (state: 10, 2 step: false)
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG injected-client - Cache is ready
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.tobqol.TheatreQOLPlugin - Resetting MaidenHandler
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.tobqol.TheatreQOLPlugin - Resetting BloatHandler
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.tobqol.TheatreQOLPlugin - Resetting NylocasHandler
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.tobqol.TheatreQOLPlugin - Resetting SotetsegHandler
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.tobqol.TheatreQOLPlugin - Resetting XarpusHandler
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.tobqol.TheatreQOLPlugin - Resetting VerzikHandler
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.a.wikisync.dps.DpsDataFetcher - WS player name changed prev=[24 Mentality] next=[null]
+2026-10-23 03:04:03 GMT-04:00 [Client] INFO  com.camjewell.HistoricalDataManager - Saved historical data to file for player '24 mentality'
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.c.ClueScrollJugglingPlugin - game state changed from 30 to LOGIN_SCREEN
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.c.ClueScrollJugglingPlugin - logout Client
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.controller.FlippingPlugin - 24 Mentality is logging out
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.controller.DataHandler - storing data
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.controller.DataHandler - accounts with unsaved changes are [24 Mentality]. Saving them.
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.db.TradePersister - Writing to file for 24 Mentality
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.controller.DataHandler - accountwide data changed, saving it.
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.db.TradePersister - Writing to file for accountwide
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.f.controller.FlippingPlugin - cancelling slot timers task on logout
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.nyloer.NyloerPlugin - Stopping Nyloer.
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG com.nyloer.NyloerPlugin - Resetting Nyloer.
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.o.persist.TcgStateFileBackupStore - OSRS TCG wrote save file tcg.save
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG c.r.autosync.AutoSyncScheduler - Player logged out, pausing sync timer. 3509 seconds remaining.
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG i.d.service.StateSyncScheduler - Paused state sync with 3515160ms remaining
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG n.r.client.RuntimeConfigRefresher - Skipping runtimeConfig refresh, next refresh at 2026-10-23T07:12:16.930094Z
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG n.r.c.plugins.discord.DiscordState - Events: [DiscordState.EventWithTime(type=IN_MENU, start=2026-10-23T07:04:03.219321Z, updated=2026-10-23T07:04:03.219246Z)]
+2026-10-23 03:04:03 GMT-04:00 [Client] DEBUG n.r.client.discord.DiscordService - Sending presence update DiscordPresence(state=In Menu, details=, startTimestamp=2026-10-23T07:04:03.219321Z, endTimestamp=null, largeImageKey=null, largeImageText=RuneLite v1.13.3, smallImageKey=null, smallImageText=null, partyId=null, partySize=0, partyMax=0, matchSecret=null, joinSecret=null, spectateSecret=null, instance=false)
+2026-10-23 03:04:03 GMT-04:00 [pool-2-thread-1] DEBUG c.f.controller.FlippingPlugin - not reloading data for 24 Mentality into the cache as this client was the last one to store it
+2026-10-23 03:04:03 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (337 != 5321)
+2026-10-23 03:04:03 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - timeout elapsed checking for echo reply
+2026-10-23 03:04:04 GMT-04:00 [pool-2-thread-1] DEBUG c.f.controller.DataHandler - Fetching accountwide data
+2026-10-23 03:04:04 GMT-04:00 [pool-2-thread-1] INFO  c.f.controller.RecipeHandler - Refreshed recipe mappings. Total items with recipes: 2788
+2026-10-23 03:04:04 GMT-04:00 [pool-2-thread-1] INFO  c.f.controller.RecipeHandler - Local recipes count: 0
+2026-10-23 03:04:04 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Reset delay to 5
+2026-10-23 03:04:16 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Set delay to 10
+2026-10-23 03:04:17 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Reset delay to 5
+2026-10-23 03:04:24 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigManager - Setting configuration value for xpTracker.rsprofile.Y6Y3Iav2.state to {"skills":{"MAGIC":{"s":19152184,"br":0,"ar":10351667,"t":5075340950},"HITPOINTS":{"s":46289389,"br":0,"ar":23692581,"t":5075339731},"STRENGTH":{"s":37767262,"br":0,"ar":37946953,"t":5075331148},"RANGED":{"s":57249128,"br":0,"ar":17083683,"t":5075298167},"DEFENCE":{"s":13847666,"br":0,"ar":3661106,"t":5009135240},"ATTACK":{"s":16173216,"br":0,"ar":284579,"t":4997143858},"PRAYER":{"s":1911587,"br":594674,"ar":2925600,"t":53399867},"MINING":{"s":2736566,"br":7928994,"ar":2371682,"t":601596974},"CRAFTING":{"s":1409589,"br":292695,"ar":305357,"t":1827773463},"FARMING":{"s":4922419,"br":0,"ar":85527,"t":4666295439},"HUNTER":{"s":2745088,"br":0,"ar":4208,"t":2120945683},"SLAYER":{"s":5472159,"br":44520,"ar":525,"t":2184254589},"AGILITY":{"s":1184172,"br":0,"ar":45441,"t":1918328129},"FLETCHING":{"s":783266,"br":0,"ar":240,"t":2154431303},"FISHING":{"s":1035622,"br":0,"ar":72682,"t":2445053488},"WOODCUTTING":{"s":1286066,"br":809499,"ar":1471400,"t":279053189},"COOKING":{"s":1211628,"br":0,"ar":2215,"t":2154644187},"CONSTRUCTION":{"s":2974394,"br":0,"ar":1787,"t":2142059305},"HERBLORE":{"s":981061,"br":0,"ar":2117,"t":2067274128},"RUNECRAFT":{"s":587496,"br":0,"ar":900,"t":2027559990},"FIREMAKING":{"s":2579142,"br":0,"ar":69,"t":1934326805},"THIEVING":{"s":4918428,"br":0,"ar":66512,"t":1832812226},"SMITHING":{"s":942366,"br":0,"ar":38,"t":1821854534}},"compactViewSkills":["ATTACK","DEFENCE","HITPOINTS","RANGED","MAGIC","COOKING","FLETCHING","FISHING","FIREMAKING","CRAFTING","SMITHING","HERBLORE","AGILITY","THIEVING","SLAYER","FARMING","RUNECRAFT","HUNTER","CONSTRUCTION"],"overall":{"s":222878260,"br":0,"ar":115328885,"t":5075340950}}
+2026-10-23 03:04:26 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:04:56 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:05:27 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:05:48 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Set delay to 10
+2026-10-23 03:05:54 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (374 != 5464)
+2026-10-23 03:05:55 GMT-04:00 [Client] DEBUG n.r.client.config.ConfigManager - Setting configuration value for bosstriptracker.selectedBoss to duke_sucellus
+2026-10-23 03:05:57 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:06:01 GMT-04:00 [Client] DEBUG n.r.client.config.ConfigManager - Setting configuration value for bosstriptracker.selectedBoss to whisperer
+2026-10-23 03:06:09 GMT-04:00 [Client] DEBUG n.r.client.config.ConfigManager - Setting configuration value for bosstriptracker.selectedBoss to vardorvis
+2026-10-23 03:06:16 GMT-04:00 [Client] DEBUG n.r.client.config.ConfigManager - Setting configuration value for bosstriptracker.selectedBoss to phantom_muspah
+2026-10-23 03:06:28 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:06:31 GMT-04:00 [Client] DEBUG n.r.c.p.antidrag.AntiDragPlugin - Reset delay to 5
+2026-10-23 03:06:43 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (390 != 5527)
+2026-10-23 03:06:46 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (391 != 5531)
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigManager - Profile $rsprofile changed on disk
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigManager - Saving profile 24 Mentality (MAC) (patch size: 5)
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigClient - Built URI: https://api.runelite.net/runelite-1.13.3/config/v3/449890766330750
+2026-10-23 03:06:47 GMT-04:00 [OkHttp https://api.runelite.net/...] DEBUG n.r.client.config.ConfigClient - Synchronized 5/0 configuration values
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigManager - incremental patch applied 3127 -> 3128
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigManager - Saving profile $rsprofile (patch size: 4)
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigClient - Built URI: https://api.runelite.net/runelite-1.13.3/config/v3/-1
+2026-10-23 03:06:47 GMT-04:00 [OkHttp https://api.runelite.net/...] DEBUG n.r.client.config.ConfigClient - Synchronized 4/0 configuration values
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ConfigManager - incremental patch applied 15524 -> 15525
+2026-10-23 03:06:47 GMT-04:00 [pool-2-thread-1] DEBUG n.r.client.config.ProfileManager - saving 8 profiles
+2026-10-23 03:06:50 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (392 != 5535)
+2026-10-23 03:06:53 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (393 != 5539)
+2026-10-23 03:06:56 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (394 != 5543)
+2026-10-23 03:06:58 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:06:59 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (395 != 5547)
+2026-10-23 03:07:28 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:07:59 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:08:13 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (419 != 5643)
+2026-10-23 03:08:26 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (423 != 5655)
+2026-10-23 03:08:30 GMT-04:00 [pool-2-thread-1] DEBUG c.andmcadams.wikisync.WikiSyncPlugin - ensuring active!!
+2026-10-23 03:08:32 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (425 != 5659)
+2026-10-23 03:08:35 GMT-04:00 [pool-8-thread-1] DEBUG n.r.c.plugins.worldhopper.ping.Ping - sequence number mismatch (426 != 5663)

@@ -61,6 +61,37 @@ public class LuckOverviewPreviewTest
 		render(dryness, nightmare, "build/luck-overview-nightmare.png");
 	}
 
+	/**
+	 * The Doom of Mokhaiotl: three uniques and the pet beside "All-time · 1,446 delves · KC 1,446". Four icons in one
+	 * row with that note clipped the treads' count at sidebar width (2026-10-23), so they go in a grid.
+	 */
+	@Test
+	public void doomPreviewKeepsEveryCount() throws Exception
+	{
+		com.bosstriptracker.boss.DoomOfMokhaiotlBoss doom = new com.bosstriptracker.boss.DoomOfMokhaiotlBoss();
+		List<DrynessView.Drop> uniques = Arrays.asList(
+			new DrynessView.Drop(ItemID.MOKHAIOTL_CLOTH, "Mokhaiotl cloth", 1 / 810.0, 1.0, 0, Collections.<Integer>emptyList()),
+			new DrynessView.Drop(ItemID.EYE_OF_AYAK_UNCHARGED, "Eye of Ayak (uncharged)", 1 / 810.0, 1.0, 1, Collections.<Integer>emptyList()),
+			new DrynessView.Drop(ItemID.AVERNIC_TREADS, "Avernic treads", 1 / 810.0, 1.0, 1, Collections.<Integer>emptyList()));
+		DrynessView.Drop pet = new DrynessView.Drop(ItemID.DOMPET, "Dom", 1 / 750.0, 0.3, 0, Collections.<Integer>emptyList());
+		DrynessView dryness = dryness().toBuilder()
+			.words(new com.bosstriptracker.view.Words("delve", "burrow"))
+			.anyUniqueRate(3 / 810.0)
+			.uniques(uniques)
+			.pet(pet)
+			.allTime(DrynessView.AllTime.builder()
+				.lootKills(1_446)
+				.killCount(1_446)
+				.uniquesReceived(2)
+				.expectedUniques(3.04)
+				.uniques(uniques)
+				.pet(pet)
+				.collectionLogReadAt(1_761_200_000_000L)
+				.build())
+			.build();
+		render(dryness, doom, "build/luck-overview-doom.png");
+	}
+
 	private static void render(DrynessView dryness, com.bosstriptracker.boss.BossDefinition boss, String file)
 		throws Exception
 	{
@@ -74,6 +105,9 @@ public class LuckOverviewPreviewTest
 			card.setSize(WIDTH, card.getPreferredSize().height);
 			layout(card);
 			layout(card);
+			List<String> clipped = new ArrayList<>();
+			findClippedCounts(card, clipped);
+			assertTrue("Unique counts clipped: " + clipped, clipped.isEmpty());
 
 			BufferedImage image = new BufferedImage(WIDTH * 2, card.getHeight() * 2, BufferedImage.TYPE_INT_RGB);
 			Graphics2D g = image.createGraphics();
@@ -119,6 +153,29 @@ public class LuckOverviewPreviewTest
 				.pet(pet)
 				.build())
 			.build();
+	}
+
+	/**
+	 * Every "xN" count label must be laid out at least as wide as its text.
+	 */
+	private static void findClippedCounts(Container container, List<String> clipped)
+	{
+		for (Component child : container.getComponents())
+		{
+			if (child instanceof JLabel)
+			{
+				JLabel label = (JLabel) child;
+				String text = label.getText();
+				if (text != null && text.startsWith("x") && label.getWidth() < label.getPreferredSize().width)
+				{
+					clipped.add(text + " (" + label.getWidth() + " of " + label.getPreferredSize().width + "px)");
+				}
+			}
+			if (child instanceof Container)
+			{
+				findClippedCounts((Container) child, clipped);
+			}
+		}
 	}
 
 	private static void placeholderIcons(Container container)

@@ -38,7 +38,12 @@ class LuckOverviewCard extends JPanel
 	/**
 	 * Uniques plus the pet that fit on one row beside the source note.
 	 */
-	private static final int MAX_IN_ROW = 4;
+	/**
+	 * Up to this many uniques (pet included) sit in one row with the source note beside them; with more, the note
+	 * takes the row's width, so they go in a grid of three with the note under it (four icons and "All-time · 1,446
+	 * delves · KC 1,446" clipped the last count at sidebar width).
+	 */
+	private static final int MAX_IN_ROW = 3;
 
 	private final ItemManager itemManager;
 	private final JLabel title = new JLabel("Luck Status:");
