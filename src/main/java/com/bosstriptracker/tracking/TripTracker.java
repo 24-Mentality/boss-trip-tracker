@@ -66,6 +66,7 @@ import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.ItemDespawned;
 import net.runelite.api.events.ItemSpawned;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.NpcChanged;
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.InventoryID;
@@ -931,7 +932,13 @@ public class TripTracker
 			{
 				long now = System.currentTimeMillis();
 				lastActivityAt = now;
-				boolean onBoss = s.tripBoss.getBossNpcIds().contains(((NPC) event.getActor()).getId()) && hitsplat.getAmount() > 0;
+				boolean bossNpc = s.tripBoss.getBossNpcIds().contains(((NPC) event.getActor()).getId());
+				boolean onBoss = bossNpc && hitsplat.getAmount() > 0;
+				if (bossNpc && s.tripBoss.isFightStartOnFirstHit() && loot.getFightStartedAt() == null)
+				{
+					// Vardorvis: the game's fight clock runs from your first hitsplat on him, a miss included
+					loot.fightStarts(now);
+				}
 				if (s.inLairPause == TripSession.InLairPause.IDLE
 					|| (s.inLairPause == TripSession.InLairPause.MANUAL && config.autoResumeOnAttack() && onBoss))
 				{
@@ -1112,6 +1119,21 @@ public class TripTracker
 	{
 		BossDefinition boss = registry.forBossNpc(event.getNpc().getId());
 		if (boss != null && boss.isFightStartOnSpawn())
+		{
+			loot.fightStarts(System.currentTimeMillis());
+		}
+	}
+
+	/**
+	 * A boss that appears by turning from something else (the Whisperer from the Odd Figure) starts its fight the same
+	 * way; a change between two of its own forms doesn't.
+	 */
+	@Subscribe
+	public void onNpcChanged(NpcChanged event)
+	{
+		BossDefinition boss = registry.forBossNpc(event.getNpc().getId());
+		if (boss != null && boss.isFightStartOnSpawn() && event.getOld() != null
+			&& !boss.getBossNpcIds().contains(event.getOld().getId()))
 		{
 			loot.fightStarts(System.currentTimeMillis());
 		}

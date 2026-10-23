@@ -62,4 +62,12 @@ public class ChatPatternsTest
 		assertEquals(Boolean.FALSE, ChatPatterns.thrall("@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"));
 		assertNull(ChatPatterns.thrall("The south west totem is fully charged."));
 	}
+
+	@Test
+	public void bankPaymentAfterADeath()
+	{
+		assertEquals(Long.valueOf(60_000), ChatPatterns.bankPayment("Payment has been taken from your bank: 60,000 x Coins"));
+		assertEquals(Long.valueOf(125_000), ChatPatterns.bankPayment("Payment has been taken from your bank: 125,000 x Coins"));
+		assertNull(ChatPatterns.bankPayment("You successfully retrieved everything from your gravestone."));
+	}
 }

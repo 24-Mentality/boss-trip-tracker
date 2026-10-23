@@ -23,6 +23,11 @@ public final class ChatPatterns
 	 */
 	private static final Pattern THRALL_RAISED = Pattern.compile("You resurrect an? [a-z ]+ thrall\\.$");
 	private static final Pattern THRALL_GONE = Pattern.compile("Your [a-z ]+ thrall returns to the grave\\.$");
+	/**
+	 * Getting items back after a death, paid from the bank: Sister Senga at the Nightmare and the gravestone outside
+	 * the Fractured Archive both say "Payment has been taken from your bank: 60,000 x Coins".
+	 */
+	private static final Pattern BANK_PAYMENT = Pattern.compile("^Payment has been taken from your bank: ([\\d,]+) x Coins");
 
 	public static final String DEATH = "Oh dear, you are dead!";
 	public static final String PET_FOLLOWER = "You have a funny feeling like you're being followed.";
@@ -104,5 +109,15 @@ public final class ChatPatterns
 			return false;
 		}
 		return null;
+	}
+
+	/**
+	 * @param text a message without colour tags
+	 * @return the coins taken from the bank to get items back after a death, or null if the message isn't that
+	 */
+	public static Long bankPayment(String text)
+	{
+		Matcher m = BANK_PAYMENT.matcher(text);
+		return m.find() ? Long.valueOf(m.group(1).replace(",", "")) : null;
 	}
 }

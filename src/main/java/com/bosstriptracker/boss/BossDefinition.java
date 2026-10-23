@@ -94,6 +94,15 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * The game's fight clock starts at your first hitsplat on the boss, misses included (Vardorvis, who is already
+	 * there when you walk in and respawns in place).
+	 */
+	public boolean isFightStartOnFirstHit()
+	{
+		return false;
+	}
+
+	/**
 	 * @param text a game message without colour tags
 	 * @return how long after this message the game's fight clock starts, or null if it doesn't start a fight
 	 */
