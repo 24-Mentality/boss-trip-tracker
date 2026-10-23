@@ -31,6 +31,10 @@ public class AllTimeCounts
 	 * otherwise. {@link #getLootKills()} and {@link #getKillCount()} are then their total.
 	 */
 	Map<String, Integer> variantKillCounts;
+	/**
+	 * When the boss's Collection Log page these counts also draw on was read; 0 if they are the Loot Tracker's alone.
+	 */
+	long collectionLogReadAt;
 
 	public AllTimeCounts(int lootKills, Integer killCount, long firstRecordedAt, long lastRecordedAt, Map<Integer, Integer> drops)
 	{
@@ -40,12 +44,19 @@ public class AllTimeCounts
 	public AllTimeCounts(int lootKills, Integer killCount, long firstRecordedAt, long lastRecordedAt, Map<Integer, Integer> drops,
 		Map<String, Integer> variantKillCounts)
 	{
+		this(lootKills, killCount, firstRecordedAt, lastRecordedAt, drops, variantKillCounts, 0);
+	}
+
+	public AllTimeCounts(int lootKills, Integer killCount, long firstRecordedAt, long lastRecordedAt, Map<Integer, Integer> drops,
+		Map<String, Integer> variantKillCounts, long collectionLogReadAt)
+	{
 		this.lootKills = lootKills;
 		this.killCount = killCount;
 		this.firstRecordedAt = firstRecordedAt;
 		this.lastRecordedAt = lastRecordedAt;
 		this.drops = drops;
 		this.variantKillCounts = variantKillCounts;
+		this.collectionLogReadAt = collectionLogReadAt;
 	}
 
 	public int dropped(int itemId)

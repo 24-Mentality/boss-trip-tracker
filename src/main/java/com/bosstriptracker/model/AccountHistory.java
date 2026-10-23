@@ -9,12 +9,14 @@ import lombok.Data;
  * Schema 1 kept the Maggot King's data at the top level; schema 2 keeps each boss's data under its id
  * (see HistoryMigrator); schema 3 is the same layout with Scythe of Vitur charges repriced (see
  * SupplyCorrections); schema 4 adds fields for raids (Kill.teamUniques, BossHistory.gameDryStreak and two trip end
- * reasons) with no change to existing data; schema 5 adds the game's team dry streak (BossHistory.gameTeamDryStreak).
+ * reasons) with no change to existing data; schema 5 adds the game's team dry streak (BossHistory.gameTeamDryStreak);
+ * schema 6 is the folder layout (HistoryLayout); schema 7 adds the Collection Log page read for each boss
+ * (BossHistory.collectionLog) with no change to existing data.
  */
 @Data
 public class AccountHistory
 {
-	public static final int CURRENT_SCHEMA_VERSION = 6;
+	public static final int CURRENT_SCHEMA_VERSION = 7;
 
 	private int schemaVersion = CURRENT_SCHEMA_VERSION;
 	private long accountHash;

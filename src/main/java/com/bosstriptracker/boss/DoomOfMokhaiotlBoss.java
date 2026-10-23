@@ -287,6 +287,16 @@ public final class DoomOfMokhaiotlBoss extends TableBoss
 		return new KillContext(PAST_RUN, null);
 	}
 
+	/**
+	 * The page counts "Total delves: 1,446" (every level completed, this boss's kill unit), "Deep delves" and
+	 * "Deepest delve".
+	 */
+	@Override
+	public Integer collectionLogKills(Map<String, Integer> counts, String variant)
+	{
+		return counts.get("Total delves");
+	}
+
 	@Override
 	public boolean isLuckApproximate()
 	{

@@ -144,6 +144,37 @@ public class HistoryMigrationTest
 		assertFalse(ids.contains(first.getId()));
 	}
 
+	/**
+	 * A folder written at schema 6 loads as it is, with its account file kept as a backup before the first save at 7
+	 * (which adds the Collection Log page). Nothing else in the folder changes.
+	 */
+	@Test
+	public void schema6FolderKeepsItsAccountFileBeforeTheFirstSaveAtSchema7() throws Exception
+	{
+		Files.createDirectories(root.resolve("history-42/maggot_king"));
+		String account = "{\"schemaVersion\":6,\"accountHash\":42,\"bosses\":{\"maggot_king\":{\"lastUniqueKc\":1920,\"eggPops\":[],"
+			+ "\"polishOutcomes\":{}}}}";
+		write("history-42/account.json", account);
+		write("history-42/maggot_king/trips-2026-09.jsonl", "{\"id\":\"t1\",\"startedAt\":1758000000000,\"endedAt\":1758001000000}\n");
+
+		HistoryStore.LoadResult result = load();
+
+		assertFalse(result.isReadOnly());
+		assertEquals(6, result.getSourceVersion());
+		assertEquals(Integer.valueOf(1920), result.getHistory().getBosses().get(MaggotKingBoss.ID).getLastUniqueKc());
+		assertNull(result.getHistory().getBosses().get(MaggotKingBoss.ID).getCollectionLog());
+		assertEquals(1, result.getHistory().getBosses().get(MaggotKingBoss.ID).getTrips().size());
+		Path backup = root.resolve("history-42/account.json.v6-backup");
+		assertTrue(Files.exists(backup));
+		assertEquals(account, new String(Files.readAllBytes(backup), StandardCharsets.UTF_8));
+
+		// Loading again doesn't touch the backup; the account file is still the schema 6 one until a save
+		load();
+		assertEquals(account, new String(Files.readAllBytes(backup), StandardCharsets.UTF_8));
+		assertTrue(new String(Files.readAllBytes(root.resolve("history-42/account.json")), StandardCharsets.UTF_8)
+			.contains("\"schemaVersion\":6"));
+	}
+
 	private HistoryStore.LoadResult load()
 	{
 		AtomicReference<HistoryStore.LoadResult> result = new AtomicReference<>();

@@ -7,8 +7,10 @@ import static org.junit.Assert.assertTrue;
 import com.bosstriptracker.boss.MaggotKingBoss;
 import com.bosstriptracker.model.AccountHistory;
 import com.bosstriptracker.model.BossHistory;
+import com.bosstriptracker.model.CollectionLogSnapshot;
 import com.bosstriptracker.model.Trip;
 import com.google.gson.Gson;
+import net.runelite.api.gameval.ItemID;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -136,6 +138,30 @@ public class HistoryLayoutTest
 
 		assertEquals(1, loaded.getUnreadable().size());
 		assertEquals(3, loaded.getHistory().getBosses().get(MaggotKingBoss.ID).getTrips().size());
+	}
+
+	/**
+	 * Schema 7: a boss's Collection Log page is kept in the account file and comes back the same.
+	 */
+	@Test
+	public void theCollectionLogPageRoundTrips() throws Exception
+	{
+		CollectionLogSnapshot page = new CollectionLogSnapshot();
+		page.setReadAt(1_761_200_000_000L);
+		page.getItems().put(ItemID.ELDER_VENATOR_FANG, 6);
+		page.getCounts().put("Maggot King kills", 1_007);
+		history.getBosses().get(MaggotKingBoss.ID).setCollectionLog(page);
+
+		HistoryLayout.write(gson, folder, HistoryLayout.Snapshot.of(history));
+		HistoryLayout.Loaded loaded = HistoryLayout.read(gson, folder);
+
+		CollectionLogSnapshot back = loaded.getHistory().getBosses().get(MaggotKingBoss.ID).getCollectionLog();
+		assertEquals(gson.toJson(page), gson.toJson(back));
+		assertEquals(6, back.count(ItemID.ELDER_VENATOR_FANG));
+		assertEquals(0, back.count(ItemID.CRIMSON_KISTEN));
+		assertEquals(AccountHistory.CURRENT_SCHEMA_VERSION, loaded.getHistory().getSchemaVersion());
+		assertTrue(new String(Files.readAllBytes(root.resolve(HistoryLayout.ACCOUNT_FILE)), StandardCharsets.UTF_8)
+			.contains("\"collectionLog\""));
 	}
 
 	@Test

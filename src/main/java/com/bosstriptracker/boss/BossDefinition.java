@@ -665,6 +665,47 @@ public abstract class BossDefinition
 	public abstract List<AllTimeSource> getAllTimeSources();
 
 	/**
+	 * Whether a Collection Log page is this boss's. Pages are named like the boss, some with "The" in front ("The
+	 * Leviathan", "The Nightmare", "The Fractured Archive").
+	 */
+	public boolean isCollectionLogPage(String pageName)
+	{
+		return stripThe(pageName).equalsIgnoreCase(stripThe(getDisplayName()));
+	}
+
+	/**
+	 * The kill count on the boss's Collection Log page that luck is counted over, for a variant (null for all of the
+	 * boss): by default the page's one "&lt;name&gt; kills" or "&lt;name&gt; completions" line. Null when the page has
+	 * none, or when it counts something other than the kills luck uses (the Maggot King's page counts every kill,
+	 * luck only Open-stomach ones).
+	 *
+	 * @param counts the page's header counts by label
+	 */
+	public Integer collectionLogKills(Map<String, Integer> counts, String variant)
+	{
+		Integer found = null;
+		for (Map.Entry<String, Integer> e : counts.entrySet())
+		{
+			String label = e.getKey();
+			if ((label.endsWith(" kills") || label.endsWith(" completions")) && !label.contains("("))
+			{
+				if (found != null)
+				{
+					return null;
+				}
+				found = e.getValue();
+			}
+		}
+		return found;
+	}
+
+	private static String stripThe(String name)
+	{
+		String trimmed = name == null ? "" : name.trim();
+		return trimmed.regionMatches(true, 0, "The ", 0, 4) ? trimmed.substring(4).trim() : trimmed;
+	}
+
+	/**
 	 * File name part for exports, e.g. "maggot-king".
 	 */
 	public String getFileSlug()

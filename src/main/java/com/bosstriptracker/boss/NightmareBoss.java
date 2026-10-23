@@ -181,6 +181,26 @@ public final class NightmareBoss extends TableBoss
 		return m.find() ? Long.valueOf(m.group(1).replace(",", "")) : null;
 	}
 
+	/**
+	 * One page for both: "Phosani's Nightmare kills: 194" and "Nightmare kills: 2".
+	 */
+	@Override
+	public Integer collectionLogKills(Map<String, Integer> counts, String variant)
+	{
+		Integer phosani = counts.get("Phosani's Nightmare kills");
+		Integer regular = counts.get("Nightmare kills");
+		if (PHOSANI.equals(variant))
+		{
+			return phosani;
+		}
+		if (REGULAR.equals(variant))
+		{
+			return regular;
+		}
+		return phosani == null && regular == null ? null
+			: Integer.valueOf((phosani == null ? 0 : phosani) + (regular == null ? 0 : regular));
+	}
+
 	@Override
 	public String getChargeNote(ChargeType type)
 	{

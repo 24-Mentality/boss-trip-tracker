@@ -170,5 +170,9 @@ public class DrynessView
 		 * Expected includes eggs popped.
 		 */
 		Drop pet;
+		/**
+		 * When the boss's Collection Log page these numbers also draw on was read; null if it hasn't been.
+		 */
+		Long collectionLogReadAt;
 	}
 }

@@ -10,6 +10,7 @@ import com.bosstriptracker.boss.LootChoice;
 import com.bosstriptracker.model.AccountHistory;
 import com.bosstriptracker.model.AllTimeCounts;
 import com.bosstriptracker.model.BossHistory;
+import com.bosstriptracker.model.CollectionLogSnapshot;
 import com.bosstriptracker.model.DeathRecord;
 import com.bosstriptracker.model.EggPop;
 import com.bosstriptracker.model.Kill;
@@ -72,7 +73,11 @@ import net.runelite.api.events.ItemSpawned;
 import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.NpcChanged;
 import net.runelite.api.events.NpcSpawned;
+import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.ScriptID;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.ItemID;
 import net.runelite.api.gameval.VarbitID;
@@ -1869,13 +1874,77 @@ public class TripTracker
 	 */
 	private AllTimeCounts allTime(BossDefinition boss)
 	{
-		String key = boss.getId() + "/" + s.selectedVariant;
+		BossHistory history = s.history == null ? null : s.history.getBosses().get(boss.getId());
+		CollectionLogSnapshot log = history == null ? null : history.getCollectionLog();
+		String key = boss.getId() + "/" + s.selectedVariant + "/" + (log == null ? 0 : log.getReadAt());
 		if (!key.equals(allTimeCacheKey))
 		{
-			allTimeCache = allTimeRecords.read(boss.getAllTimeSources(), s.selectedVariant);
+			// The Collection Log page fills in what the Loot Tracker has lost (it forgets a boss a year after the last drop)
+			allTimeCache = CollectionLogMerge.merge(allTimeRecords.read(boss.getAllTimeSources(), s.selectedVariant), log, boss,
+				s.selectedVariant);
 			allTimeCacheKey = key;
 		}
 		return allTimeCache;
+	}
+
+	/**
+	 * The Collection Log drawing a page: when it's a tracked boss's, the page is kept as that boss's all-time count of
+	 * uniques and kills.
+	 */
+	@Subscribe
+	public void onScriptPostFired(ScriptPostFired event)
+	{
+		if (event.getScriptId() != ScriptID.COLLECTION_DRAW_LIST || s.history == null || s.readOnly)
+		{
+			return;
+		}
+		List<String> header = new ArrayList<>();
+		Widget headerWidget = client.getWidget(InterfaceID.Collection.HEADER_TEXT);
+		Widget[] texts = headerWidget != null ? headerWidget.getChildren() : null;
+		if (texts != null)
+		{
+			for (Widget text : texts)
+			{
+				if (text != null)
+				{
+					header.add(text.getText());
+				}
+			}
+		}
+		List<CollectionLogPage.Slot> slots = new ArrayList<>();
+		Widget itemsWidget = client.getWidget(InterfaceID.Collection.ITEMS_CONTENTS);
+		Widget[] children = itemsWidget != null ? itemsWidget.getChildren() : null;
+		if (children != null)
+		{
+			for (Widget slot : children)
+			{
+				if (slot != null && slot.getItemId() > 0)
+				{
+					slots.add(new CollectionLogPage.Slot(slot.getItemId(), slot.getItemQuantity(), slot.getOpacity() == 0));
+				}
+			}
+		}
+		CollectionLogPage page = CollectionLogPage.parse(header, slots);
+		if (page == null)
+		{
+			return;
+		}
+		for (BossDefinition boss : registry.all())
+		{
+			if (boss.isCollectionLogPage(page.getName()))
+			{
+				CollectionLogSnapshot snapshot = new CollectionLogSnapshot();
+				snapshot.setReadAt(System.currentTimeMillis());
+				snapshot.setItems(new HashMap<>(page.getItems()));
+				snapshot.setCounts(new LinkedHashMap<>(page.getCounts()));
+				s.history.boss(boss.getId()).setCollectionLog(snapshot);
+				log.debug("Collection Log page for {} read: {} items, {}", boss.getId(), page.getItems().size(), page.getCounts());
+				allTimeRecordsInvalid();
+				historyChanged();
+				keeper.requestSave();
+				return;
+			}
+		}
 	}
 
 	private void allTimeRecordsInvalid()

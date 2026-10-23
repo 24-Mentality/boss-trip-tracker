@@ -227,4 +227,14 @@ public final class MaggotKingBoss extends TableBoss
 		return "Stomach kills";
 	}
 
+
+	/**
+	 * The page counts every kill ("Maggot King kills"), Take-eggs included, but luck is counted over Open-stomach kills
+	 * only, so the page's count isn't used; its items still are.
+	 */
+	@Override
+	public Integer collectionLogKills(Map<String, Integer> counts, String variant)
+	{
+		return null;
+	}
 }

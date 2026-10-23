@@ -736,6 +736,7 @@ public class ViewBuilder
 			.expectedUniques(expectedAny)
 			.uniques(uniques)
 			.pet(pet)
+			.collectionLogReadAt(counts.getCollectionLogReadAt() > 0 ? counts.getCollectionLogReadAt() : null)
 			.build();
 	}
 

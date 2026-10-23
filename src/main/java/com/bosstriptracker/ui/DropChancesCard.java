@@ -180,8 +180,10 @@ class DropChancesCard extends JPanel
 		{
 			// All-time: the Loot Tracker records every loot-dropping kill and its drops
 			int kills = allTime.getLootKills();
-			basis = dryness.getWords().count(kills) + " recorded by RuneLite's Loot Tracker since "
-				+ UiFormat.date(allTime.getFirstRecordedAt())
+			basis = dryness.getWords().count(kills) + " recorded by RuneLite's Loot Tracker"
+				+ (allTime.getFirstRecordedAt() > 0 ? " since " + UiFormat.date(allTime.getFirstRecordedAt()) : "")
+				+ (allTime.getCollectionLogReadAt() != null
+				? " and your Collection Log (read " + UiFormat.date(allTime.getCollectionLogReadAt()) + ")" : "")
 				+ (allTime.getKillCount() != null ? String.format(Locale.ROOT, " (KC %,d)", allTime.getKillCount()) : "");
 			source.setText(DropChances.source(dryness));
 		}

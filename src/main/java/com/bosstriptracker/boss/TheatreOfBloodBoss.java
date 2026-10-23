@@ -449,4 +449,28 @@ public final class TheatreOfBloodBoss extends TableBoss
 		// A missed broadcast still leaves your own
 		return Math.max(team, countMine(trip));
 	}
+
+	/**
+	 * One page for every mode: "Theatre of Blood completions" (Normal), "Theatre of Blood (Entry) completions" and
+	 * "Theatre of Blood (Hard) completions". Entry raids have no uniques, so they never count.
+	 */
+	@Override
+	public Integer collectionLogKills(Map<String, Integer> counts, String variant)
+	{
+		Integer normal = counts.get("Theatre of Blood completions");
+		Integer hard = counts.get("Theatre of Blood (Hard) completions");
+		if (NORMAL.equals(variant))
+		{
+			return normal;
+		}
+		if (HARD.equals(variant))
+		{
+			return hard;
+		}
+		if (ENTRY.equals(variant))
+		{
+			return null;
+		}
+		return normal == null && hard == null ? null : Integer.valueOf((normal == null ? 0 : normal) + (hard == null ? 0 : hard));
+	}
 }

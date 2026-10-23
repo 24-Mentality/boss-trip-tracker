@@ -199,6 +199,10 @@ public class HistoryStore
 		HistoryLayout.Loaded loaded = HistoryLayout.read(gson, folder);
 		AccountHistory history = loaded.getHistory();
 		history.setAccountHash(accountHash);
+		if (history.getSchemaVersion() < AccountHistory.CURRENT_SCHEMA_VERSION)
+		{
+			backUpAccountFile(folder, history.getSchemaVersion());
+		}
 		List<String> unreadable = new java.util.ArrayList<>(loaded.getUnreadable());
 		if (alsoUnreadable != null)
 		{
@@ -272,6 +276,22 @@ public class HistoryStore
 			return new LoadResult(history, true, decoded.getSourceVersion(), null);
 		}
 		return new LoadResult(history, false, decoded.getSourceVersion(), null);
+	}
+
+	/**
+	 * A folder from an older schema is first written at the current one on the next save: its account file (the
+	 * only file whose layout changes between folder schemas) is kept beside it as "account.json.vN-backup", once.
+	 */
+	private static void backUpAccountFile(Filepath folder, int version) throws IOException
+	{
+		Filepath account = folder.joinSegment(HistoryLayout.ACCOUNT_FILE);
+		Filepath backup = folder.joinSegment(HistoryLayout.ACCOUNT_FILE + ".v" + version + "-backup");
+		if (account.exists() && !backup.exists())
+		{
+			account.copyTo(backup);
+			log.info("Trip history folder is at schema {}; its account file is kept as {} before it's written at schema {}",
+				version, backup.getFileName(), AccountHistory.CURRENT_SCHEMA_VERSION);
+		}
 	}
 
 	/**

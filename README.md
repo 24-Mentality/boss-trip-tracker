@@ -21,7 +21,10 @@ No combat or mechanic help of any kind: it only tracks loot, supplies, costs, ti
   unique and the pet.
 - **History:** kills per day, week, month and year, a yearly heatmap, your best day (PB) per
   period, a profit chart and a card for every trip.
-- **Lifetime:** totals, all-time loot from RuneLite's Loot Tracker, supplies by category.
+- **Lifetime:** totals, all-time loot from RuneLite's Loot Tracker, supplies by category. Open the
+  Collection Log at a boss and the plugin reads that page too: RuneLite's Loot Tracker forgets a
+  boss a year after its last drop, and the log keeps every unique, pet and kill count. The
+  larger of the two counts is shown, and the Luck card says when the page was last read.
 - **Share cards** for Discord, and optional automatic screenshots after a unique or pet.
 - **Kill goals** with kills per hour and time to goal, and an optional overlay box.
 

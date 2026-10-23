@@ -227,9 +227,15 @@ class LuckOverviewCard extends JPanel
 		tier.setToolTipText(help);
 		title.setToolTipText(help);
 		source.setText((luck.isAllTime() ? "All-time" : "Tracked") + (luck.isApproximate() ? " (approx.)" : ""));
+		Long logReadAt = dryness.getAllTime() == null ? null : dryness.getAllTime().getCollectionLogReadAt();
 		source.setToolTipText(UiFormat.tooltip(luck.isAllTime()
-			? "From RuneLite's Loot Tracker record: " + words.count(luck.getBasisKills()) + "."
-			: String.format(Locale.ROOT, "From the %,d %s this plugin has tracked.", luck.getBasisKills(), boss.getLuckKillsName())));
+			? (logReadAt != null
+			? "From RuneLite's Loot Tracker record and your Collection Log (read " + UiFormat.date(logReadAt) + "): "
+			+ words.count(luck.getBasisKills()) + ". Open the log at this boss again to refresh it."
+			: "From RuneLite's Loot Tracker record: " + words.count(luck.getBasisKills()) + ". The Loot Tracker forgets"
+			+ " a boss a year after its last drop; open the Collection Log at this boss to add what it has lost.")
+			: String.format(Locale.ROOT, "From the %,d %s this plugin has tracked.", luck.getBasisKills(), boss.getLuckKillsName())
+			+ " Open the Collection Log at this boss for your all-time uniques."));
 
 		String expected = luck.isRatesPending() ? "?"
 			: String.format(Locale.ROOT, luck.getExpected() >= 10 ? "%.1f" : "%.2f", luck.getExpected());

@@ -42,6 +42,10 @@ public class BossHistory
 	 * Tarnished item id to (polished result id to count), for every polish seen (Maggot King only).
 	 */
 	private Map<Integer, Map<Integer, Integer>> polishOutcomes = new HashMap<>();
+	/**
+	 * The boss's Collection Log page as last read; null if never read. Added in schema 7.
+	 */
+	private CollectionLogSnapshot collectionLog;
 
 	/**
 	 * Fills in lists and maps missing from a file (older versions, hand edits), so callers never see null.
@@ -75,6 +79,7 @@ public class BossHistory
 		copy.gameDryStreakKc = gameDryStreakKc;
 		copy.gameTeamDryStreak = gameTeamDryStreak;
 		copy.gameTeamDryStreakAt = gameTeamDryStreakAt;
+		copy.collectionLog = collectionLog == null ? null : collectionLog.copy();
 		for (EggPop pop : eggPops)
 		{
 			copy.eggPops.add(pop.copy());
