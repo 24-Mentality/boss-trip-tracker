@@ -26,9 +26,10 @@ No combat or mechanic help of any kind: it only tracks loot, supplies, costs, ti
 - **Kill goals** with kills per hour and time to goal, and an optional overlay box.
 
 **Supported bosses:** the Maggot King in Vampyrium, Phosani's Nightmare, the Theatre of
-Blood (Entry, Normal and Hard Mode) and the Fractured Archive (trips, deaths, wipe fees and
-supplies; luck once Jagex publishes its drop rates). The regular Nightmare's kills aren't
-tracked yet. More bosses are planned. Formerly **Maggot King Trip Tracker**.
+Blood (Entry, Normal and Hard Mode), the Fractured Archive (trips, deaths, wipe fees and
+supplies; luck once Jagex publishes its drop rates) and the Forgotten Four of Desert Treasure
+II: Vardorvis, Duke Sucellus, the Whisperer and the Leviathan. The regular Nightmare's kills
+aren't tracked yet. More bosses are planned. Formerly **Maggot King Trip Tracker**.
 
 ## Requirements
 
@@ -194,6 +195,32 @@ logging out).
   known.
 - Potions drunk from a chugging barrel inside the raid aren't tracked yet (the barrel's
   contents aren't in your inventory).
+
+For Vardorvis, Duke Sucellus, the Whisperer and the Leviathan (each its own boss in the
+dropdown): a trip runs from entering the arena (the ritual site, the Duke's chamber, the
+Whisperer's part of the Lassar Undercity including the shadow realm, the Leviathan's island)
+until you teleport out or die. Stepping back out the way you came (the Stranglewood, the
+corridor to the Duke, the approach to the Whisperer, the Leviathan's dock) pauses the trip for
+the outside grace period, so walking out and back between kills keeps one trip.
+
+- Kills come from the kill-count message, and loot from the Loot Tracker's event for the kill
+  (the drop lands on the floor in front of you and the event lists it). Gold rings are
+  recorded as loot, not uniques: they mark progress towards the vestige.
+- The kill timer matches the game's fight clock: Vardorvis from your first hit on him (a miss
+  counts), Duke Sucellus from "Duke Sucellus awakens...", the Whisperer and the Leviathan from
+  the boss appearing (the last two are the best fit to the logs and unverified).
+- Supplies follow the usual rules. The mushrooms, powders, salt and poisons gathered in Duke
+  Sucellus' chamber are never supplies.
+- Dying ends the trip. Your items go to a gravestone outside the instance; the fee is recorded
+  when you check the grave and the game says "Payment has been taken from your bank: ... x
+  Coins" (unverified: no death in the logs).
+- Luck uses each boss's unique table (1 in 136, 90, 64 and 96 per kill): the vestige, the
+  Soulreaper axe piece, the Virtus pieces and chromium ingots, which the OSRS Wiki lists as
+  uniques. The vestige only drops on the third hit of its slot, so its luck is marked
+  approximate. Awakener's orbs and quartz are tertiaries at the wiki's average rates; the
+  one-off tablets aren't expected. Awakened kills are built from RuneLite's naming
+  ("Vardorvis (Awakened)", three times the table rate) and have no chip until one is seen.
+  RuneLite keeps one loot record per boss, so past awakened kills count at the normal rate.
 
 For Phosani's Nightmare: a trip runs from drinking from the Pool of Nightmares until you
 leave the dream (through the barrier, which works like walking out of the Maggot King's lair,

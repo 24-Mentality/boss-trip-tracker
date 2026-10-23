@@ -24,6 +24,15 @@ public class RecordKeysTest
 		assertTrue(RecordKeys.isPlannedBoss("drops_EVENT_Fractured Archive"));
 		assertTrue(RecordKeys.isPlannedBoss("fractured archive"));
 		assertTrue(RecordKeys.isPlannedBoss("the fractured archive"));
+		// The Forgotten Four: Loot Tracker names from the log of 2026-10-22, kill-count keys from the messages
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_Vardorvis"));
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_Duke Sucellus"));
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_The Whisperer"));
+		assertTrue(RecordKeys.isPlannedBoss("drops_NPC_The Leviathan"));
+		assertTrue(RecordKeys.isPlannedBoss("vardorvis"));
+		assertTrue(RecordKeys.isPlannedBoss("duke sucellus (awakened)"));
+		assertTrue(RecordKeys.isPlannedBoss("whisperer"));
+		assertTrue(RecordKeys.isPlannedBoss("leviathan"));
 	}
 
 	@Test
@@ -33,6 +42,7 @@ public class RecordKeysTest
 		assertFalse(RecordKeys.isPlannedBoss("annex"));
 		assertFalse(RecordKeys.isPlannedBoss("drops_NPC_Nexling"));
 		assertFalse(RecordKeys.isPlannedBoss("vorkath"));
+		assertFalse(RecordKeys.isPlannedBoss("drops_NPC_Lil'viathan"));
 	}
 
 	@Test

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import com.bosstriptracker.boss.ForgottenFourBoss;
 import com.bosstriptracker.model.ItemEntry;
 import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
@@ -114,6 +115,51 @@ public class SupplyAccountingTest
 		assertNull(replay.line(ItemID.TOXIC_BLOWPIPE_LOADED));
 		assertNull(replay.line(ItemID.MM_PREPOT_DEVICE));
 		assertEquals(9, replay.used.size());
+	}
+
+	/**
+	 * Three Vardorvis kills (2026-10-22, 22:47 to 22:56), walking out to the Stranglewood and back between the first
+	 * two: Drink and Eat clicks in the ritual site, and the house teleport out; the floor loot is only acquired.
+	 */
+	@Test
+	public void vardorvisTripCountsDosesAndTheTeleportOut() throws Exception
+	{
+		SupplyReplay replay = new SupplyReplay("supply-test-vardorvis.log", ForgottenFourBoss.VARDORVIS_REGION_ID).run();
+
+		assertEquals(7, replay.quantity(ItemID._4DOSEPRAYERRESTORE));
+		assertEquals(2, replay.quantity(ItemID._4DOSEDIVINECOMBAT));
+		assertEquals(8, replay.quantity(ItemID.SHARK));
+		assertEquals(1, replay.quantity(ItemID.POH_TABLET_TELEPORTTOHOUSE));
+		assertNull(replay.line(ItemID.SCYTHE_OF_VITUR));
+		assertNull(replay.line(ItemID.RING_OF_SHADOWS));
+		assertEquals(4, replay.used.size());
+		assertTrue(replay.dropped.isEmpty());
+		assertEquals(36, acquired(replay, ItemID.RUNE_JAVELIN_HEAD));
+		assertEquals(200, acquired(replay, ItemID.LAVARUNE));
+	}
+
+	/**
+	 * Two Duke Sucellus kills (2026-10-22, 22:59 to 23:07): the Arder mushrooms picked in the chamber and ground into
+	 * powder (16 mushrooms, 80 powder) are conversions, never supplies; food dropped to make room is picked back up.
+	 */
+	@Test
+	public void dukeSucellusMushroomsAreNeverSupplies() throws Exception
+	{
+		SupplyReplay replay = new SupplyReplay("supply-test-duke.log", ForgottenFourBoss.DUKE_REGION_ID)
+			.converted(ForgottenFourBoss.dukeSucellus().getConvertedItems().toArray(new Integer[0])).run();
+
+		assertEquals(2, replay.quantity(ItemID._4DOSEPRAYERRESTORE));
+		assertEquals(1, replay.quantity(ItemID._4DOSEDIVINECOMBAT));
+		assertEquals(1, replay.quantity(ItemID.SHARK));
+		assertEquals(1, replay.quantity(ItemID.POH_TABLET_TELEPORTTOHOUSE));
+		assertNull(replay.line(ItemID.DUKE_SUCELLUS_MUSHROOM_3));
+		assertNull(replay.line(ItemID.DUKE_SUCELLUS_MUSHROOM_3_GROUND));
+		assertEquals(4, replay.used.size());
+		assertEquals(16, acquired(replay, ItemID.DUKE_SUCELLUS_MUSHROOM_3));
+		assertEquals(80, acquired(replay, ItemID.DUKE_SUCELLUS_MUSHROOM_3_GROUND));
+		// Three anglerfish and a shark dropped for the mushrooms, the anglerfish picked back up before leaving
+		assertEquals(Long.valueOf(3), replay.dropped.get(ItemID.ANGLERFISH));
+		assertEquals(3, acquired(replay, ItemID.ANGLERFISH));
 	}
 
 	private static long acquired(SupplyReplay replay, int itemId)

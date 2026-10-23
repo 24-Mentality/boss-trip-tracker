@@ -10,6 +10,10 @@ import java.util.Map;
 public final class LootCategories
 {
 	public static final String UNIQUES = "Uniques";
+	/**
+	 * The Forgotten Four's tablets, Awakener's orbs and quartz, rolled before the main table.
+	 */
+	public static final String SECONDARY_UNIQUES = "Secondary uniques";
 	public static final String JEWELLERY = "Jewellery";
 	public static final String WEAPONS = "Weapons";
 	public static final String RESOURCES = "Resources";

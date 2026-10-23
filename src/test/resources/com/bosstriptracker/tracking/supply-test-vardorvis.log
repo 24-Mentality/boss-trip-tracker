@@ -1,0 +1,1251 @@
+tick=19884 region=16470 inLair=false MENU option="Withdraw-All" target="<col=ff9040>Dragon claws</col>" action=CC_OP id=1 itemId=13652 itemOp=-1 param0=35 param1=786444
+tick=19884 region=16470 inLair=false INVENTORY +Dragon claws (13652) x1
+tick=19885 region=16470 inLair=false MENU option="Withdraw-1" target="<col=ff9040>Divine super combat potion(4)</col>" action=CC_OP id=2 itemId=23685 itemOp=-1 param0=119 param1=786444
+tick=19885 region=16470 inLair=false INVENTORY +Divine super combat potion(4) (23685) x1
+tick=19888 region=16470 inLair=false MENU option="Withdraw-1" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=-1 param0=151 param1=786444
+tick=19888 region=16470 inLair=false MENU option="Withdraw-1" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=-1 param0=151 param1=786444
+tick=19888 region=16470 inLair=false INVENTORY +Prayer potion(4) (2434) x1
+tick=19889 region=16470 inLair=false MENU option="Withdraw-1" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=-1 param0=151 param1=786444
+tick=19889 region=16470 inLair=false MENU option="Withdraw-1" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=-1 param0=151 param1=786444
+tick=19889 region=16470 inLair=false INVENTORY +Prayer potion(4) (2434) x3
+tick=19891 region=16470 inLair=false MENU option="Withdraw-All" target="<col=ff9040>Divine rune pouch</col>" action=CC_OP id=1 itemId=27281 itemOp=-1 param0=857 param1=786444
+tick=19891 region=16470 inLair=false INVENTORY +Divine rune pouch (27281) x1
+tick=19894 region=16470 inLair=false MENU option="Withdraw-10" target="<col=ff9040>Teleport to house</col>" action=CC_OP id=4 itemId=8013 itemOp=-1 param0=859 param1=786444
+tick=19894 region=16470 inLair=false INVENTORY +Teleport to house (8013) x10
+tick=19895 region=16470 inLair=false MENU option="Withdraw-All" target="<col=ff9040>Book of the Dead</col>" action=CC_OP id=1 itemId=25818 itemOp=-1 param0=90 param1=786444
+tick=19895 region=16470 inLair=false INVENTORY +Book of the Dead (25818) x1
+tick=19897 region=16470 inLair=false MENU option="Withdraw-1" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=2 itemId=28327 itemOp=-1 param0=908 param1=786444
+tick=19897 region=16470 inLair=false INVENTORY +Ring of shadows (28327) x1
+tick=19898 region=16470 inLair=false MENU option="Withdraw-5" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=3 itemId=13441 itemOp=-1 param0=112 param1=786444
+tick=19898 region=16470 inLair=false MENU option="Withdraw-All" target="<col=ff9040>Shark</col>" action=CC_OP id=7 itemId=385 itemOp=-1 param0=113 param1=786444
+tick=19898 region=16470 inLair=false INVENTORY +Anglerfish (13441) x5
+tick=19899 region=16470 inLair=false CHAT type=SPAM name="" sender="null" message="You don't have enough inventory space to withdraw that many."
+tick=19899 region=16470 inLair=false INVENTORY +Shark (385) x13
+tick=19905 region=16470 inLair=false MENU option="Eat" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=9 itemId=13441 itemOp=-1 param0=10 param1=983043
+tick=19905 region=16470 inLair=false MENU option="Eat" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=9 itemId=13441 itemOp=-1 param0=10 param1=983043
+tick=19905 region=16470 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the anglerfish.<br>It heals some health."
+tick=19905 region=16470 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19905 region=16470 inLair=false INVENTORY -Anglerfish (13441) x1
+tick=19906 region=16470 inLair=false MENU option="Withdraw-5" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=3 itemId=13441 itemOp=-1 param0=112 param1=786444
+tick=19907 region=16470 inLair=false CHAT type=SPAM name="" sender="null" message="You don't have enough inventory space to withdraw that many."
+tick=19907 region=16470 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=19912 region=16470 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=19915 region=16470 inLair=false MENU option="Inside" target="<col=ff9040>Teleport to house</col>" action=CC_OP id=3 itemId=8013 itemOp=2 param0=7 param1=9764864
+tick=19915 region=16470 inLair=false ANIM id=4069 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19917 region=16470 inLair=false GRAPHIC spotanims=[678]
+tick=19917 region=16470 inLair=false ANIM id=4071 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19917 region=16470 inLair=false INVENTORY -Teleport to house (8013) x1
+tick=19919 region=16470 inLair=false GAMESTATE LOADING
+tick=19919 region=16470 inLair=false GAMESTATE LOGGED_IN
+tick=19919 region=16470 inLair=false GROUND spawned Bronze arrow (882) x1 ownership=0 at=2957,3205,0
+tick=19919 region=16470 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2958,3205,0
+tick=19919 region=16470 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2959,3205,0
+tick=19919 region=16470 inLair=false GROUND spawned Bronze pickaxe (1265) x1 ownership=0 at=2963,3216,0
+tick=19919 region=11826 inLair=false REGION template region 16470 -> 11826 instance=false actual region=11826
+tick=19920 region=11826 inLair=false GAMESTATE LOADING
+tick=19920 region=11826 inLair=false GAMESTATE LOGGED_IN
+tick=19920 region=7790 inLair=false REGION template region 11826 -> 7790 instance=true actual region=55251
+tick=19923 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=19924 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=19925 region=7790 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=19927 region=7790 inLair=false ANIM id=7305 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19928 region=7790 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=166 param1=313
+tick=19932 region=7790 inLair=false MENU option="Arceuus" target="<col=ffff>Altar of the Occult" action=GAME_OBJECT_FOURTH_OPTION id=29150 itemId=-1 itemOp=-1 param0=46 param1=59
+tick=19933 region=7790 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your mind fills with knowledge."
+tick=19933 region=7790 inLair=false ANIM id=645 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19933 region=7791 inLair=false REGION template region 7790 -> 7791 instance=true actual region=55251
+tick=19935 region=7791 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=482 param1=328
+tick=19935 region=7791 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=479 param1=331
+tick=19937 region=7791 inLair=false MENU option="Teleport" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=3 itemId=28327 itemOp=2 param0=9 param1=9764864
+tick=19940 region=7791 inLair=false GRAPHIC spotanims=[2419]
+tick=19940 region=7791 inLair=false ANIM id=10134 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19942 region=7791 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=19943 region=7791 inLair=false GAMESTATE LOADING
+tick=19943 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=19943 region=4661 inLair=false REGION template region 7791 -> 4661 instance=false actual region=4661
+tick=19944 region=4661 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=229 param1=110
+tick=19945 region=4661 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=265 param1=61
+tick=19945 region=4661 inLair=false MENU option="Enter" target="<col=ffff>Entry" action=GAME_OBJECT_FIRST_OPTION id=48745 itemId=-1 itemOp=-1 param0=27 param1=76
+tick=19945 region=4661 inLair=false MENU option="Enter" target="<col=ffff>Entry" action=GAME_OBJECT_FIRST_OPTION id=48745 itemId=-1 itemOp=-1 param0=27 param1=76
+tick=19953 region=4661 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You disturb some of the Strangler tendrils...</col>"
+tick=19956 region=4661 inLair=false MENU option="Enter" target="<col=ffff>Entry" action=GAME_OBJECT_FIRST_OPTION id=48745 itemId=-1 itemOp=-1 param0=27 param1=76
+tick=19957 region=4661 inLair=false MENU option="Your Clan" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551339
+tick=19970 region=4405 inLair=false REGION template region 4661 -> 4405 instance=false actual region=4405
+tick=19973 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=132 param1=234
+tick=19973 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=136 param1=219
+tick=19973 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=144 param1=206
+tick=19974 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=150 param1=196
+tick=19974 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=154 param1=189
+tick=19974 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=165 param1=179
+tick=19974 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=19975 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=171 param1=174
+tick=19975 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=171 param1=157
+tick=19975 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=176 param1=151
+tick=19976 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=182 param1=146
+tick=19976 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=215 param1=128
+tick=19976 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=213 param1=125
+tick=19977 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=273 param1=112
+tick=19977 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=282 param1=107
+tick=19977 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=282 param1=107
+tick=19981 region=4405 inLair=false GAMESTATE LOADING
+tick=19981 region=4405 inLair=false GAMESTATE LOGGED_IN
+tick=19986 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Book of the Dead</col>" action=CC_OP_LOW_PRIORITY id=6 itemId=25818 itemOp=4 param0=8 param1=9764864
+tick=19987 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="On the inside of the cover a message is displayed in dark ink. It reads: <col=800080>12/250 memories remain.<col=800080>"
+tick=19990 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=570 param1=190
+tick=19990 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=568 param1=186
+tick=19991 region=4405 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=19994 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=19995 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,461 charges remaining."
+tick=19997 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20000 region=4405 inLair=false MENU option="Climb-over" target="<col=ffff>Rocks" action=GAME_OBJECT_FIRST_OPTION id=49495 itemId=-1 itemOp=-1 param0=38 param1=44
+tick=20002 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the ritual site."
+tick=20004 region=4405 inLair=false GAMESTATE LOADING
+tick=20004 region=4405 inLair=false GAMESTATE LOGGED_IN
+tick=20006 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the ritual site."
+tick=20008 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=112
+tick=20008 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=113
+tick=20008 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=112
+tick=20010 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=20010 region=4405 inLair=false MENU option="Deactivate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=20014 region=4405 inLair=false MENU option="Setup" target="Quick-prayers" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20016 region=4405 inLair=false MENU option="Toggle" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=14 param1=5046276
+tick=20017 region=4405 inLair=false MENU option="Toggle" target="<col=ff9040>Piety</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=26 param1=5046276
+tick=20018 region=4405 inLair=false MENU option="Done" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=5046277
+tick=20020 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Divine super combat potion(4)</col>" action=CC_OP id=2 itemId=23685 itemOp=1 param0=1 param1=9764864
+tick=20020 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine combat potion."
+tick=20020 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=20020 region=4405 inLair=false GRAPHIC spotanims=[560]
+tick=20020 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=20020 region=4405 inLair=false INVENTORY -Divine super combat potion(4) (23685) x1, +Divine super combat potion(3) (23688) x1
+tick=20021 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20022 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=20023 region=4405 inLair=false MENU option="Combat Options" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551355
+tick=20023 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20023 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20024 region=4405 inLair=false MENU option="Chop" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=38862858
+tick=20025 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=402 param1=396
+tick=20027 region=4405 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20028 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20028 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=20029 region=4405 inLair=false HITSPLAT type=43 amount=49 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20029 region=4405 inLair=false HITSPLAT type=16 amount=16 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20033 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=20034 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Dragon claws</col>" action=CC_OP id=3 itemId=13652 itemOp=2 param0=0 param1=9764864
+tick=20034 region=4405 inLair=false HITSPLAT type=16 amount=33 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20034 region=4405 inLair=false HITSPLAT type=16 amount=5 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20034 region=4405 inLair=false INVENTORY -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20034 region=4405 inLair=false EQUIPMENT +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20035 region=4405 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=20036 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20038 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=20038 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=20038 region=4405 inLair=false RUNEPOUCH varbit=1624 value=15990
+tick=20038 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1750
+tick=20038 region=4405 inLair=false RUNEPOUCH varbit=14286 value=786
+tick=20038 region=4405 inLair=false RUNEPOUCH varbit=1626 value=4646
+tick=20038 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1749
+tick=20038 region=4405 inLair=false RUNEPOUCH varbit=14286 value=785
+tick=20038 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=20038 region=4405 inLair=false SPEC energy=500
+tick=20038 region=4405 inLair=false GRAPHIC spotanims=[3288]
+tick=20038 region=4405 inLair=false GRAPHIC spotanims=[3288, 1171]
+tick=20038 region=4405 inLair=false ANIM id=7514 target=npc:12223 weapon=13652 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20039 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=499 param1=284
+tick=20039 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20039 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20040 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20040 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20040 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20041 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=359 param1=323
+tick=20042 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=430 param1=294
+tick=20043 region=4405 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=20043 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=20043 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20044 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20044 region=4405 inLair=false ANIM id=424 target=none weapon=13652 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20045 region=4405 inLair=false SPEC energy=0
+tick=20045 region=4405 inLair=false GRAPHIC spotanims=[1171]
+tick=20045 region=4405 inLair=false ANIM id=7514 target=npc:12223 weapon=13652 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20046 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=340 param1=330
+tick=20046 region=4405 inLair=false HITSPLAT type=16 amount=33 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20046 region=4405 inLair=false HITSPLAT type=16 amount=16 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20047 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20047 region=4405 inLair=false HITSPLAT type=16 amount=8 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20047 region=4405 inLair=false HITSPLAT type=16 amount=9 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20047 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20048 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=20048 region=4405 inLair=false INVENTORY +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20048 region=4405 inLair=false EQUIPMENT -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20049 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20049 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20049 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20049 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20050 region=4405 inLair=false HITSPLAT type=16 amount=25 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20050 region=4405 inLair=false HITSPLAT type=16 amount=12 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20051 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20051 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20052 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=376 param1=273
+tick=20052 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=355 param1=260
+tick=20053 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20055 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=489 param1=343
+tick=20055 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20055 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20057 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20057 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20058 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20058 region=4405 inLair=false HITSPLAT type=16 amount=15 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20059 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20060 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20062 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20063 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20063 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20063 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20065 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20067 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20067 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20068 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20068 region=4405 inLair=false HITSPLAT type=16 amount=5 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20070 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20071 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20072 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20073 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20073 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20075 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20075 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20075 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20075 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20076 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20077 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20077 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20078 region=4405 inLair=false HITSPLAT type=16 amount=42 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20078 region=4405 inLair=false HITSPLAT type=16 amount=7 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20079 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20079 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20080 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20080 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20082 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=329 param1=269
+tick=20083 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20083 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20083 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20084 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=497 param1=355
+tick=20084 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20084 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20086 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20087 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20088 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=490 param1=336
+tick=20088 region=4405 inLair=false SPEC energy=100
+tick=20088 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20090 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20090 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20091 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20091 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20091 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20093 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20094 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20095 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20095 region=4405 inLair=false GRAPHIC spotanims=[2523]
+tick=20095 region=4405 inLair=false ANIM id=10166 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20095 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20096 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20096 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20096 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20096 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20097 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20097 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20097 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20097 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20098 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20099 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=4 param1=9764864
+tick=20099 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20099 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=20099 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20099 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20099 region=4405 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=20100 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20100 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20101 region=4405 inLair=false HITSPLAT type=16 amount=40 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20101 region=4405 inLair=false HITSPLAT type=16 amount=18 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20103 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20103 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20103 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20103 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20104 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=506 param1=279
+tick=20105 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20107 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20107 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20108 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20108 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20109 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=328 param1=347
+tick=20109 region=4405 inLair=false HITSPLAT type=16 amount=14 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20109 region=4405 inLair=false HITSPLAT type=16 amount=6 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20110 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20111 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20112 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20112 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20113 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20113 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20113 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20113 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20114 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20114 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20114 region=4405 inLair=false HITSPLAT type=16 amount=32 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20114 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20115 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=339 param1=269
+tick=20115 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20116 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20118 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20119 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Axe Enthusiast</col>: You left the inner 25 tiles."
+tick=20119 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20119 region=4405 inLair=false HITSPLAT type=16 amount=47 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20119 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20120 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=512 param1=345
+tick=20120 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20120 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20121 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=539 param1=304
+tick=20122 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20123 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20124 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20125 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20125 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20126 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=379 param1=343
+tick=20126 region=4405 inLair=false HITSPLAT type=16 amount=38 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20126 region=4405 inLair=false HITSPLAT type=16 amount=20 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20127 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20127 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20128 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=501 param1=274
+tick=20129 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20130 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20131 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20131 region=4405 inLair=false HITSPLAT type=16 amount=33 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20131 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20132 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20134 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=340 param1=333
+tick=20135 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20135 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20135 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=20135 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20136 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=428 param1=300
+tick=20137 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20138 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=20138 region=4405 inLair=false SPEC energy=200
+tick=20139 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20139 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20140 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20140 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20141 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=20141 region=4405 inLair=false RUNEPOUCH varbit=1626 value=4645
+tick=20141 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1748
+tick=20141 region=4405 inLair=false RUNEPOUCH varbit=14286 value=784
+tick=20141 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=20141 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=20141 region=4405 inLair=false GRAPHIC spotanims=[3288]
+tick=20141 region=4405 inLair=false ANIM id=8970 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20141 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20141 region=4405 inLair=false HITSPLAT type=16 amount=18 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20142 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20143 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=334 param1=334
+tick=20144 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20145 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20146 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=16 param1=9764864
+tick=20146 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20146 region=4405 inLair=false HITSPLAT type=16 amount=5 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20147 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20147 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20147 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20147 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20147 region=4405 inLair=false GRAPHIC spotanims=[2523]
+tick=20147 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20148 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20148 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20148 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20148 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20148 region=4405 inLair=false ANIM id=10166 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20149 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20149 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591495
+tick=20149 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20150 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20150 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20150 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20150 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20152 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20152 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20153 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=20153 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20154 region=4405 inLair=false RUNEPOUCH varbit=1624 value=15980
+tick=20154 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1743
+tick=20154 region=4405 inLair=false RUNEPOUCH varbit=14286 value=783
+tick=20154 region=4405 inLair=false GRAPHIC spotanims=[1873]
+tick=20154 region=4405 inLair=false ANIM id=8973 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20154 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20154 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20155 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20158 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20158 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20158 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20159 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=20159 region=4405 inLair=false HITSPLAT type=16 amount=8 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20159 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20160 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20160 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20162 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20163 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20163 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20164 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20164 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20164 region=4405 inLair=false HITSPLAT type=16 amount=10 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20164 region=4405 inLair=false HITSPLAT type=16 amount=22 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20167 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=327 param1=262
+tick=20168 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20168 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20168 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20168 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20168 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20169 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20170 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20170 region=4405 inLair=false HITSPLAT type=16 amount=35 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20170 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20171 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=504 param1=348
+tick=20172 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20172 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20173 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=42083 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20173 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20174 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=200
+tick=20175 region=4405 inLair=false HITSPLAT type=16 amount=18 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20175 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20176 region=4405 inLair=false SPEC energy=350
+tick=20176 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=20177 region=4405 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20180 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Vardorvis kill count is: <col=ff0000>4,170</col>."
+tick=20180 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>1:34.20</col>. Personal best: 0:48.60"
+tick=20180 region=4405 inLair=false GROUND spawned Rune javelin tips (19580) x36 ownership=1 at=1125,3418,0
+tick=20180 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=005f00>24 Mentality received a drop: 36 x Rune javelin tips</col> <col=106f10>(Vardorvis)</col>"
+tick=20180 region=4405 inLair=false LOOT name="Vardorvis" type=NPC combatLevel=784 amount=1 items=[Rune javelin tips (19580) x36]
+tick=20182 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20183 region=4405 inLair=false MENU option="Take" target="<col=66b2ff>Rune javelin tips (36)" action=GROUND_ITEM_THIRD_OPTION id=19580 itemId=-1 itemOp=-1 param0=61 param1=42
+tick=20184 region=4405 inLair=false GROUND despawned Rune javelin tips (19580) x36 ownership=1 at=1125,3418,0
+tick=20184 region=4405 inLair=false INVENTORY +Rune javelin tips (19580) x36
+tick=20188 region=4405 inLair=false SPEC energy=450
+tick=20203 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Book of the Dead</col>" action=CC_OP_LOW_PRIORITY id=6 itemId=25818 itemOp=4 param0=8 param1=9764864
+tick=20204 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="On the inside of the cover a message is displayed in dark ink. It reads: <col=800080>12/250 memories remain.<col=800080>"
+tick=20207 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=420 param1=304
+tick=20208 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=420 param1=304
+tick=20211 region=4405 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=20214 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=20214 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,440 charges remaining."
+tick=20216 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20218 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=4 itemId=28327 itemOp=3 param0=9 param1=9764864
+tick=20218 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring of shadows has 370 charges remaining."
+tick=20220 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20238 region=4405 inLair=false SPEC energy=550
+tick=20241 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=20243 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=15 param1=9764864
+tick=20243 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20243 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20243 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20243 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20243 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(3)</col>" action=CC_OP id=2 itemId=139 itemOp=1 param0=4 param1=9764864
+tick=20244 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20244 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=20244 region=4405 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=20246 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=17 param1=9764864
+tick=20247 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=17 param1=9764864
+tick=20247 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=17 param1=9764864
+tick=20247 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20247 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20247 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20247 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20250 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=18 param1=9764864
+tick=20251 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20251 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20251 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20251 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20253 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=20253 region=4405 inLair=false RUNEPOUCH varbit=1626 value=4644
+tick=20253 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1742
+tick=20253 region=4405 inLair=false RUNEPOUCH varbit=14286 value=782
+tick=20253 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=20253 region=4405 inLair=false GRAPHIC spotanims=[3288]
+tick=20253 region=4405 inLair=false ANIM id=8970 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20254 region=4405 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20255 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20255 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20256 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=413 param1=353
+tick=20256 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20256 region=4405 inLair=false HITSPLAT type=16 amount=5 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20257 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=20257 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=20258 region=4405 inLair=false RUNEPOUCH varbit=1624 value=15970
+tick=20258 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1737
+tick=20258 region=4405 inLair=false RUNEPOUCH varbit=14286 value=781
+tick=20258 region=4405 inLair=false GRAPHIC spotanims=[1873]
+tick=20258 region=4405 inLair=false ANIM id=8973 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20259 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20260 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20261 region=4405 inLair=false HITSPLAT type=16 amount=9 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20261 region=4405 inLair=false HITSPLAT type=16 amount=15 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20263 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=20263 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20265 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20266 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20266 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20267 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20270 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20271 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20271 region=4405 inLair=false HITSPLAT type=16 amount=18 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20271 region=4405 inLair=false HITSPLAT type=43 amount=24 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20275 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20275 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20276 region=4405 inLair=false HITSPLAT type=16 amount=18 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20276 region=4405 inLair=false HITSPLAT type=16 amount=19 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20277 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(2)</col>" action=CC_OP id=2 itemId=141 itemOp=1 param0=4 param1=9764864
+tick=20277 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20277 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 1 dose of potion left."
+tick=20277 region=4405 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=20278 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20278 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20278 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20279 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20280 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20281 region=4405 inLair=false HITSPLAT type=43 amount=49 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20281 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20282 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20282 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20283 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20284 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20285 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=20286 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20286 region=4405 inLair=false HITSPLAT type=16 amount=45 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20286 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20287 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20287 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20288 region=4405 inLair=false SPEC energy=650
+tick=20288 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=650
+tick=20289 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Dragon claws</col>" action=CC_OP id=3 itemId=13652 itemOp=2 param0=0 param1=9764864
+tick=20289 region=4405 inLair=false INVENTORY -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20289 region=4405 inLair=false EQUIPMENT +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20290 region=4405 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=20291 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20291 region=4405 inLair=false SPEC energy=150
+tick=20291 region=4405 inLair=false GRAPHIC spotanims=[1171]
+tick=20291 region=4405 inLair=false ANIM id=7514 target=npc:12223 weapon=13652 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20291 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20292 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=20292 region=4405 inLair=false HITSPLAT type=16 amount=20 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20292 region=4405 inLair=false HITSPLAT type=16 amount=21 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20292 region=4405 inLair=false INVENTORY +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20292 region=4405 inLair=false EQUIPMENT -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20293 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20293 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20293 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20295 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20295 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20296 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20296 region=4405 inLair=false HITSPLAT type=16 amount=19 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20298 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20299 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20300 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20300 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20300 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20300 region=4405 inLair=false GRAPHIC spotanims=[2523]
+tick=20300 region=4405 inLair=false ANIM id=10166 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20301 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20301 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20301 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20301 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20301 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20302 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20302 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20302 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20302 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20302 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20302 region=4405 inLair=false HITSPLAT type=16 amount=9 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20303 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20303 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20303 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20303 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20305 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20305 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20305 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20306 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20306 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20307 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20307 region=4405 inLair=false HITSPLAT type=16 amount=41 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20307 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20308 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20308 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20310 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20311 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20311 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20312 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20312 region=4405 inLair=false HITSPLAT type=16 amount=38 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20312 region=4405 inLair=false HITSPLAT type=16 amount=20 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20314 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20314 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20315 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20316 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20317 region=4405 inLair=false HITSPLAT type=16 amount=26 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20317 region=4405 inLair=false HITSPLAT type=16 amount=13 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20319 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20320 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20321 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20322 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(1)</col>" action=CC_OP id=2 itemId=143 itemOp=1 param0=4 param1=9764864
+tick=20322 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Axe Enthusiast</col>: You left the inner 25 tiles."
+tick=20322 region=4405 inLair=false HITSPLAT type=16 amount=23 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20322 region=4405 inLair=false HITSPLAT type=16 amount=6 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20323 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20323 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20323 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have finished your potion."
+tick=20323 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20323 region=4405 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=20325 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20325 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20325 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20326 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20327 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20327 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20327 region=4405 inLair=false HITSPLAT type=16 amount=28 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20327 region=4405 inLair=false HITSPLAT type=16 amount=9 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20329 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20330 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20331 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20331 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20332 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20332 region=4405 inLair=false HITSPLAT type=16 amount=36 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20332 region=4405 inLair=false HITSPLAT type=16 amount=16 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20334 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20335 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20335 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20335 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20335 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20336 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20336 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20336 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20336 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=20337 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20337 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20337 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20337 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20337 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20337 region=4405 inLair=false GRAPHIC spotanims=[2523]
+tick=20337 region=4405 inLair=false HITSPLAT type=16 amount=14 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20337 region=4405 inLair=false HITSPLAT type=16 amount=14 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20338 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20338 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20338 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20338 region=4405 inLair=false SPEC energy=250
+tick=20338 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20339 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20339 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591495
+tick=20339 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20339 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20339 region=4405 inLair=false ANIM id=10166 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20339 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20340 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20340 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20340 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20341 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20341 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20342 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20342 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20342 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20343 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20343 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20343 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20345 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20345 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20345 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20345 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20345 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20346 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20347 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20347 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20347 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20347 region=4405 inLair=false HITSPLAT type=16 amount=5 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20349 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20350 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=326 param1=264
+tick=20351 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20351 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20351 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20352 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=20 param1=9764864
+tick=20352 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20352 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20352 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20352 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20352 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20353 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=453 param1=345
+tick=20353 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=20355 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20355 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20356 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=462 param1=307
+tick=20357 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20358 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=511 param1=265
+tick=20358 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20358 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20358 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20359 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20360 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20361 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20361 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=20363 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20363 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20364 region=4405 inLair=false HITSPLAT type=16 amount=20 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20364 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20366 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=20366 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=20366 region=4405 inLair=false RUNEPOUCH varbit=1624 value=15960
+tick=20366 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1732
+tick=20366 region=4405 inLair=false RUNEPOUCH varbit=14286 value=780
+tick=20366 region=4405 inLair=false RUNEPOUCH varbit=1626 value=4643
+tick=20366 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1731
+tick=20366 region=4405 inLair=false RUNEPOUCH varbit=14286 value=779
+tick=20366 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=20366 region=4405 inLair=false GRAPHIC spotanims=[3288]
+tick=20366 region=4405 inLair=false ANIM id=8970 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20367 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20368 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20369 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=327 param1=344
+tick=20369 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20369 region=4405 inLair=false HITSPLAT type=43 amount=24 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20370 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20371 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=281
+tick=20371 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=20371 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20372 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20373 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=347 param1=341
+tick=20373 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20373 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20373 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20374 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20374 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20375 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20375 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20375 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20375 region=4405 inLair=false HITSPLAT type=16 amount=9 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20378 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20378 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20379 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20379 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=49886 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20379 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=20379 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20380 region=4405 inLair=false SPEC energy=400
+tick=20380 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=20380 region=4405 inLair=false HITSPLAT type=16 amount=17 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20380 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20382 region=4405 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20384 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Vardorvis kill count is: <col=ff0000>4,171</col>."
+tick=20384 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>1:16.80</col>. Personal best: 0:48.60"
+tick=20384 region=4405 inLair=false GROUND spawned Uncut ruby (1620) x37 ownership=1 at=1125,3417,0
+tick=20384 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=005f00>24 Mentality received a drop: 37 x Uncut ruby</col> <col=106f10>(Vardorvis)</col>"
+tick=20384 region=4405 inLair=false LOOT name="Vardorvis" type=NPC combatLevel=784 amount=1 items=[Uncut ruby (1620) x37]
+tick=20388 region=4405 inLair=false MENU option="Take" target="<col=66b2ff>Uncut ruby (37)" action=GROUND_ITEM_THIRD_OPTION id=1620 itemId=-1 itemOp=-1 param0=61 param1=41
+tick=20388 region=4405 inLair=false SPEC energy=500
+tick=20389 region=4405 inLair=false MENU option="Take" target="<col=66b2ff>Uncut ruby (37)" action=GROUND_ITEM_THIRD_OPTION id=1620 itemId=-1 itemOp=-1 param0=61 param1=41
+tick=20389 region=4405 inLair=false GROUND despawned Uncut ruby (1620) x37 ownership=1 at=1125,3417,0
+tick=20389 region=4405 inLair=false INVENTORY +Uncut ruby (1620) x37
+tick=20390 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=387 param1=334
+tick=20393 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=4 itemId=28327 itemOp=3 param0=9 param1=9764864
+tick=20394 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring of shadows has 370 charges remaining."
+tick=20398 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Book of the Dead</col>" action=CC_OP_LOW_PRIORITY id=6 itemId=25818 itemOp=4 param0=8 param1=9764864
+tick=20398 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="On the inside of the cover a message is displayed in dark ink. It reads: <col=800080>12/250 memories remain.<col=800080>"
+tick=20401 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=412 param1=300
+tick=20401 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=412 param1=300
+tick=20402 region=4405 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=20405 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=20405 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,417 charges remaining."
+tick=20407 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20408 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=410 param1=303
+tick=20408 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=410 param1=303
+tick=20413 region=4405 inLair=false MENU option="Teleport" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=3 itemId=28327 itemOp=2 param0=9 param1=9764864
+tick=20415 region=4405 inLair=false GRAPHIC spotanims=[2419]
+tick=20415 region=4405 inLair=false ANIM id=10134 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20418 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20418 region=4405 inLair=false GAMESTATE LOADING
+tick=20418 region=4405 inLair=false GAMESTATE LOGGED_IN
+tick=20418 region=4661 inLair=false REGION template region 4405 -> 4661 instance=false actual region=4661
+tick=20422 region=4661 inLair=false MENU option="Check" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=4 itemId=28327 itemOp=3 param0=9 param1=9764864
+tick=20422 region=4661 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring of shadows has 369 charges remaining."
+tick=20423 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20424 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20424 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20424 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20425 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20426 region=4661 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=19 param1=9764864
+tick=20426 region=4661 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20426 region=4661 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20426 region=4661 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20426 region=4661 inLair=false INVENTORY -Shark (385) x1
+tick=20427 region=4661 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=5 param1=9764864
+tick=20427 region=4661 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20427 region=4661 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=20427 region=4661 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=20431 region=4661 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=20432 region=4661 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You disturb some of the Strangler tendrils...</col>"
+tick=20434 region=4661 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20436 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20437 region=4661 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20438 region=4661 inLair=false SPEC energy=600
+tick=20446 region=4661 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=600
+tick=20447 region=4661 inLair=false MENU option="Enter" target="<col=ffff>Entry" action=GAME_OBJECT_FIRST_OPTION id=48745 itemId=-1 itemOp=-1 param0=27 param1=76
+tick=20447 region=4661 inLair=false MENU option="Enter" target="<col=ffff>Entry" action=GAME_OBJECT_FIRST_OPTION id=48745 itemId=-1 itemOp=-1 param0=27 param1=76
+tick=20450 region=4405 inLair=false REGION template region 4661 -> 4405 instance=false actual region=4405
+tick=20451 region=4405 inLair=false MENU option="Your Clan" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551339
+tick=20453 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=600
+tick=20454 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=215 param1=214
+tick=20454 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=215 param1=208
+tick=20455 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=214 param1=194
+tick=20455 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=206 param1=177
+tick=20455 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=202 param1=169
+tick=20456 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=197 param1=164
+tick=20456 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=194 param1=158
+tick=20456 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=194 param1=156
+tick=20457 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=181 param1=151
+tick=20457 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=142 param1=135
+tick=20461 region=4405 inLair=false GAMESTATE LOADING
+tick=20461 region=4405 inLair=false GAMESTATE LOGGED_IN
+tick=20466 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=211 param1=173
+tick=20466 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=20467 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=175 param1=158
+tick=20467 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=144 param1=143
+tick=20469 region=4405 inLair=false MENU option="Climb-over" target="<col=ffff>Rocks" action=GAME_OBJECT_FIRST_OPTION id=49495 itemId=-1 itemOp=-1 param0=38 param1=44
+tick=20470 region=4405 inLair=false MENU option="Climb-over" target="<col=ffff>Rocks" action=GAME_OBJECT_FIRST_OPTION id=49495 itemId=-1 itemOp=-1 param0=38 param1=44
+tick=20481 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the ritual site."
+tick=20483 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=297 param1=162
+tick=20483 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=294 param1=147
+tick=20483 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=293 param1=144
+tick=20483 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=293 param1=144
+tick=20483 region=4405 inLair=false GAMESTATE LOADING
+tick=20483 region=4405 inLair=false GAMESTATE LOGGED_IN
+tick=20483 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=293 param1=142
+tick=20484 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=293 param1=142
+tick=20485 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=293 param1=142
+tick=20485 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=294 param1=143
+tick=20485 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=299 param1=141
+tick=20485 region=4405 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the ritual site."
+tick=20486 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=300 param1=140
+tick=20487 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=251 param1=116
+tick=20488 region=4405 inLair=false SPEC energy=700
+tick=20490 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your divine potion effect is about to expire.</col>"
+tick=20495 region=4405 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=20497 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=20497 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,417 charges remaining."
+tick=20498 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20501 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=4 itemId=28327 itemOp=3 param0=9 param1=9764864
+tick=20501 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring of shadows has 369 charges remaining."
+tick=20520 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@The effects of the divine potion have worn off."
+tick=20528 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Divine super combat potion(3)</col>" action=CC_OP id=2 itemId=23688 itemOp=1 param0=1 param1=9764864
+tick=20528 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine combat potion."
+tick=20528 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=20528 region=4405 inLair=false GRAPHIC spotanims=[560]
+tick=20528 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=700
+tick=20528 region=4405 inLair=false INVENTORY -Divine super combat potion(3) (23688) x1, +Divine super combat potion(2) (23691) x1
+tick=20531 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=21 param1=9764864
+tick=20531 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=21 param1=9764864
+tick=20531 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20531 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20531 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=700
+tick=20531 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20536 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=22 param1=9764864
+tick=20536 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20536 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20536 region=4405 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=700
+tick=20536 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20537 region=4405 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20538 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20538 region=4405 inLair=false SPEC energy=800
+tick=20539 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20540 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=418 param1=384
+tick=20540 region=4405 inLair=false HITSPLAT type=16 amount=7 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20540 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20542 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=20542 region=4405 inLair=false RUNEPOUCH varbit=1626 value=4642
+tick=20542 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1730
+tick=20542 region=4405 inLair=false RUNEPOUCH varbit=14286 value=778
+tick=20542 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=20542 region=4405 inLair=false GRAPHIC spotanims=[3288]
+tick=20542 region=4405 inLair=false ANIM id=8970 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20543 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=20543 region=4405 inLair=false RUNEPOUCH varbit=1624 value=15950
+tick=20543 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1725
+tick=20543 region=4405 inLair=false RUNEPOUCH varbit=14286 value=777
+tick=20543 region=4405 inLair=false GRAPHIC spotanims=[1873]
+tick=20543 region=4405 inLair=false ANIM id=8973 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20544 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20544 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20545 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20545 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20548 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=20548 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20549 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20550 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(3)</col>" action=CC_OP id=2 itemId=139 itemOp=1 param0=5 param1=9764864
+tick=20550 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20550 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=20550 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20550 region=4405 inLair=false HITSPLAT type=16 amount=23 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20550 region=4405 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=20551 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20552 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20554 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20555 region=4405 inLair=false HITSPLAT type=16 amount=36 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20555 region=4405 inLair=false HITSPLAT type=16 amount=22 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20556 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20559 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20560 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=498 param1=260
+tick=20560 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20560 region=4405 inLair=false HITSPLAT type=16 amount=22 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20560 region=4405 inLair=false HITSPLAT type=16 amount=8 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20561 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20564 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20564 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20565 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=316 param1=352
+tick=20565 region=4405 inLair=false HITSPLAT type=16 amount=40 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20565 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20566 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20566 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20566 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20567 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20568 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20568 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20569 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20570 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20570 region=4405 inLair=false HITSPLAT type=16 amount=33 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20570 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20572 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20572 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20572 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20574 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20574 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20575 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20575 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20575 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Dragon claws</col>" action=CC_OP id=3 itemId=13652 itemOp=2 param0=0 param1=9764864
+tick=20576 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20576 region=4405 inLair=false INVENTORY -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20576 region=4405 inLair=false EQUIPMENT +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20577 region=4405 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=20577 region=4405 inLair=false ANIM id=424 target=none weapon=13652 shield=-1 amulet=29801 autocast=0 spec=800
+tick=20578 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20578 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20579 region=4405 inLair=false SPEC energy=300
+tick=20579 region=4405 inLair=false GRAPHIC spotanims=[1171]
+tick=20579 region=4405 inLair=false ANIM id=7514 target=npc:12223 weapon=13652 shield=-1 amulet=29801 autocast=0 spec=300
+tick=20580 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=20580 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20580 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20580 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20580 region=4405 inLair=false INVENTORY +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20580 region=4405 inLair=false EQUIPMENT -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20581 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20581 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20581 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20582 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=516 param1=267
+tick=20583 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=398 param1=317
+tick=20584 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20584 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=300
+tick=20584 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20585 region=4405 inLair=false HITSPLAT type=16 amount=18 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20585 region=4405 inLair=false HITSPLAT type=16 amount=16 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20587 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20587 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20587 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=300
+tick=20588 region=4405 inLair=false SPEC energy=400
+tick=20588 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20589 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20589 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20590 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20590 region=4405 inLair=false HITSPLAT type=16 amount=19 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20591 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20592 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20592 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20592 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20592 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20594 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20595 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20595 region=4405 inLair=false HITSPLAT type=16 amount=13 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20596 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20597 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20598 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20598 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20599 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20599 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20599 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20599 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20599 region=4405 inLair=false GRAPHIC spotanims=[2523]
+tick=20599 region=4405 inLair=false ANIM id=10166 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20600 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20600 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20600 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20600 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20600 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20601 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20601 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20601 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20601 region=4405 inLair=false HITSPLAT type=16 amount=29 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20601 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20602 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20602 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20602 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20602 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20604 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20604 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20604 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20605 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20606 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(2)</col>" action=CC_OP id=2 itemId=141 itemOp=1 param0=5 param1=9764864
+tick=20606 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20606 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have 1 dose of potion left."
+tick=20606 region=4405 inLair=false HITSPLAT type=16 amount=32 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20606 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20606 region=4405 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=20607 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20608 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20609 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20610 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20611 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=505 param1=270
+tick=20611 region=4405 inLair=false HITSPLAT type=16 amount=32 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20611 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20612 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20612 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20614 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=341 param1=345
+tick=20614 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20614 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20614 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20615 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20615 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20616 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20616 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20616 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20616 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20618 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20619 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20619 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20620 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20620 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20621 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20621 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20624 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=328 param1=267
+tick=20624 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20624 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20625 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20625 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20626 region=4405 inLair=false HITSPLAT type=16 amount=28 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20626 region=4405 inLair=false HITSPLAT type=16 amount=8 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20627 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=504 param1=350
+tick=20628 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20628 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20629 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20629 region=4405 inLair=false GRAPHIC spotanims=[2552]
+tick=20629 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20630 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20631 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20631 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20631 region=4405 inLair=false HITSPLAT type=16 amount=21 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20632 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20633 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=305 param1=300
+tick=20634 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20634 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You have started bleeding!"
+tick=20634 region=4405 inLair=false ANIM id=435 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=20635 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20636 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20636 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20636 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=312
+tick=20637 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20638 region=4405 inLair=false SPEC energy=500
+tick=20638 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your scythe has 4,400 charges remaining."
+tick=20638 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20639 region=4405 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=26 param1=9764864
+tick=20639 region=4405 inLair=false HITSPLAT type=16 amount=25 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20639 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20640 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=20640 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=20640 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20640 region=4405 inLair=false INVENTORY -Shark (385) x1
+tick=20641 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20641 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20642 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=20643 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20643 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20643 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20644 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20645 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=20645 region=4405 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=20645 region=4405 inLair=false RUNEPOUCH varbit=1626 value=4641
+tick=20645 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1724
+tick=20645 region=4405 inLair=false RUNEPOUCH varbit=14286 value=776
+tick=20645 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=20645 region=4405 inLair=false RUNEPOUCH varbit=1624 value=15940
+tick=20645 region=4405 inLair=false RUNEPOUCH varbit=1625 value=1719
+tick=20645 region=4405 inLair=false RUNEPOUCH varbit=14286 value=775
+tick=20645 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=20645 region=4405 inLair=false GRAPHIC spotanims=[1873]
+tick=20645 region=4405 inLair=false ANIM id=8973 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20646 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20646 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20646 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20647 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20647 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20647 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Axe Enthusiast</col>: You left the inner 25 tiles."
+tick=20647 region=4405 inLair=false HITSPLAT type=16 amount=34 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20647 region=4405 inLair=false HITSPLAT type=16 amount=4 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20648 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20648 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20648 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20648 region=4405 inLair=false GRAPHIC spotanims=[1873, 2523]
+tick=20649 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20649 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20649 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20649 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20649 region=4405 inLair=false ANIM id=10166 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20650 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20650 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20650 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20650 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=20650 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20650 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20651 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591495
+tick=20651 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20651 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20651 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20651 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=20652 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20652 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20652 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20652 region=4405 inLair=false HITSPLAT type=16 amount=16 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20654 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Dragon claws</col>" action=CC_OP id=3 itemId=13652 itemOp=2 param0=0 param1=9764864
+tick=20654 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20654 region=4405 inLair=false INVENTORY -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20654 region=4405 inLair=false EQUIPMENT +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20655 region=4405 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=20656 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20656 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Vardorvis' head gazes upon you...</col>"
+tick=20656 region=4405 inLair=false SPEC energy=0
+tick=20656 region=4405 inLair=false GRAPHIC spotanims=[1171]
+tick=20656 region=4405 inLair=false GRAPHIC spotanims=[1171, 2552]
+tick=20656 region=4405 inLair=false ANIM id=7514 target=npc:12223 weapon=13652 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20657 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=323 param1=261
+tick=20657 region=4405 inLair=false HITSPLAT type=16 amount=27 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20657 region=4405 inLair=false HITSPLAT type=16 amount=13 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20658 region=4405 inLair=false HITSPLAT type=16 amount=14 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20658 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20658 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20659 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=20660 region=4405 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=20661 region=4405 inLair=false ANIM id=424 target=none weapon=13652 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20662 region=4405 inLair=false MENU option="Wield" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=20662 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20662 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=13652 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20662 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=13652 shield=-1 amulet=29801
+tick=20662 region=4405 inLair=false INVENTORY +Dragon claws (13652) x1, -Scythe of Vitur (22325) x1
+tick=20662 region=4405 inLair=false EQUIPMENT -Dragon claws (13652) x1, +Scythe of Vitur (22325) x1
+tick=20663 region=4405 inLair=false HITSPLAT type=16 amount=29 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20663 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20664 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=506 param1=343
+tick=20664 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=507 param1=344
+tick=20665 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=412 param1=300
+tick=20666 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20666 region=4405 inLair=false ANIM id=435 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20666 region=4405 inLair=false HITSPLAT type=16 amount=1 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20667 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=459 param1=336
+tick=20668 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20668 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20669 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20669 region=4405 inLair=false HITSPLAT type=16 amount=4 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20670 region=4405 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(1)</col>" action=CC_OP id=2 itemId=143 itemOp=1 param0=5 param1=9764864
+tick=20670 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=20670 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="You have finished your potion."
+tick=20670 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20670 region=4405 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=20671 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20673 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20674 region=4405 inLair=false HITSPLAT type=16 amount=3 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20674 region=4405 inLair=false HITSPLAT type=16 amount=35 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20674 region=4405 inLair=false HITSPLAT type=16 amount=19 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20678 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20678 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20679 region=4405 inLair=false HITSPLAT type=16 amount=30 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20679 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20681 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Vardorvis entangles you in some tendrils!</col>"
+tick=20681 region=4405 inLair=false GRAPHIC spotanims=[2523]
+tick=20681 region=4405 inLair=false ANIM id=10166 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20682 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591499
+tick=20682 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20682 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20682 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20682 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20682 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20683 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591495
+tick=20683 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591494
+tick=20683 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20684 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591497
+tick=20684 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591496
+tick=20684 region=4405 inLair=false MENU option="Destroy" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=54591498
+tick=20684 region=4405 inLair=false GRAPHIC spotanims=[2524]
+tick=20685 region=4405 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to escape from the tendrils.</col>"
+tick=20685 region=4405 inLair=false GRAPHIC spotanims=[2525]
+tick=20686 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20686 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20686 region=4405 inLair=false HITSPLAT type=16 amount=2 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20687 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20687 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20687 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20687 region=4405 inLair=false ANIM id=8056 target=npc:12223 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=20688 region=4405 inLair=false MENU option="Attack" target="<col=ffff00>Vardorvis<col=ff0000>  (level-784)" action=NPC_SECOND_OPTION id=60780 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12223 npcName="Vardorvis"
+tick=20688 region=4405 inLair=false SPEC energy=150
+tick=20688 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=20688 region=4405 inLair=false SPEC energy=250
+tick=20688 region=4405 inLair=false HITSPLAT type=16 amount=5 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20688 region=4405 inLair=false HITSPLAT type=12 amount=0 target=npc:12223 weapon=22325 shield=-1 amulet=29801
+tick=20690 region=4405 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=20692 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Vardorvis kill count is: <col=ff0000>4,172</col>."
+tick=20692 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>1:31.20</col>. Personal best: 0:48.60"
+tick=20692 region=4405 inLair=false GROUND spawned Lava rune (4699) x200 ownership=1 at=1125,3417,0
+tick=20692 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=005f00>24 Mentality received a drop: 200 x Lava rune</col> <col=106f10>(Vardorvis)</col>"
+tick=20692 region=4405 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=20692 region=4405 inLair=false LOOT name="Vardorvis" type=NPC combatLevel=784 amount=1 items=[Lava rune (4699) x200]
+tick=20695 region=4405 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=20695 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,393 charges remaining."
+tick=20696 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20697 region=4405 inLair=false MENU option="Take" target="<col=ff9040>Lava rune (200)" action=GROUND_ITEM_THIRD_OPTION id=4699 itemId=-1 itemOp=-1 param0=61 param1=41
+tick=20699 region=4405 inLair=false GROUND despawned Lava rune (4699) x200 ownership=1 at=1125,3417,0
+tick=20699 region=4405 inLair=false INVENTORY +Lava rune (4699) x200
+tick=20700 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=379 param1=335
+tick=20701 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20735 region=4405 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=20738 region=4405 inLair=false SPEC energy=350
+tick=20745 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=20748 region=4405 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=20788 region=4405 inLair=false SPEC energy=450
+tick=20804 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=266
+tick=20806 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=234
+tick=20807 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=428 param1=316
+tick=20809 region=4405 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=322 param1=396
+tick=20810 region=4405 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20813 region=4405 inLair=false MENU option="Inside" target="<col=ff9040>Teleport to house</col>" action=CC_OP id=3 itemId=8013 itemOp=2 param0=7 param1=9764864
+tick=20814 region=4405 inLair=false ANIM id=4069 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=450
+tick=20816 region=4405 inLair=false GRAPHIC spotanims=[678]
+tick=20816 region=4405 inLair=false ANIM id=4071 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=450
+tick=20816 region=4405 inLair=false INVENTORY -Teleport to house (8013) x1
+tick=20818 region=4405 inLair=false GAMESTATE LOADING
+tick=20818 region=4405 inLair=false GAMESTATE LOGGED_IN
+tick=20818 region=4405 inLair=false GROUND spawned Bronze arrow (882) x1 ownership=0 at=2957,3205,0
+tick=20818 region=4405 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2958,3205,0
+tick=20818 region=4405 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2959,3205,0
+tick=20818 region=4405 inLair=false GROUND spawned Bronze pickaxe (1265) x1 ownership=0 at=2963,3216,0
+tick=20818 region=11826 inLair=false REGION template region 4405 -> 11826 instance=false actual region=11826
+tick=20819 region=11826 inLair=false GAMESTATE LOADING
+tick=20819 region=11826 inLair=false GAMESTATE LOGGED_IN
+tick=20819 region=7790 inLair=false REGION template region 11826 -> 7790 instance=true actual region=41232
+tick=20822 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=20822 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=20822 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=20822 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=20823 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=20825 region=7790 inLair=false SPEC energy=1000
+tick=20825 region=7790 inLair=false ANIM id=7305 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=20827 region=7790 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=216 param1=313
+tick=20831 region=7791 inLair=false REGION template region 7790 -> 7791 instance=true actual region=41232
+tick=20833 region=7791 inLair=false MENU option="Teleport Menu" target="<col=ffff>Ornate Jewellery Box" action=GAME_OBJECT_SECOND_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=20836 region=7791 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=20837 region=7791 inLair=false GRAPHIC spotanims=[111]
+tick=20837 region=7791 inLair=false ANIM id=714 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=20840 region=7791 inLair=false GAMESTATE LOADING
+tick=20840 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=20840 region=7791 inLair=false GROUND spawned Tinderbox (590) x1 ownership=0 at=2431,3072,0
+tick=20840 region=9776 inLair=false REGION template region 7791 -> 9776 instance=false actual region=9776

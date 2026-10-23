@@ -13,7 +13,8 @@ final class RecordKeys
 	/**
 	 * Whole words, so "nex" matches "drops_NPC_Nex" and "nex" but not "annex".
 	 */
-	private static final Pattern PLANNED_BOSSES = Pattern.compile("\\b(nightmare|nex|theatre of blood|verzik|fractured archive|tfa)\\b");
+	private static final Pattern PLANNED_BOSSES = Pattern.compile(
+		"\\b(nightmare|nex|theatre of blood|verzik|fractured archive|tfa|vardorvis|duke sucellus|whisperer|leviathan)\\b");
 	private static final Pattern KILLS = Pattern.compile("\"kills\"\\s*:\\s*(\\d+)");
 
 	private RecordKeys()

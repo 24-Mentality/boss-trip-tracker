@@ -47,7 +47,7 @@ public final class FracturedArchiveBoss extends TableBoss
 	 * After a wipe you're put in the lobby with your items in a gravestone: "Check" on it, then Unlock, takes the fee
 	 * from the bank (125,000 coins on every wipe logged, under 5 completions). Any gravestone design.
 	 */
-	private static final Set<Integer> GRAVESTONES = ImmutableSet.of(NpcID.GRAVESTONE_DEFAULT, NpcID.GRAVESTONE_ANGEL,
+	static final Set<Integer> GRAVESTONES = ImmutableSet.of(NpcID.GRAVESTONE_DEFAULT, NpcID.GRAVESTONE_ANGEL,
 		NpcID.GRAVESTONE_DEFAULT_001, NpcID.GRAVESTONE_DEFAULT_002, NpcID.GRAVESTONE_DEFAULT_003,
 		NpcID.GRAVESTONE_DEFAULT_004, NpcID.GRAVESTONE_DEFAULT_005, NpcID.GRAVESTONE_DEFAULT_006,
 		NpcID.GRAVESTONE_DEFAULT_007, NpcID.GRAVESTONE_DEFAULT_008, NpcID.GRAVESTONE_DEFAULT_009,

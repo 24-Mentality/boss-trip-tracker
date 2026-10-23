@@ -45,6 +45,7 @@ import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.ItemDespawned;
 import net.runelite.api.events.ItemSpawned;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.NpcChanged;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
 import net.runelite.api.events.VarbitChanged;
@@ -122,7 +123,9 @@ public class DiagnosticRecorder
 		"Maiden of Sugadinti", "Pestilent Bloat", "Nylocas Vasilias", "Sotetseg", "Xarpus", "Verzik Vitur",
 		// Fractured Archive challenges, its hub NPCs and the gravestone outside
 		"Archive Guardian", "Inert Guardian", "Bork", "Dreadnoth", "Xarth", "Ezekiel", "Moia", "Dagon'hai", "Ocellus",
-		"Quartermaster", "Alliance Navigator", "Grave"};
+		"Quartermaster", "Alliance Navigator", "Grave",
+		// The Forgotten Four (the Odd Figure is the Whisperer before it's disturbed)
+		"Vardorvis", "Duke Sucellus", "Whisperer", "Odd Figure", "Leviathan"};
 
 	/**
 	 * What players type or send (public, private, clan and friends chat, trade requests) isn't needed and carries
@@ -327,7 +330,8 @@ public class DiagnosticRecorder
 				found++;
 			}
 		}
-		record("RECORDKEY", found + " record keys found for the Nightmare, Nex, Theatre of Blood and Fractured Archive");
+		record("RECORDKEY", found + " record keys found for the Nightmare, Nex, Theatre of Blood, Fractured Archive"
+			+ " and the Forgotten Four");
 	}
 
 	@Subscribe
@@ -566,6 +570,16 @@ public class DiagnosticRecorder
 	public void onNpcDespawned(NpcDespawned event)
 	{
 		recordEncounterNpc("despawned", event.getNpc());
+	}
+
+	/**
+	 * An NPC turning into another form (the Odd Figure into the Whisperer, Duke Sucellus waking), to find when the
+	 * game's fight clock starts.
+	 */
+	@Subscribe
+	public void onNpcChanged(NpcChanged event)
+	{
+		recordEncounterNpc("changed from id=" + (event.getOld() != null ? event.getOld().getId() : -1), event.getNpc());
 	}
 
 	@Subscribe

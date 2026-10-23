@@ -1,0 +1,952 @@
+tick=21100 region=9776 inLair=false MENU option="Withdraw-All" target="<col=ff9040>Shark</col>" action=CC_OP id=7 itemId=385 itemOp=-1 param0=113 param1=786444
+tick=21101 region=9776 inLair=false CHAT type=SPAM name="" sender="null" message="You don't have enough inventory space to withdraw that many."
+tick=21101 region=9776 inLair=false INVENTORY +Shark (385) x10
+tick=21103 region=9776 inLair=false MENU option="Close" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=11 param1=786434
+tick=21104 region=9776 inLair=false MENU option="Activate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=21104 region=9776 inLair=false MENU option="Deactivate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=21107 region=9776 inLair=false MENU option="Teleport" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=3 itemId=28327 itemOp=2 param0=13 param1=9764864
+tick=21110 region=9776 inLair=false GRAPHIC spotanims=[2420]
+tick=21110 region=9776 inLair=false ANIM id=10134 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21113 region=9776 inLair=false GAMESTATE LOADING
+tick=21113 region=9776 inLair=false GAMESTATE LOGGED_IN
+tick=21113 region=9776 inLair=false GROUND spawned Plank (960) x1 ownership=0 at=2915,10342,0
+tick=21113 region=9776 inLair=false GROUND spawned Iron bar (2351) x1 ownership=0 at=2918,10327,0
+tick=21113 region=9776 inLair=false GROUND spawned Plank (960) x1 ownership=0 at=2922,10326,0
+tick=21113 region=11681 inLair=false REGION template region 9776 -> 11681 instance=false actual region=11681
+tick=21115 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=525 param1=170
+tick=21115 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=539 param1=146
+tick=21116 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=570 param1=112
+tick=21116 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=584 param1=97
+tick=21116 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=584 param1=96
+tick=21117 region=11681 inLair=false MENU option="Close" target="<col=ffff>Gate" action=GAME_OBJECT_FIRST_OPTION id=46659 itemId=-1 itemOp=-1 param0=71 param1=62
+tick=21119 region=11681 inLair=false MENU option="Setup" target="Quick-prayers" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=21122 region=11681 inLair=false MENU option="Done" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=5046277
+tick=21123 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=323 param1=68
+tick=21124 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Heavy Door" action=GAME_OBJECT_FIRST_OPTION id=49513 itemId=-1 itemOp=-1 param0=70 param1=74
+tick=21124 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Heavy Door" action=GAME_OBJECT_FIRST_OPTION id=49513 itemId=-1 itemOp=-1 param0=70 param1=74
+tick=21128 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Heavy Door" action=GAME_OBJECT_FIRST_OPTION id=49513 itemId=-1 itemOp=-1 param0=70 param1=74
+tick=21135 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=395 param1=140
+tick=21135 region=11681 inLair=false GAMESTATE LOADING
+tick=21135 region=11681 inLair=false GAMESTATE LOGGED_IN
+tick=21135 region=12132 inLair=false REGION template region 11681 -> 12132 instance=false actual region=12132
+tick=21136 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=394 param1=136
+tick=21136 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=389 param1=129
+tick=21137 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=383 param1=117
+tick=21137 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=373 param1=111
+tick=21137 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=357 param1=107
+tick=21138 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=350 param1=100
+tick=21138 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=342 param1=97
+tick=21138 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=348 param1=74
+tick=21139 region=12132 inLair=false MENU option="Open" target="<col=ffff>Gate" action=GAME_OBJECT_FIRST_OPTION id=49138 itemId=-1 itemOp=-1 param0=55 param1=65
+tick=21139 region=12132 inLair=false MENU option="Open" target="<col=ffff>Gate" action=GAME_OBJECT_FIRST_OPTION id=49138 itemId=-1 itemOp=-1 param0=55 param1=65
+tick=21147 region=12132 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the asylum."
+tick=21149 region=12132 inLair=false GAMESTATE LOADING
+tick=21149 region=12132 inLair=false GAMESTATE LOGGED_IN
+tick=21155 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=381 param1=188
+tick=21155 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=384 param1=191
+tick=21156 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=385 param1=192
+tick=21156 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Cold Feet</col>: You ran."
+tick=21158 region=12132 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=4 param1=9764864
+tick=21158 region=12132 inLair=false MENU option="Drop" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=1 itemId=13441 itemOp=5 param0=8 param1=9764864
+tick=21158 region=12132 inLair=false GROUND spawned Shark (385) x1 ownership=1 at=3039,6438,0
+tick=21158 region=12132 inLair=false GROUND spawned Anglerfish (13441) x1 ownership=1 at=3039,6438,0
+tick=21158 region=12132 inLair=false INVENTORY -Shark (385) x1, -Anglerfish (13441) x1
+tick=21159 region=12132 inLair=false MENU option="Drop" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=1 itemId=13441 itemOp=5 param0=12 param1=9764864
+tick=21159 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21159 region=12132 inLair=false MENU option="Drop" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=1 itemId=13441 itemOp=5 param0=16 param1=9764864
+tick=21159 region=12132 inLair=false GROUND spawned Anglerfish (13441) x1 ownership=1 at=3039,6438,0
+tick=21159 region=12132 inLair=false GROUND spawned Anglerfish (13441) x1 ownership=1 at=3039,6438,0
+tick=21159 region=12132 inLair=false INVENTORY -Anglerfish (13441) x2
+tick=21160 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=367 param1=311
+tick=21160 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=365 param1=312
+tick=21162 region=12132 inLair=false MENU option="Take" target="<col=ffff>Pestle and mortar" action=GAME_OBJECT_FIRST_OPTION id=47560 itemId=-1 itemOp=-1 param0=50 param1=50
+tick=21164 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You take a Pestle and mortar."
+tick=21164 region=12132 inLair=false ANIM id=832 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21164 region=12132 inLair=false INVENTORY +Pestle and mortar (233) x1
+tick=21169 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=423 param1=206
+tick=21170 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=405 param1=214
+tick=21171 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=429 param1=165
+tick=21173 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=478 param1=179
+tick=21174 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=477 param1=203
+tick=21176 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=560 param1=95
+tick=21176 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21177 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21177 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21183 region=12132 inLair=false ANIM id=2282 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21186 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21186 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21189 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21189 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21190 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21191 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21191 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21191 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21191 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21191 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21192 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col><col=ffffff> -> <col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21192 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21192 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21192 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21192 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21192 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21193 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col><col=ffffff> -> <col=ffff>Arder mushrooms" action=WIDGET_TARGET_ON_GAME_OBJECT id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21194 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21194 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21194 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21195 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21195 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21195 region=12132 inLair=false ANIM id=2282 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21196 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21196 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21196 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21197 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21197 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21197 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21200 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21200 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21203 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21203 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21206 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21206 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21209 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21209 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21212 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21212 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21223 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21224 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21224 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21224 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21224 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21225 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21226 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21226 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21226 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21226 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21227 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col><col=ffffff> -> <col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21227 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21227 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21227 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21228 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21229 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21229 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21229 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21230 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET id=0 itemId=28345 itemOp=-1 param0=8 param1=9764864
+tick=21230 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col><col=ffffff> -> <col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=233 itemOp=-1 param0=4 param1=9764864
+tick=21231 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21231 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21231 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21233 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21233 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21238 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=375 param1=300
+tick=21238 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=375 param1=300
+tick=21240 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=110 param1=182
+tick=21241 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=110 param1=181
+tick=21241 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=110 param1=181
+tick=21247 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=419 param1=238
+tick=21247 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=411 param1=225
+tick=21248 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=409 param1=222
+tick=21248 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=326 param1=200
+tick=21249 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=326 param1=203
+tick=21249 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=326 param1=203
+tick=21251 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=264 param1=253
+tick=21254 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=310 param1=268
+tick=21254 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=309 param1=265
+tick=21255 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=305 param1=287
+tick=21255 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=304 param1=291
+tick=21257 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=319 param1=246
+tick=21264 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=368 param1=262
+tick=21265 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=354 param1=225
+tick=21265 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=363 param1=213
+tick=21265 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=363 param1=213
+tick=21267 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=376 param1=170
+tick=21284 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=378 param1=311
+tick=21389 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=420 param1=285
+tick=21395 region=12132 inLair=false MENU option="Check" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=4 itemId=28327 itemOp=3 param0=13 param1=9764864
+tick=21395 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring of shadows has 368 charges remaining."
+tick=21399 region=12132 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=21401 region=12132 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=21401 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,393 charges remaining."
+tick=21402 region=12132 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=21405 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21406 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21407 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21407 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21409 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21410 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21410 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21410 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21411 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21411 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21411 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21412 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21412 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21412 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21412 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21412 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21413 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21413 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21413 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21414 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21414 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21414 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21414 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21415 region=12132 inLair=false MENU option="Feed" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_FIRST_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21415 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21416 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21416 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21416 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21416 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21416 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21417 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21417 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21417 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21418 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21418 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21418 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21418 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21419 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21419 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21419 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21420 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21420 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21420 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21420 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21421 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21421 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21421 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21422 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21422 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21423 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21423 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21423 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21423 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21424 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21424 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21425 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21425 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21425 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21426 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21426 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21427 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21427 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21427 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21428 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21428 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21428 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21428 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21429 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21429 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21429 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21430 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21430 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21431 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21431 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21432 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21432 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21432 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21433 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21433 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21433 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21434 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21434 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21435 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21435 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21435 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21435 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21435 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21436 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21436 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21437 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21437 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21437 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21437 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21438 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21438 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21438 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21439 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21439 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21440 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21440 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21440 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21440 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21441 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21441 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21442 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21442 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21442 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21443 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21443 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21444 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21444 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21444 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21445 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21445 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21445 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21446 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21446 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21446 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21446 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21447 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21447 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21447 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21448 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21448 region=12132 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=5 param1=9764864
+tick=21448 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21448 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21449 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=21449 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=21449 region=12132 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21449 region=12132 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=21450 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21450 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21451 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21451 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21451 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21451 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21451 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21452 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21452 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21453 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21453 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21453 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21453 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21454 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21454 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21454 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21454 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21455 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21455 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21455 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21455 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21456 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21456 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21457 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21457 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21457 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21457 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21458 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=426 param1=329
+tick=21458 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=426 param1=330
+tick=21460 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21460 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21460 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21460 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21463 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21465 region=12132 inLair=false MENU option="Wield" target="<col=ff9040>Bandos godsword</col>" action=CC_OP id=3 itemId=11804 itemOp=2 param0=0 param1=9764864
+tick=21465 region=12132 inLair=false INVENTORY -Bandos godsword (11804) x1, +Scythe of Vitur (22325) x1
+tick=21465 region=12132 inLair=false EQUIPMENT +Bandos godsword (11804) x1, -Scythe of Vitur (22325) x1
+tick=21467 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21479 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21479 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=11804 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21479 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21480 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=364 param1=276
+tick=21481 region=12132 inLair=false MENU option="Drink" target="<col=ff9040>Divine super combat potion(4)</col>" action=CC_OP id=2 itemId=23685 itemOp=1 param0=1 param1=9764864
+tick=21481 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine combat potion."
+tick=21481 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=21481 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Duke Sucellus awakens..."
+tick=21481 region=12132 inLair=false GRAPHIC spotanims=[560]
+tick=21481 region=12132 inLair=false ANIM id=829 target=none weapon=11804 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21481 region=12132 inLair=false INVENTORY -Divine super combat potion(4) (23685) x1, +Divine super combat potion(3) (23688) x1
+tick=21482 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=21483 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21483 region=12132 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=21483 region=12132 inLair=false SPEC energy=500
+tick=21483 region=12132 inLair=false GRAPHIC spotanims=[1212]
+tick=21483 region=12132 inLair=false ANIM id=7642 target=npc:12191 weapon=11804 shield=-1 amulet=29801 autocast=0 spec=500
+tick=21484 region=12132 inLair=false HITSPLAT type=16 amount=45 target=npc:12191 weapon=11804 shield=-1 amulet=29801
+tick=21485 region=12132 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=21485 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Mirror Image</col>: You attacked the Duke when it did not attack you."
+tick=21486 region=12132 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=21486 region=12132 inLair=false RUNEPOUCH varbit=1624 value=15930
+tick=21486 region=12132 inLair=false RUNEPOUCH varbit=1625 value=1714
+tick=21486 region=12132 inLair=false RUNEPOUCH varbit=14286 value=774
+tick=21486 region=12132 inLair=false RUNEPOUCH varbit=1626 value=4640
+tick=21486 region=12132 inLair=false RUNEPOUCH varbit=1625 value=1713
+tick=21486 region=12132 inLair=false RUNEPOUCH varbit=14286 value=773
+tick=21486 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=21486 region=12132 inLair=false GRAPHIC spotanims=[3288]
+tick=21486 region=12132 inLair=false ANIM id=8970 target=npc:12191 weapon=11804 shield=-1 amulet=29801 autocast=0 spec=500
+tick=21487 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=21489 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21489 region=12132 inLair=false SPEC energy=0
+tick=21489 region=12132 inLair=false GRAPHIC spotanims=[3288, 1212]
+tick=21489 region=12132 inLair=false ANIM id=7642 target=npc:12191 weapon=11804 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21490 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=329 param1=292
+tick=21490 region=12132 inLair=false HITSPLAT type=16 amount=71 target=npc:12191 weapon=11804 shield=-1 amulet=29801
+tick=21491 region=12132 inLair=false MENU option="Wield" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=21491 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=21491 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=11804 shield=-1 amulet=29801
+tick=21492 region=12132 inLair=false INVENTORY +Bandos godsword (11804) x1, -Scythe of Vitur (22325) x1
+tick=21492 region=12132 inLair=false EQUIPMENT -Bandos godsword (11804) x1, +Scythe of Vitur (22325) x1
+tick=21493 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21495 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=378 param1=302
+tick=21495 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21495 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21496 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21496 region=12132 inLair=false HITSPLAT type=16 amount=19 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21496 region=12132 inLair=false HITSPLAT type=16 amount=8 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21498 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21499 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21500 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21501 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=385 param1=295
+tick=21501 region=12132 inLair=false HITSPLAT type=16 amount=14 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21501 region=12132 inLair=false HITSPLAT type=16 amount=23 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21501 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21503 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21503 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21505 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21506 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=382 param1=298
+tick=21506 region=12132 inLair=false HITSPLAT type=16 amount=17 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21506 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21506 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21507 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21508 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21510 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21511 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=384 param1=308
+tick=21511 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Duke Sucellus turns his gaze upon you..."
+tick=21511 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21511 region=12132 inLair=false HITSPLAT type=16 amount=43 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21511 region=12132 inLair=false HITSPLAT type=16 amount=20 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21511 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21515 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to avoid Duke Sucellus' gaze."
+tick=21515 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21516 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21516 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21517 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=410 param1=292
+tick=21517 region=12132 inLair=false HITSPLAT type=16 amount=7 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21517 region=12132 inLair=false HITSPLAT type=16 amount=7 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21517 region=12132 inLair=false HITSPLAT type=16 amount=6 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21519 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21519 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21521 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21522 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=384 param1=313
+tick=21522 region=12132 inLair=false HITSPLAT type=16 amount=26 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21522 region=12132 inLair=false HITSPLAT type=16 amount=19 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21522 region=12132 inLair=false HITSPLAT type=16 amount=4 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21523 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21524 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21526 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21527 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=379 param1=312
+tick=21527 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21527 region=12132 inLair=false HITSPLAT type=16 amount=45 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21527 region=12132 inLair=false HITSPLAT type=16 amount=4 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21527 region=12132 inLair=false HITSPLAT type=16 amount=7 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21529 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21531 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=0
+tick=21531 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21532 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=388 param1=301
+tick=21532 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=542 param1=217
+tick=21532 region=12132 inLair=false HITSPLAT type=16 amount=32 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21532 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21532 region=12132 inLair=false HITSPLAT type=16 amount=7 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21533 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=564 param1=172
+tick=21533 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=586 param1=142
+tick=21533 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=584 param1=144
+tick=21533 region=12132 inLair=false SPEC energy=100
+tick=21535 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21536 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21536 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=21537 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=514 param1=203
+tick=21537 region=12132 inLair=false HITSPLAT type=16 amount=25 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21537 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21537 region=12132 inLair=false HITSPLAT type=16 amount=5 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21539 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21539 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21541 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=456 param1=301
+tick=21541 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=100
+tick=21542 region=12132 inLair=false SPEC energy=250
+tick=21542 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=21542 region=12132 inLair=false HITSPLAT type=16 amount=6 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21542 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21542 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21544 region=12132 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=21546 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=255 param1=280
+tick=21546 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Duke Sucellus kill count is: <col=ff0000>1,080</col>."
+tick=21546 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>0:39.00</col> (new personal best)"
+tick=21546 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="CA_ID:514|Congratulations, you've completed a grandmaster combat task: @ach_comp@Duke Sucellus Speed-Runner</col> (6 points)."
+tick=21546 region=12132 inLair=false GROUND spawned Chaos rune (562) x100 ownership=1 at=3039,6451,0
+tick=21546 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have a sneaking suspicion that you would have received a medium scroll box."
+tick=21546 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=005f00>24 Mentality received a drop: 100 x Chaos rune</col> <col=106f10>(Duke Sucellus)</col>"
+tick=21546 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21546 region=12132 inLair=false LOOT name="Duke Sucellus" type=NPC combatLevel=758 amount=1 items=[Chaos rune (562) x100]
+tick=21560 region=12132 inLair=false MENU option="Take" target="<col=ff9040>Chaos rune (100)" action=GROUND_ITEM_THIRD_OPTION id=562 itemId=-1 itemOp=-1 param0=55 param1=67
+tick=21561 region=12132 inLair=false GROUND despawned Chaos rune (562) x100 ownership=1 at=3039,6451,0
+tick=21561 region=12132 inLair=false INVENTORY +Chaos rune (562) x100
+tick=21563 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=316 param1=266
+tick=21564 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=316 param1=267
+tick=21565 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=257 param1=261
+tick=21565 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=257 param1=260
+tick=21570 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=325 param1=427
+tick=21570 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=306 param1=423
+tick=21571 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=241 param1=373
+tick=21571 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=177 param1=324
+tick=21572 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=164 param1=309
+tick=21572 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=128 param1=303
+tick=21572 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Cold Feet</col>: You ran."
+tick=21573 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=142 param1=162
+tick=21577 region=12132 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=21580 region=12132 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=21580 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,383 charges remaining."
+tick=21582 region=12132 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=21583 region=12132 inLair=false SPEC energy=350
+tick=21584 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=218 param1=303
+tick=21585 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=216 param1=292
+tick=21586 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=21587 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=252 param1=206
+tick=21588 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=345 param1=86
+tick=21589 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=391 param1=71
+tick=21589 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=21589 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=436 param1=117
+tick=21592 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=504 param1=88
+tick=21593 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=521 param1=70
+tick=21593 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21593 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21593 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21600 region=12132 inLair=false ANIM id=2282 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=350
+tick=21603 region=12132 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=21603 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21603 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21606 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21606 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21609 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21609 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21612 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21612 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21614 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21615 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21615 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21615 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col><col=ffffff> -> <col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21615 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21615 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=350
+tick=21615 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21616 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21616 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21616 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21616 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21616 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21616 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x2, +Arder powder (28346) x10
+tick=21617 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder mushroom</col><col=ffffff> -> <col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21617 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21617 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21617 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21618 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21618 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21619 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21619 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21619 region=12132 inLair=false MENU option="Pick" target="<col=ffff>Arder mushrooms" action=GAME_OBJECT_FIRST_OPTION id=47528 itemId=-1 itemOp=-1 param0=46 param1=69
+tick=21619 region=12132 inLair=false ANIM id=2282 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=350
+tick=21621 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21621 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21624 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21624 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21626 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21627 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21627 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21630 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You pick a mushroom."
+tick=21630 region=12132 inLair=false INVENTORY +Arder mushroom (28345) x1
+tick=21632 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21632 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21632 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=350
+tick=21632 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21633 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21633 region=12132 inLair=false SPEC energy=450
+tick=21634 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21634 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21634 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21634 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21635 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21635 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col>" action=WIDGET_TARGET id=0 itemId=233 itemOp=-1 param0=8 param1=9764864
+tick=21635 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21635 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21636 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Pestle and mortar</col><col=ffffff> -> <col=ff9040>Arder mushroom</col>" action=WIDGET_TARGET_ON_WIDGET id=0 itemId=28345 itemOp=-1 param0=4 param1=9764864
+tick=21636 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You grind the mushroom into dust."
+tick=21636 region=12132 inLair=false ANIM id=364 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=450
+tick=21636 region=12132 inLair=false INVENTORY -Arder mushroom (28345) x1, +Arder powder (28346) x5
+tick=21638 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=295
+tick=21638 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=296
+tick=21640 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=294 param1=284
+tick=21642 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=267 param1=232
+tick=21646 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=318 param1=255
+tick=21648 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=373 param1=208
+tick=21650 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=338 param1=216
+tick=21653 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=345 param1=206
+tick=21653 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=353 param1=194
+tick=21653 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=349 param1=196
+tick=21654 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=344 param1=200
+tick=21656 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=338 param1=214
+tick=21659 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=363 param1=235
+tick=21661 region=12132 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=9 param1=9764864
+tick=21662 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=381 param1=190
+tick=21662 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=350 param1=162
+tick=21662 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=21662 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=21662 region=12132 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=450
+tick=21662 region=12132 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=21663 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=359 param1=175
+tick=21665 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=349 param1=166
+tick=21668 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=375 param1=278
+tick=21673 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=424 param1=191
+tick=21675 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=12 param1=9764864
+tick=21676 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21676 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=450
+tick=21676 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21677 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=464 param1=305
+tick=21680 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21680 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21681 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=450
+tick=21681 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21682 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21682 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21682 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21683 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21683 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21683 region=12132 inLair=false SPEC energy=550
+tick=21684 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21684 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21684 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21685 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21685 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21686 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21686 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21686 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21686 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21687 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21687 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21687 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21689 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21689 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21689 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21689 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21689 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21690 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21690 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21690 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21691 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21691 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21691 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21691 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21692 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21692 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21692 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21693 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21693 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21693 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21693 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21694 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21694 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21694 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21694 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21695 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21695 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21695 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21696 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21696 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21697 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21697 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21697 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21698 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21698 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21698 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21698 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21699 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21699 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21700 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21700 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21700 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21701 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21701 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21701 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21702 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21702 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21702 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21702 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21703 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21703 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21704 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21704 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21704 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21704 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21705 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21705 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21706 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21706 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21706 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21706 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21706 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21707 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21707 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21707 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21708 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21708 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21708 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21709 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21709 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21709 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21710 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21710 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21711 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21711 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21711 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21711 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21712 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21712 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21713 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21713 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21713 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21713 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21714 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21714 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21714 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21715 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21715 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21715 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21715 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21715 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21716 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21716 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21717 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21717 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21717 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21718 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21718 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21718 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21719 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21719 region=12132 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=-1 itemOp=-1 param0=0 param1=0
+tick=21719 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21720 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21720 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21720 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21720 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21721 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21721 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21721 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21722 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21722 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21722 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21722 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21723 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21723 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21723 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21723 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21724 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21724 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21724 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21724 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21725 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21725 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=407 param1=258
+tick=21727 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col>" action=WIDGET_TARGET id=0 itemId=28346 itemOp=-1 param0=4 param1=9764864
+tick=21728 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Arder powder</col><col=ffffff> -> <col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=WIDGET_TARGET_ON_NPC id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12167 npcName="Duke Sucellus"
+tick=21728 region=12132 inLair=false ANIM id=9401 target=npc:12167 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21728 region=12132 inLair=false INVENTORY -Arder powder (28346) x1
+tick=21729 region=12132 inLair=false MENU option="Wield" target="<col=ff9040>Bandos godsword</col>" action=CC_OP id=3 itemId=11804 itemOp=2 param0=0 param1=9764864
+tick=21729 region=12132 inLair=false INVENTORY -Bandos godsword (11804) x1, +Scythe of Vitur (22325) x1
+tick=21729 region=12132 inLair=false EQUIPMENT +Bandos godsword (11804) x1, -Scythe of Vitur (22325) x1
+tick=21730 region=12132 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=21730 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Duke Sucellus awakens..."
+tick=21731 region=12132 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=21732 region=12132 inLair=false MENU option="Cast" target="<col=00ff00>Resurrect Greater Ghost</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287043
+tick=21732 region=12132 inLair=false RUNEPOUCH varbit=1624 value=15920
+tick=21732 region=12132 inLair=false RUNEPOUCH varbit=1625 value=1708
+tick=21732 region=12132 inLair=false RUNEPOUCH varbit=14286 value=772
+tick=21732 region=12132 inLair=false GRAPHIC spotanims=[1873]
+tick=21732 region=12132 inLair=false ANIM id=8973 target=none weapon=11804 shield=-1 amulet=29801 autocast=0 spec=550
+tick=21733 region=12132 inLair=false MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=21733 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21733 region=12132 inLair=false RUNEPOUCH varbit=1626 value=4639
+tick=21733 region=12132 inLair=false RUNEPOUCH varbit=1625 value=1707
+tick=21733 region=12132 inLair=false RUNEPOUCH varbit=14286 value=771
+tick=21733 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=21733 region=12132 inLair=false SPEC energy=650
+tick=21733 region=12132 inLair=false SPEC energy=150
+tick=21733 region=12132 inLair=false GRAPHIC spotanims=[3288]
+tick=21733 region=12132 inLair=false GRAPHIC spotanims=[3288, 1212]
+tick=21733 region=12132 inLair=false ANIM id=7642 target=npc:12191 weapon=11804 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21734 region=12132 inLair=false HITSPLAT type=16 amount=71 target=npc:12191 weapon=11804 shield=-1 amulet=29801
+tick=21735 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=342 param1=259
+tick=21735 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Mirror Image</col>: You attacked the Duke when it did not attack you."
+tick=21736 region=12132 inLair=false MENU option="Wield" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=3 itemId=22325 itemOp=2 param0=0 param1=9764864
+tick=21736 region=12132 inLair=false INVENTORY +Bandos godsword (11804) x1, -Scythe of Vitur (22325) x1
+tick=21736 region=12132 inLair=false EQUIPMENT -Bandos godsword (11804) x1, +Scythe of Vitur (22325) x1
+tick=21737 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21737 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You resurrect a greater ghostly thrall.</col>"
+tick=21737 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21739 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21740 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=377 param1=301
+tick=21740 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21740 region=12132 inLair=false HITSPLAT type=16 amount=22 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21740 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21741 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21742 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21744 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21745 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=375 param1=307
+tick=21745 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21745 region=12132 inLair=false HITSPLAT type=16 amount=40 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21745 region=12132 inLair=false HITSPLAT type=16 amount=6 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21745 region=12132 inLair=false HITSPLAT type=16 amount=7 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21747 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21749 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21749 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21750 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=382 param1=304
+tick=21750 region=12132 inLair=false HITSPLAT type=16 amount=27 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21750 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21750 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21752 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21753 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21754 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21755 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=371 param1=309
+tick=21755 region=12132 inLair=false HITSPLAT type=16 amount=10 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21755 region=12132 inLair=false HITSPLAT type=16 amount=9 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21755 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21757 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21757 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21759 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21760 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=374 param1=316
+tick=21760 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Duke Sucellus turns his gaze upon you..."
+tick=21760 region=12132 inLair=false HITSPLAT type=16 amount=23 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21760 region=12132 inLair=false HITSPLAT type=16 amount=21 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21760 region=12132 inLair=false HITSPLAT type=16 amount=5 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21761 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21764 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to avoid Duke Sucellus' gaze."
+tick=21765 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21765 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21765 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21766 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=413 param1=305
+tick=21766 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21766 region=12132 inLair=false HITSPLAT type=16 amount=13 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21766 region=12132 inLair=false HITSPLAT type=16 amount=4 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21768 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21769 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21770 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21771 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=382 param1=324
+tick=21771 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21771 region=12132 inLair=false HITSPLAT type=43 amount=24 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21771 region=12132 inLair=false HITSPLAT type=16 amount=9 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21773 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21773 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21775 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21776 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=386 param1=330
+tick=21776 region=12132 inLair=false HITSPLAT type=16 amount=32 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21776 region=12132 inLair=false HITSPLAT type=16 amount=21 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21776 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21777 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21778 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21780 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=150
+tick=21781 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=381 param1=319
+tick=21781 region=12132 inLair=false HITSPLAT type=16 amount=2 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21781 region=12132 inLair=false HITSPLAT type=16 amount=26 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21781 region=12132 inLair=false HITSPLAT type=16 amount=7 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21781 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21782 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=539 param1=143
+tick=21782 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=550 param1=138
+tick=21782 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=553 param1=142
+tick=21782 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=561 param1=137
+tick=21783 region=12132 inLair=false SPEC energy=250
+tick=21785 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21785 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=21785 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21786 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=500 param1=214
+tick=21786 region=12132 inLair=false HITSPLAT type=16 amount=12 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21786 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21786 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21788 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21789 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21790 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=21791 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=457 param1=306
+tick=21791 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21791 region=12132 inLair=false HITSPLAT type=16 amount=13 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21791 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21792 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21793 region=12132 inLair=false HITSPLAT type=16 amount=3 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21794 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=453 param1=304
+tick=21794 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Duke Sucellus turns his gaze upon you..."
+tick=21797 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12191 weapon=22325 shield=-1 amulet=29801
+tick=21798 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_gre@You manage to avoid Duke Sucellus' gaze."
+tick=21799 region=12132 inLair=false MENU option="Attack" target="<col=ffff00>Duke Sucellus<col=ff0000>  (level-758)" action=NPC_SECOND_OPTION id=54718 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12191 npcName="Duke Sucellus"
+tick=21799 region=12132 inLair=false ANIM id=8056 target=npc:12191 weapon=22325 shield=-1 amulet=29801 autocast=0 spec=250
+tick=21800 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=418 param1=305
+tick=21800 region=12132 inLair=false SPEC energy=400
+tick=21800 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=21800 region=12132 inLair=false HITSPLAT type=16 amount=42 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21800 region=12132 inLair=false HITSPLAT type=16 amount=9 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21800 region=12132 inLair=false HITSPLAT type=12 amount=0 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21802 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=305 param1=249
+tick=21803 region=12132 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=21804 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Duke Sucellus kill count is: <col=ff0000>1,081</col>."
+tick=21804 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>0:44.40</col>. Personal best: 0:39.00"
+tick=21804 region=12132 inLair=false GROUND spawned Ice quartz (28270) x1 ownership=1 at=3039,6451,0
+tick=21804 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=ef1020>Untradeable drop: Ice quartz</col>"
+tick=21804 region=12132 inLair=false HITSPLAT type=16 amount=1 target=npc:12192 weapon=22325 shield=-1 amulet=29801
+tick=21804 region=12132 inLair=false LOOT name="Duke Sucellus" type=NPC combatLevel=758 amount=1 items=[Ice quartz (28270) x1]
+tick=21806 region=12132 inLair=false MENU option="Take" target="<col=66b2ff>Ice quartz" action=GROUND_ITEM_THIRD_OPTION id=28270 itemId=-1 itemOp=-1 param0=55 param1=67
+tick=21806 region=12132 inLair=false GROUND despawned Ice quartz (28270) x1 ownership=1 at=3039,6451,0
+tick=21806 region=12132 inLair=false INVENTORY +Ice quartz (28270) x1
+tick=21808 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=295 param1=289
+tick=21808 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=243 param1=273
+tick=21808 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=202 param1=275
+tick=21809 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=179 param1=272
+tick=21810 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=179 param1=271
+tick=21819 region=12132 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=21 param1=9764864
+tick=21819 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=21819 region=12132 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=21819 region=12132 inLair=false ANIM id=829 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=400
+tick=21819 region=12132 inLair=false INVENTORY -Shark (385) x1
+tick=21820 region=12132 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=55 param1=54
+tick=21821 region=12132 inLair=false GROUND despawned Anglerfish (13441) x1 ownership=1 at=3039,6438,0
+tick=21821 region=12132 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=21822 region=12132 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=55 param1=54
+tick=21822 region=12132 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=55 param1=54
+tick=21822 region=12132 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=55 param1=54
+tick=21822 region=12132 inLair=false GROUND despawned Anglerfish (13441) x1 ownership=1 at=3039,6438,0
+tick=21822 region=12132 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=21824 region=12132 inLair=false MENU option="Drop" target="<col=ff9040>Pestle and mortar</col>" action=CC_OP id=1 itemId=233 itemOp=5 param0=8 param1=9764864
+tick=21824 region=12132 inLair=false GROUND spawned Pestle and mortar (233) x1 ownership=1 at=3039,6438,0
+tick=21824 region=12132 inLair=false INVENTORY -Pestle and mortar (233) x1
+tick=21825 region=12132 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=21828 region=12132 inLair=false MENU option="Check" target="<col=ff9040>Scythe of Vitur</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362450
+tick=21828 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Scythe of Vitur has 4,371 charges remaining."
+tick=21830 region=12132 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=21833 region=12132 inLair=false SPEC energy=500
+tick=21833 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Your Death Charge has faded away.</col>"
+tick=21835 region=12132 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=55 param1=54
+tick=21835 region=12132 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@Your greater ghostly thrall returns to the grave.</col>"
+tick=21836 region=12132 inLair=false GROUND despawned Anglerfish (13441) x1 ownership=1 at=3039,6438,0
+tick=21836 region=12132 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=21837 region=12132 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=343 param1=314
+tick=21842 region=12132 inLair=false MENU option="Inside" target="<col=ff9040>Teleport to house</col>" action=CC_OP id=3 itemId=8013 itemOp=2 param0=27 param1=9764864
+tick=21842 region=12132 inLair=false ANIM id=4069 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=21844 region=12132 inLair=false GRAPHIC spotanims=[678]
+tick=21844 region=12132 inLair=false ANIM id=4071 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=500
+tick=21844 region=12132 inLair=false INVENTORY -Teleport to house (8013) x1
+tick=21846 region=12132 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=21846 region=12132 inLair=false GAMESTATE LOADING
+tick=21846 region=12132 inLair=false GAMESTATE LOGGED_IN
+tick=21846 region=12132 inLair=false GROUND spawned Bronze arrow (882) x1 ownership=0 at=2957,3205,0
+tick=21846 region=12132 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2958,3205,0
+tick=21846 region=12132 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2959,3205,0
+tick=21846 region=12132 inLair=false GROUND spawned Bronze pickaxe (1265) x1 ownership=0 at=2963,3216,0
+tick=21846 region=11826 inLair=false REGION template region 12132 -> 11826 instance=false actual region=11826
+tick=21847 region=11826 inLair=false GAMESTATE LOADING
+tick=21847 region=11826 inLair=false GAMESTATE LOGGED_IN
+tick=21847 region=7790 inLair=false REGION template region 11826 -> 7790 instance=true actual region=45141
+tick=21850 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=21853 region=7790 inLair=false SPEC energy=1000
+tick=21853 region=7790 inLair=false ANIM id=7305 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21854 region=7790 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=275 param1=277
+tick=21856 region=7790 inLair=false MENU option="Teleport Menu" target="<col=ffff>Ornate Jewellery Box" action=GAME_OBJECT_SECOND_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=21858 region=7790 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=356 param1=197
+tick=21858 region=7791 inLair=false REGION template region 7790 -> 7791 instance=true actual region=45141
+tick=21860 region=7791 inLair=false MENU option="Ancient" target="<col=ffff>Altar of the Occult" action=GAME_OBJECT_THIRD_OPTION id=29150 itemId=-1 itemOp=-1 param0=46 param1=59
+tick=21861 region=7791 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your mind fills with knowledge."
+tick=21861 region=7791 inLair=false ANIM id=645 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21862 region=7791 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=451 param1=350
+tick=21864 region=7791 inLair=false MENU option="Castle Wars" target="<col=ffff>Ornate Jewellery Box" action=GAME_OBJECT_THIRD_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=21865 region=7791 inLair=false GRAPHIC spotanims=[111]
+tick=21865 region=7791 inLair=false ANIM id=714 target=none weapon=22325 shield=-1 amulet=29801 autocast=0 spec=1000
+tick=21867 region=7791 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=21868 region=7791 inLair=false GAMESTATE LOADING
+tick=21868 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=21868 region=7791 inLair=false GROUND spawned Tinderbox (590) x1 ownership=0 at=2431,3072,0
+tick=21868 region=9776 inLair=false REGION template region 7791 -> 9776 instance=false actual region=9776
+tick=21869 region=9776 inLair=false MENU option="Use" target="<col=ffff>Bank chest" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=21869 region=9776 inLair=false MENU option="Use" target="<col=ffff>Bank chest" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=21870 region=9776 inLair=false MENU option="Use" target="<col=ffff>Bank chest" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=21870 region=9776 inLair=false MENU option="Use" target="<col=ffff>Bank chest" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
