@@ -48,7 +48,11 @@ import net.runelite.api.events.MenuOptionClicked;
 import net.runelite.api.events.NpcChanged;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.NpcSpawned;
+import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.ScriptID;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.gameval.VarClientID;
 import net.runelite.api.gameval.VarPlayerID;
@@ -657,6 +661,54 @@ public class DiagnosticRecorder
 			sb.append(spotAnim.getId());
 		}
 		record("GRAPHIC", sb.append(']').toString());
+	}
+
+	/**
+	 * The Collection Log page being shown, each time the game draws it: the header texts (the page's name, obtained
+	 * count and kill count) and every item with its count and whether it's obtained. Recorded wherever the log is
+	 * opened, so a boss's all-time uniques can be read from it later.
+	 */
+	@Subscribe
+	public void onScriptPostFired(ScriptPostFired event)
+	{
+		if (!enabled || event.getScriptId() != ScriptID.COLLECTION_DRAW_LIST)
+		{
+			return;
+		}
+		StringBuilder sb = new StringBuilder("header=[");
+		Widget header = client.getWidget(InterfaceID.Collection.HEADER_TEXT);
+		Widget[] texts = header != null ? header.getChildren() : null;
+		if (texts != null)
+		{
+			boolean first = true;
+			for (Widget text : texts)
+			{
+				if (text == null || text.getText() == null || text.getText().isEmpty())
+				{
+					continue;
+				}
+				sb.append(first ? "" : ", ").append('"').append(text.getText()).append('"');
+				first = false;
+			}
+		}
+		sb.append("] items=[");
+		Widget items = client.getWidget(InterfaceID.Collection.ITEMS_CONTENTS);
+		Widget[] slots = items != null ? items.getChildren() : null;
+		if (slots != null)
+		{
+			boolean first = true;
+			for (Widget slot : slots)
+			{
+				if (slot == null || slot.getItemId() <= 0)
+				{
+					continue;
+				}
+				sb.append(first ? "" : ", ").append(describeItem(slot.getItemId(), slot.getItemQuantity()))
+					.append(slot.getOpacity() == 0 ? " obtained" : " missing");
+				first = false;
+			}
+		}
+		record("CLOG", sb.append(']').toString());
 	}
 
 	@Subscribe
