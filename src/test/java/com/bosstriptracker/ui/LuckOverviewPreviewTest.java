@@ -106,7 +106,7 @@ public class LuckOverviewPreviewTest
 			layout(card);
 			layout(card);
 			List<String> clipped = new ArrayList<>();
-			findClippedCounts(card, clipped);
+			findClippedCounts(card, card, clipped);
 			assertTrue("Unique counts clipped: " + clipped, clipped.isEmpty());
 
 			BufferedImage image = new BufferedImage(WIDTH * 2, card.getHeight() * 2, BufferedImage.TYPE_INT_RGB);
@@ -156,9 +156,10 @@ public class LuckOverviewPreviewTest
 	}
 
 	/**
-	 * Every "xN" count label must be laid out at least as wide as its text.
+	 * Every "xN" count label must be laid out at least as wide as its text, and inside the card: a row that is too
+	 * wide keeps each label's size but places the last ones past the card's edge.
 	 */
-	private static void findClippedCounts(Container container, List<String> clipped)
+	private static void findClippedCounts(Container card, Container container, List<String> clipped)
 	{
 		for (Component child : container.getComponents())
 		{
@@ -166,14 +167,20 @@ public class LuckOverviewPreviewTest
 			{
 				JLabel label = (JLabel) child;
 				String text = label.getText();
-				if (text != null && text.startsWith("x") && label.getWidth() < label.getPreferredSize().width)
+				if (text != null && text.startsWith("x"))
 				{
-					clipped.add(text + " (" + label.getWidth() + " of " + label.getPreferredSize().width + "px)");
+					// Past its own container's edge means painted over or outside: the row is too wide for the card
+					int rightEdge = label.getX() + label.getWidth();
+					if (label.getWidth() < label.getPreferredSize().width || rightEdge > container.getWidth() || label.getX() < 0)
+					{
+						clipped.add(text + " (" + label.getWidth() + " of " + label.getPreferredSize().width + "px, right edge at "
+							+ rightEdge + " of its row's " + container.getWidth() + ")");
+					}
 				}
 			}
 			if (child instanceof Container)
 			{
-				findClippedCounts((Container) child, clipped);
+				findClippedCounts(card, (Container) child, clipped);
 			}
 		}
 	}
