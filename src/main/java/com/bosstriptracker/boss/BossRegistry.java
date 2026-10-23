@@ -22,6 +22,7 @@ public final class BossRegistry
 		return new BossRegistry(ImmutableList.<BossDefinition>builder()
 			.add(new MaggotKingBoss(), new NightmareBoss(), new TheatreOfBloodBoss(), new FracturedArchiveBoss())
 			.addAll(ForgottenFourBoss.all())
+			.add(new VorkathBoss(), new PhantomMuspahBoss(), new DoomOfMokhaiotlBoss())
 			.build());
 	}
 

@@ -1,0 +1,1036 @@
+tick=1792 region=7791 inLair=false GAMESTATE LOADING
+tick=1792 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=1792 region=7791 inLair=false GROUND spawned Tinderbox (590) x1 ownership=0 at=2431,3072,0
+tick=1792 region=9776 inLair=false REGION template region 7791 -> 9776 instance=false actual region=9776
+tick=1794 region=9776 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=532 param1=216
+tick=1794 region=9776 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=568 param1=200
+tick=1795 region=9776 inLair=false MENU option="Use" target="<col=ffff>Bank chest" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43
+tick=1803 region=9776 inLair=false MENU option="Configure" target="<col=ff9040>Divine rune pouch</col>" action=CC_OP id=1 itemId=27281 itemOp=-1 param0=14 param1=983043
+tick=1807 region=9776 inLair=false MENU option="Load" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=983070
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1624 value=1549
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=29 value=8
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1625 value=16000
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1622 value=4
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1625 value=4813
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1622 value=7
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1626 value=16000
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1623 value=4
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1626 value=0
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1623 value=0
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1626 value=2935
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=1623 value=13
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=14286 value=0
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=14285 value=0
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=14286 value=16000
+tick=1807 region=9776 inLair=false RUNEPOUCH varbit=14285 value=2
+tick=1807 region=9776 inLair=false CHAT type=SPAM name="" sender="null" message="Loading pouch load-out 4..."
+tick=1809 region=9776 inLair=false MENU option="Dismiss" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=983062
+tick=1815 region=9776 inLair=false MENU option="Close" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=11 param1=786434
+tick=1818 region=9776 inLair=false MENU option="Wield" target="<col=ff9040>Ice ancient sceptre</col>" action=CC_OP id=3 itemId=28262 itemOp=2 param0=12 param1=9764864
+tick=1818 region=9776 inLair=false AUTOCAST varbit=276 value=46
+tick=1818 region=9776 inLair=false AUTOCAST varbit=275 value=1
+tick=1818 region=9776 inLair=false INVENTORY +Twisted bow (20997) x1, -Ice ancient sceptre (28262) x1
+tick=1818 region=9776 inLair=false EQUIPMENT -Twisted bow (20997) x1, +Ice ancient sceptre (28262) x1
+tick=1819 region=9776 inLair=false MENU option="Combat Options" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551355
+tick=1821 region=9776 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=1822 region=9776 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=12 param1=9764864
+tick=1823 region=9776 inLair=false AUTOCAST varbit=275 value=0
+tick=1823 region=9776 inLair=false AUTOCAST varbit=276 value=0
+tick=1823 region=9776 inLair=false INVENTORY -Twisted bow (20997) x1, +Ice ancient sceptre (28262) x1
+tick=1823 region=9776 inLair=false EQUIPMENT +Twisted bow (20997) x1, -Ice ancient sceptre (28262) x1
+tick=1825 region=9776 inLair=false MENU option="Teleport" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=3 itemId=28327 itemOp=2 param0=13 param1=9764864
+tick=1826 region=9776 inLair=false GRAPHIC spotanims=[2420]
+tick=1826 region=9776 inLair=false ANIM id=10134 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1829 region=9776 inLair=false GAMESTATE LOADING
+tick=1829 region=9776 inLair=false GAMESTATE LOGGED_IN
+tick=1829 region=9776 inLair=false GROUND spawned Plank (960) x1 ownership=0 at=2915,10342,0
+tick=1829 region=9776 inLair=false GROUND spawned Iron bar (2351) x1 ownership=0 at=2918,10327,0
+tick=1829 region=9776 inLair=false GROUND spawned Plank (960) x1 ownership=0 at=2922,10326,0
+tick=1829 region=11681 inLair=false REGION template region 9776 -> 11681 instance=false actual region=11681
+tick=1829 region=11681 inLair=false ENTRANCE entered region outside the lair
+tick=1832 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1832 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1835 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=100 param1=211
+tick=1836 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Crevice" action=GAME_OBJECT_FIRST_OPTION id=46596 itemId=-1 itemOp=-1 param0=45 param1=50
+tick=1836 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Crevice" action=GAME_OBJECT_FIRST_OPTION id=46596 itemId=-1 itemOp=-1 param0=45 param1=50
+tick=1840 region=11681 inLair=false MENU option="Drink" target="<col=ff9040>Divine ranging potion(4)</col>" action=CC_OP id=2 itemId=23733 itemOp=1 param0=2 param1=9764864
+tick=1842 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Crevice" action=GAME_OBJECT_FIRST_OPTION id=46596 itemId=-1 itemOp=-1 param0=45 param1=50
+tick=1843 region=11681 inLair=false GAMESTATE LOADING
+tick=1843 region=11681 inLair=false GAMESTATE LOGGED_IN
+tick=1843 region=11681 inLair=false GROUND spawned Iron pickaxe (1267) x1 ownership=0 at=2843,10337,0
+tick=1843 region=11681 inLair=false GROUND spawned Bucket (1925) x1 ownership=0 at=2849,10332,0
+tick=1843 region=11681 inLair=false GROUND spawned Bones (526) x1 ownership=0 at=2854,10338,0
+tick=1843 region=11681 inLair=false GROUND spawned Bones (526) x1 ownership=0 at=2855,10333,0
+tick=1843 region=11425 inLair=false REGION template region 11681 -> 11425 instance=false actual region=11425
+tick=1843 region=11425 inLair=false ENTRANCE left region outside the lair
+tick=1846 region=11425 inLair=false MENU option="Enter" target="<col=ffff>Cave" action=GAME_OBJECT_FIRST_OPTION id=46905 itemId=-1 itemOp=-1 param0=53 param1=52
+tick=1848 region=11425 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1848 region=11425 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1849 region=11425 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1849 region=11425 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1849 region=11425 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1849 region=11425 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your divine ranging potion is about to expire.</col>"
+tick=1849 region=11425 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1849 region=11425 inLair=false GAMESTATE LOADING
+tick=1849 region=11425 inLair=false GAMESTATE LOGGED_IN
+tick=1849 region=11425 inLair=false GROUND spawned Bucket (1925) x1 ownership=0 at=2849,10332,0
+tick=1849 region=11425 inLair=false GROUND spawned Bones (526) x1 ownership=0 at=2854,10338,0
+tick=1849 region=11425 inLair=false GROUND spawned Bones (526) x1 ownership=0 at=2855,10333,0
+tick=1849 region=11425 inLair=false GROUND spawned Plank (960) x1 ownership=0 at=2915,10342,0
+tick=1849 region=11425 inLair=false GROUND spawned Iron bar (2351) x1 ownership=0 at=2918,10327,0
+tick=1849 region=11425 inLair=false GROUND spawned Plank (960) x1 ownership=0 at=2922,10326,0
+tick=1849 region=11681 inLair=false REGION template region 11425 -> 11681 instance=false actual region=11681
+tick=1849 region=11681 inLair=false ENTRANCE entered region outside the lair
+tick=1850 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1850 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1851 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1851 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1852 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1852 region=11681 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1855 region=11681 inLair=false MENU option="Check" target="<col=ff9040>Ring of shadows</col>" action=CC_OP id=4 itemId=28327 itemOp=3 param0=13 param1=9764864
+tick=1855 region=11681 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring of shadows has 364 charges remaining."
+tick=1858 region=11681 inLair=false MENU option="Check" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=4 itemId=27275 itemOp=3 param0=18 param1=9764864
+tick=1858 region=11681 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Tumeken's shadow has 1,167 charges remaining."
+tick=1863 region=11681 inLair=false MENU option="Check" target="<col=ff9040>Book of the Dead</col>" action=CC_OP_LOW_PRIORITY id=6 itemId=25818 itemOp=4 param0=8 param1=9764864
+tick=1863 region=11681 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=1863 region=11681 inLair=false CHAT type=MESBOX name="" sender="null" message="On the inside of the cover a message is displayed in dark ink. It reads: <col=800080>12/250 memories remain.<col=800080>"
+tick=1868 region=11681 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=409 param1=195
+tick=1871 region=11681 inLair=false MENU option="Check" target="<col=ff9040>Ring of suffering (ri)</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362456
+tick=1871 region=11681 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring currently has 32,909 recoil charges remaining. The recoil effect is currently enabled."
+tick=1873 region=11681 inLair=false MENU option="Enter" target="<col=ffff>Crevice" action=GAME_OBJECT_FIRST_OPTION id=46597 itemId=-1 itemOp=-1 param0=60 param1=28
+tick=1875 region=11681 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the icy cavern."
+tick=1877 region=11681 inLair=false GAMESTATE LOADING
+tick=1877 region=11681 inLair=false GAMESTATE LOGGED_IN
+tick=1877 region=11330 inLair=false REGION template region 11681 -> 11330 instance=true actual region=47553
+tick=1877 region=11330 inLair=false ENTRANCE left region outside the lair
+tick=1878 region=11330 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=1878 region=11330 inLair=false CHAT type=MESBOX name="" sender="null" message="You enter the icy cavern."
+tick=1879 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@The effects of the divine potion have worn off."
+tick=1879 region=11330 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1882 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Divine ranging potion(4)</col>" action=CC_OP id=2 itemId=23733 itemOp=1 param0=2 param1=9764864
+tick=1883 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine ranging potion."
+tick=1883 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=1883 region=11330 inLair=false GRAPHIC spotanims=[560]
+tick=1883 region=11330 inLair=false ANIM id=829 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1883 region=11330 inLair=false INVENTORY -Divine ranging potion(4) (23733) x1, +Divine ranging potion(3) (23736) x1
+tick=1886 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1886 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1886 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1886 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1887 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1887 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1889 region=11330 inLair=false ANIM id=424 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1890 region=11330 inLair=false HITSPLAT type=16 amount=71 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1891 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1891 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1891 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=1894 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1895 region=11330 inLair=false ANIM id=424 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1896 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1896 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1897 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1899 region=11330 inLair=false HITSPLAT type=16 amount=12 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1900 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1901 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1901 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=1901 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=1901 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1904 region=11330 inLair=false HITSPLAT type=16 amount=39 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1904 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1906 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=371 param1=256
+tick=1906 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1906 region=11330 inLair=false ANIM id=426 target=npc:12078 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1907 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=371 param1=257
+tick=1908 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1909 region=11330 inLair=false HITSPLAT type=16 amount=4 target=npc:12078 weapon=20997 shield=-1 amulet=22249
+tick=1910 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Ice ancient sceptre</col>" action=CC_OP id=3 itemId=28262 itemOp=2 param0=12 param1=9764864
+tick=1910 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Occult necklace (or)</col>" action=CC_OP id=3 itemId=19720 itemOp=2 param0=16 param1=9764864
+tick=1910 region=11330 inLair=false AUTOCAST varbit=276 value=46
+tick=1910 region=11330 inLair=false AUTOCAST varbit=275 value=1
+tick=1910 region=11330 inLair=false INVENTORY -Occult necklace (or) (19720) x1, +Twisted bow (20997) x1, +Necklace of anguish (or) (22249) x1, -Ice ancient sceptre (28262) x1
+tick=1910 region=11330 inLair=false EQUIPMENT +Occult necklace (or) (19720) x1, -Twisted bow (20997) x1, -Necklace of anguish (or) (22249) x1, +Ice ancient sceptre (28262) x1
+tick=1910 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Confliction gauntlets</col>" action=CC_OP id=3 itemId=31106 itemOp=2 param0=17 param1=9764864
+tick=1911 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1911 region=11330 inLair=false INVENTORY +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=1911 region=11330 inLair=false EQUIPMENT -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=1912 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15994
+tick=1912 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4809
+tick=1912 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1547
+tick=1912 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=1000
+tick=1913 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=273 param1=184
+tick=1914 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1916 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=18 param1=9764864
+tick=1916 region=11330 inLair=false AUTOCAST varbit=275 value=0
+tick=1916 region=11330 inLair=false AUTOCAST varbit=276 value=0
+tick=1916 region=11330 inLair=false HITSPLAT type=16 amount=14 target=npc:12078 weapon=28262 shield=-1 amulet=19720
+tick=1916 region=11330 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=1916 region=11330 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=1917 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1917 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=1917 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=1000
+tick=1922 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=1922 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=1000
+tick=1923 region=11330 inLair=false HITSPLAT type=16 amount=27 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=1927 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=1927 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=1000
+tick=1928 region=11330 inLair=false HITSPLAT type=43 amount=48 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=1931 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=367 param1=222
+tick=1933 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=12 param1=9764864
+tick=1933 region=11330 inLair=false HITSPLAT type=16 amount=25 target=npc:12077 weapon=27275 shield=-1 amulet=19720
+tick=1933 region=11330 inLair=false INVENTORY -Twisted bow (20997) x1, +Tumeken's shadow (27275) x1
+tick=1933 region=11330 inLair=false EQUIPMENT +Twisted bow (20997) x1, -Tumeken's shadow (27275) x1
+tick=1934 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Necklace of anguish (or)</col>" action=CC_OP id=3 itemId=22249 itemOp=2 param0=16 param1=9764864
+tick=1934 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Zaryte vambraces</col>" action=CC_OP id=3 itemId=26235 itemOp=2 param0=17 param1=9764864
+tick=1934 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1934 region=11330 inLair=false INVENTORY +Occult necklace (or) (19720) x1, -Necklace of anguish (or) (22249) x1, -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=1934 region=11330 inLair=false EQUIPMENT -Occult necklace (or) (19720) x1, +Necklace of anguish (or) (22249) x1, +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=1935 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1935 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=1935 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=1935 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1936 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1937 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@The Phantom Muspah floods the room with darkness...</col>"
+tick=1938 region=11330 inLair=false HITSPLAT type=16 amount=73 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1938 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1940 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1940 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1942 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=324 param1=181
+tick=1943 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1943 region=11330 inLair=false HITSPLAT type=16 amount=53 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=1944 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12082 npcName="Phantom Muspah"
+tick=1945 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1945 region=11330 inLair=false ANIM id=426 target=npc:12082 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1946 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=380 param1=260
+tick=1948 region=11330 inLair=false HITSPLAT type=16 amount=60 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=1949 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12082 npcName="Phantom Muspah"
+tick=1950 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1950 region=11330 inLair=false ANIM id=426 target=npc:12082 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1950 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=1954 region=11330 inLair=false HITSPLAT type=16 amount=22 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=1955 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1955 region=11330 inLair=false ANIM id=426 target=npc:12082 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1959 region=11330 inLair=false HITSPLAT type=16 amount=63 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=1962 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1962 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1962 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1963 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1963 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1963 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1963 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1963 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1964 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1965 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=552 param1=261
+tick=1965 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@The Phantom Muspah floods the room with darkness...</col>"
+tick=1966 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1966 region=11330 inLair=false HITSPLAT type=16 amount=27 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1967 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1968 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1968 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1969 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=477 param1=224
+tick=1970 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=1971 region=11330 inLair=false HITSPLAT type=16 amount=32 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1973 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1973 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1976 region=11330 inLair=false HITSPLAT type=16 amount=77 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=1978 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=353 param1=345
+tick=1979 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1979 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=1979 region=11330 inLair=false ANIM id=426 target=npc:12078 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=1980 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=391 param1=406
+tick=1981 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=12 param1=9764864
+tick=1982 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Occult necklace (or)</col>" action=CC_OP id=3 itemId=19720 itemOp=2 param0=16 param1=9764864
+tick=1982 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Confliction gauntlets</col>" action=CC_OP id=3 itemId=31106 itemOp=2 param0=17 param1=9764864
+tick=1982 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12078 weapon=20997 shield=-1 amulet=22249
+tick=1982 region=11330 inLair=false INVENTORY -Occult necklace (or) (19720) x1, +Twisted bow (20997) x1, +Necklace of anguish (or) (22249) x1, -Tumeken's shadow (27275) x1
+tick=1982 region=11330 inLair=false EQUIPMENT +Occult necklace (or) (19720) x1, -Twisted bow (20997) x1, -Necklace of anguish (or) (22249) x1, +Tumeken's shadow (27275) x1
+tick=1983 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Ice ancient sceptre</col>" action=CC_OP id=3 itemId=28262 itemOp=2 param0=18 param1=9764864
+tick=1983 region=11330 inLair=false AUTOCAST varbit=276 value=46
+tick=1983 region=11330 inLair=false AUTOCAST varbit=275 value=1
+tick=1983 region=11330 inLair=false INVENTORY +Zaryte vambraces (26235) x1, +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1, -Confliction gauntlets (31106) x1
+tick=1983 region=11330 inLair=false EQUIPMENT -Zaryte vambraces (26235) x1, -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1, +Confliction gauntlets (31106) x1
+tick=1984 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1984 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15988
+tick=1984 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4805
+tick=1984 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1545
+tick=1984 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=1000
+tick=1985 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=384 param1=354
+tick=1986 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=327
+tick=1986 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=315 param1=319
+tick=1987 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=287 param1=311
+tick=1988 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1989 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15982
+tick=1989 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4801
+tick=1989 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1543
+tick=1989 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=1000
+tick=1990 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=339 param1=197
+tick=1991 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=1992 region=11330 inLair=false HITSPLAT type=16 amount=22 target=npc:12078 weapon=28262 shield=-1 amulet=19720
+tick=1994 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=18 param1=9764864
+tick=1994 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=1994 region=11330 inLair=false AUTOCAST varbit=275 value=0
+tick=1994 region=11330 inLair=false AUTOCAST varbit=276 value=0
+tick=1994 region=11330 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=1994 region=11330 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=1995 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=1995 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=1000
+tick=1997 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=283 param1=259
+tick=1999 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2000 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2000 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=1000
+tick=2000 region=11330 inLair=false HITSPLAT type=16 amount=15 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2002 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=373 param1=237
+tick=2003 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=344 param1=210
+tick=2004 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2005 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2005 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=1000
+tick=2005 region=11330 inLair=false HITSPLAT type=16 amount=37 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2007 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=353 param1=232
+tick=2007 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=351 param1=232
+tick=2009 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2009 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@The Phantom Muspah floods the room with darkness...</col>"
+tick=2012 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2012 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=404 param1=170
+tick=2013 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=419 param1=151
+tick=2013 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=434 param1=139
+tick=2015 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=12 param1=9764864
+tick=2015 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Necklace of anguish (or)</col>" action=CC_OP id=3 itemId=22249 itemOp=2 param0=16 param1=9764864
+tick=2015 region=11330 inLair=false INVENTORY +Occult necklace (or) (19720) x1, -Twisted bow (20997) x1, -Necklace of anguish (or) (22249) x1, +Tumeken's shadow (27275) x1
+tick=2015 region=11330 inLair=false EQUIPMENT -Occult necklace (or) (19720) x1, +Twisted bow (20997) x1, +Necklace of anguish (or) (22249) x1, -Tumeken's shadow (27275) x1
+tick=2016 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Zaryte vambraces</col>" action=CC_OP id=3 itemId=26235 itemOp=2 param0=17 param1=9764864
+tick=2016 region=11330 inLair=false INVENTORY -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=2016 region=11330 inLair=false EQUIPMENT +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=2017 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=407 param1=245
+tick=2019 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_mag@You have been corrupted!</col>"
+tick=2019 region=11330 inLair=false ANIM id=424 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=2020 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=2021 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Twisted buckler</col>" action=CC_OP id=3 itemId=21000 itemOp=2 param0=4 param1=9764864
+tick=2021 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Sapphire dragon bolts (e)</col>" action=CC_OP id=3 itemId=21940 itemOp=2 param0=1 param1=9764864
+tick=2021 region=11330 inLair=false INVENTORY +Dragon arrow (11212) x574, +Twisted bow (20997) x1, -Twisted buckler (21000) x1, -Sapphire dragon bolts (e) (21940) x174, -Zaryte crossbow (26374) x1
+tick=2021 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x574, -Twisted bow (20997) x1, +Twisted buckler (21000) x1, +Sapphire dragon bolts (e) (21940) x174, +Zaryte crossbow (26374) x1
+tick=2022 region=11330 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=2023 region=11330 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2024 region=11330 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2025 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12079 npcName="Phantom Muspah"
+tick=2025 region=11330 inLair=false SPEC energy=250
+tick=2025 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2025 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=250
+tick=2026 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2027 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2027 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2028 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2029 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2030 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2030 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=250
+tick=2030 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2031 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2032 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2033 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12080 weapon=26374 shield=21000 amulet=22249
+tick=2035 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=497 param1=315
+tick=2035 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=494 param1=325
+tick=2035 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=26374 shield=21000 amulet=22249
+tick=2036 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=0 param1=9764864
+tick=2036 region=11330 inLair=false INVENTORY -Twisted bow (20997) x1, +Twisted buckler (21000) x1, +Zaryte crossbow (26374) x1
+tick=2036 region=11330 inLair=false EQUIPMENT +Twisted bow (20997) x1, -Twisted buckler (21000) x1, -Zaryte crossbow (26374) x1
+tick=2037 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Dragon arrow</col>" action=CC_OP id=3 itemId=11212 itemOp=2 param0=1 param1=9764864
+tick=2037 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2037 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2037 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2037 region=11330 inLair=false INVENTORY -Dragon arrow (11212) x574, +Sapphire dragon bolts (e) (21940) x174
+tick=2037 region=11330 inLair=false EQUIPMENT +Dragon arrow (11212) x574, -Sapphire dragon bolts (e) (21940) x174
+tick=2038 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2040 region=11330 inLair=false HITSPLAT type=16 amount=28 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2041 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2042 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2042 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2042 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2043 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2044 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=9 param1=9764864
+tick=2044 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2044 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=2044 region=11330 inLair=false ANIM id=829 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2044 region=11330 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=2045 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2045 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2047 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2047 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2047 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2048 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2050 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="@mes_hl_mag@You are no longer afflicted with corruption.</col>"
+tick=2050 region=11330 inLair=false HITSPLAT type=16 amount=18 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2051 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2052 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2052 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2052 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2053 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2054 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=428 param1=361
+tick=2055 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2055 region=11330 inLair=false HITSPLAT type=16 amount=58 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2056 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2057 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2057 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2058 region=11330 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=21 param1=9764864
+tick=2058 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2058 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=2058 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=2058 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2058 region=11330 inLair=false INVENTORY -Shark (385) x1
+tick=2060 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2061 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2063 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2063 region=11330 inLair=false ANIM id=424 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2064 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=479 param1=318
+tick=2065 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=37311 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2065 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2065 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=250
+tick=2066 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2067 region=11330 inLair=false HITSPLAT type=16 amount=32 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2068 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=338 param1=274
+tick=2069 region=11330 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2073 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Phantom Muspah kill count is: <col=ff0000>916</col>."
+tick=2073 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>1:54.60</col>. Personal best: 1:36.00"
+tick=2073 region=11330 inLair=false GROUND spawned Ancient essence (27616) x598 ownership=1 at=2849,4260,0
+tick=2073 region=11330 inLair=false GROUND spawned Molten glass (1776) x89 ownership=1 at=2849,4260,0
+tick=2073 region=11330 inLair=false GROUND spawned Smoke rune (4697) x314 ownership=1 at=2849,4260,0
+tick=2073 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 598 x Ancient essence</col> <col=106f10>(Phantom Muspah)</col>"
+tick=2073 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 89 x Molten glass</col> <col=106f10>(Phantom Muspah)</col>"
+tick=2073 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 314 x Smoke rune</col> <col=106f10>(Phantom Muspah)</col>"
+tick=2073 region=11330 inLair=false LOOT name="Phantom Muspah" type=NPC combatLevel=741 amount=1 items=[Ancient essence (27616) x598, Molten glass (1776) x89, Smoke rune (4697) x314]
+tick=2075 region=11330 inLair=false MENU option="Check" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=4 itemId=27275 itemOp=3 param0=12 param1=9764864
+tick=2075 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Tumeken's shadow has 1,161 charges remaining."
+tick=2075 region=11330 inLair=false SPEC energy=350
+tick=2076 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=448 param1=251
+tick=2077 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=451 param1=256
+tick=2085 region=11330 inLair=false MENU option="Check" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=4 itemId=27275 itemOp=3 param0=12 param1=9764864
+tick=2085 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Tumeken's shadow has 1,161 charges remaining."
+tick=2089 region=11330 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=2093 region=11330 inLair=false MENU option="Check" target="<col=ff9040>Ring of suffering (ri)</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362456
+tick=2093 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring currently has 32,901 recoil charges remaining. The recoil effect is currently enabled."
+tick=2094 region=11330 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=2095 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=406 param1=280
+tick=2104 region=11330 inLair=false MENU option="Take" target="<col=ff9040>Smoke rune (314)" action=GROUND_ITEM_THIRD_OPTION id=4697 itemId=-1 itemOp=-1 param0=41 param1=52
+tick=2105 region=11330 inLair=false GROUND despawned Smoke rune (4697) x314 ownership=1 at=2849,4260,0
+tick=2105 region=11330 inLair=false INVENTORY +Smoke rune (4697) x314
+tick=2106 region=11330 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=22 param1=9764864
+tick=2106 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=2106 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=2106 region=11330 inLair=false ANIM id=829 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=350
+tick=2106 region=11330 inLair=false INVENTORY -Shark (385) x1
+tick=2107 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(3)</col>" action=CC_OP id=2 itemId=139 itemOp=1 param0=9 param1=9764864
+tick=2107 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2107 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=2107 region=11330 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=2108 region=11330 inLair=false MENU option="Take" target="<col=ff9040>Ancient essence (598)" action=GROUND_ITEM_THIRD_OPTION id=27616 itemId=-1 itemOp=-1 param0=41 param1=52
+tick=2109 region=11330 inLair=false GROUND despawned Ancient essence (27616) x598 ownership=1 at=2849,4260,0
+tick=2109 region=11330 inLair=false INVENTORY +Ancient essence (27616) x598
+tick=2110 region=11330 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=20 param1=9764864
+tick=2110 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=2110 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=2110 region=11330 inLair=false ANIM id=829 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=350
+tick=2110 region=11330 inLair=false INVENTORY -Shark (385) x1
+tick=2111 region=11330 inLair=false MENU option="Take" target="<col=ff9040>Molten glass (89)" action=GROUND_ITEM_THIRD_OPTION id=1776 itemId=-1 itemOp=-1 param0=41 param1=52
+tick=2112 region=11330 inLair=false GROUND despawned Molten glass (1776) x89 ownership=1 at=2849,4260,0
+tick=2112 region=11330 inLair=false INVENTORY +Molten glass (1776) x89
+tick=2113 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=69 param1=305
+tick=2113 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=69 param1=306
+tick=2123 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=268
+tick=2125 region=11330 inLair=false SPEC energy=450
+tick=2126 region=11330 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2127 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2127 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2127 region=11330 inLair=false ANIM id=426 target=npc:12078 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=450
+tick=2128 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=12 param1=9764864
+tick=2129 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Occult necklace (or)</col>" action=CC_OP id=3 itemId=19720 itemOp=2 param0=16 param1=9764864
+tick=2129 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Confliction gauntlets</col>" action=CC_OP id=3 itemId=31106 itemOp=2 param0=17 param1=9764864
+tick=2129 region=11330 inLair=false INVENTORY -Occult necklace (or) (19720) x1, +Twisted bow (20997) x1, +Necklace of anguish (or) (22249) x1, +Zaryte vambraces (26235) x1, -Tumeken's shadow (27275) x1, -Confliction gauntlets (31106) x1
+tick=2129 region=11330 inLair=false EQUIPMENT +Occult necklace (or) (19720) x1, -Twisted bow (20997) x1, -Necklace of anguish (or) (22249) x1, -Zaryte vambraces (26235) x1, +Tumeken's shadow (27275) x1, +Confliction gauntlets (31106) x1
+tick=2130 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Ice ancient sceptre</col>" action=CC_OP id=3 itemId=28262 itemOp=2 param0=18 param1=9764864
+tick=2130 region=11330 inLair=false AUTOCAST varbit=276 value=46
+tick=2130 region=11330 inLair=false AUTOCAST varbit=275 value=1
+tick=2130 region=11330 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=2130 region=11330 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=2131 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2131 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12078 weapon=28262 shield=-1 amulet=19720
+tick=2132 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15976
+tick=2132 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4797
+tick=2132 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1541
+tick=2132 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=450
+tick=2133 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=344 param1=188
+tick=2135 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2137 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=18 param1=9764864
+tick=2137 region=11330 inLair=false AUTOCAST varbit=275 value=0
+tick=2137 region=11330 inLair=false AUTOCAST varbit=276 value=0
+tick=2137 region=11330 inLair=false HITSPLAT type=16 amount=14 target=npc:12078 weapon=28262 shield=-1 amulet=19720
+tick=2137 region=11330 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=2137 region=11330 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=2138 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2138 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2138 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=450
+tick=2139 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=332 param1=228
+tick=2141 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2142 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2142 region=11330 inLair=false HITSPLAT type=16 amount=12 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2143 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2143 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=450
+tick=2145 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Augury</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=2147 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2148 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2148 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=450
+tick=2148 region=11330 inLair=false HITSPLAT type=16 amount=30 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2150 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=300 param1=275
+tick=2150 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=300 param1=276
+tick=2152 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2153 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2153 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=450
+tick=2153 region=11330 inLair=false HITSPLAT type=16 amount=44 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2155 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=360 param1=240
+tick=2155 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=360 param1=243
+tick=2157 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=12 param1=9764864
+tick=2157 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Necklace of anguish (or)</col>" action=CC_OP id=3 itemId=22249 itemOp=2 param0=16 param1=9764864
+tick=2157 region=11330 inLair=false INVENTORY +Occult necklace (or) (19720) x1, -Twisted bow (20997) x1, -Necklace of anguish (or) (22249) x1, +Tumeken's shadow (27275) x1
+tick=2157 region=11330 inLair=false EQUIPMENT -Occult necklace (or) (19720) x1, +Twisted bow (20997) x1, +Necklace of anguish (or) (22249) x1, -Tumeken's shadow (27275) x1
+tick=2158 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Zaryte vambraces</col>" action=CC_OP id=3 itemId=26235 itemOp=2 param0=17 param1=9764864
+tick=2158 region=11330 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2158 region=11330 inLair=false INVENTORY -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=2158 region=11330 inLair=false EQUIPMENT +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=2159 region=11330 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2159 region=11330 inLair=false HITSPLAT type=16 amount=14 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2160 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2160 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2160 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=450
+tick=2160 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2163 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2163 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2165 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2165 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2165 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=450
+tick=2165 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2167 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=369 param1=201
+tick=2168 region=11330 inLair=false HITSPLAT type=16 amount=51 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2169 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2170 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2170 region=11330 inLair=false GRAPHIC spotanims=[85]
+tick=2171 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2171 region=11330 inLair=false GRAPHIC spotanims=[85, 1116]
+tick=2171 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=450
+tick=2172 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2174 region=11330 inLair=false HITSPLAT type=16 amount=67 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2175 region=11330 inLair=false SPEC energy=550
+tick=2175 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2176 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2176 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=550
+tick=2176 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2178 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=428 param1=258
+tick=2178 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@The Phantom Muspah floods the room with darkness...</col>"
+tick=2179 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2179 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2181 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2181 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=550
+tick=2182 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=590 param1=359
+tick=2182 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=588 param1=361
+tick=2183 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=587 param1=363
+tick=2183 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=564 param1=359
+tick=2183 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=552 param1=354
+tick=2184 region=11330 inLair=false HITSPLAT type=16 amount=48 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2185 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2186 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2186 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=550
+tick=2187 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=287 param1=284
+tick=2188 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=284 param1=283
+tick=2188 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=271 param1=274
+tick=2188 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=261 param1=269
+tick=2189 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=261 param1=292
+tick=2189 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=270 param1=334
+tick=2189 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2190 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2191 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2191 region=11330 inLair=false ANIM id=426 target=npc:12078 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=550
+tick=2192 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=305 param1=286
+tick=2193 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=12 param1=9764864
+tick=2193 region=11330 inLair=false INVENTORY +Twisted bow (20997) x1, -Tumeken's shadow (27275) x1
+tick=2193 region=11330 inLair=false EQUIPMENT -Twisted bow (20997) x1, +Tumeken's shadow (27275) x1
+tick=2193 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Occult necklace (or)</col>" action=CC_OP id=3 itemId=19720 itemOp=2 param0=16 param1=9764864
+tick=2194 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Confliction gauntlets</col>" action=CC_OP id=3 itemId=31106 itemOp=2 param0=17 param1=9764864
+tick=2194 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12078 weapon=27275 shield=-1 amulet=22249
+tick=2194 region=11330 inLair=false INVENTORY -Occult necklace (or) (19720) x1, +Necklace of anguish (or) (22249) x1, +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=2194 region=11330 inLair=false EQUIPMENT +Occult necklace (or) (19720) x1, -Necklace of anguish (or) (22249) x1, -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=2194 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Ice ancient sceptre</col>" action=CC_OP id=3 itemId=28262 itemOp=2 param0=18 param1=9764864
+tick=2195 region=11330 inLair=false AUTOCAST varbit=276 value=46
+tick=2195 region=11330 inLair=false AUTOCAST varbit=275 value=1
+tick=2195 region=11330 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=2195 region=11330 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=2196 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2196 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15970
+tick=2196 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4793
+tick=2196 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1539
+tick=2196 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=550
+tick=2197 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=292 param1=292
+tick=2199 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=18 param1=9764864
+tick=2200 region=11330 inLair=false AUTOCAST varbit=275 value=0
+tick=2200 region=11330 inLair=false AUTOCAST varbit=276 value=0
+tick=2200 region=11330 inLair=false HITSPLAT type=16 amount=22 target=npc:12078 weapon=28262 shield=-1 amulet=19720
+tick=2200 region=11330 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=2200 region=11330 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=2201 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2201 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2201 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=550
+tick=2202 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=413 param1=171
+tick=2204 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(2)</col>" action=CC_OP id=2 itemId=141 itemOp=1 param0=9 param1=9764864
+tick=2205 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2205 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2205 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 1 dose of potion left."
+tick=2205 region=11330 inLair=false ANIM id=829 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=550
+tick=2205 region=11330 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=2206 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2206 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=550
+tick=2207 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Augury</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=2207 region=11330 inLair=false HITSPLAT type=16 amount=35 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2208 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2209 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=381 param1=194
+tick=2210 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2211 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2211 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=550
+tick=2212 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=268 param1=202
+tick=2213 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=243 param1=213
+tick=2213 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=225 param1=213
+tick=2213 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=216 param1=211
+tick=2215 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2216 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2216 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=550
+tick=2217 region=11330 inLair=false HITSPLAT type=16 amount=35 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2218 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=290 param1=281
+tick=2218 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=283 param1=283
+tick=2218 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=253 param1=294
+tick=2219 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=251 param1=299
+tick=2220 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2221 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2221 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=550
+tick=2221 region=11330 inLair=false HITSPLAT type=16 amount=6 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2222 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=327 param1=237
+tick=2225 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=12 param1=9764864
+tick=2225 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Necklace of anguish (or)</col>" action=CC_OP id=3 itemId=22249 itemOp=2 param0=16 param1=9764864
+tick=2225 region=11330 inLair=false SPEC energy=650
+tick=2225 region=11330 inLair=false INVENTORY -Twisted bow (20997) x1, +Tumeken's shadow (27275) x1
+tick=2225 region=11330 inLair=false EQUIPMENT +Twisted bow (20997) x1, -Tumeken's shadow (27275) x1
+tick=2226 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Zaryte vambraces</col>" action=CC_OP id=3 itemId=26235 itemOp=2 param0=17 param1=9764864
+tick=2226 region=11330 inLair=false INVENTORY +Occult necklace (or) (19720) x1, -Necklace of anguish (or) (22249) x1, -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=2226 region=11330 inLair=false EQUIPMENT -Occult necklace (or) (19720) x1, +Necklace of anguish (or) (22249) x1, +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=2227 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2227 region=11330 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2227 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2227 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2228 region=11330 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2228 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2229 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=422 param1=227
+tick=2230 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2230 region=11330 inLair=false HITSPLAT type=16 amount=36 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2231 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2232 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2232 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2234 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=374 param1=210
+tick=2234 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=331 param1=182
+tick=2234 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=320 param1=178
+tick=2235 region=11330 inLair=false HITSPLAT type=16 amount=33 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2237 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2239 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2239 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2239 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2239 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2240 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=540 param1=214
+tick=2240 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2241 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@The Phantom Muspah floods the room with darkness...</col>"
+tick=2242 region=11330 inLair=false HITSPLAT type=16 amount=74 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2243 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2243 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2244 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=536 param1=65
+tick=2244 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2244 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2245 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=533 param1=69
+tick=2246 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=588 param1=101
+tick=2247 region=11330 inLair=false HITSPLAT type=16 amount=74 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=2248 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=526 param1=366
+tick=2249 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=401 param1=166
+tick=2250 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12082 npcName="Phantom Muspah"
+tick=2250 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2250 region=11330 inLair=false ANIM id=426 target=npc:12082 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2251 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=381 param1=166
+tick=2253 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12082 npcName="Phantom Muspah"
+tick=2254 region=11330 inLair=false HITSPLAT type=16 amount=2 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=2255 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2255 region=11330 inLair=false ANIM id=426 target=npc:12082 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2256 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=456 param1=275
+tick=2257 region=11330 inLair=false HITSPLAT type=16 amount=47 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=2258 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12082 npcName="Phantom Muspah"
+tick=2260 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2260 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2260 region=11330 inLair=false ANIM id=426 target=npc:12082 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2260 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2262 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12082 weapon=20997 shield=-1 amulet=22249
+tick=2266 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(1)</col>" action=CC_OP id=2 itemId=143 itemOp=1 param0=9 param1=9764864
+tick=2266 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2266 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2266 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have finished your potion."
+tick=2266 region=11330 inLair=false ANIM id=829 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2266 region=11330 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=2267 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2267 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2267 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2267 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2267 region=11330 inLair=false ANIM id=426 target=npc:12077 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2267 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x1
+tick=2268 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2268 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2270 region=11330 inLair=false HITSPLAT type=16 amount=54 target=npc:12077 weapon=20997 shield=-1 amulet=22249
+tick=2271 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12077 npcName="Phantom Muspah"
+tick=2272 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2272 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2272 region=11330 inLair=false ANIM id=426 target=npc:12078 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=650
+tick=2273 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=449 param1=283
+tick=2273 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=515 param1=316
+tick=2273 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=532 param1=324
+tick=2275 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=12 param1=9764864
+tick=2275 region=11330 inLair=false SPEC energy=750
+tick=2275 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12078 weapon=20997 shield=-1 amulet=22249
+tick=2275 region=11330 inLair=false INVENTORY +Twisted bow (20997) x1, -Tumeken's shadow (27275) x1
+tick=2275 region=11330 inLair=false EQUIPMENT -Twisted bow (20997) x1, +Tumeken's shadow (27275) x1
+tick=2276 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Occult necklace (or)</col>" action=CC_OP id=3 itemId=19720 itemOp=2 param0=16 param1=9764864
+tick=2276 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Confliction gauntlets</col>" action=CC_OP id=3 itemId=31106 itemOp=2 param0=17 param1=9764864
+tick=2276 region=11330 inLair=false INVENTORY -Occult necklace (or) (19720) x1, +Necklace of anguish (or) (22249) x1, +Zaryte vambraces (26235) x1, -Confliction gauntlets (31106) x1
+tick=2276 region=11330 inLair=false EQUIPMENT +Occult necklace (or) (19720) x1, -Necklace of anguish (or) (22249) x1, -Zaryte vambraces (26235) x1, +Confliction gauntlets (31106) x1
+tick=2277 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Ice ancient sceptre</col>" action=CC_OP id=3 itemId=28262 itemOp=2 param0=18 param1=9764864
+tick=2277 region=11330 inLair=false AUTOCAST varbit=276 value=46
+tick=2277 region=11330 inLair=false AUTOCAST varbit=275 value=1
+tick=2277 region=11330 inLair=false INVENTORY +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=2277 region=11330 inLair=false EQUIPMENT -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=2278 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2278 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15964
+tick=2278 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4789
+tick=2278 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1537
+tick=2278 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=750
+tick=2280 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=354 param1=331
+tick=2281 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=345 param1=341
+tick=2282 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2283 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Melee</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454999
+tick=2283 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15958
+tick=2283 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4785
+tick=2283 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1535
+tick=2283 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=750
+tick=2285 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=326 param1=236
+tick=2285 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=315 param1=225
+tick=2285 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=288 param1=211
+tick=2285 region=11330 inLair=false ANIM id=415 target=none weapon=28262 shield=-1 amulet=19720 autocast=46 spec=750
+tick=2286 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=279 param1=203
+tick=2286 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=266 param1=194
+tick=2286 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=265 param1=194
+tick=2287 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=265 param1=194
+tick=2288 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=270 param1=174
+tick=2288 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=321 param1=158
+tick=2289 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2289 region=11330 inLair=false RUNEPOUCH varbit=14286 value=15952
+tick=2289 region=11330 inLair=false RUNEPOUCH varbit=1625 value=4781
+tick=2289 region=11330 inLair=false RUNEPOUCH varbit=1624 value=1533
+tick=2289 region=11330 inLair=false ANIM id=10092 target=npc:12078 weapon=28262 shield=-1 amulet=19720 autocast=46 spec=750
+tick=2290 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=359 param1=143
+tick=2291 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=363 param1=153
+tick=2293 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=3 itemId=27275 itemOp=2 param0=18 param1=9764864
+tick=2293 region=11330 inLair=false AUTOCAST varbit=275 value=0
+tick=2293 region=11330 inLair=false AUTOCAST varbit=276 value=0
+tick=2293 region=11330 inLair=false HITSPLAT type=16 amount=15 target=npc:12078 weapon=28262 shield=-1 amulet=19720
+tick=2293 region=11330 inLair=false INVENTORY -Tumeken's shadow (27275) x1, +Ice ancient sceptre (28262) x1
+tick=2293 region=11330 inLair=false EQUIPMENT +Tumeken's shadow (27275) x1, -Ice ancient sceptre (28262) x1
+tick=2294 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2294 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2294 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=750
+tick=2297 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Augury</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455012
+tick=2299 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2299 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=750
+tick=2300 region=11330 inLair=false MENU option="Settings" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551343
+tick=2302 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2304 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2304 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=750
+tick=2305 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=10 param1=9764864
+tick=2305 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2305 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=2305 region=11330 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=2306 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12078 npcName="Phantom Muspah"
+tick=2309 region=11330 inLair=false GRAPHIC spotanims=[2125]
+tick=2309 region=11330 inLair=false ANIM id=9493 target=npc:12078 weapon=27275 shield=-1 amulet=19720 autocast=0 spec=750
+tick=2309 region=11330 inLair=false HITSPLAT type=16 amount=42 target=npc:12078 weapon=27275 shield=-1 amulet=19720
+tick=2313 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@The Phantom Muspah floods the room with darkness...</col>"
+tick=2315 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=473 param1=199
+tick=2318 region=11330 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=2318 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Necklace of anguish (or)</col>" action=CC_OP id=3 itemId=22249 itemOp=2 param0=16 param1=9764864
+tick=2318 region=11330 inLair=false INVENTORY +Occult necklace (or) (19720) x1, -Necklace of anguish (or) (22249) x1
+tick=2318 region=11330 inLair=false EQUIPMENT -Occult necklace (or) (19720) x1, +Necklace of anguish (or) (22249) x1
+tick=2319 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Zaryte vambraces</col>" action=CC_OP id=3 itemId=26235 itemOp=2 param0=17 param1=9764864
+tick=2319 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=12 param1=9764864
+tick=2319 region=11330 inLair=false INVENTORY -Twisted bow (20997) x1, -Zaryte vambraces (26235) x1, +Tumeken's shadow (27275) x1, +Confliction gauntlets (31106) x1
+tick=2319 region=11330 inLair=false EQUIPMENT +Twisted bow (20997) x1, +Zaryte vambraces (26235) x1, -Tumeken's shadow (27275) x1, -Confliction gauntlets (31106) x1
+tick=2320 region=11330 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2322 region=11330 inLair=false MENU option="Wear" target="<col=ff9040>Twisted buckler</col>" action=CC_OP id=3 itemId=21000 itemOp=2 param0=4 param1=9764864
+tick=2322 region=11330 inLair=false INVENTORY +Twisted bow (20997) x1, -Twisted buckler (21000) x1
+tick=2322 region=11330 inLair=false EQUIPMENT -Twisted bow (20997) x1, +Twisted buckler (21000) x1
+tick=2323 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=2323 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Sapphire dragon bolts (e)</col>" action=CC_OP id=3 itemId=21940 itemOp=2 param0=1 param1=9764864
+tick=2323 region=11330 inLair=false INVENTORY +Dragon arrow (11212) x567, -Sapphire dragon bolts (e) (21940) x174, -Zaryte crossbow (26374) x1
+tick=2323 region=11330 inLair=false EQUIPMENT -Dragon arrow (11212) x567, +Sapphire dragon bolts (e) (21940) x174, +Zaryte crossbow (26374) x1
+tick=2324 region=11330 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=2325 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=394 param1=354
+tick=2325 region=11330 inLair=false SPEC energy=850
+tick=2326 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2327 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Rigour</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455009
+tick=2328 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12079 npcName="Phantom Muspah"
+tick=2329 region=11330 inLair=false SPEC energy=100
+tick=2329 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2329 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2331 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2331 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2332 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2333 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2334 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2334 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2334 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2335 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2336 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2337 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2337 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2339 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2339 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2339 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2340 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2341 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2342 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2342 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2344 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2344 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2344 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2345 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2346 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2347 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2348 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2349 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2349 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2349 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2350 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2351 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2352 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2352 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2353 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your divine ranging potion is about to expire.</col>"
+tick=2354 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2354 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2354 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2356 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2357 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2358 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2359 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2359 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2359 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2359 region=11330 inLair=false EQUIPMENT -Sapphire dragon bolts (e) (21940) x1
+tick=2360 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2362 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2363 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2364 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2364 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2364 region=11330 inLair=false EQUIPMENT -Sapphire dragon bolts (e) (21940) x1
+tick=2365 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2366 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2367 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2368 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2369 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2369 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2369 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2370 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2372 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2374 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2374 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2374 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=100
+tick=2374 region=11330 inLair=false EQUIPMENT -Sapphire dragon bolts (e) (21940) x1
+tick=2375 region=11330 inLair=false SPEC energy=200
+tick=2376 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2376 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2377 region=11330 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=24 param1=9764864
+tick=2377 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2378 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12079 npcName="Phantom Muspah"
+tick=2378 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=2378 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=2378 region=11330 inLair=false ANIM id=829 target=none weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2378 region=11330 inLair=false INVENTORY -Shark (385) x1
+tick=2379 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2381 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(3)</col>" action=CC_OP id=2 itemId=139 itemOp=1 param0=10 param1=9764864
+tick=2381 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2381 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=2381 region=11330 inLair=false ANIM id=1156 target=none weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2381 region=11330 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=2381 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12079 npcName="Phantom Muspah"
+tick=2382 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2382 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2383 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2383 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@The effects of the divine potion have worn off."
+tick=2385 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2385 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2386 region=11330 inLair=false ANIM id=1156 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2387 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2387 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2387 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2389 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2390 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2391 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2391 region=11330 inLair=false ANIM id=1156 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2392 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2392 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2392 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2394 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2394 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2395 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Divine ranging potion(3)</col>" action=CC_OP id=2 itemId=23736 itemOp=1 param0=2 param1=9764864
+tick=2395 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine ranging potion."
+tick=2395 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=2395 region=11330 inLair=false GRAPHIC spotanims=[560]
+tick=2395 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2395 region=11330 inLair=false INVENTORY -Divine ranging potion(3) (23736) x1, +Divine ranging potion(2) (23739) x1
+tick=2396 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12079 npcName="Phantom Muspah"
+tick=2396 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2396 region=11330 inLair=false ANIM id=1156 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2397 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2397 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2398 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2399 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2399 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2400 region=11330 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=25 param1=9764864
+tick=2400 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=2400 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=2400 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2400 region=11330 inLair=false INVENTORY -Shark (385) x1
+tick=2401 region=11330 inLair=false MENU option="Deactivate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2401 region=11330 inLair=false ANIM id=1156 target=none weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2402 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2406 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12079 npcName="Phantom Muspah"
+tick=2406 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2406 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2406 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2406 region=11330 inLair=false EQUIPMENT -Sapphire dragon bolts (e) (21940) x1
+tick=2409 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2410 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2411 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2411 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2411 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2411 region=11330 inLair=false EQUIPMENT -Sapphire dragon bolts (e) (21940) x1
+tick=2414 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2416 region=11330 inLair=false GRAPHIC spotanims=[]
+tick=2416 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2416 region=11330 inLair=false EQUIPMENT -Sapphire dragon bolts (e) (21940) x1
+tick=2417 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2418 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2419 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12079 weapon=26374 shield=21000 amulet=22249
+tick=2421 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2421 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2421 region=11330 inLair=false GRAPHIC spotanims=[2293]
+tick=2421 region=11330 inLair=false ANIM id=9168 target=npc:12079 weapon=26374 shield=21000 amulet=22249 autocast=0 spec=200
+tick=2422 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Smite</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35455002
+tick=2424 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2424 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12080 weapon=26374 shield=21000 amulet=22249
+tick=2425 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=409 param1=326
+tick=2425 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=412 param1=342
+tick=2425 region=11330 inLair=false SPEC energy=300
+tick=2427 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=4 param1=9764864
+tick=2427 region=11330 inLair=false MENU option="Wield" target="<col=ff9040>Dragon arrow</col>" action=CC_OP id=3 itemId=11212 itemOp=2 param0=1 param1=9764864
+tick=2427 region=11330 inLair=false INVENTORY -Dragon arrow (11212) x567, -Twisted bow (20997) x1, +Twisted buckler (21000) x1, +Sapphire dragon bolts (e) (21940) x168, +Zaryte crossbow (26374) x1
+tick=2427 region=11330 inLair=false EQUIPMENT +Dragon arrow (11212) x567, +Twisted bow (20997) x1, -Twisted buckler (21000) x1, -Sapphire dragon bolts (e) (21940) x168, -Zaryte crossbow (26374) x1
+tick=2428 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2428 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2428 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=300
+tick=2429 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2431 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2432 region=11330 inLair=false HITSPLAT type=16 amount=1 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2433 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2433 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2433 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=300
+tick=2436 region=11330 inLair=false HITSPLAT type=16 amount=24 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2438 region=11330 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(2)</col>" action=CC_OP id=2 itemId=141 itemOp=1 param0=10 param1=9764864
+tick=2438 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2438 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=2438 region=11330 inLair=false CHAT type=SPAM name="" sender="null" message="You have 1 dose of potion left."
+tick=2438 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2438 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=300
+tick=2438 region=11330 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=2439 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2441 region=11330 inLair=false HITSPLAT type=12 amount=0 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2442 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=006000>Grand Exchange: Finished buying 1 x Dragon hunter crossbow.</col>"
+tick=2443 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2443 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=300
+tick=2445 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=498 param1=307
+tick=2446 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=2446 region=11330 inLair=false HITSPLAT type=16 amount=67 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2448 region=11330 inLair=false MENU option="Attack" target="<col=ffff00>Phantom Muspah<col=ff0000>  (level-741)" action=NPC_SECOND_OPTION id=41972 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=12080 npcName="Phantom Muspah"
+tick=2448 region=11330 inLair=false GRAPHIC spotanims=[1116]
+tick=2448 region=11330 inLair=false ANIM id=426 target=npc:12080 weapon=20997 shield=-1 amulet=22249 autocast=0 spec=300
+tick=2449 region=11330 inLair=false MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=2449 region=11330 inLair=false GRAPHIC spotanims=[2293, 1116]
+tick=2451 region=11330 inLair=false HITSPLAT type=16 amount=39 target=npc:12080 weapon=20997 shield=-1 amulet=22249
+tick=2453 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=441 param1=250
+tick=2454 region=11330 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2455 region=11330 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=2456 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=414 param1=241
+tick=2457 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Phantom Muspah kill count is: <col=ff0000>917</col>."
+tick=2457 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>3:20.40</col>. Personal best: 1:36.00"
+tick=2457 region=11330 inLair=false GROUND spawned Ancient essence (27616) x965 ownership=1 at=2845,4256,0
+tick=2457 region=11330 inLair=false GROUND spawned Shark lure (30900) x56 ownership=1 at=2845,4256,0
+tick=2457 region=11330 inLair=false GROUND spawned Law rune (563) x146 ownership=1 at=2845,4256,0
+tick=2457 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 965 x Ancient essence</col> <col=106f10>(Phantom Muspah)</col>"
+tick=2457 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 56 x Shark lure</col> <col=106f10>(Phantom Muspah)</col>"
+tick=2457 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 146 x Law rune</col> <col=106f10>(Phantom Muspah)</col>"
+tick=2457 region=11330 inLair=false LOOT name="Phantom Muspah" type=NPC combatLevel=741 amount=1 items=[Ancient essence (27616) x965, Shark lure (30900) x56, Law rune (563) x146]
+tick=2459 region=11330 inLair=false MENU option="Take" target="<col=66b2ff>Law rune (146)" action=GROUND_ITEM_THIRD_OPTION id=563 itemId=-1 itemOp=-1 param0=37 param1=48
+tick=2460 region=11330 inLair=false GROUND despawned Law rune (563) x146 ownership=1 at=2845,4256,0
+tick=2460 region=11330 inLair=false INVENTORY +Law rune (563) x146
+tick=2462 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=438 param1=302
+tick=2463 region=11330 inLair=false MENU option="Take" target="<col=ff9040>Ancient essence (965)" action=GROUND_ITEM_THIRD_OPTION id=27616 itemId=-1 itemOp=-1 param0=37 param1=48
+tick=2464 region=11330 inLair=false GROUND despawned Ancient essence (27616) x965 ownership=1 at=2845,4256,0
+tick=2464 region=11330 inLair=false INVENTORY +Ancient essence (27616) x965
+tick=2466 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=346 param1=242
+tick=2467 region=11330 inLair=false MENU option="Take" target="<col=ff9040>Shark lure (56)" action=GROUND_ITEM_THIRD_OPTION id=30900 itemId=-1 itemOp=-1 param0=37 param1=48
+tick=2468 region=11330 inLair=false GROUND despawned Shark lure (30900) x56 ownership=1 at=2845,4256,0
+tick=2468 region=11330 inLair=false INVENTORY +Shark lure (30900) x56
+tick=2469 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=288 param1=226
+tick=2473 region=11330 inLair=false MENU option="Check" target="<col=ff9040>Tumeken's shadow</col>" action=CC_OP id=4 itemId=27275 itemOp=3 param0=12 param1=9764864
+tick=2474 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Tumeken's shadow has 1,148 charges remaining."
+tick=2475 region=11330 inLair=false SPEC energy=400
+tick=2476 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=290 param1=217
+tick=2476 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=290 param1=217
+tick=2478 region=11330 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=2480 region=11330 inLair=false MENU option="Check" target="<col=ff9040>Ring of suffering (ri)</col>" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=25362456
+tick=2480 region=11330 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your ring currently has 32,897 recoil charges remaining. The recoil effect is currently enabled."
+tick=2482 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=348 param1=292
+tick=2485 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=289 param1=307
+tick=2487 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=334 param1=399
+tick=2488 region=11330 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=397 param1=360
+tick=2492 region=11330 inLair=false MENU option="Inside" target="<col=ff9040>Teleport to house</col>" action=CC_OP id=3 itemId=8013 itemOp=2 param0=15 param1=9764864
+tick=2492 region=11330 inLair=false ANIM id=4069 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=400
+tick=2494 region=11330 inLair=false GRAPHIC spotanims=[678]
+tick=2494 region=11330 inLair=false ANIM id=4071 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=400
+tick=2494 region=11330 inLair=false INVENTORY -Teleport to house (8013) x1
+tick=2496 region=11330 inLair=false GAMESTATE LOADING
+tick=2496 region=11330 inLair=false GAMESTATE LOGGED_IN
+tick=2496 region=11330 inLair=false GROUND spawned Bronze arrow (882) x1 ownership=0 at=2957,3205,0
+tick=2496 region=11330 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2958,3205,0
+tick=2496 region=11330 inLair=false GROUND spawned Logs (1511) x1 ownership=0 at=2959,3205,0
+tick=2496 region=11330 inLair=false GROUND spawned Bronze pickaxe (1265) x1 ownership=0 at=2963,3216,0
+tick=2496 region=11826 inLair=false REGION template region 11330 -> 11826 instance=false actual region=11826
+tick=2497 region=11826 inLair=false GAMESTATE LOADING
+tick=2497 region=11826 inLair=false GAMESTATE LOGGED_IN
+tick=2497 region=7790 inLair=false REGION template region 11826 -> 7790 instance=true actual region=52182
+tick=2500 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=2500 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=2503 region=7790 inLair=false SPEC energy=1000
+tick=2503 region=7790 inLair=false ANIM id=7305 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=2504 region=7790 inLair=false MENU option="Castle Wars" target="<col=ffff>Ornate Jewellery Box" action=GAME_OBJECT_THIRD_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=2508 region=7790 inLair=false GRAPHIC spotanims=[111]
+tick=2508 region=7790 inLair=false ANIM id=714 target=none weapon=20997 shield=-1 amulet=22249 autocast=0 spec=1000
+tick=2508 region=7791 inLair=false REGION template region 7790 -> 7791 instance=true actual region=52182
+tick=2511 region=7791 inLair=false GAMESTATE LOADING
+tick=2511 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=2511 region=7791 inLair=false GROUND spawned Tinderbox (590) x1 ownership=0 at=2431,3072,0
+tick=2511 region=7791 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=536 param1=160
+tick=2511 region=9776 inLair=false REGION template region 7791 -> 9776 instance=false actual region=9776
+tick=2512 region=9776 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=536 param1=161
+tick=2513 region=9776 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=576 param1=143
+tick=2514 region=9776 inLair=false MENU option="Walk here" target="<col=ff0000>PLAYER2<col=ff00>  (level-3)<img=54>" action=WALK id=203 itemId=0 itemOp=-1 param0=576 param1=143
+tick=2514 region=9776 inLair=false MENU option="Use" target="<col=ffff>Bank chest" action=GAME_OBJECT_FIRST_OPTION id=4483 itemId=-1 itemOp=-1 param0=52 param1=43

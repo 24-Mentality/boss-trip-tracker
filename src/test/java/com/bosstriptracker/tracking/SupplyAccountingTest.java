@@ -5,6 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import com.bosstriptracker.boss.ForgottenFourBoss;
+import com.bosstriptracker.boss.PhantomMuspahBoss;
+import com.bosstriptracker.boss.VorkathBoss;
 import com.bosstriptracker.model.ItemEntry;
 import com.google.common.collect.ImmutableMap;
 import java.util.Collections;
@@ -160,6 +162,48 @@ public class SupplyAccountingTest
 		// Three anglerfish and a shark dropped for the mushrooms, the anglerfish picked back up before leaving
 		assertEquals(Long.valueOf(3), replay.dropped.get(ItemID.ANGLERFISH));
 		assertEquals(3, acquired(replay, ItemID.ANGLERFISH));
+	}
+
+	/**
+	 * Two Vorkath kills (2026-10-23, 01:03 to 01:11): potions by the dose, sharks, and the floor loot (superior
+	 * dragon bones and the rest) only acquired. The bolts were shot from Dizana's quiver, which the replay doesn't
+	 * follow (it reads the inventory and equipment containers only).
+	 */
+	@Test
+	public void vorkathTripCountsDosesAndFood() throws Exception
+	{
+		SupplyReplay replay = new SupplyReplay("supply-test-vorkath.log", VorkathBoss.ISLAND_REGION_ID).run();
+
+		assertEquals(5, replay.quantity(ItemID._4DOSEPRAYERRESTORE));
+		assertEquals(2, replay.quantity(ItemID._4DOSEDIVINERANGE));
+		assertEquals(2, replay.quantity(ItemID.ANTIVENOM_4));
+		assertEquals(1, replay.quantity(ItemID._4DOSE4ANTIDRAGON));
+		assertEquals(6, replay.quantity(ItemID.SHARK));
+		assertNull(replay.line(ItemID.ZARYTE_XBOW));
+		assertNull(replay.line(ItemID.DRAGONFIRE_SHIELD));
+		assertEquals(5, replay.used.size());
+		assertEquals(4, acquired(replay, ItemID.DRAGON_BONES_SUPERIOR));
+		assertEquals(42, acquired(replay, ItemID.DRAGON_ARROWHEADS));
+	}
+
+	/**
+	 * Two Phantom Muspah kills (2026-10-23, 01:14 to 01:20): the house teleport out counts, the essence and the rest
+	 * of the floor loot are only acquired.
+	 */
+	@Test
+	public void phantomMuspahTripCountsArrowsAndDoses() throws Exception
+	{
+		SupplyReplay replay = new SupplyReplay("supply-test-muspah.log", PhantomMuspahBoss.CAVERN_REGION_ID).run();
+
+		assertEquals(7, replay.quantity(ItemID._4DOSEPRAYERRESTORE));
+		assertEquals(2, replay.quantity(ItemID._4DOSEDIVINERANGE));
+		assertEquals(9, replay.quantity(ItemID.DRAGON_ARROW));
+		assertEquals(5, replay.quantity(ItemID.SHARK));
+		assertEquals(1, replay.quantity(ItemID.POH_TABLET_TELEPORTTOHOUSE));
+		assertNull(replay.line(ItemID.TUMEKENS_SHADOW));
+		assertEquals(5, replay.used.size());
+		assertEquals(1_563, acquired(replay, ItemID.ANCIENT_ESSENCE));
+		assertTrue(replay.dropped.isEmpty());
 	}
 
 	private static long acquired(SupplyReplay replay, int itemId)

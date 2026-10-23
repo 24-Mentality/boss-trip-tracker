@@ -57,8 +57,8 @@ import net.runelite.client.util.ImageUtil;
 @Slf4j
 @PluginDescriptor(
 	name = "Boss Trip Tracker",
-	description = "Tracks loot, supplies and profit per boss trip (Maggot King, Phosani's Nightmare, Theatre of Blood, Fractured Archive, Vardorvis, Duke Sucellus, Whisperer, Leviathan) with per-account history",
-	tags = {"maggot", "king", "vampyrium", "nightmare", "phosani", "tob", "theatre", "fractured", "archive", "tfa", "vardorvis", "duke", "sucellus", "whisperer", "leviathan", "dt2", "raids", "loot", "profit", "supplies", "trip", "boss", "tracker"},
+	description = "Tracks loot, supplies and profit per boss trip (Maggot King, Phosani's Nightmare, Theatre of Blood, Fractured Archive, Vardorvis, Duke Sucellus, Whisperer, Leviathan, Vorkath, Phantom Muspah, Doom of Mokhaiotl) with per-account history",
+	tags = {"maggot", "king", "vampyrium", "nightmare", "phosani", "tob", "theatre", "fractured", "archive", "tfa", "vardorvis", "duke", "sucellus", "whisperer", "leviathan", "dt2", "vorkath", "muspah", "doom", "mokhaiotl", "delve", "raids", "loot", "profit", "supplies", "trip", "boss", "tracker"},
 	internalName = "boss-trip-tracker"
 )
 public class BossTripTrackerPlugin extends Plugin

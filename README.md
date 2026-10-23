@@ -25,11 +25,12 @@ No combat or mechanic help of any kind: it only tracks loot, supplies, costs, ti
 - **Share cards** for Discord, and optional automatic screenshots after a unique or pet.
 - **Kill goals** with kills per hour and time to goal, and an optional overlay box.
 
-**Supported bosses:** the Maggot King in Vampyrium, Phosani's Nightmare, the Theatre of
-Blood (Entry, Normal and Hard Mode), the Fractured Archive (trips, deaths, wipe fees and
-supplies; luck once Jagex publishes its drop rates) and the Forgotten Four of Desert Treasure
-II: Vardorvis, Duke Sucellus, the Whisperer and the Leviathan. The regular Nightmare's kills
-aren't tracked yet. More bosses are planned. Formerly **Maggot King Trip Tracker**.
+**Supported bosses:** the Maggot King in Vampyrium, Phosani's Nightmare, the Forgotten Four of
+Desert Treasure II (Vardorvis, Duke Sucellus, the Whisperer and the Leviathan), Vorkath, the
+Phantom Muspah and the Doom of Mokhaiotl; and the raids: the Theatre of Blood (Entry, Normal and
+Hard Mode) and the Fractured Archive (trips, deaths, wipe fees and supplies; luck once Jagex
+publishes its drop rates). The dropdown lists bosses alphabetically, with raids under their own
+heading. The regular Nightmare's kills aren't tracked yet. Formerly **Maggot King Trip Tracker**.
 
 ## Requirements
 
@@ -226,6 +227,36 @@ the outside grace period, so walking out and back between kills keeps one trip.
   one-off tablets aren't expected. Awakened kills are built from RuneLite's naming
   ("Vardorvis (Awakened)", three times the table rate) and have no chip until one is seen.
   RuneLite keeps one loot record per boss, so past awakened kills count at the normal rate.
+
+For Vorkath: a trip runs from landing on his island until you sail off or die; Ungael (where
+Torfinn's boat lands) is the waiting area. Kills come from the kill-count message and loot from
+the Loot Tracker's event (the drop lands on the floor). The kill timer starts at your first hit
+on him, which matched the game's fight clock within 1.2 seconds on the logged kills. Dying
+sends your items to Torfinn's deathbank for 100,000 coins (OSRS Wiki): that fee is recorded at
+death and replaced by the payment message if one appears (unverified: no death in the logs).
+Luck: Dragonbone necklace 1/1,000, Skeletal and Draconic visage 1/5,000 each; Vorki 1/3,000;
+Jar of decay as a tertiary. Vorkath's head is loot, not a unique.
+
+For the Phantom Muspah: a trip runs from entering its icy cavern until you leave or die; the
+Ghorrock corridor outside is the waiting area. The kill timer starts when the Muspah appears,
+which matched the game's clock on both logged kills (it respawns 50 ticks after a kill). Dying
+puts your items in a gravestone outside the instance, with the fee estimated at death as for
+the Forgotten Four. Luck: Venator shard 1/100; Muphin 1/2,500; the Ancient icon and Frozen
+cache are tertiaries. Ancient essence is loot.
+
+For the Doom of Mokhaiotl: a trip is one delve run. It starts when you enter the burrow's
+lobby (or at "Delve level: 1" if you're already there after a claim or a death), each level
+completed is a delve (the trip's unit, from "Delve level: N duration: ..."), and it ends when
+you claim your rewards ("Claim and leave", which brings the Loot Tracker's "Doom of Mokhaiotl"
+event; the loot goes on the last level), when you die, or when you leave. Dying sends you back
+to the lobby with the run's loot forfeited: the trip ends there, the gravestone fee is estimated
+at death and replaced by the payment message when you check the grave (the game reduces it by
+75% until 20 delves; the estimate can't know that, the message does). The level clock starts 3
+seconds after "Delve level: N" (within one tick on all nine logged levels). Luck uses each
+level's own rates (Mokhaiotl cloth from level 2, Eye of Ayak from 3, Avernic treads from 4, Dom
+from 6, rarer the shallower the level, "deep" from level 9) and is marked approximate. RuneLite's
+record counts claims rather than levels, so each past claim is taken as a 7-level run. No
+kill-count message was seen, so there is no Chat Commands key.
 
 For Phosani's Nightmare: a trip runs from drinking from the Pool of Nightmares until you
 leave the dream (through the barrier, which works like walking out of the Maggot King's lair,

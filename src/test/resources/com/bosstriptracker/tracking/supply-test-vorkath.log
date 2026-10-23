@@ -1,0 +1,997 @@
+tick=761 region=7790 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=447 param1=487
+tick=763 region=7790 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=193 param1=394
+tick=765 region=7790 inLair=false MENU option="Lunar Isle" target="<col=ffff>Portal Nexus" action=GAME_OBJECT_FIRST_OPTION id=33410 itemId=-1 itemOp=-1 param0=51 param1=43
+tick=766 region=7791 inLair=false REGION template region 7790 -> 7791 instance=true actual region=52119
+tick=767 region=7791 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=768 region=7791 inLair=false GAMESTATE LOADING
+tick=768 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=768 region=8253 inLair=false REGION template region 7791 -> 8253 instance=false actual region=8253
+tick=784 region=8253 inLair=false MENU option="Deposit" target="<col=ffff>Bank Deposit Box" action=GAME_OBJECT_FIRST_OPTION id=10529 itemId=-1 itemOp=-1 param0=46 param1=53
+tick=786 region=8253 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=84
+tick=786 region=8253 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=372 param1=85
+tick=790 region=8253 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=380 param1=145
+tick=793 region=8253 inLair=false MENU option="Bank" target="<col=ffff>Bank booth" action=GAME_OBJECT_SECOND_OPTION id=16700 itemId=-1 itemOp=-1 param0=42 param1=56
+tick=796 region=8253 inLair=false MENU option="Prayer" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551360
+tick=800 region=8253 inLair=false MENU option="Activate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=801 region=8253 inLair=false MENU option="Deactivate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=802 region=8253 inLair=false GAMESTATE LOADING
+tick=802 region=8253 inLair=false GAMESTATE LOGGED_IN
+tick=802 region=10553 inLair=false REGION template region 8253 -> 10553 instance=false actual region=10553
+tick=803 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=804 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=804 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=804 region=10553 inLair=false GROUND spawned Beer tankard (3803) x1 ownership=0 at=2658,3676,0
+tick=804 region=10553 inLair=false GROUND spawned Tankard (3805) x1 ownership=0 at=2659,3676,0
+tick=804 region=10553 inLair=false GROUND spawned Keg of beer (3711) x1 ownership=0 at=2660,3676,0
+tick=805 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=805 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=805 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=806 region=10553 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=808 region=10553 inLair=false MENU option="Ungael" target="<col=ffff00>Torfinn" action=NPC_THIRD_OPTION id=17060 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=10405 npcName="Torfinn"
+tick=811 region=10553 inLair=false MENU option="Setup" target="Quick-prayers" action=CC_OP id=2 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=813 region=10553 inLair=false MENU option="Done" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=5046277
+tick=815 region=10553 inLair=false CHAT type=SPAM name="" sender="null" message="You board the boat and travel to Ungael."
+tick=818 region=10553 inLair=false GAMESTATE LOADING
+tick=818 region=10553 inLair=false GAMESTATE LOGGED_IN
+tick=818 region=9023 inLair=false REGION template region 10553 -> 9023 instance=false actual region=9023
+tick=820 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=374 param1=164
+tick=823 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=396 param1=120
+tick=823 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=396 param1=104
+tick=823 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=396 param1=103
+tick=824 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=393 param1=94
+tick=824 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=395 param1=89
+tick=834 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=417 param1=206
+tick=835 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=418 param1=205
+tick=849 region=9023 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=853 region=9023 inLair=false MENU option="Check" target="<col=ff9040>Dragonfire ward</col>" action=CC_OP id=3 itemId=-1 itemOp=-1 param0=-1 param1=25362452
+tick=853 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The shield has 50 charges."
+tick=860 region=9023 inLair=false MENU option="Climb-over" target="<col=ffff>Ice chunks" action=GAME_OBJECT_FIRST_OPTION id=31990 itemId=-1 itemOp=-1 param0=48 param1=69
+tick=862 region=9023 inLair=false GAMESTATE LOADING
+tick=862 region=9023 inLair=false GAMESTATE LOGGED_IN
+tick=863 region=9023 inLair=false ANIM id=839 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=865 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You climb over the ice."
+tick=866 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=117
+tick=866 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=117
+tick=866 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=117
+tick=866 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=120
+tick=867 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=427 param1=120
+tick=867 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=426 param1=122
+tick=870 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Divine ranging potion(4)</col>" action=CC_OP id=2 itemId=23733 itemOp=1 param0=1 param1=9764864
+tick=870 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine ranging potion."
+tick=870 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=870 region=9023 inLair=false GRAPHIC spotanims=[560]
+tick=870 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=870 region=9023 inLair=false INVENTORY -Divine ranging potion(4) (23733) x1, +Divine ranging potion(3) (23736) x1
+tick=872 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Extended super antifire(4)</col>" action=CC_OP id=2 itemId=22209 itemOp=1 param0=2 param1=9764864
+tick=875 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Extended super antifire(4)</col>" action=CC_OP id=2 itemId=22209 itemOp=1 param0=2 param1=9764864
+tick=876 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your extended super antifire potion."
+tick=876 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=876 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=876 region=9023 inLair=false INVENTORY -Extended super antifire(4) (22209) x1, +Extended super antifire(3) (22212) x1
+tick=877 region=9023 inLair=false MENU option="Poke" target="<col=ffff00>Vorkath" action=NPC_FIRST_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8059 npcName="Vorkath"
+tick=878 region=9023 inLair=false MENU option="Poke" target="<col=ffff00>Vorkath" action=NPC_FIRST_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8059 npcName="Vorkath"
+tick=878 region=9023 inLair=false ANIM id=827 target=npc:8059 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=879 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@The Fremennik Way</col>: You equipped a Zaryte crossbow."
+tick=880 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=410 param1=535
+tick=880 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=410 param1=535
+tick=882 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Anti-venom+(4)</col>" action=CC_OP id=2 itemId=12913 itemOp=1 param0=3 param1=9764864
+tick=882 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your super antivenom+ potion"
+tick=882 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It grants you immunity from venom."
+tick=882 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=882 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=882 region=9023 inLair=false INVENTORY -Anti-venom+(4) (12913) x1, +Anti-venom+(3) (12915) x1
+tick=883 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=885 region=9023 inLair=false MENU option="Activate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=885 region=9023 inLair=false MENU option="Deactivate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=887 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=887 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=887 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=887 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=887 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=887 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=888 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=890 region=9023 inLair=false HITSPLAT type=16 amount=25 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=892 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=892 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=892 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=895 region=9023 inLair=false HITSPLAT type=16 amount=49 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=897 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=897 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=897 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=900 region=9023 inLair=false HITSPLAT type=16 amount=14 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=902 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=902 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=902 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=903 region=9023 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=905 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's corrupting breath!"
+tick=905 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=905 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's corrupting breath!"
+tick=905 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your prayers have been disabled!</col>"
+tick=905 region=9023 inLair=false HITSPLAT type=16 amount=1 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=907 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=907 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=907 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=908 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=910 region=9023 inLair=false HITSPLAT type=16 amount=24 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=912 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=912 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=912 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=914 region=9023 inLair=false MENU option="Activate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=914 region=9023 inLair=false MENU option="Deactivate" target="<col=ff9040>Rapid Heal</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454992
+tick=915 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=915 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=915 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=915 region=9023 inLair=false HITSPLAT type=16 amount=33 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=917 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=917 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=919 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=480 param1=306
+tick=919 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=480 param1=304
+tick=920 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=483 param1=304
+tick=920 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=494 param1=304
+tick=920 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=501 param1=302
+tick=920 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@The Walk</col>: You stepped in one of Vorkath's acid pools, you can try again next acid phase."
+tick=920 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=921 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=504 param1=302
+tick=921 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=508 param1=300
+tick=921 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=511 param1=299
+tick=922 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=524 param1=300
+tick=922 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=541 param1=298
+tick=922 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=545 param1=296
+tick=923 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=539 param1=272
+tick=923 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=532 param1=263
+tick=923 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=519 param1=254
+tick=924 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=515 param1=250
+tick=924 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=507 param1=234
+tick=924 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=507 param1=231
+tick=925 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=506 param1=231
+tick=925 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=167 param1=255
+tick=926 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=165 param1=258
+tick=926 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=133 param1=256
+tick=927 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=122 param1=260
+tick=928 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=932 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=569 param1=288
+tick=933 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=579 param1=289
+tick=934 region=9023 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=937 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=229 param1=291
+tick=943 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=533 param1=284
+tick=944 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=946 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=333 param1=255
+tick=947 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=947 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=947 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=949 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=272 param1=326
+tick=950 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=302 param1=331
+tick=950 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=950 region=9023 inLair=false HITSPLAT type=16 amount=38 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=951 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=952 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=952 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=955 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=955 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=955 region=9023 inLair=false HITSPLAT type=16 amount=44 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=957 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=957 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=960 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=960 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=960 region=9023 inLair=false HITSPLAT type=16 amount=18 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=962 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=962 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=962 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=963 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's corrupting breath!"
+tick=963 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=963 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's corrupting breath!"
+tick=963 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your prayers have been disabled!</col>"
+tick=965 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=965 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=965 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=965 region=9023 inLair=false HITSPLAT type=16 amount=18 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=967 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=967 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=968 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=968 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=968 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=970 region=9023 inLair=false HITSPLAT type=16 amount=42 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=972 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=220
+tick=972 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=972 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=973 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=219
+tick=973 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=496 param1=220
+tick=973 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=246
+tick=974 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=249
+tick=975 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=975 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=975 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=977 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=977 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=977 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=978 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=978 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=978 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=979 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=346 param1=355
+tick=980 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=980 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=980 region=9023 inLair=false HITSPLAT type=16 amount=4 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=982 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=8 param1=9764864
+tick=982 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=982 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=982 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=982 region=9023 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=983 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=983 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You have been frozen!</col>"
+tick=985 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Slayer's staff</col>" action=CC_OP id=3 itemId=4170 itemOp=2 param0=0 param1=9764864
+tick=985 region=9023 inLair=false AUTOCAST varbit=276 value=17
+tick=985 region=9023 inLair=false AUTOCAST varbit=275 value=1
+tick=985 region=9023 inLair=false INVENTORY -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=985 region=9023 inLair=false EQUIPMENT +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=988 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Zombified Spawn<col=ff00>  (level-64)" action=NPC_SECOND_OPTION id=49782 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8063 npcName="Zombified Spawn"
+tick=989 region=9023 inLair=false RUNEPOUCH varbit=1625 value=7858
+tick=989 region=9023 inLair=false RUNEPOUCH varbit=1626 value=100
+tick=989 region=9023 inLair=false GRAPHIC spotanims=[145]
+tick=989 region=9023 inLair=false ANIM id=1166 target=npc:8063 weapon=4170 shield=22002 amulet=12018 autocast=17 spec=1000
+tick=991 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=991 region=9023 inLair=false AUTOCAST varbit=275 value=0
+tick=991 region=9023 inLair=false AUTOCAST varbit=276 value=0
+tick=991 region=9023 inLair=false INVENTORY +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=991 region=9023 inLair=false EQUIPMENT -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=992 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=992 region=9023 inLair=false HITSPLAT type=43 amount=38 target=npc:8063 weapon=26374 shield=22002 amulet=12018
+tick=994 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=994 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The dragon is currently immune to your attacks."
+tick=994 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=994 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=995 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_gre@You become unfrozen as you kill the spawn.</col>"
+tick=996 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=997 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=999 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's corrupting breath!"
+tick=999 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=999 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's corrupting breath!"
+tick=999 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your prayers have been disabled!</col>"
+tick=999 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=999 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1000 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1001 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1002 region=9023 inLair=false HITSPLAT type=16 amount=39 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1004 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1004 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1004 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1004 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1004 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1006 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1007 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1009 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1009 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1011 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1012 region=9023 inLair=false HITSPLAT type=16 amount=55 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1014 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1014 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1014 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1014 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1014 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1016 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1017 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1019 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1019 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1019 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1019 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1019 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1021 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1022 region=9023 inLair=false HITSPLAT type=16 amount=29 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1024 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1024 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1024 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1024 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1024 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1027 region=9023 inLair=false HITSPLAT type=16 amount=46 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1028 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=295
+tick=1029 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=295
+tick=1029 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=295
+tick=1029 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=295
+tick=1030 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=478 param1=254
+tick=1030 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=467 param1=233
+tick=1030 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=233
+tick=1031 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=457 param1=229
+tick=1031 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=461 param1=227
+tick=1031 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=233
+tick=1032 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=485 param1=240
+tick=1032 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=495 param1=249
+tick=1033 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=97 param1=272
+tick=1036 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1037 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=571 param1=302
+tick=1044 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=144 param1=302
+tick=1048 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=568 param1=287
+tick=1048 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=575 param1=289
+tick=1049 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=581 param1=292
+tick=1051 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=264 param1=294
+tick=1054 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=527 param1=296
+tick=1056 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1057 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1057 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1057 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1058 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=548 param1=384
+tick=1059 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1060 region=9023 inLair=false HITSPLAT type=16 amount=44 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1061 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1062 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1062 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1062 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1062 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1062 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1064 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1065 region=9023 inLair=false HITSPLAT type=16 amount=21 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1066 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1067 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1067 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1067 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1067 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1067 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1069 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1070 region=9023 inLair=false HITSPLAT type=16 amount=43 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1072 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1072 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1072 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1072 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1072 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1074 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1075 region=9023 inLair=false HITSPLAT type=16 amount=33 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1077 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1077 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1079 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1080 region=9023 inLair=false HITSPLAT type=16 amount=41 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1082 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1082 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1082 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1082 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1082 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1084 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=1085 region=9023 inLair=false HITSPLAT type=16 amount=53 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1087 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's corrupting breath!"
+tick=1087 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1087 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's corrupting breath!"
+tick=1087 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your prayers have been disabled!</col>"
+tick=1087 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=1087 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1088 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1089 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1090 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1090 region=9023 inLair=false HITSPLAT type=16 amount=14 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1092 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You have been frozen!</col>"
+tick=1092 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The dragon is currently immune to your attacks."
+tick=1092 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1092 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1093 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Slayer's staff</col>" action=CC_OP id=3 itemId=4170 itemOp=2 param0=0 param1=9764864
+tick=1093 region=9023 inLair=false AUTOCAST varbit=276 value=17
+tick=1093 region=9023 inLair=false AUTOCAST varbit=275 value=1
+tick=1093 region=9023 inLair=false INVENTORY -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1093 region=9023 inLair=false EQUIPMENT +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1095 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=4170 shield=22002 amulet=12018
+tick=1097 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Zombified Spawn<col=ff00>  (level-64)" action=NPC_SECOND_OPTION id=52666 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8063 npcName="Zombified Spawn"
+tick=1097 region=9023 inLair=false RUNEPOUCH varbit=1625 value=7856
+tick=1097 region=9023 inLair=false RUNEPOUCH varbit=1626 value=99
+tick=1097 region=9023 inLair=false GRAPHIC spotanims=[145]
+tick=1097 region=9023 inLair=false ANIM id=1166 target=npc:8063 weapon=4170 shield=22002 amulet=12018 autocast=17 spec=1000
+tick=1100 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=1100 region=9023 inLair=false AUTOCAST varbit=275 value=0
+tick=1100 region=9023 inLair=false AUTOCAST varbit=276 value=0
+tick=1100 region=9023 inLair=false HITSPLAT type=43 amount=38 target=npc:8063 weapon=4170 shield=22002 amulet=12018
+tick=1100 region=9023 inLair=false INVENTORY +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1100 region=9023 inLair=false EQUIPMENT -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1101 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1103 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1103 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_gre@You become unfrozen as you kill the spawn.</col>"
+tick=1104 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=46450 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1104 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1104 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1104 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1107 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1107 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1107 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1107 region=9023 inLair=false HITSPLAT type=16 amount=54 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1109 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1109 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1109 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1112 region=9023 inLair=false HITSPLAT type=16 amount=15 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1113 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=426 param1=221
+tick=1114 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1116 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=413 param1=233
+tick=1119 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(3)</col>" action=CC_OP id=2 itemId=139 itemOp=1 param0=8 param1=9764864
+tick=1119 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=1119 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=1119 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Vorkath kill count is: <col=ff0000>4,339</col>."
+tick=1119 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>2:16.20</col>. Personal best: 1:08.40"
+tick=1119 region=9023 inLair=false GROUND spawned Superior dragon bones (22124) x1 ownership=1 at=2272,4061,0
+tick=1119 region=9023 inLair=false GROUND spawned Superior dragon bones (22124) x1 ownership=1 at=2272,4061,0
+tick=1119 region=9023 inLair=false GROUND spawned Blue dragonhide (1751) x1 ownership=1 at=2272,4061,0
+tick=1119 region=9023 inLair=false GROUND spawned Blue dragonhide (1751) x1 ownership=1 at=2272,4061,0
+tick=1119 region=9023 inLair=false GROUND spawned Adamantite ore (450) x22 ownership=1 at=2272,4061,0
+tick=1119 region=9023 inLair=false GROUND spawned Dragon arrowtips (11237) x42 ownership=1 at=2272,4061,0
+tick=1119 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 22 x Adamantite ore</col> <col=106f10>(Vorkath)</col>"
+tick=1119 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 42 x Dragon arrowtips</col> <col=106f10>(Vorkath)</col>"
+tick=1119 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1119 region=9023 inLair=false INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=1119 region=9023 inLair=false LOOT name="Vorkath" type=NPC combatLevel=732 amount=1 items=[Superior dragon bones (22124) x1, Superior dragon bones (22124) x1, Blue dragonhide (1751) x2, Adamantite ore (450) x22, Dragon arrowtips (11237) x42]
+tick=1131 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=403 param1=292
+tick=1136 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=16 param1=9764864
+tick=1136 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=1136 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=1136 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1136 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1137 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=1 itemId=13441 itemOp=5 param0=12 param1=9764864
+tick=1137 region=9023 inLair=false GROUND spawned Anglerfish (13441) x1 ownership=1 at=2272,4060,0
+tick=1137 region=9023 inLair=false INVENTORY -Anglerfish (13441) x1
+tick=1138 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=1 itemId=13441 itemOp=5 param0=9 param1=9764864
+tick=1138 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Anglerfish</col>" action=CC_OP id=1 itemId=13441 itemOp=5 param0=13 param1=9764864
+tick=1138 region=9023 inLair=false GROUND spawned Anglerfish (13441) x1 ownership=1 at=2272,4060,0
+tick=1138 region=9023 inLair=false GROUND spawned Anglerfish (13441) x1 ownership=1 at=2272,4060,0
+tick=1138 region=9023 inLair=false INVENTORY -Anglerfish (13441) x2
+tick=1140 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1141 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1141 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1141 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1141 region=9023 inLair=false GROUND despawned Anglerfish (13441) x1 ownership=1 at=2272,4060,0
+tick=1141 region=9023 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=1142 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1142 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1142 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1142 region=9023 inLair=false GROUND despawned Anglerfish (13441) x1 ownership=1 at=2272,4060,0
+tick=1142 region=9023 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=1143 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1143 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1143 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Anglerfish" action=GROUND_ITEM_THIRD_OPTION id=13441 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1143 region=9023 inLair=false GROUND despawned Anglerfish (13441) x1 ownership=1 at=2272,4060,0
+tick=1143 region=9023 inLair=false INVENTORY +Anglerfish (13441) x1
+tick=1144 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=411 param1=302
+tick=1145 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=15 param1=9764864
+tick=1146 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=14 param1=9764864
+tick=1146 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=18 param1=9764864
+tick=1146 region=9023 inLair=false GROUND spawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1146 region=9023 inLair=false GROUND spawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1146 region=9023 inLair=false GROUND spawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1146 region=9023 inLair=false INVENTORY -Shark (385) x3
+tick=1147 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=18 param1=9764864
+tick=1147 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=17 param1=9764864
+tick=1147 region=9023 inLair=false GROUND spawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1147 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1148 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Shark</col>" action=CC_OP id=1 itemId=385 itemOp=5 param0=19 param1=9764864
+tick=1148 region=9023 inLair=false GROUND spawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1148 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1150 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Dragon arrowtips (42)" action=GROUND_ITEM_THIRD_OPTION id=11237 itemId=-1 itemOp=-1 param0=48 param1=61
+tick=1151 region=9023 inLair=false GROUND despawned Dragon arrowtips (11237) x42 ownership=1 at=2272,4061,0
+tick=1151 region=9023 inLair=false INVENTORY +Dragon arrowtips (11237) x42
+tick=1156 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Adamantite ore (22)" action=GROUND_ITEM_THIRD_OPTION id=450 itemId=-1 itemOp=-1 param0=48 param1=61
+tick=1156 region=9023 inLair=false GROUND despawned Adamantite ore (450) x22 ownership=1 at=2272,4061,0
+tick=1156 region=9023 inLair=false INVENTORY +Adamantite ore (450) x22
+tick=1157 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=48 param1=61
+tick=1157 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=48 param1=61
+tick=1157 region=9023 inLair=false GROUND despawned Superior dragon bones (22124) x1 ownership=1 at=2272,4061,0
+tick=1157 region=9023 inLair=false INVENTORY +Superior dragon bones (22124) x1
+tick=1160 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=48 param1=61
+tick=1160 region=9023 inLair=false GROUND despawned Superior dragon bones (22124) x1 ownership=1 at=2272,4061,0
+tick=1160 region=9023 inLair=false INVENTORY +Superior dragon bones (22124) x1
+tick=1164 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Shark" action=GROUND_ITEM_THIRD_OPTION id=385 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1165 region=9023 inLair=false GROUND despawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1165 region=9023 inLair=false INVENTORY +Shark (385) x1
+tick=1166 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Shark" action=GROUND_ITEM_THIRD_OPTION id=385 itemId=-1 itemOp=-1 param0=48 param1=60
+tick=1166 region=9023 inLair=false GROUND despawned Shark (385) x1 ownership=1 at=2272,4060,0
+tick=1166 region=9023 inLair=false INVENTORY +Shark (385) x1
+tick=1168 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=414 param1=400
+tick=1169 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=409 param1=392
+tick=1173 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=404 param1=346
+tick=1176 region=9023 inLair=false MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=1179 region=9023 inLair=false MENU option="Check" target="<col=ff9040>Dragonfire ward</col>" action=CC_OP id=3 itemId=-1 itemOp=-1 param0=-1 param1=25362452
+tick=1179 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The shield has 50 charges."
+tick=1181 region=9023 inLair=false MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=1199 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=415 param1=248
+tick=1200 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=425 param1=231
+tick=1212 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=7f007f>Your venom resistance is about to wear off.</col>"
+tick=1214 region=9023 inLair=false MENU option="Examine" target="<col=ff9040>Shark</col>" action=CC_OP_LOW_PRIORITY id=10 itemId=385 itemOp=-1 param0=18 param1=9764864
+tick=1214 region=9023 inLair=false CHAT type=ITEM_EXAMINE name="" sender="null" message="I'd better be careful eating this."
+tick=1215 region=9023 inLair=false CHAT type=ITEM_EXAMINE name="" sender="null" message="<colNORMAL>Price of <colHIGHLIGHT>Shark<colNORMAL>:<colNORMAL> GE average <colHIGHLIGHT>835<colNORMAL> HA value <colHIGHLIGHT>102"
+tick=1218 region=9023 inLair=false MENU option="Poke" target="<col=ffff00>Vorkath" action=NPC_FIRST_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8059 npcName="Vorkath"
+tick=1220 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@The Fremennik Way</col>: You equipped a Zaryte crossbow."
+tick=1220 region=9023 inLair=false ANIM id=827 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1222 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=408 param1=433
+tick=1226 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1229 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1229 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1229 region=9023 inLair=false ANIM id=1156 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1230 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1230 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1230 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1230 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1230 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1232 region=9023 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1233 region=9023 inLair=false HITSPLAT type=16 amount=19 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1235 region=9023 inLair=false SPEC energy=250
+tick=1235 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1235 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1235 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1237 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=495 param1=300
+tick=1237 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=495 param1=299
+tick=1238 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=488 param1=297
+tick=1238 region=9023 inLair=false HITSPLAT type=16 amount=41 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1239 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1239 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1239 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1240 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1240 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1242 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1242 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1242 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1242 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=7f007f>Your venom resistance has worn off, but you are still resistant to poison.</col>"
+tick=1242 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=352 param1=294
+tick=1243 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1244 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1244 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1244 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1245 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1245 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1248 region=9023 inLair=false HITSPLAT type=16 amount=16 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1249 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1249 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1250 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1250 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1251 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(2)</col>" action=CC_OP id=2 itemId=141 itemOp=1 param0=8 param1=9764864
+tick=1251 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=1251 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 1 dose of potion left."
+tick=1251 region=9023 inLair=false INVENTORY -Prayer potion(2) (141) x1, +Prayer potion(1) (143) x1
+tick=1252 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1253 region=9023 inLair=false HITSPLAT type=16 amount=6 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1254 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1254 region=9023 inLair=false ANIM id=1156 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1255 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1255 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1256 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1258 region=9023 inLair=false HITSPLAT type=16 amount=44 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1259 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1260 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The dragon is currently immune to your attacks."
+tick=1260 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1260 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1262 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1262 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You have been frozen!</col>"
+tick=1263 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1264 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Slayer's staff</col>" action=CC_OP id=3 itemId=4170 itemOp=2 param0=0 param1=9764864
+tick=1264 region=9023 inLair=false AUTOCAST varbit=276 value=17
+tick=1264 region=9023 inLair=false AUTOCAST varbit=275 value=1
+tick=1264 region=9023 inLair=false INVENTORY -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1264 region=9023 inLair=false EQUIPMENT +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1267 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Zombified Spawn<col=ff00>  (level-64)" action=NPC_SECOND_OPTION id=56293 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8063 npcName="Zombified Spawn"
+tick=1267 region=9023 inLair=false RUNEPOUCH varbit=1625 value=7854
+tick=1267 region=9023 inLair=false RUNEPOUCH varbit=1626 value=98
+tick=1267 region=9023 inLair=false GRAPHIC spotanims=[145]
+tick=1267 region=9023 inLair=false ANIM id=1166 target=npc:8063 weapon=4170 shield=22002 amulet=12018 autocast=17 spec=250
+tick=1270 region=9023 inLair=false HITSPLAT type=43 amount=38 target=npc:8063 weapon=4170 shield=22002 amulet=12018
+tick=1271 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=1272 region=9023 inLair=false AUTOCAST varbit=275 value=0
+tick=1272 region=9023 inLair=false AUTOCAST varbit=276 value=0
+tick=1272 region=9023 inLair=false INVENTORY +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1272 region=9023 inLair=false EQUIPMENT -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1272 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1273 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_gre@You become unfrozen as you kill the spawn.</col>"
+tick=1274 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1274 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1274 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1274 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1274 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1277 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1277 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1277 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1277 region=9023 inLair=false HITSPLAT type=16 amount=2 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1279 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1279 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1279 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1280 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Anti-venom+(3)</col>" action=CC_OP id=2 itemId=12915 itemOp=1 param0=3 param1=9764864
+tick=1281 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your super antivenom+ potion"
+tick=1281 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It grants you immunity from venom."
+tick=1281 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=1281 region=9023 inLair=false INVENTORY -Anti-venom+(3) (12915) x1, +Anti-venom+(2) (12917) x1
+tick=1282 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1282 region=9023 inLair=false HITSPLAT type=16 amount=4 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1284 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1284 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1284 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=250
+tick=1285 region=9023 inLair=false SPEC energy=350
+tick=1287 region=9023 inLair=false HITSPLAT type=16 amount=8 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1289 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1289 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=350
+tick=1291 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=291
+tick=1291 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=291
+tick=1292 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=466 param1=291
+tick=1292 region=9023 inLair=false HITSPLAT type=16 amount=27 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1293 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1294 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1294 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1294 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=350
+tick=1297 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=364 param1=300
+tick=1297 region=9023 inLair=false HITSPLAT type=16 amount=26 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1298 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1299 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1299 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=350
+tick=1299 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1301 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1302 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=487 param1=278
+tick=1302 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=467 param1=305
+tick=1302 region=9023 inLair=false HITSPLAT type=16 amount=25 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1303 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=465 param1=306
+tick=1304 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1304 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1305 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1305 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=350
+tick=1306 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=425 param1=292
+tick=1307 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=420 param1=256
+tick=1307 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=420 param1=250
+tick=1307 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=420 param1=249
+tick=1307 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@The Walk</col>: You stepped in one of Vorkath's acid pools, you can try again next acid phase."
+tick=1308 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=423 param1=233
+tick=1308 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=424 param1=233
+tick=1308 region=9023 inLair=false HITSPLAT type=16 amount=14 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1309 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=403 param1=262
+tick=1309 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=317 param1=281
+tick=1309 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=266 param1=293
+tick=1310 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=217 param1=301
+tick=1310 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=200 param1=302
+tick=1310 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=197 param1=301
+tick=1312 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=183 param1=289
+tick=1313 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=544 param1=286
+tick=1314 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1315 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=569 param1=310
+tick=1316 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=587 param1=307
+tick=1316 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=590 param1=294
+tick=1316 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=590 param1=291
+tick=1317 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=592 param1=286
+tick=1317 region=9023 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1317 region=9023 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1318 region=9023 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1318 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=592 param1=287
+tick=1318 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=592 param1=289
+tick=1319 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=581 param1=274
+tick=1319 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=573 param1=268
+tick=1319 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=573 param1=269
+tick=1320 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=575 param1=279
+tick=1320 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=576 param1=286
+tick=1320 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=576 param1=292
+tick=1321 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=188 param1=291
+tick=1322 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=160 param1=293
+tick=1323 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=20 param1=9764864
+tick=1323 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=1323 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=1323 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=350
+tick=1323 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1324 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=20 param1=9764864
+tick=1326 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=21 param1=9764864
+tick=1326 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=1326 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=1326 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=350
+tick=1326 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1327 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=576 param1=296
+tick=1330 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=251 param1=285
+tick=1333 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1334 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1335 region=9023 inLair=false SPEC energy=450
+tick=1335 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1335 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1336 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=286 param1=384
+tick=1337 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1338 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1338 region=9023 inLair=false HITSPLAT type=16 amount=20 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1340 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your divine ranging potion is about to expire.</col>"
+tick=1340 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1340 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1340 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1342 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1343 region=9023 inLair=false HITSPLAT type=16 amount=60 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1345 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1345 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1345 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1345 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1345 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1345 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1347 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1348 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(1)</col>" action=CC_OP id=2 itemId=143 itemOp=1 param0=8 param1=9764864
+tick=1348 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1348 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=1348 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have finished your potion."
+tick=1348 region=9023 inLair=false HITSPLAT type=16 amount=34 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1348 region=9023 inLair=false INVENTORY -Prayer potion(1) (143) x1, +Vial (229) x1
+tick=1350 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's fiery breath!"
+tick=1350 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1350 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's fiery breath!"
+tick=1350 region=9023 inLair=false GRAPHIC spotanims=[1466]
+tick=1350 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1352 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1353 region=9023 inLair=false HITSPLAT type=16 amount=5 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1355 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1355 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1355 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1356 region=9023 inLair=false MENU option="Drop" target="<col=ff9040>Vial</col>" action=CC_OP id=7 itemId=229 itemOp=5 param0=8 param1=9764864
+tick=1356 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1356 region=9023 inLair=false GROUND spawned Vial (229) x1 ownership=1 at=2272,4055,0
+tick=1356 region=9023 inLair=false INVENTORY -Vial (229) x1
+tick=1357 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1358 region=9023 inLair=false HITSPLAT type=16 amount=6 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1360 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1360 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1362 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1363 region=9023 inLair=false HITSPLAT type=16 amount=19 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1365 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1365 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1367 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1368 region=9023 inLair=false HITSPLAT type=16 amount=12 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1370 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1370 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You have been frozen!</col>"
+tick=1370 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@The effects of the divine potion have worn off."
+tick=1370 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The dragon is currently immune to your attacks."
+tick=1370 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1370 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1372 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Slayer's staff</col>" action=CC_OP id=3 itemId=4170 itemOp=2 param0=0 param1=9764864
+tick=1372 region=9023 inLair=false AUTOCAST varbit=276 value=17
+tick=1372 region=9023 inLair=false AUTOCAST varbit=275 value=1
+tick=1372 region=9023 inLair=false INVENTORY -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1372 region=9023 inLair=false EQUIPMENT +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1373 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=4170 shield=22002 amulet=12018
+tick=1375 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Zombified Spawn<col=ff00>  (level-64)" action=NPC_SECOND_OPTION id=59170 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8063 npcName="Zombified Spawn"
+tick=1375 region=9023 inLair=false RUNEPOUCH varbit=1625 value=7852
+tick=1375 region=9023 inLair=false RUNEPOUCH varbit=1626 value=97
+tick=1375 region=9023 inLair=false GRAPHIC spotanims=[145]
+tick=1375 region=9023 inLair=false ANIM id=1166 target=npc:8063 weapon=4170 shield=22002 amulet=12018 autocast=17 spec=450
+tick=1377 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=1377 region=9023 inLair=false AUTOCAST varbit=275 value=0
+tick=1377 region=9023 inLair=false AUTOCAST varbit=276 value=0
+tick=1377 region=9023 inLair=false INVENTORY +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1377 region=9023 inLair=false EQUIPMENT -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1378 region=9023 inLair=false HITSPLAT type=43 amount=38 target=npc:8063 weapon=26374 shield=22002 amulet=12018
+tick=1379 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Divine ranging potion(3)</col>" action=CC_OP id=2 itemId=23736 itemOp=1 param0=1 param1=9764864
+tick=1379 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your divine ranging potion."
+tick=1379 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=1379 region=9023 inLair=false GRAPHIC spotanims=[560]
+tick=1379 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1379 region=9023 inLair=false INVENTORY -Divine ranging potion(3) (23736) x1, +Divine ranging potion(2) (23739) x1
+tick=1380 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1381 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1381 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_gre@You become unfrozen as you kill the spawn.</col>"
+tick=1381 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1381 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=450
+tick=1382 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1384 region=9023 inLair=false HITSPLAT type=16 amount=15 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1385 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1385 region=9023 inLair=false SPEC energy=550
+tick=1386 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1386 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1386 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1387 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=1389 region=9023 inLair=false HITSPLAT type=16 amount=42 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1390 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's corrupting breath!"
+tick=1390 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1390 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's corrupting breath!"
+tick=1390 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your prayers have been disabled!</col>"
+tick=1391 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1391 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=1391 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1392 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1394 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1395 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1395 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1395 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1396 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1396 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1396 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1397 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1399 region=9023 inLair=false HITSPLAT type=16 amount=55 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1401 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1401 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1402 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1404 region=9023 inLair=false HITSPLAT type=16 amount=29 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1406 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1406 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1407 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1409 region=9023 inLair=false HITSPLAT type=16 amount=63 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1411 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1411 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1414 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=480 param1=294
+tick=1414 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=481 param1=296
+tick=1414 region=9023 inLair=false HITSPLAT type=16 amount=42 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1415 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=485 param1=291
+tick=1415 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=479 param1=248
+tick=1416 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=478 param1=248
+tick=1416 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=495 param1=286
+tick=1416 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=523 param1=285
+tick=1417 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=556 param1=276
+tick=1417 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=569 param1=268
+tick=1417 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=569 param1=268
+tick=1418 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=569 param1=269
+tick=1418 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=566 param1=273
+tick=1419 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=307 param1=257
+tick=1419 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=212 param1=279
+tick=1419 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=146 param1=278
+tick=1420 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=87 param1=264
+tick=1420 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=84 param1=265
+tick=1421 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=539 param1=291
+tick=1423 region=9023 inLair=false MENU option="Toggle Run" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485788
+tick=1425 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=298 param1=295
+tick=1426 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1428 region=9023 inLair=false MENU option="Drink" target="<col=ff9040>Prayer potion(4)</col>" action=CC_OP id=2 itemId=2434 itemOp=1 param0=4 param1=9764864
+tick=1428 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=1428 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You have 3 doses of potion left."
+tick=1428 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1428 region=9023 inLair=false INVENTORY +Prayer potion(3) (139) x1, -Prayer potion(4) (2434) x1
+tick=1429 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=548 param1=302
+tick=1431 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=18 param1=9764864
+tick=1431 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=1431 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=1431 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=550
+tick=1431 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1433 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Vial" action=GROUND_ITEM_THIRD_OPTION id=229 itemId=-1 itemOp=-1 param0=48 param1=55
+tick=1435 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=22 param1=9764864
+tick=1435 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=1435 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=1435 region=9023 inLair=false SPEC energy=650
+tick=1435 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1435 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1437 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=536 param1=290
+tick=1438 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=534 param1=286
+tick=1439 region=9023 inLair=false MENU option="Eat" target="<col=ff9040>Shark</col>" action=CC_OP id=2 itemId=385 itemOp=1 param0=19 param1=9764864
+tick=1439 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="You eat the shark."
+tick=1439 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="It heals some health."
+tick=1439 region=9023 inLair=false ANIM id=829 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1439 region=9023 inLair=false INVENTORY -Shark (385) x1
+tick=1441 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=318 param1=291
+tick=1443 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1443 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1443 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1443 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1444 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Vial" action=GROUND_ITEM_THIRD_OPTION id=229 itemId=-1 itemOp=-1 param0=48 param1=55
+tick=1445 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1446 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1446 region=9023 inLair=false HITSPLAT type=16 amount=43 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1448 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1448 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1448 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1448 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1448 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1450 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=1451 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1453 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's corrupting breath!"
+tick=1453 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1453 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's corrupting breath!"
+tick=1453 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Your prayers have been disabled!</col>"
+tick=1453 region=9023 inLair=false GRAPHIC spotanims=[1473]
+tick=1453 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1454 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1456 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=7f007f>Your super antifire potion is about to expire.</col>"
+tick=1456 region=9023 inLair=false HITSPLAT type=16 amount=18 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1458 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=412 param1=250
+tick=1458 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=412 param1=239
+tick=1458 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=413 param1=238
+tick=1460 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1460 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1460 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1460 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1463 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Vial" action=GROUND_ITEM_THIRD_OPTION id=229 itemId=-1 itemOp=-1 param0=48 param1=55
+tick=1463 region=9023 inLair=false HITSPLAT type=16 amount=50 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1465 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1465 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1465 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1465 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1465 region=9023 inLair=false EQUIPMENT -Diamond dragon bolts (e) (21946) x1
+tick=1468 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1468 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1468 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1468 region=9023 inLair=false HITSPLAT type=16 amount=23 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1470 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1470 region=9023 inLair=false GRAPHIC spotanims=[1472]
+tick=1470 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1473 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your shield absorbs most of the dragon's venomous breath!"
+tick=1473 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your dragonfire shield is already fully charged."
+tick=1473 region=9023 inLair=false CHAT type=SPAM name="" sender="null" message="Your super antifire potion helps to protect you from the dragon's venomous breath!"
+tick=1473 region=9023 inLair=false HITSPLAT type=16 amount=19 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1475 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The dragon is currently immune to your attacks."
+tick=1475 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1475 region=9023 inLair=false GRAPHIC spotanims=[369]
+tick=1475 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=650
+tick=1476 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="<col=7f007f>Your super antifire potion has expired.</col>"
+tick=1478 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1478 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@You have been frozen!</col>"
+tick=1478 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1480 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Slayer's staff</col>" action=CC_OP id=3 itemId=4170 itemOp=2 param0=0 param1=9764864
+tick=1480 region=9023 inLair=false AUTOCAST varbit=276 value=17
+tick=1480 region=9023 inLair=false AUTOCAST varbit=275 value=1
+tick=1480 region=9023 inLair=false INVENTORY -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1480 region=9023 inLair=false EQUIPMENT +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1483 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Zombified Spawn<col=ff00>  (level-64)" action=NPC_SECOND_OPTION id=61145 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8063 npcName="Zombified Spawn"
+tick=1483 region=9023 inLair=false RUNEPOUCH varbit=1625 value=7850
+tick=1483 region=9023 inLair=false RUNEPOUCH varbit=1626 value=96
+tick=1483 region=9023 inLair=false GRAPHIC spotanims=[145]
+tick=1483 region=9023 inLair=false ANIM id=1166 target=npc:8063 weapon=4170 shield=22002 amulet=12018 autocast=17 spec=650
+tick=1485 region=9023 inLair=false MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=0 param1=9764864
+tick=1485 region=9023 inLair=false SPEC energy=750
+tick=1486 region=9023 inLair=false AUTOCAST varbit=275 value=0
+tick=1486 region=9023 inLair=false AUTOCAST varbit=276 value=0
+tick=1486 region=9023 inLair=false HITSPLAT type=43 amount=38 target=npc:8063 weapon=4170 shield=22002 amulet=12018
+tick=1486 region=9023 inLair=false INVENTORY +Slayer's staff (4170) x1, -Zaryte crossbow (26374) x1
+tick=1486 region=9023 inLair=false EQUIPMENT -Slayer's staff (4170) x1, +Zaryte crossbow (26374) x1
+tick=1487 region=9023 inLair=false MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1488 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1488 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="The dragon is currently immune to your attacks."
+tick=1488 region=9023 inLair=false GRAPHIC spotanims=[]
+tick=1488 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=750
+tick=1489 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1489 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_gre@You become unfrozen as you kill the spawn.</col>"
+tick=1490 region=9023 inLair=false MENU option="Attack" target="<col=ffff00>Vorkath<col=ff0000>  (level-732)" action=NPC_SECOND_OPTION id=53256 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=8061 npcName="Vorkath"
+tick=1490 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1491 region=9023 inLair=false HITSPLAT type=12 amount=0 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1493 region=9023 inLair=false GRAPHIC spotanims=[1478]
+tick=1493 region=9023 inLair=false ANIM id=9168 target=npc:8061 weapon=26374 shield=22002 amulet=12018 autocast=0 spec=750
+tick=1495 region=9023 inLair=false GRAPHIC spotanims=[1480]
+tick=1496 region=9023 inLair=false HITSPLAT type=16 amount=30 target=npc:8061 weapon=26374 shield=22002 amulet=12018
+tick=1497 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=422 param1=209
+tick=1499 region=9023 inLair=false MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1501 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=367 param1=260
+tick=1503 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Your Vorkath kill count is: <col=ff0000>4,340</col>."
+tick=1503 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" message="Fight duration: <col=ff0000>2:41.40</col>. Personal best: 1:08.40"
+tick=1503 region=9023 inLair=false GROUND spawned Superior dragon bones (22124) x1 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false GROUND spawned Superior dragon bones (22124) x1 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false GROUND spawned Blue dragonhide (1751) x1 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false GROUND spawned Blue dragonhide (1751) x1 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false GROUND spawned Scaly blue dragonhide (27897) x1 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false GROUND spawned Grapes (1988) x265 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false GROUND spawned Red dragonhide (1750) x23 ownership=1 at=2268,4061,0
+tick=1503 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 265 x Grapes</col> <col=106f10>(Vorkath)</col>"
+tick=1503 region=9023 inLair=false CHAT type=GAMEMESSAGE name="" sender="null" PLAYER received a drop: 23 x Red dragonhide</col> <col=106f10>(Vorkath)</col>"
+tick=1503 region=9023 inLair=false LOOT name="Vorkath" type=NPC combatLevel=732 amount=1 items=[Superior dragon bones (22124) x1, Superior dragon bones (22124) x1, Blue dragonhide (1751) x2, Scaly blue dragonhide (27897) x1, Grapes (1988) x265, Red dragonhide (1750) x23]
+tick=1506 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Red dragonhide (23)" action=GROUND_ITEM_THIRD_OPTION id=1750 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1509 region=9023 inLair=false GROUND despawned Red dragonhide (1750) x23 ownership=1 at=2268,4061,0
+tick=1509 region=9023 inLair=false INVENTORY +Red dragonhide (1750) x23
+tick=1512 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Grapes (265)" action=GROUND_ITEM_THIRD_OPTION id=1988 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1513 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Grapes (265)" action=GROUND_ITEM_THIRD_OPTION id=1988 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1513 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Grapes (265)" action=GROUND_ITEM_THIRD_OPTION id=1988 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1513 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Grapes (265)" action=GROUND_ITEM_THIRD_OPTION id=1988 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1513 region=9023 inLair=false GROUND despawned Grapes (1988) x265 ownership=1 at=2268,4061,0
+tick=1513 region=9023 inLair=false INVENTORY +Grapes (1988) x265
+tick=1514 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1514 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1514 region=9023 inLair=false MENU option="Take" target="<col=66b2ff>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1514 region=9023 inLair=false GROUND despawned Superior dragon bones (22124) x1 ownership=1 at=2268,4061,0
+tick=1514 region=9023 inLair=false INVENTORY +Superior dragon bones (22124) x1
+tick=1515 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1515 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Superior dragon bones" action=GROUND_ITEM_THIRD_OPTION id=22124 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1515 region=9023 inLair=false GROUND despawned Superior dragon bones (22124) x1 ownership=1 at=2268,4061,0
+tick=1515 region=9023 inLair=false INVENTORY +Superior dragon bones (22124) x1
+tick=1516 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1516 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1516 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1516 region=9023 inLair=false GROUND despawned Blue dragonhide (1751) x1 ownership=1 at=2268,4061,0
+tick=1516 region=9023 inLair=false INVENTORY +Blue dragonhide (1751) x1
+tick=1517 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1517 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1517 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1517 region=9023 inLair=false MENU option="Take" target="<col=ff9040>Blue dragonhide" action=GROUND_ITEM_THIRD_OPTION id=1751 itemId=-1 itemOp=-1 param0=44 param1=61
+tick=1517 region=9023 inLair=false GROUND despawned Blue dragonhide (1751) x1 ownership=1 at=2268,4061,0
+tick=1517 region=9023 inLair=false INVENTORY +Blue dragonhide (1751) x1
+tick=1518 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=514 param1=349
+tick=1521 region=9023 inLair=false MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1522 region=9023 inLair=false MENU option="Toggle Run" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485788
+tick=1523 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=504 param1=355
+tick=1524 region=9023 inLair=false MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=507 param1=360
+tick=1527 region=9023 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1528 region=9023 inLair=false MENU option="Change" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=1 param1=14287054
+tick=1531 region=9023 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1533 region=9023 inLair=false MENU option="Cast" target="<col=00ff00>Teleport to House</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14286882
+tick=1533 region=9023 inLair=false RUNEPOUCH varbit=1625 value=7849
+tick=1533 region=9023 inLair=false RUNEPOUCH varbit=1624 value=11008
+tick=1533 region=9023 inLair=false GRAPHIC spotanims=[111]
+tick=1533 region=9023 inLair=false ANIM id=714 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=750
+tick=1535 region=9023 inLair=false SPEC energy=850
+tick=1537 region=9023 inLair=false GAMESTATE LOADING
+tick=1537 region=9023 inLair=false GAMESTATE LOGGED_IN
+tick=1537 region=7790 inLair=false REGION template region 9023 -> 7790 instance=true actual region=55221
+tick=1543 region=7790 inLair=false MENU option="Drink" target="<col=ffff>Ornate pool of Rejuvenation" action=GAME_OBJECT_FIRST_OPTION id=29241 itemId=-1 itemOp=-1 param0=46 param1=54
+tick=1546 region=7790 inLair=false SPEC energy=1000
+tick=1546 region=7790 inLair=false ANIM id=7305 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1548 region=7790 inLair=false MENU option="Teleport Menu" target="<col=ffff>Ornate Jewellery Box" action=GAME_OBJECT_SECOND_OPTION id=29156 itemId=-1 itemOp=-1 param0=46 param1=57
+tick=1553 region=7791 inLair=false REGION template region 7790 -> 7791 instance=true actual region=55221
+tick=1555 region=7791 inLair=false GRAPHIC spotanims=[111]
+tick=1555 region=7791 inLair=false ANIM id=714 target=none weapon=26374 shield=22002 amulet=12018 autocast=0 spec=1000
+tick=1558 region=7791 inLair=false GAMESTATE LOADING
+tick=1558 region=7791 inLair=false GAMESTATE LOGGED_IN
+tick=1558 region=7791 inLair=false GROUND spawned Tinderbox (590) x1 ownership=0 at=2431,3072,0
+tick=1558 region=9776 inLair=false REGION template region 7791 -> 9776 instance=false actual region=9776
+tick=1559 region=9776 inLair=false MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
