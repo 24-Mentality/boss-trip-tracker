@@ -48,7 +48,7 @@ public class RecordKeysTest
 		assertFalse(RecordKeys.isPlannedBoss("drops_NPC_Maggot King"));
 		assertFalse(RecordKeys.isPlannedBoss("annex"));
 		assertFalse(RecordKeys.isPlannedBoss("drops_NPC_Nexling"));
-		assertFalse(RecordKeys.isPlannedBoss("vorkath"));
+		assertFalse(RecordKeys.isPlannedBoss("zulrah"));
 		assertFalse(RecordKeys.isPlannedBoss("drops_NPC_Lil'viathan"));
 	}
 
