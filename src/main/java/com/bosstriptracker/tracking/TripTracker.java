@@ -5,6 +5,7 @@ import com.bosstriptracker.BossTripTrackerConfig;
 import com.bosstriptracker.boss.AllTimeSource;
 import com.bosstriptracker.boss.BossDefinition;
 import com.bosstriptracker.boss.BossRegistry;
+import com.bosstriptracker.boss.KillReport;
 import com.bosstriptracker.boss.LootChoice;
 import com.bosstriptracker.model.AccountHistory;
 import com.bosstriptracker.model.AllTimeCounts;
@@ -22,6 +23,7 @@ import com.bosstriptracker.model.VariantFilter;
 import com.bosstriptracker.persistence.HistoryStore;
 import com.bosstriptracker.pricing.PriceService;
 import com.bosstriptracker.view.BossOption;
+import com.bosstriptracker.view.BossOptions;
 import com.bosstriptracker.view.PanelState;
 import com.bosstriptracker.view.TripView;
 import com.bosstriptracker.view.ViewBuilder;
@@ -158,6 +160,11 @@ public class TripTracker
 	 * game charges.
 	 */
 	private boolean pendingFeeEstimated;
+	/**
+	 * Tick of a death that ended the trip on the spot (respawn inside the area), so the death message a few ticks
+	 * later isn't a second death.
+	 */
+	private int deathHandledTick = -100;
 
 	private final ChargeCounter chargeCounter;
 	/**
@@ -1057,6 +1064,14 @@ public class TripTracker
 				return;
 			}
 		}
+		if (s.inArea && s.currentTrip == null && s.areaBoss != null && s.history != null && s.areaBoss.isTripStartMessage(text))
+		{
+			// Still in the area after a claim or a death there (the Doom of Mokhaiotl's lobby): a new run begins
+			s.inLairPause = null;
+			lastActivityAt = now;
+			loot.resetKillState();
+			openTrip(s.areaBoss, now);
+		}
 		if (!s.inArea || s.currentTrip == null)
 		{
 			return;
@@ -1066,6 +1081,17 @@ public class TripTracker
 		if (fightDelay != null)
 		{
 			loot.fightStarts(now + fightDelay);
+			return;
+		}
+
+		KillReport report = s.tripBoss.killReport(text);
+		if (report != null)
+		{
+			loot.recordKill(report.getKillCount(), report.getVariant(), tick, now);
+			if (report.getDurationMs() != null)
+			{
+				loot.fightDuration(report.getDurationMs(), tick);
+			}
 			return;
 		}
 
@@ -1092,13 +1118,14 @@ public class TripTracker
 		{
 			return;
 		}
-		if (event.getType() == LootRecordType.EVENT)
+		boolean bossLoot = s.inArea && s.currentTrip != null
+			&& s.tripBoss.isLootEvent(event.getName(), event.getType(), bossName(s.tripBoss));
+		if (!bossLoot)
 		{
-			polishTracker.lootEvent(event, client.getTickCount());
-			return;
-		}
-		if (!s.inArea || s.currentTrip == null || !s.tripBoss.isLootEvent(event.getName(), event.getType(), bossName(s.tripBoss)))
-		{
+			if (event.getType() == LootRecordType.EVENT)
+			{
+				polishTracker.lootEvent(event, client.getTickCount());
+			}
 			return;
 		}
 
@@ -1108,6 +1135,11 @@ public class TripTracker
 			items.merge(stack.getId(), (long) stack.getQuantity(), Long::sum);
 		}
 		loot.lootEvent(items);
+		if (s.tripBoss.isLootEventEndsTrip())
+		{
+			// Claiming the rewards ends the run (the Doom of Mokhaiotl)
+			endTrip(TripEndReason.COMPLETED, System.currentTimeMillis());
+		}
 	}
 
 	@Subscribe
@@ -1200,7 +1232,14 @@ public class TripTracker
 		s.inLairPause = null;
 		lastActivityAt = now;
 		loot.resetKillState();
+		openTrip(boss, now);
+	}
 
+	/**
+	 * Continues the trip left open for this boss within its grace period, or starts a new one.
+	 */
+	private void openTrip(BossDefinition boss, long now)
+	{
 		if (s.currentTrip != null && (s.tripBoss != boss || (s.suspendedAt != null && (RaidSession.isRaid(boss) || now - s.suspendedAt > TimeUnit.MINUTES.toMillis(
 			s.suspendedOutside ? config.outsideGraceMinutes() : config.logoutGraceMinutes())))))
 		{
@@ -1392,6 +1431,12 @@ public class TripTracker
 			}
 			return;
 		}
+		int tick = client.getTickCount();
+		if (tick - deathHandledTick <= POST_DEATH_IGNORE_TICKS)
+		{
+			// The death message after the ActorDeath event, for a death that already ended the trip
+			return;
+		}
 		s.dead = true;
 		loot.fightEnded();
 		s.ignoreDeltasUntilTick = Integer.MAX_VALUE;
@@ -1406,10 +1451,25 @@ public class TripTracker
 				// The items are still in the containers at the death message; they go in the respawn tick
 				death.setReclaimFee(estimateGravestoneFee());
 			}
+			else if (s.tripBoss.getDeathFee() > 0)
+			{
+				death.setReclaimFee(s.tripBoss.getDeathFee());
+				pendingFeeEstimated = true;
+			}
 			s.currentTrip.getDeaths().add(death);
 			pendingDeath = death;
 			pendingDeathTrip = s.currentTrip;
 			pendingDeathIndex = s.currentTrip.getDeaths().size() - 1;
+			if (s.tripBoss.isDeathRespawnInside())
+			{
+				// You respawn inside the area (the Doom of Mokhaiotl's lobby), so leaving won't end the trip: it ends
+				// now, and the items vanishing and coming back from the grave are outside any trip
+				deathHandledTick = tick;
+				s.dead = false;
+				s.ignoreDeltasUntilTick = tick + POST_DEATH_IGNORE_TICKS;
+				endTrip(TripEndReason.DEATH, now);
+				return;
+			}
 			s.viewDirty = true;
 			keeper.requestSave();
 		}
@@ -1778,11 +1838,7 @@ public class TripTracker
 			shown = historyViews.isEmpty() ? null : historyViews.get(0);
 		}
 
-		List<BossOption> options = new ArrayList<>();
-		for (BossDefinition b : registry.all())
-		{
-			options.add(new BossOption(b.getId(), b.getDisplayName(), b.getIconItemId(), s.currentTrip != null && s.tripBoss == b));
-		}
+		List<BossOption> options = BossOptions.of(registry.all(), b -> s.currentTrip != null && s.tripBoss == b);
 
 		long now = System.currentTimeMillis();
 		boolean fighting = live && s.inArea && s.suspendedAt == null;

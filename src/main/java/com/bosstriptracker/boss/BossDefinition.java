@@ -120,6 +120,51 @@ public abstract class BossDefinition
 		return null;
 	}
 
+	/**
+	 * @param text a game message without colour tags
+	 * @return a kill the boss reports in its own words (the Doom of Mokhaiotl's "Delve level: 3 duration: ..."), or
+	 * null; bosses saying "Your &lt;boss&gt; kill count is" need nothing here
+	 */
+	public KillReport killReport(String text)
+	{
+		return null;
+	}
+
+	/**
+	 * A message that starts a new trip while you're already in the boss's area with no trip running (the Doom of
+	 * Mokhaiotl's "Delve level: 1" after a claim or a death in the same lobby).
+	 */
+	public boolean isTripStartMessage(String text)
+	{
+		return false;
+	}
+
+	/**
+	 * The boss's loot event ends the trip (claiming the Doom of Mokhaiotl's rewards ends the run).
+	 */
+	public boolean isLootEventEndsTrip()
+	{
+		return false;
+	}
+
+	/**
+	 * Dying puts you back inside the boss's area (the Doom of Mokhaiotl's lobby), so the trip ends at the death itself
+	 * rather than on leaving the area.
+	 */
+	public boolean isDeathRespawnInside()
+	{
+		return false;
+	}
+
+	/**
+	 * A known flat fee for getting items back after a death (Torfinn's 100,000 at Vorkath), recorded at death and
+	 * replaced by the payment message if one is seen; 0 for none.
+	 */
+	public long getDeathFee()
+	{
+		return 0;
+	}
+
 	// ---- Loot ----
 
 	/**
