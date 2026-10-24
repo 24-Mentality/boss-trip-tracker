@@ -568,6 +568,18 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * Whether you're in the boss's area as a participant rather than a spectator. The Fractured Archive's Strategy
+	 * board lets anyone in the lobby spectate a raid from inside its rooms; a spectator's party status is 0, so no trip
+	 * starts for them. Checked when the area is entered.
+	 *
+	 * @param varbits reads a varbit
+	 */
+	public boolean isParticipant(IntUnaryOperator varbits)
+	{
+		return true;
+	}
+
+	/**
 	 * Whether the game says you're still inside although the region isn't one of {@link #getRegions()} (a raid room
 	 * that isn't listed). Only keeps you inside; it never takes you in.
 	 *

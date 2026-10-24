@@ -174,7 +174,7 @@ in Ver Sinhaza (by the vault's teleport crystal, a teleport, a wipe or logging o
 
 For the Fractured Archive: a trip is one raid, from stepping through the Archive Door into
 the Nexus until you're back in the lobby (a completed raid, a wipe, abandoning the raid, or
-logging out).
+logging out). Spectating a raid from the Strategy board isn't a trip.
 
 - Each challenge's clock starts at "Challenge started" (the Trip tab's live timer); the
   raid's time is the running total the game reports as each challenge completes. A completed

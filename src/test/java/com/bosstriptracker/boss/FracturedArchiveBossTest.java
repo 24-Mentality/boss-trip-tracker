@@ -24,11 +24,15 @@ public class FracturedArchiveBossTest
 	@Test
 	public void theRoomsSeenAreTheRaidButNotTheLobby()
 	{
-		for (int region : new int[]{16471, 16727, 16728, 16726, 16472})
+		for (int region : new int[]{16471, 16727, 16728, 16726, 16472, 16474})
 		{
 			assertSame(boss, registry.forRegion(region));
 		}
 		assertNull(registry.forRegion(FracturedArchiveBoss.LOBBY_REGION_ID));
+		// Spectating from the Strategy board puts you in the rooms with party status 0: not a trip
+		assertFalse(boss.isParticipant(v -> 0));
+		assertTrue(boss.isParticipant(v -> 2));
+		assertTrue(boss.isParticipant(v -> 1));
 		assertTrue(boss.getWaitingRegions().isEmpty());
 		assertSame(TripModel.ONE_RAID, boss.getTripModel());
 		assertFalse(boss.isDeathEndsTrip());

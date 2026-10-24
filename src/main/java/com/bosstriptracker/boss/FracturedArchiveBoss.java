@@ -37,7 +37,11 @@ public final class FracturedArchiveBoss extends TableBoss
 	 * vault (Ocellus). Ezekiel, Moia and the Dagon'hai elder weren't drawn, so their rooms are unknown; being in an
 	 * instance that isn't the lobby keeps the raid going there ({@link #isStillInside}).
 	 */
-	private static final Set<Integer> REGIONS = ImmutableSet.of(NEXUS_REGION_ID, 16726, 16727, 16728, 16472);
+	/**
+	 * The vault after Ocellus (seen when a spectated raid completed on 2026-10-23), instanced.
+	 */
+	public static final int VAULT_REGION_ID = 16474;
+	private static final Set<Integer> REGIONS = ImmutableSet.of(NEXUS_REGION_ID, 16726, 16727, 16728, 16472, VAULT_REGION_ID);
 	/**
 	 * Each challenge boss's first form (hitsplat targets in the logs; the three unseen bosses are their gameval ids).
 	 */
@@ -269,6 +273,16 @@ public final class FracturedArchiveBoss extends TableBoss
 	public boolean isStillInside(IntUnaryOperator varbits, int region, boolean instanced)
 	{
 		return instanced && region != LOBBY_REGION_ID;
+	}
+
+	/**
+	 * "Spectate" on the lobby's Strategy board puts you in a raid's rooms with the party status at 0; in your own raid
+	 * it's 1 in the party and 2 once the raid starts (log of 2026-10-23).
+	 */
+	@Override
+	public boolean isParticipant(IntUnaryOperator varbits)
+	{
+		return varbits.applyAsInt(VarbitID.TFA_CLIENT_PARTYSTATUS) != 0;
 	}
 
 	@Override

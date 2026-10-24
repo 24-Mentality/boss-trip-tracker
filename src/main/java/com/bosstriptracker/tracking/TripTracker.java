@@ -820,6 +820,11 @@ public class TripTracker
 			// An unlisted room of a raid you're still in
 			regionBoss = s.areaBoss;
 		}
+		if (regionBoss != null && !s.inArea && !regionBoss.isParticipant(client::getVarbitValue))
+		{
+			// Spectating a raid from inside its rooms (the Fractured Archive's Strategy board): not a trip
+			regionBoss = null;
+		}
 		if (s.inArea && regionBoss != s.areaBoss)
 		{
 			Long leftAt = leaveDelay.outside(now, s.dead);
