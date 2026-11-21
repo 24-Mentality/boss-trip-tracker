@@ -125,6 +125,11 @@ public final class HistoryLayout
 		 * Files that couldn't be read and were moved aside (their readable trips were kept); empty if none.
 		 */
 		List<String> unreadable;
+		/**
+		 * The bosses the account file has data for (goal, egg pops, polish tallies); empty if it's missing or
+		 * unreadable.
+		 */
+		Set<String> accountBosses;
 	}
 
 	/**
@@ -143,11 +148,6 @@ public final class HistoryLayout
 		account.setLastDisplayName(history.getLastDisplayName());
 		history.getBosses().forEach((bossId, boss) -> account.getBosses().put(bossId, boss.withoutTrips()));
 		return account;
-	}
-
-	static boolean exists(Filepath folder)
-	{
-		return folder.joinSegment(ACCOUNT_FILE).exists();
 	}
 
 	/**
@@ -183,7 +183,7 @@ public final class HistoryLayout
 
 	/**
 	 * Reads an account folder. A file that can't be read is moved aside ("…corrupt-…") and, for a month, its readable
-	 * trips are kept and written back.
+	 * trips are kept and written back. A folder without its account file still has its trips.
 	 *
 	 * @throws JsonParseException never for damaged files; IOException if the folder can't be read at all
 	 */
@@ -192,14 +192,17 @@ public final class HistoryLayout
 		List<String> unreadable = new ArrayList<>();
 		AccountHistory history = null;
 		Filepath accountFile = folder.joinSegment(ACCOUNT_FILE);
-		try
+		if (accountFile.exists())
 		{
-			history = gson.fromJson(readString(accountFile), AccountHistory.class);
-		}
-		catch (JsonParseException e)
-		{
-			log.warn("Unreadable {}; trips are kept but goals and egg pops start again", ACCOUNT_FILE, e);
-			unreadable.add(moveAside(accountFile));
+			try
+			{
+				history = gson.fromJson(readString(accountFile), AccountHistory.class);
+			}
+			catch (JsonParseException e)
+			{
+				log.warn("Unreadable {}; trips are kept but goals and egg pops start again", ACCOUNT_FILE, e);
+				unreadable.add(moveAside(accountFile));
+			}
 		}
 		if (history == null)
 		{
@@ -215,6 +218,7 @@ public final class HistoryLayout
 			boss.setTrips(null);
 			boss.fillMissing();
 		});
+		Set<String> accountBosses = new HashSet<>(history.getBosses().keySet());
 
 		Set<String> closedIds = new HashSet<>();
 		for (Filepath bossFolder : children(folder, Filepath::isDirectory))
@@ -295,7 +299,7 @@ public final class HistoryLayout
 		{
 			boss.getTrips().sort(Comparator.comparingLong(Trip::getStartedAt));
 		}
-		return new Loaded(history, unreadable);
+		return new Loaded(history, unreadable, accountBosses);
 	}
 
 	/**

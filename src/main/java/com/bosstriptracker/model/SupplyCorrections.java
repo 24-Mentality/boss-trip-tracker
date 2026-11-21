@@ -32,15 +32,27 @@ public final class SupplyCorrections
 		{
 			for (Trip trip : boss.getTrips())
 			{
-				for (ItemEntry entry : trip.getSupplies())
-				{
-					if (entry.getItemId() == ItemID.SCYTHE_OF_VITUR && entry.getChargeItemId() == ItemID.VIAL_BLOOD
-						&& entry.getChargesPerItem() == SCYTHE_CHARGES_PER_RECHARGE)
-					{
-						entry.setPriceEach(Math.max(0, entry.getPriceEach() - EXTRA_BLOOD_RUNES * bloodRunePrice));
-						fixed++;
-					}
-				}
+				fixed += repriceScythe(trip, bloodRunePrice);
+			}
+		}
+		return fixed;
+	}
+
+	/**
+	 * The same correction for one trip saved before schema 3.
+	 *
+	 * @return the number of lines corrected
+	 */
+	public static int repriceScythe(Trip trip, long bloodRunePrice)
+	{
+		int fixed = 0;
+		for (ItemEntry entry : trip.getSupplies())
+		{
+			if (entry.getItemId() == ItemID.SCYTHE_OF_VITUR && entry.getChargeItemId() == ItemID.VIAL_BLOOD
+				&& entry.getChargesPerItem() == SCYTHE_CHARGES_PER_RECHARGE)
+			{
+				entry.setPriceEach(Math.max(0, entry.getPriceEach() - EXTRA_BLOOD_RUNES * bloodRunePrice));
+				fixed++;
 			}
 		}
 		return fixed;

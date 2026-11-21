@@ -333,7 +333,10 @@ polish results), one file of finished trips per boss and month (`<boss>/trips-20
 `open-trips.json` for a trip in progress. A save only writes what changed, and it's written in
 the background, so the game never waits for it. A single-file history from an older version
 (`history-<account>.json`) is moved into the folder at login, checked, and then kept as
-`history-<account>.json.v5-backup-<date>` (the newest 3 backups are kept).
+`history-<account>.json.v5-backup-<date>` (the newest 3 backups are kept). If such a file turns up
+beside a folder that already exists, the folder is never replaced: trips the folder doesn't have
+are added to it and the file is kept as a backup. A save that can't be written (a full disk, a
+read-only folder) is tried again until it is, with a warning in the panel meanwhile.
 
 ## Credits
 

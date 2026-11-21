@@ -1720,6 +1720,28 @@ public class TripTracker
 				keeper.saveNow();
 			}
 		}
+		if (!s.readOnly && !result.getAddedFromOldFile().isEmpty())
+		{
+			log.info("Added {} trips from an older history file found beside the history folder",
+				result.getAddedFromOldFile().size());
+			if (result.getOldFileVersion() < SupplyCorrections.SCYTHE_FIXED_IN_SCHEMA)
+			{
+				// Those trips were saved with the old scythe recipe; the folder's own were corrected long ago
+				long bloodRune = prices.price(ItemID.BLOODRUNE);
+				s.history.getBosses().forEach((bossId, boss) ->
+				{
+					for (Trip trip : boss.getTrips())
+					{
+						if (result.getAddedFromOldFile().contains(trip.getId())
+							&& SupplyCorrections.repriceScythe(trip, bloodRune) > 0 && !trip.isOpen())
+						{
+							keeper.monthChanged(bossId, trip);
+						}
+					}
+				});
+				keeper.saveNow();
+			}
+		}
 
 		// Trips left open by a client exit: close all but the most recent, which may resume within the grace period
 		Trip open = null;
@@ -1868,6 +1890,7 @@ public class TripTracker
 			.canPause(fighting)
 			.readOnly(s.readOnly)
 			.corruptBackup(s.corruptBackup)
+			.unsaved(s.unsaved)
 			.killStartedAt(fighting ? loot.getFightStartedAt() : null)
 			.playerName(s.history == null ? null : s.history.getLastDisplayName())
 			.build();

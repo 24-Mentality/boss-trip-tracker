@@ -2,6 +2,7 @@ package com.bosstriptracker.persistence;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
@@ -16,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -54,6 +56,7 @@ public class HistoryMigrationTest
 	public void writable()
 	{
 		root.toFile().setWritable(true);
+		root.resolve("history-42/maggot_king").toFile().setWritable(true);
 	}
 
 	@Test
@@ -91,19 +94,128 @@ public class HistoryMigrationTest
 	}
 
 	@Test
-	public void aMigrationThatDidntFinishIsDoneAgain() throws Exception
+	public void aMigrationThatDidntFinishIsFinishedWithoutDeletingTheFolder() throws Exception
 	{
-		// A folder left by an earlier attempt that couldn't rename the file: the file wins
+		// A folder left by an earlier attempt that stopped before its account file (written last) and before the
+		// old file was renamed. It also holds a trip the file doesn't have: nothing in a folder is ever deleted.
 		write(OLD_FILE, Fixtures.historyV1());
-		Files.createDirectories(root.resolve("history-42/maggot_king"));
-		write("history-42/maggot_king/trips-2001-01.jsonl", "{\"id\": \"stale\", \"startedAt\": 1}\n");
+		AccountHistory fromFile = HistoryCodec.decode(gson, Fixtures.historyV1()).getHistory();
+		Filepath folder = Filepath.Unchecked.getRooted(root).joinSegment("history-42");
+		HistoryLayout.write(gson, folder, HistoryLayout.Snapshot.of(fromFile));
+		Files.delete(root.resolve("history-42/account.json"));
+		write("history-42/maggot_king/trips-2001-01.jsonl", "{\"id\":\"only-in-folder\",\"startedAt\":1,\"endedAt\":2}\n");
 
 		HistoryStore.LoadResult result = load();
 
 		assertFalse(result.isReadOnly());
-		List<String> ids = tripIds(load().getHistory());
-		assertFalse(ids.contains("stale"));
-		assertEquals(3, ids.size());
+		assertEquals(Arrays.asList("only-in-folder", "trip-1", "trip-2", "trip-3"), tripIds(result.getHistory()));
+		// The folder had no account file, so the goal, egg pops and tallies are the file's
+		assertNotNull(result.getHistory().getBosses().get(MaggotKingBoss.ID).getGoal());
+		assertFalse(Files.exists(root.resolve(OLD_FILE)));
+		assertEquals(1, files(OLD_FILE + ".v1-backup-").size());
+
+		HistoryStore.LoadResult again = load();
+		assertFalse(again.isReadOnly());
+		assertEquals(gson.toJson(result.getHistory()), gson.toJson(again.getHistory()));
+	}
+
+	/**
+	 * An older build of the plugin (single-file history) run once after the move to folders finds no file, starts a
+	 * new one and saves it. The folder, with every trip since, used to be deleted at the next login as "left over".
+	 */
+	@Test
+	public void anOlderFileBesideTheFolderAddsItsTripsAndDeletesNothing() throws Exception
+	{
+		write(OLD_FILE, Fixtures.historyV1());
+		load();
+		write("history-42/maggot_king/trips-2026-11.jsonl",
+			"{\"id\":\"since-the-move\",\"startedAt\":1794000000000,\"endedAt\":1794000100000}\n");
+		write(OLD_FILE, "{\"schemaVersion\":5,\"accountHash\":42,\"bosses\":{\"maggot_king\":{\"trips\":["
+			+ "{\"id\":\"older-build\",\"startedAt\":1795000000000,\"endedAt\":1795000100000},"
+			+ "{\"id\":\"trip-1\",\"startedAt\":1790000000000,\"endedAt\":1790003600000}]}}}");
+
+		HistoryStore.LoadResult result = load();
+
+		assertFalse(result.isReadOnly());
+		assertEquals(Arrays.asList("older-build", "since-the-move", "trip-1", "trip-2", "trip-3"), tripIds(result.getHistory()));
+		assertEquals(Collections.singleton("older-build"), result.getAddedFromOldFile());
+		assertEquals(5, result.getOldFileVersion());
+		// The folder's own trip-1 (with its kills) and its goal are kept over the file's
+		Trip first = result.getHistory().getBosses().get(MaggotKingBoss.ID).getTrips().get(0);
+		assertEquals("trip-1", first.getId());
+		assertEquals(4, first.getKills().size());
+		assertNotNull(result.getHistory().getBosses().get(MaggotKingBoss.ID).getGoal());
+		// The file became a backup, and the first migration's backup is still there
+		assertFalse(Files.exists(root.resolve(OLD_FILE)));
+		assertEquals(1, files(OLD_FILE + ".v5-backup-").size());
+		assertEquals(1, files(OLD_FILE + ".v1-backup-").size());
+
+		HistoryStore.LoadResult again = load();
+		assertFalse(again.isReadOnly());
+		assertTrue(again.getAddedFromOldFile().isEmpty());
+		assertEquals(tripIds(result.getHistory()), tripIds(again.getHistory()));
+	}
+
+	@Test
+	public void theFolderAndTheFileAreBothKeptWhenTheirTripsCantBeWrittenTogether() throws Exception
+	{
+		write(OLD_FILE, Fixtures.historyV1());
+		load();
+		write(OLD_FILE, "{\"schemaVersion\":5,\"accountHash\":42,\"bosses\":{\"maggot_king\":{\"trips\":["
+			+ "{\"id\":\"older-build\",\"startedAt\":1795000000000,\"endedAt\":1795000100000}]}}}");
+		File bossFolder = root.resolve("history-42/maggot_king").toFile();
+		assumeTrue(bossFolder.setWritable(false) && !Files.isWritable(bossFolder.toPath()));
+
+		HistoryStore.LoadResult result = load();
+
+		// Everything is shown, nothing is saved this session, and it's tried again at the next login
+		assertTrue(result.isReadOnly());
+		assertEquals(4, tripIds(result.getHistory()).size());
+		bossFolder.setWritable(true);
+		assertTrue(Files.exists(root.resolve(OLD_FILE)));
+		HistoryStore.LoadResult next = load();
+		assertFalse(next.isReadOnly());
+		assertEquals(4, tripIds(next.getHistory()).size());
+	}
+
+	/**
+	 * An unreadable account file is moved aside when the folder is read. If the client then closed before a save
+	 * wrote a new one, the folder used to count as no history at all, and the next save wrote over its months.
+	 */
+	@Test
+	public void aFolderWithoutItsAccountFileStillHasItsTrips() throws Exception
+	{
+		Files.createDirectories(root.resolve("history-42/maggot_king"));
+		write("history-42/account.json", "{not json");
+		write("history-42/maggot_king/trips-2026-09.jsonl", "{\"id\":\"t1\",\"startedAt\":1758000000000,\"endedAt\":1758001000000}\n");
+
+		HistoryStore.LoadResult first = load();
+		assertEquals(Collections.singletonList("t1"), tripIds(first.getHistory()));
+		assertNotNull(first.getCorruptBackup());
+		assertFalse(Files.exists(root.resolve("history-42/account.json")));
+
+		HistoryStore.LoadResult second = load();
+		assertFalse(second.isReadOnly());
+		assertEquals(Collections.singletonList("t1"), tripIds(second.getHistory()));
+	}
+
+	@Test
+	public void aSaveThatFailsSaysSoAndTheNextOneWritesTheTrips() throws Exception
+	{
+		AccountHistory history = HistoryCodec.decode(gson, Fixtures.historyV1()).getHistory();
+		HistoryLayout.Snapshot snapshot = HistoryLayout.Snapshot.of(history);
+		File dir = root.toFile();
+		assumeTrue(dir.setWritable(false) && !Files.isWritable(root));
+		AtomicReference<Boolean> written = new AtomicReference<>();
+
+		store.save(HASH, snapshot, written::set);
+		assertEquals(Boolean.FALSE, written.get());
+
+		// The caller still holds the snapshot's trips and saves them again
+		dir.setWritable(true);
+		store.save(HASH, snapshot, written::set);
+		assertEquals(Boolean.TRUE, written.get());
+		assertEquals(Arrays.asList("trip-1", "trip-2", "trip-3"), tripIds(load().getHistory()));
 	}
 
 	@Test
@@ -137,7 +249,7 @@ public class HistoryMigrationTest
 		months.computeIfAbsent(MaggotKingBoss.ID, k -> new java.util.LinkedHashMap<>()).put(HistoryLayout.month(first), month);
 		AtomicReference<Boolean> written = new AtomicReference<>(false);
 		store.save(HASH, new HistoryLayout.Snapshot(HistoryLayout.accountWithoutTrips(history), months,
-			Collections.emptyList()), () -> written.set(true));
+			Collections.emptyList()), written::set);
 
 		assertTrue(written.get());
 		List<String> ids = tripIds(load().getHistory());

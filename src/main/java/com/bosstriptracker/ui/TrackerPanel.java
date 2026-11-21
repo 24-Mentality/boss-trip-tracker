@@ -43,6 +43,7 @@ public class TrackerPanel extends PluginPanel
 	private final LifetimePanel lifetimeTab;
 	private final JLabel readOnlyWarning = new JLabel();
 	private final JLabel corruptWarning = new JLabel();
+	private final JLabel unsavedWarning = new JLabel();
 	private final JLabel notice = new JLabel();
 	private final Timer noticeTimer = new Timer(3000, e -> notice.setVisible(false));
 	private final BossSelector bossSelector;
@@ -117,6 +118,13 @@ public class TrackerPanel extends PluginPanel
 		corruptWarning.setVisible(false);
 		corruptWarning.setBorder(BorderFactory.createEmptyBorder(0, 8, 4, 8));
 		corruptWarning.setAlignmentX(LEFT_ALIGNMENT);
+		unsavedWarning.setFont(FontManager.getRunescapeSmallFont());
+		unsavedWarning.setForeground(UiFormat.LOSS);
+		unsavedWarning.setText("<html>Your trip history couldn't be saved (is the disk full, or the plugin's data folder"
+			+ " read-only?). It's being tried again; nothing is lost while the client stays open.</html>");
+		unsavedWarning.setVisible(false);
+		unsavedWarning.setBorder(BorderFactory.createEmptyBorder(0, 8, 4, 8));
+		unsavedWarning.setAlignmentX(LEFT_ALIGNMENT);
 
 		bossSelector = new BossSelector(itemManager, actions::selectBoss);
 		variantChips = new VariantChips(actions::selectVariant);
@@ -161,6 +169,7 @@ public class TrackerPanel extends PluginPanel
 		messages.add(notice);
 		messages.add(readOnlyWarning);
 		messages.add(corruptWarning);
+		messages.add(unsavedWarning);
 		north.add(messages, BorderLayout.SOUTH);
 
 		JScrollPane scroll = new JScrollPane(display);
@@ -219,6 +228,7 @@ public class TrackerPanel extends PluginPanel
 		variantChips.update(boss, state.getVariant());
 		readOnlyWarning.setVisible(state.isReadOnly());
 		corruptWarning.setVisible(state.getCorruptBackup() != null);
+		unsavedWarning.setVisible(state.isUnsaved());
 		if (state.getCorruptBackup() != null)
 		{
 			corruptWarning.setText("<html>Part of your trip history couldn't be read. Everything readable was loaded; the"

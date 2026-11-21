@@ -27,15 +27,20 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.callback.ClientThread;
 
 /**
  * Saving and the history's shape on disk: what changed since the last save (months of finished trips, the trip in
- * progress), finished trips replaced by copies when they change, exports and the checks on an import. Client thread.
+ * progress), finished trips replaced by copies when they change, exports and the checks on an import. A save that
+ * couldn't be written is tried again, with the same months, until it is. Client thread.
  */
+@Slf4j
 class HistoryKeeper
 {
 	private static final long SAVE_DELAY_MS = 1_000;
+	private static final long FIRST_RETRY_MS = 5_000;
+	private static final long MAX_RETRY_MS = 30_000;
 
 	private final TripSession s;
 	private final HistoryStore store;
@@ -45,9 +50,10 @@ class HistoryKeeper
 	private final BossRegistry registry;
 	private ScheduledFuture<?> saveFuture;
 	/**
-	 * Months ("boss/2026-09") whose finished trips changed since the last save, so their files are written again.
+	 * Months whose finished trips changed since the last save that was written, so their files are written again.
 	 */
-	private final Set<String> dirtyMonths = new HashSet<>();
+	private final PendingMonths pending = new PendingMonths();
+	private long retryDelayMs = FIRST_RETRY_MS;
 
 	HistoryKeeper(TripSession s, HistoryStore store, Gson gson, ScheduledExecutorService executor,
 		ClientThread clientThread, BossRegistry registry)
@@ -65,10 +71,17 @@ class HistoryKeeper
 	 */
 	void clearPending()
 	{
-		dirtyMonths.clear();
+		pending.clear();
+		retryDelayMs = FIRST_RETRY_MS;
+		s.unsaved = false;
 	}
 
 	void requestSave()
+	{
+		scheduleSave(SAVE_DELAY_MS);
+	}
+
+	private void scheduleSave(long delayMs)
 	{
 		if (s.history == null || s.readOnly || (saveFuture != null && !saveFuture.isDone()))
 		{
@@ -76,7 +89,7 @@ class HistoryKeeper
 		}
 		try
 		{
-			saveFuture = executor.schedule(() -> clientThread.invokeLater(() -> saveNow()), SAVE_DELAY_MS, TimeUnit.MILLISECONDS);
+			saveFuture = executor.schedule(() -> clientThread.invokeLater(() -> saveNow()), delayMs, TimeUnit.MILLISECONDS);
 		}
 		catch (RejectedExecutionException e)
 		{
@@ -100,7 +113,55 @@ class HistoryKeeper
 		{
 			s.currentTrip.setLastActiveAt(System.currentTimeMillis());
 		}
-		store.save(s.accountHash, snapshot(), written);
+		long hash = s.accountHash;
+		PendingMonths.Batch batch = pending.take();
+		store.save(hash, snapshot(batch), saved ->
+		{
+			try
+			{
+				clientThread.invokeLater(() -> saveFinished(hash, batch, saved));
+			}
+			finally
+			{
+				written.run();
+			}
+		});
+	}
+
+	/**
+	 * A save was written, or couldn't be: then its months wait for the next save, which is tried again soon (the
+	 * account and the trip in progress are part of every save).
+	 */
+	private void saveFinished(long hash, PendingMonths.Batch batch, boolean saved)
+	{
+		if (hash != s.accountHash)
+		{
+			if (!saved)
+			{
+				log.warn("The last save of the account just left couldn't be written");
+			}
+			return;
+		}
+		if (saved)
+		{
+			pending.written(batch);
+			if (!pending.isUnsaved())
+			{
+				retryDelayMs = FIRST_RETRY_MS;
+			}
+		}
+		else
+		{
+			pending.failed(batch);
+			long delay = retryDelayMs;
+			retryDelayMs = Math.min(retryDelayMs * 2, MAX_RETRY_MS);
+			scheduleSave(delay);
+		}
+		if (s.unsaved != pending.isUnsaved())
+		{
+			s.unsaved = pending.isUnsaved();
+			s.viewDirty = true;
+		}
 	}
 
 	/**
@@ -128,16 +189,15 @@ class HistoryKeeper
 	 * that changed (finished trips are never changed in place, so they're shared, not copied) and a copy of the trip
 	 * in progress.
 	 */
-	private HistoryLayout.Snapshot snapshot()
+	private HistoryLayout.Snapshot snapshot(PendingMonths.Batch batch)
 	{
 		Map<String, Map<String, List<Trip>>> months = new LinkedHashMap<>();
-		for (String key : dirtyMonths)
+		for (String key : batch.getMonths())
 		{
 			int slash = key.lastIndexOf('/');
 			months.computeIfAbsent(key.substring(0, slash), k -> new LinkedHashMap<>()).put(key.substring(slash + 1),
 				new ArrayList<>());
 		}
-		dirtyMonths.clear();
 		months.forEach((bossId, byMonth) ->
 		{
 			BossHistory boss = s.history.getBosses().get(bossId);
@@ -170,7 +230,7 @@ class HistoryKeeper
 	{
 		if (bossId != null)
 		{
-			dirtyMonths.add(bossId + "/" + HistoryLayout.month(trip));
+			pending.add(bossId, HistoryLayout.month(trip));
 		}
 	}
 

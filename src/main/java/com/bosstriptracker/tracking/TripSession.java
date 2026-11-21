@@ -30,6 +30,11 @@ class TripSession
 	 */
 	String corruptBackup;
 
+	/**
+	 * A save couldn't be written and is being tried again; the history in memory is ahead of the files.
+	 */
+	boolean unsaved;
+
 	long accountHash = -1;
 
 	boolean loading;

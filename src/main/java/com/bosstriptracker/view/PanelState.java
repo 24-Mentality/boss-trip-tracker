@@ -85,6 +85,10 @@ public class PanelState
 	String corruptBackup;
 	boolean readOnly;
 	/**
+	 * A save couldn't be written and is being tried again.
+	 */
+	boolean unsaved;
+	/**
 	 * When the boss you're fighting spawned, for the live kill timer (the game's Fight duration counts from the
 	 * spawn); null between kills or when the shown boss has no trip running.
 	 */

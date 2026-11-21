@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.RejectedExecutionException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.util.Filepath;
@@ -37,6 +39,10 @@ public class HistoryStore
 {
 	private static final DateTimeFormatter BACKUP_STAMP = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
 	static final int KEPT_BACKUPS = 3;
+	/**
+	 * A write that fails is tried again at once this many times in all, for a file that was only briefly in use.
+	 */
+	static final int WRITE_ATTEMPTS = 3;
 
 	private final Gson gson;
 	private final Callable<Filepath> directorySupplier;
@@ -44,6 +50,7 @@ public class HistoryStore
 
 	// Only touched on the executor thread
 	private Filepath directory;
+	private boolean saveFailing;
 
 	public HistoryStore(Gson gson, Callable<Filepath> directorySupplier, ExecutorService executor)
 	{
@@ -61,28 +68,49 @@ public class HistoryStore
 	 * Writes what changed: the months in the snapshot, the trips in progress and the account. The snapshot is turned
 	 * into JSON here, on the IO thread.
 	 *
-	 * @param written runs once the write is done or has failed (at once if the plugin is shutting down)
+	 * @param written gets whether everything was written, once the write is done or has failed (false at once if the
+	 *                plugin is shutting down). After a failure the caller still holds what wasn't saved and must save
+	 *                it again.
 	 */
-	public void save(long accountHash, HistoryLayout.Snapshot snapshot, Runnable written)
+	public void save(long accountHash, HistoryLayout.Snapshot snapshot, Consumer<Boolean> written)
 	{
-		if (!submit(() ->
+		if (!submit(() -> written.accept(write(accountHash, snapshot))))
+		{
+			written.accept(false);
+		}
+	}
+
+	private boolean write(long accountHash, HistoryLayout.Snapshot snapshot)
+	{
+		Exception failure = null;
+		for (int attempt = 1; attempt <= WRITE_ATTEMPTS; attempt++)
 		{
 			try
 			{
 				HistoryLayout.write(gson, directory().joinSegment(folderName(accountHash)), snapshot);
+				if (saveFailing)
+				{
+					saveFailing = false;
+					log.info("Trip history is being saved again");
+				}
+				return true;
 			}
 			catch (Exception e)
 			{
-				log.warn("Unable to save trip history", e);
+				failure = e;
 			}
-			finally
-			{
-				written.run();
-			}
-		}))
-		{
-			written.run();
 		}
+		if (saveFailing)
+		{
+			log.debug("Still unable to save trip history", failure);
+		}
+		else
+		{
+			// Logged once per run of failures: the caller keeps trying
+			saveFailing = true;
+			log.warn("Unable to save trip history; it will be tried again", failure);
+		}
+		return false;
 	}
 
 	/**
@@ -181,7 +209,9 @@ public class HistoryStore
 				// Until it's been moved to a backup, a single-file history is the one to use
 				return migrate(accountHash, oldFile, folder);
 			}
-			if (HistoryLayout.exists(folder))
+			// A folder is read even without its account file (moved aside as unreadable, or never written): its trips
+			// are the history, and a save would otherwise write over their months
+			if (folder.isDirectory())
 			{
 				return readFolder(accountHash, folder, null);
 			}
@@ -203,21 +233,26 @@ public class HistoryStore
 		{
 			backUpAccountFile(folder, history.getSchemaVersion());
 		}
-		List<String> unreadable = new java.util.ArrayList<>(loaded.getUnreadable());
+		// A folder from a newer plugin version is shown but never written to
+		boolean newer = history.getSchemaVersion() > AccountHistory.CURRENT_SCHEMA_VERSION;
+		return new LoadResult(history, newer, history.getSchemaVersion(), unreadable(loaded, alsoUnreadable));
+	}
+
+	private static String unreadable(HistoryLayout.Loaded loaded, String alsoUnreadable)
+	{
+		List<String> unreadable = new ArrayList<>(loaded.getUnreadable());
 		if (alsoUnreadable != null)
 		{
 			unreadable.add(0, alsoUnreadable);
 		}
-		// A folder from a newer plugin version is shown but never written to
-		boolean newer = history.getSchemaVersion() > AccountHistory.CURRENT_SCHEMA_VERSION;
-		return new LoadResult(history, newer, history.getSchemaVersion(),
-			unreadable.isEmpty() ? null : String.join(", ", unreadable));
+		return unreadable.isEmpty() ? null : String.join(", ", unreadable);
 	}
 
 	/**
 	 * Moves a single-file history (schema 5 and older) into the folder layout. The folder is read back and its trips
 	 * checked against the file before the file is renamed to a backup; if anything fails, the file is left as it is
-	 * and the history is shown read-only, to be tried again at the next login.
+	 * and the history is shown read-only, to be tried again at the next login. A folder that is already there is
+	 * never deleted: the file's trips are added to it ({@link #mergeIntoFolder}).
 	 */
 	private LoadResult migrate(long accountHash, Filepath oldFile, Filepath folder) throws Exception
 	{
@@ -231,14 +266,14 @@ public class HistoryStore
 			Filepath backup = directory().joinSegment(fileName(accountHash) + ".corrupt-" + System.currentTimeMillis());
 			log.warn("Trip history for this account is unreadable; moving it to {}", backup.getFileName(), e);
 			oldFile.moveTo(backup);
-			return HistoryLayout.exists(folder) ? readFolder(accountHash, folder, backup.getFileName())
+			return folder.isDirectory() ? readFolder(accountHash, folder, backup.getFileName())
 				: new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, backup.getFileName());
 		}
 		if (decoded == null)
 		{
 			// An empty file
 			oldFile.delete();
-			return HistoryLayout.exists(folder) ? readFolder(accountHash, folder, null)
+			return folder.isDirectory() ? readFolder(accountHash, folder, null)
 				: new LoadResult(emptyHistory(accountHash), false, AccountHistory.CURRENT_SCHEMA_VERSION, null);
 		}
 
@@ -249,13 +284,13 @@ public class HistoryStore
 			return new LoadResult(history, true, decoded.getSourceVersion(), null);
 		}
 
+		if (folder.isDirectory())
+		{
+			return mergeIntoFolder(accountHash, oldFile, folder, decoded);
+		}
+
 		try
 		{
-			// What's there is from a migration that didn't finish (nothing is saved to it until the file is gone)
-			if (folder.exists())
-			{
-				folder.deleteRecursively();
-			}
 			HistoryLayout.write(gson, folder, HistoryLayout.Snapshot.of(history));
 			HistoryLayout.Loaded back = HistoryLayout.read(gson, folder);
 			if (!back.getUnreadable().isEmpty() || !HistoryLayout.sameTrips(history, back.getHistory()))
@@ -276,6 +311,68 @@ public class HistoryStore
 			return new LoadResult(history, true, decoded.getSourceVersion(), null);
 		}
 		return new LoadResult(history, false, decoded.getSourceVersion(), null);
+	}
+
+	/**
+	 * A single-file history beside a folder: an older build of the plugin ran and started a file again, a backup was
+	 * put back, or a move into the folder didn't finish. Either may hold trips the other lacks, so nothing in the
+	 * folder is deleted: the file's trips that the folder doesn't have (by id) are added to it, and where the folder
+	 * has no saved data for a boss (goal, egg pops, polish tallies) the file's is used. The folder is read back and
+	 * checked before the file is renamed to a backup; if anything fails both are left as they are and the history is
+	 * shown read-only, to be tried again at the next login. Backups aren't pruned here: the file may be a nearly
+	 * empty one that would push out a real backup.
+	 */
+	private LoadResult mergeIntoFolder(long accountHash, Filepath oldFile, Filepath folder, HistoryCodec.Decoded decoded)
+	{
+		AccountHistory fromFile = decoded.getHistory();
+		HistoryLayout.Loaded loaded;
+		try
+		{
+			loaded = HistoryLayout.read(gson, folder);
+		}
+		catch (Exception e)
+		{
+			log.warn("Unable to read the history folder beside an older history file; both are kept (read-only this session)", e);
+			return new LoadResult(fromFile, true, decoded.getSourceVersion(), null);
+		}
+
+		AccountHistory merged = loaded.getHistory();
+		merged.setAccountHash(accountHash);
+		int folderVersion = merged.getSchemaVersion();
+		String unreadable = unreadable(loaded, null);
+		if (folderVersion > AccountHistory.CURRENT_SCHEMA_VERSION)
+		{
+			// Written by a newer plugin version: shown, never written to, and the file is left alone
+			return new LoadResult(merged, true, folderVersion, unreadable);
+		}
+
+		Set<String> added = HistoryMerge.addMissing(merged, fromFile, loaded.getAccountBosses());
+		try
+		{
+			if (folderVersion < AccountHistory.CURRENT_SCHEMA_VERSION)
+			{
+				backUpAccountFile(folder, folderVersion);
+			}
+			HistoryLayout.write(gson, folder, HistoryLayout.Snapshot.of(merged));
+			HistoryLayout.Loaded back = HistoryLayout.read(gson, folder);
+			if (!back.getUnreadable().isEmpty() || !HistoryLayout.sameTrips(merged, back.getHistory()))
+			{
+				log.warn("The history folder didn't read back the same trips after adding the old file's; keeping both"
+					+ " (read-only this session)");
+				return new LoadResult(merged, true, folderVersion, unreadable);
+			}
+			Filepath backup = directory().joinSegment(fileName(accountHash) + ".v" + decoded.getSourceVersion()
+				+ "-backup-" + BACKUP_STAMP.format(LocalDateTime.now()));
+			oldFile.moveTo(backup);
+			log.info("Found an older history file beside the history folder: added {} trips the folder didn't have;"
+				+ " the file is kept as {}", added.size(), backup.getFileName());
+		}
+		catch (Exception e)
+		{
+			log.warn("Unable to add an older history file's trips to the history folder; keeping both (read-only this session)", e);
+			return new LoadResult(merged, true, folderVersion, unreadable);
+		}
+		return new LoadResult(merged, false, folderVersion, unreadable, added, decoded.getSourceVersion());
 	}
 
 	/**
@@ -368,6 +465,7 @@ public class HistoryStore
 	}
 
 	@Value
+	@AllArgsConstructor
 	public static class LoadResult
 	{
 		AccountHistory history;
@@ -383,5 +481,18 @@ public class HistoryStore
 		 * The names unreadable history files were moved to (their readable trips were kept), or null.
 		 */
 		String corruptBackup;
+		/**
+		 * Ids of trips added from an older single-file history found beside the folder; empty otherwise.
+		 */
+		Set<String> addedFromOldFile;
+		/**
+		 * Schema version of that file as read; 0 if there was none.
+		 */
+		int oldFileVersion;
+
+		public LoadResult(AccountHistory history, boolean readOnly, int sourceVersion, String corruptBackup)
+		{
+			this(history, readOnly, sourceVersion, corruptBackup, Collections.emptySet(), 0);
+		}
 	}
 }
