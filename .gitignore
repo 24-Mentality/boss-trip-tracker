@@ -20,6 +20,11 @@ PROJECT_BRIEF.md
 ROADMAP.md
 SUBMISSION_CONTEXT.md
 PLUGIN_CRITIQUE.md
+PLUGIN_ANALYSIS_3.md
 PUBLISHING_PLAN.md
 BETA_TESTER_SETUP.md
 .vscode/
+.claude/
+
+# Dev client output
+run.log
