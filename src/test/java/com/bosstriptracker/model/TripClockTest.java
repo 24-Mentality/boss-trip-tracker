@@ -75,4 +75,43 @@ public class TripClockTest
 		TripClock.start(trip, 20);
 		assertEquals(Long.valueOf(10), trip.getSegmentStartedAt());
 	}
+
+	/**
+	 * Two Doom of Mokhaiotl runs of 2026-11-22 (one ended by a death, one by claiming) were saved finished with the
+	 * clock still running and no active time: both ended while still in the boss's area.
+	 */
+	@Test
+	public void aFinishedTripSavedWithItsClockRunningGetsItsTime()
+	{
+		Trip trip = new Trip();
+		trip.setStartedAt(1_795_324_725_705L);
+		trip.setSegmentStartedAt(1_795_324_725_705L);
+		trip.setEndedAt(1_795_325_322_193L);
+		KillGoal goal = new KillGoal(100, 1_795_325_000_000L, 0);
+
+		assertTrue(TripClock.closeFinished(trip, goal));
+
+		assertEquals(596_488, trip.getActiveMs());
+		assertNull(trip.getSegmentStartedAt());
+		// The goal was set partway through the run
+		assertEquals(322_193, goal.getActiveMs());
+		assertFalse(TripClock.closeFinished(trip, goal));
+		assertEquals(596_488, trip.getActiveMs());
+	}
+
+	@Test
+	public void aTripInProgressOrAlreadyStoppedIsLeftAlone()
+	{
+		Trip open = new Trip();
+		TripClock.start(open, 1_000);
+		assertFalse(TripClock.closeFinished(open, null));
+		assertEquals(Long.valueOf(1_000), open.getSegmentStartedAt());
+
+		Trip finished = new Trip();
+		TripClock.start(finished, 1_000);
+		TripClock.stop(finished, null, 61_000);
+		finished.setEndedAt(90_000L);
+		assertFalse(TripClock.closeFinished(finished, null));
+		assertEquals(60_000, finished.getActiveMs());
+	}
 }

@@ -46,6 +46,21 @@ public final class TripClock
 	}
 
 	/**
+	 * A finished trip whose clock was left running: the segment is closed at the trip's end, as it should have been.
+	 *
+	 * @return whether the trip was changed
+	 */
+	public static boolean closeFinished(Trip trip, KillGoal goal)
+	{
+		if (trip.isOpen() || trip.getSegmentStartedAt() == null)
+		{
+			return false;
+		}
+		stop(trip, goal, trip.getEndedAt());
+		return true;
+	}
+
+	/**
 	 * @return true once the player has done nothing for {@code idleMs}; never when {@code idleMs} is 0
 	 */
 	public static boolean idle(long lastActivityAt, long now, long idleMs)

@@ -169,7 +169,6 @@ public class TripTracker
 	 * Tick of a death that ended the trip on the spot (respawn inside the area), so the death message a few ticks
 	 * later isn't a second death.
 	 */
-	private int deathHandledTick = -100;
 
 	private final ChargeCounter chargeCounter;
 	/**
@@ -1076,7 +1075,10 @@ public class TripTracker
 		}
 		if (s.inArea && s.currentTrip == null && s.areaBoss != null && s.history != null && s.areaBoss.isTripStartMessage(text))
 		{
-			// Still in the area after a claim or a death there (the Doom of Mokhaiotl's lobby): a new run begins
+			// Still in the area after a claim or a death there (the Doom of Mokhaiotl's lobby): a new run begins,
+			// with nothing left over from the last one's death (only entering or leaving the area clears it otherwise)
+			s.dead = false;
+			s.ignoreDeltasUntilTick = -1;
 			s.inLairPause = null;
 			lastActivityAt = now;
 			loot.resetKillState();
@@ -1358,6 +1360,8 @@ public class TripTracker
 
 	private void endTrip(TripEndReason reason, long at)
 	{
+		// A trip that ends where you stand (a death or a claim at the Doom of Mokhaiotl) still has its clock running
+		TripClock.stop(s.currentTrip, goal(), at);
 		s.inLairPause = null;
 		s.suspendedOutside = false;
 		s.currentTrip.setEndedAt(at);
@@ -1441,12 +1445,12 @@ public class TripTracker
 			}
 			return;
 		}
-		int tick = client.getTickCount();
-		if (tick - deathHandledTick <= POST_DEATH_IGNORE_TICKS)
+		if (!DeathRules.isNewDeath(s.currentTrip != null, s.areaBoss.isDeathRespawnInside()))
 		{
 			// The death message after the ActorDeath event, for a death that already ended the trip
 			return;
 		}
+		int tick = client.getTickCount();
 		s.dead = true;
 		loot.fightEnded();
 		s.ignoreDeltasUntilTick = Integer.MAX_VALUE;
@@ -1474,7 +1478,6 @@ public class TripTracker
 			{
 				// You respawn inside the area (the Doom of Mokhaiotl's lobby), so leaving won't end the trip: it ends
 				// now, and the items vanishing and coming back from the grave are outside any trip
-				deathHandledTick = tick;
 				s.dead = false;
 				s.ignoreDeltasUntilTick = tick + POST_DEATH_IGNORE_TICKS;
 				endTrip(TripEndReason.DEATH, now);
@@ -1739,6 +1742,29 @@ public class TripTracker
 						}
 					}
 				});
+				keeper.saveNow();
+			}
+		}
+
+		if (!s.readOnly)
+		{
+			// Trips saved as finished with their clock still running (ended in place, before endTrip stopped it): the
+			// time from the segment's start to the trip's end is theirs
+			boolean repaired = false;
+			for (Map.Entry<String, BossHistory> e : s.history.getBosses().entrySet())
+			{
+				for (Trip trip : e.getValue().getTrips())
+				{
+					if (TripClock.closeFinished(trip, e.getValue().getGoal()))
+					{
+						keeper.monthChanged(e.getKey(), trip);
+						repaired = true;
+					}
+				}
+			}
+			if (repaired)
+			{
+				log.info("Closed the clock of finished trips that were saved with it running");
 				keeper.saveNow();
 			}
 		}
