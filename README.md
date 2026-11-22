@@ -283,7 +283,8 @@ For the Maggot King:
 - Loot includes items that overflow onto the ground, once you pick them up, unless the Loot
   Tracker already listed them. If the Loot Tracker reports a kill late, its loot replaces what
   was read from your inventory, so nothing is counted twice.
-- Supplies are everything used up in the lair, across inventory, equipment and rune pouch.
+- Supplies are everything used up in the lair, across inventory, equipment, rune pouch and the
+  ammo in a Dizana's quiver (moving ammo into the quiver costs nothing; firing it does).
   Potions are counted per dose. Gear switches don't count, and worn gear is never a supply:
   a charged weapon running dry, Barrows gear degrading or a blood fury turning back into an
   amulet of fury costs nothing (its charges are costed as they're used). Ammo still counts,

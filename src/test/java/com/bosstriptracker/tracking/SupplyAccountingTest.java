@@ -141,6 +141,25 @@ public class SupplyAccountingTest
 	}
 
 	/**
+	 * The start of a Doom of Mokhaiotl run right after a death (2026-11-22, 01:13 to 01:15). Back from the grave, the
+	 * ruby bolts are wielded again and go into the Dizana's quiver's own slot ("You put the ammo into Dizana's
+	 * Quiver."): 860 bolts left the inventory and were costed at 2.4m, though none was used.
+	 */
+	@Test
+	public void ammoPutIntoTheQuiverIsNotUsedUp() throws Exception
+	{
+		SupplyReplay replay = new SupplyReplay("supply-test-quiver.log", 5269, 13668).run();
+
+		assertNull(replay.line(ItemID.DRAGON_BOLTS_ENCHANTED_RUBY));
+		assertEquals(6, replay.quantity(ItemID.DRAGON_ARROW));
+		// A sip each of the divine ranging potion and the prayer potion (named by the fullest dose in the excerpt)
+		assertEquals(1, replay.quantity(ItemID._2DOSEDIVINERANGE));
+		assertEquals(1, replay.quantity(ItemID._3DOSEPRAYERRESTORE));
+		assertEquals(3, replay.used.size());
+		assertTrue(replay.dropped.isEmpty());
+	}
+
+	/**
 	 * Two Duke Sucellus kills (2026-10-22, 22:59 to 23:07): the Arder mushrooms picked in the chamber and ground into
 	 * powder (16 mushrooms, 80 powder) are conversions, never supplies; food dropped to make room is picked back up.
 	 */

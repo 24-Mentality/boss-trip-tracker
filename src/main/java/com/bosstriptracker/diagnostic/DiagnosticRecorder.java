@@ -535,6 +535,14 @@ public class DiagnosticRecorder
 			record("AUTOCAST", "varbit=" + event.getVarbitId() + " value=" + event.getValue());
 			return;
 		}
+		if (event.getVarpId() == VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO
+			|| event.getVarpId() == VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO_AMOUNT)
+		{
+			// The ammo in a Dizana's quiver's own slot, to check it against the inventory changes around it
+			record("QUIVER", "item=" + client.getVarpValue(VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO)
+				+ " count=" + client.getVarpValue(VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO_AMOUNT));
+			return;
+		}
 		if (event.getVarpId() == VarPlayerID.SA_ENERGY)
 		{
 			record("SPEC", "energy=" + event.getValue());

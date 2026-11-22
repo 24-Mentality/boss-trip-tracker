@@ -65,6 +65,10 @@ class SupplyRecorder
 	 * Worn ammo, and a worn weapon that stacks (knives, darts): your own lands on the floor and can be picked back up.
 	 */
 	private final Set<Integer> wornAmmo = new HashSet<>();
+	/**
+	 * When the game last said ammo went into a Dizana's quiver.
+	 */
+	private int quiverFilledTick = -100;
 	private final Deque<PreEntryUse> preEntryUses = new ArrayDeque<>();
 	private int lastBankTick = -100;
 	/**
@@ -102,6 +106,11 @@ class SupplyRecorder
 	void bankOpened(int tick)
 	{
 		lastBankTick = tick;
+	}
+
+	void quiverFilled(int tick)
+	{
+		quiverFilledTick = tick;
 	}
 
 	boolean isWornAmmo(int itemId)
@@ -297,6 +306,10 @@ class SupplyRecorder
 		polishTracker.gained(gained, tick);
 
 		accounting.removeConversions(change, recentClicks, tick, convertedItems);
+		if (tick - quiverFilledTick <= 1)
+		{
+			accounting.removeQuiverMoves(change, recentClicks, tick);
+		}
 
 		if (trackingTrip)
 		{

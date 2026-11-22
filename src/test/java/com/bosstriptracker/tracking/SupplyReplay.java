@@ -57,6 +57,7 @@ class SupplyReplay
 	private boolean inArea;
 	private boolean dead;
 	private int ignoreUntilTick = -1;
+	private int quiverFilledTick = -100;
 	private Consumer<SupplyAccounting.Change> beforeConsumption;
 
 	/**
@@ -181,6 +182,10 @@ class SupplyReplay
 					{
 						dead = true;
 					}
+					if (details.contains("message=\"" + ChatPatterns.QUIVER_FILLED + "\""))
+					{
+						quiverFilledTick = lineTick;
+					}
 					break;
 				default:
 					break;
@@ -217,6 +222,10 @@ class SupplyReplay
 			change.removed.remove(itemId);
 		}
 		accounting.removeConversions(change, clicks, tick, convertedItems);
+		if (tick - quiverFilledTick <= 1)
+		{
+			accounting.removeQuiverMoves(change, clicks, tick);
+		}
 		beforeConsumption.accept(change);
 		for (ItemEntry entry : accounting.consumption(change))
 		{

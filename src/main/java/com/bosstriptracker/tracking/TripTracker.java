@@ -912,7 +912,8 @@ public class TripTracker
 	@Subscribe
 	public void onVarbitChanged(VarbitChanged event)
 	{
-		if (InventoryLedger.RUNE_POUCH_VARBITS.contains(event.getVarbitId()))
+		if (InventoryLedger.RUNE_POUCH_VARBITS.contains(event.getVarbitId())
+			|| InventoryLedger.QUIVER_VARPS.contains(event.getVarpId()))
 		{
 			ledger.markDirty();
 		}
@@ -1044,6 +1045,11 @@ public class TripTracker
 		if (ChatPatterns.isPetMessage(message))
 		{
 			loot.petMessage(tick);
+			return;
+		}
+		if (ChatPatterns.isQuiverFilled(message))
+		{
+			supplies.quiverFilled(tick);
 			return;
 		}
 		Boolean thrall = ChatPatterns.thrall(message);

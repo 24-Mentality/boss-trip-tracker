@@ -32,6 +32,7 @@ class SupplyAccounting
 	static final String OPTION_POLISH = PolishTracker.OPTION_POLISH;
 	static final String OPTION_CAST = "Cast";
 	static final String OPTION_EAT = "Eat";
+	static final String OPTION_WIELD = "Wield";
 	/**
 	 * Menu options that put charges into an item. "Use" (item on item) is the game's option; "Load" and "Add" are
 	 * unverified.
@@ -211,6 +212,24 @@ class SupplyAccounting
 		}
 
 		splitFood(change, clicks, tick);
+	}
+
+	/**
+	 * Ammo wielded with a Dizana's quiver worn goes into the quiver's own slot, which isn't among the worn items: it
+	 * has left the inventory without being used up. Call when the game has just said so
+	 * ({@link ChatPatterns#QUIVER_FILLED}). The wielded ammo is taken out of both sides of the change, in case the
+	 * quiver's count arrives a tick after the inventory's.
+	 */
+	void removeQuiverMoves(Change change, RecentClicks clicks, int tick)
+	{
+		for (RecentClicks.Click click : clicks.all())
+		{
+			if (tick - click.tick <= RecentClicks.MATCH_TICKS && click.itemId > 0 && OPTION_WIELD.equals(click.option))
+			{
+				change.removed.remove(click.itemId);
+				change.gained.remove(click.itemId);
+			}
+		}
 	}
 
 	/**

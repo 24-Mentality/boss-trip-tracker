@@ -30,6 +30,7 @@ public final class ChatPatterns
 	private static final Pattern BANK_PAYMENT = Pattern.compile("^Payment has been taken from your bank: ([\\d,]+) x Coins");
 
 	public static final String DEATH = "Oh dear, you are dead!";
+	public static final String QUIVER_FILLED = "You put the ammo into Dizana's Quiver.";
 	public static final String PET_FOLLOWER = "You have a funny feeling like you're being followed.";
 	public static final String PET_BACKPACK = "You feel something weird sneaking into your backpack.";
 	public static final String PET_DUPLICATE = "You have a funny feeling like you would have been followed";
@@ -92,6 +93,15 @@ public final class ChatPatterns
 	public static boolean isDeathMessage(String message)
 	{
 		return Text.removeTags(message).equals(DEATH);
+	}
+
+	/**
+	 * "Wield" on ammo with a Dizana's quiver worn puts it into the quiver's own slot: SPAM, in the tick the ammo
+	 * leaves the inventory (three times in the Doom of Mokhaiotl logs of 2026-11-22).
+	 */
+	public static boolean isQuiverFilled(String message)
+	{
+		return Text.removeTags(message).equals(QUIVER_FILLED);
 	}
 
 	/**

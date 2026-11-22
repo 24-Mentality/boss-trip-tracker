@@ -12,11 +12,13 @@ import net.runelite.api.EnumID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.gameval.InventoryID;
+import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.api.gameval.VarbitID;
 
 /**
- * One combined count of everything the player carries: inventory, worn equipment and rune pouch.
- * Combining them means gear switches and moving runes into the pouch net out to zero.
+ * One combined count of everything the player carries: inventory, worn equipment, rune pouch and the ammo in a
+ * Dizana's quiver. Combining them means gear switches and moving runes into the pouch or ammo into the quiver net
+ * out to zero, and ammo fired from the quiver is counted.
  * Must be used on the client thread.
  */
 class InventoryLedger
@@ -31,6 +33,14 @@ class InventoryLedger
 	);
 
 	static final Set<Integer> RUNE_POUCH_VARBITS = new HashSet<>();
+
+	/**
+	 * A Dizana's quiver holds ammo in a slot of its own, outside the worn items: its item and count are these two
+	 * varps, as RuneLite's Ammo plugin reads them. Unverified against a diagnostic log (the recorder logs them from
+	 * 2026-11-22 as "QUIVER" lines).
+	 */
+	static final Set<Integer> QUIVER_VARPS = Set.of(VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO,
+		VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO_AMOUNT);
 
 	static
 	{
@@ -121,6 +131,13 @@ class InventoryLedger
 					counts.merge(runeId, (long) quantity, Long::sum);
 				}
 			}
+		}
+
+		int quiverAmmo = client.getVarpValue(VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO);
+		int quiverCount = client.getVarpValue(VarPlayerID.DIZANAS_QUIVER_TEMP_AMMO_AMOUNT);
+		if (quiverAmmo > 0 && quiverCount > 0)
+		{
+			counts.merge(quiverAmmo, (long) quiverCount, Long::sum);
 		}
 		return counts;
 	}

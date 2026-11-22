@@ -1,0 +1,143 @@
+tick=1054 region=5269 inLair=true MENU option="Jump-over" target="<col=ffff>Gap" action=GAME_OBJECT_FIRST_OPTION id=57289 itemId=-1 itemOp=-1 param0=46 param1=53
+tick=1055 region=5269 inLair=true CHAT type=MESBOX name="" sender="null" message="You jump the gap..."
+tick=1057 region=5269 inLair=true MENU option="Worn Equipment" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551359
+tick=1058 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Mine's Better</col>: You entered the arena without a shield equipped."
+tick=1058 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Delve level: 1</col>"
+tick=1058 region=5269 inLair=true CHAT type=MESBOX name="" sender="null" message="You jump the gap..."
+tick=1061 region=5269 inLair=true MENU option="Inventory" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10551358
+tick=1062 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=520 param1=139
+tick=1062 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=518 param1=139
+tick=1063 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=537 param1=102
+tick=1065 region=5269 inLair=true MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1067 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=1 param1=9764864
+tick=1067 region=5269 inLair=true INVENTORY +Twisted bow (20997) x1, -Zaryte crossbow (26374) x1
+tick=1067 region=5269 inLair=true EQUIPMENT -Twisted bow (20997) x1, +Zaryte crossbow (26374) x1
+tick=1068 region=5269 inLair=true MENU option="Drink" target="<col=ff9040>Divine ranging potion(2)</col>" action=CC_OP id=2 itemId=23739 itemOp=1 param0=8 param1=9764864
+tick=1068 region=5269 inLair=true CHAT type=SPAM name="" sender="null" message="You drink some of your divine ranging potion."
+tick=1068 region=5269 inLair=true CHAT type=SPAM name="" sender="null" message="You have 1 dose of potion left."
+tick=1068 region=5269 inLair=true INVENTORY -Divine ranging potion(2) (23739) x1, +Divine ranging potion(1) (23742) x1
+tick=1069 region=5269 inLair=true MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1070 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1070 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="You can't use that ammo with your crossbow."
+tick=1072 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=1 param1=9764864
+tick=1072 region=5269 inLair=true INVENTORY -Twisted bow (20997) x1, +Zaryte crossbow (26374) x1
+tick=1072 region=5269 inLair=true EQUIPMENT +Twisted bow (20997) x1, -Zaryte crossbow (26374) x1
+tick=1073 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1077 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Ruby dragon bolts (e)</col>" action=CC_OP id=3 itemId=21944 itemOp=2 param0=21 param1=9764864
+tick=1077 region=5269 inLair=true CHAT type=SPAM name="" sender="null" message="You put the ammo into Dizana's Quiver."
+tick=1077 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Duel of Mokhaiotl</col>: The boss was damaged with something other than a one-handed melee attack."
+tick=1077 region=5269 inLair=true INVENTORY -Ruby dragon bolts (e) (21944) x860
+tick=1078 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=1 param1=9764864
+tick=1078 region=5269 inLair=true INVENTORY +Twisted bow (20997) x1, -Zaryte crossbow (26374) x1
+tick=1078 region=5269 inLair=true EQUIPMENT -Twisted bow (20997) x1, +Zaryte crossbow (26374) x1
+tick=1080 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1082 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=1 param1=9764864
+tick=1082 region=5269 inLair=true INVENTORY -Twisted bow (20997) x1, +Zaryte crossbow (26374) x1
+tick=1082 region=5269 inLair=true EQUIPMENT +Twisted bow (20997) x1, -Zaryte crossbow (26374) x1
+tick=1083 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1084 region=5269 inLair=true MENU option="Switch tab" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10616847
+tick=1085 region=5269 inLair=true MENU option="Switch tab" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10616847
+tick=1087 region=5269 inLair=true MENU option="Cancel" target="" action=CANCEL id=0 itemId=0 itemOp=-1 param0=0 param1=0
+tick=1091 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Scorching bow</col>" action=CC_OP id=3 itemId=29591 itemOp=2 param0=4 param1=9764864
+tick=1091 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@Darkness Is Your Ally?</col>: You equipped a demonbane weapon."
+tick=1091 region=5269 inLair=true INVENTORY +Twisted bow (20997) x1, -Scorching bow (29591) x1
+tick=1091 region=5269 inLair=true EQUIPMENT -Twisted bow (20997) x1, +Scorching bow (29591) x1
+tick=1092 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=460 param1=336
+tick=1093 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Demonic larva" action=NPC_SECOND_OPTION id=40668 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14710 npcName="Demonic larva"
+tick=1094 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1095 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1097 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=4 param1=9764864
+tick=1097 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1097 region=5269 inLair=true INVENTORY -Twisted bow (20997) x1, +Scorching bow (29591) x1
+tick=1097 region=5269 inLair=true EQUIPMENT +Twisted bow (20997) x1, -Scorching bow (29591) x1
+tick=1105 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1109 region=5269 inLair=true EQUIPMENT -Dragon arrow (11212) x1
+tick=1116 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=343 param1=358
+tick=1117 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Scorching bow</col>" action=CC_OP id=3 itemId=29591 itemOp=2 param0=1 param1=9764864
+tick=1117 region=5269 inLair=true INVENTORY +Twisted bow (20997) x1, -Scorching bow (29591) x1
+tick=1117 region=5269 inLair=true EQUIPMENT -Twisted bow (20997) x1, +Scorching bow (29591) x1
+tick=1118 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Demonic larva" action=NPC_SECOND_OPTION id=41173 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14710 npcName="Demonic larva"
+tick=1118 region=5269 inLair=true EQUIPMENT -Dragon arrow (11212) x1
+tick=1119 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1119 region=5269 inLair=true EQUIPMENT -Dragon arrow (11212) x1
+tick=1120 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1122 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=1 param1=9764864
+tick=1122 region=5269 inLair=true INVENTORY -Twisted bow (20997) x1, +Scorching bow (29591) x1
+tick=1122 region=5269 inLair=true EQUIPMENT +Twisted bow (20997) x1, -Scorching bow (29591) x1
+tick=1123 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1124 region=5269 inLair=true MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=1125 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=1129 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1131 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="<col=7f007f>Your venom resistance is about to wear off.</col>"
+tick=1135 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=512 param1=299
+tick=1136 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Darklight</col>" action=CC_OP id=3 itemId=6746 itemOp=2 param0=5 param1=9764864
+tick=1136 region=5269 inLair=true INVENTORY -Darklight (6746) x1, +Twisted bow (20997) x1
+tick=1136 region=5269 inLair=true EQUIPMENT +Darklight (6746) x1, -Twisted bow (20997) x1
+tick=1137 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1139 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=371 param1=316
+tick=1141 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=5 param1=9764864
+tick=1141 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1141 region=5269 inLair=true INVENTORY +Darklight (6746) x1, -Twisted bow (20997) x1
+tick=1141 region=5269 inLair=true EQUIPMENT -Darklight (6746) x1, +Twisted bow (20997) x1
+tick=1143 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1145 region=5269 inLair=true MENU option="Deactivate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1150 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1155 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1156 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1159 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Scorching bow</col>" action=CC_OP id=3 itemId=29591 itemOp=2 param0=1 param1=9764864
+tick=1159 region=5269 inLair=true INVENTORY +Twisted bow (20997) x1, -Scorching bow (29591) x1
+tick=1159 region=5269 inLair=true EQUIPMENT -Twisted bow (20997) x1, +Scorching bow (29591) x1
+tick=1160 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Demonic larva" action=NPC_SECOND_OPTION id=41991 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14710 npcName="Demonic larva"
+tick=1160 region=5269 inLair=true EQUIPMENT -Dragon arrow (11212) x1
+tick=1161 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1161 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="<col=7f007f>Your venom resistance has worn off, but you are still resistant to poison.</col>"
+tick=1162 region=5269 inLair=true MENU option="Attack" target="<col=ffff00><col=00ffff>Volatile earth</col>" action=NPC_SECOND_OPTION id=42079 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14714 npcName="<col=00ffff>Volatile earth</col>"
+tick=1164 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1164 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=1168 region=5269 inLair=true MENU option="Attack" target="<col=ffff00><col=00ffff>Volatile earth</col>" action=NPC_SECOND_OPTION id=42069 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14714 npcName="<col=00ffff>Volatile earth</col>"
+tick=1169 region=5269 inLair=true EQUIPMENT -Dragon arrow (11212) x1
+tick=1171 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=500 param1=268
+tick=1172 region=5269 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-558)" action=NPC_SECOND_OPTION id=40510 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1175 region=5269 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1178 region=5269 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=1 param1=9764864
+tick=1178 region=5269 inLair=true INVENTORY -Twisted bow (20997) x1, +Scorching bow (29591) x1
+tick=1178 region=5269 inLair=true EQUIPMENT +Twisted bow (20997) x1, -Scorching bow (29591) x1
+tick=1180 region=5269 inLair=true DEATH boss died
+tick=1181 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=431 param1=182
+tick=1181 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="Delve level: 1 duration: @mes_hl_red@1:09.60</col>. Personal best: @mes_hl_red@0:30.00</col>"
+tick=1181 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="Total duration: @mes_hl_red@1:09.60</col>"
+tick=1181 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Some of your special attack energy has been restored.</col>"
+tick=1182 region=5269 inLair=true MENU option="Deactivate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1184 region=5269 inLair=true MENU option="Drink" target="<col=ff9040>Prayer potion(3)</col>" action=CC_OP id=2 itemId=139 itemOp=1 param0=10 param1=9764864
+tick=1184 region=5269 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="You have failed @ach_comp@The Praying Mantis</col>: Your prayer points were restored."
+tick=1184 region=5269 inLair=true CHAT type=SPAM name="" sender="null" message="You drink some of your restore prayer potion."
+tick=1184 region=5269 inLair=true CHAT type=SPAM name="" sender="null" message="You have 2 doses of potion left."
+tick=1184 region=5269 inLair=true INVENTORY -Prayer potion(3) (139) x1, +Prayer potion(2) (141) x1
+tick=1186 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=416 param1=248
+tick=1186 region=5269 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=415 param1=249
+tick=1187 region=5269 inLair=true MENU option="Investigate" target="<col=ffff>Burrow hole" action=GAME_OBJECT_FIRST_OPTION id=57285 itemId=-1 itemOp=-1 param0=53 param1=67
+tick=1190 region=5269 inLair=true MENU option="Descend" target="" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=60227607
+tick=1190 region=5269 inLair=true CHAT type=MESBOX name="" sender="null" message="You jump further into the burrow..."
+tick=1193 region=13668 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_red@Delve level: 2</col>"
+tick=1193 region=13668 inLair=true CHAT type=MESBOX name="" sender="null" message="You jump further into the burrow..."
+tick=1194 region=13668 inLair=true MENU option="Wield" target="<col=ff9040>Zaryte crossbow</col>" action=CC_OP id=3 itemId=26374 itemOp=2 param0=4 param1=9764864
+tick=1195 region=13668 inLair=true INVENTORY +Twisted bow (20997) x1, -Zaryte crossbow (26374) x1
+tick=1195 region=13668 inLair=true EQUIPMENT -Twisted bow (20997) x1, +Zaryte crossbow (26374) x1
+tick=1196 region=13668 inLair=true MENU option="Use" target="<col=ff9040>Special Attack</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485796
+tick=1197 region=13668 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=493 param1=218
+tick=1199 region=13668 inLair=true MENU option="Activate" target="Quick-prayers" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=10485780
+tick=1200 region=13668 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-608)" action=NPC_SECOND_OPTION id=42683 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1201 region=13668 inLair=true MENU option="Wield" target="<col=ff9040>Twisted bow</col>" action=CC_OP id=3 itemId=20997 itemOp=2 param0=4 param1=9764864
+tick=1202 region=13668 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-608)" action=NPC_SECOND_OPTION id=42683 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1202 region=13668 inLair=true INVENTORY -Twisted bow (20997) x1, +Zaryte crossbow (26374) x1
+tick=1202 region=13668 inLair=true EQUIPMENT +Twisted bow (20997) x1, -Zaryte crossbow (26374) x1
+tick=1205 region=13668 inLair=true EQUIPMENT -Dragon arrow (11212) x1
+tick=1212 region=13668 inLair=true MENU option="Walk here" target="" action=WALK id=0 itemId=0 itemOp=-1 param0=358 param1=309
+tick=1214 region=13668 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-608)" action=NPC_SECOND_OPTION id=42683 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
+tick=1217 region=13668 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1220 region=13668 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1224 region=13668 inLair=true MENU option="Deactivate" target="<col=ff9040>Protect from Magic</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454997
+tick=1226 region=13668 inLair=true MENU option="Activate" target="<col=ff9040>Protect from Missiles</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=35454998
+tick=1228 region=13668 inLair=true MENU option="Cast" target="<col=00ff00>Death Charge</col>" action=CC_OP id=1 itemId=-1 itemOp=-1 param0=-1 param1=14287036
+tick=1228 region=13668 inLair=true CHAT type=GAMEMESSAGE name="" sender="null" message="@mes_hl_pur@Upon the death of your next two foes, some of your special attack energy will be restored.</col>"
+tick=1229 region=13668 inLair=true MENU option="Attack" target="<col=ffff00>Doom of Mokhaiotl<col=ff0000>  (level-608)" action=NPC_SECOND_OPTION id=42683 itemId=-1 itemOp=-1 param0=0 param1=0 npcId=14707 npcName="Doom of Mokhaiotl"
