@@ -128,6 +128,15 @@ class RaidState
 	}
 
 	/**
+	 * Whether a reward from the raid's chest shows the raid was completed although no completion message was
+	 * recognised. A chest only has a reward after a completion, so only a raid the game ended another way can't be.
+	 */
+	boolean rewardCompletes()
+	{
+		return !completed && !wiped && !abandoned;
+	}
+
+	/**
 	 * How the raid ended when you left it: completed; wiped when the game said so, or if you had died in the room you
 	 * left from (the team is sent out once everyone has died); null for leaving any other way, abandoning included.
 	 */

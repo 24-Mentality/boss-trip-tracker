@@ -152,6 +152,8 @@ in Ver Sinhaza (by the vault's teleport crystal, a teleport, a wipe or logging o
 - Loot is the reward from your chest, from the Loot Tracker's event. If you leave the vault
   without claiming it, it's added when you claim it from the chest by the Ver Sinhaza bank
   (the game loses it if you log out first).
+- The pet (Lil' Zik) is recorded from the game's pet message inside the raid, or right as you
+  claim the reward from the chest by the bank (unverified: no raid pet has been logged yet).
 - Anything you get inside the raid is free: supply chest purchases and items you pick up.
   Only what you use beyond that is a cost, per dose for potions, so a brew bought from the
   chest costs nothing whether you drink it or not. Dropped gear (the salve amulet after
@@ -182,7 +184,9 @@ logging out). Spectating a raid from the Strategy board isn't a trip.
   (both are built from RuneLite's wording and haven't been seen in game yet: no raid in the
   logs reached the end).
 - Loot is the reward from your chest in the vault, from the Loot Tracker's "Fractured
-  Archive" event (unverified for the same reason).
+  Archive" event (unverified for the same reason). A reward only exists for a completed raid,
+  so if it arrives and no completion message was recognised, the reward itself records the
+  completion (without a completion count). The pet is recorded the same way as at the Theatre.
 - Quartermaster purchases with Supply Credits are free, like Theatre of Blood supply chest
   purchases: only what you use beyond them is a cost, per dose. Dropped potions and food count
   as used; dropped gear never does.
@@ -263,7 +267,9 @@ kill-count message was seen, so there is no Chat Commands key.
 
 For Phosani's Nightmare: a trip runs from drinking from the Pool of Nightmares until you
 leave the dream (through the barrier, which works like walking out of the Maggot King's lair,
-by teleport, or by dying). Several kills per trip are normal. Loot comes from the Loot
+by teleport, or by dying). The trip starts once the pool's message or Phosani's Nightmare
+herself has been seen, so a regular Nightmare fight never starts one. Several kills per trip
+are normal. Loot comes from the Loot
 Tracker's event (it lands on the floor), the kill timer counts like the game's fight clock
 from when the Nightmare awakens, and Sister Senga's fee is recorded from the bank payment
 message after you collect your items. Luck uses Phosani's rates (any unique about 1/111).

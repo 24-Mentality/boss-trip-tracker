@@ -131,6 +131,24 @@ public abstract class BossDefinition
 	}
 
 	/**
+	 * Whether being in one of {@link #getRegions()} isn't enough to start a trip: something must also show the area
+	 * is this boss's, either {@link #isEntryMessage} or one of {@link #getBossNpcIds()} there (the Nightmare: the
+	 * regular fight may share the region of Phosani's dream).
+	 */
+	public boolean isEntryEvidenceNeeded()
+	{
+		return false;
+	}
+
+	/**
+	 * A message box shown on the way in, without tags. Only read for {@link #isEntryEvidenceNeeded()} bosses.
+	 */
+	public boolean isEntryMessage(String text)
+	{
+		return false;
+	}
+
+	/**
 	 * A message that starts a new trip while you're already in the boss's area with no trip running (the Doom of
 	 * Mokhaiotl's "Delve level: 1" after a claim or a death in the same lobby).
 	 */

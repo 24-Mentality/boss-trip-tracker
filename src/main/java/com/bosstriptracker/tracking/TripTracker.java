@@ -151,6 +151,7 @@ public class TripTracker
 	private final Map<String, String> bossNames = new HashMap<>();
 
 	private final LeaveDelay leaveDelay = new LeaveDelay();
+	private final EntryEvidence entryEvidence = new EntryEvidence();
 	private DeathRecord pendingDeath;
 	/**
 	 * The trip with {@link #pendingDeath}, and the death's place in it: the trip has ended, so the death is changed
@@ -277,6 +278,12 @@ public class TripTracker
 			}
 
 			@Override
+			public void alertPet(String message)
+			{
+				TripTracker.this.alertPet(message);
+			}
+
+			@Override
 			public Integer killCount(String key)
 			{
 				return allTimeRecords.killCount(key);
@@ -333,6 +340,7 @@ public class TripTracker
 		supplies.reset();
 		loot.resetKillState();
 		leaveDelay.inside();
+		entryEvidence.clear();
 		loot.resetFight();
 		recentClicks.clear();
 		ledger.reset();
@@ -824,6 +832,13 @@ public class TripTracker
 			// Spectating a raid from inside its rooms (the Fractured Archive's Strategy board): not a trip
 			regionBoss = null;
 		}
+		if (regionBoss != null && !s.inArea && regionBoss.isEntryEvidenceNeeded()
+			&& !entryEvidence.has(regionBoss.getId(), tick))
+		{
+			// In the region, but nothing has shown it's this boss's (a regular Nightmare fight, if it shares the region
+			// of Phosani's dream)
+			regionBoss = null;
+		}
 		if (s.inArea && regionBoss != s.areaBoss)
 		{
 			Long leftAt = leaveDelay.outside(now, s.dead);
@@ -832,6 +847,7 @@ public class TripTracker
 				// Left the area (or went straight into another boss's)
 				s.inArea = false;
 				s.areaBoss = null;
+				entryEvidence.clear();
 				leaveLair(region, tick, leftAt);
 			}
 		}
@@ -1029,6 +1045,12 @@ public class TripTracker
 			raids.friendsChat(Text.removeTags(message));
 			return;
 		}
+		if (event.getType() == ChatMessageType.MESBOX)
+		{
+			// Only read for the message on the way into an area whose region alone doesn't say whose it is
+			entryMessage(Text.removeTags(message));
+			return;
+		}
 		if (event.getType() != ChatMessageType.GAMEMESSAGE && event.getType() != ChatMessageType.SPAM)
 		{
 			return;
@@ -1044,7 +1066,11 @@ public class TripTracker
 		}
 		if (ChatPatterns.isPetMessage(message))
 		{
-			loot.petMessage(tick);
+			// A raid's pet comes with its reward; any other right after the kill, the corpse or an egg
+			if (!raids.petMessage(tick))
+			{
+				loot.petMessage(tick);
+			}
 			return;
 		}
 		if (ChatPatterns.isQuiverFilled(message))
@@ -1132,7 +1158,7 @@ public class TripTracker
 	@Subscribe
 	public void onLootReceived(LootReceived event)
 	{
-		if (raids.loot(event))
+		if (raids.loot(event, client.getTickCount(), System.currentTimeMillis()))
 		{
 			return;
 		}
@@ -1174,10 +1200,43 @@ public class TripTracker
 		}
 	}
 
+	/**
+	 * The message box on the way into a boss's area (the Pool of Nightmares'): the area that loads next is that boss's.
+	 */
+	private void entryMessage(String text)
+	{
+		if (s.inArea)
+		{
+			return;
+		}
+		for (BossDefinition boss : registry.all())
+		{
+			if (boss.isEntryEvidenceNeeded() && boss.isEntryMessage(text))
+			{
+				entryEvidence.seen(boss.getId(), client.getTickCount());
+				return;
+			}
+		}
+	}
+
+	/**
+	 * One of a boss's own NPCs standing in its region shows whose area it is (Phosani's Nightmare has its own NPC ids,
+	 * so a regular Nightmare never counts).
+	 */
+	private void bossNpcSeen(BossDefinition boss, NPC npc)
+	{
+		if (boss != null && !s.inArea && boss.isEntryEvidenceNeeded()
+			&& boss.getRegions().contains(WorldPoint.fromLocalInstance(client, npc.getLocalLocation()).getRegionID()))
+		{
+			entryEvidence.seen(boss.getId(), client.getTickCount());
+		}
+	}
+
 	@Subscribe
 	public void onNpcSpawned(NpcSpawned event)
 	{
 		BossDefinition boss = registry.forBossNpc(event.getNpc().getId());
+		bossNpcSeen(boss, event.getNpc());
 		if (boss != null && boss.isFightStartOnSpawn())
 		{
 			loot.fightStarts(System.currentTimeMillis());
@@ -1192,6 +1251,7 @@ public class TripTracker
 	public void onNpcChanged(NpcChanged event)
 	{
 		BossDefinition boss = registry.forBossNpc(event.getNpc().getId());
+		bossNpcSeen(boss, event.getNpc());
 		if (boss != null && boss.isFightStartOnSpawn() && event.getOld() != null
 			&& !boss.getBossNpcIds().contains(event.getOld().getId()))
 		{

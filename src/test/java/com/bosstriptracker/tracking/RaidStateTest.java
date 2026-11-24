@@ -83,4 +83,31 @@ public class RaidStateTest
 		assertFalse(raid.isAbandoned());
 		assertNull(raid.endReason());
 	}
+
+	/**
+	 * A chest only has a reward after a completion, so a reward shows the raid was completed when no completion
+	 * message was recognised (the Fractured Archive's has never been seen).
+	 */
+	@Test
+	public void aRewardCompletesARaidWithNoEndingSeen()
+	{
+		RaidState raid = new RaidState();
+		raid.start(null);
+		raid.roomCleared();
+		// Dying in the last room doesn't stop the team finishing it
+		raid.died(2_000);
+		assertTrue(raid.rewardCompletes());
+
+		// Already recorded from its message: the reward is just its loot
+		raid.completed();
+		assertFalse(raid.rewardCompletes());
+
+		raid.start(null);
+		raid.wiped();
+		assertFalse(raid.rewardCompletes());
+
+		raid.start(null);
+		raid.abandoned();
+		assertFalse(raid.rewardCompletes());
+	}
 }

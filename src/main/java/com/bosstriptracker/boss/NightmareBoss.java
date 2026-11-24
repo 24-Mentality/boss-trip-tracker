@@ -28,9 +28,15 @@ public final class NightmareBoss extends TableBoss
 	public static final String REGULAR = "regular";
 
 	/**
-	 * Template region of Phosani's dream (instanced). Unverified whether the regular Nightmare's arena shares it.
+	 * Template region of Phosani's dream (instanced). Unverified whether the regular Nightmare's arena shares it, so
+	 * the region alone doesn't start a trip ({@link #isEntryEvidenceNeeded()}).
 	 */
 	public static final int DREAM_REGION_ID = 15515;
+	/**
+	 * The message box after "Drink-from" on the Pool of Nightmares (log of 2026-09-28); the dream loads within a few
+	 * ticks of the click.
+	 */
+	static final String POOL_MESSAGE = "The Nightmare pulls you into Phosani's dream as you drink from the pool.";
 	/**
 	 * The Sisterhood Sanctuary, where the Pool of Nightmares is and where you land on leaving or dying.
 	 */
@@ -160,6 +166,22 @@ public final class NightmareBoss extends TableBoss
 	{
 		// Loot lands on the floor, and the Loot Tracker's event already lists all of it
 		return type == LootRecordType.NPC && name != null && KILL_NAMES.containsKey(name);
+	}
+
+	/**
+	 * Only Phosani's is tracked, and a regular Nightmare fight may be in the same region: a trip starts once the pool's
+	 * message or one of Phosani's own NPCs (different ids from the regular Nightmare's) has been seen.
+	 */
+	@Override
+	public boolean isEntryEvidenceNeeded()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean isEntryMessage(String text)
+	{
+		return POOL_MESSAGE.equals(text);
 	}
 
 	@Override

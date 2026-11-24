@@ -38,6 +38,25 @@ public class NightmareBossTest
 		assertTrue(boss.getRecoverableItems().contains(ItemID.BLISTERWOOD_STAKE));
 	}
 
+	/**
+	 * The regular Nightmare's arena may share the dream's region, so the region alone doesn't start a trip.
+	 */
+	@Test
+	public void theDreamNeedsThePoolsMessageOrPhosanisOwnNpcs()
+	{
+		assertTrue(boss.isEntryEvidenceNeeded());
+		assertTrue(boss.isEntryMessage("The Nightmare pulls you into Phosani's dream as you drink from the pool."));
+		assertFalse(boss.isEntryMessage("You pull yourself out of the dream."));
+		// The regular Nightmare's own NPCs aren't Phosani's
+		assertNull(registry.forBossNpc(NpcID.NIGHTMARE_INITIAL));
+		assertNull(registry.forBossNpc(NpcID.NIGHTMARE_PHASE_01));
+		// Every other boss is known by its region
+		for (BossDefinition other : registry.all())
+		{
+			assertEquals(other.getId(), other == boss, other.isEntryEvidenceNeeded());
+		}
+	}
+
 	@Test
 	public void onlyPhosanisKillsAndLootAreRecognisedSoFar()
 	{

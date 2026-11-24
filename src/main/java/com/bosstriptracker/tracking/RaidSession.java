@@ -8,6 +8,7 @@ import com.bosstriptracker.boss.RaidCompletion;
 import com.bosstriptracker.boss.TripModel;
 import com.bosstriptracker.model.BossHistory;
 import com.bosstriptracker.model.DeathRecord;
+import com.bosstriptracker.model.ItemEntry;
 import com.bosstriptracker.model.Kill;
 import com.bosstriptracker.model.Trip;
 import com.bosstriptracker.model.TripEndReason;
@@ -20,8 +21,9 @@ import net.runelite.client.plugins.loottracker.LootReceived;
 
 /**
  * Raids (one raid per trip: the Theatre of Blood, the Fractured Archive): the mode, rooms, deaths, wipes and
- * completion from the raid's messages, the team's purples (the item only, never who got it), the reward claimed in
- * the raid or later from the chest outside, and what was obtained inside (free). Client thread.
+ * completion from the raid's messages (or from its reward, when no completion message was recognised), the team's
+ * purples (the item only, never who got it), the reward claimed in the raid or later from the chest outside, the pet,
+ * and what was obtained inside (free). Client thread.
  */
 class RaidSession
 {
@@ -54,6 +56,8 @@ class RaidSession
 
 		void alertForDrop(BossDefinition boss, int itemId, long quantity);
 
+		void alertPet(String message);
+
 		/**
 		 * A kill count Chat Commands saved, or null.
 		 */
@@ -73,13 +77,17 @@ class RaidSession
 	private String enteredRaidMode;
 	private int enteredRaidModeTick = -100;
 	/**
-	 * A completed raid whose reward hasn't been claimed yet: it can be claimed after leaving (the chest by the bank),
-	 * until logging out.
+	 * The raid just left, until the next raid or logging out: its (ended) trip, and where its completion is among the
+	 * trip's kills (-1 if no completion was seen).
 	 */
-	private Kill unclaimedRaid;
-	private Trip unclaimedRaidTrip;
-	private int unclaimedRaidIndex;
-	private BossDefinition unclaimedRaidBoss;
+	private Trip leftRaidTrip;
+	private BossDefinition leftRaidBoss;
+	private int leftRaidIndex = -1;
+	/**
+	 * Its reward hasn't been claimed yet: it can be claimed after leaving (the chest by the bank), until logging out.
+	 */
+	private boolean leftRaidUnclaimed;
+	private final RaidPet pet = new RaidPet();
 
 	RaidSession(TripSession s, HistoryKeeper keeper, BossRegistry registry, PriceService prices, Host host)
 	{
@@ -109,9 +117,11 @@ class RaidSession
 	 */
 	void loggedOut()
 	{
-		unclaimedRaid = null;
-		unclaimedRaidTrip = null;
-		unclaimedRaidBoss = null;
+		leftRaidTrip = null;
+		leftRaidBoss = null;
+		leftRaidIndex = -1;
+		leftRaidUnclaimed = false;
+		pet.reset();
 	}
 
 	/**
@@ -177,13 +187,22 @@ class RaidSession
 				host.expectReclaimFee(last);
 			}
 		}
-		else if (raidEnd == TripEndReason.COMPLETED && completion != null && completion.getLoot().isEmpty())
+		else if (raidEnd == TripEndReason.COMPLETED && completion != null)
 		{
 			// Left without claiming: the reward waits in the chest outside until you log out
-			unclaimedRaid = completion;
-			unclaimedRaidTrip = s.currentTrip;
-			unclaimedRaidIndex = s.currentTrip.getKills().indexOf(completion);
-			unclaimedRaidBoss = s.tripBoss;
+			leftRaidTrip = s.currentTrip;
+			leftRaidBoss = s.tripBoss;
+			leftRaidIndex = s.currentTrip.getKills().indexOf(completion);
+			leftRaidUnclaimed = completion.getLoot().isEmpty();
+		}
+		else if (raidEnd == null && raid.rewardCompletes())
+		{
+			// Left with no ending seen. If the raid was completed with a message that wasn't recognised, a reward
+			// from the chest outside will show it
+			leftRaidTrip = s.currentTrip;
+			leftRaidBoss = s.tripBoss;
+			leftRaidIndex = -1;
+			leftRaidUnclaimed = true;
 		}
 		return reason;
 	}
@@ -280,7 +299,23 @@ class RaidSession
 		RaidCompletion completion = boss.raidCompletion(text);
 		if (completion != null)
 		{
-			recordRaid(completion, tick, now);
+			Integer killCount = boss.raidKillCount(completion, host::killCount);
+			Kill recorded = raid.isCompleted() ? host.lootKill() : null;
+			if (!raid.isCompleted())
+			{
+				recordRaid(killCount, completion.getVariant(), tick, now);
+			}
+			else if (recorded != null && recorded.getKillCount() == null)
+			{
+				// The reward came first and recorded the raid: this is its count
+				recorded.setKillCount(killCount);
+				if (completion.getVariant() != null)
+				{
+					recorded.setVariant(completion.getVariant());
+				}
+				s.viewDirty = true;
+				keeper.requestSave();
+			}
 			return true;
 		}
 		String uniqueName = boss.teamUniqueName(text);
@@ -322,10 +357,23 @@ class RaidSession
 	/**
 	 * A completed raid is its trip's one kill. Its reward is claimed from a chest, maybe after leaving.
 	 */
-	private void recordRaid(RaidCompletion completion, int tick, long now)
+	private void recordRaid(Integer killCount, String variant, int tick, long now)
 	{
-		host.recordKill(s.tripBoss.raidKillCount(completion, host::killCount), completion.getVariant(), tick, now);
+		host.recordKill(killCount, variant, tick, now);
 		Kill kill = host.lootKill();
+		completed(kill);
+		raid.completed();
+		if (pet.takeWaiting())
+		{
+			markPet(kill, s.tripBoss);
+		}
+	}
+
+	/**
+	 * What the raid's messages said, onto its completion.
+	 */
+	private void completed(Kill kill)
+	{
 		kill.setPartySize(raid.getTeamSize());
 		if (raid.getRaidTimeMs() != null)
 		{
@@ -333,7 +381,50 @@ class RaidSession
 		}
 		kill.getTeamUniques().addAll(raid.getTeamUniques());
 		raid.getTeamUniques().clear();
-		raid.completed();
+	}
+
+	/**
+	 * A pet message. Inside a raid it's the raid's (it goes onto the completion once there is one); after a raid, only
+	 * around its reward being claimed from the chest outside. Unverified: no raid pet has been logged.
+	 *
+	 * @return whether the raid took it
+	 */
+	boolean petMessage(int tick)
+	{
+		if (s.inArea && s.currentTrip != null && isRaid(s.tripBoss))
+		{
+			Kill kill = raid.isCompleted() ? host.lootKill() : null;
+			if (pet.inRaid(kill != null))
+			{
+				markPet(kill, s.tripBoss);
+				s.viewDirty = true;
+				keeper.requestSave();
+			}
+			return true;
+		}
+		if (leftRaidBoss == null || !pet.outside(tick))
+		{
+			return false;
+		}
+		Kill kill = leftRaidKill(false, 0);
+		if (kill != null)
+		{
+			markPet(kill, leftRaidBoss);
+			s.historyChanged();
+			keeper.requestSave();
+		}
+		return true;
+	}
+
+	private void markPet(Kill kill, BossDefinition boss)
+	{
+		kill.setPet(true);
+		ExpectedDrop petDrop = boss.getPet();
+		if (petDrop != null && kill.getLoot().stream().noneMatch(e -> e.getItemId() == petDrop.getItemId()))
+		{
+			kill.getLoot().add(new ItemEntry(petDrop.getItemId(), 1, 0));
+		}
+		host.alertPet(boss.getDisplayName() + " pet!");
 	}
 
 	/**
@@ -385,31 +476,53 @@ class RaidSession
 	}
 
 	/**
-	 * A raid's reward, claimed in the raid or later from the chest outside (until logging out).
+	 * A raid's reward, claimed in the raid or later from the chest outside (until logging out). A reward only exists
+	 * for a completed raid, so one that arrives with no completion recorded records it (the Fractured Archive's
+	 * completion message has never been seen, and may not be worded as expected).
 	 *
 	 * @return whether the event was a raid reward
 	 */
-	boolean loot(LootReceived event)
+	boolean loot(LootReceived event, int tick, long now)
 	{
 		boolean inRaid = s.currentTrip != null && isRaid(s.tripBoss);
-		BossDefinition boss = inRaid ? s.tripBoss : unclaimedRaidBoss;
+		BossDefinition boss = inRaid ? s.tripBoss : leftRaidUnclaimed ? leftRaidBoss : null;
 		if (boss == null || !boss.isRaidLootEvent(event.getName(), event.getType()))
 		{
 			return false;
 		}
-		Kill kill = inRaid ? (raid.isCompleted() ? host.lootKill() : null) : unclaimedRaidForChange();
-		unclaimedRaid = null;
-		unclaimedRaidTrip = null;
-		unclaimedRaidBoss = null;
+		Kill kill;
+		boolean petBefore = false;
+		if (inRaid)
+		{
+			if (raid.rewardCompletes())
+			{
+				// The kill count isn't known; the completion message fills it in if it still comes
+				recordRaid(null, raid.getMode(), tick, now);
+			}
+			kill = raid.isCompleted() ? host.lootKill() : null;
+		}
+		else
+		{
+			kill = leftRaidKill(true, now);
+			leftRaidUnclaimed = false;
+			petBefore = pet.claimedOutside(tick);
+		}
 		if (kill == null)
 		{
-			// The reward of a raid this plugin didn't see completed
+			// Not a raid this plugin can put it on (its trip is gone, or the game ended it another way)
 			return true;
 		}
+		ExpectedDrop petDrop = boss.getPet();
+		boolean petListed = false;
 		for (ItemStack stack : event.getItems())
 		{
 			ItemEntries.merge(kill.getLoot(), stack.getId(), stack.getQuantity(), prices.price(stack.getId()), false);
 			host.alertForDrop(boss, stack.getId(), stack.getQuantity());
+			petListed |= petDrop != null && petDrop.getItemId() == stack.getId();
+		}
+		if (petListed || petBefore)
+		{
+			markPet(kill, boss);
 		}
 		s.historyChanged();
 		keeper.requestSave();
@@ -417,15 +530,41 @@ class RaidSession
 	}
 
 	/**
-	 * The completed raid whose reward is claimed from the chest outside, in its (ended) trip.
+	 * The completion of the raid just left, in its (ended) trip, to change.
+	 *
+	 * @param fromReward the reward is being claimed: a raid left with no completion seen gets one now, and its trip
+	 *                   is put back if it was dropped as empty when it ended
+	 * @return the completion, or null if there is none
 	 */
-	private Kill unclaimedRaidForChange()
+	private Kill leftRaidKill(boolean fromReward, long now)
 	{
-		Trip trip = keeper.editable(unclaimedRaidTrip);
-		if (trip == null || unclaimedRaidIndex < 0 || unclaimedRaidIndex >= trip.getKills().size())
+		if (leftRaidTrip == null || s.history == null)
 		{
 			return null;
 		}
-		return trip.getKills().get(unclaimedRaidIndex);
+		Trip trip = keeper.editable(leftRaidTrip);
+		if (leftRaidIndex >= 0)
+		{
+			return trip == null || leftRaidIndex >= trip.getKills().size() ? null : trip.getKills().get(leftRaidIndex);
+		}
+		if (!fromReward)
+		{
+			return null;
+		}
+		if (trip == null)
+		{
+			trip = leftRaidTrip.copy();
+			s.history.boss(leftRaidBoss.getId()).getTrips().add(trip);
+			keeper.monthChanged(leftRaidBoss.getId(), trip);
+		}
+		Kill kill = new Kill();
+		kill.setVariant(raid.getMode());
+		kill.setEndedAt(trip.getEndedAt() != null ? trip.getEndedAt() : now);
+		completed(kill);
+		trip.getKills().add(kill);
+		trip.setEndReason(TripEndReason.COMPLETED);
+		leftRaidTrip = trip;
+		leftRaidIndex = trip.getKills().size() - 1;
+		return kill;
 	}
 }
